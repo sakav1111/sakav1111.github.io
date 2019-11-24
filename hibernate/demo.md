@@ -1,0 +1,15 @@
+---
+title: demo
+layout: article
+nav_key: hibernate
+sidebar:
+  nav: HibernateTutorial
+license: false
+aside:
+  toc: false
+show_edit_on_github: false
+show_date: false
+lightbox: true
+---
+
+demodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemodemo

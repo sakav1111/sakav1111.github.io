@@ -1,0 +1,26 @@
+---
+title: DevOps Tutorials
+layout: page
+---
+
+http://www.visualpath.in/devopstutorials/
+<ul>
+  {% for post in site.categories.DevOps %}
+    {% if post.url %}
+       <h3><img border="0" alt="DevOps" src="/assets/logo/devops.png" width="50" height="50"><a itemprop="headline" class="item__header" href="{{ post.url }}"> {{ post.title }}</a></h3>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<!--
+<div class="layout--archive js-all">
+  <div class="js-result layout--archive__result d-none">
+    {%- include article-list.html articles=site.posts type='brief' tag='Java' show_info=true reverse=true -%}
+  </div>
+</div>
+
+<script>
+  {%- include scripts/archieve.js -%}
+</script>
+
+-->

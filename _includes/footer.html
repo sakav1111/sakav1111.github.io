@@ -1,0 +1,44 @@
+
+<footer class="footer py-4 js-page-footer">
+  <div class="main">
+
+    {%- assign _site_author = site.author -%}
+    {%- if _site_author.type == 'organization' -%}
+      {%- assign _site_author_itemtype = 'http://schema.org/Organization' -%}
+    {%- else -%}
+      {%- assign _site_author_itemtype = 'http://schema.org/Person' -%}
+    {%- endif -%}
+
+    <div itemscope itemtype="{{ _site_author_itemtype }}">
+      <meta itemprop="name" content="{{ _site_author.name }}">
+      {%- assign _site_author_url = _site_author.url | default: '/'-%}
+      {%- include snippets/get-nav-url.html path=_site_author_url -%}
+      {%- assign _site_author_url = __return -%}
+      <meta itemprop="url" content="{{ _site_author_url }}">
+      {%- if _site_author.bio -%}
+        <meta itemprop="description" content="{{ _site_author.bio }}">
+      {%- endif -%}
+      <div class="footer__author-links">
+        {%- include author-links.html author=_site_author -%}
+      </div>
+    </div>
+    {%- include snippets/get-locale-string.html key='COPYRIGHT_DATES' -%}
+    {%- assign _locale_copyright_dates = __return -%}
+    <div class="site-info mt-2">
+      <div>
+        {%- include snippets/get-locale-string.html key='COPYRIGHT_DATES' -%}
+        {%- assign _locale_copyright_dates = __return -%}
+        © {{ site.title }} {{ _locale_copyright_dates }},
+        <a title="Satya Kaveti" href="https://www.facebook.com/isatyakaveti">Satya Kaveti's Writing</a>.
+		<span>| <a href="/aboutme.html">About</a> &nbsp |  </span>
+		<span><a href="/terms.html">Terms</a> &nbsp |  </span>
+		<span><a href="/contact.html">Contact</a> &nbsp |  </span>
+		<span><a href="https://www.facebook.com/isatyakaveti" target="_blank"><i class="fab fa-facebook-f"></i></a> &nbsp |  </span>
+		<span><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube-square"></i></a> &nbsp |  </span>
+		<span><a href="https://in.linkedin.com/in/satyakaveti"target="_blank"><i class="fab fa-linkedin-in"></i></a> &nbsp |  </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dd2bcde40b385b7"></script>

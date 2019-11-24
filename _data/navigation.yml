@@ -1,0 +1,715 @@
+header:
+  - title:      AllPosts
+    url:        /posts.html
+    
+  - title:      Tutorials
+    url:        /tutorials.html
+    key:        tutorials
+
+  - title:      Java
+    url:        java.html
+    key:        java
+
+  - title:      DevOps
+    url:        /devops.html
+    
+  - title:      Books
+    url:        /books.html
+    
+  - title:      InterviewQ's
+    url:        /interview-questions.html
+
+
+
+
+
+#=============================================================================
+######################      I.SIDE MENUS STARTTED         ######################
+#=============================================================================
+
+
+
+
+#-----------------------------1. JavaTutorial - Sidemenu --------------------------
+JavaTutorial:
+  - title:      Java Tutorial
+    children:
+      - title:  Fundamentals
+        url:    /java/fundamentals
+      - title:  Datatypes
+        url:    /java/datatypes
+      - title:  Variables
+        url:    /java/variables
+      - title:  Operators
+        url:    /java/operators
+      - title:  Flow Control
+        url:    /java/flow-control
+      - title:  Access Modifiers
+        url:    /java/access-modifiers
+      - title:  Nested Classes
+        url:    /java/nested-classes
+      - title:  Fundamentals - Interview Questions
+        url:    /java/fundamentals-interview-questions
+  
+  - title:      Interfaces
+    children:
+      - title:  Interfaces
+        url:    /java/interfaces
+      - title:  Interface Enhancements
+        url:    /java/interface-enhancements
+   
+        
+  - title:      OOPS
+    children:
+      - title:  Abstraction-Encapsulation
+        url:    /java/abstraction-encapsulation
+      - title:  Inheritance
+        url:    /java/inheritance
+      - title:  Static-Instance Control flows
+        url:    /java/static-instance-control-flows
+      - title:  Constructor
+        url:    /java/constructor
+
+ 
+  - title:      Exception Handling
+    children:
+      - title:  Exception Handling
+        url:    /java/exception-handling
+      - title:  Exception Hierarchy
+        url:    /java/exception-hierarchy
+      - title:  try-catch-finally
+        url:    /java/try-catch-finally
+      - title:  User Defined Exceptions
+        url:    /java/user-defined-exceptions
+      - title:  ExceptionHandling Overriding rules
+        url:    /java/exceptionhandling-overriding-rules
+      - title:  Exception handling Enhancements
+        url:    /java/exception-handling-enhancements
+      - title:  Exception Handling Interview Questions
+        url:    /java/exception-handling-interview-questions
+ 
+  - title:      java.lang Package
+    children:
+      - title:  java.lang package
+        url:    /java/lang-package
+      - title:  String Class
+        url:    /java/string-class
+      - title:  StringBuffer and StringBuilder
+        url:    /java/stringbuffer-and-stringbuilder
+      - title:  Wrapper classes
+        url:    /java/wrapper-classes
+      - title:  Garbage Collection
+        url:    /java/garbage-collection
+      - title:  Reflection API
+        url:    /java/reflection-api
+      - title:  java.lang-Interview Questions
+        url:    /java/lang-interview-questions
+ 
+  - title:      java.io Package
+    children:
+      - title:  java-io
+        url:    /java/java-io
+      - title:  Byte Streams
+        url:    /java/byte-streams
+      - title:  Character Streams
+        url:    /java/character-streams
+      - title:  Buffered Streams
+        url:    /java/buffered-streams
+      - title:  Data Streams
+        url:    /java/data-streams
+      - title:  Object Streams
+        url:    /java/object-streams
+      - title:  Java NIO
+        url:    /java/java-nio
+
+ 
+  - title:      Multithreading
+    children:
+      - title:  Threads
+        url:    /java/threads
+      - title:  What is Thread
+        url:    /java/what-is-thread
+      - title:  Thread class
+        url:    /java/thread-class
+      - title:  Runnable Interface
+        url:    /java/runnable-interface
+      - title:  Interrupting a Thread
+        url:    /java/interrupting-a-thread
+      - title:  Joining Thread
+        url:    /java/joining-thread
+      - title:  Thread Priority
+        url:    /java/thread-priority
+      - title:  Daemon Thread
+        url:    /java/daemon-thread
+      - title:  Synchronization
+        url:    /java/synchronization
+      - title:  Inter Thread Communication
+        url:    /java/inter-thread-communication
+
+ 
+  - title:      java.util.Concurrency
+    children:
+      - title:  java-util-Concurrency
+        url:    /java/java-util-concurrency
+      - title:  Synchronization VS Locks
+        url:    /java/synchronization-vs-locks
+      - title:  ReadWriteLock
+        url:    /java/readwritelock
+      - title:  Conditions
+        url:    /java/conditions
+      - title:  Synchronization Utils
+        url:    /java/synchronization-utils
+      - title:  Binary Semaphore
+        url:    /java/binary-semaphore
+      - title:  CountDownLatch
+        url:    /java/countdownlatch
+      - title:  CyclicBrarrier
+        url:    /java/cyclicbrarrier
+      - title:  Phaser
+        url:    /java/phaser
+      - title:  Exchanger
+        url:    /java/exchanger
+
+ 
+  - title:      Executor Framework
+    children:
+      - title:  Executor Framework
+        url:    /java/executor-framework
+      - title:  ThreadPools
+        url:    /java/threadpools
+      - title:  ExecutorService API
+        url:    /java/executorservice-api
+      - title:  Fork Join
+        url:    /java/fork-join
+      - title:  Custom ThreadPool
+        url:    /java/custom-threadpool
+      - title:  Atomic Variables
+        url:    /java/atomic-variables
+      - title:  Threads Interview Questions
+        url:    /java/threads-interview-questions
+
+ 
+ 
+  - title:      Collections
+    children:
+      - title:  Traditional Data Structures
+        url:    /java/traditional-data-structures
+      - title:  Linked List
+        url:    /java/linked-list
+      - title:  Stack
+        url:    /java/stack
+      - title:  Queue
+        url:    /java/queue
+      - title:  Trees
+        url:    /java/trees
+      - title:  Sorting Algorithms
+        url:    /java/sorting-algorithms
+      - title:  Bubble Sort
+        url:    /java/bubble-sort
+      - title:  Insertion Sort
+        url:    /java/insertion-sort
+      - title:  Selection Sort
+        url:    /java/selection-sort
+      - title:  Merge Sort
+        url:    /java/merge-sort
+      - title:  Quick Sort
+        url:    /java/quick-sort
+      - title:  Searching Algorithms
+        url:    /java/searching-algorithms
+      - title:  Java Collections Framework
+        url:    /java/java-collections-framework
+      - title:  List
+        url:    /java/list
+      - title:  ArrayList
+        url:    /java/arraylist
+      - title:  LinkedList
+        url:    /java/linkedlist
+      - title:  Vector
+        url:    /java/vector
+      - title:  Stack
+        url:    /java/stack
+      - title:  Map
+        url:    /java/map
+      - title:  HashMap
+        url:    /java/hashmap
+      - title:  LinkedHashMap
+        url:    /java/linkedhashmap
+      - title:  TreeMap
+        url:    /java/treemap
+      - title:  IdentityHashMap
+        url:    /java/identityhashmap
+      - title:  WeakHashMap
+        url:    /java/weakhashmap
+      - title:  Legacy Classes on Map
+        url:    /java/legacy-classes-on-map
+      - title:  Set
+        url:    /java/set
+      - title:  HashSet
+        url:    /java/hashset
+      - title:  LinkedHashSet
+        url:    /java/linkedhashset
+      - title:  TreeSet
+        url:    /java/treeset
+      - title:  Comparable vs Comparator
+        url:    /java/comparable-vs-comparator
+      - title:  Queue
+        url:    /java/queue
+      - title:  Concurrent Collections
+        url:    /java/concurrent-collections
+      - title:  java-util-Arrays
+        url:    /java/java-util-arrays
+      - title:  java-util-Collections
+        url:    /java/java-util-collections
+
+ 
+  - title:      Stream API
+    children:
+      - title:  Stream API
+        url:    /java/stream-api
+      - title:  Lambdas
+        url:    /java/lambdas
+      - title:  Streams
+        url:    /java/streams
+ 
+  - title:      Java UI
+    children:
+      - title:  Java UI
+        url:    /java/java-ui
+      - title:  Swing Basics
+        url:    /java/swing-basics
+      - title:  AWT
+        url:    /java/awt
+      - title:  Events Handling
+        url:    /java/events-handling
+      - title:  Components
+        url:    /java/components
+
+ 
+  - title:      Features by Version
+    children:
+      - title:  Java 4
+        url:    /java/java-4
+      - title:  Java 5
+        url:    /java/java-5
+      - title:  Java 7
+        url:    /java/java-7
+      - title:  Java 8
+        url:    /java/java-8
+      - title:  Java 9
+        url:    /java/java-9
+      - title:  Java 10
+        url:    /java/java-10
+      - title:  Java 11
+        url:    /java/java-11
+
+
+
+
+
+
+#-----------------------------2. SpringBootTutorial  - Sidemenu --------------------------
+SpringBootTutorial:
+  - title:      Start
+    children:
+      - title:  1.SpringBoot 
+        url:    /springboot/quick-start
+      - title:  2.SpringBoot 
+        url:    /springboot/structure
+      - title:  3.SpringBoot Complete
+        url:    /springboot/springboot
+
+#-----------------------------3.SQLTutorial - Sidemenu --------------------------------------
+SQLTutorial:
+  - title:      SQL Tutorial
+    children:
+      - title:  SQL Basics
+        url:    /sql/sql-basics
+      - title:  Select Operations
+        url:    /sql/select-operations
+      - title:  JOINS
+        url:    /sql/joins
+      - title:  Sql Functions
+        url:    /sql/sql-functions
+      - title:  PLSQL
+        url:    /sql/plsql
+      - title:  Procedure
+        url:    /sql/procedure
+
+
+#-----------------------------4.MongoDBTutorial - Sidemenu----------------------------------------------
+MongoDBTutorial:
+  - title:      MongoDB Tutorial
+    children:
+      - title:  Introduction
+        url:    /mongodb/introduction
+      - title:  Database Operations
+        url:    /mongodb/database-operations
+      - title:  Collection Operations
+        url:    /mongodb/collection-operations
+      - title:  Document Operations
+        url:    /mongodb/document-operations
+      - title:  Advanced Operations
+        url:    /mongodb/advanced-operations
+      - title:  MongoDB with Java
+        url:    /mongodb/mongodb-with-java
+
+
+#-----------------------------5.JDBCTutorial - Sidemenu----------------------------------------------
+JDBCTutorial:
+  - title:      JDBC Tutorial
+    children:
+      - title:  JDBC Introduction
+        url:    /jdbc/jdbc-introduction
+      - title:  Steps to connect with the database
+        url:    /jdbc/steps-to-connect-with-the-database
+      - title:  JDBC API
+        url:    /jdbc/jdbc-api
+      - title:  CURD Operations
+        url:    /jdbc/curd-operations
+      - title:  PreparedStatement
+        url:    /jdbc/preparedstatement
+      - title:  BLOB
+        url:    /jdbc/blob
+      - title:  CLOB
+        url:    /jdbc/clob
+      - title:  CallableStatement
+        url:    /jdbc/callablestatement
+      - title:  Metadata
+        url:    /jdbc/metadata
+      - title:  Batch Processing
+        url:    /jdbc/batch-processing
+      - title:  Transactions
+        url:    /jdbc/transactions
+      - title:  RowSet Interface
+        url:    /jdbc/rowset-interface
+
+
+
+
+#-----------------------------6.ServletsTutorial - Sidemenu----------------------------------------------
+ServletsTutorial:
+  - title:      Servlets Tutorial
+    children:
+      - title:  Introduction
+        url:    /servlets/introduction
+      - title:  Web Technologies Basics
+        url:    /servlets/web-technologies-basics
+      - title:  Servlet API
+        url:    /servlets/servlet-api
+      - title:  Servlet Lifecycle
+        url:    /servlets/servlet-lifecycle
+      - title:  ServletRequest
+        url:    /servlets/servletrequest
+      - title:  ServletConfig
+        url:    /servlets/servletconfig
+      - title:  ServletContext
+        url:    /servlets/servletcontext
+      - title:  Servlet Chaining
+        url:    /servlets/servlet-chaining
+      - title:  Attributes
+        url:    /servlets/attributes
+      - title:  Session Tracking
+        url:    /servlets/session-tracking
+      - title:  Filters
+        url:    /servlets/filters
+      - title:  Sevlets with Annotations
+        url:    /servlets/sevlets-with-annotations
+
+
+#-----------------------------8.JSPTutorial - Sidemenu----------------------------------------------
+JSPTutorial:
+  - title:      JSP Tutorial
+    children:
+      - title:  Introduction
+        url:    /jsp/introduction
+      - title:  Scriptlets
+        url:    /jsp/scriptlets
+      - title:  Implicit objects
+        url:    /jsp/implicit-objects
+      - title:  Directives
+        url:    /jsp/directives
+      - title:  Action Tags
+        url:    /jsp/action-tags
+      - title:  JSP EL
+        url:    /jsp/jspel
+      - title:  JSTL
+        url:    /jsp/jstl
+      - title:  Custom Tags
+        url:    /jsp/custom-tags
+
+
+
+#-----------------------------9.SpringBootTutorial - Sidemenu----------------------------------------------
+SpringBootTutorial:
+  - title:      SpringBoot Tutorial
+    children:
+      - title:  Introduction
+        url:    /springboot/introduction
+      - title:  Creating SpringBoot Application
+        url:    /springboot/creating-springboot-application
+      - title:  SpringBoot with Maven
+        url:    /springboot/springboot-with-maven
+      - title:  SpringBoot with Spring Initializer
+        url:    /springboot/springboot-with-spring-initializer
+      - title:  SpringBoot Configurations
+        url:    /springboot/springboot-configurations
+      - title:  SpringBoot MVC
+        url:    /springboot/springboot-mvc
+      - title:  SpringBoot RESTful
+        url:    /springboot/springboot-restful
+      - title:  SpringBoot Database
+        url:    /springboot/springboot-database
+      - title:  SpringBoot JPA Example
+        url:    /springboot/springboot-jpa-example
+      - title:  SpringBoot JpaRepository
+        url:    /springboot/springboot-jparepository
+      - title:  SpringBoot MongoDB and REST Example
+        url:    /springboot/springboot-mongodb-and-rest-example
+
+
+#-----------------------------10.HibernateTutorial - Sidemenu----------------------------------------------
+HibernateTutorial:
+  - title:      Hibernate Tutorial
+    children:
+      - title:  Introduction
+        url:    /hibernate/introduction
+      - title:  Architecture
+        url:    /hibernate/architecture
+      - title:  Hibernate Example Step by Step
+        url:    /hibernate/hibernate-example-step-by-step
+      - title:  CURD Operations
+        url:    /hibernate/curd-operations        
+      - title:  SELECT Operation
+        url:    /hibernate/select-operation
+      - title:  INSERT Operation
+        url:    /hibernate/insert-operation
+      - title:  UPDATE Operation
+        url:    /hibernate/update-operation
+      - title:  DELETE Operation
+        url:    /hibernate/delete-operation
+      - title:  Clear
+        url:    /hibernate/clear
+      - title:  Hibernate POJO Class Lifecycle
+        url:    /hibernate/hibernate-pojo-class-lifecycle
+      - title:  Inheritance Mapping
+        url:    /hibernate/inheritance-mapping
+      - title:  Hibernate Generators
+        url:    /hibernate/hibernate-generators
+      - title:  Hibernate Query Language (HQL)
+        url:    /hibernate/hibernate-query-language
+      - title:  Hibernate Criteria Query Language(HCQL)
+        url:    /hibernate/hibernate-criteria-query-language
+      - title:  Native SQL Queries
+        url:    /hibernate/native-sql-queries
+      - title:  Named Queries
+        url:    /hibernate/named-queries
+      - title:  Hibernate Relationships
+        url:    /hibernate/hibernate-relationships
+      - title:  Cascade Attribute
+        url:    /hibernate/cascade-attribute
+      - title:  Hibernate Cache
+        url:    /hibernate/hibernate-cache
+      - title:  Hibernate with Annotations
+        url:    /hibernate/hibernate-with-annotations
+      - title:  Mappings using Annotations
+        url:    /hibernate/mappings-using-annotations
+      - title:  Errors
+        url:    /hibernate/errors
+      - title:  Hibernate Interview Questions
+        url:    /hibernate/hibernate-interview-questions
+
+
+
+#-----------------------------11. SpringTutorial - Sidemenu --------------------------
+SpringTutorial:
+  - title:      Spring
+    children:
+      - title:  Spring Introduction
+        url:    /spring/spring-introduction
+      - title:  Dependency Injection
+        url:    /spring/dependency-injection
+      - title:  Setter Injection
+        url:    /spring/setter-injection
+      - title:  Constructor Injection
+        url:    /spring/constructor-injection
+      - title:  Aurowire
+        url:    /spring/aurowire
+      - title:  Autowire using Annotations
+        url:    /spring/autowire-using-annotations
+      - title:  Spring Bean Internal Working
+        url:    /spring/spring-bean-internal-working
+      - title:  Spring Bean LifeCycle
+        url:    /spring/spring-bean-lifecycle
+      - title:  Configuring metadata
+        url:    /spring/configuring-metadata
+      - title:  Spring Annotations
+        url:    /spring/spring-annotations
+      - title:  Stereotype Annotations
+        url:    /spring/stereotype-annotations
+      - title:  Spring Validation
+        url:    /spring/spring-validation        
+        
+  - title:      Spring AOP
+    children:
+      - title:  Spring AOP
+        url:    /spring/spring-aop
+      - title:  Spring AOP -DTD based Example
+        url:    /spring/spring-aop-dtd
+      - title:  Spring AOP -AspectJ
+        url:    /spring/spring-aop-aspectj
+        
+        
+  - title:      Spring Data
+    children:
+      - title:  Spring Data
+        url:    /spring/spring-data
+      - title:  -JdbcTemplate
+        url:    /spring/1-jdbctemplate
+      - title:  -NamedParameterJdbcTemplate
+        url:    /spring/2-namedparameterjdbctemplate
+      - title:  -SimpleJdbcTemplate
+        url:    /spring/3-simplejdbctemplate
+      - title:  Spring JDBC
+        url:    /spring/spring-jdbc
+      - title:  Spring ORM
+        url:    /spring/spring-orm
+      - title:  Spring Hibernate
+        url:    /spring/spring-hibernate
+      - title:  Transaction
+        url:    /spring/transaction
+      - title:  SpringData Commons
+        url:    /spring/springdata-commons
+        
+  - title:      Spring MVC
+    children:
+      - title:  Spring MVC -Introduction
+        url:    /spring/spring-mvc-introduction
+      - title:  Spring MVC -ContextLoaderListener vs DispatcherServlet
+        url:    /spring/spring-mvc-contextloaderlistener-vs-dispatcherservlet
+      - title:  Spring MVC -Multiple Controllers
+        url:    /spring/spring-mvc-multiple-controllers
+      - title:  Spring MVC -Request and Response Example
+        url:    /spring/spring-mvc-request-and-response-example
+      - title:  Spring MVC -RequestMapping
+        url:    /spring/spring-mvc-requestmapping
+      - title:  Spring MVC -HandlerMapping
+        url:    /spring/spring-mvc-handlermapping
+      - title:  Spring MVC -Controller classes
+        url:    /spring/spring-mvc-controller-classes
+      - title:  Spring MVC -ViewResolvers
+        url:    /spring/spring-mvc-viewresolvers
+      - title:  Spring MVC -Form Handling
+        url:    /spring/spring-mvc-form-handling
+      - title:  Spring MVC -Themes
+        url:    /spring/spring-mvc-themes
+      - title:  Spring4 MVC REST Service Example
+        url:    /spring/spring4-mvc-rest-service-example
+      - title:  Spring MVC -Summary
+        url:    /spring/spring-mvc-summary
+      - title:  Spring JEE
+        url:    /spring/spring-jee
+      - title:  Spring Annotations
+        url:    /spring/spring-annotations
+
+
+
+
+#-----------------------------12. WebServices - Sidemenu --------------------------
+WebServicesTutorial:
+  - title:      WebServices API
+    children:
+      - title:  Webservices
+        url:    /webservices/webservices
+      - title:  SOAP
+        url:    /webservices/soap
+      - title:  REST
+        url:    /webservices/rest
+      - title:  Java Web Services API
+        url:    /webservices/java-web-services-api       
+        
+  - title:      SOAP WebServices
+    children:
+      - title:  JAX-WS
+        url:    /webservices/jax-ws
+      - title:  RPC VS Document Style
+        url:    /webservices/diffrence-between-rpc-style-and-document-style
+      - title:  JAX-WS Annotations
+        url:    /webservices/jax-ws-annotations
+      - title:  JAX-WS RPC Style
+        url:    /webservices/jax-ws-rpc-style
+      - title:  JAX-WS Document Style
+        url:    /webservices/jax-ws-document-style
+      - title:  JAX-WS Tools
+        url:    /webservices/jax-ws-tools     
+        
+  - title:      RESTful WebServices
+    children:
+      - title:  JAX-RS RESTFul
+        url:    /webservices/jax-rs-restful
+      - title:  JAX-RS Annotations
+        url:    /webservices/jax-rs-annotations
+      - title:  JAX-RS JERSEY
+        url:    /webservices/jax-rs-jersey
+      - title:  JAX-RS RESTEasy
+        url:    /webservices/jax-rs-resteasy
+      - title:  JAX-RS Path
+        url:    /webservices/jax-rs-path-annotation
+      - title:  JAX-RS PathParam
+        url:    /webservices/jax-rs-pathparam
+      - title:  JAX-RS QueryParam
+        url:    /webservices/jax-rs-queryparam
+      - title:  JAX-RS DefaultValue
+        url:    /webservices/jax-rs-defaultvalue
+      - title:  JAX-RS MatrixParam
+        url:    /webservices/jax-rs-matrixparam
+      - title:  JAX-RS FormParam
+        url:    /webservices/jax-rs-formparam
+      - title:  JAX-RS HeaderParam
+        url:    /webservices/jax-rs-headerparam
+      - title:  JAX-RS Context
+        url:    /webservices/jax-rs-context
+      - title:  JAX-RS Download files
+        url:    /webservices/jax-rs-download-files
+      - title:  JAX-RS JSON
+        url:    /webservices/jax-rs-json
+      - title:  JAX-RS JSON RESTEasy
+        url:    /webservices/jax-rs-json-resteasy
+      - title:  JAX-RS XML
+        url:    /webservices/jax-rs-xml
+      - title:  RESTFul Java Clinets
+        url:    /webservices/jax-rs-restful-java-clinets
+      - title:  Test RESTful
+        url:    /webservices/how-to-test-restful-web-services
+
+
+#-----------------------------13. NEXT - Sidemenu --------------------------
+
+
+
+#=============================================================================
+######################      II.ADD ALL SIDE MENUS to 'nav'       #############
+#=============================================================================
+
+
+sidebar:
+  nav: JavaTutorial
+  nav: SpringBootTutorial
+  nav: SQLTutorial
+  nav: MongoDBTutorial
+  nav: JDBCTutorial
+  nav: ServletsTutorial
+  nav: JSPTutorial
+  nav: SpringBootTutorial
+  nav: HibernateTutorial
+  nav: SpringTutorial
+  nav: WebServicesTutorial
+  
+
+
+
+
+
+
+#=====================================================================================
+#####   III.open _confg.yml - add  'scope' with SIDEMENU Details       #############
+#=====================================================================================
