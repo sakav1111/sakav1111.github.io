@@ -4,3 +4,4 @@ source "https://rubygems.org"
 gem "jekyll-text-theme"
 #gem 'jekyll-admin', group: :jekyll_plugins
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+gem 'jekyll-seo-tag'

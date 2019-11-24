@@ -1,8 +1,7 @@
-Basics
-------
+# Basics
 
-###### What is a strongly typed programming language?
 
+## What is a strongly typed programming language?  
 In a strongly typed language compiler ensure type correctness, for example, you
 **can not store the number in String or vice-versa**.
 
@@ -14,7 +13,7 @@ time and they tree values based upon context. **Python and Perl** are two
 popular example of weakly typed programming language, where you can store a
 numeric string in number type.
 
-###### Can you describe three different kinds of testing that might be performed?
+## Can you describe three different kinds of testing that might be performed?
 
 **Unit Testing, Integration Testing and Smoke Testing**.
 
@@ -28,13 +27,13 @@ numeric string in number type.
     software is working properly or not e.g. in a flight booking website, you
     should be able to book, cancel or change flights.
 
-###### What is the difference between iteration and recursion? ([detailed answer](http://javarevisited.blogspot.sg/2012/12/recursion-in-java-with-example-programming.html))
+## What is the difference between iteration and recursion? ([detailed answer](http://javarevisited.blogspot.sg/2012/12/recursion-in-java-with-example-programming.html))
 
 -   **Iteration** uses a loop to perform the same step again and again.
 
 -   **Recursion** calls the same method itself to do the repetitive task
 
-###### What is test-driven development?
+## What is test-driven development?
 
 Test driven is one of the popular development methodologies in which tests are
 written before writing any function code. In fact, test drives the structure of
@@ -42,7 +41,7 @@ your program. Purists never wrote a single line of application code without
 writing a test for that. It greatly improve code quality and often attributed as
 a quality of rockstar developers.
 
-###### How do you find a running Java process on UNIX? 
+## How do you find a running Java process on UNIX? 
 
 You can use the combination of **'ps' and 'grep'** command to find any process
 running on UNIX machine. ps -e will list every process i.e. process from all
@@ -50,9 +49,9 @@ user not just you and  ps -f will give you full details including PID, which
 will be required if you want to investigate more or would like to kill this
 process using kill command.
 
-ps -ef \| grep "java"
+ps -ef | grep "java"
 
-###### Difference between WeakReference vs SoftReference vs PhantomReference vs Strong reference in Garbage Collection?
+## Difference between WeakReference vs SoftReference vs PhantomReference vs Strong reference in Garbage Collection?
 
 there are four kind of reference in Java :
 
@@ -64,45 +63,55 @@ there are four kind of reference in Java :
 
 4.  Phantom Reference
 
-JVM Internals and Garbage Collection
-------------------------------------
 
+
+# JVM Internals and Garbage Collection
+
+```java
 public class Zoo {
-
 public static void main(String[] args) {
 
 System.out.println(args[0]);
 
 System.out.println(args[1]);
 
-} }
+ } 
+}
+```
+
 
 The program correctly identifies the first two “words” as the arguments. Spaces
 are used to separate the arguments. If you want spaces inside an argument, you
 need to use quotes as in this example:
+```powershell
+$ javac Zoo.java
+$ java Zoo "San Diego" Zoo
+```
 
-\$ javac Zoo.java
-
-\$ java Zoo "San Diego" Zoo
 
 All command-line arguments are treated as String objects, even if they represent
 another data type:
+```powershell
+$ javac Zoo.java
 
-\$ javac Zoo.java
+$ java Zoo Zoo 2
+```
 
-\$ java Zoo Zoo 2
 
 Finally, what happens if you don’t pass in enough arguments?
+```powershell
+$ javac Zoo.java
 
-\$ javac Zoo.java
-
-\$ java Zoo Zoo
+$ java Zoo Zoo
 
 Zoo
+```
+
 
 **Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 1 at
 mainmethod.Zoo.main(Zoo.java:7)**
 
+```java
 public class Conflicts {
 
 Date date;
@@ -110,18 +119,23 @@ Date date;
 // some more code
 
 }
+```
 
-The answer should be easy by now. You can write either import java.util.\*; or
+
+The answer should be easy by now. You can write either import java.util.*; or
 import java.util.Date;. The tricky cases come about when other imports are
 present:
 
-import java.util.\*;
+```java
+import java.util.*;
 
-import java.sql.\*; // DOES NOT COMPILE
+import java.sql.*; // DOES NOT COMPILE
 
 import java.util.Date;
 
-import java.sql.\*;
+import java.sql.*;
+```
+
 
 If you explicitly import a class name, it takes precedence over any wildcards
 present.
@@ -133,7 +147,7 @@ x or X as a prefix—for example, 0xFF
 
 ■ binary (digits 0–1), which uses the number 0 followed by b or B as a
 prefix—for example, 0b10
-
+```java
 System.out.println(56); // 56
 
 System.out.println(0b11); // 3
@@ -141,41 +155,55 @@ System.out.println(0b11); // 3
 System.out.println(017); // 15
 
 System.out.println(0x1F); // 31
+```
+<br>
 
 added in Java 7. You can have underscores in numbers to make them easier to
 read:
-
+```java
 int million1 = 1000000;
 
 int million2 = 1_000_000;
 
-double notAtStart = \_1000.00; // DOES NOT COMPILE
+double notAtStart = _1000.00; // DOES NOT COMPILE
 
 double notAtEnd = 1000.00_; // DOES NOT COMPILE
 
 double notByDecimal = 1000_.00; // DOES NOT COMPILE
 
 double annoyingButLegal = 1_00_0.0_0; // this one compiles
+```
 
-**Declaring Multiple Variables**
 
+## **Declaring Multiple Variables**
+
+```java
 int i1, i2, i3 = 0;
+```
+
 
 As you should expect, three variables were declared: i1, i2, and i3. However,
 only one of those values was initialized: i3. The other two remain declared but
 not yet initialized.
 
+```java
 int num, String value; // DOES NOT COMPILE
+```
+
 
 This code doesn’t compile because it tries to declare multiple variables of
 different types in the same statement.
 
+```java
 double d1, double d2; // DOES NOT COMPILE
+```
+
 
 If you want to declare multiple variables in the same statement, they must share
 the same type declaration and not repeat it. double d1, d2; would have been
 legal.
 
+```java
 boolean b1, b2;
 
 String s1 = "1", s2;
@@ -185,16 +213,21 @@ double d1, double d2;
 int i1; int i2;
 
 int i3; i4;
+```
 
-The first statement is legal. It declares two variables without initializing
-them. second statement is also legal. It declares two variables and initializes
-only one of them. The third statement is not legal. Variables d1 and d2 are the
+
+- The first statement is legal. It declares two variables without initializing
+them.
+
+- second statement is also legal. It declares two variables and initializes
+only one of them.
+- The third statement is not legal. Variables d1 and d2 are the
 same type & breaks between them.
 
-The fourth statement is legal.The fifth statement is not legal.The second one is
+- The fourth statement is legal.The fifth statement is not legal.The second one is
 not a valid declaration because it omits the type.
 
-**Garbage Collection**
+# **Garbage Collection**
 
 The methods to request JVM to run Garbage Collector
 
@@ -204,39 +237,40 @@ JVM to run Garbage Collector.
 **Runtime.getRuntime().gc()** : gc() method available in Runtime class is an
 instance method.
 
-**1.Nullifying the reference Variable**
+<br>
 
+### **1.Nullifying the reference Variable**
+```java
 Student s1 = new Student();
-
 Student s2 = new Student();
-
 //No Object eligible for Garbage Collector
 
 s1 = null;
-
 //One Object eligible for Garbage Collector
 
 s2 = null;
-
 Both Objects eligible for Garbage Collector
+```
 
-**2.Reassigning the reference Variable**
 
+### **2.Reassigning the reference Variable**
+```java
 Student s1 = new Student();
-
 Student s2 = new Student();
 
 s1 = s2;
-
 //One Object eligible for Garbage Collector
+```
 
-**3.The Objects Created inside a method**
+
+### **3.The Objects Created inside a method**
 
 The objects which are created in a method are by default eligible for Garbage
 Collector once the
 
 method completes
 
+```java
 1: public class Scope {
 
 2: public static void main(String[] args) {
@@ -244,18 +278,18 @@ method completes
 3: String one, two;
 
 4: one = new String("a");
-
 5: two = new String("b");
 
 6: one = two;
 
 7: String three = one;
-
 8: one = null;
 
 9: } }
+```
 
-**Difference between PATH and Classpath in Java?**  
+
+### **Difference between PATH and Classpath in Java?**  
 Answer : PATH is a environment variable in Java which is used to help Java
 program to compile and run.To set the PATH variable we have to
 include JDK_HOME/bin directory in PATH environment variable and also we cannot
@@ -267,21 +301,21 @@ used by class loader to locate and load compiled Java codes stored in .class
 file. We you want to run JUnit from any where from cmdline you eed to add
 Junit.jar in class path.
 
-###### Difference between interpreter and JIT compiler?
+## Difference between interpreter and JIT compiler?
 
 The interpreter interprets the bytecode line by line and executes it
 sequentially. It results in poor performance. JIT compiler add optimization to
 this process by analyzing the code in blocks and then prepare more optimized
 machine code.
 
-###### Difference between JRE and JVM?
+## Difference between JRE and JVM?
 
 JVM is the specification for runtime environment which executes the Java
 applications. Hotspot JVM is such one implementation of the specification. It
 loads the class files and uses interpreter and JIT compiler to convert bytecode
 into machine code and execute it.
 
-###### Difference Between JVM & HotSpot VM
+## Difference Between JVM & HotSpot VM
 
 **JVM :** is a Specification, **HotSpot** : is a implementation of JVM.
 
@@ -295,7 +329,7 @@ J9](http://en.wikipedia.org/wiki/IBM_J9), among many others.
 Java is not a pure object-oriented programming language e.g. There are many
 things in Java which are not objects e.g. primitive data types
 e.g. boolean, char, short, int, long, float, double, different kinds of
-arithmetic, logical and bitwise operator e.g. +, -. \*, /, &&, \|\| etc. Few
+arithmetic, logical and bitwise operator e.g. +, -. *, /, &&, || etc. Few
 pure OO languages are **Smalltalk** and **Eiffel**.
 
 **There are seven qualities to be satisfied for a programming language to be
@@ -309,13 +343,13 @@ Hiding](http://java67.blogspot.sg/2012/08/difference-between-abstraction-and-enc
 **6. All operations are performed by sending messages to objects**  
 **7. All user defined types are objects**
 
-###### How does WeakHashMap work?
+## How does WeakHashMap work?
 
 WeakHashMap operates like a normal HashMap but uses WeakReference for keys.
 Meaning if the key object does not devise any reference then both key/value
 mapping will become appropriate for garbage collection.
 
-###### How do you locate memory usage from a Java program?
+## How do you locate memory usage from a Java program?
 
 Answer: You can use memory related methods from **java.lang.Runtime** class to
 get the free memory, total memory and maximum heap memory in Java.
@@ -347,7 +381,7 @@ r.gc();
 
 }
 
-###### What is ClassLoader in Java?
+## What is ClassLoader in Java?
 
 When a Java program is converted into **.class** file by Java compiler which is
 collection of byte code. **ClassLoader** is responsible to load that class file
@@ -367,7 +401,7 @@ from file system, network or any other location
 
 Class Loader in Java BootStrap Extension and Application
 
-###### <br>Java heap memory
+## <br>Java heap memory
 
 When a Java program started Java Virtual Machine gets some memory from Operating
 System.
@@ -449,7 +483,7 @@ Collector will run on whole heap space
 
 ![](media/23b68a2fe7b0056ba1f50ec96cdded1e.png)
 
-###### Does Garbage collection occur in permanent generation space in JVM?
+## Does Garbage collection occur in permanent generation space in JVM?
 
 **YES, Garbage Collection occur in PermGen space as well. and if PermGen space
 is full or cross a threshold, it can trigger Full GC(Main Thread).** If you look
@@ -459,7 +493,7 @@ You can control size of PermGen space by [JVM
 options](http://javarevisited.blogspot.sg/2011/11/hotspot-jvm-options-java-examples.html) -XX:PermGenSize and
 -XX:MaxPermGenSize.
 
-###### Types of Garbage Collectors
+## Types of Garbage Collectors
 
 When an object is no longer used, the garbage collector reclaims the underlying
 memory and reuses it for future object allocation. This means there is no
@@ -589,20 +623,20 @@ method to perform cleanup processing (destroying remaining objects).**
 
 **Neither finalization nor garbage collection is guaranteed.**
 
-###### \#\#How String Literals Garbage Collected?
+## ##How String Literals Garbage Collected?
 
 Strings created without using the new keyword are **NEVER garbage collected**.
 Even if there are no references to them. All such strings go into the String
 pool and just sit there till the whole program ends (ie. the JVM).The String
 Const. pool cleaned up when the class is unloaded by the JVM.
 
-**\#\# How to you monitor garbage collection activities?**  
+**## How to you monitor garbage collection activities?**  
 just to check whether candidate has ever monitored GC activities or not. You can
 monitor garbage collection activities either offline or real-time. You can use
 tools like **JConsole** and **VisualVM** VM with its Visual GC plug-in to
 monitor real time garbage collection activities and memory status of JVM or you
 can redirect Garbage collection output to a log file for offline analysis by
-using -XlogGC=\&lt;PATH\> JVM parameter. Anyway you should always enable GC
+using -XlogGC=&lt;PATH> JVM parameter. Anyway you should always enable GC
 options like -XX:PrintGCDetails -X:verboseGCand -XX:PrintGCTimeStamps as it
 doesn't impact [application
 performance](http://javarevisited.blogspot.sg/2012/01/improve-performance-java-database.html) much
@@ -612,7 +646,7 @@ but provide useful states for performance monitoring.
 
 ![](media/62a8fdcbbc5c6067acd698eb5210c766.png)
 
-###### \#\# How do you identify minor and major garbage collection in Java?
+## ## How do you identify minor and major garbage collection in Java?
 
 -   Minor collection prints **“GC” **if garbage
     collection [logging](http://javarevisited.blogspot.sg/2011/05/top-10-tips-on-logging-in-java.html) is
@@ -620,21 +654,21 @@ but provide useful states for performance monitoring.
 
 -   Major collection prints **“Full GC”.** 
 
-###### \#\# How to Generate GC Log File?
+## ## How to Generate GC Log File?
 
 In order to understand the GC log, you first need to generate one. Passing the
 following system properties to your JVM would generate GC logs
 
-\-XX:+PrintGCDetails -XX:+PrintGCDateStamps –Xloggc:D://gc.log
+-XX:+PrintGCDetails -XX:+PrintGCDateStamps –Xloggc:D://gc.log
 
 Or add visual-gc plugin to visualVM
 
-###### \#\#\#What Security model used by Java?
+## ###What Security model used by Java?
 
 **Sandbox**. The sandbox security model makes it easier to work with software
 that comes from sources you don't fully trust. 
 
-###### \#\#\#What is “Phontom” memory
+## ###What is “Phontom” memory
 
 **A memory that doesn’t exist in reality.**
 
@@ -653,7 +687,7 @@ complete, the references are processed in sequence for sweeping phase.
 
 4.  Phantom
 
-###### \#\#\#How many JVMs can run on a single machine?
+## ###How many JVMs can run on a single machine?
 
 **Multiple**, yes You can run as many JVMs as you can fit on your disk and in
 memory :)
@@ -664,14 +698,14 @@ JVM that you loaded the application with! for example, for execution of applets
 a separate JVM may exist and another JVM can be started by the User for
 execution of Java Byte Code, on a single machine. 
 
-###### Difference between Object Oriented and Object Based language
+## Difference between Object Oriented and Object Based language
 
 **Object Oriented Languages**
 
 -   Object Oriented Languages supports all the features of Oops Abstraction,
     Encapsulation, Polymorhisum, Inhertance.
 
--   C\#, Java, VB. Net are the examples of object oriented languages.
+-   C#, Java, VB. Net are the examples of object oriented languages.
 
 **Object Based Languages**
 
@@ -682,11 +716,11 @@ execution of Java Byte Code, on a single machine. 
 
 -   Javascript, VB are the examples of object bases languages.
 
-###### If I don’t provide any arguments on commandline, then String array of main() is Empty or NULL?
+## If I don’t provide any arguments on commandline, then String array of main() is Empty or NULL?
 
 It’s Empty, but not Null.
 
-###### Is main method compulsory in Java?
+## Is main method compulsory in Java?
 
 The answer to this question depends on version of java you are using. **Prior to
 JDK 5, main method was not mandatory in a java program.**
@@ -706,7 +740,7 @@ more: <https://javarevisited.blogspot.com/2012/10/10-garbage-collection-intervi
 Data Types
 ----------
 
-###### How do you convert bytes to String?
+## How do you convert bytes to String?
 
 you can convert bytes to the string using string constructor which
 accepts byte[], just make sure that right character encoding otherwise
@@ -718,7 +752,7 @@ String str = new String(bytes, "UTF-8");
 The byte takes 1 byte of memory and long takes 8 bytes of memory. Assignment 1
 byte value to 8 bytes is done implicitly by the JVM.
 
-**byte –\> short –\> int –\> long –\> float –\> double**
+**byte –> short –> int –> long –> float –> double**
 
 The left-side value can be assigned to any right-side value and is done
 implicitly. The reverse requires explicit casting.
@@ -727,13 +761,13 @@ implicitly. The reverse requires explicit casting.
 
  long l1 = b1;                 //  one byte to 8 bytes, assigned implicitly
 
-###### Is ++ operator is thread-safe in Java?
+## Is ++ operator is thread-safe in Java?
 
 No it's not a thread safe operator because its involve multiple instructions
 like reading a value, incriminating it and storing it back into memory which can
 be overlapped between multiple threads.
 
-###### Volatile Vs Atomic variables?
+## Volatile Vs Atomic variables?
 
 Volatile Example
 
@@ -837,7 +871,7 @@ Common methods
 
 -   **set(int newValue):** Sets to the given value.
 
-###### What will this return 3\*0.1 == 0.3? true or false?
+## What will this return 3*0.1 == 0.3? true or false?
 
 Both are not equal, because floating point arithmetic has a certain precision.
 Check the difference (a-b) it should be really small.
@@ -847,7 +881,7 @@ Check the difference (a-b) it should be really small.
 
 -   f1 = (0.1+0.1+0.1….11 times) = 1.0999999999999999
 
--   f2 = 0.1\*11 = 1.1
+-   f2 = 0.1*11 = 1.1
 
 In [BigDecimal](https://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html) class,
 **you can specify the rounding mode** and exact precision which you want to use.
@@ -875,7 +909,7 @@ An Integer object will take more memory. an Integer is the an object and it
  store meta data overhead about the object and int is primitive type so its
 takes less space.
 
-###### Autoboxing and Unboxing?
+## Autoboxing and Unboxing?
 
 If a **method(remember only method – not direct)** requires Integer Object
 value, we can directly pass primitive value without issue. Autoboxing will take
@@ -894,7 +928,7 @@ Integer i = *10*;// it will create Integer value of 10 using Autoboxing
 int j = *i*;//But we cant assign int to Integer Type mismatch: cannot convert
 from Integer to int
 
-###### How to convert Primitives to Wrapper & Wrapper to Primitive ??
+## How to convert Primitives to Wrapper & Wrapper to Primitive ??
 
 // 1. using constructor
 
@@ -908,12 +942,12 @@ Integer i = Integer.valueOf(10);
 
 int val = i.intValue();    
 
-###### **How does Autoboxing of Integer works in Java? (**[answer](http://javarevisited.blogspot.sg/2012/07/auto-boxing-and-unboxing-in-java-be.html#axzz59AWpr6cb)**)**
+## **How does Autoboxing of Integer works in Java? (**[answer](http://javarevisited.blogspot.sg/2012/07/auto-boxing-and-unboxing-in-java-be.html#axzz59AWpr6cb)**)**
 
 Compiler uses valueOf() method to convert primitive to Object 
 uses intValue(), doubleValue() etc to get primitive value from Object.
 
-###### what if I make main() private/protected ?
+## what if I make main() private/protected ?
 
  if you do not make main() method public, there is no compilation error. You
 will **runtime error** because matching main() method is not present. Remember
@@ -923,7 +957,7 @@ Error: Main method not found in class Main, please define the main method as:
 
    public static void main(String[] args)
 
-###### What is blank final variable?
+## What is blank final variable?
 
 A **blank final** variable in Java is
 a [final](https://www.geeksforgeeks.org/g-fact-48/) variable that is not
@@ -939,9 +973,9 @@ final int i;
 -   If we have more than one constructors or overloaded constructor in class,
     then blank final variable must be initialized in all of them.
 
-###### ./media/image27.png
+## ./media/image27.png
 
-\#\#Difference between java.util.Date & java.sql.Date?
+##Difference between java.util.Date & java.sql.Date?
 
 -   **java.util.Date** represent **both Date and Time information**.
 
@@ -952,7 +986,7 @@ final int i;
 
 -   java.util.Date is Super class of java.sql.Date
 
-###### Why Java does not support Operator Overloading?
+## Why Java does not support Operator Overloading?
 
 The meaning of an operator is always same for variable of basic types like: int,
 float, double etc. For example: To add two integers, *+* operator is used. 
@@ -985,7 +1019,7 @@ returnType operator symbol (arguments)
 
 };
 
-\#include \<iostream\>
+#include <iostream>
 
 using namespace std;
 
@@ -1009,7 +1043,7 @@ count = count+1;
 
 }
 
-void Display() { cout\<\<"Count: "\<\<count; }
+void Display() { cout<<"Count: "<<count; }
 
 };
 
@@ -1021,7 +1055,7 @@ Test t;
 
 // this calls "function void operator ++()" function
 
-\++t;
+++t;
 
 t.Display();
 
@@ -1054,7 +1088,7 @@ the **same thing can be achieved by using method overloading in more intuitive
 and clean way it does make sense to not support operator overloading in java**.
 a complex JVM will result in slower JVM
 
-###### **Can you store String in an Integer array in Java? compile time error or runtime exception? [**[answer](http://javarevisited.blogspot.co.uk/2013/11/java-array-101-for-programmers-and.html)**]**
+## **Can you store String in an Integer array in Java? compile time error or runtime exception? [**[answer](http://javarevisited.blogspot.co.uk/2013/11/java-array-101-for-programmers-and.html)**]**
 
 -   You cannot store an String in an array of primitive int, it will result in
     compile time error as shown below,
@@ -1071,7 +1105,7 @@ Object[] names = new String[3];
 
 names[0] = new Integer(0);// ArrayStoreException at runtime
 
-###### **What is difference between ArrayIndexOutfOBounds and ArrayStoreException? [**[answer](http://javarevisited.blogspot.sg/2014/05/exception-in-thread-main-arrayindexoutofboundsexception-java.html)**]**
+## **What is difference between ArrayIndexOutfOBounds and ArrayStoreException? [**[answer](http://javarevisited.blogspot.sg/2014/05/exception-in-thread-main-arrayindexoutofboundsexception-java.html)**]**
 
 ArrayIndexOutOfBoundsException comes when your code tries to access an invalid
 index for a given array e.g. negative index or higher index than length - 1.
@@ -1079,12 +1113,12 @@ index for a given array e.g. negative index or higher index than length - 1.
  ArrayStoreException comes when you have stored an element of type other than
 type of array, as shown in above example.
 
-###### **Is it legal to initialize an array int i[] = {1, 2, 3, 4, 5}; [answer]**
+## **Is it legal to initialize an array int i[] = {1, 2, 3, 4, 5}; [answer]**
 
 Yes, it’s perfectly legal. You can create and initialize array in same line in
 Java.
 
-###### **Where does array stored in memory? [answer]**
+## **Where does array stored in memory? [answer]**
 
 Array is created in heap space of JVM memory**. Since array is object in Java**,
 even if you create array locally inside a method or block, object is always
@@ -1094,7 +1128,7 @@ allocated memory from heap.
 
 Array concept interview questions and answers in Java
 
-###### Reverse Array using Iterative and Recursive approaches
+## Reverse Array using Iterative and Recursive approaches
 
 Steps to Solve this
 
@@ -1110,25 +1144,25 @@ package array;
 
 public class ReverseArry {
 
-/\*
+/*
 
-\* Recursive approach: In recursive approach the function calls itself until
+* Recursive approach: In recursive approach the function calls itself until
 
-\* the condition is met. And it is slower than iteration, which means it uses
+* the condition is met. And it is slower than iteration, which means it uses
 
-\* more memory than iteration. recursion is like a selection structure, and
+* more memory than iteration. recursion is like a selection structure, and
 
-\* which makes code smaller and clean. And a function partially defined by
+* which makes code smaller and clean. And a function partially defined by
 
-\* itself. Here tracing the code will be more difficult in the case large
+* itself. Here tracing the code will be more difficult in the case large
 
-\* programs
+* programs
 
-\*/
+*/
 
 public static int[] recursiveArry(int a[], int start, int end) {
 
-if (start \<= end) {
+if (start <= end) {
 
 int temp;
 
@@ -1146,19 +1180,19 @@ return a;
 
 }
 
-/\*
+/*
 
-\*Iterative approach: Iterative approach is a repetition process until the
+*Iterative approach: Iterative approach is a repetition process until the
 condition fails.here loops are used such as for, while etc. Here code may be
 longer but it is faster than recursive. And it consumes less memory compared to
 recursive approach.If the loop condition is always true in such cases it will be
 an infinite loop.
 
-\*/
+*/
 
 public static int[] iteravtiveArray(int a[], int start, int end) {
 
-while(start\<end)
+while(start<end)
 
 {
 
@@ -1184,7 +1218,7 @@ static void printArray(int arr[], int size) {
 
 int i;
 
-for (i = 0; i \< size; i++)
+for (i = 0; i < size; i++)
 
 System.out.print(arr[i] + " ");
 
@@ -1259,7 +1293,7 @@ java program
 
 5.  **Wrapper Classes (AutoBoxing / AutoUnboxing)**
 
-###### Object Class
+## Object Class
 
 The most common general methods which can be applicable on any java object are
 defined in object class. Object class is the parent class of any java class,
@@ -1272,7 +1306,7 @@ Object class define the following 11 methods
 
 public String toString() {
 
-return *getClass*.getName() + '\@' + Integer.*toHexString*(*HashCode*);
+return *getClass*.getName() + '@' + Integer.*toHexString*(*HashCode*);
 
 }
 
@@ -1362,7 +1396,7 @@ method**
 In String class(not StringBuilder, StringBuffer) & All Wrapper classes equals()
 method is overridden for Content Comparison
 
-###### Compare two employee Objects based on Their Id?
+## Compare two employee Objects based on Their Id?
 
 public class Employe {
 
@@ -1372,7 +1406,7 @@ String name;
 
 //Setters & Getters
 
-\@Override
+@Override
 
 public boolean equals(Object obj) {
 
@@ -1426,13 +1460,13 @@ e1.setId(101);
 
 e2.setId(101);
 
-Set\<Employe\> set = new HashSet\<\>();
+Set<Employe> set = new HashSet<>();
 
 set.add(e1);
 
 set.add(e2);
 
-System.*out*.println(set); //[basic.Employe\@15db9742, basic.Employe\@6d06d69c]
+System.*out*.println(set); //[basic.Employe@15db9742, basic.Employe@6d06d69c]
 
 }
 
@@ -1449,7 +1483,7 @@ int id;
 
 String name;
 
-\@Override
+@Override
 
 public boolean equals(Object obj) {
 
@@ -1467,7 +1501,7 @@ return flag;
 
 }
 
-\@Override
+@Override
 
 public int hashCode() {
 
@@ -1485,13 +1519,13 @@ e1.setId(101);
 
 e2.setId(101);
 
-Set\<Employe\> set = new HashSet\<\>();
+Set<Employe> set = new HashSet<>();
 
 set.add(e1);
 
 set.add(e2);
 
-System.*out*.println(set); //[basic.Employe\@65]
+System.*out*.println(set); //[basic.Employe@65]
 
 }
 
@@ -1504,19 +1538,19 @@ classes [EqualsBuilder](https://commons.apache.org/proper/commons-lang/apidocs/
 [HashCodeBuilder](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html) 
 for generating hash code and equals methods.
 
-###### Can a top-level class be private or protected?
+## Can a top-level class be private or protected?
 
 Top level classes in java can’t be private or protected, but inner classes in
 java can. The reason for not making a top-level class as private is very
 obvious, because nobody can see a private class and thus they cannot use it
 
-###### What Happens if we compile Empty java file?
+## What Happens if we compile Empty java file?
 
 Compiles but Runtime Error.
 
 ![](media/539858d3e49c4d31fc94353e31ff3f58.png)
 
-###### Is it possible to make array volatile in Java?
+## Is it possible to make array volatile in Java?
 
 Yes, you can make an array (both primitive and reference type array e.g. an [int
 array](http://www.java67.com/2015/07/array-concepts-interview-questions-answers-java.html) and [String
@@ -1553,7 +1587,7 @@ e.g. [synchronized](http://www.java67.com/2012/08/5-thread-interview-questions-
 variables](http://javarevisited.blogspot.com/2011/07/java-multi-threading-interview.html)**,
 or **[ReentrantLock](http://javarevisited.blogspot.sg/2013/03/reentrantlock-example-in-java-synchronized-difference-vs-lock.html)**.**
 
-###### Is it possible to make ArrayList, Hashset volatile in Java?
+## Is it possible to make ArrayList, Hashset volatile in Java?
 
 On a similar note, sometimes instead of an array, Interviewer put the collection
 i.e. they will ask *can you make a collection variable volatile in Java or
@@ -1568,12 +1602,12 @@ Any modification done on actual collection object e.g. adding or removing
 elements from ArrayList will not invoke happens-before guarantee or memory
 barrier refresh. 
 
-###### What is a.hashCode() used for? How is it related to a.equals(b)?
+## What is a.hashCode() used for? How is it related to a.equals(b)?
 
 According to the Java specification, two objects which are identical to each
 other using equals() method needs to have the same hash code
 
-###### What is a compile time constant in Java? What is the risk of using it?
+## What is a compile time constant in Java? What is the risk of using it?
 
 Answer: **Public static final variables** are also known as the compile time
 constant, the public is optional there. They are substituted with actual values
@@ -1585,14 +1619,14 @@ from in-house or a third party library, and their value changed later, then your
 client will still be using the old value even after you deploy a new version of
 JARs.
 
-###### Explain Liskov Substitution Principle.
+## Explain Liskov Substitution Principle.
 
 According to the Liskov Substitution Principle, **Subtypes must be appropriate
 for super type** i.e. methods or functions which use super class type must be
 able to work with object of subclass without issues. **Co-Variant return types
 are implemented based on this principle.**
 
-###### What is double checked locking in Singleton?
+## What is double checked locking in Singleton?
 
 **Singleton** means we can create only one instance of that class
 
@@ -1661,7 +1695,7 @@ synchronized (Singleton.class) {
 
 if (_instance == null) { // Double checked
 
-\_instance = new Singleton();
+_instance = new Singleton();
 
 }
 
@@ -1669,11 +1703,11 @@ if (_instance == null) { // Double checked
 
 }
 
-return \_instance;
+return _instance;
 
 }
 
-###### When to use volatile variable in Java?
+## When to use volatile variable in Java?
 
 -   Volatile keyword is used with only variable in Java
 
@@ -1684,7 +1718,7 @@ return \_instance;
     that all reader thread will see updated value of volatile variable once
     write operation completed
 
-###### Difference between Serializable and Externalizable in Java?
+## Difference between Serializable and Externalizable in Java?
 
 **Serialization** is a default process of serializing or persisting any object's
 state in Java. It's triggered by implementing Serializable interface which is a
@@ -1728,7 +1762,7 @@ dynamic binding at runtime.
     pattern](https://www.journaldev.com/1827/java-design-patterns-example-tutorial) is
     used to modify the functionality of an object at runtime.
 
-###### Can you explain Liskov Substitution principle?(Comes under inheritance )
+## Can you explain Liskov Substitution principle?(Comes under inheritance )
 
 According to Liskov Substitution Principle, Subtypes must be substitutable for
 supertype i.e. methods or functions which uses superclass type must be able to
@@ -1736,7 +1770,7 @@ work with
 the [object ](http://javarevisited.blogspot.com/2012/12/what-is-object-in-java-or-oops-example.html)of
 subclass without any issue
 
-###### How to create an instance of any class without using new keyword
+## How to create an instance of any class without using new keyword
 
 Using newInstance method of Class class
 
@@ -1750,19 +1784,19 @@ NewClass obj = new NewClass();
 
 NewClass obj2 = (NewClass) obj.clone();
 
-###### How can we invoke any external process in java?
+## How can we invoke any external process in java?
 
 Using,
 
 Runtime.getRuntime().exec(…)
 
-###### Static imports rules ?
+## Static imports rules ?
 
 The static import feature of Java 5 facilitates the java programmer to access
 any static member of a class directly. There is no need to qualify it by the
 class name.
 
-import static java.lang.System.\*;   (or)
+import static java.lang.System.*;   (or)
 
 import static java.lang.System.out;
 
@@ -1782,9 +1816,9 @@ class StaticImportExample{  
 
 // both have MAX_VALUE as static
 
-import static java.lang.Integer.\*;
+import static java.lang.Integer.*;
 
-import static java.lang.Byte.\*;
+import static java.lang.Byte.*;
 
 class Geeks {
 
@@ -1803,13 +1837,13 @@ Error:Reference to MAX_VALUE is ambigious
 Java OOPs Concepts 
 -------------------
 
-###### **Can we prevent overriding a method without using the final modifier? (answer)**
+## **Can we prevent overriding a method without using the final modifier? (answer)**
 
 Yes, you can prevent the method overriding in Java without using the final
 modifier. In fact, there are several ways to accomplish it e.g. you can mark the
 method **private or static, those cannot be overridden.**
 
-###### **Can we override a private method in Java? (**[answer](http://java67.blogspot.sg/2013/08/can-we-override-private-method-in-java-inner-class.html)**)**
+## **Can we override a private method in Java? (**[answer](http://java67.blogspot.sg/2013/08/can-we-override-private-method-in-java-inner-class.html)**)**
 
 No, you cannot. Since the private method is only accessible and visible inside
 the class they are declared, it's not possible to override them in subclasses.
@@ -1853,7 +1887,7 @@ at Demo.main(Demo.java:12)
 Though, you can override them inside the inner class as they are accessible
 there.
 
-###### **Can we change the return type of method to subclass while overriding? (answer)**
+## **Can we change the return type of method to subclass while overriding? (answer)**
 
 Yes, you can, but only from Java 5 onward. This feature is known as **covariant
 method** overriding and it was introduced in JDK 5 release. This is immensely
@@ -1861,7 +1895,7 @@ helpful if original method return super-class e.g. clone() method return
 java.lang.Object. By using this, you can directly return the actual type,
 preventing client-side type casting of the result.
 
-###### **Can we make a class both final and abstract at the same time? (**[answer](http://javarevisited.blogspot.com/2011/12/final-variable-method-class-java.html)**)**
+## **Can we make a class both final and abstract at the same time? (**[answer](http://javarevisited.blogspot.com/2011/12/final-variable-method-class-java.html)**)**
 
 No, you cannot apply both final and abstract keyword at the class same time
 because they are exactly opposite of each other. A final class in Java cannot be
@@ -1880,7 +1914,7 @@ Design Patterns
 SOLID design principles and GOF design patterns which take advantage of OOPS
 concept discussed here.
 
-###### What are SOLID Design principles
+## What are SOLID Design principles
 
 ![Image result for solid design principles](media/79b87bd771b85e04976268c929864380.png)
 
@@ -1939,7 +1973,7 @@ In spring framework, all modules are provided as separate components which can
 work together by simply injected dependencies in other module. This dependency
 is managed externally in XML files.
 
-###### What are GOF(Gang of Four) design patterns?
+## What are GOF(Gang of Four) design patterns?
 
 ![Image result for gof design patterns](media/2a056ac9ceb6b2be1cdadf512faee112.jpg)
 
@@ -1998,7 +2032,7 @@ same basic interface for client classes.
 | [Template method](https://howtodoinjava.com/design-patterns/behavioral/template-method-pattern/)                        | Template method pattern defines the sequential steps to execute a multi-step algorithm and optionally can provide a default implementation as well (based on requirements).                                                                                                             |
 | [Visitor](https://howtodoinjava.com/design-patterns/behavioral/visitor-design-pattern-example-tutorial/)                | Visitor pattern is used when we want a hierarchy of objects to modify their behavior but without modifying their source code.                                                                                                                                                           |
 
-###### **What is Strategy pattern in Java?**
+## **What is Strategy pattern in Java?**
 
 Strategy pattern allows you to **introduce new strategy without changing the
 code.**
@@ -2008,7 +2042,7 @@ object uses the Strategy pattern to compare object. Since every object uses
 different comparison strategy you can compare various object differently without
 changing sort method.
 
-###### What is Decorator Design Pattern?
+## What is Decorator Design Pattern?
 
 Decorator pattern **provides new features without modifying the original
 class**. **Inheritance is the example.**
@@ -2020,7 +2054,7 @@ but their intent is quite different. Decorator adds additional functionality
 without touching the class, Proxy provides access control and Adapter is used to
 make two incompatible interfaces work together. 
 
-###### What is a strongly typed programming language?
+## What is a strongly typed programming language?
 
 In a strongly typed language compiler ensure type correctness, for example, you
 **can not store the number in String or vice-versa**.
@@ -2033,7 +2067,7 @@ time and they tree values based upon context. **Python and Perl** are two
 popular example of weakly typed programming language, where you can store a
 numeric string in number type.
 
-###### Can you describe three different kinds of testing that might be performed?
+## Can you describe three different kinds of testing that might be performed?
 
 **Unit Testing, Integration Testing and Smoke Testing**.
 
@@ -2047,13 +2081,13 @@ numeric string in number type.
     software is working properly or not e.g. in a flight booking website, you
     should be able to book, cancel or change flights.
 
-###### What is the difference between iteration and recursion? ([detailed answer](http://javarevisited.blogspot.sg/2012/12/recursion-in-java-with-example-programming.html))
+## What is the difference between iteration and recursion? ([detailed answer](http://javarevisited.blogspot.sg/2012/12/recursion-in-java-with-example-programming.html))
 
 -   **Iteration** uses a loop to perform the same step again and again.
 
 -   **Recursion** calls the same method itself to do the repetitive task
 
-###### What is test-driven development?
+## What is test-driven development?
 
 Test driven is one of the popular development methodologies in which tests are
 written before writing any function code. In fact, test drives the structure of
@@ -2061,7 +2095,7 @@ your program. Purists never wrote a single line of application code without
 writing a test for that. It greatly improve code quality and often attributed as
 a quality of rockstar developers.
 
-###### How do you find a running Java process on UNIX? 
+## How do you find a running Java process on UNIX? 
 
 You can use the combination of **'ps' and 'grep'** command to find any process
 running on UNIX machine. ps -e will list every process i.e. process from all
@@ -2069,9 +2103,9 @@ user not just you and  ps -f will give you full details including PID, which
 will be required if you want to investigate more or would like to kill this
 process using kill command.
 
-ps -ef \| grep "java"
+ps -ef | grep "java"
 
-###### Difference between WeakReference vs SoftReference vs PhantomReference vs Strong reference in Garbage Collection?
+## Difference between WeakReference vs SoftReference vs PhantomReference vs Strong reference in Garbage Collection?
 
 there are four kind of reference in Java :
 
