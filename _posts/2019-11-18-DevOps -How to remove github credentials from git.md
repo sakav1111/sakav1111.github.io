@@ -1,6 +1,6 @@
 ---
 title: Git - How to remove github credentials from git
-date: 2019-11-11 00:00:00 Z
+date: 2017-11-11 00:00:00 Z
 categories:
 - Git
 tags:

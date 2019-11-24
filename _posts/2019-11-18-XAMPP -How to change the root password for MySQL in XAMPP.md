@@ -1,6 +1,6 @@
 ---
 title: XAMPP - How to change the root password for MySQL in XAMPP
-date: 2019-11-11 00:00:00 Z
+date: 2017-11-11 00:00:00 Z
 categories:
 - XAMPP
 tags:

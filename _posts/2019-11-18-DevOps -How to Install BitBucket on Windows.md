@@ -1,6 +1,6 @@
 ---
 title: DevOps - How to Install BitBucket on Windows
-date: 2019-11-11 00:00:00 Z
+date: 2017-11-11 00:00:00 Z
 categories:
 - DevOps
 tags:

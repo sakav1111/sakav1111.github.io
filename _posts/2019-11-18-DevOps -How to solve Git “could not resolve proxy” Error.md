@@ -1,6 +1,6 @@
 ---
 title: Git - How to solve Git could not resolve proxy Error
-date: 2019-11-11 00:00:00 Z
+date: 2017-11-11 00:00:00 Z
 categories:
 - Git
 tags:

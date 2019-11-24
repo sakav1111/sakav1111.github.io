@@ -1,6 +1,6 @@
 ---
 title: Hibernate -Could not parse configuration hibernate-cfg-xml 
-date: 2019-11-11 00:00:00 Z
+date: 2017-11-11 00:00:00 Z
 categories:
 - Hibernate
 tags:

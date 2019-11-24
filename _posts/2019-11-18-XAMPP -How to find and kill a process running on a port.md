@@ -1,6 +1,6 @@
 ---
 title: XAMPP - How to find and kill a process running on a port
-date: 2019-11-11 00:00:00 Z
+date: 2017-11-11 00:00:00 Z
 categories:
 - XAMPP
 tags:

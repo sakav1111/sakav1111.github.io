@@ -1,6 +1,6 @@
 ---
 title: Java -Print System Properties  
-date: 2019-11-11 00:00:00 Z
+date: 2017-11-11 00:00:00 Z
 categories:
 - Java
 tags:
