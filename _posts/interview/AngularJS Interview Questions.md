@@ -1,7 +1,207 @@
 AngularJs
 =========
 
-###### Name the key features of AngularJS?
+Note : we must write module, if we used ng-app
+```html
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<div ng-app="myApp" ng-controller="myCtrl">
+
+First Name: <input type="text" ng-model="firstName"><br> //binds input with model
+Last Name: <input type="text" ng-model="lastName"><br> ////binds input with model
+Full Name: {{firstName + " " + lastName}}		//Prints the model values
+//same as {{expression}}
+<p ng-bind="firstName"></p>
+<p ng-bind=" lastName "></p>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstName= "John";
+    $scope.lastName= "Doe";
+    $scope.fullName = function() {
+      return $scope.firstName + " " + $scope.lastName;
+  };
+});
+</script>
+```
+
+
+## Internal Working
+
+-   The **AngularJS JavaScript** file is loaded, and the Angular global object
+    \$scope  is created. The JavaScript file that registers the controller
+    functions is executed.
+
+-   AngularJS scans the HTML to look for **AngularJS apps and views** and finds
+    **a controller function corresponding to the view.**
+
+-   AngularJS **executes the controller functions and updates the views** with
+    data from the model populated by the controller.
+
+-   AngularJS listens for browser events, such as button clicked, mouse moved,
+    input field being changed, and so on. If any of these events happen, then
+    AngularJS will update the view accordingly
+
+More
+
+displays only the names containing the letter "i".
+```html
+<li ng-repeat="x in names | filter : 'i'">
+    {{ x }}
+  </li>
+
+<li ng-repeat="x in names | orderBy:'country'">
+    {{ x.name + ', ' + x.country }}
+  </li>
+```
+
+
+## AngularJS Services
+
+-   In AngularJS, a service is a **function, or object**, that is available for
+    your AngularJS application.
+
+-   AngularJS has about 30 built-in services. One of them is the \$location
+    service.
+
+1.$location
+
+returns information about the location of the current web page:
+```html
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $location) {
+    $scope.myUrl = $location.absUrl();
+});
+{{myUrl}} //prints https://www.w3schools.com/angular/tryit.asp?filename=try_ng_services
+```
+
+
+
+2.$http 
+
+**$http** is an AngularJS service for reading data from remote servers. The
+AngularJS $http service makes a request to the server, and returns a response.
+```html
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http.get("welcome.htm").then(function (response) {
+    $scope.myWelcome = response.data;
+  });
+});
+```
+
+
+More on Http
+
+The example above uses the .get method of the \$http service.
+
+The .get method is a shortcut method of the \$http service. There are several
+shortcut methods:
+
+-   .get()
+
+-   .post()
+
+-   .put()
+
+-   .delete()
+
+-   .head()
+
+-   .jsonp()
+
+-   .patch()
+
+```html
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http({
+    method : "GET",
+      url : "welcome.htm"
+  }).then(function mySuccess(response) {
+    $scope.myWelcome = response.data;
+  }, function myError(response) {
+    $scope.myWelcome = response.statusText;
+  });
+});
+```
+
+
+## AngularJS Events
+
+You can add AngularJS event listeners to your HTML elements by using one or more
+of these directives:
+
+-   ng-blur
+
+-   ng-change
+
+-   ng-click
+
+-   ng-copy
+
+-   ng-cut
+
+-   ng-dblclick
+
+-   ng-focus
+
+-   ng-keydown
+
+-   ng-keypress
+
+-   ng-keyup
+
+-   ng-mousedown
+
+-   ng-mouseenter
+
+```html
+<div ng-app="myApp" ng-controller="myCtrl">
+        <button ng-click="myFunction()">Click me!</button>
+        <p>{{ count }}</p>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+  $scope.count = 0;
+  $scope.myFunction = function() {
+    $scope.count++;
+  }
+});
+</script>
+```
+
+## AngularJS Routes
+
+If you want to navigate to different pages in your application, but you also
+want the application to be a SPA (Single Page Application), with no page
+reloading, you can use the ngRoute module.
+
+```html
+var app = angular.module('userregistrationsystem', [ 'ngRoute', 'ngResource' ]);
+
+app.config(function($routeProvider) {
+	$routeProvider.when('/list-all-users', {
+		templateUrl : '/template/listuser.html',
+		controller : 'listUserController'
+	}).when('/register-new-user',{
+		templateUrl : '/template/userregistration.html',
+		controller : 'registerUserController'
+	}).when('/update-user/:id',{
+		templateUrl : '/template/userupdation.html' ,
+		controller : 'usersDetailsController'
+	}).otherwise({
+		redirectTo : '/home',
+		templateUrl : '/template/home.html',
+	});
+});
+```
+
+## Name the key features of AngularJS?
 
 The key features of AngularJS are:
 
@@ -23,15 +223,17 @@ The key features of AngularJS are:
 
 -   Testable
 
-###### Can AngularJS have multiple ng-app directives in a single page?
+## Can AngularJS have multiple ng-app directives in a single page?
 
-No. Only one AngularJS application can be auto-bootstrapped per HTML document.
-The first ngApp found in the document will be used to define the root element to
-auto-bootstrap as an application. If another ng-app directive has been placed
-then it will not be processed by AngularJS and we will need to manually
-bootstrap the second app, instead of using second ng-app directive.
+**Yes, But** Only one AngularJS application can be auto-bootstrapped per HTML
+document. The first ngApp found in the document will be used to define the root
+element to auto-bootstrap as an application.
 
-###### Explain the architecture of AngularJS?
+If another ng-app directive has been placed then it will not be processed by
+AngularJS and we will need to manually bootstrap the second app, instead of
+using second ng-app directive.
+
+## Explain the architecture of AngularJS?
 
 AngularJS is architecture on 3 components. They are
 
@@ -41,12 +243,12 @@ AngularJS is architecture on 3 components. They are
 
 -   The Controller (Controller)
 
-###### Explain Directives in AngularJs?
+## Explain Directives in AngularJs?
 
 AngularJS directives are extended HTML attributes with the prefix ng-  
 The 3 main directives of angular js are
 
--   **ng-app:- **directive is used to flag the HTML element that Angular should
+-   **ng-app:-**directive is used to flag the HTML element that Angular should
     consider to be the root element of our application. Angular uses spinal-case
     for its custom attributes and camelCase for the corresponding directives
     which implement them.
@@ -56,20 +258,20 @@ The 3 main directives of angular js are
     in the scope reflected in the view, but changes in the view are reflected
     back into the scope.
 
--   **ng-bind:- **directive binds application modal data to the HTML view.
+-   **ng-bind:-**directive binds application modal data to the HTML view.
 
 -   **ng-**controller
 
 -   **ng-**view
 
-###### Explain AngularJS digest cycle?
+## Explain AngularJS digest cycle?
 
 AngularJS digest cycle is the process behind Angular JS data binding.  
-In each digest cycle, Angular compares the old and the new version of the scope
-model values. The digest cycle is triggered automatically. We can also use
-\$apply() if we want to trigger the digest cycle manually.
+**In each digest cycle, Angular compares the old and the new version of the
+scope model values**. The digest cycle is triggered automatically. We can also
+use \$apply() if we want to trigger the digest cycle manually.
 
-###### What is data binding in AngularJS and What is the difference between one-way and two-way binding?
+## What is data binding in AngularJS and What is the difference between one-way and two-way binding?
 
 Data binding is the automatic attunement of data between the view and model
 components. AngularJS uses two-way data binding. In one-way binding, the scope
@@ -78,7 +280,7 @@ variable in the html is set to the first value that its model is assigned to.
 In two-way binding, the scope variable changes its value every time its model
 binds to a different value. 
 
-###### Explain what a digest cycle is in AngularJS?
+## Explain what a digest cycle is in AngularJS?
 
 During every digest cycle, all new scope model values are compared against the
 previous values. This is called dirty checking. If change is detected, watches
@@ -86,74 +288,14 @@ set on the new model are fired and another digest cycle executes. This goes on
 until all models are stable. 
 
 The digest cycle is triggered automatically but it can be called manually using
-“.\$apply()”.
+**“.\$apply()”.**
 
-###### What is Single Page Application (SPA)? 
+## What is Single Page Application (SPA)? 
 
 SPA is the concept whereby pages are loaded from the server not by doing post
 backs, rather by creating a single shell page or master page and loading the web
 pages into the master page.
 
-###### How can SPA be implemented in AngularJS?
+## How can SPA be implemented in AngularJS?
 
 SPA can be implemented with Angular by using Angular routes
-
-JUnit
-=====
-
-###### How to create Parameterized tests?
-
-Answer:  
-There are five steps to create Parameterized tests−
-
--   First, test class is annotated with \@RunWith which is a
-    Parameterized.class.
-
--   Then create a public static method which is annotated with \@Parameters. it
-    returns a Collection of Objects as test data set.
-
--   Next, create a public constructor which takes in one row of test data.
-
--   Create an instance variable that is for each column of the test data row.
-
--   Create tests case(s) using the instance variables as a source of the test
-    data.
-
--   The test case invokes once per each row of data.
-
-###### What are JUnit classes? List some of them?
-
-JUnit classes are important classes which are used in writing and testing
-JUnits. Some of the important classes are:
-
--   Assert – A set of assert methods.
-
--   Test Case – It defines the fixture to run multiple tests.
-
--   Test Result – It collects the results of executing a test case.
-
--   Test Suite – It is a Composite of Tests.
-
-MongoDB vs SQL
-==============
-
-| **SQL Terms/Concepts** | **MongoDB Terms/Concepts**                                                                                                                                      |
-|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| database               | [database](https://docs.mongodb.com/manual/reference/glossary/#term-database)                                                                                   |
-| table                  | [collection](https://docs.mongodb.com/manual/reference/glossary/#term-collection)                                                                               |
-| row                    | [document](https://docs.mongodb.com/manual/reference/glossary/#term-document) or [BSON](https://docs.mongodb.com/manual/reference/glossary/#term-bson) document |
-| column                 | [field](https://docs.mongodb.com/manual/reference/glossary/#term-field)                                                                                         |
-| index                  | [index](https://docs.mongodb.com/manual/reference/glossary/#term-index)                                                                                         |
-| table joins            | [\$lookup](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#pipe._S_lookup), embedded documents                                           |
-| primary key            | [primary key](https://docs.mongodb.com/manual/reference/glossary/#term-primary-key)                                                                             |
-
->   Specify any unique column or column combination as primary key.
-
->   In MongoDB, the primary key is automatically set to
->   the [\_id](https://docs.mongodb.com/manual/reference/glossary/#term-id)field.
-
-<https://docs.mongodb.com/manual/reference/sql-comparison/>
-
-**Read this, Don’t forget important**
-
-Views & Joins

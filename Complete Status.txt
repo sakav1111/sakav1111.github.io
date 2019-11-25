@@ -1,0 +1,23 @@
+eat_tool
+external-utils- Done
+federation
+idm-config
+idm-core	- Done
+idm-services
+ITIM-SERVICES		- Done
+log4jadmin		- Done
+masterdata-service-utilities	COMPELTED 
+MDCS
+mds-core
+messaging		- Done
+mytrials-help
+mytrials-main
+operational-model
+PMS History
+portal-core		- Done
+portal-core-idm
+portal-ui
+site-maintenance
+sso-core		- Done
+sso-services
+study-registry

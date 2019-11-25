@@ -334,11 +334,11 @@ pure OO languages are **Smalltalk** and **Eiffel**.
 
 **There are seven qualities to be satisfied for a programming language to be
 pure Object Oriented. They are:**  
-**1. **[Encapsulation/Data
+**1.**[Encapsulation/Data
 Hiding](http://java67.blogspot.sg/2012/08/difference-between-abstraction-and-encapsulation-java-oops.html)  
-**2. **[Inheritance](http://java67.blogspot.sg/2012/08/what-is-inheritance-in-java-oops-programming-example.html)  
-**3. **[Polymorphism](http://java67.blogspot.sg/2012/10/difference-between-polymorphism-overloading-overriding-java.html)  
-**4. **[Abstraction](http://java67.blogspot.sg/2012/09/what-is-difference-between-interface-abstract-class-java.html)  
+**2.**[Inheritance](http://java67.blogspot.sg/2012/08/what-is-inheritance-in-java-oops-programming-example.html)  
+**3.**[Polymorphism](http://java67.blogspot.sg/2012/10/difference-between-polymorphism-overloading-overriding-java.html)  
+**4.**[Abstraction](http://java67.blogspot.sg/2012/09/what-is-difference-between-interface-abstract-class-java.html)  
 **5. All predefined types are objects**  
 **6. All operations are performed by sending messages to objects**  
 **7. All user defined types are objects**
@@ -363,23 +363,18 @@ get the free memory, total memory and maximum heap memory in Java.
 | **public long freeMemory()**                 | returns amount of free memory in JVM.         |
 | **public long totalMemory()**                | returns amount of total memory in JVM.        |
 
+```java
 public class TestApp {
-
-public static void main(String[] args) {
-
-Runtime r = Runtime.*getRuntime*();
-
-System.*out*.println(r.totalMemory()); //16252928
-
-System.*out*.println(r.freeMemory()); //15709576
-
-System.*out*.println(r.availableProcessors());//24
-
-r.gc();
-
+	public static void main(String[] args) {
+		Runtime r = Runtime.getRuntime();
+		System.out.println(r.totalMemory()); //16252928
+		System.out.println(r.freeMemory()); //15709576
+		System.out.println(r.availableProcessors());//24
+		r.gc();
+	}
 }
+```
 
-}
 
 ## What is ClassLoader in Java?
 
@@ -623,14 +618,14 @@ method to perform cleanup processing (destroying remaining objects).**
 
 **Neither finalization nor garbage collection is guaranteed.**
 
-## ##How String Literals Garbage Collected?
+## How String Literals Garbage Collected?
 
 Strings created without using the new keyword are **NEVER garbage collected**.
 Even if there are no references to them. All such strings go into the String
 pool and just sit there till the whole program ends (ie. the JVM).The String
 Const. pool cleaned up when the class is unloaded by the JVM.
 
-**## How to you monitor garbage collection activities?**  
+## How to you monitor garbage collection activities?
 just to check whether candidate has ever monitored GC activities or not. You can
 monitor garbage collection activities either offline or real-time. You can use
 tools like **JConsole** and **VisualVM** VM with its Visual GC plug-in to
@@ -646,29 +641,32 @@ but provide useful states for performance monitoring.
 
 ![](media/62a8fdcbbc5c6067acd698eb5210c766.png)
 
-## ## How do you identify minor and major garbage collection in Java?
+##  How do you identify minor and major garbage collection in Java?
 
--   Minor collection prints **“GC” **if garbage
+-   Minor collection prints **GC** if garbage
     collection [logging](http://javarevisited.blogspot.sg/2011/05/top-10-tips-on-logging-in-java.html) is
     enable using **–verbose:gc or -XX:PrintGCDetails**
 
 -   Major collection prints **“Full GC”.** 
 
-## ## How to Generate GC Log File?
+##  How to Generate GC Log File?
 
 In order to understand the GC log, you first need to generate one. Passing the
 following system properties to your JVM would generate GC logs
 
+```java
 -XX:+PrintGCDetails -XX:+PrintGCDateStamps –Xloggc:D://gc.log
+```
+
 
 Or add visual-gc plugin to visualVM
 
-## ###What Security model used by Java?
+## What Security model used by Java?
 
 **Sandbox**. The sandbox security model makes it easier to work with software
 that comes from sources you don't fully trust. 
 
-## ###What is “Phontom” memory
+## What is “Phontom” memory
 
 **A memory that doesn’t exist in reality.**
 
@@ -687,7 +685,7 @@ complete, the references are processed in sequence for sweeping phase.
 
 4.  Phantom
 
-## ###How many JVMs can run on a single machine?
+## How many JVMs can run on a single machine?
 
 **Multiple**, yes You can run as many JVMs as you can fit on your disk and in
 memory :)
@@ -737,18 +735,20 @@ more: <https://javarevisited.blogspot.com/2012/10/10-garbage-collection-intervi
 Read
 more: <https://javarevisited.blogspot.com/2012/10/10-garbage-collection-interview-question-answer.html#ixzz5fwm9nzDa>
 
-Data Types
-----------
+# Data Types
+
 
 ## How do you convert bytes to String?
 
 you can convert bytes to the string using string constructor which
 accepts byte[], just make sure that right character encoding otherwise
 platform's default character encoding will be used which may or may not be same.
-
+```java
 String str = new String(bytes, "UTF-8");
+```
 
-**How do you convert bytes to long in Java**  
+
+## **How do you convert bytes to long in Java**  
 The byte takes 1 byte of memory and long takes 8 bytes of memory. Assignment 1
 byte value to 8 bytes is done implicitly by the JVM.
 
@@ -757,9 +757,11 @@ byte value to 8 bytes is done implicitly by the JVM.
 The left-side value can be assigned to any right-side value and is done
 implicitly. The reverse requires explicit casting.
 
- byte b1 = 10;                 // 1 byte  
+```java
+byte b1 = 10;  // 1 byte  
+long l1 = b1;  //  one byte to 8 bytes, assigned implicitly
+```
 
- long l1 = b1;                 //  one byte to 8 bytes, assigned implicitly
 
 ## Is ++ operator is thread-safe in Java?
 
@@ -810,7 +812,7 @@ Volatile Example
 
 -   Volatile solves the visibility problem, where Only one operation is perform
 
-Amtomic Problem
+### Amtomic Problem
 
  Atomic - forming a single irreducible unit or component in a larger system.
 
@@ -831,7 +833,7 @@ Another Way using Atomic Variables
 
 ![](media/f2f84e27927df3a608c5425081f109b8.png)
 
-Atomic Varibles
+## Atomic Varibles
 
 The [java.util.concurrent.atomic](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/package-summary.html) package
 defines classes that support atomic operations on single variables. All classes
@@ -876,11 +878,10 @@ Common methods
 Both are not equal, because floating point arithmetic has a certain precision.
 Check the difference (a-b) it should be really small.
 
-** In computer memory, floats and doubles are stored using **[IEEE
-754](https://en.wikipedia.org/wiki/IEEE_754)** standard format. **
+**In computer memory, floats and doubles are stored using** [IEEE
+754](https://en.wikipedia.org/wiki/IEEE_754) **standard format.**
 
 -   f1 = (0.1+0.1+0.1….11 times) = 1.0999999999999999
-
 -   f2 = 0.1*11 = 1.1
 
 In [BigDecimal](https://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html) class,
@@ -889,22 +890,20 @@ In [BigDecimal](https://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.
 is that BigDecimal numbers are immutable** i.e. if you create a BigDecimal BD
 with value “1.23”, that object will remain “1.23” and can never be changed. You
 can use it’s .compareTo() method to compare to BigDecimal numbers
-
-private static void testBdEquality()
-
+```java
+private static void testBdEquality()
 {
-
-     BigDecimal a = new BigDecimal("2.00");
-
-     BigDecimal b = new BigDecimal("2.0");
-
-     System.out.println(a.equals(b));           // false
-
-     System.out.println(a.compareTo(b) == 0);   // true
-
+     BigDecimal a = new BigDecimal("2.00");
+     BigDecimal b = new BigDecimal("2.0");
+ 
+     System.out.println(a.equals(b));           // false
+ 
+     System.out.println(a.compareTo(b) == 0);   // true
 }
+```
 
-**Which one will take more memory, an int or Integer? (answer)**  
+
+## **Which one will take more memory, an int or Integer? (answer)**  
 An Integer object will take more memory. an Integer is the an object and it
  store meta data overhead about the object and int is primitive type so its
 takes less space.
@@ -916,31 +915,38 @@ value, we can directly pass primitive value without issue. Autoboxing will take
 care about these.
 
 We can also do direct initializations (1.8 V)
+```java
+Integer i = 10;// it will create Integer value of 10 using Autoboxing
+int j = i;// ;// it will convert Integer to int using Autoboxing
+```
 
-Integer i = *10*;// it will create Integer value of 10 using Autoboxing
-
-int j = *i*;// ;// it will convert Integer to int using Autoboxing
 
 Previously it shows
+```java
+Integer i = 10;// it will create Integer value of 10 using Autoboxing
+int j = i;//But we cant assign int to Integer Type mismatch: cannot convert from Integer to int
+```
 
-Integer i = *10*;// it will create Integer value of 10 using Autoboxing
-
-int j = *i*;//But we cant assign int to Integer Type mismatch: cannot convert
-from Integer to int
 
 ## How to convert Primitives to Wrapper & Wrapper to Primitive ??
 
 // 1. using constructor
+```java
+Integer i =new Integer(10);
+```
 
-Integer i = new Integer(10);
 
 // 2. using static factory method
-
+```java
 Integer i = Integer.valueOf(10);
+```
+
 
 //3.wrapper to primitive
+```java
+int val = i.intValue();
+```
 
-int val = i.intValue();    
 
 ## **How does Autoboxing of Integer works in Java? (**[answer](http://javarevisited.blogspot.sg/2012/07/auto-boxing-and-unboxing-in-java-be.html#axzz59AWpr6cb)**)**
 
@@ -964,8 +970,10 @@ a [final](https://www.geeksforgeeks.org/g-fact-48/) variable that is not
 initialized during declaration. Below is a simple example of blank final.
 
 // A simple blank final example
-
+```java
 final int i;
+```
+
 
 -   Value must be assigned in constructor/Static(static final) /Instance block
     before using it.
@@ -973,9 +981,10 @@ final int i;
 -   If we have more than one constructors or overloaded constructor in class,
     then blank final variable must be initialized in all of them.
 
-## ./media/image27.png
 
-##Difference between java.util.Date & java.sql.Date?
+
+## Difference between java.util.Date & java.sql.Date?
+![date](media/date.png)
 
 -   **java.util.Date** represent **both Date and Time information**.
 
@@ -998,70 +1007,44 @@ it to concatenate those strings. 
 
 To overload an operator, a special operator function is defined inside the class
 as
-
+```java
 class className
-
 {
-
-... .. ...
-
-public
-
-returnType operator symbol (arguments)
-
-{
-
-... .. ...
-
-}
-
-... .. ...
-
+    ... .. ...
+    public
+       returnType operator symbol (arguments)
+       {
+           ... .. ...
+       } 
+    ... .. ...
 };
-
 #include <iostream>
-
 using namespace std;
 
 class Test
-
 {
+   private:
+      int count;
 
-private:
+   public:
+       Test(): count(5){}
 
-int count;
-
-public:
-
-Test(): count(5){}
-
-void operator ++()
-
-{
-
-count = count+1;
-
-}
-
-void Display() { cout<<"Count: "<<count; }
-
+       void operator ++() 
+       { 
+          count = count+1; 
+       }
+       void Display() { cout<<"Count: "<<count; }
 };
 
 int main()
-
 {
-
-Test t;
-
-// this calls "function void operator ++()" function
-
-++t;
-
-t.Display();
-
-return 0;
-
+    Test t;
+    // this calls "function void operator ++()" function
+    ++t;    
+    t.Display();
+    return 0;
 }
+```
 
 -   This function is called when *++* operator operates on the object
     of *Test* class (object *t* in this case).
@@ -1073,16 +1056,14 @@ return 0;
 
 **Why Java Doesn't Support it?** 
 
-**1.Java is Simple, No Confusions Please!!**
-
+**1.Java is Simple, No Confusions Please!!**  
 Java does not support operator overloading: Java is relatively a very simple
 language to use compared C/C++ with the non-support of complex and confusing
 features like **pointers**, **multiple inheritance** and **operator
 overloading**. These features are rarely used in practice and at the same time
 poorly understood by the language beginners. 
 
-**2.JVM Performance: How many things Should i do?**
-
+**2.JVM Performance: How many things Should i do?**  
 Form JVM perspective supporting operator overloading is more difficult and if
 the **same thing can be achieved by using method overloading in more intuitive
 and clean way it does make sense to not support operator overloading in java**.
@@ -1097,20 +1078,20 @@ a complex JVM will result in slower JVM
     to store Integer object on it. Compiler won't be able to detect that and it
     will throw ArrayStoreExcpetion at runtime
 
+```java
 int[] primes = new int[10];
-
 primes[0] = "a"; // compile time error
 
-Object[] names = new String[3];
-
+Object[] names = new String[3]; 
 names[0] = new Integer(0);// ArrayStoreException at runtime
+```
 
 ## **What is difference between ArrayIndexOutfOBounds and ArrayStoreException? [**[answer](http://javarevisited.blogspot.sg/2014/05/exception-in-thread-main-arrayindexoutofboundsexception-java.html)**]**
 
-ArrayIndexOutOfBoundsException comes when your code tries to access an invalid
+`ArrayIndexOutOfBoundsException` comes when your code tries to access an invalid
 index for a given array e.g. negative index or higher index than length - 1.
 
- ArrayStoreException comes when you have stored an element of type other than
+`ArrayStoreException` comes when you have stored an element of type other than
 type of array, as shown in above example.
 
 ## **Is it legal to initialize an array int i[] = {1, 2, 3, 4, 5}; [answer]**
@@ -1140,145 +1121,98 @@ Steps to Solve this
 
 4.Swap the elements using **temp** variable
 
+```java
 package array;
 
 public class ReverseArry {
 
-/*
+	/*
+	 * Recursive approach: In recursive approach the function calls itself until
+	 * the condition is met. And it is slower than iteration, which means it uses
+	 * more memory than iteration. recursion is like a selection structure, and
+	 * which makes code smaller and clean. And a function partially defined by
+	 * itself. Here tracing the code will be more difficult in the case large
+	 * programs
+	 */
 
-* Recursive approach: In recursive approach the function calls itself until
+	public static int[] recursiveArry(int a[], int start, int end) {
+		if (start <= end) {
+			int temp;
+			temp = a[start];
+			a[start] = a[end];
+			a[end] = temp;
+			recursiveArry(a, start + 1, end - 1);//calling it again
+		}
+		return a;
+	}
 
-* the condition is met. And it is slower than iteration, which means it uses
-
-* more memory than iteration. recursion is like a selection structure, and
-
-* which makes code smaller and clean. And a function partially defined by
-
-* itself. Here tracing the code will be more difficult in the case large
-
-* programs
-
-*/
-
-public static int[] recursiveArry(int a[], int start, int end) {
-
-if (start <= end) {
-
-int temp;
-
-temp = a[start];
-
-a[start] = a[end];
-
-a[end] = temp;
-
-recursiveArry(a, start + 1, end - 1);//calling it again
-
+	
+	/*
+	 *Iterative approach: Iterative approach is a repetition process until the condition fails.here loops are used such as for, while etc. Here code may be longer but it is faster than recursive. And it consumes less memory compared to recursive approach.If the loop condition is always true in such cases it will be an infinite loop.
+ */	
+	public static int[] iteravtiveArray(int a[], int start, int end) {
+		while(start<end)
+		{
+			int temp;
+			temp = a[start];
+			a[start]=a[end];
+			a[end]=temp;			
+			start++;
+			end--;
+		}		
+		
+		return a;
+	}
+		 
+	static void printArray(int arr[], int size) {
+		int i;
+		for (i = 0; i < size; i++)
+			System.out.print(arr[i] + " ");
+		System.out.println("");
+	}
+	 
+	public static void main(String[] args) {
+		
+                // 1. Initialize array
+                int arr[] = { 1, 2, 3, 4, 5, 6 };
+		System.out.println("Input array is ");
+		printArray(arr, 6);
+	
+		// 2. Choose Starting & ending point
+		int b[] = recursiveArry(arr, 0, 5);
+		System.out.println("Recursive -Reversed array is ");
+		printArray(b, 6);
+		
+		int c[] = iteravtiveArray(arr, 0, 5);
+		System.out.println("IteravtiveArray -Reversed array is ");
+		printArray(c, 6);
+	}
 }
-
-return a;
-
-}
-
-/*
-
-*Iterative approach: Iterative approach is a repetition process until the
-condition fails.here loops are used such as for, while etc. Here code may be
-longer but it is faster than recursive. And it consumes less memory compared to
-recursive approach.If the loop condition is always true in such cases it will be
-an infinite loop.
-
-*/
-
-public static int[] iteravtiveArray(int a[], int start, int end) {
-
-while(start<end)
-
-{
-
-int temp;
-
-temp = a[start];
-
-a[start]=a[end];
-
-a[end]=temp;
-
-start++;
-
-end--;
-
-}
-
-return a;
-
-}
-
-static void printArray(int arr[], int size) {
-
-int i;
-
-for (i = 0; i < size; i++)
-
-System.out.print(arr[i] + " ");
-
-System.out.println("");
-
-}
-
-public static void main(String[] args) {
-
-// 1. Initialize array
-
-int arr[] = { 1, 2, 3, 4, 5, 6 };
-
-System.out.println("Input array is ");
-
-printArray(arr, 6);
-
-// 2. Choose Starting & ending point
-
-int b[] = recursiveArry(arr, 0, 5);
-
-System.out.println("Recursive -Reversed array is ");
-
-printArray(b, 6);
-
-int c[] = iteravtiveArray(arr, 0, 5);
-
-System.out.println("IteravtiveArray -Reversed array is ");
-
-printArray(c, 6);
-
-}
-
-}
-
-Input array is
-
-1 2 3 4 5 6
-
-Recursive -Reversed array is
-
+ 
+Input array is 
+1 2 3 4 5 6 
+Recursive -Reversed array is 
 6 5 4 3 2 1
+```
 
-**How do you reverse an array in Java?**  
+
+## **How do you reverse an array in Java?**  
 org.apache.commons.lang.ArrayUtils class to reverse Array in Java. As discussed
 in our last post [How to print array element in
 Java](http://javarevisited.blogspot.com/2012/12/3-example-to-print-array-values-in-java.html),
 We are using **Arrays.toString()** to print content of array.
-
+```java
 int[] iArray = new int[] {101,102,103,104,105};
+String[] sArray = new String[] {"one", "two", "three", "four", "five"};
 
-String[] sArray = new String[] {"one", "two", "three", "four", "five"}; //
-reverse *int* array using Apache commons ArrayUtils.reverse() method
+//reverse int array using Apache commons ArrayUtils.reverse() method 
+System.out.println("Original int array : " + Arrays.toString(iArray));
+ArrayUtils.reverse(iArray);
+```
 
-System.out.println("Original int array : " + *Arrays*.toString(iArray));
 
-*ArrayUtils*.reverse(iArray);
+# java.lang Package
 
-java.lang Package
------------------
 
 We have mainly five classes in java.lang. Which are most commonly used in any
 java program
@@ -1303,12 +1237,12 @@ methods are by default available to any java class.
 Object class define the following 11 methods
 
 **1.toString**():Returns a string representation of the object.
-
+```java
 public String toString() {
+		return getClass.getName() + '@' + Integer.toHexString(HashCode);
+	}
+```
 
-return *getClass*.getName() + '@' + Integer.*toHexString*(*HashCode*);
-
-}
 
 **2.hashCode**():returns the integer representation of memory location which
 used by JVM while saving/adding Objects into Hashsets, Hashtables or Hashmap
@@ -1317,10 +1251,11 @@ used by JVM while saving/adding Objects into Hashsets, Hashtables or Hashmap
 
 **4.clone**(): Creates a new object of the same class as this object which
 implements **Clonable interface.**
-
+```java
 Test t1 = new Test();
-
 Test t2 = (Test)t1.clone();
+```
+
 
 **5.finalize**():Called by the garbage collector on an object when garbage
 collection determines that there are no more references to the object.
@@ -1330,38 +1265,31 @@ class-literal (**Foo.class**) return a Class object, which contains some
 metadata about the class:
 
 -   name
-
 -   package
-
 -   methods
-
 -   fields
-
 -   constructors
-
 -   annotations
 
 we can create Class object by following ways
-
+```java
 Class c = Class.forName(“StudentBO”)
-
 Class c = StudentBO.class
-
 Class c = a.getClass();
+```
 
+```java
 public static void main(String[] args) throws Exception {
+		TestApp a = new TestApp();
+		Class c1 = a.getClass();
+		
+		 Class c = Class.forName("java.lang.String");
+		 System.out.print("Class represented by c : " + c.toString());
+		 
+		 Object obj = c.newInstance();
+	}
+```
 
-TestApp a = new TestApp();
-
-*Class c1* = a.getClass();
-
-*Class* c = Class.*forName*("java.lang.String");
-
-System.*out*.print("Class represented by c : " + c.toString());
-
-Object *obj* = c.newInstance();
-
-}
 
 **7.wait**():Waits to be notified by another thread of a change in this object.
 
@@ -1377,12 +1305,12 @@ monitor.
 **11.notifyAll**():Wakes up all threads that are waiting on this object's
 monitor.
 
-equals(Object otherObject) – As method name suggests, is used to simply verify
+`equals(Object otherObject)` – As method name suggests, is used to simply verify
 the equality of two objects. It’s default implementation simply check the object
 references of two objects to verify their equality**. By default, two objects
 are equal if and only if they are stored in the same memory address.**
 
-hashcode() – Returns a unique integer value for the object in runtime. By
+`hashcode()` – Returns a unique integer value for the object in runtime. By
 default, integer value is mostly derived from memory address of the object in
 heap (but it’s not mandatory always).
 
@@ -1393,143 +1321,97 @@ result.
 **Whenever we override the equals() method, we should override hashcode()
 method**
 
-In String class(not StringBuilder, StringBuffer) & All Wrapper classes equals()
-method is overridden for Content Comparison
+`In String class(not StringBuilder, StringBuffer) & All Wrapper classes equals()
+method is overridden for Content Comparison`
 
 ## Compare two employee Objects based on Their Id?
 
+```java
 public class Employe {
-
-int id;
-
-String name;
-
+	int id;
+	String name;
 //Setters & Getters
-
-@Override
-
-public boolean equals(Object obj) {
-
-Employe e = (Employe) obj;
-
-boolean flag = false;
-
-if (this.getId() == e.getId()) {
-
-flag = true;
-
+	@Override
+	public boolean equals(Object obj) {		
+		Employe e = (Employe) obj;
+		boolean flag = false;
+		if (this.getId() == e.getId()) {
+			flag = true;
+		}
+		return flag;
+	}
+	public static void main(String[] args) {
+		Employe e1 = new Employe();
+		Employe e2 = new Employe();
+		e1.setId(101);
+		e2.setId(101);
+		System.out.println(e1.equals(e2));//true
+		System.out.println(e1.hashCode());  	  //366712642
+		System.out.println(e2.hashCode()); //1829164700 – here different
+	}
 }
+```
 
-return flag;
-
-}
-
-public static void main(String[] args) {
-
-Employe e1 = new Employe();
-
-Employe e2 = new Employe();
-
-e1.setId(101);
-
-e2.setId(101);
-
-System.*out*.println(e1.equals(e2));//true
-
-System.*out*.println(e1.hashCode()); //366712642
-
-System.*out*.println(e2.hashCode()); //1829164700 – here different
-
-}
-
-}
-
-So are we done? If two objects are equal according to the equals(Object) method,
-then calling the hashCode method on each of the two objects must produce the
-same integer result. **But here it is not!!**
+So are we done? If two objects are equal according to the `equals(Object)` method,
+then calling the `hashCode` method on each of the two objects must produce the
+same integer result. **`But here it is not!!`**
 
 Not yet. Lets test again above modified Employee class in different way.
 
+```java
 public static void main(String[] args) {
-
-Employe e1 = new Employe();
-
-Employe e2 = new Employe();
-
-e1.setId(101);
-
-e2.setId(101);
-
-Set<Employe> set = new HashSet<>();
-
-set.add(e1);
-
-set.add(e2);
-
-System.*out*.println(set); //[basic.Employe@15db9742, basic.Employe@6d06d69c]
-
-}
+		Employe e1 = new Employe();
+		Employe e2 = new Employe();
+		e1.setId(101);
+		e2.setId(101);
+		
+		Set<Employe> set = new HashSet<>();
+		set.add(e1);
+		set.add(e2);
+		System.out.println(set); //[basic.Employe@15db9742, basic.Employe@6d06d69c]	
+	}
+```
 
 Above class prints two objects in the second print statement. If both employee
-objects have been equal, in a Set which stores only unique objects, there must
+objects have been equal, in a `Set` which stores only unique objects, there must
 be only one instance inside HashSet
 
-We are missing the second important method hashCode(). As java docs say, if you
-override equals()method then you *must* override hashCode() method
+We are missing the second important method `hashCode()`. As java docs say, `if you
+override equals()method then you must override hashCode() method`
 
+```java
 public class Employe {
+	int id;
+	String name;
 
-int id;
+	@Override
+	public boolean equals(Object obj) {		
+		Employe e = (Employe) obj;
+		boolean flag = false;
+		if (this.getId() == e.getId()) {
+			flag = true;
+		}
+		return flag;
+	}
+	
+	@Override
+	public int hashCode() {		
+		return getId();
+	}
 
-String name;
-
-@Override
-
-public boolean equals(Object obj) {
-
-Employe e = (Employe) obj;
-
-boolean flag = false;
-
-if (this.getId() == e.getId()) {
-
-flag = true;
-
+	public static void main(String[] args) {
+		Employe e1 = new Employe();
+		Employe e2 = new Employe();
+		e1.setId(101);
+		e2.setId(101);
+		
+		Set<Employe> set = new HashSet<>();
+		set.add(e1);
+		set.add(e2);
+		System.out.println(set); //[basic.Employe@65]		
+	}
 }
-
-return flag;
-
-}
-
-@Override
-
-public int hashCode() {
-
-return getId();
-
-}
-
-public static void main(String[] args) {
-
-Employe e1 = new Employe();
-
-Employe e2 = new Employe();
-
-e1.setId(101);
-
-e2.setId(101);
-
-Set<Employe> set = new HashSet<>();
-
-set.add(e1);
-
-set.add(e2);
-
-System.*out*.println(set); //[basic.Employe@65]
-
-}
-
-}
+```
 
 [Apache commons](https://commons.apache.org/proper/commons-lang/) provide two
 excellent utility
@@ -1540,7 +1422,7 @@ for generating hash code and equals methods.
 
 ## Can a top-level class be private or protected?
 
-Top level classes in java can’t be private or protected, but inner classes in
+Top level classes in java `can’t be private or protected`, but inner classes in
 java can. The reason for not making a top-level class as private is very
 obvious, because nobody can see a private class and thus they cannot use it
 
@@ -1638,74 +1520,49 @@ are implemented based on this principle.**
 
 -   Every Singleton class contains at least one factory method
 
+```java
 class Student {
-
-    private static Student st;
-
-    private Student() {
-
-        System.out.println("OBJECET Created FIRST TIME");
-
-    }
-
-    public static Student getObject() {
-
-        if (st == null) {
-
-            st = new Student();
-
-        } else {
-
-            System.out.println("OBJECET ALREDAY CREATED");
-
-        }
-
-        return st;
-
-    }
-
+    private static Student st;
+    private Student() {
+        System.out.println("OBJECET Created FIRST TIME");
+    }
+    public static Student getObject() {
+        if (st == null) {
+            st = new Student();
+        } else {
+            System.out.println("OBJECET ALREDAY CREATED");
+        }
+        return st;
+    }
 }
-
+ 
 public class Singleton {
-
-    public static void main(String[] args) {
-
-        Student s1 = Student.getObject();
-
-        Student s2 = Student.getObject();
-
-        System.out.println(s1.hashCode());//7855445
-
-        System.out.println(s2.hashCode());//7855445
-
-    }
-
+    public static void main(String[] args) {
+        Student s1 = Student.getObject();
+        Student s2 = Student.getObject();
+        System.out.println(s1.hashCode());//7855445
+        System.out.println(s2.hashCode());//7855445
+    }
 }
+```
 
 **Double checked locking in Singleton means,** at any cost only one instance is
 created in multi-threaded environment.
 
 In this case at null checking make Block as Synchronized.
 
+```java
 public static Singleton getInstanceDC() {
-
-if (_instance == null) { // Single Checked
-
-synchronized (Singleton.class) {
-
-if (_instance == null) { // Double checked
-
-_instance = new Singleton();
-
+        if (_instance == null) {                // Single Checked
+            synchronized (Singleton.class) {
+                if (_instance == null) {        // Double checked
+                    _instance = new Singleton();
+                }
+            }
+        }
+        return _instance;
 }
-
-}
-
-}
-
-return _instance;
-
-}
+```
 
 ## When to use volatile variable in Java?
 
@@ -1731,15 +1588,18 @@ default serialization process which is implemented by application.
 Externalizable interface extends Serializable interface. It consists of two
 methods
 
-// to read object from stream
 
-**void readExternal(ObjectInput in)**
+```java
+// to read object from stream
+void readExternal(ObjectInput in) 
 
 // to write object into stream
+void writeExternal(ObjectOutput out)
+```
 
-**void writeExternal(ObjectOutput out)**
 
-**Difference between static and dynamic binding in Java? (detailed answer)**  
+
+## **Difference between static and dynamic binding in Java? (detailed answer)**  
 This is usually asked as follow-up of previous question, **static binding is
 related to overloaded method and dynamic binding is related to overridden
 method**.
@@ -1758,7 +1618,7 @@ dynamic binding at runtime.
 
 -   **Singleton**
 
--   **Decorator **[design
+-   **Decorator**[design
     pattern](https://www.journaldev.com/1827/java-design-patterns-example-tutorial) is
     used to modify the functionality of an object at runtime.
 
@@ -1772,23 +1632,29 @@ subclass without any issue
 
 ## How to create an instance of any class without using new keyword
 
-Using newInstance method of Class class
-
+```java
+*****************************************
+1.Using newInstance method of Class class
+*****************************************
 Class c = Class.forName("StudentBo");
-
 StudentBo bo = (StudentBo) c.newInstance();
 
-Using clone() of java.lang.Object
 
+*****************************************
+2.Using clone() of java.lang.Object
+*****************************************
 NewClass obj = new NewClass();
-
 NewClass obj2 = (NewClass) obj.clone();
+```
+
 
 ## How can we invoke any external process in java?
 
 Using,
-
+```java
 Runtime.getRuntime().exec(…)
+```
+
 
 ## Static imports rules ?
 
@@ -1796,46 +1662,39 @@ The static import feature of Java 5 facilitates the java programmer to access
 any static member of a class directly. There is no need to qualify it by the
 class name.
 
-import static java.lang.System.*;   (or)
-
-import static java.lang.System.out;
-
-class StaticImportExample{  
-
-  public static void main(String args[]){  
-
-   out.println("Hello");//Now no need of System.out  
-
-   out.println("Java");  
-
- }   
-
-}     
-
-**Ambiguity in static import**
-
-// both have MAX_VALUE as static
-
-import static java.lang.Integer.*;
-
-import static java.lang.Byte.*;
-
-class Geeks {
-
-    public static void main(String[] args)
-
-    {
-
-        out.println(MAX_VALUE);
-
-    }
-
+```java
+import static java.lang.System.*;   (or)
+import static java.lang.System.out;
+ 
+class StaticImportExample{  
+  public static void main(String args[]){  
+     
+   out.println("Hello");//Now no need of System.out  
+   out.println("Java");  
+  
+ }   
 }
+```
 
+### **Ambiguity in static import**
+
+```java
+// both have MAX_VALUE as static
+import static java.lang.Integer.*; 
+import static java.lang.Byte.*; 
+class Geeks { 
+    public static void main(String[] args) 
+    { 
+        out.println(MAX_VALUE); 
+    } 
+} 
 Error:Reference to MAX_VALUE is ambigious
+```
 
-Java OOPs Concepts 
--------------------
+
+
+# Java OOPs Concepts 
+
 
 ## **Can we prevent overriding a method without using the final modifier? (answer)**
 
@@ -1850,39 +1709,27 @@ the class they are declared, it's not possible to override them in subclasses.
 But we can re-decalre in sub class , it will trated as a new method, bcoz parent
 class private method is not visible to subclass.
 
+```java
 class A{
-
-private void show() {
-
-System.*out*.println("Parent");
-
+	private void show() {
+		System.out.println("Parent");
+	}
 }
-
-}
-
 public class Demo extends A{
-
-private void *show()* {
-
-System.*out*.println("Child");
-
+	private void show() {
+		System.out.println("Child");
+	}
+	public static void main(String[] args) {
+		A a = new Demo();
+		a.show();
+	
+	}
 }
+```
 
-public static void main(String[] args) {
+`Exception in thread "main" java.lang.Error: Unresolved compilation problem:`
 
-A a = new Demo();
-
-a.*show*();
-
-}
-
-}
-
-Exception in thread "main" java.lang.Error: Unresolved compilation problem:
-
-The method show() from the type A is not visible
-
-at Demo.main(Demo.java:12)
+The method show() from the type A is not visible at Demo.main(Demo.java:12)
 
 Though, you can override them inside the inner class as they are accessible
 there.
@@ -1903,13 +1750,14 @@ extended and you cannot use an abstract class without extending and make it a
 concrete class. As per Java specification, the compiler will throw an error if
 you try to make a class abstract and final at the same time.
 
-**Can we overload or override the main method in Java? (answer)**  
+## **Can we overload or override the main method in Java? (answer)**  
 No, since main() is a static method, you can only overload it, you cannot
 override it because the static method is resolved at compile time without
 needing object information hence we cannot override the main method in Java.
 
-Design Patterns
----------------
+
+# Design Patterns
+
 
 SOLID design principles and GOF design patterns which take advantage of OOPS
 concept discussed here.

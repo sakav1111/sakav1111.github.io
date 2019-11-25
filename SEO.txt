@@ -8,4 +8,5 @@ satyacodes@hotmail.com
 
 http://satyacodes.com/sitemap.xml
 
-Java Tutorials, DevOps Tutorials, Java Interview Questions, Jenkins Tutorial, Chef Tutorial, Puppet Tutorial, Ansible Tutorial
+Java Tutorials, DevOps Tutorials, Java Interview Questions, 
+Jenkins Tutorial,Chef Tutorial, Puppet Tutorial, Ansible Tutorial
