@@ -378,37 +378,27 @@ public class MatrixParamService{
 
 ![C:\\Users\\kaveti_s\\Desktop\\temp.png](media/6f4dde26415602d13b085b7bbaa0dec9.png)
 
+```java
 @Path("/students")
-
 public class FormParamService {
-
-@POST
-
-@Path("/registerStudent")
-
-@Produces("text/html")
-
-public Response getResultByPassingValue(
-
-@FormParam("rollno") String rollno,
-
-@FormParam("name") String name,
-
-@FormParam("address") String address) {
-
-String output = "\<h1\>@FormParam Example - REGISTRATION COMPLETED!!!\</h1\>";
-
-output = output+"\<br\>Roll No : "+rollno;
-
-output = output+"\<br\>Name : "+name;
-
-output = output+"\<br\>Address : "+address;
-
-return Response.*status*(200).entity(output).build();
-
+	
+	@POST
+	@Path("/registerStudent")
+	@Produces("text/html")
+	public Response getResultByPassingValue(
+			@FormParam("rollno") String rollno,
+			@FormParam("name") String name,
+			@FormParam("address") String address) {
+		
+		String output = "<h1>@FormParam Example - REGISTRATION COMPLETED!!!</h1>";
+		output = output+"<br>Roll No : "+rollno;
+		output = output+"<br>Name : "+name;
+		output = output+"<br>Address : "+address;		 
+		return Response.status(200).entity(output).build();
+	}
 }
+```
 
-}
 
 ## JAX-RS Download files (text/image/pdf/execel) Example
 

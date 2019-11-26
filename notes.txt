@@ -3,7 +3,7 @@
 
 
 ===================================================================================================
-									1.heading <h1> Java Script
+				1.heading <h1> Java Script
 ===================================================================================================
 _layouts\artcles.html
 
@@ -46,7 +46,7 @@ alert('end');
 
 
 ===================================================================================================
-										2.Pareem Links
+2.Pareem Links
 ===================================================================================================
 https://jekyllrb.com/docs/permalinks/
 
@@ -62,7 +62,7 @@ permalink: /:title:output_ext
 
 
 ===================================================================================================
-										3.Home Page - List
+3.Home Page - List
 ===================================================================================================
 modfiy - index.html
 
@@ -99,7 +99,7 @@ articles:
  
 
 ===================================================================================================
-										4.Syntax Highlate - Final - Working
+4.Syntax Highlate - Final - Working
 ===================================================================================================
 
 1. in _config.yaml -- No Change - highlighter should be 'rouge'
@@ -153,7 +153,7 @@ custom.csss
 
 
 ===================================================================================================
-										5.GitLab Pages 
+5.GitLab Pages 
 ===================================================================================================
 https://about.gitlab.com/blog/2016/04/07/gitlab-pages-setup/
 
@@ -166,7 +166,7 @@ https://about.gitlab.com/blog/2016/04/07/gitlab-pages-setup/
 
 
 ===================================================================================================
-										6.addtothis
+6.addtothis
 ===================================================================================================
 addthis	AddThis
 
@@ -193,9 +193,17 @@ added in includes\fopoter.html
 
 
 ============================================================================================
-						7.Logo	- pendind
+	7.Logo	- pendind
 ===========================================================================================
-TeXt  as logo, you can change it by replacing _includes/svg/logo.svg with your own logo.
+TeXt  as logo, you can change it by replacing 
+_includes/svg/logo.svg with your own logo.
+
+ - Go : https://realfavicongenerator.net/
+ - Upload Img
+ -
+
+
+
 
 Download favicon package and unzip it to the path you just set, and replace the HTML code in _includes/head/favicon.html.
 
@@ -203,7 +211,7 @@ Download favicon package and unzip it to the path you just set, and replace the 
 
 
 ============================================================================================
-						8.Footer & Seach Issue
+	8.Footer & Seach Issue
 ===========================================================================================
 TeXt  as logo, you can change it by replacing _includes/svg/logo.svg with your own logo.
 
@@ -228,7 +236,7 @@ Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.
 ===================================================================================================
 	XX. REFERENCES
 ===================================================================================================
-										
+
 
 rouge syntax
 ---------------------
