@@ -1,3 +1,7 @@
+﻿
+
+
+
 ===================================================================================================
 									1.heading <h1> Java Script
 ===================================================================================================
@@ -208,13 +212,21 @@ Download favicon package and unzip it to the path you just set, and replace the 
 
 
 
+====================================
+seo
+====================================
+description
+
+Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials,
+Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.
+
 
 
 
 
 
 ===================================================================================================
-										XX. REFERENCES
+	XX. REFERENCES
 ===================================================================================================
 										
 

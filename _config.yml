@@ -198,9 +198,8 @@ text_skin: default
 highlight_theme: default
 url: 
 baseurl: 
-description: 'DevOps | Java
-
-'
+description: 'Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials,
+Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.'
 lang: en
 author: 
   type: person

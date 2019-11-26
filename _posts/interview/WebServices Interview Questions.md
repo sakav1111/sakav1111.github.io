@@ -1,7 +1,7 @@
 Web services
 ============
 
-###### How to access SOAP web service?
+## How to access SOAP web service?
 
 There are two ways to access web service
 
@@ -33,7 +33,7 @@ available through it for discovery.So following steps are involved.
 
 ![](media/7ba2feb856ec757a6ec593af6a0c4b90.emf)
 
-###### What are Rest components
+## What are Rest components
 
 It consists of two components
 
@@ -43,7 +43,7 @@ It consists of two components
 
 ![](media/87a40b704572aaf4a9e5b52fecac30c9.emf)
 
-###### What is Idempotent?
+## What is Idempotent?
 
 Idempotent means result of multiple successful request will not change state of
 resource after initial application
@@ -58,11 +58,11 @@ that, all other request will have no result because resource is already deleted.
 it will keep creating resource for each new request, so result of multiple
 successful request will not be same.
 
-###### Webservices API in java?
+## Webservices API in java?
 
 ![](media/b703450949d9f73124b7435978e7d4cd.emf)
 
-###### JAX-WS Encoding Styles?
+## JAX-WS Encoding Styles?
 
 There are two encoding use models that are used to translate a WSDL binding to a
 SOAP message. They are: **literal, and encoded.**
@@ -91,7 +91,7 @@ the structure of the message need not conform to any user-defined XML schema.
 This makes it difficult to validate the message body or use XSLT based
 transformations on the message body.
 
-###### Diffrence between RPC-Style and Document Style 
+## Diffrence between RPC-Style and Document Style 
 
 The way of generating SOAP message format is main difference between them.
 
@@ -100,43 +100,36 @@ The way of generating SOAP message format is main difference between them.
 SOAP Body must conform to a structure that indicates the **method name &
 Parameters name**
 
-\<soap:envelope\>
+```xml
+<soap:envelope> 
+<soap:body> 
+<myMethod> 
+<x xsi:type="xsd:int">5</x> 
+<y xsi:type="xsd:float">5.0</y> 
+</myMethod> 
+</soap:body> 
+</soap:envelope>
+```
 
-\<soap:body\>
-
-\<myMethod\>
-
-\<x xsi:type="xsd:int"\>5\</x\>
-
-\<y xsi:type="xsd:float"\>5.0\</y\>
-
-\</myMethod\>
-
-\</soap:body\>
-
-\</soap:envelope\>
 
 **2. Document Style**
 
 SOAP Body can be structured in any way you like. There is no TYPE attribute here
+```xml
+<soap:envelope> 
+<soap:body> 
+<xElement>5</xElement> 
+<yElement>5.0</yElement> 
+</soap:body> 
+</soap:envelope>
+```
 
-\<soap:envelope\>
 
-\<soap:body\>
-
-\<xElement\>5\</xElement\>
-
-\<yElement\>5.0\</yElement\>
-
-\</soap:body\>
-
-\</soap:envelope\>
-
-###### Steps to create JAX-WS Webservice
+## Steps to create JAX-WS Webservice
 
 **1. JAX-WS Web Service End Point files**
 
-1.  Create a Web Service Endpoint Interface with **\@SOAPBinding(style =
+1.  Create a Web Service Endpoint Interface with **@SOAPBinding(style =
     Style.RPC)**
 
 2.  Create a Web Service Endpoint Implementation
@@ -147,79 +140,47 @@ SOAP Body can be structured in any way you like. There is no TYPE attribute here
 
 **2. Web Service Client files**
 
->   1. Java Web Service Client
+<u>1.Java Web Service Client</u>
 
-**1. JAX-WS Web Service End Point files**
-
-**1. Create a Web Service Endpoint Interface**
-
+```java
+1. Create a Web Service Endpoint Interface
 package endpoint;
+import javax.jws.WebMethod;  
+import javax.jws.WebService;  
+import javax.jws.soap.SOAPBinding;  
+import javax.jws.soap.SOAPBinding.Style;  
+//Service Endpoint Interface  
+@WebService  
+@SOAPBinding(style = Style.RPC)  
+public interface HelloWorld{  
+ @WebMethod 
+ String getHelloWorldMsg(String msg);  
+}  
 
-import javax.jws.WebMethod;
-
-import javax.jws.WebService;
-
-import javax.jws.soap.SOAPBinding;
-
-import javax.jws.soap.SOAPBinding.Style;
-
-//Service *Endpoint* Interface
-
-\@WebService
-
-\@SOAPBinding(style = Style.*RPC*)
-
-public interface HelloWorld{
-
-\@WebMethod
-
-String getHelloWorldMsg(String msg);
-
-}
-
-**2. Create a Web Service Endpoint Implementation**
-
+2. Create a Web Service Endpoint Implementation
 package endpoint;
-
-import javax.jws.WebService;
-
-//Service Implementation
-
-\@WebService(endpointInterface = "endpoint.HelloWorld")
-
+import javax.jws.WebService;  
+//Service Implementation  
+@WebService(endpointInterface = "endpoint.HelloWorld")  
 public class HelloWorldImpl implements HelloWorld{
+	@Override
+	public String getHelloWorldMsg(String msg) {
+		// TODO Auto-generated method stub
+		return "Your Message from WebService is : "+msg;
+	}     
+}  
 
-\@Override
-
-public String getHelloWorldMsg(String msg) {
-
-// TODO Auto-generated method stub
-
-return "Your Message from WebService is : "+msg;
-
-}
-
-}
-
-**3. Create an Endpoint Publisher**
-
+3. Create an Endpoint Publisher
 package endpoint;
-
-import javax.xml.ws.Endpoint;
-
-//*Endpoint* publisher
-
-public class HelloWorldPublisher{
-
-public static void main(String[] args) {
-
-Endpoint.*publish*("http://localhost:7777/ws/hello", new HelloWorldImpl());
-
-System.*out*.println("WSDL Published !!");
-
+import javax.xml.ws.Endpoint;  
+//Endpoint publisher  
+public class HelloWorldPublisher{  
+    public static void main(String[] args) {  
+       Endpoint.publish("http://localhost:7777/ws/hello", new HelloWorldImpl());  
+       System.out.println("WSDL Published !!");
+        }  
 }
-
-}
+```
 
 **4. Test generated WSDL**
 
@@ -230,329 +191,212 @@ Run HelloWorldPublisher as Java Application & access url:
 
 <http://endpoint/>" uses package name of Service endpoint publisher
 
-###### wsimport tool VS wsgen
+## wsimport tool VS wsgen
 
 **1.wsimport –(WSDL Import)** tool is will import WSDL file and generates JAX-WS
 Web Service End Point files.
+```javascript
+> wsimport -keep http://localhost:7777/ws/hello?wsdl
+```
 
->   \>wsimport -keep http://localhost:7777/ws/hello?wsdl
 
 **2.wsGen –(WSDL Generator)**
 
 It will read the JAX-WS Web Service End Point files & Generates WSDL Document &
 Webservice client for Testing . This wsgen tool is available in \$JDK/bin folder
+```java
+>wsgen -verbose -keep -cp . endpoint.RandomNumber
+```
 
-**\>wsgen -verbose -keep -cp . endpoint.RandomNumber**
 
-###### Difference between JAX-RS & RESTful
+## Difference between JAX-RS & RESTful
 
 -   RESTFul is a Generalized Web service Standard given by W3.ORG.
 
 -   JAX-RS is a specification for RESTful Web Services with Java and it is given
     by Sun.
 
--   *Jersey *from Oracle, *Resteasy *from Jboss are the implementations of
+-   *Jersey* from Oracle, *Resteasy *from Jboss are the implementations of
     JAX-RS
 
-###### majorly used annotations in RESTFul webservices
+## majorly used annotations in RESTFul webservices
 
--   **\@Path(‘Path‘)**
+-   **@Path(‘Path‘)**
 
--   **\@GET**
+-   **@GET**
 
--   **\@POST**
+-   **@POST**
 
--   **\@PUT**
+-   **@PUT**
 
--   **\@DELETE**
+-   **@DELETE**
 
--   **\@Produces(MediaType.TEXT_PLAIN [, more-types]) – Only for \@GET**
+-   **@Produces(MediaType.TEXT_PLAIN [, more-types]) – Only for @GET**
 
--   **\@Consumes(type[, more-types]) - Only for \@POST**
+-   **@Consumes(type[, more-types]) - Only for @POST**
 
--   **\@PathParam()**
+-   **@PathParam()**
 
--   **\@QueryParam()**
+-   **@QueryParam()**
 
--   **\@MatrixParam()**
+-   **@MatrixParam()**
 
--   **\@FormParam()**
+-   **@FormParam()**
 
-###### Steps to creates to RestFul web-service in java?
-
+## Steps to creates to RestFul web-service in java?
+```java
 1 Add Jersey jar files in pom.xml
-
 2. Create RESTFul webservice at Server End.
+@Path("/hellojersey")  
+public class HelloWorldWebService {  
+  // This method is called if HTML and XML is not requested  
+  @GET  
+  @Produces(MediaType.TEXT_PLAIN)  
+  public String sayPlainTextHello() {  
+    return "Hello Jersey Plain";  
+  }  
 
-\@Path("/hellojersey")
+  // This method is called if HTML is requested  
+  @GET  
+  @Produces(MediaType.TEXT_HTML)  
+  public String sayHtmlHello() {  
+    return "<h1>" + "Hello Jersey HTML" + "</h1>";  
+  }  
+} 
 
-public class HelloWorldWebService {
+3.Configure web.xml
+In web.xml, register “com.sun.jersey.spi.container.servlet.ServletContainer“, and puts your Jersey service folder under “init-param“, “com.sun.jersey.config.property.packages
 
-// This method is called if HTML and XML is not requested
+<web-app>
+	<servlet>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<servlet-class>
+                     com.sun.jersey.spi.container.servlet.ServletContainer
+                </servlet-class>
+		<init-param>
+		     <param-name>com.sun.jersey.config.property.packages</param-name>
+		     <param-value>service</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 
-\@GET
+	<servlet-mapping>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
 
-\@Produces(MediaType.*TEXT_PLAIN*)
+</web-app>
 
-public String sayPlainTextHello() {
-
-return "Hello Jersey Plain";
-
-}
-
-// This method is called if HTML is requested
-
-\@GET
-
-\@Produces(MediaType.*TEXT_HTML*)
-
-public String sayHtmlHello() {
-
-return "\<h1\>" + "Hello Jersey HTML" + "\</h1\>";
-
-}
-
-}
-
-**3.Configure web.xml**
-
-In web.xml, register “com.sun.jersey.spi.container.servlet.ServletContainer“,
-and puts your Jersey service folder under “**init-param**“,
-“com.sun.jersey.config.property.packages
-
-\<web-app\>
-
-\<servlet\>
-
-\<servlet-name\>jersey-*serlvet*\</servlet-name\>
-
-\<servlet-class\>
-
-com.sun.jersey.spi.container.servlet.ServletContainer
-
-\</servlet-class\>
-
-\<init-param\>
-
-\<param-name\>com.sun.jersey.config.property.packages\</param-name\>
-
-\<param-value\>service\</param-value\>
-
-\</init-param\>
-
-\<load-on-startup\>1\</load-on-startup\>
-
-\</servlet\>
-
-\<servlet-mapping\>
-
-\<servlet-name\>jersey-*serlvet*\</servlet-name\>
-
-\<url-pattern\>/rest/\*\</url-pattern\>
-
-\</servlet-mapping\>
-
-\</web-app\>
 
 4.Test Service
-
-<http://localhost:8080/JAXRS-Jersey-HelloWorld/rest/hellojersey>
+http://localhost:8080/JAXRS-Jersey-HelloWorld/rest/hellojersey
 
 or
+System.out.println(target.path("rest").path("hellojersey").request().accept(MediaType.TEXT_PLAIN).get(String.class));
+ 		System.out.println(target.path("rest").path("hellojersey").request().accept(MediaType.TEXT_HTML).get(String.class));
+	}
+```
 
-System.*out*.println(target.path("rest").path("hellojersey").request().accept(MediaType.*TEXT_PLAIN*).get(String.class));
-
-System.*out*.println(target.path("rest").path("hellojersey").request().accept(MediaType.*TEXT_HTML*).get(String.class));
-
-}
-
-Examples
-
-<1.@Path> Annotation
-
-\@Path("/country")
-
-public class PathMethodLevelService {
-
-\@GET
-
-\@Produces("text/html")
-
-public Response selectCountry() {
-
-String output = " Default Country : \<h1\>INDIA\</h1\>";
-
-return Response.*status*(200).entity(output).build();
-
-}
-
-\@GET
-
-\@Path("/usa")
-
-\@Produces("text/html")
-
-public Response selectUSA() {
-
-String output = "Selected Country : \<h1\>United States of America(USA)\</h1\>";
-
-return Response.*status*(200).entity(output).build();
-
-}
-
-\@GET
-
-\@Path("/uk")
-
-\@Produces("text/html")
-
-public Response selectUK() {
-
-String output = "Selected Country : \<h1\>UNITED KINGDOM(UK)\</h1\>";
-
-return Response.*status*(200).entity(output).build();
-
-}
-
-}
-
-###### Response Class in JAX-RS
+## Response Class in JAX-RS
 
 **javax.ws.rs.core.Response** contains static methods to create a Response
 instance using a **ResponseBuilder**.
 
 **http://localhost:8080/App/rest/students/101/Satya/Vijayawada**
 
-\@Path("/students")
-
+```java
+@Path("/students")
 public class PathParamService {
-
-\@GET
-
-\@Path("{rollno}/{name}/{address}")
-
-\@Produces("text/html")
-
-public Response getResultByPassingValue(
-
-\@PathParam("rollno") String rollno,
-
-\@PathParam("name") String name,
-
-\@PathParam("address") String address) {
-
-String output = "\<h1\>PathParamService Example\</h1\>";
-
-output = output+"\<br\>Roll No : "+rollno;
-
-output = output+"\<br\>Name : "+name;
-
-output = output+"\<br\>Address : "+address;
-
-return Response.*status*(200).entity(output).build();
-
+	
+	@GET
+	@Path("{rollno}/{name}/{address}")
+	@Produces("text/html")
+	public Response getResultByPassingValue(
+			               @PathParam("rollno") String rollno,
+					@PathParam("name") String name,
+					@PathParam("address") String address) {		
+		String output = "<h1>PathParamService Example</h1>";
+		output = output+"<br>Roll No : "+rollno;
+		output = output+"<br>Name : "+name;
+		output = output+"<br>Address : "+address;		 
+		return Response.status(200).entity(output).build(); 
+	}
 }
+```
 
-}
 
-###### How to set different status code in HTTP response?
+## How to set different status code in HTTP response?
 
 For setting HTTP status code other than 200, we have to
 use javax.ws.rs.core.Response class for response. Below are some of the sample
 return statements showing it’s usage.
-
+```java
 return Response.status(422).entity(exception).build();
-
 return Response.ok(response).build(); //200
+```
+
 
 ![Image result for http status codes](media/f76df6c1aa779c4a85827708cc3788f2.png)
 
 **http://localhost:8080/App/rest/students?rollno=1218&name=SATYA
 &address=VIJAYAWADA**
 
-\@Path("/students")
-
+```java
+@Path("/students")
 public class QueryParamwithDefaultvalueService {
-
-\@GET
-
-\@Produces("text/html")
-
-public Response getResultByPassingValue(
-
-\@DefaultValue("1000") \@QueryParam("rollno") String rollno,
-
-\@DefaultValue("XXXX") \@QueryParam("name") String name,
-
-\@DefaultValue("XXXX") \@QueryParam("address") String address) {
-
-String output = "\<h1\>QueryParamwithDefaultvalueService Example\</h1\>";
-
-output = output + "\<br\>Roll No : " + rollno;
-
-output = output + "\<br\>Name : " + name;
-
-output = output + "\<br\>Address : " + address;
-
-return Response.*status*(200).entity(output).build();
-
+	@GET
+	@Produces("text/html")
+	public Response getResultByPassingValue(
+                      @DefaultValue("1000") @QueryParam("rollno") String rollno,
+			@DefaultValue("XXXX") @QueryParam("name") String name,
+			@DefaultValue("XXXX") @QueryParam("address") String address) {
+		String output = "<h1>QueryParamwithDefaultvalueService Example</h1>";
+		output = output + "<br>Roll No : " + rollno;
+		output = output + "<br>Name : " + name;
+		output = output + "<br>Address : " + address;
+		return Response.status(200).entity(output).build();
+	}
 }
-
+http://localhost:8080/App/rest/students;rollno=1118;name=SATYA;address=VIJAYAWADA
+@Path("/students")
+public class MatrixParamService{	
+	@GET
+	@Produces("text/html")
+	public Response getResultByPassingValue(
+			@MatrixParam("rollno") String rollno,
+			@MatrixParam("name") String name,
+			@MatrixParam("address") String address) {
+		
+		String output = "<h1>@MatrixParam Example</h1>";
+		output = output+"<br>Roll No : "+rollno;
+		output = output+"<br>Name : "+name;
+		output = output+"<br>Address : "+address;		 
+		return Response.status(200).entity(output).build(); 
+	}
 }
-
-**http://localhost:8080/App/rest/students;rollno=1118;name=SATYA;address=VIJAYAWADA**
-
-\@Path("/students")
-
-public class MatrixParamService{
-
-\@GET
-
-\@Produces("text/html")
-
-public Response getResultByPassingValue(
-
-\@MatrixParam("rollno") String rollno,
-
-\@MatrixParam("name") String name,
-
-\@MatrixParam("address") String address) {
-
-String output = "\<h1\>\@MatrixParam Example\</h1\>";
-
-output = output+"\<br\>Roll No : "+rollno;
-
-output = output+"\<br\>Name : "+name;
-
-output = output+"\<br\>Address : "+address;
-
-return Response.*status*(200).entity(output).build();
-
-}
-
-}
+```
 
 ![C:\\Users\\kaveti_s\\Desktop\\temp.png](media/6f4dde26415602d13b085b7bbaa0dec9.png)
 
-\@Path("/students")
+@Path("/students")
 
 public class FormParamService {
 
-\@POST
+@POST
 
-\@Path("/registerStudent")
+@Path("/registerStudent")
 
-\@Produces("text/html")
+@Produces("text/html")
 
 public Response getResultByPassingValue(
 
-\@FormParam("rollno") String rollno,
+@FormParam("rollno") String rollno,
 
-\@FormParam("name") String name,
+@FormParam("name") String name,
 
-\@FormParam("address") String address) {
+@FormParam("address") String address) {
 
-String output = "\<h1\>\@FormParam Example - REGISTRATION COMPLETED!!!\</h1\>";
+String output = "\<h1\>@FormParam Example - REGISTRATION COMPLETED!!!\</h1\>";
 
 output = output+"\<br\>Roll No : "+rollno;
 
@@ -566,25 +410,25 @@ return Response.*status*(200).entity(output).build();
 
 }
 
-###### JAX-RS Download files (text/image/pdf/execel) Example
+## JAX-RS Download files (text/image/pdf/execel) Example
 
-We can download any type of files from the RESTful web services, **\@produces**
+We can download any type of files from the RESTful web services, **@produces**
 annotation
 
 We should annotate our method with
 
--   **\@Produces(“text/plain“)** If you are expecting Text file as response
+-   **@Produces(“text/plain“)** If you are expecting Text file as response
 
--   **\@Produces(“image/your image type[.jpg/.png/.gif]”)** for downloading any
+-   **@Produces(“image/your image type[.jpg/.png/.gif]”)** for downloading any
     Image files
 
--   **\@Produces(“application/pdf“)** for downloading PDF files
+-   **@Produces(“application/pdf“)** for downloading PDF files
 
--   \@Produces**(MediaType.APPLICATION_JSON**) -- JSON
+-   @Produces**(MediaType.APPLICATION_JSON**) -- JSON
 
--   \@Produces(MediaType.APPLICATION_XML). -XML
+-   @Produces(MediaType.APPLICATION_XML). -XML
 
-###### How to Test (JAX-RS) RESTful Web Services
+## How to Test (JAX-RS) RESTful Web Services
 
 in real time projects we will use different tools to test RESTful web services
 
@@ -604,7 +448,7 @@ in real time projects we will use different tools to test RESTful web services
 
 -   [SoupUi](https://www.soapui.org/)
 
-###### What are advantages of SOAP Web Services?
+## What are advantages of SOAP Web Services?
 
 SOAP web services have all the advantages that web services has, some of the
 additional advantages are:
@@ -619,7 +463,7 @@ additional advantages are:
 -   SOAP protocol is universally accepted, so it’s an industry standard approach
     with many easily available open source implementations.
 
-###### What are different components of WSDL?
+## What are different components of WSDL?
 
 Some of the different tags in WSDL xml are:
 
@@ -636,7 +480,7 @@ Some of the different tags in WSDL xml are:
 
 -   soap:address for endpoint URL.
 
-###### What is difference between Top Down and Bottom Up approach in SOAP Web Services?
+## What is difference between Top Down and Bottom Up approach in SOAP Web Services?
 
 **In Top Down approach first WSDL document is created to establish the contract
 between web service** and client and then code is written, it’s also termed as
@@ -649,11 +493,11 @@ generated**. It’s also termed as contract last approach. This approach is easy
 to implement because WSDL is generated based on code. In this approach client
 code have to wait for WSDL from server side to start their work.
 
-###### Can we maintain user session in web services?
+## Can we maintain user session in web services?
 
 Web services are stateless so we can’t maintain user sessions in web services.
 
-###### What is difference between SOA and Web Services?
+## What is difference between SOA and Web Services?
 
 Service Oriented Architecture (SOA) is an architectural pattern where
 applications are designed in terms of services that can be accessed through
@@ -664,18 +508,18 @@ doesn’t go into implementation.
 Web Services can be thought of as Services in SOAP architecture and providing
 means to implement SOA pattern.
 
-###### Name some frameworks in Java to implement SOAP web services?
+## Name some frameworks in Java to implement SOAP web services?
 
 We can create SOAP web services using JAX-WS API, however some of the other
 frameworks that can be used are Apache Axis and Apache CXF. 
 
-###### What is use of javax.xml.ws.Endpoint class?
+## What is use of javax.xml.ws.Endpoint class?
 
 Endpoint class provides useful methods to create endpoint and publish existing
 implementation as web service. This comes handy in testing web services before
 making further changes to deploy it on actual server.
 
-###### What is sun-jaxws.xml file?
+## What is sun-jaxws.xml file?
 
 This file is used to provide endpoints details when JAX-WS web services are
 deployed in servlet container such as Tomcat. This file is present in WEB-INF
@@ -698,22 +542,22 @@ url-pattern="/personWS"/\>
 
 \</endpoints\>
 
-###### Name important annotations used in JAX-RS API?
+## Name important annotations used in JAX-RS API?
 
 Some of the important JAX-RS annotations are:
 
--   **\@Path:** used to specify the relative path of class and methods. We can
+-   **@Path:** used to specify the relative path of class and methods. We can
     get the URI of a webservice by scanning the Path annotation value.
 
--   **\@GET, \@PUT, \@POST, \@DELETE and \@HEAD**: used to specify the HTTP
+-   **@GET, @PUT, @POST, @DELETE and @HEAD**: used to specify the HTTP
     request type for a method.
 
--   **\@Produces, \@Consumes:** used to specify the request and response types.
+-   **@Produces, @Consumes:** used to specify the request and response types.
 
--   **\@PathParam:** used to bind the method parameter to path value by parsing
+-   **@PathParam:** used to bind the method parameter to path value by parsing
     it.
 
-###### What is purpose of different HTTP Request Types in RESTful Web Service?
+## What is purpose of different HTTP Request Types in RESTful Web Service?
 
 -   **GET** request on /employee/101, you can retrieve details of that user.
 
