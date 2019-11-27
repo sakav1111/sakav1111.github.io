@@ -230,6 +230,12 @@ Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.
 
 
 
+==================================
+Stats COunter
+===============================
+<!-- Start of WebFreeCounter Code -->
+<a href="https://www.webfreecounter.com/" target="_blank"><img src="https://www.webfreecounter.com/hit.php?id=grmxaack&nd=7&style=2" border="0" alt="web counter"></a>
+<!-- End of WebFreeCounter Code -->
 
 
 
