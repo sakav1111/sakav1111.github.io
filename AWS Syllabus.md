@@ -1,229 +1,3 @@
-Naresh
-======
-
-**AWS Course Content**
-
-Introduction to Cloud Computing
--------------------------------
-
--   Introduction to cloud computing
-
--   Essential Characteristics of Cloud Computing
-
--   Service Models in Cloud computing
-
--   Deployment models in Cloud Computing
-
--   Introduction to AWS
-
--   AWS Account creation &free tier limitations overview
-
-Identity Access Management
---------------------------
-
--   Root Account Vs IAM user
-
--   Multi-FactorAuthentication for Users
-
--   IAM Password Policies
-
--   Creating Customer Managed Policies.
-
--   Groups
-
--   Roles
-
-Glacier Storage
----------------
-
--   What is Simple Storage Service (S3)
-
--   Storage Classes
-
--   Versioning
-
--   Cross-region replication
-
--   Life Cycle Management
-
--   Security & Encryption
-
--   Static Webhosting with S3 bucket
-
--   Events configuration on S3 buckets
-
--   Enabling cross-account access for S3
-
--   S3 Data management and backup using 3rd Party applications.
-
--   S3 Cross-Account Access and Pre-Signed URLs
-
--   Storage Gateway
-
-Linux Introduction
-
--   Basics of Linux for AWS
-
--   Linux Installation and Basic commands overview
-
--   Web Server and Services Configurations
-
-Compute
--------
-
--   EC2 Instance Launch Wizard
-
--   EC2 Instance Types
-
--   Generating custom Public Key and Private keys for EC2 instances
-
--   Security groups
-
--   Volumes and Snapshots
-
--   Creating customized Amazon Machine Images
-
--   RAID Overview and RAID Configurations
-
--   User Data and Metadata
-
--   ElasticLoad Balancers & Health Checks
-
--   Auto Scaling Groups
-
--   CloudWatch
-
--   Creating Billing Alarm and EC2 instance alarms.
-
--   AWS CLI&EC2 Roles
-
--   Elastic File System
-
--   AWS Lightsail
-
--   Elastic Beanstalk
-
--   Placement Groups
-
-Route 53
---------
-
--   DNS Records overview
-
--   Routing Policies
-
--   Hosting sample Website and configuring Policies
-
--   Simple Routing Policy
-
--   Latency Routing Policy
-
--   Failover Routing Policy
-
--   Weighted Routing Policy
-
--   Geolocation Routing Policy.
-
-Databases
----------
-
--   Launching a RDS  Instances (MySQL, MSSQL & Aurora)
-
--   Multi-AZ & Read Replicas for RDS instances
-
--   DynamoDB
-
--   Redshift
-
--   Elastichache
-
--   Database Migration Service and Schema conversion tool
-
-VPC (Virtual Private Cloud)
----------------------------
-
--   Networking Basics
-
--   Creating custom VPCs and custom Subnets
-
--   Network ACL’s
-
--   Route Tables & IGW
-
--   VPC Peering
-
--   Flow log creation
-
--   VPN Configuration with AWS (OpenVPN)
-
-Security Options
-----------------
-
--   CloudTrail
-
--   AWS Config
-
--   Key Management Services
-
--   AWS Certificate Manager
-
--   AWS Inspector
-
--   AWS Trusted Advisor
-
--   Content Delivery Networks / CloudFront
-
-Application Services
---------------------
-
--   Simple Email Service
-
--   Simple Queue Service
-
--   Simple Workflow Service
-
--   Simple Notification Service
-
--   SMS – Server Migration Service
-
--   Migrating server from on-premises to cloud
-
--   Cloud Formation
-
--   Directory Services and Adding EC2 instance to Domain
-
--   AWS TCO Calculator and Simple Monthly calculator
-
-DevOps Tools Overview
----------------------
-
--   What is DevOps in Cloud
-
--   Code Pipeline
-
--   Code Commit, Code Build
-
--   Code Deploy
-
--   Lambda
-
-Monitoring Tools
-----------------
-
--   Creating Custom Metrics with CloudWatch
-
-Amazon White Papers review
---------------------------
-
--   Security
-
--   Reliability
-
--   Performance Efficiency
-
--   Cost Optimization
-
--   Operational Excellence
 
 AWS Certified Solutions Architect Tutorial \| AWS Training \| Edureka
 ---------------------------------------------------------------------
@@ -600,3 +374,233 @@ service.
 >   <https://www.simplilearn.com/cloud-computing/aws-solution-architect-associate-training>
 
 ![](media/2956866f7c6b7d7ef34b8e2e29676d7d.jpg)
+
+
+
+
+Naresh
+======
+
+**AWS Course Content**
+
+Introduction to Cloud Computing
+-------------------------------
+
+-   Introduction to cloud computing
+
+-   Essential Characteristics of Cloud Computing
+
+-   Service Models in Cloud computing
+
+-   Deployment models in Cloud Computing
+
+-   Introduction to AWS
+
+-   AWS Account creation &free tier limitations overview
+
+Identity Access Management
+--------------------------
+
+-   Root Account Vs IAM user
+
+-   Multi-FactorAuthentication for Users
+
+-   IAM Password Policies
+
+-   Creating Customer Managed Policies.
+
+-   Groups
+
+-   Roles
+
+Glacier Storage
+---------------
+
+-   What is Simple Storage Service (S3)
+
+-   Storage Classes
+
+-   Versioning
+
+-   Cross-region replication
+
+-   Life Cycle Management
+
+-   Security & Encryption
+
+-   Static Webhosting with S3 bucket
+
+-   Events configuration on S3 buckets
+
+-   Enabling cross-account access for S3
+
+-   S3 Data management and backup using 3rd Party applications.
+
+-   S3 Cross-Account Access and Pre-Signed URLs
+
+-   Storage Gateway
+
+Linux Introduction
+
+-   Basics of Linux for AWS
+
+-   Linux Installation and Basic commands overview
+
+-   Web Server and Services Configurations
+
+Compute
+-------
+
+-   EC2 Instance Launch Wizard
+
+-   EC2 Instance Types
+
+-   Generating custom Public Key and Private keys for EC2 instances
+
+-   Security groups
+
+-   Volumes and Snapshots
+
+-   Creating customized Amazon Machine Images
+
+-   RAID Overview and RAID Configurations
+
+-   User Data and Metadata
+
+-   ElasticLoad Balancers & Health Checks
+
+-   Auto Scaling Groups
+
+-   CloudWatch
+
+-   Creating Billing Alarm and EC2 instance alarms.
+
+-   AWS CLI&EC2 Roles
+
+-   Elastic File System
+
+-   AWS Lightsail
+
+-   Elastic Beanstalk
+
+-   Placement Groups
+
+Route 53
+--------
+
+-   DNS Records overview
+
+-   Routing Policies
+
+-   Hosting sample Website and configuring Policies
+
+-   Simple Routing Policy
+
+-   Latency Routing Policy
+
+-   Failover Routing Policy
+
+-   Weighted Routing Policy
+
+-   Geolocation Routing Policy.
+
+Databases
+---------
+
+-   Launching a RDS  Instances (MySQL, MSSQL & Aurora)
+
+-   Multi-AZ & Read Replicas for RDS instances
+
+-   DynamoDB
+
+-   Redshift
+
+-   Elastichache
+
+-   Database Migration Service and Schema conversion tool
+
+VPC (Virtual Private Cloud)
+---------------------------
+
+-   Networking Basics
+
+-   Creating custom VPCs and custom Subnets
+
+-   Network ACL’s
+
+-   Route Tables & IGW
+
+-   VPC Peering
+
+-   Flow log creation
+
+-   VPN Configuration with AWS (OpenVPN)
+
+Security Options
+----------------
+
+-   CloudTrail
+
+-   AWS Config
+
+-   Key Management Services
+
+-   AWS Certificate Manager
+
+-   AWS Inspector
+
+-   AWS Trusted Advisor
+
+-   Content Delivery Networks / CloudFront
+
+Application Services
+--------------------
+
+-   Simple Email Service
+
+-   Simple Queue Service
+
+-   Simple Workflow Service
+
+-   Simple Notification Service
+
+-   SMS – Server Migration Service
+
+-   Migrating server from on-premises to cloud
+
+-   Cloud Formation
+
+-   Directory Services and Adding EC2 instance to Domain
+
+-   AWS TCO Calculator and Simple Monthly calculator
+
+DevOps Tools Overview
+---------------------
+
+-   What is DevOps in Cloud
+
+-   Code Pipeline
+
+-   Code Commit, Code Build
+
+-   Code Deploy
+
+-   Lambda
+
+Monitoring Tools
+----------------
+
+-   Creating Custom Metrics with CloudWatch
+
+Amazon White Papers review
+--------------------------
+
+-   Security
+
+-   Reliability
+
+-   Performance Efficiency
+
+-   Cost Optimization
+
+-   Operational Excellence
