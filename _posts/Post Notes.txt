@@ -1,0 +1,17 @@
+---
+title: Java - Run JAR file from command-line 
+date: 2017-011-11 00:00:00 Z
+categories:
+- Java
+tags:
+- Java
+layout: article
+cover: /assets/logo/java.png
+sharing: true
+license: false
+aside:
+  toc: true
+pageview: true
+---
+
+## Start Here

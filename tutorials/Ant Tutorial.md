@@ -34,7 +34,7 @@ other location.
 1.To install [Apache Ant](http://ant.apache.org/bindownload.cgi) on Windows,
 you just need to download the Ant’s zip file
 
-![](media/e7883b4f3b8de4eac7f65a1f6c4c1d7c.tmp)
+![](media/e7883b4f3b8de4eac7f65a1f6c4c1d7c.png)
 
 2.**Unzip Downloaded file. It Folder Structure will be as follows**
 
@@ -46,21 +46,21 @@ Installation Location
 **Control Panel → User Accounts → User Accounts → Change my Environment
 Variables**
 
-![](media/9565bc9e92d915c25893411ac679ba27.tmp)
+![](media/9565bc9e92d915c25893411ac679ba27.png)
 
 4.Add **ANT_HOME** as the Windows environment variable, and point it to your
 Ant folder
 
-![](media/9fce195485844b35e59f1cf82615ef03.tmp)
+![](media/9fce195485844b35e59f1cf82615ef03.png)
 
 5.Update **PATH** variable, append **%ANT_HOME%\\bin** at the end, so that you
 can run the Ant’s command everywhere
 
-![](media/c765d216ed1fb136165ee34ba476cd7c.tmp)
+![](media/c765d216ed1fb136165ee34ba476cd7c.png)
 
 6.Verify ANT is installed properly or not by below command
 
-![](media/1db980fd22acc02391a189ebc2ebe1e5.tmp)
+![](media/1db980fd22acc02391a189ebc2ebe1e5.png)
 
 3.Ant Hello World Application
 ------------------------------
@@ -71,7 +71,7 @@ Jar file
 **1. Create a Java Project**  
 In Eclipse IDE, create a new Java project named **“HelloAnt".**
 
-![](media/66b9abf439f51111625e769a83f8a5d7.tmp)
+![](media/66b9abf439f51111625e769a83f8a5d7.png)
 
 **2. Create Java Program**  
 Create a new Java class to print “Hello Ant!"
@@ -179,7 +179,7 @@ Above metioned **$varibles** are declared on top with below values
 
 
 It will compile the java socurce code and places in **/bin** folder.
-![](media/3d69f6f2fc7aa987fbdb793b031b8d66.tmp)
+![](media/3d69f6f2fc7aa987fbdb793b031b8d66.png)
 
 **2.Package the project into an executable Jar file using >`ant dist`**
 ```xml
@@ -196,7 +196,7 @@ It will compile the java socurce code and places in **/bin** folder.
 		</jar>
 	</target>
 ```
-![](media/5ed31137b5dfc95cb32f0c141c931cc2.tmp)
+![](media/5ed31137b5dfc95cb32f0c141c931cc2.png)
 
 Verify Created Jar
 ![](media/8a2673059a5b8ace880b9ef5c1317d63.png)
@@ -213,7 +213,7 @@ Verify Created Jar
 4.If no options, the default target will be executed, in this example, the
 default target is **main**
 
-![](media/e2b9ec0fa5114c86b4807c7dcbe1e9f4.tmp)
+![](media/e2b9ec0fa5114c86b4807c7dcbe1e9f4.png)
 
 
 
@@ -312,11 +312,11 @@ ant generate-javadoc
 ```
 
 
-![](media/29c9afa14b85ca4bb8ee4915f6cdf253.tmp)
+![](media/29c9afa14b85ca4bb8ee4915f6cdf253.png)
 
 **3. Open C:\\Workspace\\HelloAnt\\doc folder to check generated java document**
 
-![](media/8813af0698418be74c3ee2036302ce06.tmp)
+![](media/8813af0698418be74c3ee2036302ce06.png)
 
 
 
@@ -340,7 +340,7 @@ target & Command once
 ```
 Command for creating jar file is **>ant dist**
 
-![](media/9510a21fea6631a6a1c93b50a2a67973.tmp)
+![](media/9510a21fea6631a6a1c93b50a2a67973.png)
 
 ### 4.4 Ant – Creating war Files
 
@@ -363,7 +363,7 @@ webapllication it contains only index.jsp file for testing purpose
 ```
 Command for creating jar file is ** >ant build-war**
 
-![](media/8468e49ea014a2cfaaa66694561a2efe.tmp)
+![](media/8468e49ea014a2cfaaa66694561a2efe.png)
 
 ### 4.5 Ant – JUnit Integration
 

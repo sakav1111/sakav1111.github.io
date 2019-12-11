@@ -68,7 +68,7 @@ POM.XML Structure
 Go to [Maven official website](http://maven.apache.org/download.cgi), download
 the Maven zip file, Unzip It.
 
-![](media/3fa715a04da7711631d7169ffb02ef72.tmp)
+![](media/3fa715a04da7711631d7169ffb02ef72.png)
 
 2.Configure the **JAVA_HOME** Windows environment variables by specifying Java
 Installation Location
@@ -76,7 +76,7 @@ Installation Location
 **Control Panel → User Accounts → User Accounts → Change my Environment
 Variables**
 
-![](media/9565bc9e92d915c25893411ac679ba27.tmp)
+![](media/9565bc9e92d915c25893411ac679ba27.png)
 
 3.Add both **M2_HOME** and **MAVEN_HOME** as Windows environment variable &
 point it to Maven folder
@@ -85,11 +85,11 @@ point it to Maven folder
 
 4.Update **PATH** variable, append Maven bin folder – **%M2_HOME%\\bin**, so
 that you can run the Maven’s command everywhere.  
-![](media/30c3f3bc62b8222c8ec785a0f0ffd0ca.tmp)
+![](media/30c3f3bc62b8222c8ec785a0f0ffd0ca.png)
 
 5.Verify Maven is installed properly or by mvn –version command
 
-![](media/886fbe249a03ad3e32bf3eec9c817b06.tmp)
+![](media/886fbe249a03ad3e32bf3eec9c817b06.png)
 
 **6. Change PROXY Settings**  
 If you are behind a proxy, Maven will fail to download any dependencies.in this
@@ -167,7 +167,7 @@ default to **.m2** 
 
 Folder **C:\\Documents and Settings\\{your-username}\\.m2**
 
-![](media/6c4c18cd646708d3e25744afc9fee5a8.tmp)
+![](media/6c4c18cd646708d3e25744afc9fee5a8.png)
 
 We can change the location of maven local repository by changing
 the **settings.xml** file. It is located in **MAVEN_HOME/conf/settings.xml**
@@ -197,12 +197,12 @@ repository* – [http://repo1.maven.org/maven2/](http://repo1.maven.org/maven/
 the apache maven community itself.The path of central repository
 is: <http://repo1.maven.org/maven2/>
 
-![](media/e57922e3bef7ea3c6216976fe6f003c9.tmp)
+![](media/e57922e3bef7ea3c6216976fe6f003c9.png)
 
 The central repository contains a lot of common libraries that can be viewed by
 this URL <http://search.maven.org/#browse>
 
-![](media/7bd009f3292f718f22f3933c6704ec6e.tmp)
+![](media/7bd009f3292f718f22f3933c6704ec6e.png)
 
 ### 3.3 Remote Repository
 
@@ -364,7 +364,7 @@ mvn archetype:generate -DgroupId=com.smlcodes
 **2. If we check the Generated project folder it will contains following
 structure**
 
-![](media/42df597d3b8ca8fd8d05204bda77f3ae.tmp)
+![](media/42df597d3b8ca8fd8d05204bda77f3ae.png)
 
 All source code files puts in folder /src/main/java/, all unit test code puts
 in /src/test/java/.
@@ -452,18 +452,18 @@ java -cp target/MavenSample-1.0-SNAPSHOT.jar com.smlcodes.App
 **1. Go to Window →Preferences →Maven →Installations →Add →Maven location →
 Finish**
 
-![](media/420819b62d803cad2eefb9fa854c97d1.tmp)
+![](media/420819b62d803cad2eefb9fa854c97d1.png)
 
-![](media/d0b11f76923beb221d8acdc89eb9ef4c.tmp)
+![](media/d0b11f76923beb221d8acdc89eb9ef4c.png)
 
 **2. Select the maven installation then click ok**
 
-![](media/d1803394c5fabaebb2ecf32bb9633e98.tmp)
+![](media/d1803394c5fabaebb2ecf32bb9633e98.png)
 
 3.**Go to Maven User Settings locate settings.xml**
 (**apache-maven-3.3.9\\conf\\settings.xml** )
 
-![](media/e5ba48ae0a6bf64ad864270683215ff0.tmp)
+![](media/e5ba48ae0a6bf64ad864270683215ff0.png)
 
 
 
@@ -472,7 +472,7 @@ Finish**
 **Right Click on Project →Configure → Convert to Maven Project → provide
 details→Finish**
 
-![](media/fc35d59e65e6051944a5885a23725aa5.tmp)
+![](media/fc35d59e65e6051944a5885a23725aa5.png)
 
 
 
@@ -510,7 +510,7 @@ maven-archetype-webapp template
 **2. If we check the Generated project folder it will contains following
 structure**
 
-![](media/656b6fd4cafa81c401c28f940fd274a4.tmp)
+![](media/656b6fd4cafa81c401c28f940fd274a4.png)
 
 3.The above created Project is Normal Project **, Eclipse cannot recognize it to
 Importing, to make this as an Eclipse project, in terminal, navigate to
@@ -664,7 +664,7 @@ detail
 
 Before running **mvn install** the folder structure of the project is as below
 
-![](media/243dc36012756bf8955cf6fd5070d0e6.tmp)
+![](media/243dc36012756bf8955cf6fd5070d0e6.png)
 
 ```java
 C:\MavenDemo\MavenSample>mvn install
@@ -733,11 +733,11 @@ C:\MavenDemo\MavenSample>mvn site
 If we open the /**site** folder of our project, we can find the generated
 documenet files
 
-![](media/33ade3244f4a1bd2524edec81c78c0ad.tmp)
+![](media/33ade3244f4a1bd2524edec81c78c0ad.png)
 
 **Open index.html, it will navigates to Home page of your project document**
 
-![](media/fb223488e447eb80d8443e64851a61f3.tmp)
+![](media/fb223488e447eb80d8443e64851a61f3.png)
 
 “mvn site:deploy" to deploy your generated documentation site to server
 automatically, via WebDAV mechanism.

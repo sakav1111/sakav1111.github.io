@@ -434,7 +434,7 @@ public class TestRunner {
 }
 ```
 
-![](media/3d06f6d9f60ace930d802e881f4b311c.tmp)
+![](media/3d06f6d9f60ace930d802e881f4b311c.png)
 
 4.3 Ignore Test
 ---------------

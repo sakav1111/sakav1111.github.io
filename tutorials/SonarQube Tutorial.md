@@ -103,7 +103,7 @@ jvm 1    | 2017.03.21 18:18:36 INFO  app[][o.s.p.m.Monitor] Process[web] is up
 jvm 1    | 2017.03.21 18:18:36 INFO  app[][o.s.p.m.JavaProcessLauncher] Launch p
 rocess[ce]: E:\Users\SmlCodes\Desktop\Java\JDK 8.0\jre\bin\java -Djav
 a.awt.headless=true -Dfile.encoding=UTF-8 -Xmx512m -Xms128m -XX:+HeapDumpOnOutOf
-MemoryError -Djava.io.tmpdir=C:\DevOps\sonarqube\temp -javaagent:E:\Users\smlcodes
+MemoryError -Djava.io.pngdir=C:\DevOps\sonarqube\temp -javaagent:E:\Users\smlcodes
 _s.SmlCodes\Desktop\Java\JDK 8.0\jre\lib\management-agent.jar -cp ./lib/common
 /*;./lib/server/*;./lib/ce/*;C:\DevOps\sonarqube\lib\jdbc\h2\h2-1.3.176.jar org.
 sonar.ce.app.CeServer C:\DevOps\sonarqube\temp\sq-process5966313576283705229prop

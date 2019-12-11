@@ -473,7 +473,7 @@ method if you are not sure about object's existence.
 
 -   **void persist()** method is void, so it doesn't return anything.
 
-![](media/462393950ac7f223f70599e3d8d7264a.tmp)
+![](media/462393950ac7f223f70599e3d8d7264a.png)
 
 ## What is the difference between and merge and update?
 ```java

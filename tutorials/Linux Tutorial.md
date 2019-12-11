@@ -929,7 +929,7 @@ command to be executed.
 
 3.  third column indicates matching items of both the files.
 
-    ![](media/ba253579fdd7a4213d260d5f16cca502.tmp)
+    ![](media/ba253579fdd7a4213d260d5f16cca502.png)
 
 
 
@@ -955,7 +955,7 @@ lowercase to uppercase and vice versa or new lines into spaces
 ```bash
 command | tr <'old'> <'new'>
 ```
-![](media/a5e095eceb8d779992423f1534e212bb.tmp)
+![](media/a5e095eceb8d779992423f1534e212bb.png)
 
 
 ### 7."uniq" command  
@@ -1235,7 +1235,7 @@ sleep NUMBER[SUFFIX]
 SUFFIX may be "**s**" for seconds (the default), "**m**" for minutes, "**h**"
 for hours, or "**d**" for days.
 
-![](media/4e759827962b6a73a0723b2e15bc52e4.tmp)
+![](media/4e759827962b6a73a0723b2e15bc52e4.png)
 
 In above screen, terminal will sleep for 15 seconds
 
@@ -1251,7 +1251,7 @@ time [-p] command [arguments...]
 
 Example: Check how much time it will take to excecute time command
 
-![](media/cf72fa1569c2ef555b898ca94fe90e45.tmp)
+![](media/cf72fa1569c2ef555b898ca94fe90e45.png)
 
 
 
@@ -1261,7 +1261,7 @@ The 'df' command tells about the disk space used in the file system. It defines
 the number of blocks used, number of blocks available and the directory where
 file system is mounte
 
-![](media/5593eb9d9bcb5b8e8802a31cb5a1584f.tmp)
+![](media/5593eb9d9bcb5b8e8802a31cb5a1584f.png)
 
 
 
@@ -1566,7 +1566,7 @@ Users and groups can be locally managed in **/etc/psswd** or **/etc/group.**
 
 To check perimissions of files , use ls –lh command
 
-![](media/89b24f1dc61fae0cd0944e2e78fb3064.tmp)
+![](media/89b24f1dc61fae0cd0944e2e78fb3064.png)
 
 In above output we have r,w,x. following table explains what they are
 

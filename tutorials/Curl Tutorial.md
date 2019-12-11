@@ -42,7 +42,7 @@ After downloading/ Installing you can directly go to the curl folder where
 curl.exe exists trough windows command prompt to run curl commands.you can find
 this in src folder. For example –curl-7.x.x/src/curl.exe
 
-![](media/b77be217f555b6b9c7baea2877366839.tmp)
+![](media/b77be217f555b6b9c7baea2877366839.png)
 
 3.CURL Commands
 ----------------
@@ -276,7 +276,7 @@ verbose mode and it will print the details
 ```dos
 curl -v http://hostname/
 ```
-![](media/1c83f257fb325fdd8b09c415f7c18356.tmp)
+![](media/1c83f257fb325fdd8b09c415f7c18356.png)
 
 #### 5. How to use Proxy to Download a File
 

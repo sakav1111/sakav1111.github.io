@@ -27,7 +27,7 @@ There are two ways to access web service
 **If Service provider knows client,** then it will provide its wsdl to client
 and client will be able to access web service.
 
-![](media/aa1dcb133895ce9c567e24f8efb84cb1.emf)
+![](media/Restfull2.png)
 
 **2. If Service provider register its WSDL to UDDI and client can access it from
 UDDI**
@@ -48,7 +48,7 @@ available through it for discovery.So following steps are involved.
 
 *6. Using WSDL of service provider, client accesses web service*
 
-![](media/7ba2feb856ec757a6ec593af6a0c4b90.emf)
+![](media/uddi.png)
 
 ## What are Rest components
 
@@ -58,7 +58,7 @@ It consists of two components
 
 2. **REST client** : which accesses and modify the REST resources.
 
-![](media/87a40b704572aaf4a9e5b52fecac30c9.emf)
+![](media/RestFul.png)
 
 ## What is Idempotent?
 
@@ -77,7 +77,7 @@ successful request will not be same.
 
 ## Webservices API in java?
 
-![](media/b703450949d9f73124b7435978e7d4cd.emf)
+![](media/jaxws-jaxrs.png)
 
 ## JAX-WS Encoding Styles?
 
@@ -204,7 +204,7 @@ public class HelloWorldPublisher{
 Run HelloWorldPublisher as Java Application & access url:
 <http://localhost:7777/ws/hello?wsdl>
 
-![](media/2239810bb6f00c64b1ac0efc2e43563c.tmp)
+![](media/2239810bb6f00c64b1ac0efc2e43563c.png)
 
 <http://endpoint/>" uses package name of Service endpoint publisher
 
