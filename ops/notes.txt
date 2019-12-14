@@ -1,0 +1,14 @@
+
+Initially 10 GB, scaling in 10 GB increments
+
+Max 64 TB
+
+Compute resources
+
+Max 32 CPUs
+
+Max 244 GiBRAM
+
+2 DB copies in each AZ
+
+Minimum of 3 AZs

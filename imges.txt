@@ -1,2 +1,0 @@
-aa1dcb133895ce9c567e24f8efb84cb1.emf	Restfull2.png
-b703450949d9f73124b7435978e7d4cd.emf	jaxws-jaxrs.png

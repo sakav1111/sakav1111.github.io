@@ -1,0 +1,15 @@
+HTTrack3.49-2+htsswf+htsjava launched on Sat, 14 Dec 2019 00:55:23 at http://www.visualpath.in/devopstutorials/devops +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://www.visualpath.in/devopstutorials/devops -O1 "C:\jenklly\mytrials\ops\visualpath\visualpath" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+00:55:24	Warning: 	Found for www.visualpath.in/robots.txt
+00:55:24	Warning: 	Redirected link is identical because of 'URL Hack' option: www.visualpath.in/robots.txt and https://www.visualpath.in/robots.txt
+00:55:24	Warning: 	Warning moved treated for www.visualpath.in/robots.txt (real one is https://www.visualpath.in/robots.txt)
+00:55:39	Warning: 	file not stored in cache due to bogus state (incomplete type with OK (200), size 0): www.visualpath.in/devopstutorials/js/blockurl.js
+
+HTTrack Website Copier/3.49-2 mirror complete in 1 minutes 35 seconds : 30 links scanned, 29 files written (2429456 bytes overall) [2022465 bytes received at 21289 bytes/sec], 638040 bytes transferred using HTTP compression in 6 files, ratio 25%, 12.0 requests per connection
+(No errors, 4 warnings, 0 messages)

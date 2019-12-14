@@ -8,7 +8,6 @@ tags:
 - DevOps
 ---
 
-===================
 
 When two or more machines are connected with each other, it is called a network
 and the devices in a network are called hosts.
@@ -246,21 +245,3 @@ Internet
 
 ![](media/ec8bfc6feb61140061ed6634490fd400.png)
 
-Start the web service from your command prompt  
-**python CurrencyConverterService.py**
-
-Call the web service from your web browser   
-**http://127.0.0.1:9999/currency_convert?amount_in_dollars=6**
-
-Open another command prompt. Call the web service using python client  
-**python CurrencyConverter_Python_client.py 6**
-
-Open another command prompt. Call the web service using java client  
-**java CurrencyConverter_Java_Client 6**
-
-[Download
-Demo](https://lex.infosysapps.com/fastrack/Generic/NWT/docs/Web_service_demo1.zip)
-
-**Note 1: **Ensure you are in the correct directory in the command prompt.
-
-**Note 2:** To stop the server, press ctrl+c in the command prompt

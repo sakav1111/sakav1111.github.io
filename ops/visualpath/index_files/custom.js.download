@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<title>Page Not Found 404 page | Visual Path</title>
+	<meta content="If you are interested to become a IT Software Trainer. Please fill up the faculty registration form after our HR department will call you further." name="description" />
+
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+	
+	<meta content="http://www.visualpath.in/images/visualpath_logo.png" property="og:image" />
+	<link href="images/favicon.ico" rel="icon" />
+	<link href="css/style.css" id="bones-stylesheet-css" media="all" rel="stylesheet" type="text/css" /><!-- Slider Styles Starts -->
+	<link href="css/royalslider.css" id="new-royalslider-core-css-css" media="all" rel="stylesheet" type="text/css" /><!-- Slider Styles Ends -->
+    <!-- Slider Scripts Starts -->
+	<script type="text/javascript" src="js/royalslider-jquery-1.js"></script><script type="text/javascript">
+/* <![CDATA[ */
+var MP_Ajax = {"show_filters":"1"};
+/* ]]> */
+</script><script type="text/javascript" src="js/royalslider-jquery00.js"></script><script type="text/javascript" src="js/royalslider-jquery01.js"></script><script type="text/javascript" src="js/royalslider-jquery02.js"></script>
+    <!-- headermenu Script  -->
+	<script src="js/jquery.js"></script>
+	<script>
+
+    $(function(){
+
+      $("#includedContent").load("headermenu.html");
+
+    });
+
+    </script>
+    <!-- footer Script  -->
+	<script>
+
+    $(function(){
+
+      $("#includedFooter").load("footer.html");
+
+    });
+
+    </script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44287488-1', 'visualpath.in');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body>
+<div id="includedContent"></div>
+<!--  Content Starts Here  -->
+
+<div class="content_wrapper_main">
+<div class="content_box_main">
+
+
+<!---------------------------->
+
+<div class="main">
+		<div class="agile">
+			
+			<div class="w3l">
+				<div class="text">
+					<h1 style="font-size:40px;marin-left:150px;">Course not available</h1>	
+					
+				
+				</div>
+				<div class="image">
+					<img src="images/404 copy.jpg" style="width:800px;height:500px;">
+				</div>
+				<div class="clear"></div>
+			</div>
+				
+			
+		</div>
+	</div>
+	<!------------------------------>
+
+
+
+
+
+</div>
+
+
+</div>
+<!--  Content Ends Here  -->
+
+  <!-- Footer Starts Here-->
+  <div id="includedFooter"></div>
+<!-- Footer Ends Here-->
+
+</body>
+</html>

@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://www.visualpath.in/devopstutorials/devops -->
+<html class="ui-mobile"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base href="http://www.visualpath.in/devopstutorials/devops">--><base href=".">
+
+<title>DevOps</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./index_files/jquery.mobile-1.4.5.min.css">
+
+	<link rel="stylesheet" href="./index_files/w3.css">
+	<script src="./index_files/jquery-1.11.3.min.js.download"></script>
+	<script src="./index_files/waypoints.js.download"></script>
+	<script src="./index_files/jquery.mobile-1.4.5.min.js.download"></script>
+	<link rel="stylesheet" href="./index_files/reset.css" type="text/css">
+	<link rel="stylesheet" href="./index_files/styles.css" type="text/css">
+	<link href="./index_files/font-awesome.min.css" rel="stylesheet">
+	<link rel="shortcut icon" href="http://www.visualpath.in/devopstutorials/img/devopslogo.png">
+	<script type="text/javascript" src="./index_files/jquery.js.download"></script>
+	<script type="text/javascript" src="./index_files/slider.js.download"></script>
+	<script type="text/javascript" src="./index_files/superfish.js.download"></script>
+	<script type="text/javascript" src="./index_files/jquery-1.7.2.js.download"></script>
+	<script src="./index_files/blockurl.js.download"></script>
+	<script src="./index_files/keydisable.js.download"></script>
+	<script src="./index_files/keydisable1.js.download"></script>
+	<script src="./index_files/keydisable2.js.download"></script>
+	<script src="./index_files/keydisable3.js.download"></script>
+	<script src="./index_files/keydisable4.js.download"></script>
+	<script src="./index_files/contentNavigation.js.download"></script>
+	<script type="text/javascript" src="./index_files/custom.js.download"></script>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<style>
+		.menu ul li a
+		{
+		font-size:12px;
+		position:fixed;
+		}
+		#watermark
+		{
+		 position:fixed;
+		 top: 350px;
+		 bottom:10px;
+		 right:15%;
+		 left: auto;
+		 opacity:0.5;
+		 z-index:99;
+		 color:red;
+		}
+		#bg-text
+		{
+		    color:#dad4d4;
+		    font-size:60px;
+		    transform:rotate(35deg);
+		    -webkit-transform:rotate(35deg);
+		}
+		
+		.w3-teal, .w3-hover-teal:hover {
+    color: #fff!important;
+    background-color:black!important;
+}
+
+	</style>
+	<script>
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+<style type="text/css">* {<br>		-webkit-user-select: text !important;<br>		-moz-user-select: text !important;<br>		-ms-user-select: text !important;<br>		 user-select: text !important;<br>	}</style><style type="text/css">* {<br>        -webkit-user-select: text !important;<br>        -moz-user-select: text !important;<br>        -ms-user-select: text !important;<br>         user-select: text !important;<br>    }</style></head>
+<body class="ui-mobile-viewport ui-overlay-a"><div data-role="page" data-url="/devopstutorials/devops" tabindex="0" class="ui-page ui-page-theme-a ui-page-active" style="">
+
+<div id="container" class="fixed-header">
+
+    <header> 
+	<div class="width">
+    		<h1><a href="http://www.visualpath.in/devopstutorials/devops" style="color:white" class="ui-link">DEVOPS <button class="w3-button w3-teal w3-xlarge w3-hide-large  ui-btn ui-shadow ui-corner-all" onclick="w3_open()" style="width:50px;margin-left:100px;">☰</button></a>
+	    		<span><a href="http://www.visualpath.in/" target="_blanck" class="ui-link">
+	    		by Imran Teli @VisualPath</a>
+	    		</span>
+    		</h1>    		
+
+		<nav class="hidden-xs">
+			<ul class="sf-menu dropdown w3-hide-small w3-hide-medium ">
+				<li><a href="http://www.visualpath.in/devopstutorials/index.html" style="color:white" class="ui-link">HOME</a></li>
+				<li><a href="http://www.visualpath.in/devopstutorials/index.html" style="color:white" class="ui-link">TUTOR CONNECT</a></li> 
+				<li><a href="http://www.visualpath.in/devopstutorials/devops#" style="color:white" class="ui-link">VIDEOS</a></li>            
+				<li><a href="http://www.visualpath.in/devopstutorials/devops#" style="color:white" class="ui-link">CONTACT</a></li>
+       		</ul>			
+				<div class="clear"></div>
+    		</nav>
+       	</div>
+	<div class="clear"></div>     
+    </header>
+    <div id="body" class="width">
+    	<aside class="sidebar big-sidebar left-sidebar">
+	<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:250px;" id="mySidebar">
+ 
+
+<div class="aside-bar">
+            <ul class="menu" style="width:280px;">	
+               <li class="color-bg">
+                    <h4>DevOps Content <button class="w3-bar-item w3-button w3-large w3-hide-large ui-btn ui-shadow ui-corner-all" onclick="w3_close()" style="width:40px;padding-top:12px;"> × </button></h4>
+                    <ul>                       
+					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content"><h4 id="intro" class="ui-collapsible-heading"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-inherit ui-icon-carat-u">DEVOPS INTRODUCTION<span class="ui-collapsible-heading-status"> click to collapse contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit" aria-hidden="false">
+					
+						<ul data-role="listview" class="ui-listview">
+								<li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#devopsintro1" class="ui-btn ui-btn-icon-right ui-icon-carat-r">WHAT IS DEVOPS?</a></li>
+								<li><a href="http://www.visualpath.in/devopstutorials/devops#devopsintro2" class="ui-btn ui-btn-icon-right ui-icon-carat-r">JOB ROLES &amp; THEIR MOTTO.</a></li>
+								<li><a href="http://www.visualpath.in/devopstutorials/devops#devopsintro3" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SOFTWARE DEVELOPMENT PROCESSES</a></li>
+								<li><a href="http://www.visualpath.in/devopstutorials/devops#devopsintro4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">THE PROBLEM</a></li>
+								<li><a href="http://www.visualpath.in/devopstutorials/devops#devopsintro5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">ENTER THE DEVOPS</a></li>
+								<li><a href="http://www.visualpath.in/devopstutorials/devops#devopsintro6" class="ui-btn ui-btn-icon-right ui-icon-carat-r">DEVOPS LIFECYCLE</a></li>
+								<li><a href="http://www.visualpath.in/devopstutorials/devops#devopsintro7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">DEVOPS AND SOFTWARE DEVELOPMENT LIFE CYCLE</a></li>
+								<li><a href="http://www.visualpath.in/devopstutorials/devops#devopsintro8" class="ui-btn ui-btn-icon-right ui-icon-carat-r">TOOLS FOR DEVOPS LIFECYCLE </a></li>
+								<li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#devopsintro9" class="ui-btn ui-btn-icon-right ui-icon-carat-r">DEVOPS LIFECYCLE WITH IMAGES OF DEVOPS TOOLS.</a></li>
+						</ul>
+						</div></div>
+					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="bash" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">BASH SCRIPTING<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+				    
+					
+				    <ul data-role="listview" class="ui-listview">
+						      <li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#bashscript1" class="ui-btn ui-btn-icon-right ui-icon-carat-r">INTRODUCTION</a></li>
+						      <li><a href="http://www.visualpath.in/devopstutorials/devops#bashscript2" class="ui-btn ui-btn-icon-right ui-icon-carat-r">VARIABLES</a></li>
+							  <li><a href="http://www.visualpath.in/devopstutorials/devops#bashscript3" class="ui-btn ui-btn-icon-right ui-icon-carat-r">USER INPUT</a></li>
+							  <li><a href="http://www.visualpath.in/devopstutorials/devops#bashscript4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">IF STATEMENTS</a></li>
+							  <li><a href="http://www.visualpath.in/devopstutorials/devops#bashscript5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">LOOPS!</a></li>
+							  <li><a href="http://www.visualpath.in/devopstutorials/devops#bashscript6" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> REAL TIME USE CASES</a></li>
+							  <li><a href="http://www.visualpath.in/devopstutorials/devops#bashscript7" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> HOW TO SET UP SSH KEYS</a></li>
+							  <li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#bashscript8" class="ui-btn ui-btn-icon-right ui-icon-carat-r">FEW SAMPLE SCRIPTS</a></li>
+				    </ul>
+				    </div></div>
+					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="virtual" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">VIRTUALIZATION<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+				    				
+				    <ul data-role="listview" class="ui-listview">				
+						      <li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#virtualization1" class="ui-btn ui-btn-icon-right ui-icon-carat-r">LIFE WITHOUT VIRTUALIZATION </a></li>
+						      <li><a href="http://www.visualpath.in/devopstutorials/devops#virtualization2" class="ui-btn ui-btn-icon-right ui-icon-carat-r">ENTER THE VMWARE</a></li>
+							  <li><a href="http://www.visualpath.in/devopstutorials/devops#virtualization3" class="ui-btn ui-btn-icon-right ui-icon-carat-r">THE VIRTUAL MACHINE  </a></li>
+						      <li><a href="http://www.visualpath.in/devopstutorials/devops#virtualization4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">KEY PROPERTIES OF VIRTUAL MACHINES 57</a></li>
+							  <li><a href="http://www.visualpath.in/devopstutorials/devops#virtualization5" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> HYPERVISORS </a></li>
+						      <li><a href="http://www.visualpath.in/devopstutorials/devops#virtualization6" class="ui-btn ui-btn-icon-right ui-icon-carat-r">YOUR CHOICE OF HYPERVISOR</a></li>
+							  <li><a href="http://www.visualpath.in/devopstutorials/devops#virtualization7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SOME TERMINOLOGIES</a></li>
+						      <li><a href="http://www.visualpath.in/devopstutorials/devops#virtualization8" class="ui-btn ui-btn-icon-right ui-icon-carat-r">INSTALLING VIRTUALBOX ON WINDOWS.</a></li>
+							  <li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#virtualization9" class="ui-btn ui-btn-icon-right ui-icon-carat-r">INSTALLING OS ON THE NEWLY CREATED VM. </a></li>
+					</ul>
+				    </div></div>
+					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="vagrant" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">VAGRANT<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+				     
+				    <ul data-role="listview" class="ui-listview"> 
+				      <li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#vagrant1" class="ui-btn ui-btn-icon-right ui-icon-carat-r">WHY VAGRANT? </a></li>
+				      <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant2" class="ui-btn ui-btn-icon-right ui-icon-carat-r">INSTALLING VAGRANT ON WINDOWS.</a></li>
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant3" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT BASH CLI   </a></li>
+				      <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">VAGRANT CLOUD.</a></li>
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant5" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> VAGRANTFILE</a></li>
+				      <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant6" class="ui-btn ui-btn-icon-right ui-icon-carat-r">CREATING CENTOS &amp; UBUNTU VM’S USING VAGRANT TOOL. </a></li>
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">CREATING A VAGRANTFILE</a></li>
+				      <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant8" class="ui-btn ui-btn-icon-right ui-icon-carat-r">VAGRANT UP</a></li>
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant9" class="ui-btn ui-btn-icon-right ui-icon-carat-r">VAGRANT SSH</a></li>
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant10" class="ui-btn ui-btn-icon-right ui-icon-carat-r">VERIFICATION. </a></li>      
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant11" class="ui-btn ui-btn-icon-right ui-icon-carat-r">TEARDOWN.  </a></li>      
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant12" class="ui-btn ui-btn-icon-right ui-icon-carat-r">VAGRANT BOX COMMANDS </a></li>      
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant13" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> USEFUL VAGRANFILE SETTINGS. </a></li>      
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant14" class="ui-btn ui-btn-icon-right ui-icon-carat-r">BRIDGE NETWORKING. </a></li>      
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant15" class="ui-btn ui-btn-icon-right ui-icon-carat-r">PROVISIONING  </a></li>      
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant16" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> SYNCED FOLDERS</a></li>      
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant17" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> DEFINING MULTIPLE MACHINES </a></li>
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant18" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> CONTROLLING MULTIPLE MACHINES </a></li>
+					  <li><a href="http://www.visualpath.in/devopstutorials/devops#vagrant19" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> FORWARDED PORTS</a></li>
+					  <li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#vagrant20" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> FEW SAMPLE VAGRANTFILE’S</a></li>
+				    </ul>
+				    </div></div>
+					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="aws" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">AMAZON WEB SERVICES<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+				    
+				    <ul data-role="listview" class="ui-listview">
+						<li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#aws1" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	WHAT IS CLOUD COMPUTING? </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws2" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	CLOUD SERVICE MODELS: </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws3" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	 ADVANTAGES AND DISADVANTAGES OF CLOUD COMPUTING </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	 WHAT IS AWS? </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	REGIONS AND AVAILABILITY ZONES </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws6" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	AWS SERVICES </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	IAM </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws8" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	AMAZON EC2 </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws9" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	AMAZON EBS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws10" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	AWS VPC </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws11" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	CREATING HIGHLY AVAILABLE VPC </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws12" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	ELASTIC LOAD BALANCER </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws13" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	AWS AUTO SCALING </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws14" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	AWS CLOUD WATCH </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws15" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	AWS ELASTIC BEANSTALK + JENKINS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws16" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	AMAZON S3 (SIMPLE STORAGE SERVICE) </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws17" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	AWS RDS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws18" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	ROUTE53 </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws19" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	AWS CLI </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws20" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	S3CMD </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#aws21" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	S3CMD-SYNC </a></li>
+						<li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#aws22" class="ui-btn ui-btn-icon-right ui-icon-carat-r">	 MOUNT AN AMAZON S3 BUCKET TO A LOCAL LINUX FILE SYSTEM </a></li>      
+				    </ul>
+				    </div></div>				
+					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="python" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">PYTHON SCRIPTING<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+						
+						<ul data-role="listview" class="ui-listview">
+							<li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#python1" class="ui-btn ui-btn-icon-right ui-icon-carat-r">PYTHON INTRODUCTION </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#python2" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> BASIC SYNTAX </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#python4" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> PYTHON DATATYPES </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#python5" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> PYTHON OPERATORS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#python6" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> DECISION MAKING </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#python7" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> LOOPS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#python8" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> BUILT IN METHODS/FUNCTIONS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#python9" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> FUNCTIONS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#python10" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> MODULES </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#python11" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> PYTHON FOR OS TASKS. </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#python12" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> FABRIC FOR AUTOMATION </a></li>
+							<li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#python13" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> BOTO FOR AWS</a></li>
+						</ul>
+				    </div></div>
+					
+					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="webarch" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">WEB-APP ARCHITECTURES<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+						
+						<ul data-role="listview" class="ui-listview">
+							<li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#webarch1" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  WEB-APP ARCHITECTURE 1 </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch2" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  THE CLIENT &amp; SERVER </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch3" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> LOAD BALANCING </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  NGINX LOAD BALANCER </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  APACHE HTTP SERVER </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch6" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  TOMCAT SERVER </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  DATABASE</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch8" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  WEB-APP ARCHITECTURE 2</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch9" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  WEB BROWSER </a></li>			  
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch10" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> JBOSS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch11" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  RABBITMQ </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch12" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  MEMCHACHED </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch13" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  WEB APPLICATION ARCHITECTURE </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch14" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  NODEJS SERVER: </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#webarch15" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  ELASTICSEARCH </a></li>
+							<li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#webarch16" class="ui-btn ui-btn-icon-right ui-icon-carat-r">  MONGODB     </a></li>
+						</ul>
+				    </div></div>
+                	<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="sdlcagile" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">SOFTWARE DEVELOPMENT<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+						
+						<ul data-role="listview" class="ui-listview">
+					 
+							<li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#sdlcagile1" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> SOFTWARE DEVELOPMENT PROCESS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#sdlcagile2" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SDLC Models</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#sdlcagile3" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SDLC- Waterfall model</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#sdlcagile4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Agile SDLC Model</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#sdlcagile5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">What is Agile?</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#sdlcagile6" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Scrum</a></li>
+							<li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#sdlcagile7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Agile-DevOps</a></li>
+
+						</ul>
+			    	</div></div>
+
+					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="vcs" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">VCS(GIT)<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+						
+						<ul data-role="listview" class="ui-listview">				 
+							<li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#vcs1" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> WHEN TO USE VCS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs2" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> VCS TERMINOLOGIES </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs3" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> TYPES OF VCS</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs4" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> FAMOUS VERSION CONTROL SYSTEMS. </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">WHAT IS GIT </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs6" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT QUICK SETUP </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT AREAS &amp; WORKFLOW</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs8" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT CONFIGURATIONS</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs9" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT OPERATIONS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs10" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT REPO STATUS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs11" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SAVING CHANGES </a></li>					
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs12" class="ui-btn ui-btn-icon-right ui-icon-carat-r">THE STAGING AREA </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs13" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT HISTORY </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs131" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT DIFF </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs14" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> GITHUB QUICK SETUP</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs15" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> GIT CLONE</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs16" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> SYNCING </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs17" class="ui-btn ui-btn-icon-right ui-icon-carat-r">REPOSITORY URLS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs18" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT FETCH </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs19" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT PULL </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs20" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT PUSH </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs21" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT BRANCH &amp; MERGE </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#vcs22" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GIT REBASE </a></li>
+							<li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#vcs23" class="ui-btn ui-btn-icon-right ui-icon-carat-r">GITHUB SSH LOGIN </a></li>
+						</ul>
+    				</div></div>
+    				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="maven" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">MAVEN<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+						
+						<ul data-role="listview" class="ui-listview">
+							<li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#maven1" class="ui-btn ui-btn-icon-right ui-icon-carat-r">MAVEN</a></li>					 
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#maven2" class="ui-btn ui-btn-icon-right ui-icon-carat-r">BUILD PROCESS </a></li>							
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#maven3" class="ui-btn ui-btn-icon-right ui-icon-carat-r">WHAT IS BUILD TOOL </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#maven4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">PROBLEM WITHOUT MAVEN </a></li>							
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#maven5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">VARIOUS BUILD TOOLS</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#maven6" class="ui-btn ui-btn-icon-right ui-icon-carat-r">ANT VS MAVEN VS GRADLE: </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#maven7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">WHY MAVEN ? </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#maven8" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SETUP AND INSTALLATION FOR MAVEN </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#maven9" class="ui-btn ui-btn-icon-right ui-icon-carat-r">HOW Maven WORKS? &amp; CORE CONCEPT</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#maven10" class="ui-btn ui-btn-icon-right ui-icon-carat-r">FIRST SAMPLE APPLICATION: </a></li>
+							<li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#maven11" class="ui-btn ui-btn-icon-right ui-icon-carat-r">MAVEN - BUILD LIFECYCLE</a></li>
+						</ul>
+			    </div></div>	
+				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="ci" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">CONTINUOUS INTEGRATION<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+					
+					<ul data-role="listview" class="ui-listview">					 
+						<li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#ci1" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> INTEGRATION IS PAINFUL</a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci2" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> SOME TERMINOLOGIES BEFORE WE BEGIN. </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci3" class="ui-btn ui-btn-icon-right ui-icon-carat-r">WHAT IS CONTINUOUS INTEGRATION </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">WHAT IS JENKINS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">FEATURES OF JENKINS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci6" class="ui-btn ui-btn-icon-right ui-icon-carat-r">JENKINS SETUP</a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">CREATING FIRST JENKINS JOB.</a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci8" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SETUP A JAVA BUILD JOB WITH MAVEN </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci9" class="ui-btn ui-btn-icon-right ui-icon-carat-r">JENKINS ADMINISTRATION. </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci10" class="ui-btn ui-btn-icon-right ui-icon-carat-r">CONTINUOUS INTEGRATION PROJECT. </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci11" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> STATIC CODE ANALYSIS FOR GAME OF LIFE DEV PROJECT.</a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci12" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> CONTINUOUS DELIVERY WITH JENKINS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci13" class="ui-btn ui-btn-icon-right ui-icon-carat-r">JENKINS BUILD TRIGGERS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci14" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SONARQUBE INTEGRATION JENKINS. </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ci15" class="ui-btn ui-btn-icon-right ui-icon-carat-r">ARTIFACTORY </a></li>
+						<li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#ci16" class="ui-btn ui-btn-icon-right ui-icon-carat-r">JFROG INTEGRATION WITH JENKINS</a></li>
+					</ul>
+				</div></div>
+			<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="ansible" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">ANSIBLE TUTORIAL<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+					
+					<ul data-role="listview" class="ui-listview">		 
+						<li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#ansible1" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> CONFIGURATION MANAGEMENT </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible2" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SOME TERMINOLOGIES </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible3" class="ui-btn ui-btn-icon-right ui-icon-carat-r">ANSIBLE INTRODUCTION </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">INSTALLING ANSIBLE </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">INVENTORY </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible6" class="ui-btn ui-btn-icon-right ui-icon-carat-r">INVENTORY FOR PRODUCTION SYSTEMS/REAL TIME. </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">ADHOC COMMAND </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible8" class="ui-btn ui-btn-icon-right ui-icon-carat-r">ABOUT MODULES </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible9" class="ui-btn ui-btn-icon-right ui-icon-carat-r">ANSIBLE CONFIGURATION </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible10" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SETUP - GATHERS FACTS ABOUT REMOTE HOSTS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible11" class="ui-btn ui-btn-icon-right ui-icon-carat-r">PLAYBOOKS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible12" class="ui-btn ui-btn-icon-right ui-icon-carat-r">PLAYBOOK LANGUAGE EXAMPLE </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible13" class="ui-btn ui-btn-icon-right ui-icon-carat-r">YAML BASICS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible14" class="ui-btn ui-btn-icon-right ui-icon-carat-r">FIRST PLAYBOOK EXERCISE. </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible15" class="ui-btn ui-btn-icon-right ui-icon-carat-r">PLAYBOOK EXECUTION </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible16" class="ui-btn ui-btn-icon-right ui-icon-carat-r">VARIABLES </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible17" class="ui-btn ui-btn-icon-right ui-icon-carat-r">INCLUDING PLAYBOOKS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible18" class="ui-btn ui-btn-icon-right ui-icon-carat-r">STORE OUTPUT OF A COMMAND. </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible19" class="ui-btn ui-btn-icon-right ui-icon-carat-r">DEBUG MODULE </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible20" class="ui-btn ui-btn-icon-right ui-icon-carat-r">PROMPTING FOR INPUT </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible21" class="ui-btn ui-btn-icon-right ui-icon-carat-r">HANDLERS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible22" class="ui-btn ui-btn-icon-right ui-icon-carat-r">CONDITIONAL EXECUTION </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible23" class="ui-btn ui-btn-icon-right ui-icon-carat-r">TEMPLATES </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible24" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> A SAMPLE PLAYBOOK WITH VARIABLES, TEMPLATES, CONDITIONS AND HANDLERS.</a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible25" class="ui-btn ui-btn-icon-right ui-icon-carat-r">ROLES </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible26" class="ui-btn ui-btn-icon-right ui-icon-carat-r">ANSIBLE GALAXY</a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible27" class="ui-btn ui-btn-icon-right ui-icon-carat-r">ANSIBLE VAULT MANAGING SECRETS WITH ANSIBLE VAULT. </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible28" class="ui-btn ui-btn-icon-right ui-icon-carat-r">LOOPING IN ANSIBLE </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible29" class="ui-btn ui-btn-icon-right ui-icon-carat-r">CONFIGURE APACHE USING ANSIBLE </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ansible30" class="ui-btn ui-btn-icon-right ui-icon-carat-r">MULTI-TIER WEB APPLICATION STACK DEPLOYMENT USING ANSIBLE.</a></li>
+						<li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#ansible31" class="ui-btn ui-btn-icon-right ui-icon-carat-r">WORDPRESS SETUP WITH ANSIBLE</a></li>
+				</ul>
+    		</div></div>
+			<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="puppet" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">PUPPET<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+					
+					<ul data-role="listview" class="ui-listview">
+					
+						 <li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#puppet1" class="ui-btn ui-btn-icon-right ui-icon-carat-r">WHAT IS PUPPET?</a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet2" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> INSTALLING PUPPET </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet3" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> CONFIGURE PUPPET MASTER </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet4" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> SSL SIGN CERTIFICATE SETUP </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet5" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> CREATING ENVIRONMENTS </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet6" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> SITE.PP </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet7" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> MODULES </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet8" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> MANIFESTS </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet9" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> CLASSES </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet10" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> VALIDATING THE SYNTAX OF MANIFEST FILE(S) </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet11" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> APPLYING MODULES ON PUPPET AGENT </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet12" class="ui-btn ui-btn-icon-right ui-icon-carat-r">CONFIGURING THE RUN INTERVAL </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet13" class="ui-btn ui-btn-icon-right ui-icon-carat-r">DEEP DIVE INTO PUPPET CODING</a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet14" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> CONDITIONALS </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet15" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> CASE STATEMENTS </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet16" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> SELECTORS </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet17" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> RELATIONSHIPS AND ORDERING </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet18" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> ERB TEMPLATES </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet19" class="ui-btn ui-btn-icon-right ui-icon-carat-r">ITERATING OVER VALUES </a></li>
+						  <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet20" class="ui-btn ui-btn-icon-right ui-icon-carat-r">INTRODUCING HIERA </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#puppet21" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> RESOURCE TYPES </a></li>
+						 <li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#puppet22" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> THE PUPPET EXCERCISE</a></li>
+					</ul>
+		    </div></div>	
+			<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="docker" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">DOCKERS<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+					
+					<ul data-role="listview" class="ui-listview">			
+						 <li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#docker1" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> APPLICATIONS ERA </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#docker2" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> VIRTUALIZATION REVOLUTION. </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#docker3" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> PROBLEMS WITH HYPERVISOR ARCHITECTURE. </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#docker4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">CONTAINERS. </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#docker5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">DOCKERS </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#docker6" class="ui-btn ui-btn-icon-right ui-icon-carat-r">INSTALLING DOCKER. </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#docker7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">DOCKER ENGINE’S BIG PICTURE </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#docker8" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> IMAGES </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#docker9" class="ui-btn ui-btn-icon-right ui-icon-carat-r">CONTAINERS </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#docker10" class="ui-btn ui-btn-icon-right ui-icon-carat-r">BUILDING &amp; SHIPPING IMAGES </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#docker11" class="ui-btn ui-btn-icon-right ui-icon-carat-r">CONTAINER NETWORKING BASICS </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#docker12" class="ui-btn ui-btn-icon-right ui-icon-carat-r">THE CONTAINER NETWORK MODEL </a></li>
+						 <li><a href="http://www.visualpath.in/devopstutorials/devops#docker13" class="ui-btn ui-btn-icon-right ui-icon-carat-r">LOCAL DEVELOPMENT WORKFLOW WITH DOCKER </a></li>
+						 <li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#docker14" class="ui-btn ui-btn-icon-right ui-icon-carat-r">USING DOCKER COMPOSE FOR DEVELOPMENT STACKS</a></li>
+					</ul>
+		    </div></div>
+			<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="kubernetes" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">KUBERNETES<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+					
+					<ul data-role="listview" class="ui-listview">
+					
+							<li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#kuber1" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> KUBERNETES INTRODUCTION </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber2" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> WHY KUBERNETES? </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber3" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> WHAT IS KUBERNETES? </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber4" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> WHAT KUBERNETES CAN DO? </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">KUBERNETES ARCHITECTURE </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber6" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> KUBERNETES SETUP </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">KUBERNETES DETAILED SETUP &amp; EXERCISES </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber8" class="ui-btn ui-btn-icon-right ui-icon-carat-r">MINIKUBE SETUP LOCALLY. </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber9" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> KOPS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber10" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> CONTAINERS &amp; IMAGES </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber11" class="ui-btn ui-btn-icon-right ui-icon-carat-r">FIRST APP ON KUBERNETES. </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber12" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> SERVICES</a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber13" class="ui-btn ui-btn-icon-right ui-icon-carat-r">NODE ARCHITECTURE. </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber14" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SCALING PODS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber15" class="ui-btn ui-btn-icon-right ui-icon-carat-r">DEPLOYMENTS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber16" class="ui-btn ui-btn-icon-right ui-icon-carat-r">MORE ABOUT SERVICES. </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber17" class="ui-btn ui-btn-icon-right ui-icon-carat-r">LABELS </a></li>
+							<li><a href="http://www.visualpath.in/devopstutorials/devops#kuber18" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SECRETS </a></li>
+							<li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#kuber19" class="ui-btn ui-btn-icon-right ui-icon-carat-r">WORDPRESS DEPLOYMENT.</a></li>
+					</ul>
+		    </div></div>			
+			<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="nagios" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">NAGIOS<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+			   
+				<ul data-role="listview" class="ui-listview">
+				
+					<li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#nagios1" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> NETWORK MONITORING </a></li>
+					<li><a href="http://www.visualpath.in/devopstutorials/devops#nagios2" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SERVER MONITORING </a></li>
+					<li><a href="http://www.visualpath.in/devopstutorials/devops#nagios3" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> APPLICATION MONITORING </a></li>
+					<li><a href="http://www.visualpath.in/devopstutorials/devops#nagios4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">PREREQUISITES </a></li>
+					<li><a href="http://www.visualpath.in/devopstutorials/devops#nagios5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">LAMP STACK SCRIPT. </a></li>
+					<li><a href="http://www.visualpath.in/devopstutorials/devops#nagios6" class="ui-btn ui-btn-icon-right ui-icon-carat-r">NAGIOS SETUP </a></li>
+					<li><a href="http://www.visualpath.in/devopstutorials/devops#nagios7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">LOGIN TO NAGIOS </a></li>
+					<li><a href="http://www.visualpath.in/devopstutorials/devops#nagios8" class="ui-btn ui-btn-icon-right ui-icon-carat-r">MONITOR A LINUX HOST WITH NRPE </a></li>
+					<li><a href="http://www.visualpath.in/devopstutorials/devops#nagios9" class="ui-btn ui-btn-icon-right ui-icon-carat-r">DIRECTIVES </a></li>
+					<li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#nagios10" class="ui-btn ui-btn-icon-right ui-icon-carat-r">MONITORING A WINDOWS HOST</a></li>
+				</ul>
+		    </div></div>
+		    <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="ssl" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">SSL SELF-SIGNED CERTIFICATE FOR AWS ELASTIC LOAD BALANCER<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+					
+					<ul data-role="listview" class="ui-listview">			
+						<li class="ui-first-child"><a href="http://www.visualpath.in/devopstutorials/devops#ssl1" class="ui-btn ui-btn-icon-right ui-icon-carat-r">WHAT IS SSL? </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ssl2" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> LIST OF POPULAR SSL CERTIFICATE AUTHORITIES(CA): </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ssl3" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> WHAT IS SELF-SIGNED CERTIFICATE? </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ssl4" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> HOW IT WORKS? </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ssl5" class="ui-btn ui-btn-icon-right ui-icon-carat-r">WHAT IS HTTPS PROTOCOL? </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ssl6" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> HOW TO GENERATE SELF-SIGNED CERTIFICATE USING OPENSSL? (IN CENTOS)</a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ssl7" class="ui-btn ui-btn-icon-right ui-icon-carat-r">UPLOAD KEYS INTO AWS </a></li>
+						<li><a href="http://www.visualpath.in/devopstutorials/devops#ssl8" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> VERIFICATION </a></li>
+						<li class="ui-last-child"><a href="http://www.visualpath.in/devopstutorials/devops#ssl9" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> ALGORITHM DIAGRAM:</a></li>
+					</ul>
+		    </div></div>			
+			<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="sampleplaybook" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">A SAMPLE CD PROJECT<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+		    	
+		    
+		    </div></div>	
+			<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h4 id="sampleplaybook" class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="http://www.visualpath.in/devopstutorials/devops#" class="ui-collapsible-heading-toggle ui-btn ui-icon-carat-d ui-btn-icon-left ui-btn-inherit">A SAMPLE CONTINUOUS DELIVERY PROJECT.<span class="ui-collapsible-heading-status"> click to expand contents</span></a></h4><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+		   		    	
+		    </div></div>	
+        </ul>
+	</li></ul>
+	</div>
+  
+</div>
+
+<div class="w3-main" style="margin-left:200px;">
+<!--div class="w3-teal">
+  <button class="w3-button w3-teal w3-xlarge w3-hide-large" onclick="w3_open()" style="">&#9776;</button>
+ 
+</div--->
+		
+        </div></aside>
+        <!-- <div class="col-lg-4" id="watermark">
+        	<p id="bg-text">by Imran Teli @Visualpathit<p>
+        </div> -->
+		<div class="col-lg-4">
+			<section id="content" class="two-column with-left-sidebar"><section id="devopsintro1">				
+			
+			<h2 style="text-transform:capitalize;">DevOps Introduction</h2>
+			<h3>What is DevOps?</h3>
+
+            <p>
+	            I know that's the first answer everybody would be looking for and I will not try to define it.<br>
+				Because so many people have done it already before me and guess what there are many
+				different definitions for it. Everybody in the IT industry is talking about it. Organization are
+				running post to pillars to hire DevOps Engineers and there is a great demand for it.	
+				Some say its automation but some say it’s all about culture, both this belief contradicts with
+				each other.
+			</p>
+            
+	        <p>Well if its automation then system admins are doing automation from ages and there they
+			used Scripting languages and some tool to achieve it but we did not call it DevOps back then,
+			we just said automation. So, then you would say it’s the culture but if it’s just the culture then
+			why so many automation tools? You would be feeling now that I am confusing you but trust
+			me I am going to prove some points later, just keep reading.</p>
+
+
+          <p>If you are reading this you would somehow related to software industry. Yes, software
+			industry, its only goal is to make software's and deliver it to the user. We can say from the
+			very beginning software industry is divided into two parts and those two parts are
+			Development and Operations. Development focuses on creating and testing software's.</p> 
+			<p>Operations is focussed on delivering those software's to user in form of a website or as an
+			installable software. Once delivered we maintain the software, we deliver new features to our
+			users and make sure the software's stay up and running and healthy.</p>
+		
+			</section>
+		<section id="devopsintro2">		
+		<h3>Job Roles &amp; their Motto.</h3>		
+
+			<p>In Development, we have distinct roles like Developers, Software testers(QA), DB Developers
+			&amp; Architects. Their aim is to develop all the latest and greatest features in the software's,Rapidly or quickly.</p>
+
+			<p> In Operations, we have roles like System Admins, Cloud Engineers, DB admins &amp; Security
+			professionals. Here the aim is to keep the systems up and running all the time. Systems on
+			which the software is hosted, like your websites and databases hosted on some servers.</p>	
+
+			<p>You would have understood by now that both the parties have different aims and goals. One
+			focusses on Quick Change and other focusses on Stability. These are poles apart, if we make
+			quick changes (adding new features continuously) then stability becomes an issue. A system
+			that’s changes continuously will have issues with stability. It’s also true the other way around.</p>
+            
+			<p>We are living in a world where there are frequent changes to our software’s and apps. Think
+			about it if you are using a software with some old features and some other software comes
+			into the market with the latest &amp; greatest feature you will ofcourse migrate to the new
+			software. So that means if an organizations Dev and Ops team does not give you latest and
+			greatest feature with stability they may lose the business.</p>
+
+			<p>So far, I have established few points that I will list below:</p>
+            <ul class="styledlist">
+                <li>Developers aim to create latest features quickly and rapidly.</li>
+                <li>Operations aim is to keep systems stable.</li>
+ 				<li>Quick changes are the user demand.</li>
+                <li>User also needs stable software or Apps.</li>
+            </ul>
+			<p>DevOps whole and sole objective is to Deliver latest and greatest features to the user with
+			stability.</p>
+			<p>It’s no more about just creating new features it’s also about delivering those features to the
+			user otherwise what’s the point of creating if we cannot deliver it on time.
+			So how does DevOps solve that problem? To understand it first we need to understand the
+			development procedure and then we will focus on the operations.</p>
+		
+		</section>	
+		<section id="devopsintro3" class="expanded">
+		<h3>Software Development Processes</h3>
+		    <p>Development process is explained in detail in later chapters here we will try to keep it to the
+			minimum.</p>
+			<p> Development team uses some Software development model to create the software. In layman
+			terms, these software development models are set of rules that everybody in the team follows
+			to get the things done.</p>	
+			<h4 style="color:black;">Waterfall Model</h4>
+			<p>There is Waterfall model which is a traditional model and does not fit well in today’s fast-
+			moving world.</p>			            
+            <p>In Waterfall model, the following phases are followed in order:</p>
+
+
+            <ul class="styledlist">
+                <li>System and software requirements: captured in a product requirements document</li>
+                <li>Analysis: resulting in models, schema, and business rules</li>
+ 	      	    <li>Design: resulting in the software architecture</li>
+                <li>Coding: the development, proving, and integration of software</li>
+				<li>Testing: the systematic discovery and debugging of defects</li>
+                <li>Operations: the installation, migration, support, and maintenance of complete systems</li>
+            </ul>
+			<img src="./index_files/waterfall.png" style="float:center;"><br>
+			<p>Thus, the waterfall model maintains that one should move to a phase only when its preceding
+			phase is reviewed and verified.
+			This model is good for the Operations team as they get the whole software developed at once
+			which they can deploy and maintain. New changes will also be less frequent and does not put
+			so much burden on the Operations team.
+			But this model does not scale well with the current fast-moving world. There are so many
+			downfalls with this model and most of the Development is happening with Agile model now.</p>
+
+			<h4 style="color:black;">Agile Model</h4>
+			<p>Agile model developed software in small iterations instead of developing entire software at
+			once.
+			Entire products feature list is divided into multiple list of features. For example, if there are 50
+			features in a software we can create 5 lists of 10 features each. Now developers will work on
+			10 features at a time, create and deliver those 10 features in first iteration and continue with
+			the rest of the features until you get the final product.</p>
+			<p>Every iteration involves cross functional teams working simultaneously on various areas like:</p>
+
+ 			<ul class="styledlist">
+                <li>Planning</li>
+				<li>Requirements Analysis</li>
+				<li>Design</li>
+				<li>Coding</li>
+				<li>Unit Testing and</li>
+				<li>Acceptance Testing.</li>
+            </ul>
+			<img src="./index_files/agile.png"><br>
+			<p> Now we are not just talking about creating but also delivering it to different environments like
+			Dev, QA, Staging, UAT and Prod. Now this puts lot of burden on the Operations team as they
+			must continuously deliver these changes on multiple environments. By the way these different
+			environments are just some group of servers owned by different teams like QA is owned by
+			software testers where they test the software.</p>
+			<img src="./index_files/devvsop.png"><br>
+			<p>The general approach that Developers take is that once they are done creating a new feature
+			they will send a procedural document to the operations team explaining how to deploy it.Developers test it on their machine and feels that it should work same in production also. But
+			production systems are different in design as there would be multiple servers for webservice,
+			database service and backend services secured by firewalls and NACL. There would be all
+			stable OS and software with a different version that of Developers systems. Development
+			servers are simple one machine and all the services are generally deployed in one server.</p>
+			<img src="./index_files/wallofdev.png"><br>		
+		</section>
+		<section id="devopsintro4">
+		<h3> The Problem</h3>
+			<p>After following the procedural document and having their own skills and knowledge operations
+			will deploy it to production. This is where the problem comes in, the deployment may fail,
+			failing the entire service. This happened because of lack of communication between Dev and
+			Ops team. Dev does not understand Ops part and the reverse is also true.
+			So, Ops feel that frequent changes like that may break the system and Dev feels that there is
+			too much restriction on delivering latest changes. We also need to think about security here.
+			Security testing is done before it goes to production. This entire Delivery procedure is slow
+			and manual most of the time.</p>
+			<img src="./index_files/change.png"><br>
+			<p> Think about quick changes now through agile model, it’s not helping the operations team to
+			deliver the code faster. So, no matter how agile development is Operations is still Waterfall.
+			If you think about it for a while you will understand that it’s not the technological problem but
+			the culture problem. Both the parts in Software Industry follow different culture. If this culture
+			is not changed then we will not be able to deliver better feature quickly to the users.</p>
+
+			<p>A Very famous joke describes the communication problem.</p>
+
+			<img src="./index_files/communication.png"><br>
+		</section>
+		<section id="devopsintro5">
+		<h3>Enter the DevOps</h3>
+			<p>DevOps solves this problem by changing the culture and making it one culture Dev+Ops.
+			There would be one team, DevOps, with one goal, Rapid delivery with stability.</p>
+			<h4 style="color:black;">But how? </h4>
+			<p>First step is to establish communication and collaboration between Dev and Ops. Dev must
+			understand the Ops part and Ops must understand the Development Procedure.</p>
+			<img src="./index_files/devopsenter1.png"><br>
+
+			<p>DevOps is the practice of operations and development engineers participating together in the
+			entire service lifecycle, from design through the development process to production support.
+			We have seen previously in waterfall and agile lifecycle, that Development and Operations
+			team are separate, they work separately in their own silos and have very different motto.</p>
+		</section>
+
+		<section id="devopsintro6">
+		<h3>DevOps LifeCycle</h3>
+			<p>DevOps Lifecycle includes Development and Operations teams working together. As
+			Developers work on their agile iterations, Ops must work in setting up systems and
+			automating the procedure of deployment. Automation is the key factor here, because agile
+			model gives code repeatedly to deploy it on systems, that’s going to be continuous release of
+			code and that must be continuously deployed to many servers in Dev, QA, Staging &amp;
+			Production environments.</p>
+			<p>If the code deployment process is not automated then ops team must manually do the
+			deployment. Deployment may include below mentioned procedures.</p>
+			<ul class="styledlist">
+				<li>Create servers if they don’t exist (On cloud or virtual env).</li>
+				<li>Install and setup prerequisites or dependencies on servers.</li>
+				<li>Build the software from raw source code (If not done by Developers).</li>
+				<li>Deploy software to servers.</li>
+				<li>Do config changes to OS and software.</li>
+				<li> Setup Monitoring.</li>
+				<li> Feedback &amp; Report.</li>
+			</ul>
+			<p><b style="color:red">NOTE-</b>All the above process may be less or more depending on the kind of deployment. We will discuss this in later chapters.</p>
+			<p>As soon as we get a new code change, it must be deployed to Production or at least
+			staging servers.</p>
+			<p>For this, all the process must be automated, we must automate first Build and Release
+			process which includes.</p>
+			<ol class="styledlist">
+				<li>Developers push the code in a centralised place.</li>
+				<li> Fetch the developers code.</li>
+				<li> Validate code.</li>
+				<li> Build &amp; test code</li>
+				<li> Package it into distributable format(software/artifacts).</li>
+				<li> Release it.</li>
+			</ol>
+			<p>Next phase is to deploy this released software to servers, which we discussed already before
+			this.Combining this Build &amp; Release with Deployment process gives us the DevOps Lifecycle which
+			is fully automated.</p>
+				<img src="./index_files/lifecycle.png"><br>
+			<p>DevOps Engineers must automate all the above process it should be so seamless that when
+			developers push their code to a central repository it should be fetched and run through all the
+			above process and sends it to production systems.</p>
+			<p>As I say, “From Code to Prod”.</p>
+
+			<h4 style="color:black;">What is continuous Integration.</h4>
+			<p>Developers will push their code several times in a day to a central repository, every time
+			there is code change it should be pulled, built, tested and notified. There will be continuous
+			code change so continuously we must do these steps. That’s why its Continuous integration.
+			We have a separate chapter for this where it will be discussed in detail. As of now you can
+			understand from above diagram that from step 1 to step 5 is CI.</p>
+
+			<img src="./index_files/integration.png"><br>
+
+			<h4 style="color:black;">What is Continuous Delivery?</h4>
+
+			<p>After CI, we should be also able to deliver our code changes to all the servers in different
+			environments like Dev, QA, Staging. It should be automatically delivered to QA servers where
+			testers will do functional tests, load tests etc. After it passes the QA tests it should
+			automatically deliver the code to staging area where customer or some set of users can check
+			the changes and give approval to deploy it to Production.</p>
+
+			<h4 style="color:black;">As per Wikipedia.</h4>
+
+			<p>Continuous delivery and DevOps are similar in their meanings and are often conflated, but
+			they are two different concepts. DevOps has a broader scope, and centres around the cultural
+			change, specifically the collaboration of the various teams involved in software delivery
+			(developers, operations, quality assurance, management, etc.), as well as automating the
+			processes in software delivery. Continuous delivery, on the other hand, is an approach to
+			automate the delivery aspect, and focuses on bringing together different processes and
+			executing them more quickly and more frequently. Thus, DevOps can be a product of
+			continuous delivery, and CD flows directly into DevOps.</p>
+			<h4 style="color:black;">What is Continuous Deployment?</h4>
+			<p>If the approval is manual process then code delivery is Continuous Delivery but if the approval
+			process becomes automated then after staging, the code change is done directly to Production
+			systems. This is called as Continuous Deployment.</p>
+			<img src="./index_files/continuous.png"><br>
+		</section>
+		
+		<section id="devopsintro7">
+    	<h3>DevOps and Software Development Life Cycle</h3>
+	 
+			<p>The DevOps Lifecycle Looks Like This:</p>
+			<ul class="styledlist">
+	            <li>Check in code
+				</li><li> Pull code changes for build</li>
+				<li>Run tests (continuous integration server to generate builds &amp; arrange releases): Test
+				individual models, run integration tests, and run user acceptance tests.</li>
+				<li>Store artefacts and build repository (repository for storing artefacts, results &amp; releases)</li>
+				<li>Deploy and release (release automation product to deploy apps)</li>
+				<li> Configure environment</li>
+				<li> Update databases</li>
+				<li> Update apps</li>
+				<li> Push to users – who receive tested app updates frequently and without interruption</li>
+				<li>Application &amp; Network Performance Monitoring (preventive safeguard)</li>
+				<li> Rinse and repeat</li>
+	        </ul>
+			<p>The above process is also called a Code Delivery Pipeline.</p>
+		</section>
+	    <section id="devopsintro8">
+		<h3>Tools for DevOps Lifecycle</h3>
+
+		<p>We have discussed earlier that everything starts from communication and collaboration
+		between Dev and Ops. Once we understand the culture and process of the project/product we
+		can start working with everyone in designing Code Delivery Pipeline. We must decide what
+		automation tools to use to create entire pipeline. We need to decide where our infrastructure
+		would be hosted? On the cloud, virtual machines or physical machines?
+		In today’s world we have lot of automation tools, but first we need to understand their
+		categories what tools is used for what purpose? If we don’t understand that then we won’t be
+		able to decide where to use them in our code delivery pipeline.</p>
+		<h4 style="color:black;">Version Control Systems:</h4>
+		<p>Is used to store the source code, a central place to keep all the
+		code and tracks its version.</p>
+		<p>For Example:</p>
+			<ul class="styledlist">
+                <li>Git</li>
+				<li>SVN</li>
+				<li> Mercurial</li>
+				<li>TFS</li>
+            </ul>			
+		<h4 style="color:black;">Build tools:</h4>
+		<p>Build process is where we take the raw source code, test it and build it into a
+		software. This process is automated by build tools.</p>
+		<p>For Example:</p>
+			<ul class="styledlist">
+	                 <li>Maven</li>
+					 <li> ANT</li>
+					 <li> MSBuild</li>
+					 <li> Gradle</li>
+					 <li> NANT</li>
+	        </ul>			
+		<h4 style="color:black;">Continuous Integration Tools:</h4>
+		<p>For Example:</p>
+			<ul class="styledlist">
+                    <li>Jenkins</li>
+					<li>Circle CI</li>
+					<li>Hudson</li>
+					<li> Bamboo</li>
+					<li> Teamcity</li>
+            </ul>			
+		<h4 style="color:black;">Configuration Management tools:</h4>
+		<p>Also known as automation tools, can be used to
+		automate system related tasks like software installation, service setup, file push/pull etc. Also
+		used to automate cloud and virtual infrastructure.</p>
+		<p>For Example:</p>
+			<ul class="styledlist">
+                    <li>Ansible</li>
+					<li>Chef</li>
+					<li> Puppet</li>
+					<li> Saltstack</li>
+            </ul>
+			
+		<h4 style="color:black;">Cloud computing:</h4>
+		<p>Well this is not any tool but a service accessed by users through internet.
+		A service that provides us with compute resource to create virtual servers, virtual storage,
+		networks etc. There are few providers in the market who gives us public cloud computing
+		services.</p>
+		<p>For Example:</p>
+		<ul class="styledlist">
+                    <li>AWS</li>
+					<li> Azure</li>
+					<li>Google Cloud</li>
+					<li> Rackspace</li>
+        </ul>
+			
+		<h4 style="color:black;">Monitoring tools:</h4>
+		<p>Is used to monitor our infrastructure and application health. It sends us
+		notifications and reports through email or other means.</p>
+
+		<p>For Example:</p>
+			<ul class="styledlist">
+                    <li>Nagios</li>
+					<li>Sensu</li>
+					<li>Icinga</li>
+					<li>Zenoss</li>
+					<li> Monit</li>
+            </ul>
+		<h4 style="color:black;">Containers &amp; Microservices:</h4>
+		<p>Well to be very frank this cannot be described to you right
+		now. Its described in detail in separate chapter. We need to have lot of Infra &amp; Development
+		knowledge to understand this category of tool.</p>
+		<p>For Example:</p>
+			<ul class="styledlist">
+                    <li>Docker</li>
+					<li> RKT</li>
+					<li> Kubernetes</li>
+            </ul>
+		</section>
+		<section id="devopsintro9">
+		<h3>DevOps Lifecycle with images of devops tools.</h3>
+		<img src="./index_files/nagos.png" height="80%" n="" width="80%"><br>
+		<img src="./index_files/nagos2.png" height="80%" n="" width="80%"><br>
+		<h4 style="color:black;">Summary:</h4>
+		<ul class="styledlist">
+                    <li>DevOps cannot be defined in one sentence. DevOps is the culture and also the
+                    implementation of automation tools. It depends from which area you are defining it.</li>
+					<li> Majority of the Software development is happening with Agile model and that churns
+					out code changes incrementally and frequently.</li>
+					<li> Operations does not gel well with the Agile team as both have differences in their
+					principles.</li>
+					<li> Agile team wants quick change, Ops wants to keep system stable by not making
+					frequent changes.</li>
+					<li> DevOps helps in creating communication, collaboration and integration between Dev
+					and Ops and culture, practices and tools level.</li>
+					<li> DevOps Engineer must understand DevOps lifecycle and implement right tool of
+					automation at right place.</li>
+					<p>Learning automation at every level in the lifecycle is highly important if you want to make a carrier in DevOps domain. You should understand Infrastructure, Development &amp; Automation.Later in the book we will dig more in detail into tools and learn them. We will also understand CI &amp; CD from tools point of view.</p>
+            </ul>
+		</section>
+        
+		
+</section></div>
+	
+	</div></div></div><div class="ui-loader ui-corner-all ui-body-a ui-loader-default"><span class="ui-icon-loading"></span><h1>loading</h1></div><script type="text/javascript">
+		document.oncontextmenu = null;
+		document.onselectstart = null;
+		document.ondragstart = null;
+		document.onmousedown = null;
+		document.body.oncontextmenu = null;
+		document.body.onselectstart = null;
+		document.body.ondragstart = null;
+		document.body.onmousedown = null;
+		document.body.oncut = null;
+		document.body.oncopy = null;
+		document.body.onpaste = null;
+	</script></body></html>
