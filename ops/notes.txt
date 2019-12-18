@@ -1,14 +1,32 @@
 
-Initially 10 GB, scaling in 10 GB increments
+Amazon CloudWatch
+Monitor Resources and Applications
 
-Max 64 TB
+AWS Auto Scaling
+Scale Multiple Resources to Meet Demand
 
-Compute resources
 
-Max 32 CPUs
+AWS CloudFormation
+Create and Manage Resources with Templates
 
-Max 244 GiBRAM
+AWS CloudTrail
+Track User Activity and API Usage
 
-2 DB copies in each AZ
+AWS Command Line Interface
+Unified tool to manage AWS services
 
-Minimum of 3 AZs
+
+AWS Config
+Track Resource Inventory and Changes
+
+AWS License Manager
+Track, manage, and control licenses
+
+AWS Management Console
+Web-based user interface
+
+AWS OpsWorks
+Automate Operations with Chef and Puppet
+
+AWS Trusted Advisor
+Optimize Performance and Security
