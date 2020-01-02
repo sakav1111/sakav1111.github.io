@@ -158,6 +158,19 @@ defaults:
     show_date: false
     lightbox: true
 - scope:
+    path: aws
+  values:
+    layout: article
+    nav_key: aws
+    sidebar:
+      nav: AWSTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
     path: tutorials
   values:
     layout: article

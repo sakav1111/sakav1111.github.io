@@ -1,0 +1,52 @@
+AWS-Introduction
+AWS-Services
+AWS-Account creation
+AWS-Command Line Interface
+AWS-Identity and Access Management-IAM
+Lab-Create New Root user
+Lab-Create Users & Groups and apply policies
+Lab-Create Role
+Lab-Multifactor Authentication
+AWS-Cognito
+AWS-CloudTrail
+AWS-Storage
+AWS-Simple Storage Service-S3
+AWS-S3 Features
+Lab-Create a New Bucket
+Lab-Move Data from one Bucket to another Bucket
+Lab-Hosting a Static Website on Amazon S3
+AWS Use Case-IMDB Media
+AWS-Glacier
+AWS-Elastic Block Store-EBS
+AWS-Elastic File System-EFS
+AWS-Compute
+AWS-Amazon Elastic Cloud Compute-EC2
+Lab-Launching an EC2 Linux instance
+Lab-Launching an EC2 Windows instance
+Lab-host website on EC2 server with Apache Server
+AWS-Tenancy
+AWS-EC2 instance with EBS Volumes
+Lab-modify EBS volume types after EC2 instance create
+AWS-AMI
+AWS-Elastic Beanstalk
+AWS-Elastic EC2 Container Service-ECS
+AWS-Lambda
+AWS-Databases
+AWS-AuroraDB
+AWS-DynamoDB
+AWS-Elastic Cache
+AWS-Amazon Redshift
+AWS-Networking & Content Delivery
+AWS-Virtual Private Cloud -VPC
+Lab-Creating  your own VPC
+Lab-Creating a Virtual Private Cloud
+AWS-VPC peering
+AWS-Elastic IP Addresses -EIPs
+AWS-VPC Endpoints
+AWS-CloudFront
+AWS-Route 53-Domain Hosting Service
+AWS-Auto Scaling
+AWS-Elastic Load Balancing-ELB
+AWS-Application Deployment
+AWS-Launch a Linux Virtual Machine with Amazon EC2
+AWS-Launch a Windows Virtual Machine

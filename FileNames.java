@@ -26,7 +26,7 @@ import java.util.Scanner;
  
  6.arrage filenames by numbers order.
  
- 7.Change - 	 folder,category, tag, meta before running java file
+ 7.Change in FileNames.java - 	 folder,category, tag, meta before running java file
  
  8.Make sure FileNames.java & list.txt in same folder - Run Java File
  
@@ -44,7 +44,7 @@ public class FileNames {
 		navigation();
 
 		System.out
-				.println("1.navigation.yaml - add Menu, Childern {Title, URL} in sidemenu #SQL Tutorials - Sidemenu\r\n"
+				.println("1.navigation.yaml(navigation.yaml ---------> {root_folder}/_data/navigation.yaml)\n - add Menu, Childern {Title, URL} in sidemenu #SQL Tutorials - Sidemenu\r\n"
 						+ "SQLMenu:\r\n" + "  - title:      SQL Tutorial\r\n" + "    children:\r\n"
 						+ "      - title:  SQL Basics\r\n" + "        url:    /sql/sql-basics \n");
 
@@ -52,7 +52,7 @@ public class FileNames {
 
 		System.out.println("3.Create new folder for Posts, place Posts inside that \n ");
 
-		System.out.println("4._config.yml : \n add -Scope Properties \n " + " ## SpringBoot Tutorial       \r\n"
+		System.out.println("4._config.yml \n _config.yaml location ----> {root_folder}/_config.yml: \n add -Scope Properties \n " + " ## SpringBoot Tutorial       \r\n"
 				+ "  - scope:\r\n" + "      path: \"springboot\"\r\n" + "    values:\r\n" + "      layout: article\r\n"
 				+ "      nav_key: java\n");
 

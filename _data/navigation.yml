@@ -686,6 +686,147 @@ WebServicesTutorial:
 
 
 
+
+#-----------------------------14. AWS - Sidemenu --------------------------
+AWSTutorial:
+  - title:      Amazon Web Services
+    children:
+      - title:  AWS-Introduction
+        url:    /aws/aws-introduction
+      - title:  AWS-Services
+        url:    /aws/aws-services
+      - title:  AWS-Account creation
+        url:    /aws/aws-account-creation
+      - title:  AWS-CLI
+        url:    /aws/aws-command-line-interface    
+        
+  - title:      AWS - Security,Identity
+    children:
+      - title:  AWS-IAM
+        url:    /aws/aws-identity-and-access-management-iam
+      - title:  Lab-Create New Root user
+        url:    /aws/lab-create-new-root-user
+      - title:  Lab-Create Users & Groups
+        url:    /aws/lab-create-users-&-groups-and-apply-policies
+      - title:  Lab-Create Role
+        url:    /aws/lab-create-role
+      - title:  Lab-MFA
+        url:    /aws/lab-multifactor-authentication
+      - title:  AWS-Cognito
+        url:    /aws/aws-cognito
+      - title:  AWS-CloudTrail
+        url:    /aws/aws-cloudtrail    
+        
+  - title:      AWS- Storage
+    children:
+      - title:  AWS-Storage
+        url:    /aws/aws-storage
+      - title:  AWS-S3
+        url:    /aws/aws-simple-storage-service-s3
+      - title:  AWS-S3 Features
+        url:    /aws/aws-s3-features
+      - title:  Lab-New Bucket
+        url:    /aws/lab-create-a-new-bucket
+      - title:  Lab-Move Data in Buckets
+        url:    /aws/lab-move-data-from-one-bucket-to-another-bucket
+      - title:  Lab-Static Website Hosting
+        url:    /aws/lab-hosting-a-static-website-on-amazon-s3
+      - title:  AWS Use Case-IMDB
+        url:    /aws/aws-use-case-imdb-media
+      - title:  AWS-Glacier
+        url:    /aws/aws-glacier
+      - title:  AWS-EBS
+        url:    /aws/aws-elastic-block-store-ebs
+      - title:  AWS-EFS
+        url:    /aws/aws-elastic-file-system-efs    
+        
+  - title:      AWS-Compute
+    children:
+      - title:  AWS-Compute
+        url:    /aws/aws-compute
+      - title:  AWS-EC2
+        url:    /aws/aws-amazon-elastic-cloud-compute-ec2
+      - title:  Lab-EC2 Linux instance
+        url:    /aws/lab-launching-an-ec2-linux-instance
+      - title:  Lab-EC2 Windows instance
+        url:    /aws/lab-launching-an-ec2-windows-instance
+      - title:  Lab-host website on EC2 server with Apache Server
+        url:    /aws/lab-host-website-on-ec2-server-with-apache-server
+      - title:  AWS-Tenancy
+        url:    /aws/aws-tenancy
+      - title:  AWS-EC2 instance with EBS
+        url:    /aws/aws-ec2-instance-with-ebs-volumes
+      - title:  Lab-modify EBS volumes
+        url:    /aws/lab-modify-ebs-volume-types-after-ec2-instance-create
+      - title:  AWS-AMI
+        url:    /aws/aws-ami
+      - title:  AWS-Elastic Beanstalk
+        url:    /aws/aws-elastic-beanstalk
+      - title:  AWS-ECS
+        url:    /aws/aws-elastic-ec2-container-service-ecs
+      - title:  AWS-Lambda
+        url:    /aws/aws-lambda    
+        
+  - title:      AWS-Databases
+    children:
+      - title:  AWS-Databases
+        url:    /aws/aws-databases
+      - title:  AWS-AuroraDB
+        url:    /aws/aws-auroradb
+      - title:  AWS-DynamoDB
+        url:    /aws/aws-dynamodb
+      - title:  AWS-Elastic Cache
+        url:    /aws/aws-elastic-cache
+      - title:  AWS-Redshift
+        url:    /aws/aws-amazon-redshift    
+        
+  - title:      AWS-Networking
+    children:
+      - title:  AWS-Networking
+        url:    /aws/aws-networking-&-content-delivery
+      - title:  AWS-VPC
+        url:    /aws/aws-virtual-private-cloud--vpc
+      - title:  Lab-Creating VPC
+        url:    /aws/lab-creating--your-own-vpc
+      - title:  Lab-Creating VPC2
+        url:    /aws/lab-creating-a-virtual-private-cloud
+      - title:  AWS-VPC peering
+        url:    /aws/aws-vpc-peering
+      - title:  AWS-Elastic IP
+        url:    /aws/aws-elastic-ip-addresses--eips
+      - title:  AWS-VPC Endpoints
+        url:    /aws/aws-vpc-endpoints
+      - title:  AWS-CloudFront
+        url:    /aws/aws-cloudfront
+      - title:  AWS-Route 53
+        url:    /aws/aws-route-53-domain-hosting-service    
+        
+  - title:      AWS-Auto Scaling
+    children:
+      - title:  AWS-Auto Scaling
+        url:    /aws/aws-auto-scaling
+      - title:  AWS-Load Balancing
+        url:    /aws/aws-elastic-load-balancing-elb    
+        
+  - title:      AWS- Deployment
+    children:
+      - title:  AWS-Application Deployment
+        url:    /aws/aws-application-deployment    
+        
+  - title:      AWS- Labs
+    children:
+      - title:  AWS-EC2 Linux VM
+        url:    /aws/aws-launch-a-linux-virtual-machine-with-amazon-ec2
+      - title:  AWS-EC2 Windows VM
+        url:    /aws/aws-launch-a-windows-virtual-machine
+
+
+
+#-----------------------------14. NEXT - Sidemenu --------------------------
+
+
+
+
 #=============================================================================
 ######################      II.ADD ALL SIDE MENUS to 'nav'       #############
 #=============================================================================
@@ -703,6 +844,7 @@ sidebar:
   nav: HibernateTutorial
   nav: SpringTutorial
   nav: WebServicesTutorial
+  nav: AWSTutorial
   
 
 
