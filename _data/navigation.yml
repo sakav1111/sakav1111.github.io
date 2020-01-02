@@ -783,9 +783,9 @@ AWSTutorial:
   - title:      AWS-Networking
     children:
       - title:  AWS-Networking
-        url:    /aws/aws-networking-&-content-delivery
+        url:    /aws/aws-networking-content-delivery
       - title:  AWS-VPC
-        url:    /aws/aws-virtual-private-cloud--vpc
+        url:    /aws/aws-virtual-private-cloud-vpc
       - title:  Lab-Creating VPC
         url:    /aws/lab-creating--your-own-vpc
       - title:  Lab-Creating VPC2
