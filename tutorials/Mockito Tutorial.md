@@ -124,5 +124,5 @@ reset(calcService);
 ```
 
 
-[spy()](http://javadoc.io/page/org.mockito/mockito-core/latest/org/mockito/Mockito.html#spy-T-)**/**[\@Spy](http://javadoc.io/page/org.mockito/mockito-core/latest/org/mockito/Spy.html)**:**
+[spy()](http://javadoc.io/page/org.mockito/mockito-core/latest/org/mockito/Mockito.html#spy-T-)**/**[@Spy](http://javadoc.io/page/org.mockito/mockito-core/latest/org/mockito/Spy.html)**:**
 partial mocking, real methods are invoked but still can be verified and stubbed

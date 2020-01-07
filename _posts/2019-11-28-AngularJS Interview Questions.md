@@ -47,7 +47,7 @@ app.controller('myCtrl', function($scope) {
 ## Internal Working
 
 -   The **AngularJS JavaScript** file is loaded, and the Angular global object
-    \$scope  is created. The JavaScript file that registers the controller
+    $scope  is created. The JavaScript file that registers the controller
     functions is executed.
 
 -   AngularJS scans the HTML to look for **AngularJS apps and views** and finds
@@ -79,7 +79,7 @@ displays only the names containing the letter "i".
 -   In AngularJS, a service is a **function, or object**, that is available for
     your AngularJS application.
 
--   AngularJS has about 30 built-in services. One of them is the \$location
+-   AngularJS has about 30 built-in services. One of them is the $location
     service.
 
 1.$location
@@ -111,9 +111,9 @@ app.controller('myCtrl', function($scope, $http) {
 
 More on Http
 
-The example above uses the .get method of the \$http service.
+The example above uses the .get method of the $http service.
 
-The .get method is a shortcut method of the \$http service. There are several
+The .get method is a shortcut method of the $http service. There are several
 shortcut methods:
 
 -   .get()
@@ -285,7 +285,7 @@ The 3 main directives of angular js are
 AngularJS digest cycle is the process behind Angular JS data binding.  
 **In each digest cycle, Angular compares the old and the new version of the
 scope model values**. The digest cycle is triggered automatically. We can also
-use \$apply() if we want to trigger the digest cycle manually.
+use $apply() if we want to trigger the digest cycle manually.
 
 ## What is data binding in AngularJS and What is the difference between one-way and two-way binding?
 
@@ -304,7 +304,7 @@ set on the new model are fired and another digest cycle executes. This goes on
 until all models are stable. 
 
 The digest cycle is triggered automatically but it can be called manually using
-**“.\$apply()”.**
+**“.$apply()”.**
 
 ## What is Single Page Application (SPA)? 
 

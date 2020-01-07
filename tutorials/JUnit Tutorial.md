@@ -47,22 +47,22 @@ below maven dependency in your **pom.xml**
 The Junit 4.x framework is annotation based. Here’re some basic JUnit
 annotations
 
--   **\@Test -**Given method is the test method.= public void
+-   **@Test -**Given method is the test method.= public void
 
--   **\@Test(timeout=1000)** -method will be failed if it takes more then 1000
+-   **@Test(timeout=1000)** -method will be failed if it takes more then 1000
     milliseconds (1 sec).
 
--   **\@BeforeClass** - method will be invoked only once, before starting all
+-   **@BeforeClass** - method will be invoked only once, before starting all
     the tests. public static void
 
--   **\@AfterClass** -method will be invoked only once, after finishing all the
+-   **@AfterClass** -method will be invoked only once, after finishing all the
     tests public static void
 
--   **\@Before** -method will be invoked before each test. Run before
-    \@Test, public void
+-   **@Before** -method will be invoked before each test. Run before
+    @Test, public void
 
--   **\@After** - method will be invoked after each test. Run after
-    \@Test, public void
+-   **@After** - method will be invoked after each test. Run after
+    @Test, public void
 
 The most important package in JUnit is **junit.framework**, which contains all the core classes. Some of the most important classes are given below  
 
@@ -83,9 +83,9 @@ run:
 
 -   **Test\***
 
--   **\*Test**
+-   ***Test**
 
--   **\*TestCase**
+-   ***TestCase**
 
 **1.Assert**  
 The `org.junit.Assert` class provides methods to assert the program logic. Assert
@@ -350,7 +350,7 @@ public class AssertTests {
 ---------------
 
 **Test suite** is used to bundle a few unit test cases and run them together.
-**\@RunWith and \@Suite** annotations are used to run the suite tests.
+**@RunWith and @Suite** annotations are used to run the suite tests.
 
 In below Example we are running Test1 & Test2 together using Test Suite.
 
@@ -439,10 +439,10 @@ public class TestRunner {
 4.3 Ignore Test
 ---------------
 
-**\@Ignore** annotation is used to create Ignore test. We use \@ignore in two
+**@Ignore** annotation is used to create Ignore test. We use @ignore in two
 cases
 
-   **1. At Method Level** : if a method annotated with \@Ignore,  that method will not be executed.
+   **1. At Method Level** : if a method annotated with @Ignore,  that method will not be executed.
 
    **2. At Class Level Level** : if a class annotated with  @Ignore, all its   methods will not be executed.
 ```java
@@ -534,7 +534,7 @@ Empty Output, because none of its test methods will be executed.
 4.4 Time Test
 -------------
 
-**\@Test(timeout)- timeout** parameter along with \@Test annotation as used for
+**@Test(timeout)- timeout** parameter along with @Test annotation as used for
 Time Test.If a test case takes more time than the specified number of
 milliseconds, then JUnit will automatically mark it as failed.
 
@@ -571,7 +571,7 @@ public class StringUtilTimeTest {
 4.5 Exceptions Test
 -------------------
 
-**\@Test(expected)- expected** parameter along with \@Test annotation as used
+**@Test(expected)- expected** parameter along with @Test annotation as used
 for Exceptions Test. we can test whether our code throws an expected exception
 or not
 
@@ -609,7 +609,7 @@ public class CaluculatorExceptionTest {
 ----------------------
 
 Parameterized tests allow a developer to run the same test over and over again
-using different values.we use **\@RunWith(Parameterized.class)** to achive this
+using different values.we use **@RunWith(Parameterized.class)** to achive this
 type of tests.
 
 Example
@@ -630,11 +630,11 @@ public class EvenNumbers {
  
 There are five steps to create Parameterized tests−
 
--   First, test class is annotated with **\@RunWith** which is a
+-   First, test class is annotated with **@RunWith** which is a
     **Parameterized.class.**
 
 -   Then create a **public static method** which is annotated with
-    **\@Parameters**. it returns a Collection of Objects as test data set.
+    **@Parameters**. it returns a Collection of Objects as test data set.
 
 -   Next, create a public constructor**, which takes in one row of test data**.
 

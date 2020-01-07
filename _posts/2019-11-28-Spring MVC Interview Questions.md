@@ -37,7 +37,7 @@ controllers.
   
 In Spring MVC, DispatcherServlet is used for finding the correct Controler to
 process a request, which it does with the help of handler mapping
-e.g. \@RequestMapping annotation.  
+e.g. @RequestMapping annotation.  
   
 It is also responsible for delegating logical view name to ViewResolver and then
 sending the rendered response to the client.
@@ -57,26 +57,26 @@ but having same root context may exist.
 
 The ContextLoaderListener is configured in web.xml as listener and you put that
 inside a tag as shwon below:  
-**\<listener\>**  
-**\<listener-class\>**  
+**<listener>**  
+**<listener-class>**  
 **org.springframework.web.context.ContextLoaderListener**  
-**\</listener-class\>**  
-**\</listener\>**  
+**</listener-class>**  
+**</listener>**  
   
 When the Spring MVC web application is deployed, Servlet container created an
 instance of ContextLoaderListener class which loads the Spring's
 WebApplicationContext
 
- ## **What is the \@Controller annotation used for? How can you create a controller without an annotation? (**[answer](https://javarevisited.blogspot.com/2017/08/difference-between-restcontroller-and-controller-annotations-spring-mvc-rest.html)**)**
+ ## **What is the @Controller annotation used for? How can you create a controller without an annotation? (**[answer](https://javarevisited.blogspot.com/2017/08/difference-between-restcontroller-and-controller-annotations-spring-mvc-rest.html)**)**
 
-The \@Controller is a Spring MVC annotation to define Controller but in reality,
+The @Controller is a Spring MVC annotation to define Controller but in reality,
 it's just a stereotype annotation.
 
-You can even create a controller without \@Controller by annotating the Spring
-MVC Controller classes using \@Component annotation.
+You can even create a controller without @Controller by annotating the Spring
+MVC Controller classes using @Component annotation.
 
 The real job of request mapping to handler method is done
-using \@RequestMapping annotation.
+using @RequestMapping annotation.
 
  ## How is an incoming request mapped to a controller and mapped to a method? ([answer](http://javarevisited.blogspot.com/2017/06/how-spring-mvc-framework-works-web-flow.html))
 
@@ -96,13 +96,13 @@ can specify the number of URLs and each URL can be explicitly associated wit
 controller.  
   
 Btw, if you are using annotations to configure Spring MVC, which you should
-then \@RequestMapping annotations is used to map an incoming request to a
+then @RequestMapping annotations is used to map an incoming request to a
 controller and a handler method.
 
  ## What are some of the valid return types of a controller method? (answer)
 
 There are many return types are available for a controller method in Spring MVC
-which is annotated by \@RequestMapping inside the controller. Some of the
+which is annotated by @RequestMapping inside the controller. Some of the
 popular ones are:
 
 1.  **String**
@@ -117,7 +117,7 @@ popular ones are:
 
 6.  **Map**
 
-7.  **HttpEntity\<?\> or ResponseEntity\<?\>**
+7.  **HttpEntity<?> or ResponseEntity<?>**
 
 8.  **HttpHeaders**
 
@@ -148,7 +148,7 @@ HTTP Session. This means the same bean can serve multiple requests if it is
 scoped in session.
 
 You can define the scope of a Spring bean using scope attribute
-or **\@Scope** annotation in Spring MVC application.
+or **@Scope** annotation in Spring MVC application.
 
  ## What is the default scope in the web context? ([answer](http://javarevisited.blogspot.sg/2012/05/what-is-bean-scope-in-spring-mvc.html))
 
@@ -225,46 +225,46 @@ of **AbstractHttpMessageConverter** and register it using
 the WebMvcConfigurerAdapter\#extendMessageConverters() method with the classes
 which generate a new type of request/response.
 
- ## Is \@Controller a stereotype? Is \@RestController a stereotype? ([answer](http://javarevisited.blogspot.sg/2017/08/difference-between-restcontroller-and-controller-annotations-spring-mvc-rest.html))
+ ## Is @Controller a stereotype? Is @RestController a stereotype? ([answer](http://javarevisited.blogspot.sg/2017/08/difference-between-restcontroller-and-controller-annotations-spring-mvc-rest.html))
 
-**Yes, both \@Controller and \@RestController are stereotypes.**
+**Yes, both @Controller and @RestController are stereotypes.**
 
-The \@Controller is actually a specialization of Spring's \@Component stereotype
-annotation. This means that class annotated with \@Controller will also be
+The @Controller is actually a specialization of Spring's @Component stereotype
+annotation. This means that class annotated with @Controller will also be
 automatically be detected by Spring container as part of container's component
 scanning process.  
   
-And, \@RestController is a specialization of \@Controller for RESTful web
-service. It not only combines \@ResponseBody and \@Controller annotation but
+And, @RestController is a specialization of @Controller for RESTful web
+service. It not only combines @ResponseBody and @Controller annotation but
 also gives more meaning to your controller class to clearly indicate **that it
 deals with RESTful requests.**  
   
 Spring Framework may also use this annotation to provide some more useful
 features related to REST API development in future.
 
- ## Where do you need \@EnableWebMVC? (answer)
+ ## Where do you need @EnableWebMVC? (answer)
 
-The \@EnableWebMvc annotation is required to enable Spring MVC when Java
+The @EnableWebMvc annotation is required to enable Spring MVC when Java
 configuration is used to configure Spring MVC instead of XML. It is equivalent
-to \<mvc: annotation-driven\>  in XML configuration.  
+to <mvc: annotation-driven>  in XML configuration.  
   
-It enables support for \@Controller-annotated classes that
-use \@RequestMapping to map incoming requests to handler methods.
+It enables support for @Controller-annotated classes that
+use @RequestMapping to map incoming requests to handler methods.
 
- ## When do you need \@ResponseStatus annotation in Spring MVC? ([answer](http://javarevisited.blogspot.sg/2018/01/7-reasons-for-using-spring-to-develop-RESTful-web-service.html#axzz55a8rTeu7))
+ ## When do you need @ResponseStatus annotation in Spring MVC? ([answer](http://javarevisited.blogspot.sg/2018/01/7-reasons-for-using-spring-to-develop-RESTful-web-service.html#axzz55a8rTeu7))
 
 A good questions for 3 to 5 years experienced spring developers.
-The \@ResponseStatus annotation is required during error handling in Spring MVC
+The @ResponseStatus annotation is required during error handling in Spring MVC
 and REST. Normally when an error or exception is thrown at server side, web
 server return a blanket HTTP status code 500 - Internal server error.  
   
 This may work for a human user but not for REST clients. You need to send them
 proper status code e.g. 404 if the resource is not found. That's where you can
-use \@ResponseStatus annotation, which allows you to send custom HTTP status
+use @ResponseStatus annotation, which allows you to send custom HTTP status
 code along with proper error message in case of Exception.
 
 For example, if you are writing a RESTful Web Service for a library which
-provides book information then you can use \@ResponseStatus to create Exception
+provides book information then you can use @ResponseStatus to create Exception
 which returns HTTP response code 404 when a book is not found instead of
 Internal Server Error (500), as shown below:
 

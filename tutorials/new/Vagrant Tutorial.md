@@ -68,7 +68,7 @@ Vagrant commands
     directory, using no specified base image. Before you can do vagrant up,
     you'll need to specify a base image in the Vagrantfile.
 
--   **vagrant init \<boxpath\>** -- Initialize Vagrant with a specific box. To
+-   **vagrant init <boxpath>** -- Initialize Vagrant with a specific box. To
     find a box, go to the [public Vagrant box
     catalog](https://app.vagrantup.com/boxes/search). When you find one you
     like, just replace it's name with boxpath. For example, vagrant init
@@ -91,7 +91,7 @@ Vagrant commands
 
 -   **vagrant ssh** -- connects to machine via SSH
 
--   **vagrant ssh \<boxname\>** -- If you give your box a name in your
+-   **vagrant ssh <boxname>** -- If you give your box a name in your
     Vagrantfile, you can ssh into it with boxname. Works from any directory.
 
 **Stopping a VM**
@@ -110,10 +110,10 @@ Vagrant commands
 
 -   **vagrant box list** -- see a list of all installed boxes on your computer
 
--   **vagrant box add \<name\> \<url\>** -- download a box image to your
+-   **vagrant box add <name> <url>** -- download a box image to your
     computer
 
--   **vagrant boxes remove \<name\>** -- deletes a box from the machine
+-   **vagrant boxes remove <name>** -- deletes a box from the machine
 
 -   **vagrant package** -- packages a running virtualbox env in a reusable box
 
@@ -123,19 +123,19 @@ Vagrant commands
 
 -   **vagrant status** -- outputs status of the vagrant machine
 
->   \$ vagrant init [url]
+>   $ vagrant init [url]
 
->   \$ vagrant up
+>   $ vagrant up
 
->   \$ vagrant halt
+>   $ vagrant halt
 
->   \$ vagrant destroy [--force]
+>   $ vagrant destroy [--force]
 
->   \$ vagrant reload
+>   $ vagrant reload
 
->   \$ vagrant ssh
+>   $ vagrant ssh
 
->   \$ vagrant status
+>   $ vagrant status
 
 Vagrantfile
 -----------
@@ -161,16 +161,16 @@ and find the Box.
 
 3.Use above box name & run below command
 
-\$ vagrant box add \<name\>
+$ vagrant box add <name>
 
-\$ vagrant box add ubuntu/trusty64
+$ vagrant box add ubuntu/trusty64
 
 In the above command, you will notice that boxes are namespaced. Boxes are
 broken down into two parts - the **username and the box name** - separated by a
 slash
 
 4.It will download the Box to your local System, **Windows** :
-**C:\\Users\\\<Username\>\\.vagrant.d\\boxes Linux/Mac: \~/.vagrant.d/boxes**
+**C:\\Users\\<Username>\\.vagrant.d\\boxes Linux/Mac: \~/.vagrant.d/boxes**
 
 ![](media/d49ee59bca49f2b39367afacf71da8b9.png)
 
@@ -201,13 +201,13 @@ end
 
 5.Start the Environment
 
-\$ vagrant up
+$ vagrant up
 
 Vagrant up commands read the configuration from the Vagrantfile. 
 
 6. connect to Environment
 
-\$ vagrant ssh
+$ vagrant ssh
 
 Username/Password : vagrant/vagrant
 
@@ -271,7 +271,7 @@ systems.
 
 -   Update the file with below mentioned content.
 
->   config.vm.provision "shell", inline: \<\<-SHELL
+>   config.vm.provision "shell", inline: <<-SHELL
 
 >   apt-get update
 
@@ -365,7 +365,7 @@ go to BIOS enable VT-x
 I just solved this problem by disabling(uncheck) Hyper-V. Seems Hyper-V was
 enabled when I installed Docker
 
-Control Panel -\> Program And Features -\> Turn Windows Features on or off.
+Control Panel -> Program And Features -> Turn Windows Features on or off.
 
 You may need to reboot afterwords.
 

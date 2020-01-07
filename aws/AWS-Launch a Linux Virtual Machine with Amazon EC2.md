@@ -11,13 +11,13 @@ tags:
 
 ### Launch a Linux Virtual Machine with Amazon EC2
 
-AWS Services \> Amazon EC2 to open the service console.
+AWS Services > Amazon EC2 to open the service console.
 
 Select Launch Instance to create and configure your virtual machine
 
 ![](media/00c869a481f20d1c94aab59f2ff83d34.png)
 
-choose an **Amazon Machine Image (AMI)** \> **Amazon Linux AMI** and click
+choose an **Amazon Machine Image (AMI)** > **Amazon Linux AMI** and click
 Select
 
 ![](media/ba4e18cd25f01a4f3e55a9afca234709.png)
@@ -66,11 +66,11 @@ can use it when we connect to the instance using SSH
 
 -   Download & Install Git
 
--   Open Git Bash \> Run
+-   Open Git Bash > Run
 
->   ssh -i {full path of your .pem file} ec2-user\@{instance IP address}
+>   ssh -i {full path of your .pem file} ec2-user@{instance IP address}
 
->   ssh -i 'C:\\Users\\Kavetis\\.ssh\\Linux-VM.pem' ec2-user\@3.135.224.183
+>   ssh -i 'C:\\Users\\Kavetis\\.ssh\\Linux-VM.pem' ec2-user@3.135.224.183
 
 ![](media/c41e6d93914a2f49926a45a2aaf8156b.png)
 
@@ -99,6 +99,6 @@ supports .ppk file. for that we need to convert .pem file to .ppk file
 
 -   Connection Type : SSH
 
--   Left Menu \> SSH \>+AUTH : Browse saved Linux-VM.ppk file
+-   Left Menu > SSH >+AUTH : Browse saved Linux-VM.ppk file
 
 Remember : Default user for EC2 Instance is : "ec2-user"

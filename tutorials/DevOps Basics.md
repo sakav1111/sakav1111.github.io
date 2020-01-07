@@ -806,16 +806,16 @@ echo Hello World!
 ```
 
 
-**\#!/bin/bash**
+**#!/bin/bash**
 
 -   Tells type of interpreter to use while running script
 
--   **\#!** is called as the **SHEBANG** character
+-   **#!** is called as the **SHEBANG** character
 
 -   if we change that to /usr/bin/python then it tells the script to use python
     interpreter.
 
-**\#** -
+**#** -
 
 This is a comment. Anything after \# is not executed.
 
@@ -836,8 +836,8 @@ hello
 
 ### Command Line Arguments
 
- we use the variables **\$1** to represent the first command line argument,
-**\$2** to represent the second command line argument and so on. 
+ we use the variables **$1** to represent the first command line argument,
+**$2** to represent the second command line argument and so on. 
 
 ###### Ask The User For Input
 ```bash
@@ -890,7 +890,7 @@ SSH client is **PuTTY**
 
 The SSH command consists of 3 distinct parts
 
-ssh {user}\@{host}
+ssh {user}@{host}
 
 When you hit enter, you will be prompted to enter the password for the requested
 account.  If your password is correct, you will be greeted with a remote

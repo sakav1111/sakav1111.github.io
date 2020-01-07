@@ -116,7 +116,7 @@ Spring Framework is using a lot of design patterns, some of the common ones are:
 
 ## How to inject a java.util.Properties into a Spring Bean?
 
-By writing in Spring bean xml file with *\<property\>* tag
+By writing in Spring bean xml file with *<property>* tag
 
 ```java
 <bean id="configBean" class="com.boraji.tutorial.spring.xml.DatabaseConfig">
@@ -170,7 +170,7 @@ public class DBConnection {
 
 ## How do you turn on annotation based autowiring?
 
--   Include \<context:annotation-config \> in bean configuration file.
+-   Include <context:annotation-config > in bean configuration file.
 
 -   Use **AnnotationConfigApplicationContext** to get Context Object.
 
@@ -295,7 +295,7 @@ the id, then you can use @PathVariable annotation of Spring MVC
 
 The @EnableWebMvc annotation is required to **enable Spring MVC when Java
 configuration is used to configure Spring MVC instead of XML**. It is equivalent
-to \<mvc: annotation-driven\>  in XML configuration.
+to <mvc: annotation-driven>  in XML configuration.
 
 ## How to Call Stored procedure in Spring Framework?
 

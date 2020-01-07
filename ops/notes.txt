@@ -1,0 +1,16 @@
+Installing Jenkins on Windows
+
+Install Java 
+
+Download Jenkins war File
+
+Accessing Jenkins by http://localhost:8080 
+
+
+Install Java 
+sudo apt update 
+sudo apt install openjdk-8-jdk  
+
+Download Jenkins war File
+
+Accessing Jenkins by http://localhost:8080 

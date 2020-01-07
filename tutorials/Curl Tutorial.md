@@ -140,7 +140,7 @@ website](https://curl.haxx.se/libcurl/c/libcurl-errors.html) :
 ```dos
 curl www.google.com
 ```
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Desktop\\temp.png](media/5ba63d5bfdd5a996cc4da6dca08885fe.png)
+![E:\\Users\\satyacodes\\Desktop\\temp.png](media/5ba63d5bfdd5a996cc4da6dca08885fe.png)
 
  
 
@@ -156,7 +156,7 @@ curl http://localhost:8080/ http://localhost:9090/
 ```
 
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Desktop\\temp.png](media/92919a4b6a6e6d5773bda364aec2e9f2.png)
+![E:\\Users\\satyacodes\\Desktop\\temp.png](media/92919a4b6a6e6d5773bda364aec2e9f2.png)
 
 ### 4.2 Using Passwords
 
@@ -172,7 +172,7 @@ curl -u name:passwd http://machine.domain/full/path/to/file
 ```
 
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Desktop\\temp.png](media/05ed2d80aba2a92b7820019a09551154.png)
+![E:\\Users\\satyacodes\\Desktop\\temp.png](media/05ed2d80aba2a92b7820019a09551154.png)
 
 ### 4.3 Ranges
 
@@ -190,7 +190,7 @@ curl -r 0-99 http://localhost:9090
 ```dos
 curl -r -500 http://localhost:9090
 ```
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Desktop\\temp.png](media/a0defd15a7237da7db397d61c0e9a127.png)
+![E:\\Users\\satyacodes\\Desktop\\temp.png](media/a0defd15a7237da7db397d61c0e9a127.png)
 
 ### 4.4 Uploading
 ```dos
@@ -239,7 +239,7 @@ curl http://localhost:9090/> stats.html
 ```
 
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Desktop\\temp.png](media/ea466b2696f78a330191f504f6ee1fcf.png)
+![E:\\Users\\satyacodes\\Desktop\\temp.png](media/ea466b2696f78a330191f504f6ee1fcf.png)
 
 #### 2. How to save the CURL Output to a file
 
@@ -256,7 +256,7 @@ curl -o outputfile.html http://localhost:9090/
 
 Now the the output data will be stored in **outputfile.html**
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Desktop\\temp.png](media/4b46eabbaf5944b176ed56040d36b026.png)
+![E:\\Users\\satyacodes\\Desktop\\temp.png](media/4b46eabbaf5944b176ed56040d36b026.png)
 
 #### 3. How to Fetch Data from Multiple Files at a time
 
@@ -267,7 +267,7 @@ curl -O URL1 -O URL2
 
 curl -O http://localhost:9090/Files/f1.txt -O http://localhost:9090/Files/f2.txt
 ```
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Desktop\\temp.png](media/e4e9164a9d3536c76daf6fdea32d3902.png)
+![E:\\Users\\satyacodes\\Desktop\\temp.png](media/e4e9164a9d3536c76daf6fdea32d3902.png)
 
 #### 4. How to Get More Information using Verbose and Trace Option
 
@@ -328,7 +328,7 @@ the -I option (capital ‘i’) to cURL.
 ```dos
 curl -I http://domain.com
 ```
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Desktop\\temp.png](media/19766cd77979632ddaa5afd7f466ecad.png)
+![E:\\Users\\satyacodes\\Desktop\\temp.png](media/19766cd77979632ddaa5afd7f466ecad.png)
 
 #### 10. How to Test URL by injecting header
 

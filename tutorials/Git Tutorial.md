@@ -19,7 +19,7 @@ Each version captures a snapshot of the files at a certain point in time and the
 VCS allows you to switch between these versions. These versions are stored in a
 specific place, typically called a repository
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/4b6fe8cc07276cd9cfe7493e25379ed1.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/4b6fe8cc07276cd9cfe7493e25379ed1.png)
 
 We have 3 types of version control systems
 
@@ -57,7 +57,7 @@ repository is a full copy of this repository.
 
 **Examples : GIT, BitBucket, GitHub**
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/45f12da819d989211082ee7d0ca3f5ca.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/45f12da819d989211082ee7d0ca3f5ca.png)
 
 ## Introduction to GIT
 
@@ -90,7 +90,7 @@ Setting email id: This information is used by Git for each commit.
 # Git Basic Operations 
 
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/7a9b73b2be20c1cecfa55334be55692f.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/7a9b73b2be20c1cecfa55334be55692f.png)
 
 ### `git init` – Create a new repository
 
@@ -125,7 +125,7 @@ nothing to commit (create/copy files and use "git add" to track)
 
 In LoginDemo repo I want to add 3 files -index.jsp, signup.jsp, login.jsp.
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/2016ae8dc7d25dcc4cc9b937cca4c65a.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/2016ae8dc7d25dcc4cc9b937cca4c65a.png)
 
 We use git add command to put a snapshot of the file to the staging area.
 

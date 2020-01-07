@@ -220,7 +220,7 @@ Web Service End Point files.
 **2.wsGen –(WSDL Generator)**
 
 It will read the JAX-WS Web Service End Point files & Generates WSDL Document &
-Webservice client for Testing . This wsgen tool is available in \$JDK/bin folder
+Webservice client for Testing . This wsgen tool is available in $JDK/bin folder
 ```java
 >wsgen -verbose -keep -cp . endpoint.RandomNumber
 ```

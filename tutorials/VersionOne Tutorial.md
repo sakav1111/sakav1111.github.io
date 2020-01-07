@@ -129,7 +129,7 @@ information as you may need at this stage
 
  
 
-1.Select **Admin**\> **Projects.**
+1.Select **Admin**> **Projects.**
 
  2.Expand the **System (All Projects) **project
 

@@ -563,14 +563,14 @@ SpringTutorial:
     children:
       - title:  Spring Data
         url:    /spring/spring-data
+      - title:  Spring JDBC
+        url:    /spring/spring-jdbc
       - title:  -JdbcTemplate
         url:    /spring/1-jdbctemplate
       - title:  -NamedParameterJdbcTemplate
         url:    /spring/2-namedparameterjdbctemplate
       - title:  -SimpleJdbcTemplate
         url:    /spring/3-simplejdbctemplate
-      - title:  Spring JDBC
-        url:    /spring/spring-jdbc
       - title:  Spring ORM
         url:    /spring/spring-orm
       - title:  Spring Hibernate

@@ -109,7 +109,7 @@ permission.
 
 **Steps to create new repository:**
 
--   **Repositories \> Create repository** button at the top of the page
+-   **Repositories > Create repository** button at the top of the page
  
 -   It displays the **Create a new repository page**, fill the details & click
     on **Create repository** button
@@ -125,13 +125,13 @@ permission.
 **3. Cloning a repository**
 
 Before Cloning Repo, we need to add SSH key to our Repo.for doing this open
-command prompt & go to C:/Users/\<Your_Account\> and type below command to
+command prompt & go to C:/Users<Your_Account> and type below command to
 generate SSH key  
 `ssh-keygen -t rsa -C "admin@example.com"`
  
 
 If you already installed Git, then use **ssh-keygen** command & just press
-\<Enter\> key
+<Enter> key
 
 ```bash
 $ ssh-keygen
@@ -158,7 +158,7 @@ The key's randomart image is:
 ```
 
 
-Key is generated in in `C:\Users\<Your_Account>_S\.ssh\id_rsa`  file. On
+Key is generated in in `C:\Users<Your_Account>_S\.ssh\id_rsa`  file. On
 Windows, in your command prompt, change directory to your .ssh directory, and
 copy the public key file to your clipboard by running
 ```bash
@@ -168,7 +168,7 @@ clip < id_rsa.pub
 
  
 
-Go to **BitBucket Home\> Manage Account \> SSH Keys \> Add Key** Paste the key
+Go to **BitBucket Home> Manage Account > SSH Keys > Add Key** Paste the key
 in text box.
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/09/Bitbucket_turorial_smlcodes-7.png](media/b4105ae85bceb4f720d09eea18f2fa50.png)

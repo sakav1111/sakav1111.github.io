@@ -333,7 +333,7 @@ Eclipse**[](http://localhost:6666/sml/wp-content/uploads/2017/02/Hygieia_tutoria
 
 Know your PC Architecture, Open Command prompt and run below command
 
-**C:\>wmic os get osarchitecture**
+**C:>wmic os get osarchitecture**
 
 
 
@@ -746,7 +746,7 @@ args : add**
 **4.Apply and Run the Application.**
 ```dos
 .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+ \\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
   '  |____| .__|_| |_|_| |_\__, | / / / /

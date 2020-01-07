@@ -30,7 +30,7 @@ pageview: true
 -   when we give the url : <http://localhost:8080/Servlets/hello>, request
     goes to container, and it searches for **/hello**url pattern in web.xml
 
--   xml searches for **/hello** , in **\<servlet-mapping\>** and
+-   xml searches for **/hello** , in **<servlet-mapping>** and
     gets **Servelt-name**
 
 -   container loads HelloServlet class and creates

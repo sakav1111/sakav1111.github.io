@@ -14,7 +14,7 @@ A shell in a Linux operating system takes input from you in the form of
 commands, processes it, and then gives an output. There are two main shells in
 Linux:
 
-**1**. **The** **Bourne Shell**: The prompt for this shell is **\$** and its
+**1**. **The** **Bourne Shell**: The prompt for this shell is **$** and its
 derivatives are listed below:
 
 -   POSIX shell  also known as sh
@@ -39,7 +39,7 @@ Steps to write the Shell Script
 
 2.  Name  script file with **extension .sh**
 
-3.  **Start** the script with **\#! /bin/sh**
+3.  **Start** the script with **#! /bin/sh**
 
 4.  Write the code.
 
@@ -51,7 +51,7 @@ Steps to write the Shell Script
 location. So, if we use"\#! /bin/sh" the script gets directed to the
 bourne-shell.
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/919ad8f101eb23f9e5d43c6eba6b1b5d.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/919ad8f101eb23f9e5d43c6eba6b1b5d.png)
 
 #### 1. Shell comments(\#)
 
@@ -60,7 +60,7 @@ syntax to add a comment is
 
 \#comment
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/1cd769e568588acf0483bdb3fb10a628.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/1cd769e568588acf0483bdb3fb10a628.png)
 
 #### 2.Shell Variables
 
@@ -69,10 +69,10 @@ string or a number. In unix to create a variable, we simply put in our script: 
 
 >   VARIABLE_NAME=value
 
-To use the variable, we simply put a dollar sign **"\$"** before the name of the
+To use the variable, we simply put a dollar sign **"$"** before the name of the
 variable in our script code
 
->   \$VARIABLE_NAME
+>   $VARIABLE_NAME
 
 ```bash
 [smlcodes@centori ~]$vi hello.sh                                     
@@ -277,7 +277,7 @@ Hello, Smlcodes
 #### Passing parameters to functions
 
 You can pass one or more parameters in a function. Parameters will be defined as
-\$1, \$2 and so on.
+$1, $2 and so on.
 ```bash
 #Creating function
 function hello(){
@@ -298,7 +298,7 @@ Hello, Smlcodes- Values 100, 200
 Reading and writing files in linux is simple, you just use the standard
 utilities for reading files such
 as **cat**, **grep**, **tail**, **head**, **awk** etc.. Moreover, you primarily
-use the output redirect operator **\>** and standard commands like **sed** for
+use the output redirect operator **>** and standard commands like **sed** for
 writing files.
 
 Let's say we want to write a program that interacts with a user data file called
@@ -325,8 +325,8 @@ fi
 
 The code for this is very simple. To add a user you simple use **echo** to print
 out the fields with commas between them, then you redirect the output using
-the **\>\>** operator. Using the **\>** will redirect the output STDOUT to a
-file and overwrite the entire file, this is why we use **\>\>**instead, because
+the **>>** operator. Using the **>** will redirect the output STDOUT to a
+file and overwrite the entire file, this is why we use **>>**instead, because
 it will append to a file instead of overwriting the file. And to print out the
 file, we simply use the **cat** command, which will print out a file to the
 console.
@@ -367,7 +367,7 @@ how to search and sort data
 Often times a programmer needs to be able to get a substring from a variable at
 a given position. In unix you can use the **expr** command to do this with
 the **substr** parameter. Let's say that we have the text string
-"5283username\$\$2384/" and we want to get the text "username". To do this we
+"5283username$$2384/" and we want to get the text "username". To do this we
 need to read from position 5 for a length of 8. The parameters
 for **substr** are the input string, the starting position, and the length. See
 the following example: 
@@ -411,7 +411,7 @@ done
 If the substring doesn't exist, 0 is returned. If 0 is returned, we want to make
 the IDX variable the length of the name so that we just display the whole
 filename. If a dot is found in the file, we want to subtract 1 from
-our **\$IDX** variable because we don't want to display the dot. 
+our **$IDX** variable because we don't want to display the dot. 
 
 #### To lower/upper case
 
@@ -454,7 +454,7 @@ We want our regular expression to search for "/home" and replace it with
 special character, we will need to escape it with a backslash in our find and
 replace strings. Here is the command we will use to do the file edit: 
 ```bash
-$ sed "s/\/home/\/usr\/local\/home/" testfile2 > tmp; cp tmp testfile2 
+$ sed "s\/home\/usr\/local\/home/" testfile2 > tmp; cp tmp testfile2 
 $ cat testfile2 
 user1 /usr/local/home/user1
 root /usr/local/home/root

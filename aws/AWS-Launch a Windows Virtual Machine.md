@@ -10,11 +10,11 @@ tags:
 
 ### Launch a Windows Virtual Machine
 
-Amazon EC2 \> Click Launch Instance
+Amazon EC2 > Click Launch Instance
 
 ![](media/00c869a481f20d1c94aab59f2ff83d34.png)
 
-Amazon Machine Image (AMI) \> Microsoft Windows Server 2012 R2
+Amazon Machine Image (AMI) > Microsoft Windows Server 2012 R2
 
 ![](media/3599bd8f9126a828e40d7d11e5940215.png)
 

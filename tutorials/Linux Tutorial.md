@@ -104,12 +104,12 @@ There are two types of shell commands
 # 2.Linux File System
 
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/0246a815e50cd29bf616959a2e65d371.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/0246a815e50cd29bf616959a2e65d371.png)
 
 All the directories in the Linux system comes under the root directory which is
 represented by a **forward** slash **(/)**
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/d2e48b17a21b55a2714f32326e85fb97.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/d2e48b17a21b55a2714f32326e85fb97.png)
 
 | **Command** | **Full Form**             | **Description**                                                                                                         |
 |-------------|---------------------------|-------------------------------------------------------------------------------------------------------------------------|
@@ -392,7 +392,7 @@ rm <filename>
 
 #### Example
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/663fe5c0d8ac2a4a6d27210f0133709d.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/663fe5c0d8ac2a4a6d27210f0133709d.png)
 
 ### 3.4 “cp" (copy) command
 
@@ -519,7 +519,7 @@ man [option(s)] keyword(s)
 
 >man ls
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/2ad70486ea378fd2b0fcbc5307fc8807.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/2ad70486ea378fd2b0fcbc5307fc8807.png)
 
 # 4.Linux File Content
 
@@ -893,7 +893,7 @@ grep [OPTIONS] PATTERN [FILE...]
 ```bash
 grep 3 cri.txt
 ```
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/90c549cf2f5df3ffd2a616bb2e498138.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/90c549cf2f5df3ffd2a616bb2e498138.png)
 
 You can give above example in a single command by using pipe as below
 ```bash
@@ -914,7 +914,7 @@ Dhoni-284
 
 **grep -i**: command filters output in a case-insensitive way.
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/d27169f09bfd5e31b2bbf9804eee8498.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/d27169f09bfd5e31b2bbf9804eee8498.png)
 
 
 
@@ -941,7 +941,7 @@ Syntax:
 ```bash
 cat or tac <fileName> | tee <newFile> |  cat or tac |.....
 ```
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/253d49f81b09e0259f75adc760565a64.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/253d49f81b09e0259f75adc760565a64.png)
 
 Here tee.txt is newly created file.
 
@@ -966,10 +966,10 @@ will occur only once
 ```bash
 command <fileName> | uniq
 ```
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/f2787962fe2407acc2e03aa834d2bd27.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/f2787962fe2407acc2e03aa834d2bd27.png)
 
 uniq –c : command will counts the number of occurences of a word.
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/816b2d1b2b585cb7c912b297cb10f088.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/816b2d1b2b585cb7c912b297cb10f088.png)
 
 
 
@@ -984,7 +984,7 @@ and **bytes** for each input file.
 
 -   Wc –c : for character counts
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/4372e662bf5606b56ad0b592be044f09.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/4372e662bf5606b56ad0b592be044f09.png)
 
 
 
@@ -1001,7 +1001,7 @@ od -c <fileName>		(display files in ASCII (backslashed) character format)
 ```
 
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/dd93c6febe544496bd41466abd0bf826.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/dd93c6febe544496bd41466abd0bf826.png)
 
 ### 10. “sort" command
 
@@ -1012,7 +1012,7 @@ column
 
 **sort –n -k<columnNumber>:** Numarical Sorting with column
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/4b3ea87378d3d71e6727d15d411b58ce.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/4b3ea87378d3d71e6727d15d411b58ce.png)
 
 
 
@@ -1060,7 +1060,7 @@ Commands with a single bracket **'>' overwrite** existing file content.
 Note: Writing **'1>'** or **'>' **and **'0<'** or **'<'** is same thing. But
 for stderr you have to write **'2>'**.
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/f06940ae165dd3b88036c10b1bec9e91.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/f06940ae165dd3b88036c10b1bec9e91.png)
 
 **Append(<<)**  
 Commands with a double bracket **'>>' do not overwrite **the existing file
@@ -1072,7 +1072,7 @@ content.
 
 -   **2>>**- standard error
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/fdcc12ed6d82b5d3d84e16c5ac4a99c9.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/fdcc12ed6d82b5d3d84e16c5ac4a99c9.png)
 
 
 
@@ -1112,7 +1112,7 @@ cat < <filename>
 ```
 Here we are giving 123.txt file as input to cat comamnd
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/3740971e8f9d289b2efe3304aaa5c61b.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/3740971e8f9d289b2efe3304aaa5c61b.png)
 
 
 #### 2. Output Redirection
@@ -1219,7 +1219,7 @@ Syntax:
 ```bash
 cal [options] [[[day] month] year]
 ```
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/b63bd1b8c03984084fae841df1831db6.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/b63bd1b8c03984084fae841df1831db6.png)
 
 
 
@@ -1284,7 +1284,7 @@ A regular expression may have one or several repeating metacharacters.
 | **^**            | Matches start of string and represents characters not in the string.       |
 | **$**            | Matches end of string.                                                     |
 | *****            | Matches zero or more times the preceding character.                        |
-| **\**            | Represents the group of characters.                                        |
+| ****            | Represents the group of characters.                                        |
 | **()**            | Groups regular expressions.                                                |
 | **?**             | Matches exactly one character.                                             |
 | **+**             | Matches one or more times the preceding character.                         |
@@ -1292,10 +1292,10 @@ A regular expression may have one or several repeating metacharacters.
 | **{N,}**          | Preceding character is matched exactly N times or more.                    |
 | **{N,M}**         | Preceding character is matched exactly N times, but not more than N times. |
 | **-**             | Represents the range.                                                      |
-| **\b**           | Matches empty string at the edge of a word.                                |
-| **\B**           | Matches empty string if it is not at the edge of a word.                   |
-| **\<**          | Matches empty string at the beginning of a word.                           |
-| **\>**          | Matches empty string at the end of a word.                                 |
+| **b**           | Matches empty string at the edge of a word.                                |
+| **B**           | Matches empty string if it is not at the edge of a word.                   |
+| **<**          | Matches empty string at the beginning of a word.                           |
+| **>**          | Matches empty string at the end of a word.                                 |
 
 ###### Regex Versions
 
@@ -1747,7 +1747,7 @@ hardware that lets your computer talk to the internet.
 Then, the second most important hardware is Router. Router transfer packets
 between computers.
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/7fd6cead303310101a923e7a9063a588.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/7fd6cead303310101a923e7a9063a588.png)
 
 ###### 3.MAC Address = Hardware Address = Physical Address
 

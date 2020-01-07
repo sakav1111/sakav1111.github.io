@@ -86,7 +86,7 @@ HAVING AVG_SALARY > 7000;
 
 then HAVING clause comes in picture for final filtering, which is clear from
 following query, now Marketing department is excluded because it doesn't pass
-condition in HAVING clause i.e AVG_SALARY \> 7000
+condition in HAVING clause i.e AVG_SALARY > 7000
 
 ## What is JNDI?
 

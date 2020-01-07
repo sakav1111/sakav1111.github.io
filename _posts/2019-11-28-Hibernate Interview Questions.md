@@ -142,7 +142,7 @@ Vehicle.hbm.xml
 ```
 
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/0225d147a6b8b5d9b80e5f2e5ba9e691.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/0225d147a6b8b5d9b80e5f2e5ba9e691.png)
 
 ### 2. Table per sub-class hierarchy
 
@@ -168,7 +168,7 @@ Vehicle.hbm.xml
 ```
 
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/b4e61853d48770224d12d18797c4e15e.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/b4e61853d48770224d12d18797c4e15e.png)
 
 ### 3.Table per concrete class hierarchy
 
@@ -192,7 +192,7 @@ Vehicle.hbm.xml
 ```
 
 
-![E:\\Users\\kaveti_s.ITLINFOSYS\\Pictures\\12.png](media/370265e2d96963013179c976e9e5ac48.png)
+![E:\\Users\\satyacodes\\Pictures\\12.png](media/370265e2d96963013179c976e9e5ac48.png)
 
 If we want to select a **Complete Object** from the database, we use POJO class
 reference in place of `*` while constructing the query
@@ -680,7 +680,7 @@ by the Hibernate framework
 ## What is named SQL query in Hibernate?
 
 Named queries are SQL queries which are defined in mapping document
-using **\<sql-query\>** tag and called using **Session.getNamedQuery()** method.
+using **<sql-query>** tag and called using **Session.getNamedQuery()** method.
 ```xml
 <sql-query name="findStudentByRollNumber">       
          <!--[CDATA[

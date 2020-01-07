@@ -191,7 +191,7 @@ environment.
 
 
 
-4.To RUN the Program **CMD → JAVA_RUNTIME → [\>] Run button**
+4.To RUN the Program **CMD → JAVA_RUNTIME → [>] Run button**
 
 ![codenvy-java-tutorial](media/eadd2b3b84bd116c6144ca93b0355dfc.png)
 
