@@ -99,7 +99,7 @@ need to worry about the user name or password for connecting to that database.
 For Doing that,
 
 1.  **JNDI Url is configured in Server side, we need to just place that Url in
-    Context.xml with some Resource name=””**
+    Context.xml with some Resource name=""**
 
 2.  **Configure Resource name in web.xml**
 
@@ -147,15 +147,15 @@ public Connection getConnection() {
 ```java
 public class JDBC {
 	public static void main(String[] args) throws Exception {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection
+ Class.forName("com.mysql.jdbc.Driver");
+ Connection con = DriverManager.getConnection
                        ("jdbc:mysql://localhost:3306/mydb", "root", "root");
 
-		Statement stmt = con.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT * FROM customer");
+ Statement stmt = con.createStatement();
+ ResultSet rs = stmt.executeQuery("SELECT * FROM customer");
 
-		while (rs.next())
-		System.out.println(rs.getInt(1) + ": " + rs.getString(2));		
+ while (rs.next())
+ System.out.println(rs.getInt(1) + ": " + rs.getString(2)); 
 	}
 }
 ```

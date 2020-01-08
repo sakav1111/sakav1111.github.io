@@ -131,10 +131,10 @@ To Build WAR with out Tomact we need to below 2 Changes
 ```xml
 // 1.In POM.xml – package type as ‘war’
 <parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.3.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+ <groupId>org.springframework.boot</groupId>
+ <artifactId>spring-boot-starter-parent</artifactId>
+ <version>2.1.3.RELEASE</version>
+ <relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>demo</artifactId>
@@ -145,10 +145,10 @@ To Build WAR with out Tomact we need to below 2 Changes
 
 // 2.Remove tomcat starter Dependency 
        <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
+ 	<groupId>org.springframework.boot</groupId>
+ 	<artifactId>spring-boot-starter-tomcat</artifactId>
+ 	<scope>provided</scope>
+ </dependency>
 ```
 
 

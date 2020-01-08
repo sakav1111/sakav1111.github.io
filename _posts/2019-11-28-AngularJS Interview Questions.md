@@ -24,7 +24,7 @@ Note : we must write module, if we used ng-app
 
 First Name: <input type="text" ng-model="firstName"><br> //binds input with model
 Last Name: <input type="text" ng-model="lastName"><br> ////binds input with model
-Full Name: {{firstName + " " + lastName}}		//Prints the model values
+Full Name: {{firstName + " " + lastName}} //Prints the model values
 //same as {{expression}}
 <p ng-bind="firstName"></p>
 <p ng-bind=" lastName "></p>
@@ -202,17 +202,17 @@ var app = angular.module('userregistrationsystem', [ 'ngRoute', 'ngResource' ]);
 
 app.config(function($routeProvider) {
 	$routeProvider.when('/list-all-users', {
-		templateUrl : '/template/listuser.html',
-		controller : 'listUserController'
+ templateUrl : '/template/listuser.html',
+ controller : 'listUserController'
 	}).when('/register-new-user',{
-		templateUrl : '/template/userregistration.html',
-		controller : 'registerUserController'
+ templateUrl : '/template/userregistration.html',
+ controller : 'registerUserController'
 	}).when('/update-user/:id',{
-		templateUrl : '/template/userupdation.html' ,
-		controller : 'usersDetailsController'
+ templateUrl : '/template/userupdation.html' ,
+ controller : 'usersDetailsController'
 	}).otherwise({
-		redirectTo : '/home',
-		templateUrl : '/template/home.html',
+ redirectTo : '/home',
+ templateUrl : '/template/home.html',
 	});
 });
 ```
@@ -304,7 +304,7 @@ set on the new model are fired and another digest cycle executes. This goes on
 until all models are stable. 
 
 The digest cycle is triggered automatically but it can be called manually using
-**“.$apply()”.**
+**“.$apply()".**
 
 ## What is Single Page Application (SPA)? 
 

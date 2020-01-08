@@ -38,7 +38,7 @@ while request scope means a bean is alive only for a request.
 ## Does Spring Bean provide thread safety?
 
 The default scope of Spring bean is *singleton*, so there will be *only one
-instance per context*. If two threads calls **factory.getBean(“s”),** it returns
+instance per context*. If two threads calls **factory.getBean(“s"),** it returns
 same object. if any threads changes bean property by setName() , then other
 thread may get inconsistence results.
 
@@ -120,26 +120,26 @@ By writing in Spring bean xml file with *<property>* tag
 
 ```java
 <bean id="configBean" class="com.boraji.tutorial.spring.xml.DatabaseConfig">
-		<property name="properties">
-			<props>
-				<prop key="driverClassName">com.mysql.jdbc.Driver</prop>
-				<prop key="url">jdbc:mysql://localhost:3306/mydb</prop>
-				<prop key="username">root</prop>
-				<prop key="password">abcdxyz</prop>
-			</props>
-		</property>
+ <property name="properties">
+ 	<props>
+  <prop key="driverClassName">com.mysql.jdbc.Driver</prop>
+  <prop key="url">jdbc:mysql://localhost:3306/mydb</prop>
+  <prop key="username">root</prop>
+  <prop key="password">abcdxyz</prop>
+ 	</props>
+ </property>
 	</bean>
 util:properties in Spring reads configuration file from a location
 <beans>
 	<util:properties id="props">
-		<prop key="driverClassName">com.mysql.jdbc.Driver</prop>
-		<prop key="url">jdbc:mysql://localhost:3306/mydb</prop>
-		<prop key="username">root</prop>
-		<prop key="password">abcdxyz</prop>
+ <prop key="driverClassName">com.mysql.jdbc.Driver</prop>
+ <prop key="url">jdbc:mysql://localhost:3306/mydb</prop>
+ <prop key="username">root</prop>
+ <prop key="password">abcdxyz</prop>
 	</util:properties>
 
 	<bean id="configBean" class="com.boraji.tutorial.spring.xml.DatabaseConfig">
-		<property name="properties" ref="props" />
+ <property name="properties" ref="props" />
 	</bean>
 </beans>
 
@@ -158,12 +158,12 @@ public class DBConnection {
 	}
 
 	public void printDBConfigs() {
-		System.out.println("Driver Class = " + driverClass);
-		System.out.println("DB URL = " + dbURL);
-		System.out.println("User Name = " + userName);
+ System.out.println("Driver Class = " + driverClass);
+ System.out.println("DB URL = " + dbURL);
+ System.out.println("User Name = " + userName);
 
-		// Never do below in production environment :D
-		System.out.println("Password = " + String.valueOf(password));
+ // Never do below in production environment :D
+ System.out.println("Password = " + String.valueOf(password));
 	}
 }
 ```
@@ -374,8 +374,8 @@ called "Session Cookie Based" and the other one is "Token Based".
 The most common approach we probably all know is to use a server generated
 secret token (Session key) in the form of a JSESSIONID cookie. Initial setup for
 this is near nothing these days perhaps making you forget you have a choice to
-make here in the first place. Even without further using this “Session key” to
-store any other state “in the session”, the key itself is in fact *state* as
+make here in the first place. Even without further using this “Session key" to
+store any other state “in the session", the key itself is in fact *state* as
 well.  I.e. without a shared and persistent storage of these keys, no successful
 authentication will survive a server reboot or requests being load balanced to
 another server.
@@ -393,28 +393,28 @@ users/authorizations.
 
 ```java
 private HttpHeaders createHeaders(final String userId, final String password) {
-		String auth = userId + ":" + password;
-		byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(StandardCharsets.US_ASCII));
-		String authHeader = "Basic " + new String(encodedAuth);
+ String auth = userId + ":" + password;
+ byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(StandardCharsets.US_ASCII));
+ String authHeader = "Basic " + new String(encodedAuth);
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("Authorization", authHeader);
-		return headers;
+ HttpHeaders headers = new HttpHeaders();
+ headers.set("Authorization", authHeader);
+ return headers;
 	}
 
 
 private ResponseEntity<String> makeRestCall(String url, String userId,
-			String password) {
-		// Basic Auth only.
-		if (!"".equals(userId) && !"".equals(password)) {
-			return restOperations.exchange(url, HttpMethod.GET,
-					new HttpEntity<>(createHeaders(userId, password)),
-					String.class);
+ 	String password) {
+ // Basic Auth only.
+ if (!"".equals(userId) && !"".equals(password)) {
+ 	return restOperations.exchange(url, HttpMethod.GET,
+  	new HttpEntity<>(createHeaders(userId, password)),
+  	String.class);
 
-		} else {
-			return restOperations.exchange(url, HttpMethod.GET, null,
-					String.class);
-		}
+ } else {
+ 	return restOperations.exchange(url, HttpMethod.GET, null,
+  	String.class);
+ }
 
 	}
 ```

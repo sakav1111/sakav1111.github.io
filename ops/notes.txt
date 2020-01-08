@@ -1,16 +1,14 @@
-Installing Jenkins on Windows
+Jenkins is a Continuous Integration Tool, it needs to check out source code from a repository and build code.
 
-Install Java 
+Jenkins Dashboard> Manage Jenkins>  Manage Plugins.
 
-Download Jenkins war File
+next page, click on the "Available tab".
 
-Accessing Jenkins by http://localhost:8080 
+Search for "Git Plugin", Install it.
+
+Installed plug-ins can be shown in "installed" tab
 
 
-Install Java 
-sudo apt update 
-sudo apt install openjdk-8-jdk  
 
-Download Jenkins war File
 
-Accessing Jenkins by http://localhost:8080 
+

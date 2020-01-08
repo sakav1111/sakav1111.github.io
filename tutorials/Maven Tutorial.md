@@ -51,8 +51,8 @@ POM.XML Structure
 <dependencies>
 
 <build>
-		<plugins>
-		    . . .
+ <plugins>
+     . . .
         </plugins>
 	</build>
 </project>
@@ -218,7 +218,7 @@ will be only available in **jboss repository** only.
 To tell Maven to get the dependency from Java.net, you need to declared a remote
 repository in your pom.xml file like this 
 ```xml
-<project xmlns="http://maven.apache.org/POM/4.0.0”>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
   <groupId>JAXRS-HeaderParam-Example</groupId>
   <artifactId>JAXRS-HeaderParam-Example</artifactId>
@@ -226,18 +226,18 @@ repository in your pom.xml file like this 
   <packaging>war</packaging>  
 
 <repositories>
-		<repository>
-			<id>JBoss repository</id>
-			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-		</repository>
+ <repository>
+ 	<id>JBoss repository</id>
+ 	<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+ </repository>
 	</repositories>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxrs</artifactId>
-			<version>2.2.1.GA</version>
-		</dependency>
+ <dependency>
+ 	<groupId>org.jboss.resteasy</groupId>
+ 	<artifactId>resteasy-jaxrs</artifactId>
+ 	<version>2.2.1.GA</version>
+ </dependency>
 	</dependencies>    
 </project>
 ```
@@ -288,38 +288,38 @@ pom.xml.
   <version>0.0.1-SNAPSHOT</version>//5.pecifies the version of the artifact
   <packaging>war</packaging> //6.packaging type such as jar, war etc
 	<repositories>
-		<repository>
-			<id>JBoss repository</id>
-			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-		</repository>
+ <repository>
+ 	<id>JBoss repository</id>
+ 	<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+ </repository>
 	</repositories>
 
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
-			<scope>test</scope>
-		</dependency>
+ <dependency>
+ 	<groupId>junit</groupId>
+ 	<artifactId>junit</artifactId>
+ 	<version>4.8.2</version>
+ 	<scope>test</scope>
+ </dependency>
 
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxrs</artifactId>
-			<version>2.2.1.GA</version>
-		</dependency>
+ <dependency>
+ 	<groupId>org.jboss.resteasy</groupId>
+ 	<artifactId>resteasy-jaxrs</artifactId>
+ 	<version>2.2.1.GA</version>
+ </dependency>
 	</dependencies>
 
 	<build>
-		<finalName>RESTfulExample</finalName>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
-		</plugins>
+ <finalName>RESTfulExample</finalName>
+ <plugins>
+ 	<plugin>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <configuration>
+  	<source>1.6</source>
+  	<target>1.6</target>
+  </configuration>
+ 	</plugin>
+ </plugins>
 	</build>
 
 </project> //1. It is the root element of pom.xml file
@@ -407,12 +407,12 @@ Importing, To make this as an Eclipse project, in terminal, navigate to
 package com.smlcodes;
 public class App {
 	public static void main(String[] args) {
-		App ob = new App();
-		System.out.println("Your Random Number Is : " + ob.randomNumber());
+ App ob = new App();
+ System.out.println("Your Random Number Is : " + ob.randomNumber());
 	}
 	public int randomNumber() {
-		int random = (int) (Math.random() * 1000) ;
-		return random;
+ int random = (int) (Math.random() * 1000) ;
+ return random;
 	}
 }
 
@@ -423,8 +423,8 @@ import org.junit.Test;
 public class AppTest {
 	@Test
 	public void testRandomNumber() {
-		App ob = new App();
-		Assert.assertTrue(ob.randomNumber()>0);
+ App ob = new App();
+ Assert.assertTrue(ob.randomNumber()>0);
 	}
 }
 ```
@@ -776,11 +776,11 @@ settings.xml location is : **apache-maven-3.3.9\\conf\\settings.xml**
 <?xml version="1.0" encoding="UTF-8"?>
 <settings ...>
 	<servers>
-		<server>
-			<id>TomcatServer</id>
-			<username>admin</username>
-			<password>admin</password>
-		</server>
+ <server>
+ 	<id>TomcatServer</id>
+ 	<username>admin</username>
+ 	<password>admin</password>
+ </server>
 	</servers>
 </settings>
 ```
@@ -789,19 +789,19 @@ settings.xml location is : **apache-maven-3.3.9\\conf\\settings.xml**
 ```xml
 <project>	
 	<build>
-		<finalName>JAXRS-FormParam-Example</finalName>
-		<plugins>			
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<url>http://localhost:8080/manager/text</url>
-					<server>TomcatServer</server>
-					<path>/demo</path>
-				</configuration>
-			</plugin>
-		</plugins>
+ <finalName>JAXRS-FormParam-Example</finalName>
+ <plugins> 	
+ 	<plugin>
+  <groupId>org.apache.tomcat.maven</groupId>
+  <artifactId>tomcat7-maven-plugin</artifactId>
+  <version>2.2</version>
+  <configuration>
+  	<url>http://localhost:8080/manager/text</url>
+  	<server>TomcatServer</server>
+  	<path>/demo</path>
+  </configuration>
+ 	</plugin>
+ </plugins>
 	</build>
 </project>
 ```

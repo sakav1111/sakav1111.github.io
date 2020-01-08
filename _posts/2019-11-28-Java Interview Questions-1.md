@@ -97,7 +97,7 @@ System.out.println(args[1]);
 ```
 
 
-The program correctly identifies the first two “words” as the arguments. Spaces
+The program correctly identifies the first two “words" as the arguments. Spaces
 are used to separate the arguments. If you want spaces inside an argument, you
 need to use quotes as in this example:
 ```powershell
@@ -383,11 +383,11 @@ get the free memory, total memory and maximum heap memory in Java.
 ```java
 public class TestApp {
 	public static void main(String[] args) {
-		Runtime r = Runtime.getRuntime();
-		System.out.println(r.totalMemory()); //16252928
-		System.out.println(r.freeMemory()); //15709576
-		System.out.println(r.availableProcessors());//24
-		r.gc();
+ Runtime r = Runtime.getRuntime();
+ System.out.println(r.totalMemory()); //16252928
+ System.out.println(r.freeMemory()); //15709576
+ System.out.println(r.availableProcessors());//24
+ r.gc();
 	}
 }
 ```
@@ -664,7 +664,7 @@ but provide useful states for performance monitoring.
     collection [logging](http://javarevisited.blogspot.sg/2011/05/top-10-tips-on-logging-in-java.html) is
     enable using **–verbose:gc or -XX:PrintGCDetails**
 
--   Major collection prints **“Full GC”.** 
+-   Major collection prints **“Full GC".** 
 
 ##  How to Generate GC Log File?
 
@@ -683,7 +683,7 @@ Or add visual-gc plugin to visualVM
 **Sandbox**. The sandbox security model makes it easier to work with software
 that comes from sources you don't fully trust. 
 
-## What is “Phontom” memory
+## What is “Phontom" memory
 
 **A memory that doesn’t exist in reality.**
 
@@ -905,7 +905,7 @@ In [BigDecimal](https://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.
 **you can specify the rounding mode** and exact precision which you want to use.
 **Using the exact precision limit, rounding errors are mostly solved. Best part
 is that BigDecimal numbers are immutable** i.e. if you create a BigDecimal BD
-with value “1.23”, that object will remain “1.23” and can never be changed. You
+with value “1.23", that object will remain “1.23" and can never be changed. You
 can use it’s .compareTo() method to compare to BigDecimal numbers
 ```java
 private static void testBdEquality()
@@ -1153,14 +1153,14 @@ public class ReverseArry {
 	 */
 
 	public static int[] recursiveArry(int a[], int start, int end) {
-		if (start <= end) {
-			int temp;
-			temp = a[start];
-			a[start] = a[end];
-			a[end] = temp;
-			recursiveArry(a, start + 1, end - 1);//calling it again
-		}
-		return a;
+ if (start <= end) {
+ 	int temp;
+ 	temp = a[start];
+ 	a[start] = a[end];
+ 	a[end] = temp;
+ 	recursiveArry(a, start + 1, end - 1);//calling it again
+ }
+ return a;
 	}
 
 	
@@ -1168,41 +1168,41 @@ public class ReverseArry {
 	 *Iterative approach: Iterative approach is a repetition process until the condition fails.here loops are used such as for, while etc. Here code may be longer but it is faster than recursive. And it consumes less memory compared to recursive approach.If the loop condition is always true in such cases it will be an infinite loop.
  */	
 	public static int[] iteravtiveArray(int a[], int start, int end) {
-		while(start<end)
-		{
-			int temp;
-			temp = a[start];
-			a[start]=a[end];
-			a[end]=temp;			
-			start++;
-			end--;
-		}		
-		
-		return a;
+ while(start<end)
+ {
+ 	int temp;
+ 	temp = a[start];
+ 	a[start]=a[end];
+ 	a[end]=temp; 	
+ 	start++;
+ 	end--;
+ } 
+ 
+ return a;
 	}
-		 
+  
 	static void printArray(int arr[], int size) {
-		int i;
-		for (i = 0; i < size; i++)
-			System.out.print(arr[i] + " ");
-		System.out.println("");
+ int i;
+ for (i = 0; i < size; i++)
+ 	System.out.print(arr[i] + " ");
+ System.out.println("");
 	}
 	 
 	public static void main(String[] args) {
-		
+ 
                 // 1. Initialize array
                 int arr[] = { 1, 2, 3, 4, 5, 6 };
-		System.out.println("Input array is ");
-		printArray(arr, 6);
+ System.out.println("Input array is ");
+ printArray(arr, 6);
 	
-		// 2. Choose Starting & ending point
-		int b[] = recursiveArry(arr, 0, 5);
-		System.out.println("Recursive -Reversed array is ");
-		printArray(b, 6);
-		
-		int c[] = iteravtiveArray(arr, 0, 5);
-		System.out.println("IteravtiveArray -Reversed array is ");
-		printArray(c, 6);
+ // 2. Choose Starting & ending point
+ int b[] = recursiveArry(arr, 0, 5);
+ System.out.println("Recursive -Reversed array is ");
+ printArray(b, 6);
+ 
+ int c[] = iteravtiveArray(arr, 0, 5);
+ System.out.println("IteravtiveArray -Reversed array is ");
+ printArray(c, 6);
 	}
 }
  
@@ -1256,7 +1256,7 @@ Object class define the following 11 methods
 **1.toString**():Returns a string representation of the object.
 ```java
 public String toString() {
-		return getClass.getName() + '@' + Integer.toHexString(HashCode);
+ return getClass.getName() + '@' + Integer.toHexString(HashCode);
 	}
 ```
 
@@ -1290,20 +1290,20 @@ metadata about the class:
 
 we can create Class object by following ways
 ```java
-Class c = Class.forName(“StudentBO”)
+Class c = Class.forName(“StudentBO")
 Class c = StudentBO.class
 Class c = a.getClass();
 ```
 
 ```java
 public static void main(String[] args) throws Exception {
-		TestApp a = new TestApp();
-		Class c1 = a.getClass();
-		
-		 Class c = Class.forName("java.lang.String");
-		 System.out.print("Class represented by c : " + c.toString());
-		 
-		 Object obj = c.newInstance();
+ TestApp a = new TestApp();
+ Class c1 = a.getClass();
+ 
+  Class c = Class.forName("java.lang.String");
+  System.out.print("Class represented by c : " + c.toString());
+  
+  Object obj = c.newInstance();
 	}
 ```
 
@@ -1349,22 +1349,22 @@ public class Employe {
 	String name;
 //Setters & Getters
 	@Override
-	public boolean equals(Object obj) {		
-		Employe e = (Employe) obj;
-		boolean flag = false;
-		if (this.getId() == e.getId()) {
-			flag = true;
-		}
-		return flag;
+	public boolean equals(Object obj) { 
+ Employe e = (Employe) obj;
+ boolean flag = false;
+ if (this.getId() == e.getId()) {
+ 	flag = true;
+ }
+ return flag;
 	}
 	public static void main(String[] args) {
-		Employe e1 = new Employe();
-		Employe e2 = new Employe();
-		e1.setId(101);
-		e2.setId(101);
-		System.out.println(e1.equals(e2));//true
-		System.out.println(e1.hashCode());  	  //366712642
-		System.out.println(e2.hashCode()); //1829164700 – here different
+ Employe e1 = new Employe();
+ Employe e2 = new Employe();
+ e1.setId(101);
+ e2.setId(101);
+ System.out.println(e1.equals(e2));//true
+ System.out.println(e1.hashCode());  	  //366712642
+ System.out.println(e2.hashCode()); //1829164700 – here different
 	}
 }
 ```
@@ -1377,15 +1377,15 @@ Not yet. Lets test again above modified Employee class in different way.
 
 ```java
 public static void main(String[] args) {
-		Employe e1 = new Employe();
-		Employe e2 = new Employe();
-		e1.setId(101);
-		e2.setId(101);
-		
-		Set<Employe> set = new HashSet<>();
-		set.add(e1);
-		set.add(e2);
-		System.out.println(set); //[basic.Employe@15db9742, basic.Employe@6d06d69c]	
+ Employe e1 = new Employe();
+ Employe e2 = new Employe();
+ e1.setId(101);
+ e2.setId(101);
+ 
+ Set<Employe> set = new HashSet<>();
+ set.add(e1);
+ set.add(e2);
+ System.out.println(set); //[basic.Employe@15db9742, basic.Employe@6d06d69c]	
 	}
 ```
 
@@ -1402,30 +1402,30 @@ public class Employe {
 	String name;
 
 	@Override
-	public boolean equals(Object obj) {		
-		Employe e = (Employe) obj;
-		boolean flag = false;
-		if (this.getId() == e.getId()) {
-			flag = true;
-		}
-		return flag;
+	public boolean equals(Object obj) { 
+ Employe e = (Employe) obj;
+ boolean flag = false;
+ if (this.getId() == e.getId()) {
+ 	flag = true;
+ }
+ return flag;
 	}
 	
 	@Override
-	public int hashCode() {		
-		return getId();
+	public int hashCode() { 
+ return getId();
 	}
 
 	public static void main(String[] args) {
-		Employe e1 = new Employe();
-		Employe e2 = new Employe();
-		e1.setId(101);
-		e2.setId(101);
-		
-		Set<Employe> set = new HashSet<>();
-		set.add(e1);
-		set.add(e2);
-		System.out.println(set); //[basic.Employe@65]		
+ Employe e1 = new Employe();
+ Employe e2 = new Employe();
+ e1.setId(101);
+ e2.setId(101);
+ 
+ Set<Employe> set = new HashSet<>();
+ set.add(e1);
+ set.add(e2);
+ System.out.println(set); //[basic.Employe@65] 
 	}
 }
 ```
@@ -1729,16 +1729,16 @@ class private method is not visible to subclass.
 ```java
 class A{
 	private void show() {
-		System.out.println("Parent");
+ System.out.println("Parent");
 	}
 }
 public class Demo extends A{
 	private void show() {
-		System.out.println("Child");
+ System.out.println("Child");
 	}
 	public static void main(String[] args) {
-		A a = new Demo();
-		a.show();
+ A a = new Demo();
+ a.show();
 	
 	}
 }
@@ -1787,7 +1787,7 @@ Image result for solid design principles
 
 **1. Single Responsibility Principle**
 
-**“One class should have one and only one responsibility”**
+**“One class should have one and only one responsibility"**
 
 In other words, we should write, change and maintain a class for only one
 purpose**. If it is model class then it should strictly represent only one
@@ -1797,7 +1797,7 @@ without worrying the impacts of changes for another entity.
 **2. Open Closed Principle**
 
 **“Software components should be open for extension, but closed for
-modification”**
+modification"**
 
 If we take a look into any good framework like struts or spring, we will see
 that **we cannot change their core logic and request processing**, **but we
@@ -1811,7 +1811,7 @@ parameters and we can extend it’s functionality the way we want.**
 
 **3. Liskov’s Substitution Principle**
 
-“Derived types must be completely substitutable for their base types”
+“Derived types must be completely substitutable for their base types"
 
 **4. Interface Segregation/Separation Principle**
 
@@ -1819,7 +1819,7 @@ This principle is my favorite one. It is applicable to interfaces as single
 responsibility principle holds to classes. ISP says:
 
 “Clients should not be forced to implement unnecessary methods which they will
-not use”
+not use"
 
 Take an example. Developer Alex created an interface Reportable and added two
 methods generateExcel() and generatedPdf(). Now client ‘A’ wants to use this

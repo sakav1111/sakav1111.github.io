@@ -97,7 +97,7 @@ C:\sonarqube\bin\windows-x86-xx\StartSonar.bat
 
 
 3.It will Open the command prompt & you can observe the message once it is ready
-like.“SonarQube is up”
+like.“SonarQube is up"
 ```bash
 jvm 1    | 2017.03.21 18:18:36 INFO  app[][o.s.p.m.Monitor] Process[web] is up
 jvm 1    | 2017.03.21 18:18:36 INFO  app[][o.s.p.m.JavaProcessLauncher] Launch p
@@ -174,7 +174,7 @@ Example,**“C:\\DevOps\\sonar-runner-2.4"** don’t put the semicolon (;)
  
 
 **2**.Append Sonar Runner’s bin path **(%SONAR_RUNNER_HOME%\\bin)** to the
-environment variable **“PATH”.**
+environment variable **“PATH".**
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/03/SonarQube-Tutorial-SmlCodes-5.png](media/8c5bd639a9de2ec2c48d451d81942443.png)
 

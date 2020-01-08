@@ -30,11 +30,11 @@ public class EmployeeBo {
 //Example: EmployeeBo.hbm.xml
 <hibernate-mapping>
 	<class name="bo.EmployeeBo" table="employee">
-		<id name="eid" column="eid">
-			<generator class="assigned" />
-		</id>
-		<property name="name" column="name" />
-		<property name="address" column="address" />
+ <id name="eid" column="eid">
+ 	<generator class="assigned" />
+ </id>
+ <property name="name" column="name" />
+ <property name="address" column="address" />
 	</class>
 </hibernate-mapping>
 
@@ -67,23 +67,23 @@ public class EmployeeBo {
 ```java
 public class EmployeeSave {
 	public static void main(String[] args) {
-		Configuration cfg = new Configuration();
-		cfg.configure("hibernate.cfg.xml");
-		
-		SessionFactory factory = cfg.buildSessionFactory();
-		Session session = factory.openSession();
-		
-		EmployeeBo bo = new EmployeeBo();
-		bo.setEid(5);
-		bo.setName("DILEEP");
-		bo.setAddress("BANGLORE");
+ Configuration cfg = new Configuration();
+ cfg.configure("hibernate.cfg.xml");
+ 
+ SessionFactory factory = cfg.buildSessionFactory();
+ Session session = factory.openSession();
+ 
+ EmployeeBo bo = new EmployeeBo();
+ bo.setEid(5);
+ bo.setName("DILEEP");
+ bo.setAddress("BANGLORE");
 
-		Transaction tx = session.beginTransaction();
-		session.save(bo);
-		System.out.println("Employee Data saved successfully.....!!");
-		tx.commit();
-		session.close();
-		factory.close();
+ Transaction tx = session.beginTransaction();
+ session.save(bo);
+ System.out.println("Employee Data saved successfully.....!!");
+ tx.commit();
+ session.close();
+ factory.close();
 	}
 }
 ```
@@ -97,8 +97,8 @@ Select
 
 Insert
     Serializable	save(Object object) 
-    void		persist(Object object) 
-    void		saveOrUpdate(Object object) 
+    void persist(Object object) 
+    void saveOrUpdate(Object object) 
 
 Update
     Object	merge(Object object) 
@@ -110,7 +110,7 @@ Delete
 
 Clear
     void	evict(Object object) :   Remove this instance from the session cache.
-    void	clear() 		 :   Completely clear the session.
+    void	clear()   :   Completely clear the session.
 
 
 Other
@@ -131,12 +131,12 @@ Vehicle.hbm.xml
 	<property name="price" column="price"></property>
 	
 	<subclass name="inheritance.Bike" discriminator-value="BIKE_DISC">
-		<property name="biketype" column="biketype"></property>	
-	</subclass>		
+ <property name="biketype" column="biketype"></property>	
+	</subclass> 
 	
 <subclass name="inheritance.Car" discriminator-value="CAR_DISC">
-		<property name="cartype" column="cartype"></property>	
-	</subclass>		 
+ <property name="cartype" column="cartype"></property>	
+	</subclass>  
   </class>
 </hibernate-mapping>
 ```
@@ -155,13 +155,13 @@ Vehicle.hbm.xml
 	<property name="price" column="price"></property>
 	
 	<joined-subclass name="inheritance.Bike" table="bike">
-		<key column="BIKE_KEY" />
-		<property name="biketype" column="type"></property>	
+ <key column="BIKE_KEY" />
+ <property name="biketype" column="type"></property>	
 	</joined-subclass>
-		
+ 
 	 <joined-subclass name="inheritance.Car" table="car">
-		<key column="CAR_KEY" />
-		<property name="cartype" column="type"></property>	
+ <key column="CAR_KEY" />
+ <property name="cartype" column="type"></property>	
 	</joined-subclass>	 	 
 	</class>
 </hibernate-mapping>
@@ -180,12 +180,12 @@ Vehicle.hbm.xml
 	<id name="vid" column="vid"></id> 
 	<property name="price" column="price"></property>
 	
-	<union-subclass name="inheritance.Bike" table="bike">		
-		<property name="biketype" column="type"></property>	
+	<union-subclass name="inheritance.Bike" table="bike"> 
+ <property name="biketype" column="type"></property>	
 	</union-subclass>
-		
-	 <union-subclass name="inheritance.Car" table="car">		 
-		<property name="cartype" column="type"></property>	
+ 
+	 <union-subclass name="inheritance.Car" table="car">  
+ <property name="cartype" column="type"></property>	
 	</union-subclass>	 	 
 	</class>
 </hibernate-mapping>
@@ -371,12 +371,12 @@ public class Employee {
 Employee.hbm.xml
 <hibernate-mapping package="cache">
 	<class name="Employee" table="employee">
-		<cache usage="read-only" />
-		<id name="eid" column="eid">
-			<generator class="native"></generator>
-		</id>
-		<property name="name"></property>
-		<property name="address"></property>
+ <cache usage="read-only" />
+ <id name="eid" column="eid">
+ 	<generator class="native"></generator>
+ </id>
+ <property name="name"></property>
+ <property name="address"></property>
 	</class>
 </hibernate-mapping>
 
@@ -384,18 +384,18 @@ ehcache.xml
 <?xml version="1.0"?>
 <ehcache>
 	<defaultCache maxElementsInMemory="100" eternal="false"
-		timeToIdleSeconds="120" timeToLiveSeconds="200" />
+ timeToIdleSeconds="120" timeToLiveSeconds="200" />
 	<cache name="cache.Employee" maxElementsInMemory="100"
-		eternal="false" timeToIdleSeconds="5" timeToLiveSeconds="200" />
+ eternal="false" timeToIdleSeconds="5" timeToLiveSeconds="200" />
 </ehcache>  
 
 hibernate.cfg.xml
 <hibernate-configuration>
 	<session-factory>
-		<property> Driver Class, URL, Username, password, etc </property>
-		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
-		<property name="hibernate.cache.use_second_level_cache">true</property>
-		<mapping resource="cache/employee.hbm.xml" />		
+ <property> Driver Class, URL, Username, password, etc </property>
+ <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+ <property name="hibernate.cache.use_second_level_cache">true</property>
+ <mapping resource="cache/employee.hbm.xml" /> 
 	</session-factory>
 </hibernate-configuration>
 
@@ -407,23 +407,23 @@ import org.hibernate.cfg.*;
 public class CacheDemo {
 
 	public static void main(String[] args) { 
-		
-		//1.Load Configuration 
-		Configuration cfg = new Configuration();
-		cfg.configure("hibernate.cfg.xml");
-		
-		//2.Create Session
-		SessionFactory sf = cfg.buildSessionFactory();
-		Session session = sf.openSession();		
-		
-		//3.Perform Operations
-		Object ob = session.load(Employee.class, new Integer(1));
-		Employee bo = (Employee) ob;
-		
-		System.out.println("SELECTED DATA\n ================");
-		System.out.println("SNO : "+bo.getEid());
-		System.out.println("NAME : "+bo.getName());
-		System.out.println("ADDRESS : "+bo.getAddress());
+ 
+ //1.Load Configuration 
+ Configuration cfg = new Configuration();
+ cfg.configure("hibernate.cfg.xml");
+ 
+ //2.Create Session
+ SessionFactory sf = cfg.buildSessionFactory();
+ Session session = sf.openSession(); 
+ 
+ //3.Perform Operations
+ Object ob = session.load(Employee.class, new Integer(1));
+ Employee bo = (Employee) ob;
+ 
+ System.out.println("SELECTED DATA\n ================");
+ System.out.println("SNO : "+bo.getEid());
+ System.out.println("NAME : "+bo.getName());
+ System.out.println("ADDRESS : "+bo.getAddress());
 	}
 }
 ```
@@ -478,27 +478,27 @@ method if you are not sure about object's existence.
 ## What is the difference between and merge and update?
 ```java
 Employee emp1 = new Employee();
-		emp1.setEmpId(100);
-		emp1.setEmpName("Dinesh");
-		Session session1 = createNewHibernateSession();
-		session1.saveOrUpdate(emp1);
-		session1.close();
-		//emp1 object in detached state now
+ emp1.setEmpId(100);
+ emp1.setEmpName("Dinesh");
+ Session session1 = createNewHibernateSession();
+ session1.saveOrUpdate(emp1);
+ session1.close();
+ //emp1 object in detached state now
 
-		emp1.setEmpName("Dinesh Rajput");//Updated Name
-		
+ emp1.setEmpName("Dinesh Rajput");//Updated Name
+ 
       //Create session again
-		Session session2 = createNewHibernateSession();
-		Employee emp2 =(Employee)session2.get(Employee.class, 100);
-		//emp2 object in persistent state with id 100
+ Session session2 = createNewHibernateSession();
+ Employee emp2 =(Employee)session2.get(Employee.class, 100);
+ //emp2 object in persistent state with id 100
 
 //below we try to make on detached object with id 100 to persistent state by using update method of hibernate
-		session2.update(emp1);//It occurs the exception NonUniqueObjectException because emp2 object is having employee with same empid as 100 in Cache.Here cache is not Empty. See diageram. 
+ session2.update(emp1);//It occurs the exception NonUniqueObjectException because emp2 object is having employee with same empid as 100 in Cache.Here cache is not Empty. See diageram. 
 
 //to avoid this exception we are using merge like given below instead of session.update(emp1);
 
-		session2.merge(emp1); //it merge the object state with emp2
-		session2.update(emp1); //Now it will work with exception
+ session2.merge(emp1); //it merge the object state with emp2
+ session2.update(emp1); //Now it will work with exception
 ```
 
 ![Difference Between Merge And Update Methods In Hibernate](media/6774acb7be738e3973a7440645b9028e.png)
@@ -579,7 +579,7 @@ entities which has relationship with each other.
 
 Example
 
-In this example, the cascade=”save-update” is declare on stockDailyRecords.
+In this example, the cascade="save-update" is declare on stockDailyRecords.
 ```xml
 <!-- Stock.hbm.xml -->
 <hibernate-mapping>
@@ -605,14 +605,14 @@ session.update(stock);
 
 
 It will inserted or updated the record into STOCK table and call another insert
-or update statement (cascade=”save-update”) on StockDailyRecord. [More detail
+or update statement (cascade="save-update") on StockDailyRecord. [More detail
 example
 here…](http://www.mkyong.com/hibernate/hibernate-cascade-example-save-update-delete-and-delete-orphan/)
 
 #### Conclusion
 
-In short, the “inverse” is decide which side will update the foreign key, while
-“cascade” is decide what’s the follow by operation should execute. Both are look
+In short, the “inverse" is decide which side will update the foreign key, while
+“cascade" is decide what’s the follow by operation should execute. Both are look
 quite similar in relationship, but it’s totally two different things. Hibernate
 developers are worth to spend time to research on it, because misunderstand the
 concept or misuse it will bring serious performance or data integrity issue in
@@ -705,16 +705,16 @@ query and **@NameQueries** is used to define multiple named query in hibernate
 ## Explain Criteria API
 
 Criteria is a simplified API for retrieving entities by composing Criterion
-objects. This is a very convenient approach for functionality like “search”
+objects. This is a very convenient approach for functionality like “search"
 screens where there is a variable number of conditions to be placed upon the
 result set.
 
 **Example:**
 ```java
 List employees = session.createCriteria(Employee.class)
-.add(Restrictions.like(“name”, “a%”) )
-.add(Restrictions.like(“address”, “Boston”))
-.addOrder(Order.asc(“name”) )
+.add(Restrictions.like(“name", “a%") )
+.add(Restrictions.like(“address", “Boston"))
+.addOrder(Order.asc(“name") )
 .list();
 ```
 

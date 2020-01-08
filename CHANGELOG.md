@@ -79,7 +79,7 @@
 
 ## 2.0.1 (2018-07-07)
 
-> “All elements that respond to press should have a visual feedback when touched.”
+> “All elements that respond to press should have a visual feedback when touched."
 >
 > —TouchableWithoutFeedback in *React Native Docs*
 
@@ -163,7 +163,7 @@ Breaking changes, please check [Update from 1.x to 2.x](https://tianqi.name/jeky
 ### Enhancements
 
 - MathJax Support
-- Add “Read more” link at the end of article excerpt
+- Add “Read more" link at the end of article excerpt
 - 404 page
 
 ### Bug Fixes

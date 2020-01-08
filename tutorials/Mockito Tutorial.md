@@ -55,7 +55,7 @@ public class MathApplicationTester {
    public void testAdd(){
       //add the behavior of calc service to add two numbers
       when(calcService.add(10.0,20.0)).thenReturn(30.00);
-		
+ 
       //test the add functionality
       Assert.assertEquals(mathApplication.add(10.0, 20.0),30.0,0);
    }

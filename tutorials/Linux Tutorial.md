@@ -995,9 +995,9 @@ human-readable formats like hexadecimal, octal and ASCII characters.
 
 **Syntax:**
 ```bash
-od -b <fileName>		(display files in octal format)
-od -t x1 <fileName>		(display files in hexadecimal bytes format)
-od -c <fileName>		(display files in ASCII (backslashed) character format)
+od -b <fileName> (display files in octal format)
+od -t x1 <fileName> (display files in hexadecimal bytes format)
+od -c <fileName> (display files in ASCII (backslashed) character format)
 ```
 
 
@@ -1607,15 +1607,15 @@ Syntax	: chmod <groupName>+<permissionName> <fileName>
 Example:chmod u+x file  
 
 3. To remove permissions from a group
-Syntax:		chmod <groupName>-<permissionName> <fileName>  
+Syntax: chmod <groupName>-<permissionName> <fileName>  
 Example:	chmod g-x file   
 
 4. To add permission to all the groups together
-Syntax:		chmod a+<permissionName> <fileName>  
+Syntax: chmod a+<permissionName> <fileName>  
 Example:	chmod a+w file  
 
 5.To add permission to all the groups without typing a
-Syntax		:	chmod +<permissionName> <fileName>  
+Syntax :	chmod +<permissionName> <fileName>  
 Example	:	chmod +w file
 ```
 

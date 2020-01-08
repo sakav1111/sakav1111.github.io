@@ -702,7 +702,7 @@ Check MongoDB is Started or not, by running mongo command on command-prompt
 
 
 
-**3.4.2 Start “api”**
+**3.4.2 Start “api"**
 
 Before we starting API we need add **dashboard.properties file**, change
 **application.propeties** file as per our requirement.
@@ -761,14 +761,14 @@ args : add**
 ```
 
 
-If we see the message “Tomcat started on port(s): 8080 (http)” means api is
+If we see the message “Tomcat started on port(s): 8080 (http)" means api is
 running successfully
 
 
 
 
 
-**3.4.3 Start “UI”**
+**3.4.3 Start “UI"**
 
 For Starting UI, Open nodejs command prompt, navigate to UI folder location &
 run **gulp serve** command

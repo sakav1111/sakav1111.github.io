@@ -185,16 +185,16 @@ public class App implements CommandLineRunner {
 	private static final Logger log = LoggerFactory.getLogger(App.class);
 
 	public static void main(String args[]) {
-		SpringApplication.run(App.class);
+ SpringApplication.run(App.class);
 	}
 
 	public void run(String... args) throws Exception {
-		RestTemplate restTemplate = new RestTemplate();
-		Response response = restTemplate.getForObject("localhost:9090/student/getall",
-				Response.class);
-		log.info("==== RESTful API Response using Spring RESTTemplate START =======");
-		log.info(response.toString());
-		log.info("==== RESTful API Response using Spring RESTTemplate END =======");
+ RestTemplate restTemplate = new RestTemplate();
+ Response response = restTemplate.getForObject("localhost:9090/student/getall",
+  Response.class);
+ log.info("==== RESTful API Response using Spring RESTTemplate START =======");
+ log.info(response.toString());
+ log.info("==== RESTful API Response using Spring RESTTemplate END =======");
 	}
 }
 ```

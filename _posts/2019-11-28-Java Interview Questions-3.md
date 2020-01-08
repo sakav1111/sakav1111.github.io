@@ -41,7 +41,7 @@ Collections.sort(list,comparator);
 ```
 
 
-**int binarySearch (list,”elemet”)** : This method searches the key using binary
+**int binarySearch (list,"elemet")** : This method searches the key using binary
 search in the specified list. The list should be sorted by natural ordering,
 before calling this method, otherwise, the result will be undefined
 ```java
@@ -137,7 +137,7 @@ Collections.sort() method it will throws
 	The method sort(List<T>) in the type Collections is not applicable for the arguments (List<Employee>)`
 
 Comparable is an interface defining a strategy of comparing an object with other
-objects of the same type. This is called the class’s “natural ordering”.so we
+objects of the same type. This is called the class’s “natural ordering".so we
 need to define CompareTo() method
 
 ```java
@@ -149,41 +149,41 @@ public class Employee implements Comparable<Employee> {
 //Setters/getters
 
 	public Employee(int id, String name, double salary) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.salary = salary;
+ super();
+ this.id = id;
+ this.name = name;
+ this.salary = salary;
 	}
 
 	
 	@Override
 	public int compareTo(Employee o) {
-		if (this.id < o.id) {
-			return -1;
-		} else if (this.id > o.id) {
-			return 1;
-		} else {
-			return 0;
-		}
+ if (this.id < o.id) {
+ 	return -1;
+ } else if (this.id > o.id) {
+ 	return 1;
+ } else {
+ 	return 0;
+ }
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+ return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
 	}
 
 	public static void main(String[] args) {
 
-		List<Employee> employees = new ArrayList<Employee>();
-		employees.add(new Employee(105, "Satya", 3000));
-		employees.add(new Employee(102, "RAJ", 2000));
-		employees.add(new Employee(104, "Madhu", 5000));
-		employees.add(new Employee(101, "Srini", 1000));
-		employees.add(new Employee(103, "Vinod", 4000));
+ List<Employee> employees = new ArrayList<Employee>();
+ employees.add(new Employee(105, "Satya", 3000));
+ employees.add(new Employee(102, "RAJ", 2000));
+ employees.add(new Employee(104, "Madhu", 5000));
+ employees.add(new Employee(101, "Srini", 1000));
+ employees.add(new Employee(103, "Vinod", 4000));
 
-		System.out.println("Before : " + employees);
-		Collections.sort(employees);
-		System.out.println("After : " + employees);
+ System.out.println("Before : " + employees);
+ Collections.sort(employees);
+ System.out.println("After : " + employees);
 	}
 }
 Before : [Employee [id=105, name=Satya, salary=3000.0], Employee [id=102, name=RAJ, salary=2000.0], Employee [id=104, name=Madhu, salary=5000.0], Employee [id=101, name=Srini, salary=1000.0], Employee [id=103, name=Vinod, salary=4000.0]]
@@ -208,18 +208,18 @@ implemented that takes two Object argument
 ```java
 class EmpName implements Comparator<Employee> {
 	public int compare(Employee o1, Employee o2) {
-		return o1.getName().compareTo(o2.getName());
+ return o1.getName().compareTo(o2.getName());
 	};
 }
 
 class EmpSalary implements Comparator<Employee> {
 	public int compare(Employee o1, Employee o2) {
-		if (o1.getSalary() < o2.getSalary()) {
-			return -1;
-		} else if (o1.getSalary() > o2.getSalary()) {
-			return 1;
-		}
-		return 0;
+ if (o1.getSalary() < o2.getSalary()) {
+ 	return -1;
+ } else if (o1.getSalary() > o2.getSalary()) {
+ 	return 1;
+ }
+ return 0;
 	}
 }
 
@@ -229,47 +229,47 @@ public class Employee implements Comparable<Employee> {
 	private double salary;
 //Setters & Getters
 	public Employee(int id, String name, double salary) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.salary = salary;
+ super();
+ this.id = id;
+ this.name = name;
+ this.salary = salary;
 	}
 	
 	@Override
 	public int compareTo(Employee o) {
-		if (this.id < o.id) {
-			return -1;
-		} else if (this.id > o.id) {
-			return 1;
-		} else {
-			return 0;
-		}
+ if (this.id < o.id) {
+ 	return -1;
+ } else if (this.id > o.id) {
+ 	return 1;
+ } else {
+ 	return 0;
+ }
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+ return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
 	}
 
 	public static void main(String[] args) {
 
-		List<Employee> employees = new ArrayList<Employee>();
-		employees.add(new Employee(105, "AAA", 3000));
-		employees.add(new Employee(102, "ZZZ", 2000));
-		employees.add(new Employee(104, "BBB", 5000));
-		employees.add(new Employee(101, "DDD", 1000));
-		employees.add(new Employee(103, "CCC", 4000));
+ List<Employee> employees = new ArrayList<Employee>();
+ employees.add(new Employee(105, "AAA", 3000));
+ employees.add(new Employee(102, "ZZZ", 2000));
+ employees.add(new Employee(104, "BBB", 5000));
+ employees.add(new Employee(101, "DDD", 1000));
+ employees.add(new Employee(103, "CCC", 4000));
 
-		System.out.println("Before : " + employees);
-		Collections.sort(employees);
-		System.out.println("ByID :\n " + employees);
-		
-		//Now we can Sort our Emplyees based on Multiple Sorting(EmpName, EmpSaltry)
-		Collections.sort(employees, new EmpName());
-		System.out.println("EmpName : \n "+employees);
-		
-		Collections.sort(employees, new EmpSalary());
-		System.out.println("EmpSalary : \n "+employees);
+ System.out.println("Before : " + employees);
+ Collections.sort(employees);
+ System.out.println("ByID :\n " + employees);
+ 
+ //Now we can Sort our Emplyees based on Multiple Sorting(EmpName, EmpSaltry)
+ Collections.sort(employees, new EmpName());
+ System.out.println("EmpName : \n "+employees);
+ 
+ Collections.sort(employees, new EmpSalary());
+ System.out.println("EmpSalary : \n "+employees);
 
 	}
 
@@ -380,14 +380,14 @@ print each element
 public class Test {
 	public static void main(String args[]) {
 
-		String a[] = { "a", "b", "c" };
-		System.out.println(a.toString());
+ String a[] = { "a", "b", "c" };
+ System.out.println(a.toString());
 
-		// 1. Using Arrays.toString(a)
-		System.out.println(Arrays.toString(a));
+ // 1. Using Arrays.toString(a)
+ System.out.println(Arrays.toString(a));
 
-		// 2. Using Arrays.asList(a)
-		System.out.println(Arrays.asList(a).toString());
+ // 2. Using Arrays.asList(a)
+ System.out.println(Arrays.asList(a).toString());
 
 	}
 }
@@ -724,21 +724,21 @@ public class Test {
 	
 
 	public static void main(String[] args) throws InterruptedException {
-		LinkedList l = new LinkedList<>();
-		for (int i = 0; i < 10; i++) {
-			l.add(i);			
-		}
-		
-		System.out.println(l);
-		ListIterator iterator = l.listIterator();
-		while(iterator.hasNext())
-		{
-			int next = (int) iterator.next();
-			System.out.println(next);
-			if(next>5)
-				l.add(10);
-		}
-		System.out.println(l);
+ LinkedList l = new LinkedList<>();
+ for (int i = 0; i < 10; i++) {
+ 	l.add(i); 	
+ }
+ 
+ System.out.println(l);
+ ListIterator iterator = l.listIterator();
+ while(iterator.hasNext())
+ {
+ 	int next = (int) iterator.next();
+ 	System.out.println(next);
+ 	if(next>5)
+  l.add(10);
+ }
+ System.out.println(l);
 
 }
 
@@ -771,7 +771,7 @@ Exception in thread "main" java.util.ConcurrentModificationException
 public class ArrayDuplicates {
 
 	public static void main(String[] args) {
-		 String arr[] = {"B","C","D","A","B","C","D","A","E","E"};
+  String arr[] = {"B","C","D","A","B","C","D","A","E","E"};
 	        List list = Arrays.asList(arr);
 	        
 	        HashSet h = new HashSet(list);
@@ -879,21 +879,21 @@ remaiiing.
 public class Test {
 
 	public static String remove(String word, char unwanted) {
-		StringBuilder sb = new StringBuilder();
-		char[] letters = word.toCharArray();
+ StringBuilder sb = new StringBuilder();
+ char[] letters = word.toCharArray();
 
-		for (char c : letters) {
-			if (c != unwanted) {
-				sb.append(c);
-			}
-		}
+ for (char c : letters) {
+ 	if (c != unwanted) {
+  sb.append(c);
+ 	}
+ }
 
-		return sb.toString();
+ return sb.toString();
 	}
 
 	public static void main(String[] args) throws InterruptedException {
 
-		System.out.println(remove("satya kaveti", 'a'));
+ System.out.println(remove("satya kaveti", 'a'));
 	}
 
 }
@@ -941,17 +941,17 @@ order e.g. **army** and **mary**, **stop** and **pots** etc
 ```java
 public class Anagram {
 	public static boolean Check(String word1, String word2) {
-		char[] charFromword1 = word1.toCharArray();
-		char[] charFromword2 = word2.toCharArray();
-		Arrays.sort(charFromword1);
-		Arrays.sort(charFromword2);
+ char[] charFromword1 = word1.toCharArray();
+ char[] charFromword2 = word2.toCharArray();
+ Arrays.sort(charFromword1);
+ Arrays.sort(charFromword2);
 
-		return Arrays.equals(charFromword1, charFromword2);
+ return Arrays.equals(charFromword1, charFromword2);
 	}
 
 	public static void main(String args[]) {
-		System.out.println(Check("stop", "pots"));
-		System.out.println(Check("army", "mary"));
+ System.out.println(Check("stop", "pots"));
+ System.out.println(Check("army", "mary"));
 	}
 }
 true
@@ -968,22 +968,22 @@ public class Permutation {
 
 	public static void main(String args[]) {
 
-		// input to print Fibonacci series upto how many numbers
-		int number = 10;
+ // input to print Fibonacci series upto how many numbers
+ int number = 10;
 
-		System.out.println("Fibonacci series upto " + number + " numbers : ");
-		// printing Fibonacci series upto number
-		for (int i = 1; i <= number; i++) {
-			System.out.print(fibonacci(i) + " ");
-		}
+ System.out.println("Fibonacci series upto " + number + " numbers : ");
+ // printing Fibonacci series upto number
+ for (int i = 1; i <= number; i++) {
+ 	System.out.print(fibonacci(i) + " ");
+ }
 	}
 
 	public static int fibonacci(int number) {
-		if (number == 1 || number == 2) {
-			return 1;
-		}
+ if (number == 1 || number == 2) {
+ 	return 1;
+ }
 
-		return fibonacci(number - 1) + fibonacci(number - 2); // tail recursion
+ return fibonacci(number - 1) + fibonacci(number - 2); // tail recursion
 	}
 }
 Fibonacci series upto 10 numbers : 
@@ -1026,7 +1026,7 @@ number, since `1**3 + 5**3 + 3**3 = 153.`
 public class Permutation {
 	 
 	public static void main(String args[]) {
-		 
+  
        
         int count = 999;
         int index = 0;
@@ -1080,7 +1080,7 @@ public class Permutation {
         System.out.println(number);
     }
 	public static void main(String args[]) {
-		usingRecursion(20);
+ usingRecursion(20);
       
     }
 }

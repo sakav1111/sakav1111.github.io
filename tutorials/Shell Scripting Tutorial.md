@@ -89,7 +89,7 @@ Kaveti
 ```
 
 
-We can also assign variable value from user by using “read”. See below example
+We can also assign variable value from user by using “read". See below example
 ```bash
 [smlcodes@centori ~]$vi hello.sh                                 
 echo "What is your name?"
@@ -120,9 +120,9 @@ loop termination .
 Syntax:
 If [CONDITION]
 then
-	“Statements”
+	“Statements"
 else
-	“Statements”
+	“Statements"
 fi
 
 Example
@@ -152,13 +152,13 @@ b= 200, is BIG
 ```bash
 If [CONDITION]
 then
-	“Statements”
+	“Statements"
 
 elif[Condition]
-	“Statements”
+	“Statements"
 
 else
-“Statements”
+“Statements"
 fi
 
 Example
@@ -398,9 +398,9 @@ do
 	IDX=`expr index $FILE .`
 
 	if [ "$IDX" == 0 ]; then
-		IDX=`expr length $FILE`
+ IDX=`expr length $FILE`
 	else
-		IDX=`expr $IDX - 1`
+ IDX=`expr $IDX - 1`
 	fi
 
 	SUB=`expr substr $FILE 1 $IDX`

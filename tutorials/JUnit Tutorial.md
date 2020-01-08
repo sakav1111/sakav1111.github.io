@@ -145,11 +145,11 @@ Test runner is used for executing the test cases.
 public class TestRunner {
    public static void main(String[] args) {
       Result result = JUnitCore.runClasses(TestJunit.class);
-		
+ 
       for (Failure failure : result.getFailures()) {
          System.out.println(failure.toString());
       }
-		
+ 
       System.out.println(result.wasSuccessful());
    }
 }
@@ -260,12 +260,12 @@ package junit;
 import org.junit.runner.*;
 public class TestRunner {
 	public static void main(String[] args) {
-		Result result = JUnitCore.runClasses(CalculatorTest.class);
+ Result result = JUnitCore.runClasses(CalculatorTest.class);
 
-		for (Failure failure : result.getFailures()) {
-			System.out.println("Failure : " + failure.toString());
-		}
-		System.out.println("Success : " + result.wasSuccessful());
+ for (Failure failure : result.getFailures()) {
+ 	System.out.println("Failure : " + failure.toString());
+ }
+ System.out.println("Success : " + result.wasSuccessful());
 	}
 }
 Failure : squareTest(junit.CalculatorTest): 2*2=4 Passed expected:<6> but was:<4>
@@ -360,11 +360,11 @@ package testsuite;
 
 public class Calculator {
 	public int square(int x) {
-		return x * x;
+ return x * x;
 	}
 
 	public int sum(int x, int y) {
-		return x + y;
+ return x + y;
 	}
 }
 
@@ -424,12 +424,12 @@ import org.junit.runner.notification.Failure;
 
 public class TestRunner {
 	public static void main(String[] args) {
-		Result result = JUnitCore.runClasses(CalculatorTestSuite.class);
+ Result result = JUnitCore.runClasses(CalculatorTestSuite.class);
 
-		for (Failure failure : result.getFailures()) {
-			System.out.println("Failure : " + failure.toString());
-		}
-		System.out.println("Success : " + result.wasSuccessful());
+ for (Failure failure : result.getFailures()) {
+ 	System.out.println("Failure : " + failure.toString());
+ }
+ System.out.println("Success : " + result.wasSuccessful());
 	}
 }
 ```
@@ -454,20 +454,20 @@ public class IgnoreTestClassLevel {
 	private String str3;
 
 	public IgnoreTestClassLevel(String str1, String str2) {
-		this.str1 = str1;
-		this.str2 = str2;
+ this.str1 = str1;
+ this.str2 = str2;
 	}
 
 	public String addStrings() {
-		str3 = str1 + str2;
-		System.out.println("addStrings : " + str3);
-		return str1 + str2;
+ str3 = str1 + str2;
+ System.out.println("addStrings : " + str3);
+ return str1 + str2;
 	}
 
 	public String upperCase() {
-		str3 = (str1 + str2).toUpperCase();
-		System.out.println("upperCase : " + str3);
-		return str1 + str2;
+ str3 = (str1 + str2).toUpperCase();
+ System.out.println("upperCase : " + str3);
+ return str1 + str2;
 	}
 }
 
@@ -484,16 +484,16 @@ public class IgnoreTestMethodLevel {
 	@Ignore
 	@Test
 	public void testAddStrings() {
-		System.out.println("Inside testAddStrings()");
-		res = "ab";
-		assertEquals(res, util.addStrings());
+ System.out.println("Inside testAddStrings()");
+ res = "ab";
+ assertEquals(res, util.addStrings());
 	}
 
 	@Test
 	public void testUpperCase() {
-		System.out.println("Inside testUpperCase()");
-		res = "AB";
-		assertEquals(res, util.upperCase());
+ System.out.println("Inside testUpperCase()");
+ res = "AB";
+ assertEquals(res, util.upperCase());
 	}
 }
 Inside testUpperCase()
@@ -513,16 +513,16 @@ public class IgnoreTestClassLevel {
 
 	@Test
 	public void testAddStrings() {
-		System.out.println("Inside testAddStrings()");
-		res = "ab";
-		assertEquals(res, util.addStrings());
+ System.out.println("Inside testAddStrings()");
+ res = "ab";
+ assertEquals(res, util.addStrings());
 	}
 
 	@Test
 	public void testUpperCase() {
-		System.out.println("Inside testUpperCase()");
-		res = "AB";
-		assertEquals(res, util.upperCase());
+ System.out.println("Inside testUpperCase()");
+ res = "AB";
+ assertEquals(res, util.upperCase());
 	}
 }
 Empty Output, because  none of its test methods will be executed.
@@ -552,16 +552,16 @@ public class StringUtilTimeTest {
 
 	@Test(timeout = 1000)
 	public void testAddStrings() {
-		System.out.println("Inside testAddStrings()");
-		res = "ab";
-		assertEquals(res, util.addStrings());
+ System.out.println("Inside testAddStrings()");
+ res = "ab";
+ assertEquals(res, util.addStrings());
 	}
 
 	@Test
 	public void testUpperCase() {
-		System.out.println("Inside testUpperCase()");
-		res = "AB";
-		assertEquals(res, util.upperCase());
+ System.out.println("Inside testUpperCase()");
+ res = "AB";
+ assertEquals(res, util.upperCase());
 	}
 }
 ```
@@ -582,10 +582,10 @@ package junit;
 
 public class Calculator {
 	public int square(int x) {
-		return x * x;
+ return x * x;
 	}
 	public int div(int a, int b) {
-		return a / b;
+ return a / b;
 	}
 }
 
@@ -617,12 +617,12 @@ Example
 public class EvenNumbers {
 	public Boolean checkEven(final Integer num) {
 
-		for (int i = 1; i <= num; i++) {
-			if (i % 2 == 0) {
-				return true;
-			}
-		}
-		return false;
+ for (int i = 1; i <= num; i++) {
+ 	if (i % 2 == 0) {
+  return true;
+ 	}
+ }
+ return false;
 	}
 }
 ```
@@ -748,7 +748,7 @@ public class ListExample{
 
         assertThat(new ArrayList<>(), IsEmptyCollection.empty());
 
-		//6. Test numeric comparisons
+ //6. Test numeric comparisons
         assertThat(actual, everyItem(greaterThanOrEqualTo(1)));
 
         assertThat(actual, everyItem(lessThan(10)));

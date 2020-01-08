@@ -40,26 +40,26 @@ public final class Student {
 	final int regNo;
 
 	public Student(String name, int regNo) {
-		this.name = name;
-		this.regNo = regNo;
+ this.name = name;
+ this.regNo = regNo;
 	}
 	public String getName() {
-		return name;
+ return name;
 	}
 	public int getRegNo() {
-		return regNo;
+ return regNo;
 	}
 }
 
 // Driver class
 class Test {
 	public static void main(String args[]) {
-		Student s = new Student("ABC", 101);
-		System.out.println(s.name);
-		System.out.println(s.regNo);
+ Student s = new Student("ABC", 101);
+ System.out.println(s.name);
+ System.out.println(s.regNo);
 
-		// Uncommenting below line causes error
-		// s.regNo = 102;
+ // Uncommenting below line causes error
+ // s.regNo = 102;
 Exception in thread "main" java.lang.Error: Unresolved compilation problem: 
 	The final field Student.regNo cannot be assigned
 	}
@@ -84,25 +84,25 @@ class Student {
 	private static Student st;
 
 	private Student() {
-		System.out.println("OBJECET Created FIRST TIME");
+ System.out.println("OBJECET Created FIRST TIME");
 	}
 
 	public static Student getObject() {
-		if (st == null) {
-			st = new Student();
-		} else {
-			System.out.println("OBJECET ALREDAY CREATED");
-		}
-		return st;
+ if (st == null) {
+ 	st = new Student();
+ } else {
+ 	System.out.println("OBJECET ALREDAY CREATED");
+ }
+ return st;
 	}
 }
 
 public class Singleton {
 	public static void main(String[] args) {
-		Student s1 = Student.getObject();
-		Student s2 = Student.getObject();
-		System.out.println(s1.hashCode());
-		System.out.println(s2.hashCode());
+ Student s1 = Student.getObject();
+ Student s2 = Student.getObject();
+ System.out.println(s1.hashCode());
+ System.out.println(s2.hashCode());
 	}
 }
 ```
@@ -150,14 +150,14 @@ are two instances of a singleton class, `hence the class is no more
 singleton`.
 ```java
 public static void main(String args[]) throws CloneNotSupportedException {
-		
-		Student s1 = Student.getObject();
-		Student s2 = Student.getObject();
-		
-		Student s3 = (Student) s1.clone();
-		System.out.println(s1);
-		System.out.println(s1);
-		System.out.println(s3);
+ 
+ Student s1 = Student.getObject();
+ Student s2 = Student.getObject();
+ 
+ Student s3 = (Student) s1.clone();
+ System.out.println(s1);
+ System.out.println(s1);
+ System.out.println(s3);
 
 	}
 Student@15db9742
@@ -173,17 +173,17 @@ class Student implements Cloneable{
 	……….
        @Override
 	protected Object clone() throws CloneNotSupportedException {
-		throw new CloneNotSupportedException();
+ throw new CloneNotSupportedException();
 	}
 	
-	public static void main(String args[]) throws CloneNotSupportedException {		
-		Student s1 = Student.getObject();
-		Student s2 = Student.getObject();
-		
-		Student s3 = (Student) s1.clone();
-		System.out.println(s1);
-		System.out.println(s1);
-		System.out.println(s3);
+	public static void main(String args[]) throws CloneNotSupportedException { 
+ Student s1 = Student.getObject();
+ Student s2 = Student.getObject();
+ 
+ Student s3 = (Student) s1.clone();
+ System.out.println(s1);
+ System.out.println(s1);
+ System.out.println(s3);
 
 	}
 }
@@ -198,12 +198,12 @@ using that constructor .
 
 ```java
 public static void main(String args[]) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		
-		Student s1 = Student.getObject();
-		Student s2 = null;
+ 
+ Student s1 = Student.getObject();
+ Student s2 = null;
 
 //1.Making Construtor visible	
-		Constructor<Student>[] constructors = (Constructor<Student>[]) Student.class.getDeclaredConstructors(); 
+ Constructor<Student>[] constructors = (Constructor<Student>[]) Student.class.getDeclaredConstructors(); 
         for (Constructor constructor : constructors)  
         { 
             // Below code will destroy the singleton pattern 
@@ -216,11 +216,11 @@ public static void main(String args[]) throws InstantiationException, IllegalAcc
 
 //Using Class of newInstance()
              Class c = Student.class;
-		Student s1 = Student.getObject();
-		Student s2 = (Student) c.newInstance();
-		
-		System.out.println(s1); // Student@15db9742
-		System.out.println(s2); // Student@6d06d69c -Failed again 
+ Student s1 = Student.getObject();
+ Student s2 = (Student) c.newInstance();
+ 
+ System.out.println(s1); // Student@15db9742
+ System.out.println(s2); // Student@6d06d69c -Failed again 
 
 	}
 Student@15db9742
@@ -235,8 +235,8 @@ class Student implements Cloneable{
 	private static Student st;
 
 	private Student() {
-		if(st!=null)
-			throw new RuntimeException("Go Fucker.....");
+ if(st!=null)
+ 	throw new RuntimeException("Go Fucker.....");
 	}
 Exception in thread "main" java.lang.RuntimeException: Go Fucker.....
 	at Student.<init>(Student.java:15)
@@ -262,35 +262,35 @@ String source= "My Name is Khan";
 ```java
 public class RepreatedChar {
 	public static void main(String[] args) {
-		String a = "success";
+ String a = "success";
 
-		// 1.convert into char array
-		char[] c = a.toCharArray();
+ // 1.convert into char array
+ char[] c = a.toCharArray();
 
-		// 2.create Hashmap store key as character, count as value
-		HashMap map = new HashMap<>();
-		for (char ch : c) {
+ // 2.create Hashmap store key as character, count as value
+ HashMap map = new HashMap<>();
+ for (char ch : c) {
 
-			// 3.Check if Map contains given Char as <key> or not
-			if (map.containsKey(ch)) {
-				// if their, get the value & increment it
-				int i = (int) map.get(ch);
-				i++;
-				// add updated value to it
-				map.put(ch, i);
-			} else {
-				// if not their , add key & value as 1
-				map.put(ch, 1);
-			}
-		}
-			
-		 Set  set =  map.entrySet();
-		 Iterator iterator = set.iterator() ;
-		 while (iterator.hasNext()) {
-			Map.Entry entry = (Entry) iterator.next();
-			System.out.println(entry.getKey()+" : "+entry.getValue());
-			
-		}
+ 	// 3.Check if Map contains given Char as <key> or not
+ 	if (map.containsKey(ch)) {
+  // if their, get the value & increment it
+  int i = (int) map.get(ch);
+  i++;
+  // add updated value to it
+  map.put(ch, i);
+ 	} else {
+  // if not their , add key & value as 1
+  map.put(ch, 1);
+ 	}
+ }
+ 	
+  Set  set =  map.entrySet();
+  Iterator iterator = set.iterator() ;
+  while (iterator.hasNext()) {
+ 	Map.Entry entry = (Entry) iterator.next();
+ 	System.out.println(entry.getKey()+" : "+entry.getValue());
+ 	
+ }
 	}
 }
 s : 3
@@ -313,8 +313,8 @@ public static void main(String[] args) {
 	int len = s.length();
 	
 	for(int i=(len-1);i>=0;i--){
-		
-		rev = rev+s.charAt(i);
+ 
+ rev = rev+s.charAt(i);
 	}
 	
 	System.out.println(rev);
@@ -328,24 +328,24 @@ public static void main(String[] args) {
 ```java
 public class RegEx {
 	public static void main(String[] args) {
-		// Regular expression in Java to check if String is number or not
-		Pattern pattern = Pattern.compile(".*[^0-9].*");		 
-		String[] inputs = { "123", "-123", "123.12", "abcd123" };
-		/* Matches m = pattern.match(input);
-		 * boolean ch = m.match();	 */		
+ // Regular expression in Java to check if String is number or not
+ Pattern pattern = Pattern.compile(".*[^0-9].*");  
+ String[] inputs = { "123", "-123", "123.12", "abcd123" };
+ /* Matches m = pattern.match(input);
+  * boolean ch = m.match();	 */ 
 
-		for (String input : inputs) {
+ for (String input : inputs) {
 System.out.println("does " + input + " is number : " + !pattern.matcher(input).matches());
-		}
+ }
 
 	// Regular expression in java to check if String is 6 digit number or  not
-		String[] numbers = { "123", "1234", "123.12", "abcd123", "123456" };
-		Pattern digitPattern = Pattern.compile("\\d{6}");
-		// Pattern digitPattern = Pattern.compile("\\d\\d\\d\\d\\d\\d");
+ String[] numbers = { "123", "1234", "123.12", "abcd123", "123456" };
+ Pattern digitPattern = Pattern.compile("\\d{6}");
+ // Pattern digitPattern = Pattern.compile("\\d\\d\\d\\d\\d\\d");
 
-		for (String number : numbers) {
-			System.out.println("does " + number + " is 6 digit number : " + digitPattern.matcher(number).matches());
-		}
+ for (String number : numbers) {
+ 	System.out.println("does " + number + " is 6 digit number : " + digitPattern.matcher(number).matches());
+ }
 	}
 }
 ```
@@ -403,12 +403,12 @@ StringTokenizer tokenizer = new StringTokenizer(s, "// //!//,//?//.//_//'//@)");
 
 public class Singleton {
 	public static void main(String[] args) {
-		String s = "He is a very very good boy, isn't he?";
-		StringTokenizer tokenizer = new StringTokenizer(s, "// //!//,//?//.//_//'//@)");
-		System.out.println(tokenizer.countTokens());
-		while (tokenizer.hasMoreTokens()) {
-			System.out.println(tokenizer.nextToken());
-		}
+ String s = "He is a very very good boy, isn't he?";
+ StringTokenizer tokenizer = new StringTokenizer(s, "// //!//,//?//.//_//'//@)");
+ System.out.println(tokenizer.countTokens());
+ while (tokenizer.hasMoreTokens()) {
+ 	System.out.println(tokenizer.nextToken());
+ }
 	}
 }
 ====================
@@ -429,20 +429,20 @@ he
 ```java
 public class RevWords {
 	public static void main(String[] args) {
-		// using s.split("\\s");
-		String s = "My name is Satya";
-		String words[] = s.split("\\s");
-		String rev = "";
-		int len = words.length;
-		for (int i = (len - 1); i >= 0; i--) {
-			rev = rev + words[i];
-		}
-		System.out.println(rev);
+ // using s.split("\\s");
+ String s = "My name is Satya";
+ String words[] = s.split("\\s");
+ String rev = "";
+ int len = words.length;
+ for (int i = (len - 1); i >= 0; i--) {
+ 	rev = rev + words[i];
+ }
+ System.out.println(rev);
 
-		// using Collections.reverse(str)
-		List<String> word = Arrays.asList(s.split("\\s"));
-		Collections.reverse(word);
-		System.out.println(word);
+ // using Collections.reverse(str)
+ List<String> word = Arrays.asList(s.split("\\s"));
+ Collections.reverse(word);
+ System.out.println(word);
 	}
 }
 ```
@@ -453,30 +453,30 @@ public class RevWords {
 public class Test {
 
 	public static void main(String args[]) {
-		System.out.println("Using Constructor 1 -By Space ");
-		StringTokenizer st1 = new StringTokenizer("Hello Geeks How are you", " ");
+ System.out.println("Using Constructor 1 -By Space ");
+ StringTokenizer st1 = new StringTokenizer("Hello Geeks How are you", " ");
                System.out.println("Get TokensCount in case of revers:  "+st1.countTokens());
-		while (st1.hasMoreTokens())
-			System.out.println(st1.nextToken());
+ while (st1.hasMoreTokens())
+ 	System.out.println(st1.nextToken());
 
-		System.out.println("Using Constructor 2 - By Given Symol");
-		StringTokenizer st2 = new StringTokenizer("JAVA : Code : String", " :");
-		while (st2.hasMoreTokens())
-			System.out.println(st2.nextToken());
+ System.out.println("Using Constructor 2 - By Given Symol");
+ StringTokenizer st2 = new StringTokenizer("JAVA : Code : String", " :");
+ while (st2.hasMoreTokens())
+ 	System.out.println(st2.nextToken());
 
-		System.out.println("Using Constructor 3 - Using Flag");
-		/*
-		 * If the flag is false, delimiter characters serve to separate tokens. For
-		 * example, if string is "hello geeks" and delimiter is " ", then tokens are
-		 * "hello" and "geeks".
-		 * 
-		 * If the flag is true, delimiter characters are considered to be tokens. For
-		 * example, if string is "hello geeks" and delimiter is "
-		 * ", then tokens are "hello", " " and "geeks".
-		 */
-		StringTokenizer st3 = new StringTokenizer("JAVA : Code : String", " :", true);
-		while (st3.hasMoreTokens())
-			System.out.println(st3.nextToken());
+ System.out.println("Using Constructor 3 - Using Flag");
+ /*
+  * If the flag is false, delimiter characters serve to separate tokens. For
+  * example, if string is "hello geeks" and delimiter is " ", then tokens are
+  * "hello" and "geeks".
+  * 
+  * If the flag is true, delimiter characters are considered to be tokens. For
+  * example, if string is "hello geeks" and delimiter is "
+  * ", then tokens are "hello", " " and "geeks".
+  */
+ StringTokenizer st3 = new StringTokenizer("JAVA : Code : String", " :", true);
+ while (st3.hasMoreTokens())
+ 	System.out.println(st3.nextToken());
 	}
 
 }
@@ -491,9 +491,9 @@ Once the String is the pool it can be reused and improve performance.
 ```java
 public class Demo {
 	public static void main(String[] args) {
-		String s = new String("Satya");
-		String intern = s.intern();
-		System.out.println(intern);
+ String s = new String("Satya");
+ String intern = s.intern();
+ System.out.println(intern);
 	}
 }
 Output
@@ -525,7 +525,7 @@ System.out.println() take a single argument.
 ```java
 public class Demo {
 	public static void main(String[] args) {
-		int x = 100; 
+ int x = 100; 
 	    System.out.printf("Printing simple integer: x = %d\n", x); 
 	  
 	    // this will print it upto 2 decimal places 
@@ -555,13 +555,13 @@ returns a formatted string using the specified format string and arguments.
 ```java
 public class Demo {
 	public static void main(String[] args) {
-		double pi = Math.PI;
-		// returns a formatted string using the specified format string, and arguments
-		System.out.format("%f\n", pi);
-		
-		float f = 246.83278387f;
-		String s = String.format("%.2f\n",f);
-		System.out.println(s);		
+ double pi = Math.PI;
+ // returns a formatted string using the specified format string, and arguments
+ System.out.format("%f\n", pi);
+ 
+ float f = 246.83278387f;
+ String s = String.format("%.2f\n",f);
+ System.out.println(s); 
 	}
 }
 3.141593
@@ -592,11 +592,11 @@ String str = String.format("%04d", 9); // 0009
 original number 9, numeric string with padding : 0009
 
 we can also use DecimalFormat class with passing format
-		DecimalFormat df = new DecimalFormat("0000"); 
-		String a = df.format(9); // 0009 
-		String b = df.format(99); // 0099 
-		String c = df.format(999); // 0999
-		System.out.println("\n"+a+" \n"+b+" \n"+c+" \n");
+ DecimalFormat df = new DecimalFormat("0000"); 
+ String a = df.format(9); // 0009 
+ String b = df.format(99); // 0099 
+ String c = df.format(999); // 0999
+ System.out.println("\n"+a+" \n"+b+" \n"+c+" \n");
 0009 
 0099 
 0999
@@ -768,15 +768,15 @@ By Calling System.exit(0) in try or catch block, its stops execution & throws
 ```java
 public class Demo {
 	public static void main(String[] args) {
-		
-		try {
-			System.out.println("try");
-			System.exit(0);
-		}catch (Exception e) {
-			System.out.println("catch");
-		} finally {
-			System.out.println("finally");
-		}
+ 
+ try {
+ 	System.out.println("try");
+ 	System.exit(0);
+ }catch (Exception e) {
+ 	System.out.println("catch");
+ } finally {
+ 	System.out.println("finally");
+ }
 }
 }
 try	 - (Security Exception not thrown)
@@ -845,19 +845,19 @@ well.
 public class Test {
 
 	public int number() {
-		try {
-			int c = 10 / 0;
-			return 100;
+ try {
+ 	int c = 10 / 0;
+ 	return 100;
 
-		} catch (Exception e) {
-			return 200;
-		} finally {
-		   return 300;
-		}
+ } catch (Exception e) {
+ 	return 200;
+ } finally {
+    return 300;
+ }
 	}
 
 	public static void main(String args[]) {
-		System.out.println(new Test().number());
+ System.out.println(new Test().number());
 	}
 }
 0/p: 300
@@ -906,18 +906,18 @@ java –Xmx512m myprogram
 
  2.CharacterStreams(2 Bytes at a time) : Character file data
         char[] ch ={ 'a', 'b', 'c', 'd', 'e' };
-		FileWriter w = new FileWriter(filepath);
-		w.write(ch);
-		w.close();
+ FileWriter w = new FileWriter(filepath);
+ w.write(ch);
+ w.close();
 
-		FileReader r = new FileReader(filepath);
-		int i;
-		while ((i = r.read()) != -1) {
-			System.out.println(i + ":" + (char) i);
-		}
-		
+ FileReader r = new FileReader(filepath);
+ int i;
+ while ((i = r.read()) != -1) {
+ 	System.out.println(i + ":" + (char) i);
+ }
+ 
 3.Buffered Streams(1024 bytes at a time): Rather than read one byte at a time, it reads a larger block at a time into an internal buffer
-		 // 1.Create Stream Object
+  // 1.Create Stream Object
         FileOutputStream fos = new FileOutputStream(filepath);
         // 2.pass Stream object to BufferStream constructor
         BufferedOutputStream bos = new BufferedOutputStream(fos);
@@ -1101,72 +1101,72 @@ public class BusySpin {
 	private static boolean  flag =false;
 	
 	public synchronized boolean checkFlag() {
-		return flag;
+ return flag;
 	}
 	
 	public synchronized boolean changeFlag() {
-		flag=true;
-		return flag;
+ flag=true;
+ return flag;
 	}
 	
 	public static void main(String[] args) throws Exception {
-		
-		BusySpin ob = new BusySpin();
-		
-		Thread t1 = new Thread() {
-			@Override
-			public void run() {
-				System.out.println("T1 Running");
-				try {
-					Thread.sleep(5000);
-					System.out.println("============ SET FLAG TRUE===");
-				ob.changeFlag();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-		};
-		t1.start();
-		
-		
-		Thread t2 = new Thread() {
-			@Override
-			public void run() {
-				System.out.println("T2 Checking ........");
-				while (ob.checkFlag()) {
-					System.out.println("T2 Running.....");
-				}
-				try {
-					wait(300);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-		};
-		t2.start();
-		
-		Thread t3 = new Thread() {
-			@Override
-			public void run() {
-				System.out.println("T3 Checking ........");
-				while (ob.checkFlag()) {
-					System.out.println("T3 Running.....");
-				}
-				try {
-					wait(300);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-		};
-		t3.start();
-		
+ 
+ BusySpin ob = new BusySpin();
+ 
+ Thread t1 = new Thread() {
+ 	@Override
+ 	public void run() {
+  System.out.println("T1 Running");
+  try {
+  	Thread.sleep(5000);
+  	System.out.println("============ SET FLAG TRUE===");
+  ob.changeFlag();
+  } catch (InterruptedException e) {
+  	// TODO Auto-generated catch block
+  	e.printStackTrace();
+  }
+ 	}
+ 	
+ };
+ t1.start();
+ 
+ 
+ Thread t2 = new Thread() {
+ 	@Override
+ 	public void run() {
+  System.out.println("T2 Checking ........");
+  while (ob.checkFlag()) {
+  	System.out.println("T2 Running.....");
+  }
+  try {
+  	wait(300);
+  } catch (InterruptedException e) {
+  	// TODO Auto-generated catch block
+  	e.printStackTrace();
+  }
+ 	}
+ 	
+ };
+ t2.start();
+ 
+ Thread t3 = new Thread() {
+ 	@Override
+ 	public void run() {
+  System.out.println("T3 Checking ........");
+  while (ob.checkFlag()) {
+  	System.out.println("T3 Running.....");
+  }
+  try {
+  	wait(300);
+  } catch (InterruptedException e) {
+  	// TODO Auto-generated catch block
+  	e.printStackTrace();
+  }
+ 	}
+ 	
+ };
+ t3.start();
+ 
 	}
 	
 }
@@ -1174,7 +1174,7 @@ public class BusySpin {
 
 ##   What is race condition in Java? Given one example?  (answer)
 
-“Race condition occurs when two or more threads try to read & write a shared variable at the same time”
+“Race condition occurs when two or more threads try to read & write a shared variable at the same time"
 
 Because the thread scheduling algorithm can swap between threads at any time,
 **you don't know the order in which the threads will attempt to access the
@@ -1187,19 +1187,19 @@ class Counter implements Runnable {
 	private int count;
 	@Override
 	public void run() {
-		for (int i = 1; i <= 100; i++) {
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			count++;
-		}
+ for (int i = 1; i <= 100; i++) {
+ 	try {
+  Thread.sleep(100);
+ 	} catch (InterruptedException e) {
+  // TODO Auto-generated catch block
+  e.printStackTrace();
+ 	}
+ 	count++;
+ }
 	}
 
 	public int getCount() {
-		return this.count;
+ return this.count;
 	}
 
 }
@@ -1207,18 +1207,18 @@ class Counter implements Runnable {
 
 public class RaceCondition{
 	public static void main(String[] args) throws InterruptedException {
-		Counter c = new Counter();
-		
-		Thread t1 = new Thread(c);
-		t1.start();
-		
-		Thread t2 = new Thread(c);
-		t2.start();
-		
-		// wait for threads to finish processing
-		t1.join();
-		t2.join();
-		System.out.println("Excepting =200, Actual is  =" + c.getCount());
+ Counter c = new Counter();
+ 
+ Thread t1 = new Thread(c);
+ t1.start();
+ 
+ Thread t2 = new Thread(c);
+ t2.start();
+ 
+ // wait for threads to finish processing
+ t1.join();
+ t2.join();
+ System.out.println("Excepting =200, Actual is  =" + c.getCount());
 	}
 }
 Excepting =200, Actual is =141	-1st Run
@@ -1270,22 +1270,22 @@ class.
 ```java
 public class ThreadLocalExample {
 	public static class MyRunnable implements Runnable {
-		private ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();
-		public void run() {
-			threadLocal.set((int) (Math.random() * 100D));
-			System.out.println(threadLocal.get());
-		}
+ private ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();
+ public void run() {
+ 	threadLocal.set((int) (Math.random() * 100D));
+ 	System.out.println(threadLocal.get());
+ }
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		MyRunnable sharedRunnableInstance = new MyRunnable();
-		Thread thread1 = new Thread(sharedRunnableInstance);
-		Thread thread2 = new Thread(sharedRunnableInstance);
-		thread1.start();
-		thread2.start();
+ MyRunnable sharedRunnableInstance = new MyRunnable();
+ Thread thread1 = new Thread(sharedRunnableInstance);
+ Thread thread2 = new Thread(sharedRunnableInstance);
+ thread1.start();
+ thread2.start();
 
-		thread1.join(); // wait for thread 1 to terminate
-		thread2.join(); // wait for thread 2 to terminate
+ thread1.join(); // wait for thread 1 to terminate
+ thread2.join(); // wait for thread 2 to terminate
 	}
 }
 -----------
@@ -1346,11 +1346,11 @@ class SumTask implements Callable<Integer> {
         }
 	@Override
 	public Integer call() throws Exception {
-		int result = 0;
-		for(int i=1;i<=num;i++){
-			result+=i;
-		}
-		return result;
+ int result = 0;
+ for(int i=1;i<=num;i++){
+ 	result+=i;
+ }
+ return result;
 	}
 }
 public class CallableDemo {
@@ -1380,11 +1380,11 @@ public class Demo {
 	    Runnable runnable = ()->{
 	    	System.out.println("Running...");
 	    	try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+  Thread.sleep(5000);
+ 	} catch (InterruptedException e) {
+  // TODO Auto-generated catch block
+  e.printStackTrace();
+ 	}
 	    	System.out.println("I have Completed ...");
 	    	
 	    };
@@ -1417,30 +1417,30 @@ class Server implements Runnable {
 	private volatile boolean stop = false;
 
 	public void run() {
-		while (!stop) {
-			System.out.println("Server is running.....");
-		}
-		System.out.println("Server is stopped....");
+ while (!stop) {
+ 	System.out.println("Server is running.....");
+ }
+ System.out.println("Server is stopped....");
 	}
 
 	public void stop() {
-		stop = true;
+ stop = true;
 	}
 }
 
 public class Demo {
 	public static void main(String[] args) throws Exception {
 
-		Server myServer = new Server();
-		Thread t1 = new Thread(myServer, "T1");
-		t1.start();
-		// Now, let's stop our Server thread
-		System.out.println(Thread.currentThread().getName() + " is stopping Server thread");
-		TimeUnit.MILLISECONDS.sleep(8);
-		myServer.stop();
-		// Let's wait to see server thread stopped
+ Server myServer = new Server();
+ Thread t1 = new Thread(myServer, "T1");
+ t1.start();
+ // Now, let's stop our Server thread
+ System.out.println(Thread.currentThread().getName() + " is stopping Server thread");
+ TimeUnit.MILLISECONDS.sleep(8);
+ myServer.stop();
+ // Let's wait to see server thread stopped
 
-		System.out.println(Thread.currentThread().getName() + " is finished now");
+ System.out.println(Thread.currentThread().getName() + " is finished now");
 	}
 }
 ```
@@ -1552,47 +1552,47 @@ public class Test {
 	
 	boolean selected=false;
 	public boolean isSelected() {
-		return selected;
+ return selected;
 	}
 
 	public void setSelected(boolean selected) {
-		this.selected = selected;
+ this.selected = selected;
 	}
 
 	public static void main(String args[]) {
-		Test itemOne = new Test();
-		Test itemTwo = new Test();
-		
-		Thread tOne = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while(!itemOne.isSelected()) {
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				itemTwo.setSelected(true);
-			}			
-		});		
-		
-		Thread tTwo = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while(!itemTwo.isSelected()) {
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				itemOne.setSelected(true);
-			}			
-		});	
-		
-		tOne.start();
-		tTwo.start();
+ Test itemOne = new Test();
+ Test itemTwo = new Test();
+ 
+ Thread tOne = new Thread(new Runnable() {
+ 	@Override
+ 	public void run() {
+  while(!itemOne.isSelected()) {
+  	try {
+   Thread.sleep(10);
+  	} catch (InterruptedException e) {
+   e.printStackTrace();
+  	}
+  }
+  itemTwo.setSelected(true);
+ 	} 	
+ }); 
+ 
+ Thread tTwo = new Thread(new Runnable() {
+ 	@Override
+ 	public void run() {
+  while(!itemTwo.isSelected()) {
+  	try {
+   Thread.sleep(10);
+  	} catch (InterruptedException e) {
+   e.printStackTrace();
+  	}
+  }
+  itemOne.setSelected(true);
+ 	} 	
+ });	
+ 
+ tOne.start();
+ tTwo.start();
 	}
 }
 ```
@@ -1892,8 +1892,8 @@ class Producer extends Thread {
 	int maxsize;
 
 	public Producer(List buffer, int maxsize) {
-		this.buffer = buffer;
-		this.maxsize = maxsize;
+ this.buffer = buffer;
+ this.maxsize = maxsize;
 	}
 
 	@Override
@@ -1901,23 +1901,23 @@ class Producer extends Thread {
 	int i = 1;
 	  while (true) {
 	     synchronized (buffer) {
-		try {
-			if (buffer.size() == maxsize) {
-			System.out.println("Maximum Size Reached, wait until consume");
-			buffer.wait();
-			} else {
-			buffer.add(i++);
-			System.out.println(i + " : Produced, notify wating COnsumer Thread");
-			buffer.notifyAll();
+ try {
+ 	if (buffer.size() == maxsize) {
+ 	System.out.println("Maximum Size Reached, wait until consume");
+ 	buffer.wait();
+ 	} else {
+ 	buffer.add(i++);
+ 	System.out.println(i + " : Produced, notify wating COnsumer Thread");
+ 	buffer.notifyAll();
 
-			}
-		} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
+ 	}
+ } catch (InterruptedException e) {
+  	// TODO Auto-generated catch block
+ 	e.printStackTrace();
+ }
+ }
 
-		}
+ }
 
 	}
 
@@ -1929,28 +1929,28 @@ class Consumer extends Thread {
 	int maxsize;
 
 	public Consumer(List buffer, int maxsize) {
-		this.buffer = buffer;
-		this.maxsize = maxsize;
+ this.buffer = buffer;
+ this.maxsize = maxsize;
 	}
 
 	@Override
 	public void run() {
 
 	while (true) {
-		try {
-		synchronized (buffer) {
-		if (buffer.isEmpty()) {
-			System.out.println("Consumer : Buffer Empty, wait untill produce");
-			buffer.wait();
-			} else {
-			Object ob = buffer.remove(0);
-		System.out.println(ob + " : Removed, notify Producer waiting for Removing for maxsize");
- 		buffer.notifyAll();
-			}
-		}
-		} catch (Exception e) {
- 				// TODO: handle exception
-		}
+ try {
+ synchronized (buffer) {
+ if (buffer.isEmpty()) {
+ 	System.out.println("Consumer : Buffer Empty, wait untill produce");
+ 	buffer.wait();
+ 	} else {
+ 	Object ob = buffer.remove(0);
+ System.out.println(ob + " : Removed, notify Producer waiting for Removing for maxsize");
+  buffer.notifyAll();
+ 	}
+ }
+ } catch (Exception e) {
+   // TODO: handle exception
+ }
 	}
    }
 }
@@ -1959,11 +1959,11 @@ public class ProducerConsumer {
 
 	public static void main(String[] args) {
 
-		List buffer = new LinkedList<>();
-		Producer producer = new Producer(buffer, 10);
-		Consumer consumer = new Consumer(buffer, 10);
-		producer.start();
-		consumer.start();
+ List buffer = new LinkedList<>();
+ Producer producer = new Producer(buffer, 10);
+ Consumer consumer = new Consumer(buffer, 10);
+ producer.start();
+ consumer.start();
 
 	}
 
@@ -2032,50 +2032,50 @@ there, you don't need to put any thread synchronization code.
 class Producer extends Thread {
 	private BlockingQueue<Integer> sharedQueue;
 	public Producer(BlockingQueue<Integer> aQueue) {
-		super("PRODUCER");
-		this.sharedQueue = aQueue;
+ super("PRODUCER");
+ this.sharedQueue = aQueue;
 	}
 	public void run() { // no synchronization needed
-		for (int i = 0; i < 10; i++) {
-			try {
-				System.out.println(getName() + " produced " + i);
-				sharedQueue.put(i);
-				Thread.sleep(200);	
-            // if we remove sleep, put will execute 10 times, then take will execute		
+ for (int i = 0; i < 10; i++) {
+ 	try {
+  System.out.println(getName() + " produced " + i);
+  sharedQueue.put(i);
+  Thread.sleep(200);	
+            // if we remove sleep, put will execute 10 times, then take will execute 
              } catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
+  e.printStackTrace();
+ 	}
+ }
 	}
 }
 class Consumer extends Thread {
 	private BlockingQueue<Integer> sharedQueue;
 
 	public Consumer(BlockingQueue<Integer> aQueue) {
-		super("CONSUMER");
-		this.sharedQueue = aQueue;
+ super("CONSUMER");
+ this.sharedQueue = aQueue;
 	}
 
 	public void run() {
-		try {
-			while (true) {
-				Integer item = sharedQueue.take();
-				System.out.println(getName() + " consumed " + item);
-			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+ try {
+ 	while (true) {
+  Integer item = sharedQueue.take();
+  System.out.println(getName() + " consumed " + item);
+ 	}
+ } catch (InterruptedException e) {
+ 	e.printStackTrace();
+ }
 	}
 }
 
 public class BlockingQueueDemo {
 	public static void main(String[] args) {
-			BlockingQueue<Integer> sharedQ = new LinkedBlockingQueue<Integer>();
-			Producer p = new Producer(sharedQ); 
-			Consumer c = new Consumer(sharedQ); 
-			p.start(); 
-			c.start();			
-		}
+ 	BlockingQueue<Integer> sharedQ = new LinkedBlockingQueue<Integer>();
+ 	Producer p = new Producer(sharedQ); 
+ 	Consumer c = new Consumer(sharedQ); 
+ 	p.start(); 
+ 	c.start(); 	
+ }
 }
 ```
 

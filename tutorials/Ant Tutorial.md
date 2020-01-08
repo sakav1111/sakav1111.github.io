@@ -81,11 +81,11 @@ package com.smlcodes;
 public class HelloAnt {
 
 	public static void main(String[] args) {
-		System.out.println(sayHello());
+ System.out.println(sayHello());
 	}
 
 	private static String sayHello() {
-		return "Hello Ant!!";
+ return "Hello Ant!!";
 	}
 }
 ```
@@ -102,7 +102,7 @@ Create a new **build.xml** in the project root folder. In eclipse
 ```xml
 <project name="HelloAnt" default="main" basedir=".">
 	<description>
-		Create a Java Project (JAR) with Ant build script
+ Create a Java Project (JAR) with Ant build script
 	</description>
 
 	<property name="projectName" value="HelloAnt" />
@@ -117,33 +117,33 @@ Create a new **build.xml** in the project root folder. In eclipse
 	<property name="dist.dir" location="dist" />
 
 	<target name="init">
-		<!-- Create the time stamp -->
-		<tstamp />
-		<!-- Create the build directory structure used by compile -->
-		<mkdir dir="${build.dir}" />
+ <!-- Create the time stamp -->
+ <tstamp />
+ <!-- Create the build directory structure used by compile -->
+ <mkdir dir="${build.dir}" />
 	</target>
 
 	<target name="compile" depends="init" description="compile the source ">
-		<!-- Compile the java code from ${src.dir} into ${build.dir} -->
-		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" />
+ <!-- Compile the java code from ${src.dir} into ${build.dir} -->
+ <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" />
 	</target>
 
 	<target name="dist" depends="compile" description="package, output to JAR">
 
-		<!-- Create the distribution directory -->
-		<mkdir dir="${dist.dir}" />
+ <!-- Create the distribution directory -->
+ <mkdir dir="${dist.dir}" />
 
-		<!-- Put everything in ${build} into the {$projectName}-${DSTAMP}.jar file -->
-		<jar jarfile="${dist.dir}/${projectName}-${DSTAMP}.jar" basedir="${build.dir}">
-			<manifest>
-				<attribute name="Main-Class" value="com.com.smlcodes.HelloAnt" />
-			</manifest>
-		</jar>
+ <!-- Put everything in ${build} into the {$projectName}-${DSTAMP}.jar file -->
+ <jar jarfile="${dist.dir}/${projectName}-${DSTAMP}.jar" basedir="${build.dir}">
+ 	<manifest>
+  <attribute name="Main-Class" value="com.com.smlcodes.HelloAnt" />
+ 	</manifest>
+ </jar>
 	</target>
 
 	<target name="clean" description="clean up">
-		<delete dir="${build.dir}" />
-		<delete dir="${dist.dir}" />
+ <delete dir="${build.dir}" />
+ <delete dir="${dist.dir}" />
 	</target>
 
 	<!-- Default, run this -->
@@ -159,8 +159,8 @@ Open Command Prompt & Go to Project location
 **1. Compile the source code using >**   `ant compile`
 ```xml
 <target name="compile" depends="init" description="compile the source ">
-		<!-- Compile the java code from ${src.dir} into ${build.dir} -->
-		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" />
+ <!-- Compile the java code from ${src.dir} into ${build.dir} -->
+ <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" />
 </target>
 ```
 
@@ -185,15 +185,15 @@ It will compile the java socurce code and places in **/bin** folder.
 ```xml
 <target name="dist" depends="compile" description="package, output to JAR">
 
-		<!-- Create the distribution directory -->
-		<mkdir dir="${dist.dir}" />
+ <!-- Create the distribution directory -->
+ <mkdir dir="${dist.dir}" />
 
-		<!-- Put everything in ${build} into the {$projectName}-${DSTAMP}.jar file -->
-		<jar jarfile="${dist.dir}/${projectName}-${DSTAMP}.jar" basedir="${build.dir}">
-			<manifest>
-				<attribute name="Main-Class" value="com.com.smlcodes.HelloAnt" />
-			</manifest>
-		</jar>
+ <!-- Put everything in ${build} into the {$projectName}-${DSTAMP}.jar file -->
+ <jar jarfile="${dist.dir}/${projectName}-${DSTAMP}.jar" basedir="${build.dir}">
+ 	<manifest>
+  <attribute name="Main-Class" value="com.com.smlcodes.HelloAnt" />
+ 	</manifest>
+ </jar>
 	</target>
 ```
 ![](media/5ed31137b5dfc95cb32f0c141c931cc2.png)
@@ -234,9 +234,9 @@ We use Apache Ivy to get the project’s external libraries / dependencies.
 <ivy-module version="2.0">
 	<info organisation="org.apache" module="dateUtilsProject" />
 	<dependencies>
-		<dependency org="joda-time" name="joda-time" rev="2.5"  />
-		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.6" />
-		<dependency org="ch.qos.logback" name="logback-classic" rev="1.1.2" />
+ <dependency org="joda-time" name="joda-time" rev="2.5"  />
+ <dependency org="org.slf4j" name="slf4j-api" rev="1.7.6" />
+ <dependency org="ch.qos.logback" name="logback-classic" rev="1.1.2" />
 	</dependencies>
 </ivy-module>
 ```
@@ -253,14 +253,14 @@ module, and “resolve" task to ask Ivy module to download the external librarie
 	<!-- ivy start -->
 	<!-- ivy to get dependencies and copy to project lib folder automatically -->
 	<target name="resolve" description="retrieve dependencies with ivy">
-		<ivy:retrieve />
+ <ivy:retrieve />
 	</target>
 
 	<!-- install ivy -->
 	<target name="ivy" description="Install ivy">
-		<mkdir dir="${user.home}/.ant/lib" />
-		<get dest="${user.home}/.ant/lib/ivy.jar"
-			src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.4.0-rc1/ivy-2.4.0-rc1.jar" />
+ <mkdir dir="${user.home}/.ant/lib" />
+ <get dest="${user.home}/.ant/lib/ivy.jar"
+ 	src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.4.0-rc1/ivy-2.4.0-rc1.jar" />
 	</target>
 	<!-- ivy end -->
 
@@ -327,15 +327,15 @@ target & Command once
 ```xml
 <target name="dist" depends="compile" description="package, output to JAR">
 
-		<!-- Create the distribution directory -->
-		<mkdir dir="${dist.dir}" />
+ <!-- Create the distribution directory -->
+ <mkdir dir="${dist.dir}" />
 
-		<!-- Put everything in ${build} into the {$projectName}-${DSTAMP}.jar file -->
-		<jar jarfile="${dist.dir}/${projectName}-${DSTAMP}.jar" basedir="${build.dir}">
-			<manifest>
-				<attribute name="Main-Class" value="com.com.smlcodes.HelloAnt" />
-			</manifest>
-		</jar>
+ <!-- Put everything in ${build} into the {$projectName}-${DSTAMP}.jar file -->
+ <jar jarfile="${dist.dir}/${projectName}-${DSTAMP}.jar" basedir="${build.dir}">
+ 	<manifest>
+  <attribute name="Main-Class" value="com.com.smlcodes.HelloAnt" />
+ 	</manifest>
+ </jar>
 	</target>
 ```
 Command for creating jar file is **>ant dist**

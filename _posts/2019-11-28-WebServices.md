@@ -182,8 +182,8 @@ import javax.jws.WebService;
 public class HelloWorldImpl implements HelloWorld{
 	@Override
 	public String getHelloWorldMsg(String msg) {
-		// TODO Auto-generated method stub
-		return "Your Message from WebService is : "+msg;
+ // TODO Auto-generated method stub
+ return "Your Message from WebService is : "+msg;
 	}     
 }  
 
@@ -286,20 +286,20 @@ In web.xml, register “com.sun.jersey.spi.container.servlet.ServletContainer“
 
 <web-app>
 	<servlet>
-		<servlet-name>jersey-serlvet</servlet-name>
-		<servlet-class>
+ <servlet-name>jersey-serlvet</servlet-name>
+ <servlet-class>
                      com.sun.jersey.spi.container.servlet.ServletContainer
                 </servlet-class>
-		<init-param>
-		     <param-name>com.sun.jersey.config.property.packages</param-name>
-		     <param-value>service</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
+ <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>service</param-value>
+ </init-param>
+ <load-on-startup>1</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>jersey-serlvet</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
+ <servlet-name>jersey-serlvet</servlet-name>
+ <url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 
 </web-app>
@@ -310,7 +310,7 @@ http://localhost:8080/JAXRS-Jersey-HelloWorld/rest/hellojersey
 
 or
 System.out.println(target.path("rest").path("hellojersey").request().accept(MediaType.TEXT_PLAIN).get(String.class));
- 		System.out.println(target.path("rest").path("hellojersey").request().accept(MediaType.TEXT_HTML).get(String.class));
+  System.out.println(target.path("rest").path("hellojersey").request().accept(MediaType.TEXT_HTML).get(String.class));
 	}
 ```
 
@@ -329,14 +329,14 @@ public class PathParamService {
 	@Path("{rollno}/{name}/{address}")
 	@Produces("text/html")
 	public Response getResultByPassingValue(
-			               @PathParam("rollno") String rollno,
-					@PathParam("name") String name,
-					@PathParam("address") String address) {		
-		String output = "<h1>PathParamService Example</h1>";
-		output = output+"<br>Roll No : "+rollno;
-		output = output+"<br>Name : "+name;
-		output = output+"<br>Address : "+address;		 
-		return Response.status(200).entity(output).build(); 
+ 	               @PathParam("rollno") String rollno,
+  	@PathParam("name") String name,
+  	@PathParam("address") String address) { 
+ String output = "<h1>PathParamService Example</h1>";
+ output = output+"<br>Roll No : "+rollno;
+ output = output+"<br>Name : "+name;
+ output = output+"<br>Address : "+address;  
+ return Response.status(200).entity(output).build(); 
 	}
 }
 ```
@@ -365,13 +365,13 @@ public class QueryParamwithDefaultvalueService {
 	@Produces("text/html")
 	public Response getResultByPassingValue(
                       @DefaultValue("1000") @QueryParam("rollno") String rollno,
-			@DefaultValue("XXXX") @QueryParam("name") String name,
-			@DefaultValue("XXXX") @QueryParam("address") String address) {
-		String output = "<h1>QueryParamwithDefaultvalueService Example</h1>";
-		output = output + "<br>Roll No : " + rollno;
-		output = output + "<br>Name : " + name;
-		output = output + "<br>Address : " + address;
-		return Response.status(200).entity(output).build();
+ 	@DefaultValue("XXXX") @QueryParam("name") String name,
+ 	@DefaultValue("XXXX") @QueryParam("address") String address) {
+ String output = "<h1>QueryParamwithDefaultvalueService Example</h1>";
+ output = output + "<br>Roll No : " + rollno;
+ output = output + "<br>Name : " + name;
+ output = output + "<br>Address : " + address;
+ return Response.status(200).entity(output).build();
 	}
 }
 http://localhost:8080/App/rest/students;rollno=1118;name=SATYA;address=VIJAYAWADA
@@ -380,15 +380,15 @@ public class MatrixParamService{
 	@GET
 	@Produces("text/html")
 	public Response getResultByPassingValue(
-			@MatrixParam("rollno") String rollno,
-			@MatrixParam("name") String name,
-			@MatrixParam("address") String address) {
-		
-		String output = "<h1>@MatrixParam Example</h1>";
-		output = output+"<br>Roll No : "+rollno;
-		output = output+"<br>Name : "+name;
-		output = output+"<br>Address : "+address;		 
-		return Response.status(200).entity(output).build(); 
+ 	@MatrixParam("rollno") String rollno,
+ 	@MatrixParam("name") String name,
+ 	@MatrixParam("address") String address) {
+ 
+ String output = "<h1>@MatrixParam Example</h1>";
+ output = output+"<br>Roll No : "+rollno;
+ output = output+"<br>Name : "+name;
+ output = output+"<br>Address : "+address;  
+ return Response.status(200).entity(output).build(); 
 	}
 }
 ```
@@ -403,15 +403,15 @@ public class FormParamService {
 	@Path("/registerStudent")
 	@Produces("text/html")
 	public Response getResultByPassingValue(
-			@FormParam("rollno") String rollno,
-			@FormParam("name") String name,
-			@FormParam("address") String address) {
-		
-		String output = "<h1>@FormParam Example - REGISTRATION COMPLETED!!!</h1>";
-		output = output+"<br>Roll No : "+rollno;
-		output = output+"<br>Name : "+name;
-		output = output+"<br>Address : "+address;		 
-		return Response.status(200).entity(output).build();
+ 	@FormParam("rollno") String rollno,
+ 	@FormParam("name") String name,
+ 	@FormParam("address") String address) {
+ 
+ String output = "<h1>@FormParam Example - REGISTRATION COMPLETED!!!</h1>";
+ output = output+"<br>Roll No : "+rollno;
+ output = output+"<br>Name : "+name;
+ output = output+"<br>Address : "+address;  
+ return Response.status(200).entity(output).build();
 	}
 }
 ```
@@ -424,7 +424,7 @@ annotation
 
 We should annotate our method with
  - `@Produces(“text/plain“)` If you are expecting Text file as response
- - `@Produces(“image/your image type[.jpg/.png/.gif]”)` for downloading any Image files
+ - `@Produces(“image/your image type[.jpg/.png/.gif]")` for downloading any Image files
  - `@Produces(“application/pdf“)` for downloading PDF files
  - `@Produces(MediaType.APPLICATION_JSON)`	-JSON
  - `@Produces(MediaType.APPLICATION_XML)`.	-XML

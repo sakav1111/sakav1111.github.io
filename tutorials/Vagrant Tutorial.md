@@ -223,7 +223,7 @@ To Set Shared folder, edit vagrantfile as
 config.vm.synced_folder "D:\\\\DevOps\\\\Instl\\\\VagrantBoxes\\\\SyncFolder",
 "/vagrant"
 
-we named our syncd folder as “vagrant”, you can find the files in Syncfolder by
+we named our syncd folder as “vagrant", you can find the files in Syncfolder by
 going /vagrant/
 
 Vagrant Bridge Networking

@@ -275,11 +275,11 @@ a single instance of that app.
 The Virtual Machine
 -------------------
 
-A virtual computer system is known as a “virtual machine” (VM): a tightly
+A virtual computer system is known as a “virtual machine" (VM): a tightly
 isolated software container with an operating system and application inside.
 Each self-contained VM is completely independent. Putting multiple VMs on a
 single computer enables several operating systems and applications to run on
-just one physical server, or “host”.
+just one physical server, or “host".
 
 VMs have the following characteristics, which offer several benefits.
 
@@ -315,7 +315,7 @@ There are two types of hypervisors:
 **Type 1**
 
 hypervisors run directly on the system hardware. They are often referred to as a
-"native" or "bare metal” hypervisors.
+"native" or "bare metal" hypervisors.
 
 They get installed on a physical computer like an OS. **So instead of installing
 OS** we install Hypervisor to achieve virtualization.
