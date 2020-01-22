@@ -1,14 +1,45 @@
-Jenkins is a Continuous Integration Tool, it needs to check out source code from a repository and build code.
+Ubuntu
+------------------
+Installing Java
 
-Jenkins Dashboard> Manage Jenkins>  Manage Plugins.
+Open a terminal window on your Ubuntu server.
+Issue the command sudo apt install default-jdk-headless.
+Allow the installation to complete.
 
-next page, click on the "Available tab".
-
-Search for "Git Plugin", Install it.
-
-Installed plug-ins can be shown in "installed" tab
-
+To verify Java has been installed, issue the command:
+java --version
 
 
+Jenkins Install
+----------------
+Installation
+wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins
 
+
+Check Status
+service jenkins status
+systemctl status jenkins
+
+jenkins restart
+sudo /etc/init.d/jenkins restart
+Usage: /etc/init.d/jenkins {start|stop|status|restart|force-reload}
+
+
+
+Install location
+/etc/init.d/jenkins
+
+Port Change
+edit the /etc/default/jenkins to replace HTTP_PORT=8081
+
+
+Access Jenkins VIA Browser
+----------------------------
+1.	Open the vagrant file (should be in the directory where you specified to create a new vagrant machine).
+2.	Search for config.vm.network. If you didn't setup the file earlier, it should be commented.
+3.	Change it to look something like this config.vm.network "private_network", ip: "192.168.33.10". Here ip address (192.168.33.10) can be any ip address you want.
+4.	Now logout from the vagrant machine and reload your vagrant machine by this command vagrant reload.
 
