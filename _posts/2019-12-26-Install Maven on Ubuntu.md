@@ -1,4 +1,20 @@
-Ubuntu - Install Maven on Ubuntu
+---
+title: Ubuntu - Install Maven on Ubuntu 
+date: 2017-12-01 00:00:00 Z
+categories:
+- DevOps
+tags:
+- DevOps
+layout: article
+cover: /assets/logo/devops.png
+sharing: true
+license: false
+aside:
+  toc: true
+pageview: true
+---
+
+# Ubuntu - Install Maven on Ubuntu
 
 ## Installing Apache Maven on Ubuntu with Apt
 
