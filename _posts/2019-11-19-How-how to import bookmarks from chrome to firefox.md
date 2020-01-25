@@ -1,6 +1,6 @@
 ---
 title: How To - How to Import Bookmarks from Chrome To Firefox or any Browser
-date: 2018-12-26 00:00:00 Z
+date: 2017-11-26 00:00:00 Z
 categories:
 - HowTo
 tags:
