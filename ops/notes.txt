@@ -1,180 +1,19 @@
-Master Slave
-------------------------
-Ref:
+Artifactory is a repository manager created by JFrog
 
-https://www.youtube.com/watch?v=eXZ4uidLQUU
-https://support.cloudbees.com/hc/en-us/articles/222978868-How-to-Connect-to-Remote-SSH-Agents-
-http://yallalabs.com/devops/how-to-add-linux-slave-node-agent-node-jenkins/ (super)
-https://linuxacademy.com/blog/linux-academy/adding-a-jenkins-agent-node/
-https://www.howtoforge.com/tutorial/ubuntu-jenkins-master-slave/
-https://hostadvice.com/how-to/how-to-setup-jenkins-master-and-slave-on-ubuntu-18-04-lts/
-https://devopscube.com/setup-slaves-on-jenkins-2/
+ 
+Reduce number of downloads from remote repositories, this can save not only bandwidth but also time.
+Improve build stability since you are less dependent on external repositories
+Become effective platform for exchanging binary artifact within and beyond your organization without the need of building the source.
 
+JFrog Artifactory features:
 
-Jenkins master/slave architecture is used for distributed build environments, where the workload of building projects is distributed to multiple agent nodes, and we can use different environments for each buil
+Reliability: As a local proxy to the outside world, Artifactory guarantees consistent access to the components needed by your build tools.
+Efficiency: Remote artifacts are cached locally for reuse, so that you don’t have to download them repeatedly.
+Security: Advanced security features give you control over who can access your artifacts, and where they can deploy them.
+Stability: Supports large load bursts with extremely high concurrency and unmatched data integrity.
+Automation: Automate all aspects of artifact management using a powerful REST API.
 
-Jenkins master node will be used for scheduling jobs, monitoring slave nodes, dispatching builds to slave nodes, recording and representing the build result, and also executing build jobs directly.
 
-Jenkins slave nodes can run on a variety operating systems like Windows and Linux, and there is no need to install full Jenkins packages on it.
+-----------------
 
-Master	-Windows	192.168.33.1
-Slave1	-Ubuntu		192.168.33.10
-Slave2	-CentOS		192.168.33.11
-
-
-
-
-Master - CentOS		192.168.33.11
---------------------------------------------
-we have Jenkins workspace in Master Node, where all Job related details & created artifacts will store here.
-we can find this location By opening Jenkins Master URL
-Dashbaord > Configure System > Home directory	:	/var/lib/jenkins
-
-
-In the same way, if we trgiier buid in Slave node - it has to store all jobs related data in somewhere.
-For that we need to create a Directory in Slave machine
-root@vagrant-ubuntu-trusty-64:/var/lib/jenkins# mkdir /var/lib/sshjenkins
-root@vagrant-ubuntu-trusty-64:/var/lib/jenkins# sudo chmod -R 777 /var/lib/sshjenkins
-
-Provide this location as 'Remote Directory laction' in master-slave configuration.
-
-
-
-
-
-
-
-
-
-
-
-
-Slave1	-Ubuntu		192.168.33.10
---------------------------------------------
-we have Jenkins workspace in Master Node, where all Job related details & created artifacts will store here.
-we can find this location By opening Jenkins Master URL
-Dashbaord > Configure System > Home directory	:	/var/lib/jenkins
-
-
-In the same way, if we trgiier buid in Slave node - it has to store all jobs related data in somewhere.
-For that we need to create a Directory in Slave machine
-root@vagrant-ubuntu-trusty-64:/var/lib/jenkins# mkdir /var/lib/sshjenkins
-root@vagrant-ubuntu-trusty-64:/var/lib/jenkins# sudo chmod -R 777 /var/lib/sshjenkins
-Provide this location as 'Remote Directory laction' in master-slave configuration.
-
-Create user 
-sudo useradd -d /var/lib/sshjenkins sshjenkins
-passwd sshjenkins
-
-
-Go to above created folder. Create private and public SSH key for that user
-private key : id_rsa
-public key 	: id_rsa.pub
-
-Siwtch to #sshuser
-su - sshjenkins
-
-cd /var/lib/sshjenkins
-ssh-keygen -t rsa -m PEM -C "Jenkins agent key" -f "id_rsa"
-
-
-
-
-Add the public SSH key to the list of authorized keys on the agent machine
-cat id_rsa.pub >> ~/.ssh/authorized_keys
-chmod 600 ~/.ssh/authorized_keys
-
-
-Copy the private SSH key (/var/lib/sshjenkins/id_rsa) from the agent machine to your OS clipboard
-cat id_rsa
-
------BEGIN RSA PRIVATE KEY-----
-MIIEogIBAAKCAQEA5oa02YY3tiTAdJgVg/XoFRjDzJX8l4KgBazSG3+Dn4WHunw4
-4f2wOVNO5Nh8sj5T4c1H2xgEFSAS62fZ0D2ybjV3bMW56xiMQXE5Vdka6nfMkQMi
-dJwvy/mIS25QbTJP2xHmNbZFbLnn8vXbCfnzsVf5e1CwG7zoaNk/LEyWYpzyIefG
-tAisW5HiSvlOraKXHkmyB6nySeadQWXOdNH4gHzgnfV1uddEa36J5u5jy02Dstr3
-JiU1lakQx1v2BVNUjTBxa4s2U13J+vy9SqHUqg8dMW0PzGkRHD5AVivZnd/nCHJb
-6rENWq+kLX+gT/Yw3iG7fyy2n9yXFn8BTsVZnQIDAQABAoIBAG/ppZKUnidG4Ee6
-LXfKwci8JRIFHoNPXvBiXf4LgZLH+ISIGfVce1jZIMvobWD68S4FwoSSvCilUYoG
-+K8nxJ/MRRYBR6jiWfTLStJqe66oSh98LhX+XRXhJlG4VEMu0aXAosogmsOV3Q0O
-XjARsETAONWs7lII+6srDIgtBjUIoFMGeriOyUSRZZYyBJMSNdOcddhVGmjmyASb
-P5LjE9n5wokoS8vKcDBr0kEv32V6pXx5X6B3cuzG6v4hVvM0LReV2h1Su9tUtDIn
-yx1ruX3G6bJrqe725QpX85orLtiwV6uPOXZVS7I4mVjG2M+P5lX10HySnKNLnpgX
-JN2sWeECgYEA/P2Idq6jLslnuOigJo0tC8ZBgTcKqw90nynKeirqA257Kf7rsU7c
-8tNAQUQRHv1C+2Oh3nyEfSu4EIp5MUsjPwqEr0IPjXDbz1fOcXKHHvEz/QXgZemN
-sGkCF0YcZ5XhLT+xcNZJRuR+zmX9KyLADD/lCJhH3nOnFlkI/Cri33sCgYEA6UTC
-luZ8la7Jt8YwhFQHh05bqsH8h0rqGY0OUzWbsFjEyG2kuw0j7yZXG+xLJNWOVq/q
-iCMJjVDzcuef+cvM0qn6NkKc3X2inlb/ttmHogNDuzoeTFXQuXTicemkIdv47fT8
-GTA5J6oaV1hnuzlfKennKda2S4px3esNot9ik8cCgYAaMSFssB3i3SUo5qSV+S29
-t1PWzd0D4sC/LbNxvHmny0tjCKpcG/8SAL75QtPG8o95uVHr19ZboygWRk/Pw6it
-gShFgMBdc16+c6fC5QmKMYyhWHdn9asepXB6+l48dy7t4Vc8iGLjvQpH0hVI3vsl
-CYRrxGBEbpLQ5HzipooAewKBgGbh/dUiWSaHjc5xKirjCOMDi2iX4HInd3LHhN7s
-UPuJW1lvCm25kPTEez0Ejev0CLBxLEbY9TiP0KAISsWYvoDXmVTfMmJ6LAQcKPKT
-pL+vIutr6bsPSlzRkaJeQxbv9y20lI/jdgHpg26sviuUVUWeNWd9nK9ao3gWWNBS
-KB83AoGAeiyP2LzJlkxw+bO2PVbMIrieTnzs2UEMRvmeoUZrtvJy035w57KDQHA2
-tHLOgbPNRdeV2NE218nlzndiPdE8gIuzXpvVckGdBTFDrMtalZERnxQWBIUiC7dh
-4ts+atng5utr59+sCdwbnVT7pVsVJxvdvMzaiHbpkafB8EjgvMY=
------END RSA PRIVATE KEY-----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Configure Jenkins Master
---------------------------------
-Master is running on windows. Access Jenkins Master : http://192.168.33.1:8080/
-
-we need to setup Jenkins SSH credentials on master Node, because will launch the agent nodes through ssh.
-
-Generating SSH keys
-- Open PuTTYgen
-- Select SSH-2 RSA or RSA > Generate
-- Save "Private Key" in your system.
-- Copy "Public Key" save for later
-
-
-
-
-Configure Jenkins Master Credentials
---------------------------------------
-Dashboard > Manage Jenkins > Configure Credentials
-
-
-
-
-
-Configure Slave Agent Nodes
-Create a user on the Skave
-sudo useradd -d /var/lib/jenkins jenkins
-
-Generate an ssh key
-ssh-keygen
-
-Add New Slave Nodes
-
-
-
-
-
-Prepare Slave Agent Nodes to Execute Build
-
-
-
-
-
-Testing
-
-
-WMI Windows Agents	 Success
-External Monitor Job Type	 Pending
-Slave SetupPlugin
+Go to JFrog Artifactory home page > ARTIFACTS> choose the repository >Click on “Set me up”
