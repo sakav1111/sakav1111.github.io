@@ -1,3 +1,11 @@
+---
+title: JFrog Tutorial
+permalink: /tutorials/jfrog-tutorial
+key: jfrog-tutorial
+categories: [JFrog]
+tags: [JFrog]
+---
+
 JFrog Introductioon
 ===================
 
