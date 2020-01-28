@@ -1,9 +1,9 @@
 ---
 title: SonarQube Tutorial
 permalink: /tutorials/sonarqube-tutorial
-key: Vagrant-tutorial
-categories: [Vagrant]
-tags: [Vagrant]
+key: SonarQube-tutorial
+categories: [SonarQube]
+tags: [SonarQube]
 ---
 
 
