@@ -24,13 +24,13 @@ token](https://help.github.com/en/articles/creating-a-personal-access-token-for-
 the `public_repo box` checked.
 
 **Creating GitHub token**  
-Profile \> Settings \> Developer settings \> Personal access tokens \> Generate
-New \> Select the scopes, or permissions(public_repo  cheked) \>Generate
+Profile > Settings > Developer settings > Personal access tokens > Generate
+New > Select the scopes, or permissions(public_repo  cheked) >Generate
 
 copy the token to your clipboard : HXCGGJsdfCGGsAASSssassSDDSDZsss
 
-2.Login to Gitlab \> Select Repository \> Settings \> Repository \> Select :
-Mirroring repositories \> Provide Below details
+2.Login to Gitlab > Select Repository > Settings > Repository > Select :
+Mirroring repositories > Provide Below details
 
 3.Fill in the Git repository URL field using this format:
 
@@ -50,7 +50,7 @@ Cross Check By hitting above URL in browser
 5.Click the Mirror repository button.
 
 The mirrored repository will be listed. For
-example, https://\*\*\*\*\*:\*\*\*\*\*\@github.com/\<your_github_group\>/\<your_github_project\>.git.
+example, https://*****:*****\@github.com\<your_github_group>\<your_github_project>.git.
 
 The repository will push soon. To force a push, click the appropriate button
 
@@ -59,20 +59,20 @@ The repository will push soon. To force a push, click the appropriate button
 Sync GitLab to BitBucket
 ========================
 
-1.Open BitBucket \> Profile \> Settings \> App Passwords \> Create App Password
-\> Select Permissions \> Create
+1.Open BitBucket > Profile > Settings > App Passwords > Create App Password
+> Select Permissions > Create
 
 2.Copy Password
 
-3.Login to Gitlab \> Select Repository \> Settings \> Repository \> Select :
-Mirroring repositories \> Provide Below details
+3.Login to Gitlab > Select Repository > Settings > Repository > Select :
+Mirroring repositories > Provide Below details
 
-\- Git repository URL :
+-Git repository URL :
 <https://satyacodes@bitbucket.org/satyacodes/satyacodes.bitbucket.io.git>
 
-\- Mirror direction : pull/push
+-Mirror direction : pull/push
 
-\- Authentication method : above copied password from bitbucket
+-Authentication method : above copied password from bitbucket
 
 ![](media/c60f54743be5b45017df5733353bdd2a.png)
 
