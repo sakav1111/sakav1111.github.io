@@ -1,3 +1,11 @@
+---
+title: SonarQube Tutorial
+permalink: /tutorials/sonarqube-tutorial
+key: Vagrant-tutorial
+categories: [Vagrant]
+tags: [Vagrant]
+---
+
 
 ## **1. Introduction -SonarQube Tutorial**
 
