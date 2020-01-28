@@ -2,9 +2,9 @@
 title: Drive To Web Custom Domain
 date: 2017-12-01 00:00:00 Z
 categories:
-- How To
+- HowTo
 tags:
-- How To
+- HowTo
 layout: article
 cover: /assets/logo/devops.png
 sharing: true
