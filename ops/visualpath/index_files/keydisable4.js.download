@@ -1,1 +1,0 @@
-var _0x2736=["\x77\x68\x69\x63\x68","\x6B\x65\x79\x64\x6F\x77\x6E"];$(document)[_0x2736[1]](function(_0xda95x1){if(_0xda95x1[_0x2736[0]]=== 123){return false}})

@@ -1,1 +1,0 @@
-var _0xa5e9=["\x77\x68\x69\x63\x68","\x6B\x65\x79\x64\x6F\x77\x6E"];$(document)[_0xa5e9[1]](function(_0x8fcfx1){if(_0x8fcfx1[_0xa5e9[0]]=== 123){return false}})
