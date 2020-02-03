@@ -6,7 +6,7 @@ categories:
 tags:
 - MySQL
 layout: article
-cover: /assets/logo/mysql.png
+cover: /assets/logo/sql.png
 sharing: true
 license: false
 aside:
@@ -14,7 +14,6 @@ aside:
 pageview: true
 ---
 
-# Change XAMPP MySQL root password
 
 
 ## Way 1 - Using MySQL Console

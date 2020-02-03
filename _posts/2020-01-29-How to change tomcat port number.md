@@ -14,7 +14,7 @@ aside:
 pageview: true
 ---
 
-# How to change tomcat port number & GUI User
+
 
 ## How to change tomcat port number
 
