@@ -1,18 +1,21 @@
 ---
-title: MySQL - change xampp mysql root password
+title: MySQL - Change XAMPP MySQL root password
 date: 2019-01-29 0:03:00 Z
 categories:
 - MySQL
 tags:
 - MySQL
 layout: article
-cover: /assets/logo/devops.png
+cover: /assets/logo/mysql.png
 sharing: true
 license: false
 aside:
   toc: true
 pageview: true
 ---
+
+# Change XAMPP MySQL root password
+
 
 ## Way 1 - Using MySQL Console
 
