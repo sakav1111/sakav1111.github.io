@@ -1,0 +1,65 @@
+Database - Oracle DataBase Notes by Krishna Reddy - ## 
+https://raw.githubusercontent.com/smlcodes/amrmat/master/DATABASES/Krishna%20Reddy%20Oracle%20Apps%20Info.pdf
+
+DevOps- Jenkins - ## 
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/DevOps/Jenkins-Thefinal.pdf
+
+DevOps- Linux notes by ZOOM Technologies- ## 
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/HW%20NETWORKING/LINUX%20ADMIN.pdf
+
+DevOps- Linux2 notes by ZOOM Technologies- ## 
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/HW%20NETWORKING/LINUX%20BY%20ZOOM%20TECH.pdf
+
+DevOps- Linux Labs by ZOOM Technologies- ## 
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/HW%20NETWORKING/LINUX%20LAB%20MANUAL%20BY%20ZOOM.pdf
+
+Hadoop- Hadoop Notes- ##
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/Hadoop/Hadoop-%20the%20final%20product.pdf
+
+
+SAP - SAP DB2 Notes by EPIC Technologies- ##
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/SAP/DB2%20400.pdf
+
+SAP - SAP ABAP Notes by EPIC Technologies- ##
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/SAP/EPIC%20ABAP.pdf
+
+SAP - SAP BO Notes by EPIC Technologies- ##
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/SAP/SAP%20BO%203.14.0.pdf
+
+SAP - SAP BWBI Notes by EPIC Technologies- ##
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/SAP/SAP%20BWBI%20MNRAO.pdf
+
+SAP - SAP ABAP Complete Notes by EPIC Technologies- ##
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/SAP/SAP-ABAP%20EPIC%20TECHNOLOGIES.pdf
+
+Microsoft Silverlight Notes by EPIC Technologies- ##
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/SAP/SILVERLIGHT%20PEERS%20TECH.pdf
+
+
+Notes by - ##
+
+Ajax Notes - ##
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/WEB%20TECH/Ajax%20By%20Me.pdf
+
+
+
+PHP Notes by Naresh IT - ##
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/WEB%20TECH/PHP%20NARESH%20TECHNOLOGIES.pdf
+
+PHP Notes by PEERS Technologies- ## 
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/WEB%20TECH/PHP%20PEERS.pdf
+
+XML Notes by Naresh IT - ##
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/WEB%20TECH/XML%20NARESH%20TECH.pdf
+
+Android Notes by SAI Technologies- ## 
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/android/ANDROID%20SAI%20TECH.pdf
+https://raw.githubusercontent.com/smlcodes/amrmat/blob/master/android/ANDROID%20SAI%20TECH%20(2).pdf
+
+
+
+
+
+
+
+

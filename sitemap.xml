@@ -9,1547 +9,1887 @@
 
 <url>
   <loc>https://satyacodes.com/</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/posts.html</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/tutorials.html</loc>
-  <lastmod>2019-11-24T16:42:57+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java.html</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/devops.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/books.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/interview-questions.html</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/Java-concatenating-strings.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/DevOps-cron-job-schedule-time-format-example.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/archive.html?tag=Java</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/change-xampp-mysql-root-password.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/XAMPP-apache-showing-Error-500.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/archive.html?tag=MySQL</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/archive.html?tag=XAMPP</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/How-to-change-tomcat-port-number.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/XAMPP-The-uploaded-file-exceeds-the-upload_max_filesize-directive-in-php.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/archive.html?tag=HowTo</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/XAMPP-How-to-find-and-kill-a-process-running-on-a-port.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/Stop-the-Command-Prompt-from-Automatically-Closing.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/XAMPP-How-to-change-the-root-password-for-MySQL-in-XAMPP.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/GitHub-GitHub-Pages-Custom-Domain-with-GoDaddy-and-Cloudflare.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/XAMPP-How-to-change-XAMPP-apache-server-port-number.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/archive.html?tag=GitHub</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/XAMPP-How-to-Solve-XAMPP-phpMyAdmin-Cannot-connect-invalid-settings-Error.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/GitLab-GitLab-Pages-Custom-Domain-with-GoDaddy-and-Cloudflare.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/XAMPP-How-to-Change-MySQL-port-number-in-XAMPP.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/GitHub-How-to-Sync-GitLab-with-GitHub-and-BitBucket.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/XAMPP-How-to-Change-Apache-port-number-in-XAMPP.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/Install-Maven-on-Ubuntu.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/Tips-From-Word-to-PDF-including-bookmarks.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/archive.html?tag=DevOps</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/archive.html?tag=How+to</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/How-to-Drive-To-Web-Custom-Domain.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/How-to-Install-JDK-on-Ubuntu-Centos.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/aboutme.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/terms.html</loc>
-  <lastmod>2019-11-24T16:42:57+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/contact.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/DevOps-How-to-Install-Bamboo-atlassian-on-windows.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/DevOps-How-DNS-Works.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/DevOps-How-to-Install-BitBucket-on-Windows.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/Unable-to-locate-package-openjdk-8-jre-headless.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/DevOps-How-to-remove-github-credentials-from-git.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/Vagrant-Permission-denied.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/DevOps-How-to-solve-Git-could-not-resolve-proxy-Error.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/How-to-Install-Git-on-Ubuntu-Centos.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/DevOps-Hygieia-Jenkins-Collector-Configuration.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/How-how-to-import-bookmarks-from-chrome-to-firefox.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/DevOps-SonarQube-Ant-Project-Configuration.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/DevOps-What-is-SSH.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/Hibernate-Could-not-parse-configuration-hibernate-cfg.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/AngularJS-Interview-Questions.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/Java-How-to-Generate-javadoc-in-Eclipse-IDE.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/Hibernate-Interview-Questions.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/Java-How-to-install-java-and-set-java-PATH-variable-in-windows.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/JDBC-Interview-Questions.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/Java-LDAP-JAVA-Example.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/Java-Interview-Questions-1.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/Java-Print-PATH-variable-using-Java-Program.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/Java-Interview-Questions-2.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/Java-Print-System-Properties-using-Java-Program.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/Java-Interview-Questions-3.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/Java-Reverse-Array-using-Iterative-and-Recursive-approaches.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/Jenkins-Interview-Questions.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/Java-Run-JAR-file-from-command-line-or-By-.bat-file-in-windows.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/Servlets-Interview-Questions.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/Java-Why-Java-does-not-support-Operator-Overloading.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/Spring-Boot-Interview-Questions.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/Restore-backupwordpress-How-to-restore-from-backupwordpress-plugin.html</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/Spring-Interview-Questions.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/Spring-MVC-Interview-Questions.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/WebServices.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/Python-Set-Python-Path-in-Windows.html</loc>
+  <lastmod>2020-02-05T18:18:28+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/fundamentals</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jdbc/jdbc-introduction</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/servlets/introduction</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jsp/introduction</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/introduction</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-introduction</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/springboot/introduction</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/sql/sql-basics</loc>
-  <lastmod>2019-11-24T16:42:57+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/mongodb/introduction</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/webservices</loc>
-  <lastmod>2019-11-24T16:43:00+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/tutorials/ant-tutorial</loc>
-  <lastmod>2019-11-24T16:42:57+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/tutorials/maven-tutorial</loc>
-  <lastmod>2019-11-24T16:42:57+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/tutorials/reactjs-tutorial</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/tutorials/git-tutorial</loc>
-  <lastmod>2019-11-24T16:42:57+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/tutorials/networking-tutorial</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/tutorials/curl-tutorial</loc>
-  <lastmod>2019-11-24T16:42:57+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/archive.html?tag=DevOps</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/tutorials/python-tutorial</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/tutorials/jfrog-tutorial</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/tutorials/sonarqube-tutorial</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/tutorials/devops-tutorial</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/tutorials/vagrant-tutorial</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-introduction</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/archive.html?tag=Interview</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://satyacodes.com/archive.html?tag=Git</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://satyacodes.com/archive.html?tag=Hibernate</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://satyacodes.com/archive.html?tag=Wordpress</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <loc>https://satyacodes.com/archive.html?tag=Python</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/datatypes</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/variables</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/operators</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/flow-control</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/access-modifiers</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/nested-classes</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/fundamentals-interview-questions</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/interfaces</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/interface-enhancements</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/abstraction-encapsulation</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/inheritance</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/static-instance-control-flows</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/constructor</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/exception-handling</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/exception-hierarchy</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/try-catch-finally</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/user-defined-exceptions</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/exceptionhandling-overriding-rules</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/exception-handling-enhancements</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/exception-handling-interview-questions</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/lang-package</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/string-class</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/stringbuffer-and-stringbuilder</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/wrapper-classes</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/garbage-collection</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/reflection-api</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/lang-interview-questions</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-io</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/byte-streams</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/character-streams</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/buffered-streams</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/data-streams</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/object-streams</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-nio</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/threads</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/what-is-thread</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/thread-class</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/runnable-interface</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/interrupting-a-thread</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/joining-thread</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/thread-priority</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/daemon-thread</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/synchronization</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/inter-thread-communication</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-util-concurrency</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/synchronization-vs-locks</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/readwritelock</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/conditions</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/synchronization-utils</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/binary-semaphore</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/countdownlatch</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/cyclicbrarrier</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/phaser</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/exchanger</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/executor-framework</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/threadpools</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/executorservice-api</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/fork-join</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/custom-threadpool</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/atomic-variables</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/threads-interview-questions</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/traditional-data-structures</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/linked-list</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/stack</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/queue</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/trees</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/sorting-algorithms</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/bubble-sort</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/insertion-sort</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/selection-sort</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/merge-sort</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/quick-sort</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/searching-algorithms</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-collections-framework</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/list</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/arraylist</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/linkedlist</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/vector</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/map</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/hashmap</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/linkedhashmap</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/treemap</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/identityhashmap</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/weakhashmap</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/legacy-classes-on-map</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/set</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/hashset</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/linkedhashset</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/treeset</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/comparable-vs-comparator</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/concurrent-collections</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-util-arrays</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-util-collections</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/stream-api</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/lambdas</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/streams</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-ui</loc>
-  <lastmod>2019-11-24T16:42:51+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/swing-basics</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/awt</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/events-handling</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/components</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-4</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-5</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-7</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-8</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-9</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-10</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/java/java-11</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/archive.html?tag=Java</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jdbc/steps-to-connect-with-the-database</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jdbc/jdbc-api</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jdbc/curd-operations</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jdbc/preparedstatement</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jdbc/blob</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jdbc/clob</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jdbc/callablestatement</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jdbc/metadata</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jdbc/batch-processing</loc>
-  <lastmod>2019-11-24T16:42:53+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jdbc/transactions</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jdbc/rowset-interface</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/archive.html?tag=JDBC</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/servlets/web-technologies-basics</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/servlets/servlet-api</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/servlets/servlet-lifecycle</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/servlets/servletrequest</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/servlets/servletconfig</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/servlets/servletcontext</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/servlets/servlet-chaining</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/servlets/attributes</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/servlets/session-tracking</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/servlets/filters</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/servlets/sevlets-with-annotations</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/archive.html?tag=Servlets</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jsp/scriptlets</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jsp/implicit-objects</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jsp/directives</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jsp/action-tags</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jsp/jspel</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jsp/jstl</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/jsp/custom-tags</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/archive.html?tag=JSP</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/architecture</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/hibernate-example-step-by-step</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/curd-operations</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/select-operation</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/insert-operation</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/update-operation</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/delete-operation</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/clear</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/hibernate-pojo-class-lifecycle</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/inheritance-mapping</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/hibernate-generators</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/hibernate-query-language</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/hibernate-criteria-query-language</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/native-sql-queries</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/named-queries</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/hibernate-relationships</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/cascade-attribute</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/hibernate-cache</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/hibernate-with-annotations</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/mappings-using-annotations</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/errors</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/hibernate/hibernate-interview-questions</loc>
-  <lastmod>2019-11-24T16:42:50+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/archive.html?tag=Hibernate</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/dependency-injection</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/setter-injection</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/constructor-injection</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/aurowire</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/autowire-using-annotations</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-bean-internal-working</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-bean-lifecycle</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/configuring-metadata</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-annotations</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/stereotype-annotations</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-validation</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-aop</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-aop-dtd</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-aop-aspectj</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-data</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://satyacodes.com/spring/1-jdbctemplate</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://satyacodes.com/spring/2-namedparameterjdbctemplate</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://satyacodes.com/spring/3-simplejdbctemplate</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-jdbc</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/spring/1-jdbctemplate</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/spring/2-namedparameterjdbctemplate</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/spring/3-simplejdbctemplate</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-orm</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-hibernate</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/transaction</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/springdata-commons</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-mvc-introduction</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-mvc-contextloaderlistener-vs-dispatcherservlet</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-mvc-multiple-controllers</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-mvc-request-and-response-example</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-mvc-requestmapping</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-mvc-handlermapping</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-mvc-controller-classes</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-mvc-viewresolvers</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-mvc-form-handling</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-mvc-themes</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-mvc-summary</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/spring/spring-jee</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/archive.html?tag=Spring</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/springboot/creating-springboot-application</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/springboot/springboot-with-maven</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/springboot/springboot-with-spring-initializer</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/springboot/springboot-configurations</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/springboot/springboot-mvc</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/springboot/springboot-restful</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/springboot/springboot-database</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/springboot/springboot-jpa-example</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/springboot/springboot-jparepository</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/springboot/springboot-mongodb-and-rest-example</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/archive.html?tag=SpringBoot</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/sql/select-operations</loc>
-  <lastmod>2019-11-24T16:42:57+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/sql/joins</loc>
-  <lastmod>2019-11-24T16:42:56+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/sql/sql-functions</loc>
-  <lastmod>2019-11-24T16:42:57+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/sql/plsql</loc>
-  <lastmod>2019-11-24T16:42:57+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/sql/procedure</loc>
-  <lastmod>2019-11-24T16:42:57+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/archive.html?tag=SQL</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/mongodb/database-operations</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/mongodb/collection-operations</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/mongodb/document-operations</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/mongodb/advanced-operations</loc>
-  <lastmod>2019-11-24T16:42:54+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/mongodb/mongodb-with-java</loc>
-  <lastmod>2019-11-24T16:42:55+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/archive.html?tag=MongoDB</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/soap</loc>
-  <lastmod>2019-11-24T16:43:00+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/java-web-services-api</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-ws</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/diffrence-between-rpc-style-and-document-style</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-ws-annotations</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-ws-rpc-style</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-ws-document-style</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-ws-tools</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-restful</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-annotations</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-jersey</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-resteasy</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-path-annotation</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-pathparam</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-queryparam</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-defaultvalue</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-matrixparam</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-formparam</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-headerparam</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-context</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-download-files</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-json</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-json-resteasy</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-xml</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/jax-rs-restful-java-clinets</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/webservices/how-to-test-restful-web-services</loc>
-  <lastmod>2019-11-24T16:42:59+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/archive.html?tag=Webservices</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/archive.html?tag=Ant</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/archive.html?tag=Maven</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/archive.html?tag=ReactJS</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/archive.html?tag=Git</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://satyacodes.com/archive.html?tag=Curl</loc>
-  <lastmod>2019-11-24T16:42:49+00:00</lastmod>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/archive.html?tag=JFrog</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/archive.html?tag=SonarQube</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/archive.html?tag=Vagrant</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-services</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-account-creation</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-command-line-interface</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-identity-and-access-management-iam</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-create-new-root-user</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-create-users-&amp;-groups-and-apply-policies</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-create-role</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-multifactor-authentication</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-cognito</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-cloudtrail</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-storage</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-simple-storage-service-s3</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-s3-features</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-create-a-new-bucket</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-move-data-from-one-bucket-to-another-bucket</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-hosting-a-static-website-on-amazon-s3</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-use-case-imdb-media</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-glacier</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-elastic-block-store-ebs</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-elastic-file-system-efs</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-compute</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-amazon-elastic-cloud-compute-ec2</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-launching-an-ec2-linux-instance</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-launching-an-ec2-windows-instance</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-host-website-on-ec2-server-with-apache-server</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-tenancy</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-ec2-instance-with-ebs-volumes</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-modify-ebs-volume-types-after-ec2-instance-create</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-ami</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-elastic-beanstalk</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-elastic-ec2-container-service-ecs</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-lambda</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-databases</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-auroradb</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-dynamodb</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-elastic-cache</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-amazon-redshift</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-networking-content-delivery</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-virtual-private-cloud-vpc</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-creating--your-own-vpc</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/lab-creating-a-virtual-private-cloud</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-vpc-peering</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-elastic-ip-addresses--eips</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-vpc-endpoints</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-cloudfront</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-route-53-domain-hosting-service</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-auto-scaling</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-elastic-load-balancing-elb</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-application-deployment</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-launch-a-linux-virtual-machine-with-amazon-ec2</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/aws/aws-launch-a-windows-virtual-machine</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://satyacodes.com/archive.html?tag=aws</loc>
+  <lastmod>2020-02-05T18:18:27+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 
