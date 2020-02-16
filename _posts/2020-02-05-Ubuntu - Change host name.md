@@ -1,9 +1,20 @@
 ---
-date: "2019-02-05 0:03:00 Z"
-title: Ubuntu - Change Hostname
+title: How to Change Ubuntu Hostname
+date: 2019-02-16 0:03:00 Z
+categories:
+- HowTo
+tags:
+- HowTo
+layout: article
+cover: /assets/logo/howto.png
+sharing: true
+license: false
+aside:
+  toc: true
+pageview: true
 ---
 
-# Ubuntu Linux Change Hostname (computer name)
+# Change Ubuntu Hostname (computer name)
 
 Type the following command to edit /etc/hostname using nano or vi text editor:
 ```

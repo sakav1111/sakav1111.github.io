@@ -1,6 +1,17 @@
 ---
-date: "2019-02-05 0:03:00 Z"
-title: DevOps - Cron job / CronTab schedule time format example
+title: DevOps - Crontab/CronTab Schedule example
+date: 2019-02-16 0:03:00 Z
+categories:
+- DevOps
+tags:
+- DevOps
+layout: article
+cover: /assets/logo/devops.png
+sharing: true
+license: false
+aside:
+  toc: true
+pageview: true
 ---
 
 # Crontab/CronTab Schedule example

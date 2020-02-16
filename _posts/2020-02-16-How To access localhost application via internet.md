@@ -1,4 +1,20 @@
-How To access localhost application via internet
+---
+title: How To access localhost application via internet
+date: 2017-12-01 00:00:00 Z
+categories:
+- HowTo
+tags:
+- HowTo
+layout: article
+cover: /assets/logo/hoeto.png
+sharing: true
+license: false
+aside:
+  toc: true
+pageview: true
+---
+
+# How To access localhost application via internet
 
 You go into your router configuration and forward port 80 to the LAN IP of the
 computer running the web server.
