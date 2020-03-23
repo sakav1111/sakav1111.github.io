@@ -171,6 +171,19 @@ defaults:
     show_date: false
     lightbox: true
 - scope:
+    path: jenkins
+  values:
+    layout: article
+    nav_key: jenkins
+    sidebar:
+      nav: JenkinsTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
     path: tutorials
   values:
     layout: article

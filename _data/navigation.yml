@@ -820,7 +820,42 @@ AWSTutorial:
       - title:  AWS-EC2 Windows VM
         url:    /aws/aws-launch-a-windows-virtual-machine
 
-
+#-----------------------------13. Jenkins - Sidemenu --------------------------
+JenkinsTutorial:
+  - title:      Jenkins Tutorial
+    children:
+      - title:  Introduction
+        url:    /jenkins/introduction
+      - title:  Manage users
+        url:    /jenkins/manage-users
+      - title:  Common Configurations
+        url:    /jenkins/common-configurations
+      - title:  Java Hello world example
+        url:    /jenkins/java-hello-world-example
+      - title:  GitHub Integration
+        url:    /jenkins/github-integration
+      - title:  Maven Project Integration
+        url:    /jenkins/maven-project-integration
+      - title:  Email Notification
+        url:    /jenkins/email-notification
+      - title:  Testing
+        url:    /jenkins/testing
+      - title:  Master and Slave
+        url:    /jenkins/master-and-slave
+      - title:  JFrog Integration
+        url:    /jenkins/jfrog-integration
+      - title:  SonarQube Integration
+        url:    /jenkins/sonarqube-integration
+      - title:  Build Metrics
+        url:    /jenkins/build-metrics
+      - title:  Automated Deployment
+        url:    /jenkins/automated-deployment
+      - title:  Continuous delivery pipeline
+        url:    /jenkins/continuous-delivery-pipeline
+      - title:  Real Time pipeline Example
+        url:    /jenkins/real-time-pipeline-example
+ 
+        
 
 #-----------------------------14. NEXT - Sidemenu --------------------------
 
@@ -845,6 +880,7 @@ sidebar:
   nav: SpringTutorial
   nav: WebServicesTutorial
   nav: AWSTutorial
+  nav: JenkinsTutorial
   
 
 
