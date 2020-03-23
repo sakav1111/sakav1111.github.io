@@ -1,6 +1,7 @@
 ---
 title: SatyaCodes
 timezone: Asia/Kolkata
+encoding: UTF-8
 defaults:
 - scope:
     path: ''
