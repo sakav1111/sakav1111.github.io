@@ -857,6 +857,95 @@ JenkinsTutorial:
  
         
 
+
+
+
+#-----------------------------13. AnsibleTutorial - Sidemenu --------------------------
+AnsibleTutorial:
+  - title:      Ansible Tutorial
+    children:
+      - title:  Introduction
+        url:    /ansible/introduction
+      - title:  Ad-hoc Commands
+        url:    /ansible/ad-hoc-commands
+      - title:  Modules
+        url:    /ansible/modules
+      - title:  Inventory
+        url:    /ansible/inventory
+      - title:  Playbook
+        url:    /ansible/playbook
+      - title:  Roles
+        url:    /ansible/roles
+      - title:  Loops
+        url:    /ansible/loops
+      - title:  Tags
+        url:    /ansible/tags
+      - title:  Templates
+        url:    /ansible/templates
+      - title:  Dynamic Inventory
+        url:    /ansible/dynamic-inventory
+      - title:  Tower
+        url:    /ansible/tower
+
+
+
+
+
+#-----------------------------13. ChefTutorial - Sidemenu --------------------------
+ChefTutorial:
+  - title:      Chef Tutorial
+    children:
+      - title:  Introduction
+        url:    /chef/introduction
+      - title:  Recipe
+        url:    /chef/recipe
+      - title:  CookBook
+        url:    /chef/cookbook
+      - title:  Repo
+        url:    /chef/repo
+      - title:  Knife
+        url:    /chef/knife
+      - title:  Server
+        url:    /chef/server
+      - title:  Roles
+        url:    /chef/roles
+      - title:  Environments
+        url:    /chef/environments
+      - title:  Data bags
+        url:    /chef/data-bags
+      - title:  Provisioning
+        url:    /chef/provisioning
+      - title:  Organizations
+        url:    /chef/organizations
+      - title:  Policies
+        url:    /chef/policies
+      - title:  Solo
+        url:    /chef/solo
+
+
+
+#-----------------------------13. DockerTutorial - Sidemenu --------------------------
+DockerTutorial:
+  - title:      Docker Tutorial
+    children:
+      - title:  Introduction
+        url:    /docker/introduction
+      - title:  Images
+        url:    /docker/images
+      - title:  Container
+        url:    /docker/container
+      - title:  Dockerfile
+        url:    /docker/dockerfile
+      - title:  Compose
+        url:    /docker/compose
+      - title:  Volumes
+        url:    /docker/volumes
+      - title:  Swarm
+        url:    /docker/swarm
+
+
+
+
 #-----------------------------14. NEXT - Sidemenu --------------------------
 
 
@@ -881,6 +970,9 @@ sidebar:
   nav: WebServicesTutorial
   nav: AWSTutorial
   nav: JenkinsTutorial
+  nav: AnsibleTutorial
+  nav: ChefTutorial
+  nav: DockerTutorial
   
 
 

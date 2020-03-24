@@ -172,6 +172,45 @@ defaults:
     show_date: false
     lightbox: true
 - scope:
+    path: ansible
+  values:
+    layout: article
+    nav_key: ansible
+    sidebar:
+      nav: AnsibleTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: chef
+  values:
+    layout: article
+    nav_key: chef
+    sidebar:
+      nav: ChefTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: docker
+  values:
+    layout: article
+    nav_key: docker
+    sidebar:
+      nav: DockerTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
     path: jenkins
   values:
     layout: article

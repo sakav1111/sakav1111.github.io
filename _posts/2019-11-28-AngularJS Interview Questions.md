@@ -19,12 +19,13 @@ AngularJs
 
 Note : we must write module, if we used ng-app
 ```html
+{% raw %}
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <div ng-app="myApp" ng-controller="myCtrl">
 
 First Name: <input type="text" ng-model="firstName"><br> //binds input with model
 Last Name: <input type="text" ng-model="lastName"><br> ////binds input with model
-Full Name: {{firstName + " " + lastName}} //Prints the model values
+Full Name: \"{{firstName + " " + lastName}}\" //Prints the model values
 //same as {{expression}}
 <p ng-bind="firstName"></p>
 <p ng-bind=" lastName "></p>
@@ -41,6 +42,7 @@ app.controller('myCtrl', function($scope) {
   };
 });
 </script>
+{% endraw %}
 ```
 
 
@@ -64,6 +66,7 @@ More
 
 displays only the names containing the letter "i".
 ```html
+{% raw %}
 <li ng-repeat="x in names | filter : 'i'">
     {{ x }}
   </li>
@@ -71,6 +74,7 @@ displays only the names containing the letter "i".
 <li ng-repeat="x in names | orderBy:'country'">
     {{ x.name + ', ' + x.country }}
   </li>
+{% endraw %}  
 ```
 
 
