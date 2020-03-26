@@ -14,8 +14,7 @@ Jenkins – Master & Slave
 Jenkins uses a Master-Slave architecture to manage distributed builds. In this
 architecture, Master and Slave communicate through TCP/IP protocol.
 
-**Jenkins Master**
-
+## **Jenkins Master**  
 Your main Jenkins server is the Master. The Master’s job is to handle:
 
 -   Scheduling build jobs.
@@ -28,8 +27,7 @@ Your main Jenkins server is the Master. The Master’s job is to handle:
 
 -   A Master instance of Jenkins can also execute build jobs directly.
 
-**Jenkins Slave**
-
+## **Jenkins Slave**  
 A Slave is a Java executable that runs on a remote machine. Following are the
 characteristics of Jenkins Slaves:
 
@@ -57,11 +55,15 @@ and also executing build jobs directly.
 Jenkins slave nodes can run on a variety operating system like Windows and
 Linux, and there is no need to install full Jenkins packages on it.
 
+```python
 Master -Windows 192.168.33.1
 
 Slave1 -Ubuntu 192.168.33.10
-
 Slave2 -CentOS 192.168.33.11
+```
+
+
+
 
 There are two ways of authentication for setting up the Jenkins slaves.
 [Ref](https://devopscube.com/setup-slaves-on-jenkins-2/).
@@ -87,25 +89,21 @@ We will go for this scenario where
 
 We need to create a user on Slave Machine, Master node will use the credentials
 to make connection with slave/agent nodes. Here The new user will be
-called jenkins with new directory /var/lib/jenkins as home directory
-
-\# Create new Directory for Jenkins user
-
+called`jenkins`with new directory `/var/lib/jenkins` as home directory
+```python
+# Create new Directory for Jenkins user
 mkdir /var/lib/jenkins
 
-\# Change Permiisnons
-
+# Change Permiisnons
 sudo chmod -R 777 /var/lib/jenkins
 
-\# Create Jenkins user
-
+# Create Jenkins user
 sudo useradd -d /var/lib/jenkins jenkins
-
 passwd jenkins
+```
 
-If user already exist , delete all instances with that user
-
-sudo userdel -r jenkins
+If user already exist , delete all instances with that user  
+`sudo userdel -r jenkins`
 
 ### In Jenkins Master Node
 
@@ -162,53 +160,56 @@ we have Jenkins workspace in Master Node, where all Job-related details &
 created artifacts will store here. we can find this location by opening Jenkins
 Master URL
 
-**Dashboard \> Configure System \> Home directory** : /var/lib/jenkins
+**Dashboard \> Configure System \> Home directory** : `/var/lib/jenkins`
 
 In the same way, if we trigger build in Slave node - it has to store all jobs
 related data in somewhere. For that we need to create a Directory in Slave
-machine
-
+machine  
+```python
 mkdir /var/lib/sshjenkins
-
 sudo chmod -R 777 /var/lib/sshjenkins
-
+```
 Provide this location as 'Remote Directory laction' in master-slave
 configuration.
 
-Create user
-
+Create user  
+```python
 sudo useradd -d /var/lib/sshjenkins sshjenkins
-
 passwd sshjenkins
+```
+
 
 Go to above created folder. Create private and public SSH key for that user
-
+```python
 private key : id_rsa
-
 public key : id_rsa.pub
+```
+
 
 Switch to \#sshuser
-
+```python
 su - sshjenkins
 
 cd /var/lib/sshjenkins
-
 ssh-keygen -t rsa -m PEM -C "Jenkins agent key" -f "id_rsa"
+```
 
 Add the public SSH key to the list of authorized keys on the agent machine
+```python
+cat id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+```
 
-cat id_rsa.pub \>\> \~/.ssh/authorized_keys
 
-chmod 600 \~/.ssh/authorized_keys
-
-Copy the private SSH key (/var/lib/sshjenkins/id_rsa) from the agent machine to
+Copy the private SSH key (`/var/lib/sshjenkins/id_rsa`) from the agent machine to
 your OS clipboard
-
+```python
 cat id_rsa
 
 \-----BEGIN RSA PRIVATE KEY-----
-
 \-----END RSA PRIVATE KEY-----
+```
+
 
 ![](media/111f4a8469fd5d641f28950cc7202a78.png)
 
@@ -228,50 +229,43 @@ Jenkins – Master Slave Job Configuration
 Get JDK, MAVEN, GIT installation paths of Slave node
 
 Add Java, Maven paths to Slave nodes.
-
-JAVA_HOME
-
+```dos
+# JAVA_HOME
 /usr/lib/jvm/java-8-openjdk-amd64
 
-M2
-
+# M2
 /opt/apache-maven-3.6.3/bin
 
-M2_HOME
-
+# M2_HOME
 /opt/apache-maven-3.6.3
+```
+
 
 Manage Jenkins \>Manage Nodes \> Select Node : Ubuntu-Slave \> Configure
 
-\# Provide Slave Host, Credentials etc
+**# Provide Slave Host, Credentials etc**
 
 ![](media/3020da49dc5e42285f8638dff9adb78c.png)
 
-\#1 Node Properties \> Environment variables
-
+\#1 Node Properties \> Environment variables  
 ![](media/7ef223f337f370bce07bfc5eb8eae15a.png)
 
-\#2 Node Properties \> Tool Locations
-
+\#2 Node Properties \> Tool Locations  
 ![](media/373965294f7ba08d8d1e73af79fa9758.png)
 
 ### Master – Configuration
 
 Master must know the Tool Configuration like JDK, Maven used by Nodes.
 
-**Configure JDK installations**
-
+**Configure JDK installations**  
 Manage Jenkins \> Global Tool Configuration \> Configure JDK installations used
 by Slave
-
 ![](media/2c59da28015314938adaf89dac8753f4.png)
 
-**Git installations**
-
+**Git installations**  
 ![](media/d7edbd25d18452eebed98a51e04d6d84.png)
 
-**Maven installations**
-
+**Maven installations**   
 ![](media/1068dd52b28e976fbc8b5476c7c08773.png)
 
 ### Master – Configure Jenkins Job
@@ -288,13 +282,11 @@ by Slave
 
 ![](media/0b41f83cbeb1153fea2be263b0c88593.png)
 
-**Build Step :**
-
+**Build Step**  
 location of Build data stored in slave system :
 **/var/lib/jenkins/workspace/\${JOB_NAME}/pom.xml**
 
 ![](media/9b7104751600898196f5d1b490d2d4da.png)
 
-**Save & Build Now**
-
+**Save & Build Now**  
 ![](media/2333cf68c172fbb2e5f20300cfac4cc2.png)

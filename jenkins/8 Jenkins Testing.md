@@ -17,7 +17,7 @@ Jenkins – Junit Reporting using ANT
 
 Create Job \> Free Style
 
-**Build \>Add Build Step\> Invoke Ant :** provide below details
+**Build >Add Build Step> Invoke Ant** : provide below details
 
 ![](media/2c7bfbd8e3638d86ecfbc6f27f2fc674.png)
 

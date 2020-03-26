@@ -24,120 +24,96 @@ machines.
 
 -   Playbooks can contain multiple plays. You may have a playbook that targets
     first the web servers, and then the database servers. For example:
+```yaml
+---
+- hosts: webservers
+  remote_user: root
 
-\---
+  tasks:
+  - name: ensure apache is at the latest version
+    yum:
+      name: httpd
+      state: latest
+  - name: write the apache config file
+    template:
+      src: /srv/httpd.j2
+      dest: /etc/httpd.conf
 
-\- hosts: webservers
+- hosts: databases
+  remote_user: root
 
-remote_user: root
+  tasks:
+  - name: ensure postgresql is at the latest version
+    yum:
+      name: postgresql
+      state: latest
+  - name: ensure that postgresql is started
+    service:
+      name: postgresql
+      state: started
+```
 
-tasks:
 
-\- name: ensure apache is at the latest version
 
-yum:
+# Playbook Explanation
 
-name: httpd
-
-state: latest
-
-\- name: write the apache config file
-
-template:
-
-src: /srv/httpd.j2
-
-dest: /etc/httpd.conf
-
-\- hosts: databases
-
-remote_user: root
-
-tasks:
-
-\- name: ensure postgresql is at the latest version
-
-yum:
-
-name: postgresql
-
-state: latest
-
-\- name: ensure that postgresql is started
-
-service:
-
-name: postgresql
-
-state: started
-
-Playbook Explanation
-
-#### Hosts and Users
+## Hosts and Users
 
 For each play in a playbook, you get to choose which machines in your
 infrastructure to target and what remote user to complete the tasks.
+```yaml
+---
+- hosts: webservers
+  remote_user: root
+```
 
-\---
-
-\- hosts: webservers
-
-remote_user: root
 
 Remote users can also be defined per task:
+```yaml
+---
+- hosts: webservers
+  remote_user: root
+  tasks:
+    - name: test connection
+      ping:
+      remote_user: yourname
+```
 
-\---
 
-\- hosts: webservers
+Ansible Supports for running things as another user is also available, using **become:yes** variable
+```yaml
+---
+- hosts: webservers
+  remote_user: yourname
+  become: yes
+```
 
-remote_user: root
 
-tasks:
-
-\- name: test connection
-
-ping:
-
-remote_user: yourname
-
-Ansible Supports for running things as another user is also available, using
-**become:yes** variable
-
-\---
-
-\- hosts: webservers
-
-remote_user: yourname
-
-become: yes
 
 You can also login as you, and then become a user different than root:
+```yaml
+---
+- hosts: webservers
+  remote_user: yourname
+  become: yes
+  become_user: postgresql
+```
 
-\---
 
-\- hosts: webservers
 
-remote_user: yourname
-
-become: yes
-
-become_user: postgresql
-
-#### Tasks
+## Tasks
 
 Each play contains a list of tasks. Tasks are executed in order, one at a time,
 against all machines matched by the host pattern, before moving on to the next
 task.
-
+```yaml
 tasks:
+  - name: make sure apache is running
+    service:
+      name: httpd
+      state: started
+```
 
-\- name: make sure apache is running
-
-service:
-
-name: httpd
-
-state: started
 
 -   Every task should have a **name**, which is included in the output from
     running the playbook.
@@ -153,44 +129,39 @@ state: started
 
 The command and shell modules are the only modules that just take a list of
 arguments.
+```yaml
+tasks:
+  - name: enable selinux
+    command: /sbin/setenforce 1
 
 tasks:
+  - name: run this command and ignore the result
+    shell: /usr/bin/somecommand || /bin/true
+```
 
-\- name: enable selinux
 
-command: /sbin/setenforce 1
-
-tasks:
-
-\- name: run this command and ignore the result
-
-shell: /usr/bin/somecommand \|\| /bin/true
-
-#### Playbook Variables
+## Playbook Variables
 
 **Playbook** variables are Similar to YAML dictionaries. To define a variable in
 a playbook, simply use the keyword **vars** before writing your variables with
 indentation.
 
-To access the value of the variable “{{ variable }}”
+To access the value of the variable `{{ variable }}`
 
 Here’s a simple playbook example:
+```yaml
+- hosts: all
+  vars:
+    greeting: Hello world! 
 
-\- hosts: all
+  tasks:
+  - name: Ansible Basic Variable Example
+    debug:
+      msg: "{{ greeting }}"
+```
 
-vars:
 
-greeting: Hello world!
-
-tasks:
-
-\- name: Ansible Basic Variable Example
-
-debug:
-
-msg: "{{ greeting }}"
-
-### Example: Copy file to hosts Example
+# Example: Copy file to hosts Example
 
 -   create a file called tmp/file in all hosts \`-- hosts: all\`
 
@@ -208,115 +179,92 @@ msg: "{{ greeting }}"
 
 I have following hosts, which are placed in an Inventory file in this location
 **(/home/vagrant/Ansible/inventory**)
-
-\# /home/vagrant/Ansible/inventory
-
+```yaml
+# /home/vagrant/Ansible/inventory
 [all]
-
 web1 ansible_ssh_host=192.168.33.11
-
-web2 ansible_ssh_host=**192.168.33.12**
-
+web2 ansible_ssh_host=192.168.33.12
 db1 ansible_ssh_host=192.168.33.13
-
 db2 ansible_ssh_host=192.168.33.14
 
 [web]
-
 web1
-
 web2
 
 [db]
-
 db1
-
 db2
 
 [backup]
-
 db2
-
+```
 Here we have [Groups], each group have hosts
 
-**Test the Connection , by ping**
 
+**Test the Connection , by ping**  
 Here I’m trying to connect to machines and run a ping command on nodes using
 ansible.
-
+```perl
 ansible -i inventory all -m ping
+```
+
 
 #### 2.Playbook yml
 
 Remember – all playbooks start with ---(there dashs) because its YAML file. Save
 playbook in .yml extension(playbook1_copyfile.yml)
+```yaml
+---
+- hosts: all
+  tasks:
+  - name: create a file on a remote machine
+    file:
+      dest: /tmp/file
+      state: '{{file_state}}'
 
-\---
+- hosts: web
+  tasks:
+  - name: create file on web machines
+    file:
+      dest: /tmp/web-file
+      state: '{{file_state}}'
 
-\- hosts: all
+- hosts: all:!db
+  tasks:
+  - name: create file on all hosts - Except DB hosts
+    file:
+      dest: /tmp/all-but-not-db-file
+      state: '{{file_state}}'
 
-tasks:
+- hosts: all:&backup:!web
+  tasks:
+  - name: create file on all hosts and BACKUP hosts- Except DB hosts
+    file:
+      dest: /tmp/all-and-backup-file-not-web
+      state: '{{file_state}}'
+```
 
-\- name: create a file on a remote machine
+**{{file_state}}** - we are passing `{{file_state}}` variable at RUNTIME
 
-file:
-
-dest: /tmp/file
-
-state: '{{file_state}}'
-
-\- hosts: web
-
-tasks:
-
-\- name: create file on web machines
-
-file:
-
-dest: /tmp/web-file
-
-state: '{{file_state}}'
-
-\- hosts: all:!db
-
-tasks:
-
-\- name: create file on all hosts - Except DB hosts
-
-file:
-
-dest: /tmp/all-but-not-db-file
-
-state: '{{file_state}}'
-
-\- hosts: all:&backup:!web
-
-tasks:
-
-\- name: create file on all hosts and BACKUP hosts- Except DB hosts
-
-file:
-
-dest: /tmp/all-and-backup-file-not-web
-
-state: '{{file_state}}'
-
-**{{file_state}}** - we are passing {{file_state}} variable at RUNTIME
 
 #### 3.Run play in inventory hosts
 
 Syntax:
+```yaml
+ansible-playbook -i <inventory_file> <playbook_yml_file>.yml -e <envi_varible>=<value>
+```
 
-ansible-playbook -i \<inventory_file\> \<playbook_yml_file\>.yml -e
-\<envi_varible\>=\<value\>
 
-ansible-playbook -i inventory playbook1_copyfile.yml -e file_state=touch
+
+`ansible-playbook -i inventory playbook1_copyfile.yml -e file_state=touch`
 
 ![](media/ce4288daf4f32c7bf3ae438eac9d98c6.png)
 
-Login to each node, check files created under /tmp/ folder
 
+Login to each node, check files created under /tmp/ folder
 ![](media/add5746af46fa6aad0306681254c0843.png)
+
+
 
 Reusable Playbooks
 ------------------
@@ -339,61 +287,48 @@ imports, roles can also be uploaded and shared via Ansible Galaxy.
 
 You can then use **import_tasks** or **include_tasks** to execute the tasks in a
 file in the main task list:
-
+```yaml
 tasks:
+- import_tasks: common_tasks.yml
+# or
+- include_tasks: common_tasks.yml
+```
 
-\- import_tasks: common_tasks.yml
 
-\# or
-
-\- include_tasks: common_tasks.yml
-
-**Importing Playbooks :** It is possible to include playbooks inside a master
+**Importing Playbooks**   
+It is possible to include playbooks inside a master
 playbook. For example:
+```yaml
+- import_playbook: webservers.yml
+- import_playbook: databases.yml
+```
 
-\- import_playbook: webservers.yml
-
-\- import_playbook: databases.yml
 
 **Roles** are ways of automatically loading certain vars_files, tasks, and
 handlers based on a known file structure. Grouping content by roles also allows
 easy sharing of roles with other users.
 
 Role Directory Structure
-
-Example project structure:
+```
+## Example project structure:
 
 site.yml
-
 webservers.yml
-
 fooservers.yml
-
 roles/
-
-common/
-
-tasks/
-
-handlers/
-
-files/
-
-templates/
-
-vars/
-
-defaults/
-
-meta/
-
-webservers/
-
-tasks/
-
-defaults/
-
-meta/
+    common/
+        tasks/
+        handlers/
+        files/
+        templates/
+        vars/
+        defaults/
+        meta/
+    webservers/
+        tasks/
+        defaults/
+        meta/
+```
 
 Roles expect files to be in certain directory names. Roles must include at least
 one of these directories, however it is perfectly fine to exclude any which are

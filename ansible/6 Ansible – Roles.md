@@ -32,21 +32,21 @@ Ansible – Roles
 
 -   Ansible Roles are Independent on each other.
 
-### Create Ansible Role
+## Create Ansible Role
 
 To create role, we have **ansible-galaxy** which is comes inbuilt with ansible.
 We have to place roles inside **/etc/ansible/roles folder**
 
-Syntax
+Syntax  
+`ansible-galaxy init <rolename>`
 
-ansible-galaxy init \<rolename\>
 
 ### Directory Structure of Ansible Role
 
 If you create a sample role , you will see following directory structure inside
 it.
 
-ansible-galaxy init samplerole
+`ansible-galaxy init samplerole`
 
 ![](media/5fa74f86ad47c1ffc452094f893bc9ff.png)
 
@@ -80,7 +80,7 @@ Here is a description of what each directory represents:
 -   **vars**: Variables for a role can be specified in files inside this
     directory and then referenced elsewhere in a role.
 
-### Example : Install MEAN stack with Ansible Roles
+## Example : Install MEAN stack with Ansible Roles
 
 We need to create
 
@@ -96,105 +96,87 @@ We need to create
 
 **2. One Playbook**
 
-#### 1.Careating Roles
+<br>
 
-All roles will be created under : **\`/etc/ansible/roles/\`**
 
-a) Role for Installing pre-requisites
+## 1.Creating Roles
 
-**create \`prereq\` role**
+All roles will be created under : `/etc/ansible/roles/`
 
-ansible-galaxy init prereq
+<u>a)Role for Installing pre-requisites</u>
 
-**create \`main.yml\` - tasks to install GIT**
+**create \`prereq\` role**  
+`ansible-galaxy init prereq`
 
+
+**create \`main.yml\` - tasks to install GIT**  
 Once Role is created go to role folder & then task folder & create tasks inside
 an yaml file(ex: main.yml)
 
-**\#/etc/ansible/roles/prereq/tasks/main.yml**
+```yaml
+# /etc/ansible/roles/prereq/tasks/main.yml
+---
+- name: Install git
+  apt:
+    name: git
+    state: present
+    update_cache: yes
+```
 
-\---
 
-\- name: Install git
 
-apt:
+<u>b) Role for Installing Node.js</u>  
 
-name: git
+**create \`nodejs\` role**  
+`ansible-galaxy init nodejs`
 
-state: present
-
-update_cache: yes
-
-b) Role for Installing Node.js
-
-**create \`nodejs\` role**
-
-ansible-galaxy init nodejs
 
 **create \`main.yml\` - tasks to install Node.js**
+```yaml
+# /etc/ansible/roles/nodejs/tasks/main.yml
+---
+# tasks file for nodejs
+- name: Node.js - Get script
+  get_url:
+    url: "http://deb.nodesource.com/setup_6.x"
+    dest: "{{ var_node }}/nodejs.sh"
 
-\# /etc/ansible/roles/nodejs/tasks/main.yml
+- name: Node.js - Set execution permission to script
+  file:
+    path: "{{ var_node }}/nodejs.sh"
+    mode: "u+x"
 
-\---
+- name: Node.js - Execute installation script
+  shell: "{{ var_node }}/nodejs.sh"
 
-\# tasks file for nodejs
+- name: Node.js - Remove installation script
+  file:
+    path: "{{ var_node}}/nodejs.sh"
+    state: absent
 
-\- name: Node.js - Get script
+- name: Node.js - Install Node.js
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+    - build-essential
+    - nodejs
 
-get_url:
+- name: Node.js - Install bower and gulp globally
+  npm: name={{ item }} state=present global=yes
+  with_items:
+    - bower
+    - gulp
+```
 
-url: "http://deb.nodesource.com/setup_6.x"
 
-dest: "{{ var_node }}/nodejs.sh"
 
-\- name: Node.js - Set execution permission to script
-
-file:
-
-path: "{{ var_node }}/nodejs.sh"
-
-mode: "u+x"
-
-\- name: Node.js - Execute installation script
-
-shell: "{{ var_node }}/nodejs.sh"
-
-\- name: Node.js - Remove installation script
-
-file:
-
-path: "{{ var_node}}/nodejs.sh"
-
-state: absent
-
-\- name: Node.js - Install Node.js
-
-apt: name={{ item }} state=present update_cache=yes
-
-with_items:
-
-\- build-essential
-
-\- nodejs
-
-\- name: Node.js - Install bower and gulp globally
-
-npm: name={{ item }} state=present global=yes
-
-with_items:
-
-\- bower
-
-\- gulp
-
-c) Role for Installing MongoDB
+<u>c) Role for Installing MongoDB</u>
 
 **create \`mongodb\` role**
-
+```yaml
 ansible-galaxy init mongodb
+```
 
-**create \`main.yml\` - tasks to install MongoDB**
-
+**create \`main.yml\` - tasks to install MongoDB**  
 To setup the mongodb playbook we will do the following inside the playbook:
 
 -   Import the mongodb public key
@@ -205,204 +187,143 @@ To setup the mongodb playbook we will do the following inside the playbook:
 
 -   mongodb running status
 
-\---
+```yaml
+---
+# tasks file for mongodb
+- name: MongoDB - Import public key
+  apt_key:
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: EA312927
 
-\# tasks file for mongodb
+- name: MongoDB - Add repository
+  apt_repository:
+    filename: '/etc/apt/sources.list.d/mongodb-org-3.2.list'
+    repo: 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse'
+    state: present
+    update_cache: yes
 
-\- name: MongoDB - Import public key
+- name: MongoDB - Install MongoDB
+  apt:
+    name: mongodb-org
+    state: present
+    update_cache: yes
+    force: yes
 
-apt_key:
+- name: Start mongod
+  shell: "mongod &"
+```
 
-keyserver: hkp://keyserver.ubuntu.com:80
 
-id: EA312927
 
-\- name: MongoDB - Add repository
+<u>d)Role for Installing Nginx & index.html</u>  
 
-apt_repository:
+**create \`nginx\` role**  
+`ansible-galaxy init nginx`
 
-filename: '/etc/apt/sources.list.d/mongodb-org-3.2.list'
-
-repo: 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse'
-
-state: present
-
-update_cache: yes
-
-\- name: MongoDB - Install MongoDB
-
-apt:
-
-name: mongodb-org
-
-state: present
-
-update_cache: yes
-
-force: yes
-
-\- name: Start mongod
-
-shell: "mongod &"
-
-d) Role for Installing Nginx & index.html
-
-**create \`nginx\` role**
-
-ansible-galaxy init nginx
 
 create \`main.yml\` - tasks to install nginx
+```yaml
+create `main.yml` - tasks to install nginx
+---
+# tasks file for nginx
+- name: Install nginx with latest version
+  apt: name=nginx state=present update_cache=true force=yes
+- name: Insert Index Page
+  template:
+      src: /tmp/index.html
+      dest: /usr/share/nginx/html/index.html
+- name: start nginx
+  service:
+      name: nginx
+      state: started
+```
 
-\---
 
-\# tasks file for nginx
+## Main Playbook Creation
 
-\- name: Install nginx with latest version
+```yaml
+#cd /etc/ansible/meanply.yml
 
-apt: name=nginx state=present update_cache=true force=yes
+---
+- hosts: all
+  remote_user: vagrant
+  become: yes
+  become_method: sudo
+  vars:
+    #variable needed during node installation
+    var_node: /tmp
+  roles:
+      - prereq
+      - nodejs
+      - mongodb
+      - nginx
+```
 
-\- name: Insert Index Page
-
-template:
-
-src: /tmp/index.html
-
-dest: /usr/share/nginx/html/index.html
-
-\- name: start nginx
-
-service:
-
-name: nginx
-
-state: started
-
-#### b.Main Playbook Creation
-
-\#cd /etc/ansible/meanply.yml
-
-\---
-
-\- hosts: all
-
-remote_user: vagrant
-
-become: yes
-
-become_method: sudo
-
-vars:
-
-\#variable needed during node installation
-
-var_node: /tmp
-
-roles:
-
-\- prereq
-
-\- nodejs
-
-\- mongodb
-
-\- nginx
-
-#### Update Hosts Inventory
-
+## Update Hosts Inventory
 we have placed single node in default host file.
-
-\#/etc/ansible/hosts
-
+```yaml
+#/etc/ansible/hosts
 192.168.33.11
+```
 
-#### Run The playbook
 
+## Run The playbook
+```yaml
 sudo ansible-playbook /etc/ansible/meanply.yml -K
+```
 
-PLAY [all]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+```powershell
+PLAY [all] *********************************************************************************
 
-TASK [Gathering Facts]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [Gathering Facts] ****************************************************************************
 ok: [192.168.33.11]
 
-TASK [prereq : Install git]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [prereq : Install git] ***********************************************************************
 ok: [192.168.33.11]
 
-TASK [nodejs : Node.js - Get script]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [nodejs : Node.js - Get script] **************************************************************
 changed: [192.168.33.11]
 
-TASK [nodejs : Node.js - Set execution permission to script]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [nodejs : Node.js - Set execution permission to script] **************************************
 changed: [192.168.33.11]
 
-TASK [nodejs : Node.js - Execute installation script]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [nodejs : Node.js - Execute installation script] *********************************************
 changed: [192.168.33.11]
 
-TASK [nodejs : Node.js - Remove installation script]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [nodejs : Node.js - Remove installation script] **********************************************
 changed: [192.168.33.11]
 
-TASK [nodejs : Node.js - Install Node.js]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+TASK [nodejs : Node.js - Install Node.js] *********************************************************
+ok: [192.168.33.11] => (item=[u'build-essential', u'nodejs'])
 
-ok: [192.168.33.11] =\> (item=[u'build-essential', u'nodejs'])
+TASK [nodejs : Node.js - Install bower and gulp globally] *****************************************
+ok: [192.168.33.11] => (item=bower)
+ok: [192.168.33.11] => (item=gulp)
 
-TASK [nodejs : Node.js - Install bower and gulp globally]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
-ok: [192.168.33.11] =\> (item=bower)
-
-ok: [192.168.33.11] =\> (item=gulp)
-
-TASK [mongodb : MongoDB - Import public key]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [mongodb : MongoDB - Import public key] ******************************************************
 ok: [192.168.33.11]
 
-TASK [mongodb : MongoDB - Add repository]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [mongodb : MongoDB - Add repository] *********************************************************
 ok: [192.168.33.11]
 
-TASK [mongodb : MongoDB - Install MongoDB]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [mongodb : MongoDB - Install MongoDB] ********************************************************
 ok: [192.168.33.11]
 
-TASK [mongodb : Start mongod]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [mongodb : Start mongod] *********************************************************************
 changed: [192.168.33.11]
 
-TASK [nginx : Install nginx with latest version]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [nginx : Install nginx with latest version] **************************************************
 ok: [192.168.33.11]
 
-TASK [nginx : Insert Index Page]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [nginx : Insert Index Page] ******************************************************************
 ok: [192.168.33.11]
 
-TASK [nginx : start nginx]
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+TASK [nginx : start nginx] ************************************************************************
 ok: [192.168.33.11]
 
-PLAY RECAP
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
-192.168.33.11 : ok=15 changed=5 unreachable=0 failed=0 skipped=0
+PLAY RECAP ****************************************************************************
+192.168.33.11 : ok=15   changed=5    unreachable=0    failed=0    skipped=0
+```
 
 Check Nginx Server
 

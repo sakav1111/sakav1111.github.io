@@ -28,41 +28,31 @@ such as:
     the **TAGS_RUN** and **TAGS_SKIP** options.
 
 an example that tags two tasks with different tags, such as:
+```yaml
+tasks:  
+- yum:  
+    name: "{{ item }}"  
+    state: present  
+  loop:  
+  - httpd  
+  - memcached  
+  tags:  
+  - packages  
+  
+- template:  
+    src: templates/src.j2  
+    dest: /etc/foo.conf  
+  tags:  
+  - configuration
+```
 
-tasks:
-
-\- yum:
-
-name: "{{ item }}"
-
-state: present
-
-loop:
-
-\- httpd
-
-\- memcached
-
-tags:
-
-\- packages
-
-\- template:
-
-src: templates/src.j2
-
-dest: /etc/foo.conf
-
-tags:
-
-\- **configuration**
 
 If you want to run the configuration and packages part of a very long playbook,
-then you can use the -tags option on the command line.
-
-ansible-playbook example.yml --tags "configuration,packages"
+then you can use the -tags option on the command line.  
+`ansible-playbook example.yml --tags "configuration,packages"  `
 
 if you want to run a playbook without certain tagged tasks, then you can use
-the **-skip-tags** command-line option.
-
-ansible-playbook example.yml --skip-tags "packages"  
+the **-skip-tags** command-line option.  
+```yaml
+ansible-playbook example.yml --skip-tags "packages"
+```

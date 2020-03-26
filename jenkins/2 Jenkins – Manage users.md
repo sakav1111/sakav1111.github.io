@@ -97,7 +97,7 @@ For doing this we need to install below two plug-ins
 
 Once above plugins got install follow below steps to move forward.
 
-**Manage Jenkins \> Configure Global Security \>**Check "Enable Security"
+**Manage Jenkins \> Configure Global Security \>** Check "Enable Security"
 checkbox is ticked.
 
 ![](media/3b36687f136f0606f62c4f08ceb92246.png)
@@ -122,12 +122,10 @@ Connect Plugin.
 For this to work, a new client has to be created in the Keycloak System, and a
 couple of endpoints have to be configured in the Jenkins Security Settings.
 
-**Keycloak Settings**
-
+**Keycloak Settings**  
 All Settings done in the Keycloak Server are described in this section.
 
-**Keycloak Client**
-
+**Keycloak Client**  
 The Keycloak client needs to get configured in the following way. The Client
 needs to have a unique name (in this case 'jenkins') and the 'Access Type' needs
 to get defined as 'confidential'. Please note especially the 'Valid Redirect
@@ -136,8 +134,7 @@ URIs', which needs to get set to the URL of the Jenkins System
 
 ![Keycloak Jenkins Client](media/025ba29d34308c9456861854925b3a40.png)
 
-**Keycloak Credentials**
-
+**Keycloak Credentials**  
 Because we have set the 'Access Type' to 'confidential' we do get offered the
 Credentials Tab. On this tab, we get a secret, which needs to get put into the
 corresponding Setting of the Jenkins OpenId Connect plugin. This secret allows
@@ -146,16 +143,14 @@ application (Jenkins in this case).
 
 ![Keycloak Credentials](media/9a6d7323ebdb8a555ad764222ff9445d.png)
 
-**Keycloak Mappers**
-
+**Keycloak Mappers**  
 In order to provide some necessary user information to the Redmine System, the
 standard Keycloak Mappers have to be adopted and a new Mapper has to get
 created.
 
 ![Keycloak Mapper](media/3620a446d6a736ebd2f0c693c2173dea.png)
 
-**Jenkins OpenId Connect Settings**
-
+**Jenkins OpenId Connect Settings**  
 -   The Settings done in the OpenId Connect Plugin Settings page are described
     in here.
 

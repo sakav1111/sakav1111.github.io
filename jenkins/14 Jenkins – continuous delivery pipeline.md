@@ -30,7 +30,7 @@ Continuous Delivery.
 are not just creating a deployable package, but you are actually deploying it in
 an automated fashion.
 
-### Continuous Delivery Pipeline
+## Continuous Delivery Pipeline
 
 A pipeline is a collection of jobs. Suppose I’m developing a small application
 on Jenkins and I want to build, test and deploy it.
@@ -134,14 +134,14 @@ report**" checkbox.
 
 -   When Maven runs unit tests in a project, it automatically generates the XML
     test reports in a directory called surefire-reports. Enter
-    **"\*\*/target/surefire-reports/\*.xml"** in the "Test report XMLs" field.
+    `**/target/surefire-reports/*.xml` in the "Test report XMLs" field.
 
--   The two asterisks at the start of the path ("\*\*") are a best practice to
+-   The two asterisks at the start of the path `("**")` are a best practice to
     make the configuration a bit more robust: they allow Jenkins to find the
     target directory no matter how we have configured Jenkins to check out the
     source code.
 
-\*\*/target/surefire-reports/\*.xml
+`**/target/surefire-reports/*.xml`
 
 ![](media/b8fe4ed363487355be6a2aefb4dabf94.png)
 
@@ -270,92 +270,50 @@ repository
 
 For Scripted pipeline – choose Script - Write Code on UI screen
 
+```json
 pipeline {
-
-agent any
-
-stages {
-
-stage('One') {
-
-steps {
-
-echo 'Hi, this is Zulaikha from edureka'
-
+         agent any
+         stages {
+                 stage('One') {
+                 steps {
+                     echo 'Hi, this is Zulaikha from edureka'
+                 }
+                 }
+                 stage('Two') {
+                 steps {
+                    input('Do you want to proceed?')
+                 }
+                 }
+                 stage('Three') {
+                 when {
+                       not {
+                            branch "master"
+                       }
+                 }
+                 steps {
+                       echo "Hello"
+                 }
+                 }
+                 stage('Four') {
+                 parallel { 
+                            stage('Unit Test') {
+                           steps {
+                                echo "Running the unit test..."
+                           }
+                           }
+                            stage('Integration test') {
+                              agent {
+                                    docker {
+                                            reuseNode true
+                                            image 'ubuntu'
+                                           }
+                                    }
+                              steps {
+                                echo "Running the integration test..."
+                              }
+                           }
+                           }
+                           }
+              }
 }
-
-}
-
-stage('Two') {
-
-steps {
-
-input('Do you want to proceed?')
-
-}
-
-}
-
-stage('Three') {
-
-when {
-
-not {
-
-branch "master"
-
-}
-
-}
-
-steps {
-
-echo "Hello"
-
-}
-
-}
-
-stage('Four') {
-
-parallel {
-
-stage('Unit Test') {
-
-steps {
-
-echo "Running the unit test..."
-
-}
-
-}
-
-stage('Integration test') {
-
-agent {
-
-docker {
-
-reuseNode true
-
-image 'ubuntu'
-
-}
-
-}
-
-steps {
-
-echo "Running the integration test..."
-
-}
-
-}
-
-}
-
-}
-
-}
-
-}
+```

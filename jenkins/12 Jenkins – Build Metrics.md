@@ -53,8 +53,7 @@ created based on these results**.
 Once you click this button, you will see a text "**data successful
 initialized**"
 
-**Create Chart**
-
+**Create Chart**  
 Once the data has been initialized, it is the time to create a new chart. To
 create the new chart, click on "**Create new chart configuration**" link.
 Provide details, for example

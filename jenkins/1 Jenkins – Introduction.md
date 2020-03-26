@@ -36,8 +36,8 @@ an automated fashion.
 
 ![](media/95378412d318153ae1647d803f275689.png)
 
-**Bamboo**
 
+**Bamboo**  
 This is available with **free trial license**. Bamboo is written in Java and it
 is easily works with JIRA & Bitbucket. It’s also allow you to import jenkins
 data to Bamboo easily. Bamboo also supports others tools like AWS, Amazon S3,
@@ -45,8 +45,9 @@ Ant, Docker, codeDeploy, Maven, Git & SVN.
 
 <https://www.atlassian.com/software/bamboo>
 
-**TeamCity**
 
+
+**TeamCity**  
 java based continuous integration server which is belongs to JetBrains labs. It
 is available **in free and paid license for users**. It’s free version offers
 almost all the features but for up to 20 build configurations and 3 free Build
@@ -56,29 +57,26 @@ makes it suitable for .Net projects.
 
 <https://www.jetbrains.com/teamcity/>
 
-**Travis CI**
 
+**Travis CI**  
 **Travis CI** is an open source continuous integration tool which is written in
 RUBY. It’s easily get sync with GitHub. It’s supports platforms like Linux, Mac
 or iOS and also supports many languages in which Node js, php, Xcode, python,
 java, are few of them. It also performs parallel test runs using their great
 APIs and command line tools. **Free for open repositories, Enterprise for
-private.**
-
+private.**  
 <https://travis-ci.org/getting_started>
 
-**UrbanCode**
-
+**UrbanCode**  
 UBuild-UDeploy-URelease is also known as Urbancode deploy is a collaborative
-product of IBM. UrbanCode from IBM is built.So its Paid.
+product of IBM. UrbanCode from IBM is built.So its Paid.  
+<https://developer.ibm.com/urbancode/>  
 
-<https://developer.ibm.com/urbancode/>
 
-**CruiseControl**
-
+**CruiseControl**  
 Open Source. Very old. <http://cruisecontrol.sourceforge.net/>
 
-### Types of Environments
+## Types of Environments
 
 1. **Development**
 
@@ -97,8 +95,8 @@ product so that it can move to production
 7. **Production Parallel** -A parallel of production to replicate production
 issues
 
-how Jenkins works
------------------
+# How Jenkins works
+
 
 ![https://static.javatpoint.com/tutorial/jenkins/images/continuous-integration-with-jenkins.png](media/dfb6651cdaab43865faec872db7ff847.png)
 
@@ -118,7 +116,9 @@ how Jenkins works
     developers about the build and test results.
 
 -   It will continue to verify the source code repository for changes made in
-    the source code and the whole process keeps on repeating.
+    the source code and the whole process keeps on repeating.  
+
+<br>
 
 Jenkins Architecture
 --------------------
@@ -131,6 +131,8 @@ Jenkins architecture has two components:
 
 ![https://static.javatpoint.com/tutorial/jenkins/images/jenkins-architecture.jpg](media/a4711b5b3d00e290a5fdc8d0431fa4e9.jpg)
 
+<br>
+
 Jenkins Installation
 --------------------
 
@@ -141,35 +143,34 @@ Java](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 [2.Download Jenkins war File](https://jenkins.io/download/)
 
-3. Open Command Line as **Administrator** & Run below cmd by navigate to
+3.Open Command Line as **Administrator** & Run below cmd by navigate to
 downloaded location
 
+```python
 java -jar Jenkins.war
-
 java -jar -httpPort=9999 //to change default port
+```
+
 
 ![](media/e3e811f1239d7db095396557c9744da9.png)
-
 Copy the password from console
 
 4.Accessing Jenkins by <http://localhost:8080> , it will ask for the
-Administrator password – Paste above copied password
-
+Administrator password – Paste above copied password.
 ![](media/a56715b54981aec8d7c634b600ad9199.png)
 
 5.Next, select plug-ins to install.
-
 ![](media/bf4d1dd00b288cbf1eabfc64c7130964.png)
 
-6.Create admin user
-
+6.Create admin user.
 ![](media/71ce93b62e6ea2d7542f0e9f131ea48a.png)
 
 7.After that’s just click finish, I will navigate to Dashboard page.
-
 ![](media/0dd874fb6eb0f20266759d9317564c1f.png)
 
-### Ubuntu -vagrant
+
+
+# Ubuntu -vagrant
 
 **Installing Java**
 
@@ -177,58 +178,61 @@ Administrator password – Paste above copied password
 
 -   Issue the command below & Allow the installation to complete.
 
+```python
 sudo add-apt-repository ppa:webupd8team/java
-
 sudo -E add-apt-repository ppa:openjdk-r/ppa
 
 sudo apt-get update
-
 sudo apt-get install openjdk-8-jdk
+```
+  
 
 To verify Java has been installed, issue the command:
-
+```python
 java --version
+```
+<br>
 
 **Jenkins Install**
 
-wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key \| sudo apt-key
-add -
+```python
+wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
 
-sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ \>
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ >
 /etc/apt/sources.list.d/jenkins.list'
 
 sudo apt-get update
-
 sudo apt-get install Jenkins -y
+```
+
 
 **Check Status**
-
+```python
 service jenkins status
-
 systemctl status jenkins
+```
+
 
 **jenkins restart**
-
+```python
+# Usage: /etc/init.d/jenkins {start\|stop\|status\|restart\|force-reload}
 sudo /etc/init.d/jenkins restart
 
-Usage: /etc/init.d/jenkins {start\|stop\|status\|restart\|force-reload}
-
-Jenkins Install location
-
+# Jenkins Install location
 /etc/init.d/jenkins
 
-Port Change
-
+# Port Change
 edit the /etc/default/jenkins to replace HTTP_PORT=8081
+```
+<br>
 
 **To Access Jenkins VIA Browser**
 
 -   Open the vagrant file (should be in the directory where you specified to
     create a new vagrant machine).
 
--   Search for config.vm.network.
-
-config.vm.network "private_network", ip: "192.168.33.10"
+-   Search for config.vm.network.  
+`config.vm.network "private_network", ip: "192.168.33.10"`
 
 -   Here ip address (192.168.33.10) can be any ip address you want.
 
@@ -240,65 +244,61 @@ Access Jenkins : <http://192.168.33.10:8080/login?from=%2F>
 ![](media/d75a30fbbc076c915f1c91a495b54fa1.png)
 
 In the terminal window, we’ll use the **cat** command to display the password:
+`sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
 
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-Follow same steps as windows Installation from now on wards.
+> Follow same steps as windows Installation from now on wards.
 
-### CentOS – Vagrant 
+## CentOS – Vagrant 
 
-Installing Java
-
-sudo yum install java-1.8.0-openjdk-devel
+**Installing Java**  
+`sudo yum install java-1.8.0-openjdk-devel`
 
 To verify Java has been installed, issue the command:
-
+```python
 java --version
+```
+
 
 **Install Jenkins**
 
 To enable Jenkins repository, import the GPG key using the following curl
 command:
-
-curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo \|
+```python
+curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo|
 sudo tee /etc/yum.repos.d/jenkins.repo
 
 sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+```
 
-install the latest stable version of Jenkins
 
-sudo yum install jenkins
+install the latest stable version of Jenkins  
+`sudo yum install jenkins`
 
-Start Jenkins
+Start Jenkins  
+`sudo systemctl start jenkins`
 
-sudo systemctl start jenkins
-
-Check Status
-
-systemctl status Jenkins
-
-service jenkins status
+Check Status  
+`systemctl status Jenkins`  
+`service jenkins status`
 
 Finally enable the Jenkins service to start on system boot.
+`sudo systemctl enable jenkins`
 
-sudo systemctl enable jenkins
+Update Vagrant file with Private IP to able to access with host system browser  
+`config.vm.network "private_network", ip: "192.168.33.11"`
 
-Update Vagrant file with Private IP to able to access with host system browser
+Reload vagrant CentOS box  
+`vagrant reload`
 
-config.vm.network "private_network", ip: "192.168.33.11"
-
-Reload vagrant CentOS box
-
-vagrant reload
-
-Access Jenkins <http://192.168.33.11:8080> , for the first time enter password
-by doing
-
+Access Jenkins <http://192.168.33.11:8080> , for the first time enter password by doing  
+```python
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-
 O/p : 576f5d4d5e6a45b68061ba22c08eb27a
+```
+Select Plugins to install > Done!!!  
 
-Select Plugins to install \> Done!!!
+
 
 Manage Jenkins
 --------------
@@ -321,16 +321,13 @@ Configure global settings and paths.
 
 -   **Subversion**
 
-**Configure Global Security**
-
+**Configure Global Security**  
 Secure Jenkins; define who can access/use the system.
 
-**Configure Credentials**
-
+**Configure Credentials**  
 Configure the credential providers and types – LDAP servers.
 
-**Global Tool Configuration**
-
+**Global Tool Configuration**  
 Configure tools, their locations and automatic installers.
 
 -   Maven installations
@@ -341,46 +338,35 @@ Configure tools, their locations and automatic installers.
 
 -   SonarQube Scanner installations
 
-**Reload Configuration from Disk**
-
+**Reload Configuration from Disk**  
 Discard all the loaded data in memory and reload everything from file system.
 Useful when you modified config files directly on disk.
 
-**Manage Plugins**
-
+**Manage Plugins**  
 Add, remove, disable or enable plugins that can extend the functionality of
 Jenkins.
 
-**System Information**
-
+**System Information**  
 Displays various environmental information to assist trouble-shooting.
 
-**System Log**
-
+**System Log**  
 System log captures output from java.util.logging output related to Jenkins.
 
-**Load Statistics**
+**Load Statistics**  
+Check your resource utilization and see if you need more computers for your builds.
 
-Check your resource utilization and see if you need more computers for your
-builds.
-
-**Jenkins CLI**
-
+**Jenkins CLI**  
 Access/manage Jenkins from your shell, or from your script.
 
-**Script Console**
-
+**Script Console**  
 Executes arbitrary script for administration/trouble-shooting/diagnostics.
 
-**Manage Nodes and Clouds**
-
+**Manage Nodes and Clouds**  
 Add, remove, control and monitor the various nodes that Jenkins runs jobs on.
 
-**Manage Users**
-
+**Manage Users**  
 Create/delete/modify users that can log in to this Jenkins
 
-**Prepare for Shutdown**
-
+**Prepare for Shutdown**  
 Stops executing new builds, so that the system can be eventually shut down
 safely.

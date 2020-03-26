@@ -34,8 +34,7 @@ when finished.
 
 ![](media/7551d8b37a503f1134424d03742ecaca.png)
 
-#### Control node
-
+#### Control node  
 -   Any machine with Ansible installed.
 
 -   You can run commands and playbooks,
@@ -48,13 +47,11 @@ when finished.
 -   However, you cannot use a Windows machine as a control node. You can have
     multiple control nodes.
 
-#### Managed nodes
-
+#### Managed nodes  
 The network devices (and/or servers) you manage with Ansible. Managed nodes are
 also sometimes called “hosts”. Ansible is not installed on managed nodes.
 
-#### Inventory
-
+#### Inventory  
 -   A list of managed nodes.
 
 -   An inventory file is also sometimes called a “**hostfile**”. default
@@ -68,22 +65,19 @@ also sometimes called “hosts”. Ansible is not installed on managed nodes.
 -   The inventory file can be in one of many formats such as yaml, INI etc
 
 Example of an Inventory file
-
+```yaml
+# Example of an Inventory file
 mail.example.com
 
 [webservers]
-
 foo.example.com
-
 bar.example.com
 
 [dbservers]
-
 one.example.com
-
 two.example.com
-
 three.example.com
+```
 
 #### Modules
 
@@ -100,24 +94,23 @@ three.example.com
 -   Each module is mostly standalone and can be written in a standard scripting
     language (such as Python, Perl, Ruby, Bash, etc.).
 
-\# Example of Modules
-
+```yaml
+# Example of Modules
 There are lots of modules such as :
-
 Service, file, copy, iptables etc.
 
 Any Module can be used as :
-
 ansible 127.0.0.1 -m service -a "name=httpd state=started"
-
 ansible localhost -m ping
+```
 
-#### Tasks
 
+#### Tasks  
 The units of action in Ansible. You can execute a single task once with an
-ad-hoc command.
+ad-hoc command.  
 
-#### Playbook
+
+#### Playbook  
 
 -   Playbooks are simple YAML files.
 
@@ -125,34 +118,26 @@ ad-hoc command.
     repeatable things.
 
 -   Playbooks are simple to write and maintain.
-
+```yaml
 Playbook contains Plays.
+		|
+	Plays contain tasks.
+			|
+		tasks call modules.
+```
+  
+```yaml
+#Example of an ansible playbook
+---
+- hosts: webservers
+ remote_user: root
+ tasks:
+ - name: ensure apache is at the latest version
+   yum: name=httpd state=latest
+ - name: ensure apache is running
+   service: name=httpd state=started enabled=yes
+```
 
-\|
-
-Plays contain tasks.
-
-\|
-
-tasks call modules.
-
-\#Example of an ansible playbook
-
-\---
-
-\- hosts: webservers
-
-remote_user: root
-
-tasks:
-
-\- name: ensure apache is at the latest version
-
-yum: name=httpd state=latest
-
-\- name: ensure apache is running
-
-service: name=httpd state=started enabled=yes
 
 #### Roles
 
@@ -166,13 +151,13 @@ service: name=httpd state=started enabled=yes
 
 -   Ansible Roles are Independent on each other.
 
-\- hosts: all
+```yaml
+- hosts: all
+ roles:
+ - role_1
+ - role_2
+```
 
-roles:
-
-\- role_1
-
-\- role_2
 
 Workflow
 --------
@@ -207,160 +192,123 @@ removed them after finished.
 Installation
 ------------
 
-### Ubuntu
+## Ubuntu
 
-\#1:First perform an update to the packages
+\#1:First perform an update to the packages  
+`sudo apt update`
 
-sudo apt update
+\#2:Then install the software properties common package.  
+`sudo apt install software-properties-common`
 
-\#2:Then install the software properties common package.
+\#3:Install the Ansible personal package archive.  
+`sudo apt-add-repository ppa:ansible/ansible`
 
-sudo apt install software-properties-common
+\#4:Install the Ansible.  
+`sudo apt update`
+`sudo apt install ansible`
 
-\#3:Install the Ansible personal package archive.
-
-sudo apt-add-repository ppa:ansible/ansible
-
-\#4:Install the Ansible.
-
-sudo apt update
-
-sudo apt install ansible
-
-### CentOS
-
-\#Install the EPEL repo
-
+## CentOS
+```yaml
+#Install the EPEL repo
 sudo yum install epel-release
 
-\#Install the Ansible package.
+#Install the Ansible package.
+sudo yum install -y ansible  
 
-sudo yum install -y ansible
-
-Check the installation
-
+# Check the installation
 ansible --version
-
+```
 ![](media/a0bf98f35e9d2eef5e5f7222d9d178cf.png)
+
+
 
 YAML Basics
 -----------
 
-YAML starts with --- and end with ... This indicates the start and end of a YAML
+YAML starts with `---` and end with `---` This indicates the start and end of a YAML
 document.
 
-**YAML List**
-
+**YAML List**  
 Nearly every YAML file starts with a list. Each item in the list is a list of
 key/value pairs
-
-\---
-
-\# A list of tasty fruits
-
-\- Apple
-
-\- Orange
-
-\- Strawberry
-
-\- Mango
-
+```yaml
+---
+# A list of tasty fruits
+- Apple
+- Orange
+- Strawberry
+- Mango
 ...
+```
 
-**Dictionary**
 
+**Dictionary**  
 A dictionary is represented in a simple \`key: value\` form (the colon must be
 followed by a space):
-
-\# An employee records
-
+```yaml
+# An employee records
 martin:
+    name: Martin D'vloper
+    job: Developer
+    skill: Elite
+```
 
-name: Martin D'vloper
 
-job: Developer
-
-skill: Elite
-
-**Boolean**
-
+**Boolean**  
 We can specify Boolean value (true/false) in several forms:
-
+```yaml
 create_key: yes
-
 needs_agent: no
-
 knows_oop: True
-
 likes_emacs: TRUE
-
 uses_cvs: false
+```
 
-Large Values can span multiple lines using \| or \>.
+```
+Large Values can span multiple lines using | or >. 
+include_newlines: |
+            exactly as you see
+            will appear these three
+            lines of poetry
 
-include_newlines: \|
-
-exactly as you see
-
-will appear these three
-
-lines of poetry
-
-fold_newlines: \>
-
-this is really a
-
-single line of text
-
-despite appearances
+fold_newlines: >
+            this is really a
+            single line of text
+            despite appearances
+```
 
 Let’s combine what we learned so far in an arbitrary YAML example.
-
-\# An employee records
-
-\---
-
+```
+# An employee records
+---
 name: Martin D'vloper
-
 job: Developer
-
 skill: Elite
-
 employed: True
-
 foods:
-
-\- Apple
-
-\- Orange
-
-\- Strawberry
-
-\- Mango
-
+    - Apple
+    - Orange
+    - Strawberry
+    - Mango
 languages:
+    perl: Elite
+    python: Elite
+    pascal: Lame
+education: |
+    4 GCSEs
+    3 A-Levels
+    BSc in the Internet of Things
+```
 
-perl: Elite
-
-python: Elite
-
-pascal: Lame
-
-education: \|
-
-4 GCSEs
-
-3 A-Levels
-
-BSc in the Internet of Things
 
 **Variables**
 
-uses “{{ var }}” for variables. If we want to use previously declared variable,
+uses `“{{ var }}”` for variables. If we want to use previously declared variable,
 we must place between "{{ var }}"
-
+```yaml
 foo: "{{ variable }}"
+```
+
 
 -   A colon followed by a space (or newline) ": " is an indicator for a mapping.
 
@@ -381,41 +329,33 @@ For any ansible configuration , we need two files
 
 Here we are using default inventory host file located in **/etc/ansible/hosts**,
 contains single node
-
+```yaml
 192.168.33.11 ansible_user=vagrant
 
-Test Connection
-
+# Test Connection
 ansible all -m ping -k -b
+```
 
-**2.Playbook**
 
+**2.Playbook**  
 We are creating **helloworld.yml** with below content
+```yaml
+---
+- name: This is a hello-world example
+  hosts: all
+  tasks:
+    - name: Create a file called '/tmp/testfile.txt' with the content 'hello world'.
+      copy:
+        content: hello world
+        dest: /tmp/testfile.txt
+```
 
-\---
-
-\- name: This is a hello-world example
-
-hosts: all
-
-tasks:
-
-\- name: Create a file called '/tmp/testfile.txt' with the content 'hello
-world'.
-
-copy:
-
-content: hello world
-
-dest: /tmp/testfile.txt
-
-**3.Run playbook**
-
-ansible-playbook helloworld.yml -i /etc/ansible/hosts
-
+**3.Run playbook**  
+`ansible-playbook helloworld.yml -i /etc/ansible/hosts`
 ![](media/cd29073906ca587258831bd2edf1f89f.png)
 
 Here we are using default hosts file, so we are not requited to specify
 inventory file manullay, above playbook will work with below command as well.
-
+```yaml
 ansible-playbook helloworld.yml
+```
