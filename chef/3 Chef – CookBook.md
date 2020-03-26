@@ -21,26 +21,33 @@ Creating a Cookbook
 
 There are two ways to dynamically create a cookbook.
 
-**Using chef command**
+```powershell
+# Using chef command
+chef generate cookbook <Cookbook Name>
 
-chef generate cookbook \<Cookbook Name\>
 
-**Using knife utility**
+# Using knife utility
+knife cookbook create <Cookbook Name>
+```
 
-knife cookbook create \<Cookbook Name\>
 
 Chef Cookbook – Creating Sample Cookbook
 ----------------------------------------
 
 We can generate a Cookbook Using Chef Tool
+```powershell
+chef generate cookbook <Cookbook_Name>
+```
 
-chef generate cookbook \<Cookbook_Name\>
 
 Here I am creating Cookbook for Apache Installation, so I’m proving cookbook
 name as \`**apache_cookbook** \`
-
+```powershell
 chef generate cookbook apache_cookbook
-
+```
+  
+   
+   
 In This cookbook we perform below tasks
 
 -   Apache2 pkg should install in host machine
@@ -49,8 +56,8 @@ In This cookbook we perform below tasks
 
 -   Create index.html, & make it as apache Homepage
 
-Cookbook Directory Structure
 
+### **Cookbook Directory Structure**  
 Cookbooks are organized in a directory structure that is completely
 self-contained. There are many different directories and files that are used for
 different purposes.
@@ -59,7 +66,9 @@ Go to **apache_cookbook** directory & observe the File structure.
 
 ![](media/6ad8a269caaaf834dff828edbdd8fa59.png)
 
-**Recipes**
+
+
+### **Recipes**
 
 -   A recipe is the main workhorse of the cookbook. A cookbook can contain more
     than one recipe, or depend on outside recipes
@@ -97,7 +106,7 @@ types](http://docs.opscode.com/resource.html) here.
 
 ![](media/d3208fbe1a00797f0d70006e92f4cb09.png)
 
-**Templates**
+### **Templates**
 
 Template files end with the .erb extension, meaning that they contain embedded
 Ruby.
@@ -114,64 +123,63 @@ elsewhere.
 **We need to create index.html to place apache2 server using Templates. But In
 above we don’t have Templates folder**.
 
-**1.Create Templates Folder**
-
+**1.Create Templates Folder**  
 Create a Template called index.html in **apache_cookbook(***Inside Cookbook
 folder/ outside apache***)**
 
+```powershell
 chef generate template apache_cookbook index.html
+```
 
 ![](media/c81a94cfd6741c9bd76dc264b0ac4147.png)
 
 **2. Write “hello world” inside index.html.erb**
+```powershell
+# vi templates/index.html.erb
+<h1>
+        Hello, Chef - Using Cookbook
+</h1>
+```
 
-\# vi templates/index.html.erb
 
-\<h1\>
 
-Hello, Chef - Using Cookbook
-
-\</h1\>
-
-**3.Edit Recipe file : default.rb**
-
+**3.Edit Recipe file : default.rb**  
 Open recipe file **recipes/default.rb** & write steps to perform Install & Start
 Apache2 server and place index.html
-
-\# vi recipes/default.rb
-
+```powershell
+# vi recipes/default.rb
 package 'apache2'
 
 service 'apache2' do
-
-action [:enable, :start]
-
+	action [:enable, :start]
 end
 
 template '/var/www/html/index.html' do
-
-source 'index.html.erb'
-
+	source 'index.html.erb'
 end
+```
+
 
 **4.Apply complete CookBook on Local System**
-
+```powershell
 sudo chef-client --local-mode --runlist ‘recipe[apache_cookbook]’;
+```
+
 
 **Waring: should end with ;**
-
 ![](media/518f41c07f9c70544c160203bed56600.png)
 
+
+
 **Check Apache2 Status**
-
+```powershell
 service apache2 status
+* apache2 is running
+```
 
-\* apache2 is running
 
 **Now open apache URL, Using CURL**
-
 ![](media/ee27a2f0320918728bbc67281795c1e1.png)
 
 **Via Browser**
-
 ![](media/9afcfc819ea24ece1a19f798586d9c3c.png)

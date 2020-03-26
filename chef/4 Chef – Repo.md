@@ -15,8 +15,8 @@ Every Chef workstation has at least one Chef repository. The Chef repo is where
 all working copies of the cookbooks, recipes, templates, and so on live. Chef
 Repo contains
 
--   **Cookbooks (***including recipes, attributes, custom resources, libraries,
-    and templates)*
+-   **Cookbooks (** including `recipes, attributes, custom resources, libraries,
+    and templates`)
 
 -   **Data bags**
 
@@ -41,24 +41,29 @@ nodes in the right order.
 | **data_bags/**   | Stores data bags (and data bag items) in JSON (.json) format.                                                              |
 | **policyfiles/** | Stores Policyfiles in Ruby (.rb) format.                                                                                   |
 
-#### Create the chef-repo
 
-Use the \`**chef generate repo**\` command to create your chef-repo directory
+
+## Create the chef-repo
+
+Use the `chef generate repo` command to create your chef-repo directory
 along with the base folder structure.
+```powershell
+chef generate repo <REPO_NAME>
+```
 
-chef generate repo \<REPO_NAME\>
 
 Create Sample Repo named - **apache2_repo**
-
+```powershell
 chef generate repo apache2_repo
-
 Generating Chef Infra repo apache2_repo
-
-\- Ensuring correct Chef Infra repo file content
+- Ensuring correct Chef Infra repo file content
+Your new Chef Infra repo is ready! Type `cd apache2_repo` to enter it.
+```
 
 Your new Chef Infra repo is ready! Type \`cd apache2_repo\` to enter it.
-
 ![](media/f265de35d51a0d47cba84706a104dec5.png)
+
+
 
 **.chef folder**
 
@@ -72,7 +77,9 @@ Really, the only files you need from the starter kit are the .chef folder files:
 
 ![](media/ce0017751a94f99ce53485d73cc17d08.png)
 
-### Chef supermarket
+
+
+## Chef supermarket
 
 The supermarket is a site that provides shared cookbooks. There is a public
 supermarket that contains community-created and -maintained cookbooks. This site
@@ -80,19 +87,17 @@ is hosted by Chef and is available at <https://supermarket.chef.io>
 
 There are two versions of Supermarket available today.
 
-**Public Supermarket**
-
+**Public Supermarket**  
 This is available at the Chef Supermarket site. This is an open source project,
 you can find and contribute to the repo on GitHub.
 
-**Private Supermarket**
-
+**Private Supermarket**  
 There is also a version of Supermarket that can be run privately in your own
 infrastructure.
 
 You will need Knife to interact with the Supermarket
 
-### Chef Knife
+## Chef Knife
 
 **Knife** is a command-line tool that supplies the interface between your
 **chef-repo and your Chef server**.

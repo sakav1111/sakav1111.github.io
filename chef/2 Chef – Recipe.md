@@ -25,49 +25,56 @@ Chef written in Ruby. Now we are going to create a recipe **“hello.rb”**, he
     just a quick and easy way to use Chef to configure your local system.
 
 Syntax
+```powershell
+sudo chef-apply -e "package '<pkg-name>"
 
-sudo chef-apply -e "package '\<pkg-name\>"
+sudo chef-apply <recipe>
+```
 
-sudo chef-apply \<recipe\>
+<br>
+
 
 Chef Recipe– Hello World Recipe on Localhost
 --------------------------------------------
 
 1.Create **chef_repo** folder, go into it
-
+```powershell
 mkdir chef_repo
-
 cd chef_repo
+```
+
 
 2.create \`**hello.rb**\` file inside chef_repo
-
+```yaml
 file 'hello.txt' do
-
-content 'Hello, World'
-
+	content 'Hello, World'
 end
+```
 
-**3.Apply recipe to Current System.**
 
+**3.Apply recipe to Current System.**  
 The above Code means, create a **resource(file)** with name \`hello.txt\` with
 content as “**hello world”.** By executing chef-apply **hello.rd,** Chef will
 create a new file in our current infrastructure system
 
+```powershell
 chef-apply hello.rb
+```
 
 ![](media/d5ec32ed4d9b6cfe2a229ace4fbc7857.png)
 
 4.Now check, we can observe file is created with \`hello.txt\`
-
 ![](media/c3b211c204fb865ecd40dacb8834a821.png)
 
 5.Similarly, if you want to delete file, change **hello.rb** with below lines
-
+```powershell
 file 'hello.txt' do
-
-action:delete
-
+	action:delete
 end
+```
+
+<br>
+
 
 Chef Recipe– Install Apache on Localhost
 ----------------------------------------
@@ -81,45 +88,46 @@ Now go to more advance install Software as a pkg in host machine
 
 -   Create index.html, & make it as apache Homepage
 
+
 **1.Create \`apache.rd\` to perform above 3 steps on host system**
 
+```powershell
 package 'apache2'
-
-\# Here package apache2 has default action is install, so we didn't mention that
-action here. Space between action & [] must be there
-
+# Here package apache2 has default action is install, so we didn't mention that action here. Space between action & [] must be there
 service 'apache2' do
-
-action [:enable, :start]
-
+        action [:enable, :start]
 end
 
-\# Create a File with content to display Hello, Chef
-
+# Create a File with content to display Hello, Chef
 file '/var/www/html/index.html' do
-
-content '\<h1\>Hello, Chef!!\</h1\>'
-
+	content '<h1>Hello, Chef!!</h1>'
 end
+```
+
 
 **2. Run \`apache.rb\` recipe using \`chef-apply\`**
-
+```powershell
 chef-apply apache.rb
-
+```
 ![](media/23fa0f25c2adf55d3037f19d44218701.png)
 
+
 3.Check Apache status
-
+```powershell
 service apache2 status
+* apache2 is running
+```
 
-\* apache2 is running
 
 4.Check index.html by opening localhost/IP in browser
 
 ![](media/fcafa02482b8c56a2349d312e2b3101e.png)
 
-5.we can check using curl as well
 
+5.we can check using curl as well
+```powershell
 curl localhost
 
-\<h1\>Hello, Chef!!\</h1\>
+<h1>Hello, Chef!!</h1>
+```
+
