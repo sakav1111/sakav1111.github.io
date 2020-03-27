@@ -364,3 +364,4 @@ plugins:
 - jekyll-sitemap
 - jemoji
 - jekyll-seo-tag
+- jekyll-sitemap
