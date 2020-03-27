@@ -12,10 +12,7 @@ tags:
 Docker – Introduction
 =====================
 
-Introduction
-------------
-
-### What is Virtualization?
+## What is Virtualization?
 
 Virtualization is the technique of importing a Guest operating system on top of
 a Host operating system. This eliminated the need for extra hardware resource.
@@ -46,7 +43,7 @@ i.e. hard disk, processor and especially RAM.
 
 -   Boot up process is long and takes time
 
-### What is Containerization?
+## What is Containerization?
 
 Containerization is also a type of Virtualization. Containerization is however
 more efficient because there is no guest OS here and utilizes a host’s operating
@@ -72,7 +69,7 @@ shared by all the containers. Containers only contain application specific
 libraries which are separate for each container and they are faster and do not
 waste any resources.
 
-### Virtualization vs Containerization
+## Virtualization vs Containerization
 
 Virtualization and Containerization both let you run multiple operating systems
 inside a host machine.
@@ -126,8 +123,7 @@ CentOs container, etc. to full-fill the requirement from an operating system
 point of view. Also, it could be an application-oriented container like CakePHP
 container or a Tomcat-Ubuntu container etc.
 
-Let’s understand it with an example:
-
+<u>**Let’s understand it with an example:**</u>  
 A company needs to develop a Java Application. In order to do so the
 **developer** will setup an environment with tomcat server installed in it. Once
 the application is developed, it needs to be tested by the tester.
@@ -290,428 +286,146 @@ Docker Product offering
 Docker Install Ubuntu
 ---------------------
 
-###### Manual Install
+## Manual Install
 
-1.First, update your existing list of packages:
-
-sudo apt update
+1.First, update your existing list of packages:  
+`sudo apt update`
 
 2.Next, install a few prerequisite packages which let apt use packages over
 HTTPS:
-
+```powershell
 sudo apt install apt-transport-https ca-certificates curl
 software-properties-common
+```
+
 
 3.Then add the GPG key for the official Docker repository to your system:
-
+```powershell
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg \| sudo apt-key add -
+```
+
 
 4.Add the Docker repository to APT sources:
-
+```powershell
 sudo add-apt-repository "deb [arch=amd64]
 https://download.docker.com/linux/ubuntu bionic stable"
+```
+
 
 5.Next, update the package database with the Docker packages from the newly
 added repo:
-
+```powershell
 sudo apt update
+```
+
 
 6.Make sure you are about to install from the Docker repo instead of the default
 Ubuntu repo:
-
+```powershell
 apt-cache policy docker-ce
+```
+
 
 You'll see output like this, although the version number for Docker may be
 different:
-
+```powershell
 docker-ce:
-
-Installed: (none)
-
-Candidate: 18.03.1\~ce\~3-0\~ubuntu
-
-Version table:
-
-18.03.1\~ce\~3-0\~ubuntu 500
-
-500 https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
+  Installed: (none)
+  Candidate: 18.03.1~ce~3-0~ubuntu
+  Version table:
+     18.03.1~ce~3-0~ubuntu 500
+        500 https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
+```
 
 7.Notice that docker-ce is not installed, but the candidate for installation is
 from the Docker repository for Ubuntu 18.04 (bionic).So, install Docker:
-
+```powershell
 sudo apt install docker-ce
+```
+
 
 8.Docker should now be installed, the daemon started, and the process enabled to
 start on boot. Check that it's running:
-
+```powershell
 sudo systemctl status docker
 
 ● docker.service - Docker Application Container Engine
+   Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+   Active: active (running) since Mon 2018-10-01 21:10:48 IST; 3min 39s ago
+```
 
-Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset:
-enabled)
-
-Active: active (running) since Mon 2018-10-01 21:10:48 IST; 3min 39s ago
 
 if not start, start the service by running
-
+```powershell
 sudo service docker start
 
-satya\@satya:\~/.../docker\$ docker --version
-
+satya@satya:~/.../docker$ docker --version
 Docker version 18.06.1-ce, build e68fc7a
+```
 
-###### Using Ubuntu Vagrant Trusty
+
+## Using Ubuntu Vagrant Trusty
 
 Get vagrant Box & run vagrant up
-
-Vagrant.configure("2") do \|config\|
-
-config.vm.box = "ubuntu/trusty64"
-
-config.vm.network "private_network", ip: "192.168.33.10"
-
-config.vm.hostname = "master.satyacodes.vm"
-
-config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
-
-config.vm.synced_folder "C:\\\\Ops\\\\vagrant\\\\ShareFolder", "/shareFolder"
-
-config.ssh.username = "vagrant"
-
-config.ssh.password = "vagrant"
-
+```powershell
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/trusty64"  
+  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.hostname = "master.satyacodes.vm"
+  config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
+  config.vm.synced_folder "C:\\Ops\\vagrant\\ShareFolder", "/shareFolder"
+  config.ssh.username = "vagrant"
+  config.ssh.password = "vagrant"
 end
+```
 
-**Install Docker on Ubuntu 14.04 LTS(latest versions not working)**
-
+**Install Docker on Ubuntu 14.04 LTS(latest versions not working)**  
 We will begin by installing with the following:
-
+```powershell
 sudo apt-get install docker.io
+```
+
 
 We must then make a symbolic link between the original location of the Docker
 installation, so the program knows where to look for it.
-
+```powershell
 sudo ln -sf /usr/bin/docker.io /usr/local/bin/docker
+sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
 
-sudo sed -i '\$acomplete -F \_docker docker' /etc/bash_completion.d/docker.io
+```
+
+
 
 Furthermore, If you would like to install the latest version on your system, we
 will need to install additional dependencies in the following order to ensure
 everything checks out.
-
+```powershell
 sudo apt-get install apt-transport-https
 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys
-36A1D7869245C8950F966E92D8576A8BA88D21E9
-
-sudo sh -c "echo deb <https://get.docker.io/ubuntu> docker main\\ \>
-/etc/apt/sources.list.d/docker.list"
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+sudo sh -c "echo deb https://get.docker.io/ubuntu docker main\ > /etc/apt/sources.list.d/docker.list"
 
 sudo apt-get update
 
 sudo apt-get install lxc-docker
 
 sudo apt-get install apparmor
+```
 
 Finally, you can verify that the latest version of docker is installed with the
 following:
-
+```powershell
 sudo docker version
-
+```
 ![](media/d9dbbaa29e7c9be1b8eb69b620997688.png)
 
+
+
 Check that the docker daemon has been started
-
+```powershell
 service docker status
-
 service docker start
 
-add vagrant user to Docker
-
+# add vagrant user to Docker
 sudo usermod -a -G docker "vagrant"
-
-Docker Commands
----------------
-
-#### Basic 
-
-**docker version**
-
-Show the Docker version information
-
-root\@master:/home/vagrant\# docker version
-
-Client:
-
-Version: 1.9.1
-
-API version: 1.21
-
-Go version: go1.4.3
-
-Git commit: a34a1d5
-
-Built: Fri Nov 20 17:56:04 UTC 2015
-
-OS/Arch: linux/amd64
-
-Server:
-
-Version: 1.9.1
-
-API version: 1.21
-
-Go version: go1.4.3
-
-Git commit: a34a1d5
-
-Built: Fri Nov 20 17:56:04 UTC 2015
-
-OS/Arch: linux/amd64
-
-**docker -v**
-
-Gives only docker version
-
-root\@master:/home/vagrant\# docker -v
-
-Docker version 1.9.1, build a34a1d5
-
-**docker --version**
-
-This command is used to get the currently installed version of docker
-
-root\@master:/home/vagrant\# docker --version
-
-Docker version 1.9.1, build a34a1d5
-
-**docker info**
-
-Displays more information about Docker Systems
-
-root\@master:/home/vagrant\# docker info
-
-Containers: 1
-
-Images: 2
-
-Server Version: 1.9.1
-
-Storage Driver: aufs
-
-Root Dir: /var/lib/docker/aufs
-
-Backing Filesystem: extfs
-
-Dirs: 4
-
-Dirperm1 Supported: false
-
-Execution Driver: native-0.2
-
-Logging Driver: json-file
-
-Kernel Version: 3.13.0-170-generic
-
-Operating System: Ubuntu 14.04.6 LTS
-
-CPUs: 1
-
-Total Memory: 489.8 MiB
-
-Name: master
-
-ID: 4YPE:SJP3:JID3:IITF:F7V2:GMVH:UICM:Z5PI:GNAW:HMCV:W5IO:BFQK
-
-WARNING: No swap limit support
-
-**docker --help**
-
-Shows details about particular command
-
-Syntax
-
-docker \<command\> --help
-
-root\@master:/home/vagrant\# docker images --help
-
-Usage: docker images [OPTIONS] [REPOSITORY[:TAG]]
-
-List images
-
-\-a, --all=false Show all images (default hides intermediate images)
-
-\--digests=false Show digests
-
-\-f, --filter=[] Filter output based on conditions provided
-
-\--help=false Print usage
-
-\--no-trunc=false Don't truncate output
-
-\-q, --quiet=false Only show numeric IDs
-
-**docker login**
-
-used to login with docker hub(<http://hub.docker.com/>) account.it will used to
-pull/push our own docker images to server.
-
-#### Images 
-
-**docker images**
-
-List all the docker images pulled on the system with image details
-
-\>docker images
-
-REPOSITORY TAG IMAGE ID CREATED
-
-httpd latest ee39f68eb241 2 days ago
-
-hello-world latest fce289e99eb9 6 months ago
-
-sequenceiq/hadoop-docker 2.7.0 789fa0a3b911 4 years ago
-
-**docker pull**
-
-This command is used to pull images from the docker repository(hub.docker.com)
-
-Syntax:
-
-docker pull \<image name\>
-
-root\@master:/home/vagrant\# docker pull hello-world
-
-Using default tag: latest
-
-latest: Pulling from library/hello-world
-
-30413dbcae18: Pull complete
-
-cc813f1ee102: Pull complete
-
-Digest: sha256:fb158b7ad66f4d58aa66c4455858230cd2eab4cdf29b13e5c3628a6bfc2e9f05
-
-Status: Downloaded newer image for hello-world:latest
-
-root\@master:/home/vagrant\# docker images
-
-REPOSITORY TAG IMAGE ID CREATED VIRTUAL SIZE
-
-hello-world latest cc813f1ee102 14 months ago 1.84 kB
-
-**docker rmi**
-
-removes images by their ID. To remove the image, you first need to get the Image
-ID By running simple command **docker images -a**
-
-root\@master:/home/vagrant\# docker rmi -f cc813f1ee102
-
-Deleted: cc813f1ee10243587aaa3ebd547ab6c7c284f509c8e8faa386d7b83ec935333a
-
-Deleted: 30413dbcae18076edb8281917efa0a410e0dc0dba421aba37e767d2193827658
-
-#### Containers 
-
-**docker ps**
-
-This command is used to list the running containers
-
-**docker ps -a**
-
-This command is used to show all the running and exited containers
-
-![](media/1b79fb330fa9d533ea6fbac304d4af55.png)
-
-**docker run**
-
-If it will check image is available in local system or not. If not, it will
-download & run the image. If available, it will just Run the docker image.
-
-In technical, this command is used to create a container from an image
-
-root\@master:/home/vagrant\# docker run ubuntu
-
-Unable to find image 'ubuntu:latest' locally
-
-latest: Pulling from library/ubuntu
-
-888ccf454ca2: Extracting [================\> ] 8.552 MB/26.69 MB
-
-cc8ccfcd670f: Download complete
-
-8569bb44e89d: Download complete
-
-29734d14b16f: Download complete
-
-68c4771c8a42: Download complete
-
-**docker run -it**
-
-In above it just downloaded Ubuntu image. To interact with it we should use
-it(interactive -tty)
-
-root\@master:/home/vagrant\# docker run -it ubuntu
-
-root\@8c70757a72c0:/\# hostname
-
-8c70757a72c0
-
-**docker start/stop**
-
-root\@master:/home/vagrant\# docker stop 8c70757a72c0
-
-8c70757a72c0
-
-root\@master:/home/vagrant\# docker start 8c70757a72c0
-
-8c70757a72c0
-
-#### System 
-
-**docker stats**
-
-Gives container usage statistics
-
-docker stats 8c70757a72c0
-
-CONTAINER CPU % MEM USAGE / LIMIT MEM %
-
-8c70757a72c0 0.00% 442.4 kB / 513.6 MB 0.09%
-
-**docker system df**
-
-To check Disc usage of Docker
-
-**docker system prune**
-
-It will remove all unused data.(all stopped containers & its data)
-
-**.Restart Docker**
-
-Restart the docker container with container id mentioned in the command.
-
-\$ docker restart 09ca6feb6efc
-
-**8.docker exec**
-
-This command is used to access the running container.
-
-Usage: docker exec -it \<container id\> bash
-
-**9.docker stop**
-
-This command stops a running container
-
-Usage: docker stop \<container id\>
-
-**10.docker kill**
-
-This command kills the container by stopping its execution immediately.
-
-The difference between ‘docker kill’ and ‘docker stop’ is that ‘docker stop’
-gives the container time to shutdown gracefully, in situations when it is taking
-too much time for getting the container to stop, one can opt to kill it
-
-Usage: docker kill \<container id\>
+```

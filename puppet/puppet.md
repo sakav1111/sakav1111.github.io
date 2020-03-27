@@ -158,46 +158,37 @@ A resource describes about the state of the system, e.g. a certain user or file
 should exist, or a package should be installed
 
 Resource declarations can be formatted as follows:
-
-resource_type
-
+```powershell
+resource_type 
 {
-
-'resource_name'
-
-attribute =\> value
-
-...
-
+ 'resource_name' 
+ attribute => value 
+ ...
 }
+```
 
 Example for Resource declaration :
-
+```powershell
 user
-
 {
-
-'mitchell':
-
-ensure =\> present,
-
-uid =\> '1000',
-
-gid =\> '1000',
-
-shell =\> '/bin/bash',
-
-home =\> '/home/mitchell'
-
+ 'mitchell':
+  ensure => present,
+  uid => '1000',
+  gid => '1000',
+  shell => '/bin/bash',
+  home => '/home/mitchell' 
 }
-
+```
 This resource declaration describes a user resource named 'mitchell', with the
 specified attributes
 
 To list all of the default resource types that are available to Puppet, enter
 the following command:
-
+```powershell
 puppet resource --types
+```
+
+
 
 ### Manifests
 
@@ -205,8 +196,11 @@ Puppet programs are called manifests. Manifests are composed of puppet code and
 their filenames use the .pp extension
 
 The default main manifest in Puppet installed via apt is :
-
+```powershell
 /etc/puppet/manifests/site.pp.
+```
+
+
 
 ### Class
 
@@ -214,18 +208,19 @@ In Puppet, classes are code blocks that can be called in a code elsewhere. Using
 classes allows you to reuse Puppet code, and can make reading manifests easier
 
 Class Definition
-
+```powershell
 class example_class
-
 {
 
-...
+    ...
 
-code
+    code
 
-...
+    ...
 
 }
+```
+
 
 Class declaration occurs when a class is called in a manifest .A class
 declaration tells Puppet to evaluate the code within the class .
@@ -233,14 +228,12 @@ declaration tells Puppet to evaluate the code within the class .
 Class declarations come in two different flavors: normal and resource-like
 
 **A normal class declaration** occurs when the include keyword is used in Puppet
-code, like:
-
-include example_class
+code, like:  
+`include example_class`
 
 **A resource-like** class declaration occurs when a class is declared like a
-resource, like:
-
-class { 'example_class': }
+resource, like:  
+`class { 'example_class': }`
 
 ### Modules
 
@@ -257,12 +250,10 @@ class { 'example_class': }
 
 ![](media/5c5214b279c0a49a61bdc58a927af2dc.png)
 
-**Node**
-
+**Node**  
 A node is an individual server or device managed by Puppet.
 
-**Resources**
-
+**Resources**  
 Resources are individual units of configuration in Puppet.
 
 -   **Built-in resource types** include things like files and system users.
@@ -301,126 +292,100 @@ limited in the scope of what they configure.
 -   If two nodes are nearly identical, they should still have unique roles
     defined.
 
-Installation
-------------
 
-Debian, Ubuntu  
+
+# Installation
+
+
+**Debian, Ubuntu**  
 Available by default
+```powershell
+apt-get install puppet       # On clients (nodes)
+apt-get install puppetmaster # On server (master)
+```
 
-apt-get install puppet       \# On clients (nodes)
 
-apt-get install puppetmaster \# On server (master)
-
-RedHat, Centos, Fedora  
+**RedHat, Centos, Fedora** 
 Add EPEL repository or RHN Extra channel
+```powershell
+yum install puppet        # On clients (nodes)
+yum install puppet-server # On server (master)
+```
 
-yum install puppet        \# On clients (nodes)
 
-yum install puppet-server \# On server (master)
 
-### Puppet Master Installation 
+## Puppet Master Installation 
 
 **Install Puppet Server on CentOS**
-
+```powershell
 Hostname
 
-\#Add puppet repository
+#Add puppet repository 
+rpm -Uvh https://yum.puppet.com/puppet6-release-el-7.noarch.rpm
 
-rpm -Uvh <https://yum.puppet.com/puppet6-release-el-7.noarch.rpm>
-
-\#Install puppetserver
-
+#Install puppetserver 
 yum install -y puppetserver git vim
 
 vim /etc/sysconfig/puppetserver
 
 git --version
-
 vim --version
-
 puppet –version
 
-\#Check Status puppetserver
-
+#Check Status puppetserver 
 systemctl start puppetserver
-
 systemctl status puppetserver
-
-\#to make puppetserver start with system boot
-
+#to make puppetserver start with system boot
 systemctl enable puppetserver
 
 vi /etc/sysconfig/puppetserver
-
 systemctl start puppetserver
-
 vi /etc/sysconfig/puppetserver
+```
 
-#### Configurations
 
-**Open Firewall Ports on Machines**
 
+
+## Configurations
+
+**Open Firewall Ports on Machines**  
 To make the Puppet server manage the client’s server centrally, one needs to
 open a specified port on all the machines, i.e. **8140**
 
-**Puppet Configuration File**
-
+**Puppet Configuration File**  
 The main configuration file for Puppet is **etc/puppet/puppet.conf**.
 
 All Puppet related settings such as the definition of Puppet master, Puppet
 agent, Puppet apply and certificates are defined in this file.
 
-To this host as **puppetmaster** as well as **puppetnode** edit
+To this host as **puppetmaster** as well as **puppetnode** edit  
+`vi /etc/puppetlabs/puppet/puppet.conf`
 
+
+```powershell
 vi /etc/puppetlabs/puppet/puppet.conf
 
-\# This file can be used to override the default puppet settings.
-
-\# See the following links for more details on what settings are available:
-
-\# - https://puppet.com/docs/puppet/latest/config_important_settings.html
-
-\# - https://puppet.com/docs/puppet/latest/config_about_settings.html
-
-\# - https://puppet.com/docs/puppet/latest/config_file_main.html
-
-\# - https://puppet.com/docs/puppet/latest/configuration.html
-
+# This file can be used to override the default puppet settings.
+# See the following links for more details on what settings are available:
+# - https://puppet.com/docs/puppet/latest/config_important_settings.html
+# - https://puppet.com/docs/puppet/latest/config_about_settings.html
+# - https://puppet.com/docs/puppet/latest/config_file_main.html
+# - https://puppet.com/docs/puppet/latest/configuration.html
 [master]
-
 vardir = /opt/puppetlabs/server/data/puppetserver
-
 logdir = /var/log/puppetlabs/puppetserver
-
 rundir = /var/run/puppetlabs/puppetserver
-
 pidfile = /var/run/puppetlabs/puppetserver/puppetserver.pid
-
 codedir = /etc/puppetlabs/code
 
 [agent]
-
 server = master.puppet.vm
-
-We need to use Puppet Specific ruby version to install gems. For that
-
-\# vi .bash_profile
-
-PATH=\$PATH:/opt/puppetlabs/puppet/bin
-
-PATH=\$PATH:\$HOME/.local/bin:\$HOME/bin
-
-export PATH
-
-\# save and active bash
-
-exec bash
-
-source .bash_profile
+```
 
 Install our first Gem, r10k
+`gem install r10k`
 
-gem install r10k
+
 
 ### Puppet Agent Node Installation
 
@@ -433,27 +398,21 @@ Puppet master machine on any given infrastructure.
 Running Puppet agent
 --------------------
 
-Run below command to start puppet agent
+Run below command to start puppet agent  
+`puppet agent -t`
 
-puppet agent -t
-
-[root\@puppet vagrant]\# puppet agent -t
-
+```powershell
+[root@puppet vagrant]# puppet agent -t
 Info: Using configured environment 'production'
-
 Info: Retrieving pluginfacts
-
 Info: Retrieving plugin
-
 Info: Retrieving locales
-
 Info: Caching catalog for puppet.master.vm
-
 Info: Applying configuration version '1584098543'
-
 Info: Creating state file /opt/puppetlabs/puppet/cache/state/state.yaml
-
 Notice: Applied catalog in 0.13 seconds
+```
+
 
 Version Control System 
 -----------------------
@@ -499,59 +458,52 @@ Go to Home Code Tab \> on Top select Branches \> Delete master branch
 We are using r10k. We need to tell r10k where our puppet_repo is. For that we
 need to provide some configuration on the master.
 
-**Create Directory for saving code**
-
-mkdir /etc/puppetlabs/r10k
+**Create Directory for saving code**  
+`mkdir /etc/puppetlabs/r10k`
 
 **Create yaml file, r10k.yaml**
-
-\# vi /etc/puppetlabs/r10k/r10k.yaml
-
-\---
-
+```powershell
+# vi /etc/puppetlabs/r10k/r10k.yaml
+---
 :cachedir: 'var/cache/r10k'
 
 :sources:
+	:my-org
+		remote: 'https://github.com/smlcodes/puppet_repo.git'
+		basedir: '/etc/puppetlabs/code/environments'
+```
 
-:my-org
 
-remote: 'https://github.com/smlcodes/puppet_repo.git'
-
-basedir: '/etc/puppetlabs/code/environments'
-
-To deploy/download code we use below command
-
-r10k deploy environment -p
+To deploy/download code we use below command  
+`r10k deploy environment -p`
 
 It will clone/download code from github to basedir,
-i.e:/etc/puppetlabs/code/environments
-
-\# check them
-
+i.e:`/etc/puppetlabs/code/environments`
+```powershell
+# check them
 cd /etc/puppetlabs/code/environments
-
+```
 ![](media/b8c571e41f808226662dcaf627fcd1b8.png)
+
+
 
 Puppet Directory
 ----------------
 
 Directory Structure
+```powershell
+- manifests 
+   \- site.pp 
+- modules 
+   \- your modules  
+- test 
+   \- update-puppet.sh 
+   \- Vagrantfile 
+- puppet.conf
+```
 
-\- manifests
 
-\\- site.pp
 
-\- modules
-
-\\- your modules
-
-\- test
-
-\\- update-puppet.sh
-
-\\- Vagrantfile
-
-\- puppet.conf
 
 Puppet – Resources
 ==================

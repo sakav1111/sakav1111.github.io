@@ -930,6 +930,8 @@ DockerTutorial:
     children:
       - title:  Introduction
         url:    /docker/introduction
+      - title:  Commands
+        url:    /docker/commands
       - title:  Images
         url:    /docker/images
       - title:  Container

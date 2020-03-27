@@ -23,38 +23,38 @@ descaling of containers & container load balancing.
 -   It also provides self-healing. Kubernetes can detect and restart services
     when a process crashes inside the container.
 
-###### Before Kubernetes
+## Before Kubernetes
 
-before containers came into existence, the developers and the testers always had
+before containers came into existence, the developersand the testers always had
 a tiff between them. This usually, happened because what worked on the dev side,
 would not work on the testing side. Both of them existed in different
-environments. Now, to avoid such scenarios containers were introduced so that
+environments. Now, to avoid such scenarioscontainers were introduced so that
 both the Developers and Testers were on the same page.
 
 Handling a large number of containers all together was also a problem. Sometimes
 while running containers, on the product side, few issues were raised, which
 were not present at the development stage. This kind of scenarios introduced the
-Container Orchestration System. 
+Container Orchestration System.
 
 **Challenges Without Container Orchestration**
 
- 
+
 
 ![Challenges Without Container Orchestration - Kubernetes Tutorial - Edureka](media/5c2bd9312cc2989c3dc16f629bda02dd.png)
 
-###### Why Kubernetes
+## Why Kubernetes
 
 If your application is in Container form, then we won’t use only 1 or 2
-containers in Prod. But rather, **10’s or 100’s** of containers for load
+containers in Prod. But rather,**10’s or 100’s**of containers for load
 balancing the traffic and ensuring high availability.
 
 Keep in mind that, as the traffic increases, they even have to scale up the
 number of containers to service the ‘n’ no of requests that come in every
 second. And, they have to also scale down the containers when the demand is
-less. 
+less.
 
-That is why, the need for container management tools is imminent. Both **Docker
-Swarm** and **Kubernetes** are popular tools for Container management and
+That is why, the need for container management tools is imminent. Both**Docker
+Swarm**and**Kubernetes**are popular tools for Container management and
 orchestration.
 
 Features
@@ -62,63 +62,54 @@ Features
 
 ![](media/24348d39fee3fd61fb3e2aa45729511a.png)
 
-**1. Automatic Binpacking**
-
+**1. Automatic Binpacking**  
 Kubernetes automatically packages your application and schedules the containers
 based on their requirements and available resources while not sacrificing
 availability. To ensure complete utilization and save unused resources,
 Kubernetes balances between critical and best-effort workloads.
 
-**2. Service Discovery & Load balancing**
-
+**2. Service Discovery & Load balancing**  
 With Kubernetes, there is no need to worry about networking and communication
 because Kubernetes will automatically assign IP addresses to containers and a
 single DNS name for a set of containers, that can load-balance traffic inside
-the cluster. 
+the cluster.
 
-**3. Storage Orchestration**
-
+**3. Storage Orchestration**  
 With Kubernetes, you can mount the storage system of your choice. You can either
 opt for local storage, or choose a public cloud provider such as GCP or AWS, or
 perhaps use a shared network storage system such as NFS, iSCSI, etc.
 
-**4. Self-Healing**
-
+**4. Self-Healing**  
 Personally, this is my favorite feature. Kubernetes can automatically restart
 containers that fail during execution and kills those containers that don’t
 respond to user-defined health checks. But if nodes itself die, then it replaces
 and reschedules those failed containers on other available nodes.
 
-**5. Secret & Configuration Management**
-
+**5. Secret & Configuration Management**  
 Kubernetes can help you deploy and update secrets and application configuration
 without rebuilding your image and without exposing secrets in your stack
 configuration.
 
-**6. Batch Execution **
-
+**6.Batch Execution**  
 In addition to managing services, Kubernetes can also manage your batch and CI
 workloads, thus replacing containers that fail, if desired.
 
-**7. Horizontal Scaling**
-
+**7. Horizontal Scaling**  
 Kubernetes needs only 1 command to scale up the containers, or to scale them
 down when using the CLI. Else, scaling can also be done via the Dashboard
 (kubernetes UI).
 
-**8. Automatic Rollbacks & Rollouts**
-
+**8. Automatic Rollbacks & Rollouts**  
 Kubernetes progressively rolls out changes and updates to your application or
 its configuration, by ensuring that not all instances are worked at the same
 instance. Even if something goes wrong, Kubernetes will rollback the change for
 you.
 
-Architecture 
--------------
+# Architecture 
 
 ![](media/00d38e778faa554bc3b4821b0fa2cc9e.png)
 
-Kubernetes Architecture has the 3 main components:
+Kubernetes Architecture has the 3 main components
 
 -   Master nodes
 
@@ -134,7 +125,7 @@ Kubernetes Architecture has the 3 main components:
 
 Kubernetes Cluster is primarily made up of following components
 
--   Master:
+-   Master
 
     -   Kube API Server
 
@@ -143,7 +134,7 @@ Kubernetes Cluster is primarily made up of following components
 
     -   Etcd
 
--   Node:
+-   Node
 
     -   Kubelet
 
@@ -151,7 +142,7 @@ Kubernetes Cluster is primarily made up of following components
 
     -   Container Runtime
 
--   Addons:
+-   Addons
 
     -   DNS
 
@@ -176,7 +167,7 @@ just follows.
 
 ![](media/e37e97b33fb4cc08b6bce189fe22a1e7.png)
 
-**API server:** 
+**API server**
 
 -   Performs all the administrative tasks through the API server within the
     master node.
@@ -187,7 +178,7 @@ just follows.
 -   After requesting, the resulting state of the cluster is stored in the
     distributed key-value store.
 
-**Scheduler:**
+**Scheduler**
 
 -   The scheduler schedules the tasks to slave nodes. It stores the resource
     usage information for each slave node.
@@ -196,8 +187,8 @@ just follows.
 
 **Controller manager**
 
--   Basically, a controller watches the desired state of the objects it
-    manages and watches their current state through the API server.
+-   Basically, a controller watches thedesired state of the objects it
+    managesand watches their current state through the API server.
 
 -   If the current state of the objects it manages does not meet the desired
     state, then the control loop takes corrective steps to make sure that the
@@ -210,15 +201,15 @@ just follows.
 -   It can be part of the Kubernetes Master, or, it can be configured
     externally.
 
--   it is also used to store configuration details such as subnets, ConfigMaps,
+-   itis also used to store configuration details such as subnets, ConfigMaps,
     Secrets, etc.
 
 ###### Worker Node
 
 It is a physical server or you can say a VM which runs the applications using
-Pods (**a pod scheduling unit**) which is controlled by the master node. On a
+Pods (**a pod scheduling unit**) which iscontrolled by the master node. On a
 physical server (worker/slave node), pods are scheduled. For
-accessing the applications from the external world, we connect to nodes. 
+accessingtheapplications from the external world, we connect to nodes.
 
 -   It is a worker machine in Kubernetes (used to be known as minion)
 
@@ -232,23 +223,23 @@ accessing the applications from the external world, we connect to nodes. 
 
 ![](media/d19634ad589c1ea810f0c9e6060f25d9.png)
 
-**Container runtime: **
+**Container runtime**
 
--   To run and manage a container’s lifecycle, we need a **container
-    runtime **on the worker node. 
+-   To run and manage a container’s lifecycle, we need a**container
+    runtime**on the worker node.
 
--   Sometimes, Docker is also referred to as a container runtime, but to be
-    precise, Docker is a platform which uses **containers **as a container
-    runtime. 
+-   Sometimes,Dockerisalso referred to as a container runtime, but to be
+    precise, Docker is a platform which uses**containers**as a container
+    runtime.
 
-**Kubelet: **
+**Kubelet**
 
 -   It is an agent which communicates with the Master node and executes on nodes
     or the worker nodes. It gets the Pod specifications through the API server
-    and executes the containers associated with the Pod and ensures that the
+    and executes the containers associated with the Pod andensures that the
     containers described in those Pod are running and healthy.
 
-**Kube-proxy: **
+**Kube-proxy**
 
 -   Kube-proxy runs on each node to deal with individual host sub-netting and
     ensure that the services are available to external parties.
@@ -275,7 +266,7 @@ accessing the applications from the external world, we connect to nodes. 
 Kubernetes vs Docker Swarm
 --------------------------
 
-**Kubernetes** and **Docker Swarm** are leading container orchestration tools in
+**Kubernetes**and**Docker Swarm**are leading container orchestration tools in
 today’s market.
 
 ![Docker Swarm vs Kubernetes - Kubernetes Tutorial - Edureka](media/d5df71c411529b7aa4cbd8231f004d4f.png)
@@ -283,43 +274,43 @@ today’s market.
 Use Case
 --------
 
-**Use Case: How Luminis Technologies used Kubernetes in production**
+**Use Case How Luminis Technologiesused Kubernetes in production**
 
-**Problem:** Luminis, a software technology company used AWS for deploying their
+**Problem**Luminis, a software technology companyused AWS for deploying their
 applications. For deploying the applications, it required custom scripts and
-tools to automate which was not easy for teams other than operations.
-Their small teams didn’t have the resources to learn all of the details about
-the scripts and tools. 
+tools to automate which was not easyfor teams other than operations.
+Theirsmall teams didn’t have the resources to learn all of the details about
+the scripts and tools.
 
-**Main Issue:** There was no **unit-of-deployment** which created a gap between
-the development and the operations teams. 
+**Main Issue**There was no**unit-of-deployment**which created a gap between
+the development and the operations teams.
 
-**Solution: **
+**Solution**
 
-**How did they Deploy in Kubernetes:**
+**How did they Deploy in Kubernetes**
 
 ![Use case - Kubernetes Architecture - Edureka](media/5d47b626a5e343527e9e6be897887b68.png)
 
-They used a [blue-green
-deployment](https://martinfowler.com/bliki/BlueGreenDeployment.html) mechanism
-to reduce the complexity of handling multiple concurrent versions. (As there’s
-always only one version of the application running in the background) 
+They used a[blue-green
+deployment](https//martinfowler.com/bliki/BlueGreenDeployment.html)mechanism
+toreduce the complexity of handling multiple concurrent versions. (As there’s
+always only one version of the application running in the background)
 
 In this, a component called “**Deployer**” that orchestrated the deployment was
-created by their team by open sourcing their implementation under the Apache
-License as part of the Amdatu umbrella project. This mechanism performed the
+created by their team by open sourcing theirimplementation under the Apache
+License as part of theAmdatuumbrella project.This mechanism performed the
 health checking on the pods before re-configuring the load balancer because they
 wanted each component that was deployed to provide a health check.
 
-**How did they Automate Deployments?**
+**How did they AutomateDeployments?**
 
 ![](media/5a084179b4e6a34be6f6b24c9038a324.png)
 
-With the **Deployer **in place, they were able to engage up deployments to a
-build pipeline. After a successful build,  their build server pushed a new
+With the**Deployer**in place,they were able to engage up deployments to a
+build pipeline.After a successful build, their build server pushed a new
 Docker image to a registry on Docker Hub. Then the build server invoked
-the **Deployer** to automatically deploy the new version to a test environment.
-That same image was promoted to production by triggering the **Deployer** on the
+the**Deployer**to automatically deploy the new version to a test environment.
+That same image was promoted to production by triggering the**Deployer**on the
 production environment.
 
 Use case -2
@@ -327,19 +318,19 @@ Use case -2
 
 **Kubernetes Case-Study**
 
--   **Yahoo! JAPAN** is a web services provider headquartered in Sunnyvale,
-    California. As the company aimed to virtualize the hardware, company started
-    using **OpenStack** in 2012. Their internal environment changed very
+-   **Yahoo!JAPAN**is a web services provider headquartered in Sunnyvale,
+    California. As the company aimed to virtualize the hardware, companystarted
+    using**OpenStack**in 2012. Their internal environment changed very
     quickly. However, due to the progress of cloud and container technology, the
     company wanted the capability to launch services on various platforms.
 
--   **Problem:** How to create images for all required platforms from one
+-   **Problem**How to create images for all required platforms from one
     application code, and deploy those images onto each platform?
 
 -   For your better understanding, refer to the below image. When the code is
     changed at the code registry, then bare metal images, Docker containers, and
     VM images are created by continuous integration tools, pushed into the image
-    registry, and then deployed to each infrastructure platform. 
+    registry, and then deployed to each infrastructure platform.
 
 ![Problem Statement of Case Study - Kubernetes Tutorial - Edureka](media/0301fa11a01df94d378463c7096f7e08.png)
 
@@ -349,7 +340,7 @@ Use case -2
 
 ![](media/0985371d3c3d756dd4935eef56119b46.png)
 
->   Solution of Case Study - Kubernetes Tutorial - Edureka
+## Solution of Case Study - Kubernetes Tutorial - Edureka
 
 -   OpenStack instances are used, with Docker, Kubernetes, Calico, etcd on top
     of it to perform various operations like Container Networking, Container
@@ -374,11 +365,11 @@ Use case -2
 >     
 >   This kind of toolchain made sure that all factors for production deployment
 >   such as multi-tenancy, authentication, storage, networking, service
->   discovery were considered.
+>   discoverywere considered.
 
--   That’s how folks, **Yahoo! JAPAN** built an automation toolchain for
+-   That’s how folks,**Yahoo! JAPAN**built an automation toolchain for
     “one-click” code deployment to Kubernetes running on OpenStack, with help
-    from **Google** and **Solinea**.
+    from**Google**and**Solinea**.
 
 Installation
 ------------
@@ -388,6 +379,6 @@ Installation
 Ref.
 ====
 
-<http://dockerlabs.collabnix.com/>
+<http//dockerlabs.collabnix.com/>
 
-<https://collabnix.github.io/kubelabs/>
+<https//collabnix.github.io/kubelabs/>

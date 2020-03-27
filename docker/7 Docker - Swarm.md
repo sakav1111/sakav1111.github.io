@@ -29,35 +29,36 @@ Let’s take an example – we have 100 containers. You need to do
 
 -   Adding updates/changes to all the containers
 
-Installation
-------------
 
-Check docker-machine installed or not
 
-docker-machine -v
+# Installation
 
-If not follow this
+Check docker-machine installed or not  
+`docker-machine -v`
 
+If not follow this  
 <https://docs.docker.com/machine/install-machine/#installing-machine-directly>
 
-Download the Docker Machine binary and extract it to your PATH(in Linux)
 
+
+**Download the Docker Machine binary and extract it to your PATH(in Linux)**
+```powershell
 base=https://github.com/docker/machine/releases/download/v0.16.0 &&
+  curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine &&
+  sudo mv /tmp/docker-machine /usr/local/bin/docker-machine &&
+  chmod +x /usr/local/bin/docker-machine
+```
 
-curl -L \$base/docker-machine-\$(uname -s)-\$(uname -m) \>/tmp/docker-machine &&
 
-sudo mv /tmp/docker-machine /usr/local/bin/docker-machine &&
-
-chmod +x /usr/local/bin/docker-machine
-
-Check the installation by displaying the Machine version:
-
+**Check the installation by displaying the Machine version:**
+```powershell
 docker-machine version
-
 docker-machine version 0.16.0, build 9371605
+```
 
-Example
--------
+
+
+# Example
 
 In this example, We need to Create one Docker Swarm & multiple Node Machines
 
@@ -65,127 +66,132 @@ In this example, We need to Create one Docker Swarm & multiple Node Machines
 
 **1.Create one machine as manager**
 
+```powershell
 [windows]
-
-docker-machine create --driver hyperv manager1
+docker-machine create --driver hyperv manager1	
 
 [linux]
-
 docker-machine create --driver virtualbox manager1
+```
 
-If you got error like
 
-"Error with pre-create check: "VBoxManage not found. Make sure VirtualBox is
-installed and VBoxManage is in the path"
+If you got error like  
+`"Error with pre-create check: "VBoxManage not found. Make sure VirtualBox is
+installed and VBoxManage is in the path"`
 
-Run
-
-brew cask install virtualbox;
+Run  
+`brew cask install virtualbox;`
 
 <https://stackoverflow.com/questions/38696164/docker-machineerror-with-pre-create-check-exit-status-126>
 
-**2.Check machine created successfully**
+  
 
-docker-machine ls
+
+**2.Check machine created successfully**
+```powershell
+#>  docker-machine ls
 
 docker-machine ip manager1 (To get IP of manager)
+```
+
 
 **3.Create Worker Machines**
+```powershell
+worker1	> docker-machine create --driver virtualbox worker1
+worker2 > docker-machine create --driver virtualbox worker2
+```
+Check `docker-machine ls` :: we should see 1 manager & 2 workers
 
-worker1 \> docker-machine create --driver virtualbox worker1
 
-worker2\> docker-machine create --driver virtualbox worker2
-
-Check \`docker-machine ls\` :: we should see 1 manager & 2 workers
 
 **4.SSH (connect) to docker machines**
-
+```powershell
 docker-machine ssh manager1
 
 docker-machine ssh worker1
 
 docker-machine ssh worker2
+```
+
+
 
 **5.Initialize Docker Swarm**
-
+```powershell
 docker swarm init --advertise-addr MANAGER_IP
 
 docker node ls
-
 (this command will work only in swarm manager and not in worker)
+```
 
-**6. Join workers with the Docker swarm**
 
-In manager node run command
 
-docker swarm join-token worker
-
+**6. Join workers with the Docker swarm**  
+In manager node run command  
+`docker swarm join-token worker`  
 This will give command to join swarm as worker
 
 Copy the generated command & run in worker nodes.Check nodes again :: it should
 give nodes
+`docker node ls`  
 
-docker node ls
+
 
 **7. On manager , we can run standard docker commands**
-
 -   docker info
-
 -   docker swarm
 
-8. Run containers on Docker Swarm
 
-docker service create --replicas 3 -p 80:80 --name serviceName nginx
+**8.Run containers on Docker Swarm**
+```powershell
+#> docker service create --replicas 3 -p 80:80 --name serviceName nginx
 
-Check the status:
+   # Check the status:
+    docker service ls
+    docker service ps serviceName
 
-docker service ls
+    # Check the service running on all nodes
+    Check on the browser by giving ip for all nodes
+```
 
-docker service ps serviceName
 
-Check the service running on all nodes
-
-Check on the browser by giving ip for all nodes
-
-9. Scale service up and down
-
+**9.Scale service up and down**  
 On manager node
+`docker service scale serviceName=2`  
 
-docker service scale serviceName=2
 
-10. Shutdown node
 
-docker node update --availability drain worker1
+**10.Shutdown node**  
+`docker node update --availability drain worker1`
 
-11. Update service
 
+
+**11.Update service**
+```powershell
 docker service update --image imagename:version web
-
 docker service update --image nginx:1.14.0 serviceName
+```
 
-12. Remove service
 
--   docker service rm serviceName
+**12.Remove service**
 
--   docker swarm leave : to leave the swarm
+-   `docker service rm` serviceName
+-   `docker swarm leave` : to leave the swarm
+-   `docker-machine stop machineName` : to stop the machine
+-   `docker-machine rm machineName` : to remove the machine
 
--   docker-machine stop machineName : to stop the machine
 
--   docker-machine rm machineName : to remove the machine
+
 
 References
 ==========
 
 PPT Book
-
 <http://people.irisa.fr/Anthony.Baire/docker-tutorial.pdf>
 
-#### Introductio
-
+#### Introduction
 Ref : <https://www.edureka.co/blog/docker-tutorial>
 
 #### What is Docker
-
 Ref : <https://www.edureka.co/blog/what-is-docker-container>
 
 <https://www.youtube.com/watch?v=h0NCZbHjIpY&list=PL9ooVrP1hQOHUKuqGuiWLQoJ-LD25KxI5>
