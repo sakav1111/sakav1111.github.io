@@ -1,3 +1,13 @@
+---
+title: Hygieia Dashboard Tutorial
+permalink: "/tutorials/hygieia-tutorial"
+key: Hygieia-tutorial
+categories:
+- Hygieia
+tags:
+- Hygieia
+---
+
 
 # **1. Introduction to Hygieia**
 
@@ -37,7 +47,7 @@ Pipeline**
     matter most to your project, which helps amplify and shorten the feedback
     loop.
 
--   **Open Source:**Hygieia is open source and free for everyone to use. We also
+-   **Open Source** Hygieia is open source and free for everyone to use. We also
     encourage external users to commit to the project.
 
 

@@ -1,3 +1,14 @@
+---
+title: GitHub Tutorial
+permalink: "/tutorials/github-tutorial"
+key: GitHub-tutorial
+categories:
+- GitHub
+tags:
+- GitHub
+---
+
+
 ## **1. Introduction**
 
 **GitHub is a code hosting platform for version control and collaboration**. It

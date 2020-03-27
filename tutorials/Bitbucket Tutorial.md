@@ -1,3 +1,16 @@
+---
+title: BitBucket Tutorial
+permalink: "/tutorials/bitbucket-tutorial"
+key: bitbucket-tutorial
+categories:
+- BitBucket
+tags:
+- BitBucket
+---
+
+
+
+
 ## **1.Introduction**
 
 **Bitbucket** is a web-based hosting service that is owned by
