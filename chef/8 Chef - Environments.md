@@ -33,14 +33,18 @@ Creating New Environment
 
 To Create new Environment, we need to create environments directory inside
 “**chef-repo**”.This is where we should put our environment files.
+```powershell
+cd ~/chef-repo/environments
+```
 
-cd \~/chef-repo/environments
 
 To create any environment, we need to place that environment specific
 configuration inside Environments folder. Here I’m creating \`**development**\`
 environment
-
+```powershell
 vi development.rb
+```
+
 
 In this file you can specify **cookbooks and their version constraints**, and
 recipes that are deployed.so it contains
@@ -53,183 +57,145 @@ recipes that are deployed.so it contains
 
 -   override_attributes
 
-\#development.rb
-
+```powershell
+#development.rb
 name "development"
-
 description "The master development branch"
-
 cookbook_versions({
-
-"nginx" =\> "\<= 1.1.0",
-
-"apt" =\> "= 0.0.1"
-
+    "nginx" => "<= 1.1.0",
+    "apt" => "= 0.0.1"
 })
-
 override_attributes ({
-
-"nginx" =\> {
-
-"listen" =\> [ "80", "443" ]
-
-},
-
-"mysql" =\> {
-
-"root_pass" =\> "root"
-
-}
-
+    "nginx" => {
+        "listen" => [ "80", "443" ]
+    },
+    "mysql" => {
+        "root_pass" => "root"
+    }
 })
+```
 
 We could also use the JSON format. The knife tool can generate the template of
 an environment file by typing. Provide default editor **export EDITOR=vi**
-
+```powershell
 knife environment create development
+```
+
 
 This will open our editor with a preloaded environment file with the name filled
 in.
-
-\# Def. Generated File
-
+```powershell
+# Def. Generated File
 {
+  "name": "development",
+  "description": "",
+  "cookbook_versions": {
 
-"name": "development",
+  },
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
 
-"description": "",
+  },
+  "override_attributes": {
 
-"cookbook_versions": {
-
-},
-
-"json_class": "Chef::Environment",
-
-"chef_type": "environment",
-
-"default_attributes": {
-
-},
-
-"override_attributes": {
-
+  }
 }
+```
 
-}
 
-We need to edit with our details
-
+We need to edit with our details 
+```
 {
-
-"name": "development",
-
-"description": "The master development branch",
-
-"cookbook_versions": {
-
-"nginx": "\<= 1.1.0",
-
-"apt": "= 0.0.1"
-
-},
-
-"json_class": "Cheff:Environment",
-
-"chef_type": "environment",
-
-"default_attributes": {
-
-},
-
-"override_attributes": {
-
-"nginx": {
-
-"listen": [
-
-"80",
-
-"443"
-
-]
-
-},
-
-"mysql": {
-
-"root_pass": "root"
-
+  "name": "development",
+  "description": "The master development branch",
+  "cookbook_versions": {
+    "nginx": "<= 1.1.0",
+    "apt": "= 0.0.1"
+  },
+  "json_class": "Cheff:Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+  },
+  "override_attributes": {
+    "nginx": {
+      "listen": [
+        "80",
+        "443"
+      ]
+    },
+    "mysql": {
+      "root_pass": "root"
+    }
+  }
 }
+```
 
-}
 
-}
 
 #### 2.Upload Environment Files to/from the Server
 
 We could upload our **Ruby file** to the Chef server by typing this:
+```powershell
+knife environment from file ~/chef-repo/environments/development.rb
+```
 
-knife environment from file \~/chef-repo/environments/development.rb
 
 For our **JSON file,** we can get the environment file off of the server by
 typing something like:
+```powershell
+knife environment show development -Fjson > ~/chef-repo/environments/development.json
+```
 
-knife environment show development -Fjson \>
-\~/chef-repo/environments/development.json
 
 Now check all the environments Configured in Chef Server
-
+```powershell
 knife environment list
-
+```
 ![](media/ce6b86fe0529c1718994744b142f97ca.png)
 
-You can also check in Chef Server
 
+
+You can also check in Chef Server
 ![](media/ed1956f084f245beea2f90252ac3c5dd.png)
 
-#### 3.Setting Environments in Nodes
 
+
+
+
+#### 3.Setting Environments in Nodes
 Each node can be in exactly one environment. we need to edit its node
 environment information by using node edit \<node\>.
+```powershell
+knife node edit <Node1>
+```
 
-knife node edit \<Node1\>
 
 This will open up a JSON formatted file with the current node parameters:
-
+```powershell
 {
-
 {
-
-"name": "Node1",
-
-"chef_environment": "_default",
-
-"normal": {
-
-"tags": [
-
+  "name": "Node1",
+  "chef_environment": "_default",
+  "normal": {
+    "tags": [
+    ]
+  },
+  "policy_name": null,
+  "policy_group": null,
+  "run_list": [
+  "role[webserver]"
 ]
-
-},
-
-"policy_name": null,
-
-"policy_group": null,
-
-"run_list": [
-
-"role[webserver]"
-
-]
-
 }
-
+```
 As you can see, the chef_environment is set to \_default originally. We can
 simply modify that value to put the node into a new environment.
-
+```powershell
 "chef_environment": "development"
+```
+
+
 
 #### 4.Run chef-client
-
 run **chef-client** on the node, it will pick up the new attributes and version
 constraints and modify itself to align with the new policy

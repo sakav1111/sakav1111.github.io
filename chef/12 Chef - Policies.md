@@ -27,6 +27,8 @@ settings and objects stored on the Chef Infra Server:
 -   The cookbooks (and cookbook versions) in which organization-specific
     configuration policies are maintained
 
+<br>
+
 #### Cookbook Versions
 
 A cookbook version represents a set of functionalities that is different from
@@ -40,10 +42,13 @@ A cookbook version is maintained just like a cookbook, with regard to source
 control, uploading it to the Chef Infra Server, and how Chef Infra Client
 applies that cookbook when configuring nodes.
 
-#### Data Bags (Secrets)
+<br>
 
+#### Data Bags (Secrets)
 Data bags store global variables as JSON data. Data bags are indexed for
 searching and can be loaded by a cookbook or accessed during a search.
+
+<br>
 
 #### Environments
 
@@ -57,6 +62,8 @@ environment. Environments also allow organizations to move new cookbook releases
 from staging to production with confidence by stepping releases through testing
 environments before entering production.
 
+<br>
+
 #### Roles
 
 A role is a way to define certain patterns and processes that exist across nodes
@@ -67,6 +74,8 @@ details of that node are compared against the attributes of the role, and then
 the contents of that role’s run-list are applied to the node’s configuration
 details. When a Chef Infra Client runs, it merges its own attributes and
 run-lists with those contained within each assigned role.
+
+<br>
 
 #### Policyfile
 
@@ -85,15 +94,15 @@ run-list based on that information. A Policyfile file may be versioned, and then
 promoted through deployment stages to safely and reliably deploy new
 configuration.
 
-**Syntax**[¶](https://docs.chef.io/policyfile.html#syntax)
+[**Syntax**](https://docs.chef.io/policyfile.html#syntax)
 
 A Policyfile.rb is a Ruby file in which run-list and cookbook locations are
 specified. The syntax is as follows:
-
+```powershell
 name "name"
-
 run_list "ITEM", "ITEM", ...
 
-default_source :SOURCE_TYPE, \*args
-
+default_source :SOURCE_TYPE, *args
 cookbook "NAME" [, "VERSION_CONSTRAINT"] [, SOURCE_OPTIONS]
+```
+

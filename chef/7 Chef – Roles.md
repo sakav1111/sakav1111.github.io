@@ -46,118 +46,116 @@ For creating any role we need to follow below steps
 
 **we can create Role in two ways**
 
-1.  **Using Knife [JSON]-** Create Role in Chef Server directly
-
+1.  **Using Knife [JSON]-** Create Role in Chef Server directly  
 2.  **Using Ruby** - In local repo under chef-repo folder
 
-### 1.Using Knife [JSON]- Create Role in Chef Server directly
+## 1.Using Knife [JSON]- Create Role in Chef Server directly
 
 **1.Create a role**
+```powershell
+knife role create <ROLE_NAME>
+```
 
-knife role create \<ROLE_NAME\>
 
 **2.Update Run list**
-
+```json
 {
+   "name":"client1",
+   "description":"",
+   "json_class":"Chef::Role",
+   "default_attributes":{
 
-"name":"client1",
+   },
+   "override_attributes":{
 
-"description":"",
+   },
+   "chef_type":"role",
+   "run_list":[
+      "recipe[nginx]",
+      "recipe[phpapp::web]"
+   ],
+   "env_run_lists":{
 
-"json_class":"Chef::Role",
-
-"default_attributes":{
-
-},
-
-"override_attributes":{
-
-},
-
-"chef_type":"role",
-
-"run_list":[
-
-"recipe[nginx]",
-
-"recipe[phpapp::web]"
-
-],
-
-"env_run_lists":{
-
+   }
 }
+```
 
-}
-
-**3.Upload the role on the Chef server**
-
+**3.Upload the role on the Chef server**  
 By closing Knife will auto save with Chef Server. To check
+```powershell
+knife role show <ROLE_NAME> -d -Fjson
+```
 
-knife role show \<ROLE_NAME\> -d -Fjson
 
 **4.Assign the role to the nodes**
+```powershell
+knife node run_list set Node2 "role[<ROLE_NAME>]"
+```
 
-knife node run_list set Node2 "role[\<ROLE_NAME\>]"
 
 **5.Run the Chef client**
-
+```powershell
 sudo chef-client
+```
 
-### 2.Using Ruby - In local repo under chef-repo folder
 
-**1.Create a role**
+## 2.Using Ruby - In local repo under chef-repo folder
 
-Create a \`role\` folder inside \`chef-repo\` & create webserver.rb file with
-runlists.
-
+**1.Create a role**  
+Create a `role` folder inside `chef-repo` & create webserver.rb file with runlists.
+```powershell
 name "web_server"
-
 description "Role for web servers"
-
 run_list("role[base]", "recipe{web_server]")
+```
+
+
 
 **2.Upload the role on the Chef server**
-
+```powershell
 knife role from file chef-repo/roles/webserver.rb
+```
+
 
 **3.Update Runlist**
+```powershell
+Already Did at Step #1
+```
 
-Already Did at Step\#1
 
-**4.Assign the role to the nodes**
+**4.Assign the role to the nodes**  
+`knife node edit <node_name>`
 
-knife node edit \<node_name\>
 
-**5.Run the Chef client**
 
-sudo chef-client
+**5.Run the Chef client**  
+`sudo chef-client`
+
+<br>
+
 
 Create Role for Webserver 
 --------------------------
 
 we are creating a Role; it consists of following recipes. we download these from
 Supermarket.
-
+```powershell
 knife supermarket download apt
-
 knife supermarket download nginx
-
 knife supermarket download ohai
 
-\#Exatract It
+#Exatract It
+tar -zxxvf  -C cookbooks/
 
-tar -zxxvf -C cookbooks/
-
-\#upload Cookbooks
-
+#upload Cookbooks
 knife cookbook upload apt/nginx/ohai
-
+```
 Each role file can be written either in Ruby, or in JSON.
 
-Create a *roles* directory in *chef-repo*:
 
-\$ mkdir roles
+
+**Create a *roles* directory in *chef-repo*:**  
+`$ mkdir roles`
 
 We’re going to create a *.json* file representing the role data. A basic role
 has a
@@ -170,199 +168,160 @@ has a
 
 -   a long list of recipes
 
-#### Create a Role for Web Server: Ruby
 
+
+#### Create a Role for Web Server: Ruby
+```powershell
 vi web_server.rb
+```
+
 
 Start with Name of the Roles & Description: what this role for
-
+```powershell
 name "web_server"
-
 description "A role to configure our front-line web servers"
+```
 
-Next, we can specify the runlist, contain cookbooks
-(recipe["\<Cookbook-Name\>"]), recipes (cookbook::recipe), and other roles.
-Remember, a run_list is always executed sequentially, so put the dependency
-items before the other items.
 
+Next, we can specify the runlist, contain cookbooks (recipe["<Cookbook-Name>"]), recipes (cookbook::recipe), and other roles. Remember, a run_list is always executed sequentially, so put the dependency items before the other items.
+```
 name "web_server"
-
 description "A role to configure our front-line web servers"
-
 run_list "recipe[apt]", "recipe[nginx]"
+```
 
-to Upload Role to Chef Server manually, using below command
 
+To Upload Role to Chef Server manually, using below command
+```powershell
 knife role from file web_servers.rb
+```
+
+
 
 #### Create a Role Using JSON
 
-To create a webserver role:
-
-knife role create webserver
+To create a webserver role:  
+`knife role create webserver`
 
 It should look something like this:
-
+```json
 {
+  "name": "test",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
 
-"name": "test",
-
-"description": "",
-
-"json_class": "Chef::Role",
-
-"default_attributes": {
-
-},
-
-"override_attributes": {
-
-},
-
-"chef_type": "role",
-
-"run_list": [
-
-],
-
-"env_run_lists": {
-
+  ],
+  "env_run_lists": {
+  }
 }
-
-}
+```
 
 When we save a JSON file created using the knife command, the role is created on
 the Chef server. But for Ruby.rb, we need to Upload Role to Chef Server manually
 
-Change json file it as per Our Role
-
+**Change json file it as per Our Role**
+```json
 {
-
-"name": "webserver",
-
-"description": "A role to configure our front-line web servers",
-
-"json_class": "Chef::Role",
-
-"default_attributes": {
-
-"nginx": {
-
-"log_location": "/var/log/nginx.log"
-
+  "name": "webserver",
+  "description": "A role to configure our front-line web servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "nginx": {
+      "log_location": "/var/log/nginx.log"
+    }
+  },
+  "override_attributes": {
+    "nginx": {
+      "gzip": "on"
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[apt]",
+    "recipe[nginx]"
+  ]
 }
+```
 
-},
-
-"override_attributes": {
-
-"nginx": {
-
-"gzip": "on"
-
-}
-
-},
-
-"chef_type": "role",
-
-"run_list": [
-
-"recipe[apt]",
-
-"recipe[nginx]"
-
-]
-
-}
 
 After closing, it will automatically Saved in Chef Server. If we want to get our
 JSON file from the server.
-
+```powershell
 knife role show webserver -Fjson
-
+```
 ![](media/248e78acd99ba996b56f866f5c5f40dc.png)
 
-**Add Role to a Node**
 
+
+**Add Role to a Node**  
 Now we need to add our role to a node. For that first find list of nodes
 available
-
+```powershell
 knife node list
 
 Node1
-
 Node2
+```
+
 
 And then we would give a command like:
-
-knife node edit \<node_name\>
-
+```powershell
+knife node edit <node_name>
 knife node edit Node1
+```
+
 
 This will show the node’s definition file, which will allow us to add a role to
 its run_list:
-
+```powershell
 {
+  "name": "Node1",
+  "chef_environment": "_default",
+  "normal": {
+    "tags": [
 
-"name": "Node1",
-
-"chef_environment": "_default",
-
-"normal": {
-
-"tags": [
-
-]
-
-},
-
-"run_list": [
-
-"recipe[nginx]"
-
-]
-
+    ]
+  },
+  "run_list": [
+    "recipe[nginx]"
+  ]
 }
+```
 
 Now, we need to replace our recipe with our role in this file:
-
+```powershell
 {
+  "name": "Node1",
+  "chef_environment": "_default",
+  "normal": {
+    "tags": [
 
-"name": "Node1",
-
-"chef_environment": "_default",
-
-"normal": {
-
-"tags": [
-
-]
-
-},
-
-"policy_name": null,
-
-"policy_group": null,
-
-"run_list": [
-
-"role[webserver]"
-
+    ]
+  },
+  "policy_name": null,
+  "policy_group": null,
+  "run_list": [
+  "role[webserver]"
 ]
 
 }
-
+```
 On close, it will automatically update Node1 run list with newly assigned role.
 
 We can also do this in single command
-
+```powershell
 knife node run_list set Node2 "role[webserver]"
-
+```
 ![](media/383041ff138a38836182c3ba4dfd8c48.png)
 
+
+
 #### Run the Chef-Client
-
 Login to Node1, run **chef-client** to
-
 ![](media/1e85d8e8f794396c3d670f9a18a85ee4.png)
