@@ -140,11 +140,12 @@ permission.
 Before Cloning Repo, we need to add SSH key to our Repo.for doing this open
 command prompt & go to C:/Users<Your_Account> and type below command to
 generate SSH key  
+
 `ssh-keygen -t rsa -C "admin@example.com"`
  
 
-If you already installed Git, then use **ssh-keygen** command & just press
-<Enter> key
+If you already installed Git, then use **ssh-keygen** command & just press <\Enter\> key
+
 
 ```bash
 $ ssh-keygen
