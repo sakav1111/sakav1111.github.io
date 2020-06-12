@@ -163,7 +163,7 @@ characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
 
  
 
-### **2.2 SonarQube Runner**
+### **2.2 SonarQube Runner** (Old, Use SonarScanner)
 
 [SonarQube
 Runner](https://docs.sonarqube.org/display/SONARQUBE45/Installing+and+Configuring+SonarQube+Runner)
@@ -197,6 +197,42 @@ environment variable **“PATH".**
  
 #----- MySQL sonar.jdbc.url=jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8
 ```
+
+### 2.3 SonarQube Runner vs Scanner
+Answer is very simple: **"Runner"** is the old name for **"Scanner".** 
+Everything you need to know about the different SonarQube Scanners is available on the Scanners part of the official documentation. 
+
+If you're stuck to Java 7 , then you can use: SonarQube Runner (sonar-runner) up to version 5.5 of SonarQube.
+
+**Latest:** Download “SonarQube-Scanner” (download as per your machine OS)
+https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner
+
+1. Unzip the file and add `Path` to environment variables
+```Path — D:\sonar-scanner-3.2.0.1227-windows\bin```  
+
+    ![](media/sonar-path.png)
+
+
+2.Navigate to config folder of sonar scanner (D:\sonar-scanner-3.2.0.1227-windows\conf) here you will get a `sonar-scanner.properties` file
+
+Edit it and add below lines  
+```powershell
+#Configure here general information about the environment, such as SonarQube server connection details for example
+#No information about specific project should appear here
+
+#----- Default SonarQube server
+sonar.host.url=http://localhost:9000
+
+#----- Default source code encoding
+sonar.sourceEncoding=UTF-8
+```
+
+3. Go to `C:\sonar-scanner-4.3.0.2102\bin` & Run `sonar-scanner.bat` to make PATH changes effect.
+
+
+4. Navigate to Project Location & Hit
+`sonar-scanner`
+
 
  
 
@@ -284,7 +320,7 @@ http.proxyPassword=<your.proxy.password>
 
  
 
-**3.3 SonarQube Java Project Configuration**
+## **4. SonarQube Java Project Configuration**
 
 1.Go to the root folder of the Java Project to be analyze
 
@@ -309,7 +345,9 @@ sonar.sources=.
 
 
 
-5.Execute the command **‘sonar-runner -e’.**
+5.Execute the command 
+- `sonar-runner -e` - if we use SonarRunner(old).
+- `sonar-scanner -X` - if we use SonarRunner(old).
 
 -   ‘-e’ option is useful when some error occurs and it gives the stack trace.
 
@@ -460,8 +498,10 @@ Go to project home page in SonarQube for Ex:
 
 
 
-## SonarQube Maven Project Configuration
+# SonarQube Maven Project Configuration
 
+
+## By Configring Maven Level Globally
 
 1.Install & Configure [Apache Maven](https://maven.apache.org/download.cgi) in
 your local system
@@ -517,3 +557,57 @@ following commands
 6.open <http://localhost:9000/projects> it will display the analysis report
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/03/SonarQube-Tutorial-SmlCodes-14.png](media/527803ff78f649ef31aeaefccf2e658c.png)
+
+
+## By Project Level - pom.xml
+
+Let's define the plugin in the pom.xml:
+```xml
+<build>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.4.0.905</version>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+</build>
+```
+
+
+
+The latest version of the plugin is available <a href="https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22org.sonarsource.scanner.maven%22%20AND%20a%3A%22sonar-maven-plugin%22" target="_blank">here</a>. Now, we need to execute this command from the root of our project directory to scan it:
+
+```xml
+mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 
+  -Dsonar.login=the-generated-token
+```
+
+
+or
+
+pom.xml
+```xml
+	<profiles>
+		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- Optional URL to server. Default value is http://localhost:9000 -->
+				<sonar.host.url>
+					http://localhost:9000
+				</sonar.host.url>
+				<sonar.sources>src/main/java</sonar.sources>
+				<sonar.tests>src/test/java</sonar.tests>
+			</properties>
+		</profile>
+	</profiles>
+```
+run  
+`mvn clean install sonar:sonar`
+
+
