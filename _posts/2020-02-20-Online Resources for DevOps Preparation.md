@@ -1,3 +1,19 @@
+---
+title: DevOps -Online Resources for DevOps Preparation
+date: 2017-11-11 00:00:00 Z
+categories:
+- DevOps
+tags:
+- DevOps
+layout: article
+cover: /assets/logo/devops.png
+sharing: true
+license: false
+aside:
+  toc: true
+pageview: true
+---
+
 Online Resources for DevOps Preparation
 =======================================
 
