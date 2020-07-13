@@ -11,10 +11,12 @@ tags:
 Chef – CookBook
 ===============
 
-Cookbooks are created on the workstation and then uploaded to a Chef server.
-From there, recipes and policies described within the cookbook can be assigned
-to nodes as part of the node’s “run-list”. A run-list is a sequential list of
-recipes and roles that are run on a node by chef-client.
+Cookbooks are created on the workstation and then uploaded to a **Chef server.** 
+
+From there, **recipes** and **policies** described within the cookbook can be assigned to nodes as part of the node’s **“run-list”**.
+
+A **run-list** is a sequential list of
+recipes and roles that are run on a node by `chef-client`.
 
 Creating a Cookbook
 -------------------
@@ -73,10 +75,10 @@ Go to **apache_cookbook** directory & observe the File structure.
 -   A recipe is the main workhorse of the cookbook. A cookbook can contain more
     than one recipe, or depend on outside recipes
 
--   Recipes are used to declare the state of different resources.
+-   Recipes are used to declare the state of **different resources**.
 
--   For instance, a resource could say “the package x should be installed”.
-    Another resource may say “the x service should be running”.
+-   For instance, a resource could say “`the package x should be installed`”.
+    Another resource may say “`the x service should be running`”.
 
 Resources can be of many different types. Some common ones are:
 
@@ -106,12 +108,32 @@ types](http://docs.opscode.com/resource.html) here.
 
 ![](media/d3208fbe1a00797f0d70006e92f4cb09.png)
 
+
+#### Resource Syntax
+A resource is a Ruby block with four components: 
+- `type`
+- `name`
+- one (or more) `properties` (with values)
+- one (or more) `actions`. 
+
+The syntax for a resource is like this:
+```
+type 'name' do
+   attribute 'value'
+   action :type_of_action
+end
+```
+
+
+
+
+
 ### **Templates**
 
-Template files end with the .erb extension, meaning that they contain embedded
+Template files end with the `.erb` extension, meaning that they contain embedded
 Ruby.
 
-These are mainly used to substitute attribute values into the file to create the
+These are mainly `used to substitute attribute values into the file` to create the
 final file version that will be placed on the node.
 
 For example, if we have an attribute that defines the default port for a

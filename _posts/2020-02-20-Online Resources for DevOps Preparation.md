@@ -40,3 +40,8 @@ To Access online Resources
 -   You will receive mail & key , click on link – search book and do register
 
     ![](media/5ef56367a4eba796503d3b558115ad21.png)
+
+
+## Labs, Interview Questions & Other notes
+Login to Scribed website & search for Documents  
+https://www.scribd.com/

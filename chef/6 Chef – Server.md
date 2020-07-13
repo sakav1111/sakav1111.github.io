@@ -114,6 +114,32 @@ knife bootstrap <IP / HOSTNAME>
 ```
 
 
+#### Enable a password authentication in EC2 Instace
+Set a password for user. The example below uses ec2-user as the user
+```powershell
+sudo passwd ec2-user
+Changing password for user ec2-user.
+New password:
+Retype new password:
+```
+
+Update the PasswordAuthentication parameter in the `/etc/ssh/sshd_config file:`
+```powershell
+PasswordAuthentication yes
+```
+
+Restart the SSH service.
+For Amazon Linux, RHEL 5, and SUSE Linux, use this command:
+```powershell
+sudo service sshd restart
+```
+
+
+For Ubuntu, use this command:
+```powershell
+sudo service ssh restart
+```
+
 when you are using hosted chef, you need to pass in a private key with the
 bootstrap and have the public key in your autherized_keys file....
 
@@ -145,6 +171,10 @@ we are going to use **learn_chef_apache2** cookbook from Supermarket in this
 example.To Download **learn_chef_apache2** , use below command
 ```powershell
 knife cookbook site download learn_chef_apache2
+
+[New]
+knife supermarket download learn_chef_apache2
+
 ```
 ![](media/86cdc127c5e15c27bc529494cc4b9986.png)
 
@@ -332,7 +362,7 @@ Run ,manually on node machine -  node will pick updated one
 `sudo chef-clinet`
 
 
-<u>**1.Boostrap Nodes – Without executing recipes**</u>
+<u> **1.Boostrap Nodes – Without executing recipes** </u>
 
 ```powershell
 knife bootstrap 192.168.33.11 --ssh-user vagrant --ssh-password vagrant --sudo --use-sudo-password --node-name Node1
@@ -369,3 +399,12 @@ sudo chef-client
 
 5.Test apache Server.
 ![](media/0f4dc7aff269a9b19dfea396d58d3154.png)
+
+
+#### ERROR: Your private key could not be loaded from /etc/chef/client.pem
+You must run this command inside root folder of extracted chef started Kit
+
+```powershell
+knife bootstrap 3.135.192.58 --ssh-user ubuntu --ssh-password ubuntu --sudo --use-sudo-password --node-name Node1;
+```
+![](media/chef-error.png)

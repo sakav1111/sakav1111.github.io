@@ -30,6 +30,24 @@ sudo chef-apply -e "package '<pkg-name>"
 
 sudo chef-apply <recipe>
 ```
+<br>
+
+#### Resource Syntax
+A resource is a Ruby block with four components: 
+- `type`
+- `name`
+- one (or more) `properties` (with values)
+- one (or more) `actions`. 
+
+The syntax for a resource is like this:
+```
+type 'name' do
+   attribute 'value'
+   action :type_of_action
+end
+```
+
+
 
 <br>
 
