@@ -1,0 +1,43 @@
+Apache Tomcat
+
+
+
+
+Step 1: Install Java
+
+sudo apt-get update
+sudo apt-get install default-jdk
+
+
+2.Create Tomcat User
+
+sudo groupadd tomcat
+sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+
+
+
+3.Install Tomcat
+cd /tmp
+curl -O http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.5/bin/apache-tomcat-8.5.5.tar.gz
+sudo mkdir /opt/tomcat
+sudo tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
+
+
+4.Update Permissions
+cd /opt/tomcat
+sudo chgrp -R tomcat /opt/tomcat
+
+give the tomcat group read access to the conf directory and all of its contents, and execute access to the directory itself:
+sudo chmod -R g+r conf
+
+
+
+<role rolename="tomcat"/>
+<role rolename="role1"/>
+<role rolename="admin"/>
+<role rolename="manager-gui"/>
+<user username="tomcat" password="tomact" roles="tomcat"/>
+<user username="admin" password="admin" roles="tomcat,role1,admin,manager-gui"/>
+<user username="root" password="root" roles="tomcat,role1,admin,manager-gui"/>
+<user username="satya" password="satya" roles="tomcat,role1,admin,manager-gui"/>
+<user username="role1" password="role" roles="role1"/>

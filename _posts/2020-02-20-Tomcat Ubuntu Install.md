@@ -17,8 +17,15 @@ pageview: true
 
 ## How To Install Apache Tomcat On Ubuntu
 
+### Install JDK
+
+
+
 Check if Java is Installed
 ```java
+sudo apt update
+sudo apt install openjdk-8-jdk
+
 java –version
 ```
 
@@ -35,7 +42,8 @@ For security reasons, do not run Tomcat under the root user. Create a new group 
 mkdir /opt/tomcat
 cd /opt/tomcat
 sudo groupadd tomcat
-sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat  
+cd /opt && sudo chown -R tomcat tomcat/
 ```
 
 ### 2.Install Tomcat
