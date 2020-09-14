@@ -23,8 +23,10 @@ machines.
 -   Each playbook is composed of one or more ‘plays’ in a list.
 
 -   Playbooks can contain multiple plays. You may have a playbook that targets
-    first the web servers, and then the database servers. For example:
-```yaml
+    first the web servers, and then the database servers. 
+For example:  
+
+```
 ---
 - hosts: webservers
   remote_user: root
