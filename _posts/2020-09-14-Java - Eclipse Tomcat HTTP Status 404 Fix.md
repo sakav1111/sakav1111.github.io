@@ -1,6 +1,17 @@
 ---
 date: "2020-09-14 00:00:00 Z"
 title: Java - Eclipse Tomcat HTTP Status 404 Fix
+categories:
+- Java
+tags:
+- Java
+layout: article
+cover: /assets/logo/java.png
+sharing: true
+license: false
+aside:
+  toc: true
+pageview: true
 ---
 
 Java - Eclipse Tomcat HTTP Status 404 Fix
