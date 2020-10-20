@@ -13,7 +13,7 @@ tags:
 
 <div class="card">
   <div class="card__image">
-    <img class="image" src="/assets/books/springboot_book.png"/>
+    <img class="image" src="/assets/books/springboot_3d.png"/>
   </div>
   <div class="card__content">
     <div class="card__header">
