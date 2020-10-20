@@ -235,6 +235,17 @@ defaults:
     show_date: false
     lightbox: true
 - scope:
+    path: books
+  values:
+    layout: article
+    nav_key: books
+    license: false
+    aside:
+      toc: true
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
     path: ''
     type: sample_page
   values:
