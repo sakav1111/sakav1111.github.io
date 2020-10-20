@@ -12,7 +12,7 @@ tags:
 # Java eBook Download
 
 <div class="grid">
-   <div class="cell cell--3">6 cells</div>
+   <div class="cell cell--3"></div>
    <div class="cell cell--6">
    
    
@@ -29,5 +29,5 @@ tags:
    </div>
    
    
-   <div class="cell cell--3">4 cells</div>
+   <div class="cell cell--3"></div>
 </div>
