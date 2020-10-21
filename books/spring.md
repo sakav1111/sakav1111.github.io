@@ -11,6 +11,9 @@ tags:
 
 # Spring Java eBook Download
 
+
+<div class="grid">
+<div class="cell cell--12 cell--md-7 cell--lg-4">
 <div class="card">
   <div class="card__image">
     <img class="image" src="/assets/books/spring_3d.png"/>
@@ -21,4 +24,6 @@ tags:
 </h4>
     </div>
   </div>
+</div>
+   </div>
 </div>
