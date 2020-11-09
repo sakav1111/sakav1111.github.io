@@ -6,7 +6,7 @@ categories:
 tags:
 - HowTo
 layout: article
-cover: /assets/logo/hoeto.png
+cover: /assets/logo/howto.png
 sharing: true
 license: false
 aside:
