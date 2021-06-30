@@ -755,11 +755,9 @@ Furthermore the usage of annotations in Java 8 is expanded to two new targets:
 @interface MyAnnotation {}
 ```
 
-## Where to go from here?
+## Ref. 
 
-My programming guide to Java 8 ends here. If you want to learn more about all the new classes and features of the JDK 8 API, check out my [JDK8 API Explorer](http://winterbe.com/projects/java8-explorer/). It helps you figuring out all the new classes and hidden gems of JDK 8, like `Arrays.parallelSort`, `StampedLock` and `CompletableFuture` - just to name a few.
 
-I've also published a bunch of follow-up articles on my [blog](http://winterbe.com) that might be interesting to you:
 
 - [Java 8 Stream Tutorial](http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/)
 - [Java 8 Nashorn Tutorial](http://winterbe.com/posts/2014/04/05/java8-nashorn-tutorial/)
