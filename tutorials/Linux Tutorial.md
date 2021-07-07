@@ -1,4 +1,12 @@
-
+---
+title: Linux Tutorial
+permalink: "/tutorials/linux-tutorial"
+key: Linux-CheetSheet
+categories:
+- Linux
+tags:
+- Linux
+---
 
 Ken Thompson and Dennis Ritchie of Bell Laboratories developed the UNIX
 operating system in 1969. It was later rewritten in C.
