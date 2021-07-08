@@ -8,11 +8,11 @@
     <div class="main">
       <div class="header__title">
         <div class="header__brand">
-          {%- include svg/logo.svg -%}
+          {%- include svg/logo.png -%}
           {%- assign _paths_root = site.paths.root | default: site.data.variables.default.paths.root  -%}
           {%- include snippets/get-nav-url.html path=_paths_root -%}
           {%- if site.title -%}
-            <a title="{%- if site.description -%}{{ site.description }}{%- endif -%}" href="{{ __return }}">{{ site.title }}</a>
+            <a title="{%- if site.description -%}{{ site.description }}{%- endif -%}" href="{{ __return }}" style="font-family:'Rage'; font-size:50px;">{{ site.title }} <span style="color:red;font-size:80px;">.</span></a>
           {%- endif -%}
         </div>
         {%- if site.search.provider -%}
