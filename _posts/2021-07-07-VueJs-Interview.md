@@ -1254,7 +1254,7 @@ pageview: true
        </div>
      </template>
      
-     <script>
+     `<script>`
      module.exports = {
        data: function() {
          return {
@@ -2325,7 +2325,7 @@ pageview: true
        <div class="greeting">{{ message }}</div>
      </template>
 
-     <script>
+     `<script>`
      export default {
        data () {
          return {
@@ -2335,7 +2335,7 @@ pageview: true
      }
      </script>
 
-     <style>
+     `<style>`
      .greeting {
        color: blue;
      }
@@ -2345,7 +2345,7 @@ pageview: true
      
 
 105. ### How do you configure vue loader in webpack?
-     Vue Loader's configuration is a bit different from other loaders by adding Vue Loader's plugin to your webpack config. The vue loader plugin is required for cloning any other rules(js and css rules) defined and applying them to the corresponding language blocks(<script> and <style>) in .vue files.
+     Vue Loader's configuration is a bit different from other loaders by adding Vue Loader's plugin to your webpack config. The vue loader plugin is required for cloning any other rules(js and css rules) defined and applying them to the corresponding language blocks(`<script>` and `<style>`) in .vue files.
 
      For example, the simple demonistration of webpack configuration for vue loader would be as below,
      ```javascript
@@ -2360,12 +2360,12 @@ pageview: true
              test: /\.vue$/,
              loader: 'vue-loader'
            },
-           // this will apply to both plain `.js` files and `<script>` blocks in `.vue` files
+           // this will apply to both plain `.js` files and ``<script>`` blocks in `.vue` files
            {
              test: /\.js$/,
              loader: 'babel-loader'
            },
-           // this will apply to both plain `.css` files and `<style>` blocks in `.vue` files
+           // this will apply to both plain `.css` files and ``<style>`` blocks in `.vue` files
            {
              test: /\.css$/,
              use: [
@@ -2399,7 +2399,7 @@ pageview: true
      
 
 108. ### What is scoped CSS?
-     Scoped CSS is a mechanism in VueJS Single File Components(SFC) that prevents styles from leaking out of the current component and affecting other unintended components on your page. i.e, When a <style> tag has the scoped attribute, its CSS will apply to elements of the current component only. It uses PostCSS to transform scoped css to plain CSS.
+     Scoped CSS is a mechanism in VueJS Single File Components(SFC) that prevents styles from leaking out of the current component and affecting other unintended components on your page. i.e, When a `<style>` tag has the scoped attribute, its CSS will apply to elements of the current component only. It uses PostCSS to transform scoped css to plain CSS.
 
      Let's take an example usage of scoped css,
      ```javascript
@@ -2431,7 +2431,7 @@ pageview: true
 109. ### Is it possible to mix both local and global styles?
      Yes, you can include both scoped and non-scoped styles in the same component. If you don't mention scoped attribute then it will become global style.
      ```javascript
-     <style>
+     `<style>`
      /* global styles */
      </style>
 
@@ -2473,7 +2473,7 @@ pageview: true
        </div>
      </template>
 
-     <script>
+     `<script>`
      import ChildMessageComponent from "./components/child";
 
      export default {
@@ -2498,7 +2498,7 @@ pageview: true
        </div>
      </template>
 
-     <script>
+     `<script>`
      export default {
        name: "Hello, Scoped CSS",
      };
@@ -2556,7 +2556,7 @@ pageview: true
            }
          }
          ```
-     2. **Add module attribute:** Add the module attribute to your `<style>`
+     2. **Add module attribute:** Add the module attribute to your ``<style>``
          ```javascript
          <style module>
          .customStyle {
@@ -2600,7 +2600,7 @@ pageview: true
      
 
 117. ### Is it possible to use custom inject name for CSS modules?
-     You can customize the name of the injected computed property by giving the module attribute a value. This will be helpful to avoid overwriting injected styled if you have more than one <style> tags in a single *.vue component.
+     You can customize the name of the injected computed property by giving the module attribute a value. This will be helpful to avoid overwriting injected styled if you have more than one `<style>` tags in a single *.vue component.
 
      For example, you can use module attribute as below,
 
@@ -2659,8 +2659,8 @@ pageview: true
      Below are the state preservation rules in hot reloading,
 
      1. When editing the `<template>` of a component, instances of the edited component will re-render in place, preserving all current private state.
-     2. When editing the `<script>` part of a component, instances of the edited component will be destroyed and re-created in place.
-     3. When editing the `<style>` hot reload operates on its own via vue-style-loader without affecting application state.
+     2. When editing the ``<script>`` part of a component, instances of the edited component will be destroyed and re-created in place.
+     3. When editing the ``<style>`` hot reload operates on its own via vue-style-loader without affecting application state.
 
      
 
@@ -4452,7 +4452,7 @@ pageview: true
        </div>
      </template>
 
-     <script>
+     `<script>`
      export default {
        name: 'locale-changer',
        data () {
@@ -4571,7 +4571,7 @@ pageview: true
        </div>
      </template>
 
-     <script>
+     `<script>`
      export default {
        comments: true,
        data () {
@@ -4674,7 +4674,7 @@ pageview: true
         UPDATE: {{UPDATE_PROP}}
         DELETE: {{DELETE_PROP}}
      </span>
-     <script>
+     `<script>`
      import {CREATE_DATA, UPDATE_DATA, DELETE_DATA} from 'constants';
      new Vue({
          ...
