@@ -8,439 +8,421 @@ tags: [Vagrant]
 Vagrant
 =======
 
-Vagrant gets integrated with hypervisors like VirtualBox and gives as a command
-line interface to automate vm lifecycle.
 
-![https://hackernoon.com/hn-images/0\*pV4407g7awNTh1QP.png](media/0dc9d06b9c8ee9041535db6921aca601.png)
-
-1.  The user creates a Vagrantfile, which is a declarative file (written in
-    Ruby) that describes the type of machine needed, as well as how to configure
-    and provision that machine. The user uses Vagrant to execute the
-    Vagrantfile.
-
-2.  Vagrant uses VirtualBox as a provider. It can also use other providers.
-
-3.  The machine is up.
-
-4.  Vagrant invokes a provisioner to configure the machine.
-
-5.  The provisioner provisions the machine. It can be a simple shell script or
-    Ansible, for example.
-
-6.  One can access the deployed machine by ssh.
-
-That’s it. You can manage and launch virtual machines with a few commands. And
-its complexity is as much as you want.
-
-Once you or someone else creates a single Vagrantfile, you just need to vagrant
-up and everything is installed and configured for you to work.
-
-Other members of your team create their development environments from the same
-configuration, so whether you are working on Linux, Mac OS X, or Windows, all
-your team members are running code in the same environment, against the same
-dependencies, all configured the same way. Say goodbye to "works on my machine"
-bugs.
-
-Installing Vagrant on windows.
-------------------------------
-
-1.  Download the free VirtualBox for your operating system from [the VirtualBox
-    website](https://www.virtualbox.org/wiki/Downloads).
-
-2.  After download, just run the binary and install it.
-
-3.  Download [Vagrant](https://www.vagrantup.com/downloads.html).
-
-4.  Again, just run the binary to install it.
-
-5.  Download git, Install with default settings.
-
-Vagrant Cloud
--------------
-
-Vagrant boxes are VM images which already has the OS and softwares installed in
-them. We just need to download these boxes from vagrant cloud by using our
-vagrant CLI.
-
-<https://app.vagrantup.com/boxes/search>
-
-![](media/dc51fee90a7a98ff0c38bd2459a9251e.png)
-
-Vagrant commands
+What is Vagrant?
 ----------------
 
-**Creating a VM**
+[Vagrant](https://www.vagrantup.com/) is an open-source utility created by guys in Hashicorp.
 
--   **vagrant init** -- Initialize Vagrant with a Vagrantfile and ./.vagrant
-    directory, using no specified base image. Before you can do vagrant up,
-    you'll need to specify a base image in the Vagrantfile.
+It is a wrapper utility that works on top of Virtual machine solutions like Virtualbox, HyperV, VMware, and also Docker. It abstracts away all the complex activities involved in managing a VM through the VM solutions and can automate most of the tasks.
 
--   **vagrant init <boxpath>** -- Initialize Vagrant with a specific box. To
-    find a box, go to the [public Vagrant box
-    catalog](https://app.vagrantup.com/boxes/search). When you find one you
-    like, just replace it's name with boxpath. For example, vagrant init
-    ubuntu/trusty64.
+### Vagrant Architecture
+![Arch](media/Vagrant-Architecture-min.png)
+ 
 
-**Starting a VM**
+### Vagrantfile
 
--   **vagrant up** -- starts vagrant environment (also provisions only on the
-    FIRST vagrant up)
+Using Vagrant, you can easily create virtual development environments from exiting VM images and have all the VM configs in a configuration file called Vagrantfile. To put it simply, you define everything you need in a VM in the Vagrantfile, and Vagrant will take care of configuring those in the VM.
 
--   **vagrant resume** -- resume a suspended machine (vagrant up works just fine
-    for this as well)
+Here is an example Vagrantfile,
 
--   **vagrant provision** -- forces reprovisioning of the vagrant machine
+```
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 
--   **vagrant reload** -- restarts vagrant machine, loads new Vagrantfile
-    configuration
+Vagrant.configure("2") do |config|
 
-**Getting into a VM**
+    config.vm.box = "ubuntu/trusty64"
 
--   **vagrant ssh** -- connects to machine via SSH
+    config.vm.network "private_network", ip: "192.168.33.10"
 
--   **vagrant ssh <boxname>** -- If you give your box a name in your
-    Vagrantfile, you can ssh into it with boxname. Works from any directory.
-
-**Stopping a VM**
-
--   **vagrant halt** -- stops the vagrant machine
-
--   **vagrant suspend** -- suspends a virtual machine (remembers state)
-
-**Cleaning Up a VM**
-
--   **vagrant destroy** -- stops and deletes all traces of the vagrant machine
-
--   **vagrant destroy** -f -- same as above, without confirmation
-
-**Boxes**
-
--   **vagrant box list** -- see a list of all installed boxes on your computer
-
--   **vagrant box add <name> <url>** -- download a box image to your
-    computer
-
--   **vagrant boxes remove <name>** -- deletes a box from the machine
-
--   **vagrant package** -- packages a running virtualbox env in a reusable box
-
-**Tips**
-
--   **vagrant -v** -- get the vagrant version
-
--   **vagrant status** -- outputs status of the vagrant machine
-
->   $ vagrant init [url]
-
->   $ vagrant up
-
->   $ vagrant halt
-
->   $ vagrant destroy [--force]
-
->   $ vagrant reload
-
->   $ vagrant ssh
-
->   $ vagrant status
-
-Vagrantfile
------------
-
-A Vagrantfile is basically a configuration file that describes an environment.
-It will include things like the boxes used, networking, CPU and memory,
-providers used, shell scripts to run for provisioning among others.
-
-1.Vagrant is a command-line based tool. Once installation is complete, open a
-console window and create a new directory called 'ubuntubox’ to Create Ubuntu VM
-using vagrant
-
-cd \~ 
-
-mkdir ubuntubox 
-
-cd ubuntubox 
-
-2.To add a box, goto box repository: <https://app.vagrantup.com/boxes/search>
-and find the Box.
-
-![](media/63c84e7fecca41452a7fa64301c6fa0d.png)
-
-3.Use above box name & run below command
-
-$ vagrant box add <name>
-
-$ vagrant box add ubuntu/trusty64
-
-In the above command, you will notice that boxes are namespaced. Boxes are
-broken down into two parts - the **username and the box name** - separated by a
-slash
-
-4.It will download the Box to your local System, **Windows** :
-**C:\\Users\\<Username>\\.vagrant.d\\boxes Linux/Mac: \~/.vagrant.d/boxes**
-
-![](media/d49ee59bca49f2b39367afacf71da8b9.png)
-
-5.Create a new folder where you want to use as vagrant environment & use
-**init** to initializes the current directory to be a Vagrant environment by
-creating an initial Vagrantfile if one does not already exist. Im using
-C:\\Ops\\vagrant\\ubuntubox folder
-
-C:\\Ops\\vagrant\\ubuntubox
-
-λ vagrant init ubuntu/trusty64
-
-A \`Vagrantfile\` has been placed in this directory. You are now
-
-ready to \`vagrant up\` your first virtual environment! Please read
-
-the comments in the Vagrantfile as well as documentation on
-
-\`vagrantup.com\` for more information on using Vagrant.
-
-Open file, it contains
-
-Vagrant.configure("2") do \|config\|
-
-config.vm.box = "ubuntu/trusty64"
-
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+    end
 end
+```
 
-5.Start the Environment
+If someone has Vagrant installed on their system, you can share the Vagrantfile with them and they can build a similar VM you have created. A similar workflow like [how Docker Works](https://devopscube.com/what-is-docker/)
 
-$ vagrant up
+### Vagrant Boxes
 
-Vagrant up commands read the configuration from the Vagrantfile. 
+In the sample Vagrantfile, you can see a parameter named "`config.vm.box`".
 
-6. connect to Environment
+The vagrant box is a prebaked Virtual machine image (Ubuntu, Centos, etc). This box format can be shared with anyone who uses Vagrant.
 
-$ vagrant ssh
+You can download readily available community boxes from [Vagrantcloud](https://app.vagrantup.com/boxes/search)
 
-Username/Password : vagrant/vagrant
+You can also add shell scripts or use chef cookbooks, puppet modules, or [Ansible](https://devopscube.com/install-configure-ansible-server-nodes/) playbooks to the Vagrantfile to [automate the VM configuration](https://devopscube.com/devops-tools-for-infrastructure-automation/) process. You can then package the box with all configurations and share it with other team members.
 
-To Set Shared folder, edit vagrantfile as
+Vagrant Use Cases
+-----------------
 
-config.vm.synced_folder "D:\\\\DevOps\\\\Instl\\\\VagrantBoxes\\\\SyncFolder",
-"/vagrant"
+Following are the real world use cases for Vagrant
 
-we named our syncd folder as “vagrant", you can find the files in Syncfolder by
-going /vagrant/
+1.  Development Environments: Let's say you want identical development environments for all the developers in a team. In this case, you can create a common Vagrantfile with all the configs required to provision the VM with development environment dependencies (Softwares). And then share the Vagrantfile with all the developers. This way, there will not be any change in the underlying software or configs used. Some companies host Vagrant boxes in a common location for different approved software so that everyone in the organization can use it.
 
-Vagrant Bridge Networking
--------------------------
+2.  Sandboxed environments: If you want a sandboxed environment for testing, you could use Vagrant to spin up and destroy VMs in minutes.
 
-Vagrant vm will by default have NAT Interface, we can create an extra bridge
-interface. Benefit of bridge interface is, Our vm will get IP from
-Router/Gateway/DHCP/Wifi router of our network. So our VM will be able to talk
-to any instance innetwork and vice versa
-
-For doing this open vagrant file & uncomment
-
-config.vm.network "public_network"
-
-To check , login with **vagrant ssh** – it will show password on welcome screen.
-
-![](media/aeaf46ea377c329e5686c283a0a356de.png)
-
-Provisioning 
+Prerequisites
 -------------
 
-### Provisioning Server
+1.  You should have a virtual box installed. You can download the latest Virtualbox setup from here <https://www.virtualbox.org/wiki/Downloads>
+2.  You should have root access to install the software on your workstation.
+3.  Open internet access to download a few software and VM images.
+4.  Your workstation should have more than 4 GB of RAM.
 
-A Provisioning Server is any server that has many no. of Services installed.
-Provisioning Servers are used to stream software from vDisks, as needed, to
-target devices
+Installing Vagrant
+------------------
 
-Provisioning server sends configuration data to devices that request it. A
-provisioning server receives requests for configuration information from devices
-during the setup/bootup process or on a regular basis.
+Step 1: Download the vagrant installation file from <https://www.vagrantup.com/downloads>
 
-Provisioning and configuration management tools such as Terraform, AWS
-CloudFormation, Puppet, Chef, SaltStack, and Ansible are popular choices for
-standardizing software installation and management on infrastructure and
-environments.
+Step 2: Install Vagrant from the downloaded file based on your operating system. The vagrant executable will be automatically added to your system path and you can start using the vagrant command.
 
-![](media/02190de0b65e0de18b5fa0a613be486a.png)
+Step 3: To verify the installation for vagrant, execute the following vagrant command see if it output the version.
 
-### Vagrant Provisioning
+```
+vagrant --version
+```
 
-Provisioning helps execute command or script as soon as the vm comes up.  
-Provisioners in Vagrant allow you to automatically install software, alter
-configurations, and more on the machine as part of the vagrant up process.
+Getting Started With Vagrant (Creating Development Environments With Vagrant)
+-----------------------------------------------------------------------------
 
-Vagrant gives you multiple options for provisioning the machine, from simple
-shell scripts to more complex, industry-standard configuration management
-systems.
+In this section, I will walk you through the following 4 processes to get a basic understanding of how vagrant works and how you can use it for your development purposes.
 
-#### Setting up apache2 Ubuntu vm
+1.  Create a Ubuntu-based VM using Vagrant. Let's name is apache-vm
+2.  SSH into the newly created Vagrant VM.
+3.  Install an Apache web server on the VM
+4.  Access the webserver page over the browser.
 
--   Find **config.vm.provision** setting.
+Let's get started with the setup.
 
--   Update the file with below mentioned content.
+Create a Virtual Machine Using Vagrant
+--------------------------------------
 
->   config.vm.provision "shell", inline: <<-SHELL
+In this section, you will learn how to create a Virtual machine using vagrant.
 
->   apt-get update
+Step 1: Choose a folder to keep all vagrant-related files and Create a VM project directory.
 
->   apt-get install -y apache2
+```
+mkdir apache-vm
+```
 
->   SHELL
+Step 2: Initialize a Vagrantfile with Ubuntu Image. This file will contain all the necessary configs for your reference. Here we are going to use the generic Ubuntu Trusty image available in the vagrant cloud.
 
--   Reload VM
+> Note: In Vagrant, we create VMs using [prebaked Virtual Machine images](https://devopscube.com/packer-tutorial-for-beginners/). All these images can be found in the [Vagrant cloud catalog](https://app.vagrantup.com/boxes/search). It is completely free.
 
->   vagrant reload --provision
+Execute the following command to initialize the Vagrantfile
 
--   Verify apache default page by providing vm’s bridge ip in browser.
+```
+vagrant init ubuntu/trusty64
+```
 
-    <http://192.168.0.106/>
+If you check now, you will see a Vagrantfile in your current folder. If you open the file, you will see most of the lines commented out. For now, let's not worry about it. Let's bring up the ubuntu VM.
 
-    ![](media/ead1e0fb5fc992b8ed12df2cd7ce97e8.png)
+Step 3: Start the Vagrant VM using the following command.
 
-    **External Script**
+```
+vagrant up
+```
 
-    The shell provisioner can also take an option specifying a path to a shell
-    script on the host machine. Vagrant will then upload this script into the
-    guest and execute it. An example:
+> Note: If you don't have a virtual box installed, you will get a "*No usable default provider could be found for your system*" error.
 
->   Vagrant.configure("2") do \|config\|  
->   config.vm.provision "shell", path: "script.sh"  
->   end
+The above command will first download the `ubuntu/trusty64` VM image from the vagrant cloud and then it will start the VM.
 
-Summary
--------
+Also, it will generate an SSH key pair and adds the public key to the VM during this process. So that we can SSH into the machine once it is up and running.
 
-**Summary:**
+Step 4: You can check the status of the VM using the following command.
 
--   Virtualization gave us the power of deploying multiple app in one physical
-    server each having their own OS.
+```
+vagrant status
+```
 
--   Hypervisor gives us power and interface to create multiple virtual server
-    also known as VM on one physical machine.
+It should show the output as `running (virtualbox)`
 
--   There are two types of hypervisor, type1 which is installed directly on
-    Hardware and type 2 which gets installed on a host OS.
+SSH into Vagrant Virtual Machine
+--------------------------------
 
--   Virtualbox is type 2 hypervisor which can be installed on Linux and windows
-    machine's.
+Now lets look at how to SSH in to the VM started by Vagrant.
 
--   We can create & manage VM’s and their resources like virtual hard disk,
-    Memory, Vcpu, network etc through virtualbox interface.
+Make sure that you are executing the commands from the `apache-vm` folder.
 
--   Creating &Managing lot vm from virtualbox interface is time consuming and
-    mundane task.
+You can SSH into the Vagrant using the following command.
 
--   Vagrant is a command line tool that helps us create & manage virtual machine
-    lifecycle automatically.
+```
+vagrant ssh
+```
 
--   Vagrantcloud hosts many of vm images AKA boxes which can be used by anyone
-    using Vagrant tool. We don’t do OS installation anymore with Vagrant, we
-    just pull vagrant box images and run them.
+When you run the ssh command, it vagrant fetches the private key from the `apache-vm/.vagrant/machines/default/virtualbox` folder and connects to the VM.
 
--   Vagrantfile is the single source of truth for your VM’s in Vagrant. We can
-    mention box name, its memory, network and other settings while spinning a VM
-    in the Vagrantfile.
+Install Apache Web Server
+-------------------------
 
--   Vagrantfile gives us the feature of provisioning by which we can run any
-    automation script to configure VM after vm comes up.
+Now let's install an apache server and see if we can access it through our web browser.
 
--   Multiple VM’s can be managed by a single Vagrantfile.
+Step 1: Install apache using the following command.
 
-**Conclusion:**
+```
+sudo apt-get install apache2 -y
+```
 
-Vagrant is a great tool for our day to day DevOps tasks Maybe you have written a
-script for deployment or maybe you are learning any new devops tool, to test all
-these things you need VM’s. With Vagrant, we can quickly set up multiplevm’s and
-start practicing. It’s part of our daily toolkit.  
-We can also use Ansible, Chef or Puppet code in provisioning part of the
-Vagrantfile, once we learn these tools in later chapters you can go ahead and
-try those. Vagrant can also be used to provision instances on AWS cloud. If you
-are working in DevOps you will encounter with local virtual machines, always use
-Vagrant to maintain your local vmsetup.
+Step 2: Start the Apache server.
 
-Errors
-------
+```
+sudo service apache2 start
+```
 
-Stderr: VBoxManage.exe: error: (VERR_NEM_MISSING_KERNEL_API).
+Step 3: check the status of the server. You will see the output as running.
 
-VBoxManage.exe: error: VT-x is not available (VERR_VMX_NO_VMX)
+```
+sudo service apache2 status
+```
 
-VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component ConsoleWrap,
-interface IConsole
+Step 4: Let's use curl and see if we are able to access the webpage. It should output the apache 2 HTML welcome page.
 
-go to BIOS enable VT-x
+```
+curl localhost
+```
 
-I just solved this problem by disabling(uncheck) Hyper-V. Seems Hyper-V was
-enabled when I installed Docker
+Step 5: Let's get the IP address of the VM using the following command.
 
-Control Panel -> Program And Features -> Turn Windows Features on or off.
+```
+ip route get 1.2.3.4 | awk '{print $7}'
+```
 
-You may need to reboot afterwords.
+The above command should output the IP address.
 
-**Warning**: **Vagrant with VirtualBox cannot work with Docker at the same
-time.**
+Step 5: Try curl with the IP address. You should see the same output as step 4. Replace the IP address with the one you see in the output.
 
-**apache2: Could not reliably determine the server's fully qualified domain
-name, using 10.0.2.15. Set the 'ServerName'**
+```
+curl 10.0.2.15
+```
 
-This is just a friendly warning and not really a problem (as in that something
-does not work).
+Step 6: Now, try accessing the IP address from your systems web browser. You will not be able to access it. The reason is the current network of VM is not in a private network now. Meaning, there is a connection to the VM from the outside world.
 
-If you go to:
+Let's make some changes to the Vagrant file to access the VM from your browser.
 
-/etc/apache2/apache2.conf
+Step 7: Destroy the VM using the following command.
 
-and insert:
+```
+vagrant destroy
+```
 
-ServerName localhost
+Step 8: Now, open the Vagrantfile and uncomment the following line.
 
-and then restart apache by typing into the terminal:
+```
+config.vm.network "private_network", ip: "192.168.33.10"
+```
 
-sudo systemctl reload apache2
+It means, we are enabling the private network and setting the IP address of the VM to 192.168.33.10.
 
-the notice will disappear.
+If you want to enable access to the VM from a different computer on your wifi network, enable the following option.
 
-If you have a name inside /etc/hostname you can also use that name instead
-of localhost.
+```
+config.vm.network "public_network"
+```
 
-And it uses 127.0.1.1 if it is inside your /etc/hosts:
+When you bring up the VM, it will ask for the interface to bridge as shown below.
 
-127.0.0.1 localhost
+![](media/bridge-details-min.png)
 
-127.0.1.1 myhostname
+You can also configure port forwarding from the host to Vagrant VM. For example, if you run an apache server on 80 on the VM, you can configure the host port 8080 to forward requests to VM port 80.
 
-[Preferred
-method](https://help.ubuntu.com/community/ApacheMySQLPHP#Troubleshooting_Apache)
+```
+config.vm.network "forwarded_port", guest: 80, host: 8080
+```
 
-Troubleshooting Apache
+This way, you can access the apache server from your host web browser on `http://localhost:8080`
 
-If you get this error:
+Step 9: Bring up the VM again and ssh into it.
 
-apache2: Could not determine the server's fully qualified domain name,
+```
+vagrant up
+vagrant ssh
+```
 
-using 127.0.0.1 for ServerName
+Step 10: Now install the apache server and start it using step 1 and 2
 
-then use a text editor such as "sudo nano" at the command line or "gksudo gedit"
-on the desktop to create a new file,
+Step 11: Now if you try to access the apache welcome page using 192.168.33.10, you will be able to access it.
 
-sudo nano /etc/apache2/conf.d/fqdn
+```
+http://192.168.33.10
+```
 
-or
+Vagrant Shared Folder
+---------------------
 
-gksu "gedit /etc/apache2/conf.d/fqdn"
+If you are wondering how to share a host folder with Vagrant VM, here is where the` /vagrant` folder comes into play
 
-then add
+### Vagrant Default Shared Folder
 
-ServerName localhost
+Every Vagrant VM will have a `/vagrant` folder. This folder is mounted to the host folder where you have the Vagrantfile. Meaning, the project folder you create to have the Vagrantfile will be mounted inside the VM on `/vagrant` location.
 
-to the file and save. This can all be done in a single command with the
-following:
+So form a vagrant VM if you access the `/vagrant` folder, you can see the Vagrantfile.
 
-echo "ServerName localhost" \| sudo tee /etc/apache2/conf.d/fqdn
+Here is the real use case for using the shared folder.
 
-But on Ubuntu 14.04:
+If you are working on your code on the host machine, you can set the vagrant project folder as the root folder for the code so that the webserver running in the VM can access your code and test it directly.
 
-echo "ServerName localhost" \| sudo tee /etc/apache2/conf-available/fqdn.conf
+### Vagrant Custom Shared Folder Location
 
-sudo a2enconf fqdn
+If you wish to use a custom host folder to be shared with a Vagrant VM, you can do it by adding the `config.vm.synced_folder `parameter.
 
-Don't forget the ".conf" (without will not work).
+For example,
+
+```
+config.vm.synced_folder "/host/code/", "/vm/code"
+```
+
+In the above config,` /host/code/` is the folder present in the host machine and `/vm/code `is the location inside the Vagrant VM.
+
+This feature comes in handy if you use a common folder to store all your code and configs in the host machine.
+
+Custom CPU & Memory
+-------------------
+
+You can define custom CPU & memory for your vagrant VM.
+
+Set the CPU & memory values based on the available resources in your system.
+
+Here is the config syntax.
+
+```
+config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+    vb.cpus = 1
+end
+```
+
+Vagrant Provisioner
+-------------------
+
+The best thing about Vagrant is that you can add provisioning scripts to Vagrantfile.
+
+Here is an example of having shell script as provisioner.
+
+```
+config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y apache2
+    service apache2 start
+  SHELL
+```
+
+You can also use Ansible, Chef, or puppet as provisioners.
+
+Example Vagrantfiles
+--------------------
+
+From a single Vagrantfile, you can create single or multiple VMs. Lets have a look at the examples of single and multiple VM configurations.
+
+### Single VM Vagrantfile
+
+The following Vagrantfile has all the concepts I have explained above.
+
+1.  Creates VM with ubuntu/trusty64 box
+2.  Enables private network, public_network, and port forwarding on host port 8080
+3.  Custom shared folder
+4.  Custom CPU and memory
+5.  Shell provisioner to install apache2
+
+```
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "ubuntu/trusty64"
+
+  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "public_network"
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  config.vm.synced_folder "code/", "/app/code"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+    vb.cpus = 1
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y apache2
+    service apache2 start
+  SHELL
+end
+```
+
+### Multi VM Vagrantfile
+
+The following Vagrantfile has configs to create two VMs named web and db with its own configurations.
+
+```
+Vagrant.configure("2") do |config|
+  config.vm.provision "shell", inline: "echo Hello"
+
+  config.vm.define "web" do |web|
+    web.vm.box = "ubuntu/trusty64"
+    web.vm.network "private_network", ip: "192.168.33.20"
+    web.vm.synced_folder "code/", "/app/code"
+    web.vm.provider "virtualbox" do |vb|
+        vb.memory = 1048
+        vb.cpus = 1
+    end
+  end
+
+  config.vm.define "db" do |db|
+    db.vm.box = "ubuntu/trusty64"
+    db.vm.network "private_network", ip: "192.168.33.30"
+    db.vm.synced_folder "data/", "/db/data"
+    db.vm.provider "virtualbox" do |vb|
+        vb.memory = 2048
+        vb.cpus = 1
+    end
+  end
+end
+```
+
+To ssh into the VMs, you need to use the names web and db
+
+```
+vagrant ssh web
+vagrant ssh db
+```
+
+You can individually manage the VMs with its name.
+
+### Multi VM Vagrantfile With Loop
+
+Let's say you want to create 3 Vms of the same type.
+
+In this case, you can use a loop to create multiple VMs with derived private IPs.
+
+Here is an example.
+
+```
+Vagrant.configure("2") do |config|
+
+  (2..4).each do |i|
+    config.vm.define "vm-#{i}" do |web|
+      web.vm.box = "ubuntu/trusty64"
+      web.vm.network "private_network", ip: "192.168.33.#{i}", auto_config: false
+      web.vm.provision "shell", inline: "echo hello #{i}"
+      web.vm.synced_folder "code/", "/app/code"
+    end
+  end
+end
+```
+
+Vagrant Vs Docker
+-----------------
+
+Vagrant is just a wrapper utility that can provision VMs or containers using backend providers like Virtualbox or Docker. In comparison, Docker is a lightweight container solution with its own set of tooling to manage containers.
+
+If you use Virtualbox or Vmware as the provider for Vagrant, it can launch a Virtual machine as per the configs in the Vagrantfile.
+
+If you use Docker as the provider for Vagrant, then it will launch docker containers as per the configs in the Vagrantfile.
+
+![Vagarnt vs Dcoker](media/docker1.png)
+
+![ALl](media/docker-vs-vagrant-conclusion.png)
+

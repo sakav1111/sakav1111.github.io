@@ -944,6 +944,8 @@ DockerTutorial:
         url:    /docker/volumes
       - title:  Swarm
         url:    /docker/swarm
+      - title:  Summary
+        url:    /docker/summary
 
 
 

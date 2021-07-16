@@ -12,14 +12,15 @@ tags:
 Docker – Volumes 
 =================
 
-If we Run any Docker Conatser, they have stored the container related data in
+If we Run any Docker Conatainer, Docker need to store container related data in
 Some place.
 
 If we won't specify the explicit location to store Data, it will store data in
 default location. When we delete the container, the data also be deleted.
 
 To store data in permanent location, which is independent on Docker containers,
-we will user Docker Volume.
+we will user **Docker Volume**.
+
 ![](media/1452db20242a8312f9a0f18eaf98754d.png)
 
 Commands

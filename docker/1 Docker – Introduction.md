@@ -207,10 +207,12 @@ With Docker
 Docker Architecture 
 --------------------
 
-Docker Architecture includes a Docker client – used to trigger Docker commands,
-a Docker Host – running the Docker Daemon and a Docker Registry – storing Docker
-Images. The Docker Daemon running within.Docker Host is responsible for the
-images and containers.
+Docker Architecture includes
+* Docker client – used to trigger Docker commands,
+* Docker Host – running the Docker Daemon 
+* Docker Registry – storing Docker Images. 
+* The Docker Daemon running within.
+* Docker Host - is responsible for the images and containers.
 
 ![https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2016/10/Docker-Architecture-What-Is-Docker-Container-Edureka-768x397.png](media/205f0ca1f33ca6e98889a1d81f0d5ef2.png)
 

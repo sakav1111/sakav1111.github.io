@@ -22,17 +22,17 @@ Docker Compose can be used to create separate containers and host them for each
 of the stacks in a Full stack application which contains MongoDB Express Angular
 & NodeJs.
 
-By using Docker Compose, we can host each of these technologies in separate
+* By using Docker Compose, we can host each of these technologies in separate
 containers on the same host and get them to communicate with each other. Each
 container will expose a port for communicating with other containers.
 
-The communication and up-time of these containers will be maintained by Docker
+* The communication and up-time of these containers will be maintained by Docker
 Compose
 
-Docker Compose is a tool for defining & running multi-container docker
+* Docker Compose is a tool for defining & running multi-container docker
 applications.
 
-If we go to docker hub we can see Images for Jenkins, MySQL, Nginx etc. but in
+* If we go to docker hub we can see Images for `Jenkins, MySQL, Nginx` etc. but in
 real time we need multiple services/containers run together for an application.
 
 For example, see below microservice, which have independent Database & their
