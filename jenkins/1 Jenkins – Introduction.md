@@ -148,7 +148,10 @@ downloaded location
 
 ```python
 java -jar Jenkins.war
-java -jar -httpPort=9999 //to change default port
+
+#By changing Port number
+java -jar jenkins.war --httpPort=2222
+
 ```
 
 

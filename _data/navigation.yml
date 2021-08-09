@@ -850,6 +850,8 @@ JenkinsTutorial:
         url:    /jenkins/build-metrics
       - title:  Automated Deployment
         url:    /jenkins/automated-deployment
+      - title:  Declarative Pipeline
+        url:    /jenkins/pipeline
       - title:  Continuous delivery pipeline
         url:    /jenkins/continuous-delivery-pipeline
       - title:  Real Time pipeline Example

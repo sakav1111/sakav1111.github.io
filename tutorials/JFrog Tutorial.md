@@ -91,7 +91,7 @@ in the organization
 Download the JFrog artifactory .zip folder from
 <https://jfrog.com/open-source/>
 
-Extract the .zip folder & Go to the **'\\bin'** folder and execute
+Extract the .zip folder & Go to the `app\bin` folder and execute
 **artifactory.bat**
 
 Open browser hit : <http://localhost:8081/> . Login with below cred's
@@ -101,15 +101,53 @@ Open browser hit : <http://localhost:8081/> . Login with below cred's
 username: admin
 password: password
 ```
-
-
 ![](media/2ce4f20221adc2a4d47d2b761c03597a.png)
+
+
+If you below error while starting JFrog
+```powershell
+Registration with router on URL http://localhost:8046 failed with error: UNAVAILABLE: io exception. Trying again
+```
+
+If you see above error, we need to update `JFrog\var\etc\system.yaml` file, with below content  
+```json
+shared:
+    node:
+        ip: 127.0.0.1
+```
+
+<br>
+
 
 **You can create New Users by going**,  
 admin \> Security \> users \> Click on NEW from Users management window \> Add
 new user\>Save
 
 ![](media/2d07c408dccc98298f1172b30ecda421.png)
+
+
+
+
+
+
+JFrog – Free Cloud 
+=================================
+1.Go to JFrog Website : https://jfrog.com/start-free/  
+
+2.Choose one of the cloud platform  
+
+3.Fill The form, its Free  
+
+4.They will give you a personel domain `https://<username>.jfrog.io/` to login
+![](media/jfrogcloud.png)
+
+
+
+
+
+
+
+
 
 
 
