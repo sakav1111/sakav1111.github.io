@@ -19,10 +19,10 @@ HTTP requests for fun and profit. I'll assume that you know how to invoke 'curl
 This tool is used for sending or receiving files from a server. The different
 protocols supported by curl are HTTP, HTTPS, FTP, TELNET, LDAP and FILE etc.,
 
-**curl** offers [proxy](http://www.computerhope.com/jargon/p/proxyser.htm) support,
-user [authentication](http://www.computerhope.com/jargon/a/auth.htm),
-FTP [uploading](http://www.computerhope.com/jargon/u/upload.htm), HTTP
-posting, [SSL](http://www.computerhope.com/jargon/s/ssl.htm)connections, [cookies](http://www.computerhope.com/jargon/c/cookie.htm),
+**curl** offers [proxy](http://www.computerhope.com/jargon/p/proxyser.htm) support,
+user [authentication](http://www.computerhope.com/jargon/a/auth.htm),
+FTP [uploading](http://www.computerhope.com/jargon/u/upload.htm), HTTP
+posting, [SSL](http://www.computerhope.com/jargon/s/ssl.htm)connections, [cookies](http://www.computerhope.com/jargon/c/cookie.htm),
 file transfer resume, Metalink, and many other features
 
 2.CURL Installation & Configuration
@@ -105,17 +105,17 @@ curl [options] [URL...]
 ### 3.2 CURL –Environment Variables
 
 The environment variables can be specified in lower case or upper case. The
-lower case version has precedence. **http_proxy** is an exception as it is only
+lower case version has precedence. **http_proxy** is an exception as it is only
 available in lower case.
 
 Using an environment variable to set the proxy has the same effect as using
-the **--proxy** option.
+the **--proxy** option.
 
-| **http_proxy** [*protocol***://**]*<host>*[**:***port*]              | Sets the proxy server to use for HTTP.                                                                                                                                                                 |
+| **http_proxy** [*protocol***://**]*<host>*[**:***port*]              | Sets the proxy server to use for HTTP.                                                                                                                                                                 |
 |------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **HTTPS_PROXY** [*protocol***://**]*<host>*[**:***port*]             | Sets the proxy server to use for HTTPS.                                                                                                                                                                |
-| [*url-protocol*]**_PROXY** [*protocol***://**]*<host>*[**:***port*] | Sets the proxy server to use for [*url-protocol*], where the *protocol* is a protocol that **curl** supports and as specified in a URL: **FTP**, **FTPS**, **POP3**, **IMAP**, **SMTP**, **LDAP** etc. |
-| **ALL_PROXY** [*protocol***://**]*<host>*[**:***port*]               | Sets the proxy server to use if no protocol-specific proxy is set.                                                                                                                                     |
+| **HTTPS_PROXY** [*protocol***://**]*<host>*[**:***port*]             | Sets the proxy server to use for HTTPS.                                                                                                                                                                |
+| [*url-protocol*]**_PROXY** [*protocol***://**]*<host>*[**:***port*] | Sets the proxy server to use for [*url-protocol*], where the *protocol* is a protocol that **curl** supports and as specified in a URL: **FTP**, **FTPS**, **POP3**, **IMAP**, **SMTP**, **LDAP** etc. |
+| **ALL_PROXY** [*protocol***://**]*<host>*[**:***port*]               | Sets the proxy server to use if no protocol-specific proxy is set.                                                                                                                                     |
 | **NO_PROXY***<comma-separated list of hosts>*                        | list of host names that shouldn't go through any proxy. If set to a asterisk '*****' only, it matches all hosts.                                                                                      |
 
 ### 3.3 Exit Codes
@@ -136,15 +136,15 @@ website](https://curl.haxx.se/libcurl/c/libcurl-errors.html) :
 
 ### 4.1 Simple Usage
 
- **1.Get the main page from any Website/WebServer**
+ **1.Get the main page from any Website/WebServer**
 ```dos
 curl www.google.com
 ```
 ![E:\\Users\\satyacodes\\Desktop\\temp.png](media/5ba63d5bfdd5a996cc4da6dca08885fe.png)
 
- 
+ 
 
-**2.Get a directory listing of an FTP site:** 
+**2.Get a directory listing of an FTP site:** 
 ```dos
 curl ftp://servername/
 ```
@@ -160,13 +160,13 @@ curl http://localhost:8080/ http://localhost:9090/
 
 ### 4.2 Using Passwords
 
-Curl supports user and password in HTTP URLs, thus you can pick a file like: 
+Curl supports user and password in HTTP URLs, thus you can pick a file like: 
 ```dos
 curl http://name:passwd@machine.domain/full/path/to/file
 ```
 
 
-or specify user and password separately like in 
+or specify user and password separately like in 
 ```dos
 curl -u name:passwd http://machine.domain/full/path/to/file
 ```
@@ -180,13 +180,13 @@ HTTP 1.1 introduced byte-ranges. Using this, a client can request to get only
 one or more subparts of a specified document. Curl supports this with the -r
 flag.
 
-**Get the first 100 bytes of a document:** 
+**Get the first 100 bytes of a document:** 
 ```dos
 curl -r 0-99 http://localhost:9090
 ```
  
 
-**Get the last 500 bytes of a document:** 
+**Get the last 500 bytes of a document:** 
 ```dos
 curl -r -500 http://localhost:9090
 ```
@@ -204,7 +204,7 @@ curl -r -500 http://localhost:9090
 
 ### 4.5 POST (HTTP)
 
-  It's easy to post data using curl. This is done using the **-d <data>
+  It's easy to post data using curl. This is done using the **-d <data>
 option**. The post data must be urlencoded.
 ```dos
 curl post request with no data:
@@ -313,7 +313,7 @@ curl -o -C –mypdf.pdf http://www.pdf995.com/samples/pdf.pdf
 curl -O file1.txt -O file2.pdf -O file3.zip
 ```
 
-#### 8. How to Check If a Website Is Down or Not
+#### 8. How to Check If a Website Is Down or Not
 
 To check website down or not by using below command
 ```dos
@@ -332,7 +332,7 @@ curl -I http://domain.com
 
 #### 10. How to Test URL by injecting header
 
-You can user curl  by injecting header with your data to test or troubleshoot
+You can user curl  by injecting header with your data to test or troubleshoot
 the specific issue. Let’s see following example to request with Content-Type
 ```dos
 curl --header 'Content-Type: application/json' http://domain.com

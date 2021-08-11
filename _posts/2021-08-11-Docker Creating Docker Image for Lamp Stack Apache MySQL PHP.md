@@ -70,7 +70,7 @@ make sure no container is running.
 Docker compose file contains following hierarchy.
 
 [`Docker
-version`](https://docs.docker.com/compose/compose-file/compose-versioning/#compatibility-matrix)` `
+version`](https://docs.docker.com/compose/compose-file/compose-versioning/#compatibility-matrix)` `
 ```bash
 Docker version 
 		
@@ -162,8 +162,8 @@ create **index.php**
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ php
 <?php
-echo "<h1>SatyaCodes.ml</h1>";
-echo "PHP Application Created using Docker";
+echo "<h1>SatyaCodes.ml</h1>";
+echo "PHP Application Created using Docker";
 ?>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -186,37 +186,37 @@ You would probably want to set up a database to interact with your website. We
 will create another service to provide MySQL support inside the PHP container.
 
 Now we need to build this custom image inside php-apache service in
-`the docker-compose.yml` file. PHP Apache also depends on the `db` service to
+`the docker-compose.yml` file. PHP Apache also depends on the `db` service to
 connect to MySQL. We need to configure it by specifying a `depends_on`
 environment.
 
 This is how your `docker-compose.yml` file should look like.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ yaml
-version: '3.8'
+version: '3.8'
 services:
-    php-apache-environment:
-        container_name: php-apache
-        build:
-            context: ./php
-            dockerfile: Dockerfile
-        depends_on:
-            - db
-        volumes:
-            - ./php/src:/var/www/html/
-        ports:
-            - 8000:80
-    db:
-        container_name: db
-        image: mysql
-        restart: always
-        environment:
-            MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
-            MYSQL_DATABASE: MYSQL_DATABASE
-            MYSQL_USER: MYSQL_USER
-            MYSQL_PASSWORD: MYSQL_PASSWORD
-        ports:
-            - "9906:3306"
+    php-apache-environment:
+        container_name: php-apache
+        build:
+            context: ./php
+            dockerfile: Dockerfile
+        depends_on:
+            - db
+        volumes:
+            - ./php/src:/var/www/html/
+        ports:
+            - 8000:80
+    db:
+        container_name: db
+        image: mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+            MYSQL_DATABASE: MYSQL_DATABASE
+            MYSQL_USER: MYSQL_USER
+            MYSQL_PASSWORD: MYSQL_PASSWORD
+        ports:
+            - "9906:3306"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We need to add some MySQL support tools inside the PHP container for the two
@@ -267,23 +267,23 @@ To test MySQL db connection, Update `index.php` with below code.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ php
 <?php
-echo "<h1>SatyaCodes.ml</h1>";
-echo "PHP Application Created using Docker";
+echo "<h1>SatyaCodes.ml</h1>";
+echo "PHP Application Created using Docker";
 
-$host = 'db';
+$host = 'db';
 
-// Database use name
-$user = 'MYSQL_USER';
+// Database use name
+$user = 'MYSQL_USER';
 
-//database user password
-$pass = 'MYSQL_PASSWORD';
+//database user password
+$pass = 'MYSQL_PASSWORD';
 
-// check the MySQL connection status
-$conn = new mysqli($host, $user, $pass);
-if ($conn->connect_error) {
-    die("<h3>Connection failed: </h3>" . $conn->connect_error);
-} else {
-    echo "<h3>Connected to MySQL server successfully!</h3>";
+// check the MySQL connection status
+$conn = new mysqli($host, $user, $pass);
+if ($conn->connect_error) {
+    die("<h3>Connection failed: </h3>" . $conn->connect_error);
+} else {
+    echo "<h3>Connected to MySQL server successfully!</h3>";
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -295,15 +295,15 @@ if ($conn->connect_error) {
 ## PhpMyadmin Container
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        ports:
-            - '8080:80'
-        restart: always
-        environment:
-            PMA_HOST: db
-        depends_on:
-            - db    
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - '8080:80'
+        restart: always
+        environment:
+            PMA_HOST: db
+        depends_on:
+            - db    
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Run **docker-compose up**. Open **http://localhost:8080/** to access the
@@ -345,27 +345,27 @@ insert into `users` (username, password) values
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ php
 <?php
-echo "<h1>SatyaCodes.ml</h1>";
-echo "PHP Application Created using Docker";
+echo "<h1>SatyaCodes.ml</h1>";
+echo "PHP Application Created using Docker";
 
-$host = 'db';
-$user = 'MYSQL_USER';
-$pass = 'MYSQL_PASSWORD';
-$mydatabase = 'MYSQL_DATABASE';
+$host = 'db';
+$user = 'MYSQL_USER';
+$pass = 'MYSQL_PASSWORD';
+$mydatabase = 'MYSQL_DATABASE';
 
-$conn = new mysqli($host, $user, $pass, $mydatabase);
+$conn = new mysqli($host, $user, $pass, $mydatabase);
 
-$sql = 'SELECT * FROM users';
-if ($result = $conn->query($sql)) {
-    while ($data = $result->fetch_object()) {
-        $users[] = $data;
-    }
+$sql = 'SELECT * FROM users';
+if ($result = $conn->query($sql)) {
+    while ($data = $result->fetch_object()) {
+        $users[] = $data;
+    }
 }
 
-foreach ($users as $user) {
-    echo "<br>";
-    echo $user->username . " ==>   " . $user->password;
-    echo "<br>";
+foreach ($users as $user) {
+    echo "<br>";
+    echo $user->username . " ==>   " . $user->password;
+    echo "<br>";
 }
 ?>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -21,7 +21,7 @@ GitHub Pages Configuration
 --------------------------
 
 **Create Your Website**  
-Once you’ve [signed in](https://github.com/login), you’ll create a new
+Once you’ve [signed in](https://github.com/login), you’ll create a new
 repository to get started.
 
 **Provide Repository Name**,  

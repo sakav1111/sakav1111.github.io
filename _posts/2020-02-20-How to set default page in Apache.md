@@ -34,5 +34,5 @@ DirectoryIndex index.html index.php
 
 Restart Apache \~ Done.
 
-On Ubuntu the main Apache configuration file is actually apache2.conf . At
-directory:` /etc/apache2/`
+On Ubuntu the main Apache configuration file is actually apache2.conf . At
+directory:` /etc/apache2/`
