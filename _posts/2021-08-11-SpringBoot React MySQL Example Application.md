@@ -229,30 +229,30 @@ You can now view employee-react-app in the browser.
 
 **Main files**
 
--   public/**index.html**   Single page appl €™n , contains `<div
+-   public/**index.html**   Single page appl n , contains `<div
     id="root"></div>`
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ html
-<!DOCTYPE  html>
-<html  lang="en">
-    <head>
-        <meta  charset="utf-8"  />
-        <link  rel="icon"  href="%PUBLIC_URL%/favicon.ico"  />
-        <meta  name="viewport"  content="width=device-width,  initial-scale=1"  />
-        <meta  name="theme-color"  content="#000000"  />
-        <meta
-            name="description"
-            content="Web  site  created  using  create-react-app"
-        />
-        <link  rel="apple-touch-icon"  href="%PUBLIC_URL%/logo192.png"  />          
-        <link  rel="manifest"  href="%PUBLIC_URL%/manifest.json"  />
-        <title>React  App</title>
-    </head>
-    <body>
-        <noscript>You  need  to  enable  JavaScript  to  run  this  app.</noscript>
-        <div  id="root"></div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />     
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
 
-    </body>
+  </body>
 </html>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -262,22 +262,22 @@ You can now view employee-react-app in the browser.
 -   src/**App.js** - Contains Component code to generate UI.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ javascript
-import  logo  from  './logo.svg';
-import  './App.css';
+import logo from './logo.svg';
+import './App.css';
 
-function  App()  {
-    return  (
-        <div  className="App">
-            <header  className="App-header">
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
 
-            <h1>Hello,  World!!!</h1>
+      <h1>Hello, World!!!</h1>
 
-            </header>
-        </div>
-    );
+      </header>
+    </div>
+  );
 }
 
-export  default  App;
+export default App;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <br>
@@ -287,22 +287,22 @@ export  default  App;
     UI.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ javascript
-import  React  from  'react';
-import  ReactDOM  from  'react-dom';
-import  './index.css';
-import  App  from  './App';
-import  reportWebVitals  from  './reportWebVitals';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-    <React.StrictMode>
-        <App  />
-    </React.StrictMode>,
-    document.getElementById('root')
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
-//  If  you  want  to  start  measuring  performance  in  your  app,  pass  a  function
-//  to  log  results  (for  example:  reportWebVitals(console.log))
-//  or  send  to  an  analytics  endpoint.  Learn  more:  https://bit.ly/CRA-vitals
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -314,61 +314,61 @@ reportWebVitals();
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 employee-react-app\src\component\
 
-import  React,  {  Component  }  from  'react';
-import  EmployeeService  from  '../services/EmployeeService';
+import React, { Component } from 'react';
+import EmployeeService from '../services/EmployeeService';
 
-class  ListAllEmployeesComponent  extends  Component  {
+class ListAllEmployeesComponent extends Component {
 
-        constructor(props)  {
-                super(props)
+    constructor(props) {
+        super(props)
 
-                this.state  =  {
-                                employees:  []
-                }
-              
-        }
+        this.state = {
+                employees: []
+        }
+       
+    }
 
-        componentDidMount(){
-                EmployeeService.getEmployees().then((res)  =>  {
-                        this.setState({  employees:  res.data});
-                });
-        }
+    componentDidMount(){
+        EmployeeService.getEmployees().then((res) => {
+            this.setState({ employees: res.data});
+        });
+    }
 
-        render()  {
-                return  (
-                        <div>
-                                <table  className="table">
-                                        <thead>
-                                                <tr>
-                                                        <th  scope="col">ID</th>
-                                                        <th  scope="col">Name</th>
-                                                        <th  scope="col">Address</th>
-                                                        <th  scope="col">Salary</th>
-                                                        <th  scope="col">Action</th>
-                                                </tr>
-                                        </thead>
-                                        <tbody>
-                                                                {
-                                                                        this.state.employees.map(
-                                                                                employee  =>  
-                                                                                <tr  key  =  {employee.id}>
-                                                                                        
-                                                                                          <td>  {employee.name}  </td>      
-                                                                                          <td>  {employee.address}</td>
-                                                                                          <td>  {employee.salary}</td>
-                                                                                          <td>
-                                                                                                  Action
-                                                                                          </td>
-                                                                                </tr>
-                                                                        )
-                                                                }
-                                                        </tbody>
-                                </table>
-                        </div>
-                );
-        }
+    render() {
+        return (
+            <div>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Salary</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                {
+                                    this.state.employees.map(
+                                        employee => 
+                                        <tr key = {employee.id}>
+                                            
+                                             <td> {employee.name} </td>   
+                                             <td> {employee.address}</td>
+                                             <td> {employee.salary}</td>
+                                             <td>
+                                                 Action
+                                             </td>
+                                        </tr>
+                                    )
+                                }
+                            </tbody>
+                </table>
+            </div>
+        );
+    }
 }
-export  default  ListAllEmployeesComponent;
+export default ListAllEmployeesComponent;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <br>
@@ -377,14 +377,14 @@ export  default  ListAllEmployeesComponent;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 employee-react-app\src\services\
 
-import  axios  from  'axios';
-const  EMPLOYEE_API_BASE_URL  =  "http://localhost:8080/api/v1/all";
-class  EmployeeService  {
-        getEmployees()  {
-                return  axios.get(EMPLOYEE_API_BASE_URL);
-        }
+import axios from 'axios';
+const EMPLOYEE_API_BASE_URL = "http://localhost:8080/api/v1/all";
+class EmployeeService {
+    getEmployees() {
+        return axios.get(EMPLOYEE_API_BASE_URL);
+    }
 }
-export  default  new  EmployeeService()
+export default new EmployeeService()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <br>
@@ -405,25 +405,25 @@ Now if we open Root URL, it will display the Table Data.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 employee-react-app\src\component\
 
-import  React,  {  Component  }  from  'react';
+import React, { Component } from 'react';
 
-class  HeaderComponent  extends  Component  {
-        render()  {
-                return  (
-                        <div>
-                                <nav  class="navbar  navbar-dark  bg-dark"  >
+class HeaderComponent extends Component {
+    render() {
+        return (
+            <div>
+                <nav class="navbar navbar-dark bg-dark" >
 
-                                <div  className="container">  
-                                        <h3  style={{'color':'white'}}>EmployeeServices „¢  </h3>
-                                </div>
-                                          
-                                </nav>
-  
-                        </div>
-                );
-        }
+                <div className="container"> 
+                    <h3 style={{'color':'white'}}>EmployeeServices G </h3>
+                </div>
+                     
+                </nav>
+ 
+            </div>
+        );
+    }
 }
-export  default  HeaderComponent;
+export default HeaderComponent;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <br>
@@ -432,24 +432,24 @@ export  default  HeaderComponent;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 employee-react-app\src\component\
 
-import  React,  {  Component  }  from  'react';
+import React, { Component } from 'react';
 
-class  FooterComponent  extends  Component  {
-        render()  {
-                return  (
-                        <div>
-                                <footer  className="footer">
-                                        <div  className="container">
-                                                <span  className="text-muted">
-                      ©  SatyaCodes  2020  ,  Satya  Kaveti's  Writing.
+class FooterComponent extends Component {
+    render() {
+        return (
+            <div>
+                <footer className="footer">
+                    <div className="container">
+                        <span className="text-muted">
+                      ?SatyaCodes 2020 , Satya Kaveti's Writing.
                   </span>
-                                        </div>
-                                </footer>
-                        </div>
-                );
-        }
+                    </div>
+                </footer>
+            </div>
+        );
+    }
 }
-export  default  FooterComponent;
+export default FooterComponent;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <br>
@@ -458,24 +458,24 @@ export  default  FooterComponent;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 employee-react-app\src\
 
-import  './App.css';
-import  HeaderComponent  from  './component/HeaderComponent';
-import  FooterComponent  from  './component/FooterComponent';
-import  ListAllEmployeesComponent  from  './component/ListAllEmployeesComponent';
+import './App.css';
+import HeaderComponent from './component/HeaderComponent';
+import FooterComponent from './component/FooterComponent';
+import ListAllEmployeesComponent from './component/ListAllEmployeesComponent';
 
-function  App()  {
-    return  (
+function App() {
+  return (
 
-        <div>
-            </>
-        <div  className="container">  
-                </>
-        </div>
-        </>
-        </div>
-    );
+    <div>
+      </>
+    <div className="container"> 
+        </>
+    </div>
+    </>
+    </div>
+  );
 }
-export  default  App;
+export default App;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ![](media/6480c8c35cd0a8c897e916aab08b54a3.png)
@@ -495,35 +495,35 @@ npm install react-router-dom --save
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ javascript
-import  './App.css';
-import  HeaderComponent  from  './component/HeaderComponent';
-import  HomeComponent  from  './component/HomeComponent';
-import  FooterComponent  from  './component/FooterComponent';
-import  ListAllEmployeesComponent  from  './component/ListAllEmployeesComponent';
-import  {  BrowserRouter,  Route,  Switch  }  from  'react-router-dom';
-import  Employee  from  './component/Employee';
-function  App()  {
-    return  (
+import './App.css';
+import HeaderComponent from './component/HeaderComponent';
+import HomeComponent from './component/HomeComponent';
+import FooterComponent from './component/FooterComponent';
+import ListAllEmployeesComponent from './component/ListAllEmployeesComponent';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Employee from './component/Employee';
+function App() {
+  return (
 
-        <div>
-            <HeaderComponent  />
+    <div>
+      <HeaderComponent />
 
-            <BrowserRouter>
-                <div  className="container">
-                    <Switch>
-                        	<Route  exact  path="/"  component={HomeComponent}></Route>
-                        	<Route  exact  path="/one"  component={Employee}></Route>
-                      	<Route  exact  path="/all"  component={ListAllEmployeesComponent}></Route>
-                        	<Route  component={Error}  />
-                    </Switch>
-                </div>
-            </BrowserRouter>
+      <BrowserRouter>
+        <div className="container">
+          <Switch>
+            	<Route exact path="/" component={HomeComponent}></Route>
+            	<Route exact path="/one" component={Employee}></Route>
+            	<Route exact path="/all" component={ListAllEmployeesComponent}></Route>
+            	<Route component={Error} />
+          </Switch>
+        </div>
+      </BrowserRouter>
 
-            <FooterComponent  />
-        </div>
-    );
+      <FooterComponent />
+    </div>
+  );
 }
-export  default  App;
+export default App;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <br>
