@@ -26,7 +26,7 @@ In this Example We are going to use Google Spreadsheet
 ![](media/f98577b52309ef0368a5d55263affb3a.png)
 
 
-Open the **Script editor…** by clicking “**Tools**” \> “**Script editor…**”  
+Open the **Script editor…** by clicking “**Tools**” \> “**Script editor…**”  
 ![](media/c4404a164946521db816e4504fa323e1.png)
 
 **Place below Code / Change Email-Id of existing code**
@@ -76,7 +76,7 @@ Version**
 
 
 
-**Publish the Updated Script.gs as a Web App**  
+**Publish the Updated Script.gs as a Web App**  
 ![20 a-publish](media/4879d52c614d5679489a7cb2d3367fd1.png)
 
 ![](media/8a18ff350c6e62b9b794328747396108.png)
@@ -86,7 +86,7 @@ Version**
 Copy URL  
 ![](media/a555bc8cf8697c66aa51205b63233563.png)
 
-**Create your basic HTML Form**  
+**Create your basic HTML Form**  
 Download HTML File :
 [Index.html](https://raw.githubusercontent.com/dwyl/learn-to-send-email-via-google-script-html-no-server/master/index.html)
 

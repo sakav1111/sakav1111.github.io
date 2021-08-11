@@ -59,12 +59,12 @@ annotations
     tests public static void
 
 -   **@Before** -method will be invoked before each test. Run before
-    @Test, public void
+    @Test, public void
 
 -   **@After** - method will be invoked after each test. Run after
-    @Test, public void
+    @Test, public void
 
-The most important package in JUnit is **junit.framework**, which contains all the core classes. Some of the most important classes are given below  
+The most important package in JUnit is **junit.framework**, which contains all the core classes. Some of the most important classes are given below  
 
     1.Assert - set of assert methods.
 
@@ -156,7 +156,7 @@ public class TestRunner {
 ```
 
 
-**TestResult(**Result**)** − Contains methods to collect the results of
+**TestResult(**Result**)** − Contains methods to collect the results of
 executing a test case.
 
 Example 1 : Testing Annotations Working

@@ -22,7 +22,7 @@ pageview: true
 getters`**
 
 Immutable classes are Java classes whose objects cannot be modified once
-created. 
+created. 
 
 1.  Declare **the class as final** so it can’t be extended.
 
@@ -66,7 +66,7 @@ Exception in thread "main" java.lang.Error: Unresolved compilation problem:
 }
 ```
 
-##  2.What is Singleton? Can you write critical section code for singleton?
+##  2.What is Singleton? Can you write critical section code for singleton?
 
 **A Singleton class is one which allows us to create only one object for JVM.**
 
@@ -113,7 +113,7 @@ more than one thread parallel
  `Double checked locking of Singleton` is a way to ensure only one instance of
 Singleton class is created through application life cycle.
 
-This will bring us to **double checked locking pattern**, where only critical
+This will bring us to **double checked locking pattern**, where only critical
 section of code is locked. Programmer call it double checked locking because
 **there are two checks**
 
@@ -143,7 +143,7 @@ public static Singleton getInstanceDC() {
 
 ##  Clone() will create new Object of Singleton Class?
 
-[Cloning](https://www.geeksforgeeks.org/clone-method-in-java-2/) is a concept to
+[Cloning](https://www.geeksforgeeks.org/clone-method-in-java-2/) is a concept to
 create duplicate objects. **Using clone we can create copy of object**. Suppose,
 we ceate clone of a singleton object, then it wil create a copy that is there
 are two instances of a singleton class, `hence the class is no more
@@ -192,7 +192,7 @@ Exception in thread "main" java.lang.CloneNotSupportedException //We are GOOD no
 	at Student.main(Student.java:33)
 ```
 
-**Reflection:** You can make the new instance of the Singleton class by changing
+**Reflection:** You can make the new instance of the Singleton class by changing
 the **constructor visibility as public** in run-time and create new instance
 using that constructor .
 
@@ -228,7 +228,7 @@ Student@6d06d69c //Failed again 
 ```
 
 To prevent Singleton failure while due to reflection you have to **throw a
-run-time exception in constructor**, if the constructor is already initialized .
+run-time exception in constructor**, if the constructor is already initialized .
 
 ```java
 class Student implements Cloneable{
@@ -352,18 +352,18 @@ System.out.println("does " + input + " is number : " + !pattern.matcher(input).m
 
 ##  Java StringTokenizer With Multiple De-limiters?
 
-The **java.util.StringTokenizer** class allows an application to break a string
-into tokens. 
+The **java.util.StringTokenizer** class allows an application to break a string
+into tokens. 
 
 **StringTokenizer(String str)**
 
-This constructor a string tokenizer for the specified string. 
+This constructor a string tokenizer for the specified string. 
 
 **StringTokenizer(String str, String delim)**
 
 This constructor constructs string tokenizer for the specified string.
 
- The 6 useful methods of StringTokenizer class are as follows:
+ The 6 useful methods of StringTokenizer class are as follows:
 
 | **Public method**              | **Description**                                         |
 |--------------------------------|---------------------------------------------------------|
@@ -374,7 +374,7 @@ This constructor constructs string tokenizer for the specified string.
 | Object nextElement()           | same as nextToken() but its return type is Object.      |
 | int countTokens()              | returns the total number of tokens.                     |
 
- 
+ 
 
 **Normal Example**
 ```java
@@ -482,10 +482,10 @@ public class Test {
 }
 ```
 
-##  **What does the intern() method of String class do? (**[answer](http://javarevisited.blogspot.sg/2015/12/when-to-use-intern-method-of-string-in-java.html)**)**
+##  **What does the intern() method of String class do? (**[answer](http://javarevisited.blogspot.sg/2015/12/when-to-use-intern-method-of-string-in-java.html)**)**
 
 The **intern()** method of String class put the String on which it has called
-into String pool e.g.** str.intern() **will put the String str into the pool.
+into String pool e.g.** str.intern() **will put the String str into the pool.
 Once the String is the pool it can be reused and improve performance.
 
 ```java
@@ -501,7 +501,7 @@ Output
 Satya
 ```
 
-##  How to convert String to Date in Java? ([answer](http://www.java67.com/2014/12/string-to-date-example-in-java-multithreading.html))
+##  How to convert String to Date in Java? ([answer](http://www.java67.com/2014/12/string-to-date-example-in-java-multithreading.html))
 
 **Prior to Java 8**, you can use **DateFormat** or **SimpleDateFormat** class to
 convert a String to Date In Java or vice-versa.
@@ -568,19 +568,19 @@ public class Demo {
 246.83
 ```
 
-##  Difference between format() and printf() method in Java? ([answer](http://javarevisited.blogspot.sg/2014/02/how-to-format-and-display-number-to.html#axzz5F18OIWfY))
+##  Difference between format() and printf() method in Java? ([answer](http://javarevisited.blogspot.sg/2014/02/how-to-format-and-display-number-to.html#axzz5F18OIWfY))
 
 Even though both methods can be used to format String and they have same rules
-the key difference is that 
+the key difference is that 
 
--   format() method **returns a formatted String**
+-   format() method **returns a formatted String**
 
--   printf() method **print formatted String to console**.
+-   printf() method **print formatted String to console**.
 
 So, if you need a formatted String, use format method and if you want to print,
-then use the printf() method.
+then use the printf() method.
 
-##  How do you append leading zero to a numeric String? ([answer](http://www.java67.com/2014/10/how-to-pad-numbers-with-leading-zeroes-in-Java-example.html))
+##  How do you append leading zero to a numeric String? ([answer](http://www.java67.com/2014/10/how-to-pad-numbers-with-leading-zeroes-in-Java-example.html))
 
 You can use the **format()** method of String to append leading zeros to a
 numeric String in Java.
@@ -605,14 +605,14 @@ we can also use DecimalFormat class with passing format
 
 # Enum
 
-**Enumeration in Java** is supported by keyword enum. enums are a special type
+**Enumeration in Java** is supported by keyword enum. enums are a special type
 of class that always
-extends [java.lang.Enum](https://docs.oracle.com/javase/10/docs/api/java/lang/Enum.html).enums
-are **Compile time Constants, because they are “public static final**
+extends [java.lang.Enum](https://docs.oracle.com/javase/10/docs/api/java/lang/Enum.html).enums
+are **Compile time Constants, because they are “public static final**
 
-Logically, **each enum is an instance of enum type** itself. So given enum can
-be seen as below declaration. **JVM internally adds ordinal and value
-methods** to this class which we can call while working with enum.
+Logically, **each enum is an instance of enum type** itself. So given enum can
+be seen as below declaration. **JVM internally adds ordinal and value
+methods** to this class which we can call while working with enum.
 
 ```java
 public enum Direction
@@ -630,19 +630,19 @@ final class Direction extends Enum<Direction>
 ```
 
 The `ordinal()` method returns the order of an enum instance. It represents
-the sequence in the enum declaration, where the initial constant is assigned an
-ordinal of `'0'`. It is very much like array indexes.
+the sequence in the enum declaration, where the initial constant is assigned an
+ordinal of `'0'`. It is very much like array indexes.
 ```java
 Direction.EAST.ordinal();     //0 
 Direction.NORTH.ordinal();    //2
 ```
 
 
-The **enum values()** method returns all the enum values in an **enum array**.
+The **enum values()** method returns all the enum values in an **enum array**.
 
 Direction[] directions = Direction.values();
 
-By default, **enums don’t require constructor** definitions and their default
+By default, **enums don’t require constructor** definitions and their default
 values are always the string used in the declaration. you can give define your
 own values by constructors to initialize.
 
@@ -675,11 +675,11 @@ System.out.println( Direction.NORTH.getAngle() ); //90
 
 **Remember that enum is basically a special class type, and it can have methods
 and fields just like any other class**. You can add methods which
-are **abstract** as well as **concrete methods** as well. Both methods are
+are **abstract** as well as **concrete methods** as well. Both methods are
 allowed in enum.
 
-Two classes have been added to java.util package in support of enums
-– [EnumSet](https://docs.oracle.com/javase/7/docs/api/java/util/EnumSet.html) and [EnumMap](https://docs.oracle.com/javase/7/docs/api/java/util/EnumMap.html) 
+Two classes have been added to java.util package in support of enums
+– [EnumSet](https://docs.oracle.com/javase/7/docs/api/java/util/EnumSet.html) and [EnumMap](https://docs.oracle.com/javase/7/docs/api/java/util/EnumMap.html) 
 
 ```java
 public class Test
@@ -705,22 +705,22 @@ Map enumMap = new EnumMap(Direction.class);
 ##  1) Can Enum implement interface in Java?
 
 **Yes, Enum can implement interface in Java**. Since enum is a type, similar
-to class and interface, it can implement interface. This gives a lot of
+to class and interface, it can implement interface. This gives a lot of
 flexibility to use Enum as specialized implementation in some cases
 
 ##  Can Enum extends class in Java?
 
 **No, Enum can not extend class in Java**. Because all Enum by **default extend
-abstract base class java.lang.Enum**, obviously they cannot extend another
-class, because [Java doesn't support multiple inheritance for
+abstract base class java.lang.Enum**, obviously they cannot extend another
+class, because [Java doesn't support multiple inheritance for
 classes](http://javarevisited.blogspot.com/2011/07/why-multiple-inheritances-are-not.html).
-Because of extending java.lang.Enum class, all enum gets methods
-like **ordinal(), values() or valueOf().**
+Because of extending java.lang.Enum class, all enum gets methods
+like **ordinal(), values() or valueOf().**
 
 ##  <br>Can we create instance of Enum outside of Enum itself? If Not, Why?
 
 No, you cannot create enum instances outside of Enum boundary, because **Enum
-doesn't have any **[public
+doesn't have any **[public
 constructor](http://java67.blogspot.sg/2012/12/how-constructor-chaining-works-in-java.html)**,
 and compiler doesn't allow you to provide any public constructor in Enum. But we
 can write private/protected Constructor.**
@@ -734,7 +734,7 @@ instances inside Enum itself.
 **Yes**, you can, but remember you **can only declare either private or
 package-private constructor** inside enum. public and protected constructors are
 not permitted inside enum.
-See [here](http://java67.blogspot.sg/2012/11/java-enum-example-with-constructor.html) for
+See [here](http://java67.blogspot.sg/2012/11/java-enum-example-with-constructor.html) for
 a code example.
 
 # Exception Handling
@@ -749,7 +749,7 @@ files etc. **Java forces you to handle these error scenarios in some manner in
 your application code**
 
 **2.Unchecked Exceptions:** occurrences of which are not checked by the compiler
-like **coding, initialization, Primitive data errors. They usually result of bad
+like **coding, initialization, Primitive data errors. They usually result of bad
 code in your system.**
 
 **3.Error** : JVM +Memory+ OS level issues . OutofMemory, StatckOverFlow
@@ -786,12 +786,12 @@ try	 - (Security Exception not thrown)
 -   But, if **System.exit(0) throws security exception then finally block will
     be executed**.
 
-**java.lang.System.exit()** will terminates the currently executing program by
+**java.lang.System.exit()** will terminates the currently executing program by
 JVM.
 
--   **exit(0)** : Generally used to indicate successful termination.
+-   **exit(0)** : Generally used to indicate successful termination.
 
--   **exit(1) or exit(-1) or any other non-zero value** –indicates unsuccessful
+-   **exit(1) or exit(-1) or any other non-zero value** –indicates unsuccessful
     termination.
 
 ##  What happens if we put return statement on try/catch? Will finally block execute?
@@ -815,8 +815,8 @@ finally {
 }
 ```
 
-The answer is yes. **finally** block will execute. The only case where it will
-not execute is when it encounters **System.exit().**
+The answer is yes. **finally** block will execute. The only case where it will
+not execute is when it encounters **System.exit().**
 
 ##  What happens when a finally block has a return statement?
 
@@ -836,7 +836,7 @@ public static int myTestingFuncn(){
 ```
 
 This program would return value 19 since the value returned by try has
-been overridden by finally.
+been overridden by finally.
 
 Remember, if a method return any thing in try, we must place return in catch as
 well.
@@ -864,22 +864,22 @@ public class Test {
 ```
 
 ## Why do you think Checked Exception exists in Java, since we can also convey error using RuntimeException?
-**Most of checked exceptions are in java.io package**, which make sense because
+**Most of checked exceptions are in java.io package**, which make sense because
 if you request any system resource and its not available, than a robust program
 must be able to handle that situation gracefully.
 
-By declaring **IOException** as checked Exception, Java ensures that yours
+By declaring **IOException** as checked Exception, Java ensures that yours
 provide that gracefully exception handling. Another possible reason could be to
 ensuring that system resources like file descriptors, which are limited in
 numbers, should be released as soon as you are done with that using catch or
 finally block
 
 ## **Have you faced OutOfMemoryError in Java? How did you solved that?**  
-**OutOfMemoryError in** Java is a subclass of java.lang.VirtualMachineError and
-JVM throws java.lang.OutOfMemoryError when it **ran out of memory in the heap.**
+**OutOfMemoryError in** Java is a subclass of java.lang.VirtualMachineError and
+JVM throws java.lang.OutOfMemoryError when it **ran out of memory in the heap.**
 
-An easy way to solve OutOfMemoryError in java is to [increase the maximum heap
-size](http://javarevisited.blogspot.com/2011/08/increase-heap-size-maven-ant.html) by
+An easy way to solve OutOfMemoryError in java is to [increase the maximum heap
+size](http://javarevisited.blogspot.com/2011/08/increase-heap-size-maven-ant.html) by
 using JVM options "-Xmx512M", this will immediately solve your OutOfMemoryError.  
 
 ```java
@@ -1172,7 +1172,7 @@ public class BusySpin {
 }
 ```
 
-##   What is race condition in Java? Given one example?  (answer)
+##   What is race condition in Java? Given one example?  (answer)
 
 “Race condition occurs when two or more threads try to read & write a shared variable at the same time"
 
@@ -1228,8 +1228,8 @@ Excepting =200, Actual is =157	-2nd Run
 
 
 ## **What is Thread Dump? How do you take thread dump in Java?**  
-Process has multiple Threads. **Thread dump** is a summary of the state of
-all **threads** of the process
+Process has multiple Threads. **Thread dump** is a summary of the state of
+all **threads** of the process
 
 -   ‘**jstack’** is an effective command line tool to capture thread dumps
 
@@ -1246,9 +1246,9 @@ thread, it's easy to update GUI on that thread.
 
 ##  What is a ThreadLocal variable in Java?
 
-Thread-local variables are variables restricted to a thread, it’s like thread's
+Thread-local variables are variables restricted to a thread, it’s like thread's
 own copy which is not shared between multiple threads. Java provides
-a **ThreadLocal** class to support thread-local variables, It extends Object
+a **ThreadLocal** class to support thread-local variables, It extends Object
 class.
 
 -   Basically it is an another way to achieve thread safety apart from writing
@@ -1294,16 +1294,16 @@ public class ThreadLocalExample {
 This example
 ```
 
-This example creates a single MyRunnable instance which is passed to two
-different threads. Both threads execute the run() method, and thus sets
-different values on the ThreadLocal instance. If the access to the set() call
-had been synchronized, and it had not been a ThreadLocal object, the second
+This example creates a single MyRunnable instance which is passed to two
+different threads. Both threads execute the run() method, and thus sets
+different values on the ThreadLocal instance. If the access to the set() call
+had been synchronized, and it had not been a ThreadLocal object, the second
 thread would have overridden the value set by the first thread
 
 ## **Write code for thread-safe Singleton in Java?**
 
 When we say thread-safe, which means Singleton should remain singleton even if
-initialization occurs in the case of multiple threads. 
+initialization occurs in the case of multiple threads. 
 
 ```java
 public class DoubleCheckedLockingSingleton {
@@ -1327,15 +1327,15 @@ public class DoubleCheckedLockingSingleton {
 ```
 
 ## **When to use Runnable vs Thread in Java? (Think Inheritance)**  
-it's better to implement Runnable then extends Thread if you **also want to
+it's better to implement Runnable then extends Thread if you **also want to
 extend another class**  
 
 
-##  Difference between Runnable and Callable in Java?  
+##  Difference between Runnable and Callable in Java?  
 
 Callable was added on JDK 1.5. Main difference between these two is that
-Callable's **call()** method can return value and throw Exception, which was not
-possible with Runnable's run() method. Callable return **Future** object, which
+Callable's **call()** method can return value and throw Exception, which was not
+possible with Runnable's run() method. Callable return **Future** object, which
 can hold the result of computation.
 
 ```java
@@ -1367,7 +1367,7 @@ public class CallableDemo {
 ##  How to stop a thread in Java?
 
 There was some control methods in JDK 1.0
-e.g**. stop(), suspend() and resume()** which are deprecated.
+e.g**. stop(), suspend() and resume()** which are deprecated.
 
 We can do it in Two ways
 
@@ -1452,7 +1452,7 @@ Java provides lock at object level not at thread level. Every object has lock,
 which is acquired by thread. Now if thread needs to wait for certain lock it
 make sense to call wait() on that object rather than on that thread.
 
-Had wait() method declared on Thread class, it was not clear that for which lock
+Had wait() method declared on Thread class, it was not clear that for which lock
 thread was waiting. In short, since wait, notify and notifyAll operate at lock
 level, it make sense to defined it on object class because lock belongs to
 object.
@@ -1463,8 +1463,8 @@ object.
 waiting for each other forever.one of the possible situation is **nested
 Synchronized blocks.**
 
-To create simple deadlock situation for a servlet, just place doPost() method
-inside doGet() and doGet()method inside doPost().
+To create simple deadlock situation for a servlet, just place doPost() method
+inside doGet() and doGet()method inside doPost().
 
 ```java
 public class Business {
@@ -1541,7 +1541,7 @@ a narrow corridor **(తాడిమట్ట),** and each tries to be polite by
 the other pass, but they end up swaying from side to side without making any
 progress because they both repeatedly move the same way at the same time.
 
-Livelock occurs when two or more processes continually repeat the same
+Livelock occurs when two or more processes continually repeat the same
 interaction in response to changes in the other processes without doing any
 useful work. These processes are not in the waiting state, and they are running
 concurrently. This is different from a deadlock because in a deadlock all
@@ -1654,19 +1654,19 @@ public class Worker {
 
 Finally,
 
-\- **Deadlock**:  All threads are blocked, the program hangs forever.
+\- **Deadlock**:  All threads are blocked, the program hangs forever.
 
-\- **Livelock**: No threads blocked but they run into infinite loops. The
+\- **Livelock**: No threads blocked but they run into infinite loops. The
 program is still running but unable to make further progress.
 
-\- **Starvation**: Only one thread is running, and other threads are waiting
+\- **Starvation**: Only one thread is running, and other threads are waiting
 forever
 
 <https://www.codejava.net/java-core/concurrency/understanding-deadlock-livelock-and-starvation-with-code-examples-in-java>
 
 ## **How do you check if a Thread holds a lock or not?**  
-There is a method called **holdsLock()** on java.lang.Thread, it returns true if
-and only if the current thread holds the monitor lock on the specified object. 
+There is a method called **holdsLock()** on java.lang.Thread, it returns true if
+and only if the current thread holds the monitor lock on the specified object. 
 ```java
 Thread t = Thread.currentThread();
 System.out.println(Thread.holdsLock(t));//true or flase -checked
@@ -1683,27 +1683,27 @@ available and acts accordingly. Semaphore is used to protect an expensive
 resource which is available in fixed number e.g. database connection in the
 pool.
 
-## What is the difference between the submit() and execute() method thread poolin Java?
+## What is the difference between the submit() and execute() method thread poolin Java?
 
 -   **execute(Runnable command)** is defined in Executor interface and executes
-    given task in future, but more importantly, it does not return anything. 
+    given task in future, but more importantly, it does not return anything. 
 
--   **submit()** is an overloaded method, it can take
-    either **Runnable or Callable** task and can return Future object which can
+-   **submit()** is an overloaded method, it can take
+    either **Runnable or Callable** task and can return Future object which can
     hold the pending result of computation. This method is defined
-    on **ExecutorService** interface, which extends Executor interface, and
+    on **ExecutorService** interface, which extends Executor interface, and
     every other thread pool class
-    e.g. ThreadPoolExecutor or ScheduledThreadPoolExecutor gets these methods.
+    e.g. ThreadPoolExecutor or ScheduledThreadPoolExecutor gets these methods.
 
 ## **Which method of Swing API are thread-safe in Java?**  
-I know about **repaint(),** and revalidate() being thread-safe but there are
-other methods on different swing components e.g. **setText() method
-of JTextComponent, insert() and append()** method of JTextArea class.
+I know about **repaint(),** and revalidate() being thread-safe but there are
+other methods on different swing components e.g. **setText() method
+of JTextComponent, insert() and append()** method of JTextArea class.
 
 ## **What is the difference between the volatile and atomic variable in Java?**  
 For example count++ operation will not become atomic just by declaring count
-variable as volatile. On the other hand AtomicInteger class provides atomic
-method to perform such compound operation atomically e.g. getAndIncrement() is
+variable as volatile. On the other hand AtomicInteger class provides atomic
+method to perform such compound operation atomically e.g. getAndIncrement() is
 atomic replacement of increment operator. It can be used to atomically increment
 current value by one. Similarly, you have atomic version for other data type and
 reference variable as well.
@@ -1716,7 +1716,7 @@ releases the lock it acquired while entering that synchronized block.
 ##  How do you ensure that N thread can access N resources without deadlock?
 
 **Key point here is order**, if you acquire resources in a particular order and
-release resources in reverse order you can prevent deadlock. 
+release resources in reverse order you can prevent deadlock. 
 
 ##  What’s the difference between Callable and Runnable?
 
@@ -1730,8 +1730,8 @@ The main difference between the two interfaces is that
 -   Runnable has been around since Java 1.0, while Callable was introduced as
     part of Java 1.5.
 
-The *Callable* interface is a generic interface containing a
-single *call()* method – which returns a generic value *V*:
+The *Callable* interface is a generic interface containing a
+single *call()* method – which returns a generic value *V*:
 
 ```java
 public interface Callable<V> {
@@ -1991,7 +1991,7 @@ Consumer : Buffer Empty, wait untill produce
 
 ##  What is BlockingQueue? implement Producer-Consumer using Blocking Queue?
 
-A **BlockingQueue** is typically used when one thread will produce objects,
+A **BlockingQueue** is typically used when one thread will produce objects,
 another thread consumes those Objects.
 
 ![](media/4f4ead35a1bdec13f55242080e1eecf2.png)
@@ -2004,7 +2004,7 @@ another thread consumes those Objects.
 | **Remove**  | remove(o)            | poll()            | take()     | poll(timeout, timeunit)     |
 | **Examine** | element()            | peek()            |            |                             |
 
--   **BlockingQueue** in **Java doesn't allow null elements**, various
+-   **BlockingQueue** in **Java doesn't allow null elements**, various
     implementations like ArrayBlockingQueue, LinkedBlockingQueue throws
     NullPointerException when you try to add null on queue
 
@@ -2019,8 +2019,8 @@ BlockingQueue<String> blockingQueue = new LinkedBlockingDeque<>();
 
 <u>Producer-Consumer Example</u>
 
-BlockingQueue provides a **put()** method to store the element
-and **take()** method to retrieve the element. Both are blocking method, which
+BlockingQueue provides a **put()** method to store the element
+and **take()** method to retrieve the element. Both are blocking method, which
 means **put()** will block if the queue has reached its capacity and there is no
 place to add a new element.
 
@@ -2079,7 +2079,7 @@ public class BlockingQueueDemo {
 }
 ```
 
--   [ArrayBlockingQueue](https://javapapers.com/java/java-arrayblockingqueue/) –
+-   [ArrayBlockingQueue](https://javapapers.com/java/java-arrayblockingqueue/) –
     a blocking queue class based on bounded Java Array. Once instantiated,
     cannot be resized.
 
@@ -2091,17 +2091,17 @@ public class BlockingQueueDemo {
 
 ##  Thread. yield () 
 
-**yield() method:** Theoretically, **to ‘yield’ means to let go, to give up, to
+**yield() method:** Theoretically, **to ‘yield’ means to let go, to give up, to
 surrender**. A yielding thread tells the virtual machine that it’s willing to
 let other threads be scheduled in its place.
 
-This indicates that it’s not doing something too critical. **Note that it’s only
+This indicates that it’s not doing something too critical. **Note that it’s only
 a hint, though, and not guaranteed to have any effect at all.**
 
 -   Yield is a Static method and Native too.
 
 -   Yield tells the currently executing thread to give a chance to the threads
-    that have equal priority in the [Thread
+    that have equal priority in the [Thread
     Pool](https://howtodoinjava.com/java-5/java-executor-framework-tutorial-and-best-practices/).
 
 -   **There is no guarantee** that **Yield will make the currently executing
@@ -2184,29 +2184,29 @@ ScheduledExecutorService,** ThreadFactory, and Callable classes.
 Executors class can be used to easily create Thread Pool in java, also this is
 the only class supporting execution of Callable implementations.
 
-**What happens when an Exception occurs in a thread?**   
-**Thread.UncaughtExceptionHandler** is an interface, defined as nested interface
+**What happens when an Exception occurs in a thread?**   
+**Thread.UncaughtExceptionHandler** is an interface, defined as nested interface
 for handlers invoked when a Thread abruptly terminates due to an uncaught
 exception.
 
 When a thread is about to terminate due to an uncaught exception the Java
 Virtual Machine will query the thread for
-its UncaughtExceptionHandler using Thread.getUncaughtExceptionHandler() and will
-invoke the handler's uncaughtException() method, passing the thread and the
+its UncaughtExceptionHandler using Thread.getUncaughtExceptionHandler() and will
+invoke the handler's uncaughtException() method, passing the thread and the
 exception as arguments.
 
-**Why wait, notify and notifyAll are not inside thread class?**   
+**Why wait, notify and notifyAll are not inside thread class?**   
 One reason which is obvious is that Java provides lock at object level not at
 thread level.
 
 ## **How do you check if a Thread holds a lock or not?**  
 Boolean Thread.*holdsLock*(Obj)
 
-## **What is FutureTask in Java? (answer)**  
+## **What is FutureTask in Java? (answer)**  
 This class provides a base implementation of Future, it retrieve the result of
 the computation. It will get the results from Feature Object.
 
-## **What is the concurrency level of ConcurrentHashMap in Java? (answer)**  
+## **What is the concurrency level of ConcurrentHashMap in Java? (answer)**  
 ConcurrentHashMap achieves it's scalability and thread-safety by partitioning
 actual map into a number of sections. This partitioning is achieved using
 concurrency level.
@@ -2216,11 +2216,11 @@ is 16.** The table is internally partitioned to try to permit the indicated
 number of concurrent updates without contention. To learn more about concurrency
 level and internal resizing
 
-## **What happens if a thread throws an Exception inside synchronized block?**   
+## **What happens if a thread throws an Exception inside synchronized block?**   
 To answer this question, no matter how you exist synchronized block, either
 normally by finishing execution or abruptly by throwing exception, thread
 releases the lock it acquired while entering that synchronized block. This is
 actually one of the reasons I like synchronized block over lock interface, which
 requires explicit attention to release lock, generally this is achieved by
-releasing the lock in a [finally
+releasing the lock in a [finally
 block](http://javarevisited.blogspot.com/2012/11/difference-between-final-finally-and-finalize-java.html).

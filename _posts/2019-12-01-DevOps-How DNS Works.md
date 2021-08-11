@@ -48,7 +48,7 @@ Once the 8 steps of the DNS lookup have returned the IP address for example.com,
 the browser is able to make the request for the web page:
 
 1.  The browser makes
-    a [HTTP](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/) request
+    a [HTTP](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/) request
     to the IP address.
 
 2.  The server at that IP returns the webpage to be rendered in the browser

@@ -18,19 +18,19 @@ to manage project’s build, dependency and documentation.
 **The most powerful feature is able to download the project dependency libraries
 automatically.**
 
-**Ant** and **Maven** both are build tools provided by Apache. The main purpose
+**Ant** and **Maven** both are build tools provided by Apache. The main purpose
 of these technologies is to ease the build process of a project. There are many
 differences between ant and maven that are given below
 
 | **Ant**                                                                                                                     | **Maven**                                                                                                                                                |
 |-----------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Ant doesn't has formal conventions, so we need to provide information of the project structure in **build.xml** file.       | Maven has a convention to place source code, compiled code etc. So we don't need to provide information about the project structure in **pom.xml** file. |
-| Ant is procedural, you need to provide information about what to do and when to do through code. You need to provide order. | Maven is declarative, everything you define in **the pom.xml** file.                                                                                     |
-| There **is no life cycle in Ant.**                                                                                          | There **is life cycle in Maven.**                                                                                                                        |
-| **It is a tool** box.                                                                                                       | **It is a framework**.                                                                                                                                   |
-| It is **mainly a build tool.**                                                                                              | It is mainly **a project management tool.**                                                                                                              |
-| The **ant scripts are not reusable.**                                                                                       | The **maven plugins are reusable**.                                                                                                                      |
-| It **is less preferred** than Maven.                                                                                        | It is **more preferred** than Ant.                                                                                                                       |
+| Ant doesn't has formal conventions, so we need to provide information of the project structure in **build.xml** file.       | Maven has a convention to place source code, compiled code etc. So we don't need to provide information about the project structure in **pom.xml** file. |
+| Ant is procedural, you need to provide information about what to do and when to do through code. You need to provide order. | Maven is declarative, everything you define in **the pom.xml** file.                                                                                     |
+| There **is no life cycle in Ant.**                                                                                          | There **is life cycle in Maven.**                                                                                                                        |
+| **It is a tool** box.                                                                                                       | **It is a framework**.                                                                                                                                   |
+| It is **mainly a build tool.**                                                                                              | It is mainly **a project management tool.**                                                                                                              |
+| The **ant scripts are not reusable.**                                                                                       | The **maven plugins are reusable**.                                                                                                                      |
+| It **is less preferred** than Maven.                                                                                        | It is **more preferred** than Ant.                                                                                                                       |
 
 POM.XML Structure
 ```xml
@@ -65,12 +65,12 @@ POM.XML Structure
 
 **1. Download Apache Maven**
 
-Go to [Maven official website](http://maven.apache.org/download.cgi), download
+Go to [Maven official website](http://maven.apache.org/download.cgi), download
 the Maven zip file, Unzip It.
 
 ![](media/3fa715a04da7711631d7169ffb02ef72.png)
 
-2.Configure the **JAVA_HOME** Windows environment variables by specifying Java
+2.Configure the **JAVA_HOME** Windows environment variables by specifying Java
 Installation Location
 
 **Control Panel → User Accounts → User Accounts → Change my Environment
@@ -78,12 +78,12 @@ Variables**
 
 ![](media/9565bc9e92d915c25893411ac679ba27.png)
 
-3.Add both **M2_HOME** and **MAVEN_HOME** as Windows environment variable &
+3.Add both **M2_HOME** and **MAVEN_HOME** as Windows environment variable &
 point it to Maven folder
 
 ![C:\\Users\\kaveti_s\\Desktop\\temp.png](media/140bc342a2b09daf5a8eae57e0a21bdf.png)
 
-4.Update **PATH** variable, append Maven bin folder – **%M2_HOME%\\bin**, so
+4.Update **PATH** variable, append Maven bin folder – **%M2_HOME%\\bin**, so
 that you can run the Maven’s command everywhere.  
 ![](media/30c3f3bc62b8222c8ec785a0f0ffd0ca.png)
 
@@ -94,9 +94,9 @@ that you can run the Maven’s command everywhere.
 **6. Change PROXY Settings**  
 If you are behind a proxy, Maven will fail to download any dependencies.in this
 type of situation we have to declare the proxy server setting in Maven
-configuration file settings.xml.
+configuration file settings.xml.
 
-Find **{M2_HOME}/conf/settings.xml,** and put your proxies detail inside.
+Find **{M2_HOME}/conf/settings.xml,** and put your proxies detail inside.
 Un-comment the proxy options and fill in your proxy server detail.
 ```xml
 <!-- proxies
@@ -118,12 +118,12 @@ Un-comment the proxy options and fill in your proxy server detail.
 
 ### 2.2 Maven Ubuntu Installation
 
-1. In a terminal, run apt-cache search maven, to get all the available Maven
+1. In a terminal, run apt-cache search maven, to get all the available Maven
 package.
 
-2. Run command sudo apt-get install maven, to install the latest Apache Maven.
+2. Run command sudo apt-get install maven, to install the latest Apache Maven.
 
-3. Run command mvn -version to verify your installation.
+3. Run command mvn -version to verify your installation.
 ```dos
 $ mvn -version
 Apache Maven 3.0.4
@@ -138,7 +138,7 @@ OS name: "linux", version: "3.5.0-17-generic", arch: "amd64", family: "unix"
 3.Maven Repository
 -------------------
 
-A **maven repository** is a directory of packaged JAR file with pom.xml file.
+A **maven repository** is a directory of packaged JAR file with pom.xml file.
 Maven searches for dependencies in the repositories. There are 3 types of maven
 repository:
 
@@ -163,15 +163,15 @@ The maven local repository is a local folder that is used to store all your
 project’s dependencies (plugin jars and other files which are downloaded by
 Maven). In simple, when you build a Maven project, all dependency files will be
 stored in your Maven local repository. By default, Maven local repository is
-default to **.m2** 
+default to **.m2** 
 
 Folder **C:\\Documents and Settings\\{your-username}\\.m2**
 
 ![](media/6c4c18cd646708d3e25744afc9fee5a8.png)
 
 We can change the location of maven local repository by changing
-the **settings.xml** file. It is located in **MAVEN_HOME/conf/settings.xml**
-update localRepository to other repo folder & **save**
+the **settings.xml** file. It is located in **MAVEN_HOME/conf/settings.xml**
+update localRepository to other repo folder & **save**
 ```xml
 //{M2_HOME}\conf\setting.xml
 <settings>
@@ -183,30 +183,30 @@ update localRepository to other repo folder & **save**
 <localRepository>E:/maven-repo</localRepository>
 ```
 
-Now, your new Maven local repository is now changed to E:/maven-repo.
+Now, your new Maven local repository is now changed to E:/maven-repo.
 
 ### 3.2 Central Repository
 
-When you build a Maven’s project, Maven will check your pom.xml file, to
+When you build a Maven’s project, Maven will check your pom.xml file, to
 identify which dependency to download. First, Maven will get the dependency from
-your **Local repository**, if not found, then get it from the default *Maven
+your **Local repository**, if not found, then get it from the default *Maven
 central
-repository* – [http://repo1.maven.org/maven2/](http://repo1.maven.org/maven/)
+repository* – [http://repo1.maven.org/maven2/](http://repo1.maven.org/maven/)
 
-**Maven** **central repository** is located on the web. It has been created by
+**Maven** **central repository** is located on the web. It has been created by
 the apache maven community itself.The path of central repository
-is: <http://repo1.maven.org/maven2/>
+is: <http://repo1.maven.org/maven2/>
 
 ![](media/e57922e3bef7ea3c6216976fe6f003c9.png)
 
 The central repository contains a lot of common libraries that can be viewed by
-this URL <http://search.maven.org/#browse>
+this URL <http://search.maven.org/#browse>
 
 ![](media/7bd009f3292f718f22f3933c6704ec6e.png)
 
 ### 3.3 Remote Repository
 
-Maven **remote repository** is located on the web. Most of libraries can be
+Maven **remote repository** is located on the web. Most of libraries can be
 missing from the central repository such as JBoss library etc, so we need to
 define remote repository in **pom.xml** file.
 
@@ -215,8 +215,8 @@ repository** nor Maven **center repository**, the process will stop and output
 error messages to your Maven console. For Example **org.jboss.resteasy.jar**
 will be only available in **jboss repository** only.
 
-To tell Maven to get the dependency from Java.net, you need to declared a remote
-repository in your pom.xml file like this 
+To tell Maven to get the dependency from Java.net, you need to declared a remote
+repository in your pom.xml file like this 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
@@ -244,14 +244,14 @@ repository in your pom.xml file like this 
 
 ### 3.4 How to add Jar file to Maven Local Repository Manually 
 
-For example, [kaptcha](http://code.google.com/p/kaptcha/)**,** a popular third
+For example, [kaptcha](http://code.google.com/p/kaptcha/)**,** a popular third
 party Java library, used to generate **“captcha"** image to stop spam, but it’s
 not available in the Maven center repository.
 
 Follow below steps to add this into Local Repository
 
 1. Download the “[kaptcha](http://code.google.com/p/kaptcha/downloads/list)“,
-extract it and copy kaptcha-version.jar, in c drive for example.
+extract it and copy kaptcha-version.jar, in c drive for example.
 
 2. Run following command:
 ```dos
@@ -265,7 +265,7 @@ mvn install:install-file -Dfile=c:\kaptcha-{version}.jar -DgroupId=com.google.co
 4.Maven pom.xml file
 ---------------------
 
-**POM** is an acronym for **Project Object Model**. The pom.xml file contains
+**POM** is an acronym for **Project Object Model**. The pom.xml file contains
 information of project and configuration information for the maven to build the
 project such as dependencies, build directory, source directory, test source
 directory, plugin, goals etc.
@@ -339,8 +339,8 @@ mvn archetype:generate -DgroupId={project-packaging}
 
 
 This tells Maven to create a Java project from the
-Maven maven-archetype-quickstart template. If we ignore
-the archetypeArtifactId option, a huge list of the Maven templates will be
+Maven maven-archetype-quickstart template. If we ignore
+the archetypeArtifactId option, a huge list of the Maven templates will be
 listed.
 
 Normally, we just use the following two templates
@@ -366,8 +366,8 @@ structure**
 
 ![](media/42df597d3b8ca8fd8d05204bda77f3ae.png)
 
-All source code files puts in folder /src/main/java/, all unit test code puts
-in /src/test/java/.
+All source code files puts in folder /src/main/java/, all unit test code puts
+in /src/test/java/.
 
 3.The above created Project is Normal Project**, Eclipse cannot recognize it to
 Importing, To make this as an Eclipse project, in terminal, navigate to
@@ -486,7 +486,7 @@ Root Directory → Finish**
 ### 6.4 Create Web Application with Maven
 
 To create Java Webapplication using maven we have to
-maven-archetype-webapp template
+maven-archetype-webapp template
 ```java
 //Syntax
 > mvn archetype:generate -DgroupId={project-packaging}
@@ -544,41 +544,41 @@ is that the process for building and distributing a particular artifact
 (project) is clearly defined.
 
 Here are three built-in build lifecycles: default, clean and site.
-The **default** lifecycle handles your project deployment,
-the **clean** lifecycle handles project cleaning, while the **site** lifecycle
+The **default** lifecycle handles your project deployment,
+the **clean** lifecycle handles project cleaning, while the **site** lifecycle
 handles the creation of your project's site documentation.
 
 For example, the default lifecycle comprises of the following phases (refer to
-the [Lifecycle
+the [Lifecycle
 Reference](http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference))
 
--   **validate** - validate the project is correct and all necessary information
+-   **validate** - validate the project is correct and all necessary information
     is available
 
--   **compile** - compile the source code of the project
+-   **compile** - compile the source code of the project
 
--   **test** - test the compiled source code using a suitable unit testing
+-   **test** - test the compiled source code using a suitable unit testing
     framework. These tests should not require the code be packaged or deployed
 
--   **package** - take the compiled code and package it in its distributable
+-   **package** - take the compiled code and package it in its distributable
     format, such as a JAR.
 
--   **verify** - run any checks on results of integration tests to ensure
+-   **verify** - run any checks on results of integration tests to ensure
     quality criteria are met
 
--   **install** - install the package into the local repository, for use as a
+-   **install** - install the package into the local repository, for use as a
     dependency in other projects locally
 
--   **deploy** - done in the build environment, copies the final package to the
+-   **deploy** - done in the build environment, copies the final package to the
     remote repository for sharing with other developers and projects.
 
 ### 7.2 mvn package
 
 When you run “mvn package" command, it will compile source code, run unit test
-and pack it depends on your “packaging" tag in pom.xml file.
+and pack it depends on your “packaging" tag in pom.xml file.
 
-Maven is run by phases, read this [default Maven build
-lifecycle](http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) article
+Maven is run by phases, read this [default Maven build
+lifecycle](http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) article
 for more detail. So, when the “**package**" phase is executed, all its above
 phases – “**validate**“, “**compile**" and “**test**“, including the current
 phase “**package**" will be executed orderly.
@@ -658,8 +658,8 @@ repository automatically, so that other developers can use it.
 When “**install**" phase is executed, all above phases “**validate**“,
 “**compile**“, “**test**“, “**package**“, “**integration-test**“, “**verify**"
 phase , including the current “**install**" phase will be executed orderly.
-Refer to this [Maven
-lifecycle](http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) for
+Refer to this [Maven
+lifecycle](http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) for
 detail
 
 Before running **mvn install** the folder structure of the project is as below
@@ -739,15 +739,15 @@ documenet files
 
 ![](media/fb223488e447eb80d8443e64851a61f3.png)
 
-“mvn site:deploy" to deploy your generated documentation site to server
-automatically, via WebDAV mechanism.
+“mvn site:deploy" to deploy your generated documentation site to server
+automatically, via WebDAV mechanism.
 
 ### 7.6 How to Deploy War File in Tomcat using Maven
 
 To depoloy .War file in tomcat we need tomcat user credencials. We can find
 those from **apache-tomcat-8.0.37\\conf\\tomcat-users.xml**
 
-**1. Add a user with roles** manager-gui **and** manager-script.
+**1. Add a user with roles** manager-gui **and** manager-script.
 
 tomcat-users.xml location is : **apache-tomcat-8.0.37\\conf\\tomcat-users.xml**
 ```xml
@@ -811,12 +811,12 @@ settings.xml location is : **apache-maven-3.3.9\\conf\\settings.xml**
 Use following mvn commands for deploying war in tomcat server
 
 1.  **For Deploying in Tomcat 7**  
-    Deploy URL = **http://localhost:8080/manager/text**  
-    Command = mvn tomcat7:deploy
+    Deploy URL = **http://localhost:8080/manager/text**  
+    Command = mvn tomcat7:deploy
 
 2.  **For Deploying in Tomcat 6**  
-    Deploy URL = **http://localhost:8080/manager/**  
-    Command = mvn tomcat6:deploy
+    Deploy URL = **http://localhost:8080/manager/**  
+    Command = mvn tomcat6:deploy
 
 **C:\\Workspace\\HelloWeb>mvn tomcat7:deploy**
 ```dos

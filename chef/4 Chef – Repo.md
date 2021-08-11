@@ -26,7 +26,7 @@ The chef-repo directory should be synchronized with a version control system,
 such as git. All of the data in the chef-repo should be treated like source
 code.
 
-You’ll use the **chef** and **knife** commands to upload data to the Chef Infra
+You’ll use the **chef** and **knife** commands to upload data to the Chef Infra
 Server from the chef-repo directory. Once uploaded, Chef Infra Client uses that
 data to manage the nodes registered with the Chef Infra Server and to ensure
 that it applies the right cookbooks, policyfiles, and settings to the right
@@ -36,8 +36,8 @@ nodes in the right order.
 
 | **Directory**    | **Description**                                                                                                            |
 |------------------|----------------------------------------------------------------------------------------------------------------------------|
-| **.chef/**       | A hidden directory that is used to store validation key files and optionally a config.rb file.                             |
-| **cookbooks/**   | Contains cookbooks that have been downloaded from the [Chef Supermarket](https://supermarket.chef.io/) or created locally. |
+| **.chef/**       | A hidden directory that is used to store validation key files and optionally a config.rb file.                             |
+| **cookbooks/**   | Contains cookbooks that have been downloaded from the [Chef Supermarket](https://supermarket.chef.io/) or created locally. |
 | **data_bags/**   | Stores data bags (and data bag items) in JSON (.json) format.                                                              |
 | **policyfiles/** | Stores Policyfiles in Ruby (.rb) format.                                                                                   |
 

@@ -17,10 +17,10 @@ at the same time, using a list or group of lists know as inventory.
 
 -   Inventory file contains list of Nodes & their IP/Hostnames
 
--   The default location for inventory is a file called **/etc/ansible/host**.
+-   The default location for inventory is a file called **/etc/ansible/host**.
 
 -   You can also specify a different inventory file at the command line using
-    the **-i \<path\>** option.
+    the **-i \<path\>** option.
 
     ![](media/b2bb951e5265a7cdea1daae9d169a354.png)
 

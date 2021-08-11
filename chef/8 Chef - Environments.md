@@ -12,14 +12,14 @@ Chef - Environments
 ===================
 
 Having separate environments for development, testing, and production are good
-ways to be able to develop and test cookbook updates and other configuration
+ways to be able to develop and test cookbook updates and other configuration
 changes in isolation.Chef enables grouping nodes into separate environments to
 support an ordered development flow.
 
 Every Chef Server starts out with a single environment, the **\_default**
 environment
 
-The Chef server always has an environment called **\_default**, which cannot be
+The Chef server always has an environment called **\_default**, which cannot be
 edited or deleted. All the nodes go in there if you don't specify any other
 environment.
 

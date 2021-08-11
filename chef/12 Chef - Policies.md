@@ -96,7 +96,7 @@ configuration.
 
 [**Syntax**](https://docs.chef.io/policyfile.html#syntax)
 
-A Policyfile.rb is a Ruby file in which run-list and cookbook locations are
+A Policyfile.rb is a Ruby file in which run-list and cookbook locations are
 specified. The syntax is as follows:
 ```powershell
 name "name"

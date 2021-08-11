@@ -33,12 +33,12 @@ No additional configuration required. Just open any job
 
 ![](media/890ec2835cd5aea5c75d6d5714105638.png)
 
-### Build-metrics 
+### Build-metrics 
 
-We have another plugin - **Build-metrics** , display build stats in a graphical
+We have another plugin - **Build-metrics** , display build stats in a graphical
 format
 
-Install Plugin : **Build-metrics** 
+Install Plugin : **Build-metrics** 
 
 Manage Jenkins \> Global Build Stats \> **Initialize stats**
 
@@ -46,7 +46,7 @@ Manage Jenkins \> Global Build Stats \> **Initialize stats**
 
 ![](media/0aaf069bae05c60cb7c0ad2792a0c629.png)
 
-Once you click the **Initialize stats** button, Jenkins will gather all the
+Once you click the **Initialize stats** button, Jenkins will gather all the
 existing build records which are already been carried out, and **charts can be
 created based on these results**.
 

@@ -24,7 +24,7 @@ Jenkins
 
 ## Manage Jenkins – Java , 
 
-**1.Navigate to Manage Jenkins → Global Tool Configuration→JDK Installations
+**1.Navigate to Manage Jenkins → Global Tool Configuration→JDK Installations
 →Add JDK**
 
 2.Set JDK Name. For Ex: JDK_1.8.0_111 (uncheck Install automatically)
@@ -38,7 +38,7 @@ Jenkins
 
 ## Maven
 
-**Manage Jenkinks→  Global Tool Configuration→  Maven Installations→  Add
+**Manage Jenkinks→  Global Tool Configuration→  Maven Installations→  Add
 Maven**
 
 ![https://i2.wp.com/www.smlcodes.com/wp-content/uploads/2017/03/jenkins-tutorial_smlcodes-13.png?resize=513%2C234](media/be44e936d435ab725f589696a2a91d4a.png)
@@ -120,11 +120,11 @@ The following functions are performed in the above image:
 ![https://www.guru99.com/images/1/091318_0458_HowtoCreate5.png](media/aafe57d3002e20dbd326b5ac5f0d8aaf.png)
 
 **Step 5)** Under Source Code Management, Enter your repository URL. We have a
-test repository located at <https://github.com/kriru/firstJava.git>
+test repository located at <https://github.com/kriru/firstJava.git>
 
 ![https://www.guru99.com/images/1/091318_0458_HowtoCreate6.png](media/c57ab8a0ca05a2f8e938aa7700dca4c9.png)
 
-**Step 6)** Under **build**, Click on "**Add build step**", "**Execute Windows
+**Step 6)** Under **build**, Click on "**Add build step**", "**Execute Windows
 batch command**" and add the commands you want to execute during the build
 process.
 
@@ -132,13 +132,13 @@ process.
 
 ![https://www.guru99.com/images/1/091318_0458_HowtoCreate8.png](media/583ca1ebd0a3a0afc804907241efe199.png)
 
-**Step 7)**  Click the **Build Now** button on the left-hand side to build the
+**Step 7)**  Click the **Build Now** button on the left-hand side to build the
 source code.
 
 ![https://www.guru99.com/images/1/091318_0458_HowtoCreate9.png](media/0db8a32cb5ab37bf8d64f34b711abe7d.png)
 
-**Step 9)** After clicking on **Build now, **you can see the status of the build
-you run under **Build History**.
+**Step 9)** After clicking on **Build now, **you can see the status of the build
+you run under **Build History**.
 
 ![https://www.guru99.com/images/1/091318_0458_HowtoCreate10.png](media/0b4bb2265f8a0710d07138dd505c7089.png)
 
@@ -177,9 +177,9 @@ Below I have mentioned some important Plugins:
 To start Jenkins manually open Console/Command line, then go to your Jenkins
 installation directory. Over there you can use the below commands:
 
-To start Jenkins: **jenkins.exe start**  
-To stop Jenkins: **jenkins.exe stop**  
-To restart Jenkins: **jenkins.exe restart**
+To start Jenkins: **jenkins.exe start**  
+To stop Jenkins: **jenkins.exe stop**  
+To restart Jenkins: **jenkins.exe restart**
 
 ## Explain how you can set up Jenkins job?
 
@@ -203,7 +203,7 @@ Now you can tell the elements of this freestyle job:
 
 **Explain how to create a backup and copy files in Jenkins?**
 
-To create a backup all you need to do is to **periodically back up your
+To create a backup all you need to do is to **periodically back up your
 JENKINS_HOME directory**. This contains all of your build jobs configurations,
 your slave node configurations, and your build history. To create a back-up of
 your Jenkins setup, just copy this directory. You can also copy a job directory
@@ -228,7 +228,7 @@ You can:
 
 **What are the various ways in which build can be scheduled in Jenkins?**
 
-You can schedule a build in Jenkins in the following ways:
+You can schedule a build in Jenkins in the following ways:
 
 -   By source code management commits
 
@@ -246,20 +246,20 @@ Jenkins uses the cron syntax to schedule various items within the tool.
 The cron syntax is represented by **five asterisks(\* \* \* \* \*)**, with each
 one separated by a space.
 
--   The first asterisk represents *minutes*,
+-   The first asterisk represents *minutes*,
 
--   the second represents *hours*,
+-   the second represents *hours*,
 
--   the third the *day of the month*,
+-   the third the *day of the month*,
 
--   the fourth the *month itself*
+-   the fourth the *month itself*
 
--   fifth the *day of the week*.
+-   fifth the *day of the week*.
 
 >   For example, to schedule a build job to pull from GitHub every Friday at
->   5:30 p.m., the syntax would be: 30 17 \* \* 4.
+>   5:30 p.m., the syntax would be: 30 17 \* \* 4.
 
-**What is Jenkinsfile and what it does?**
+**What is Jenkinsfile and what it does?**
 
 The Jenkins pipeline details are stored in a file that is named as the Jenkins
 file and it is further connected to the source code repository in general.

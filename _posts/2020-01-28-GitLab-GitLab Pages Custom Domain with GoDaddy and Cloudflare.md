@@ -24,8 +24,8 @@ GitLab Pages Configuration
 **Create Project**  
 Project name must be : <username>.gitlab.io
 
-**Create Pages & domain**   
-Navigate to your project’s **Setting > Pages** and click **+ New domain** to
+**Create Pages & domain**   
+Navigate to your project’s **Setting > Pages** and click **+ New domain** to
 add your custom domain to GitLab
 
 ![](media/839114825fc0c985f7d159dcb0039bda.png)

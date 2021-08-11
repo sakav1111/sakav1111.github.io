@@ -40,10 +40,10 @@ Save & Test Email
     version(optional )
 
 -   In Google Account Settings : Allow less secure app access:
-    click <https://www.google.com/settings/security/lesssecureapps> and select
+    click <https://www.google.com/settings/security/lesssecureapps> and select
     Turn on.
 
--   Unlock captcha: click <https://accounts.google.com/DisplayUnlockCaptcha> and
+-   Unlock captcha: click <https://accounts.google.com/DisplayUnlockCaptcha> and
     select continue
 
 ### Configure mail notification on Build failure/Success

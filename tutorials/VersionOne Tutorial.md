@@ -2,13 +2,13 @@
 
 **VersionOne** is an all-in-one **Agile project management tool** built from the
 ground up to support agile software development methodologies such as Scrum,
-Kanban, Lean, XP, SAFe and hybrid. From small teams to distributed enterprises,
-VersionOne's suite of right-sized product editions help companies scale agile
+Kanban, Lean, XP, SAFe and hybrid. From small teams to distributed enterprises,
+VersionOne's suite of right-sized product editions help companies scale agile
 faster, easier and smarter.
 
- 
+ 
 
-**1.1  Features**
+**1.1  Features**
 
 -   **Agile Management with** : centralized management, Simplify collaboration,
     Improve project visibility, Accelerate agile adoption
@@ -55,61 +55,61 @@ it for free
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-1.png](media/d0cb2a0169ed7c060c99434550997d99.png)
 
- 
+ 
 
 2.On Next window, it will ask for choose the password , Project name & Sprint
 details
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-2.png](media/59be2872405d04d976654b2884dc3d9b.png)
 
- 
+ 
 
 3.It will Install the VersionOne Software on the next window
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-3.png](media/990d14f2d09e572d7d491abd5b01041d.png)
 
- 
+ 
 
 4.On completion of Installation, it will shows the URL of your VersionOne
 Location, open it!
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-4.png](media/6be10a21a4a2c958ebb63c057dc9a6a2.png)
 
- 
+ 
 
 5.It will Navigates to Profile form, choose username& password and click on OK!
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-5.png](media/d15d420ac60060a39e6c3464f01bb263.png)
 
- 
+ 
 
 6.Then, it will navigate you to VersionOne Dashboard.
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-6.png](media/0c7148f7a7776f9fc6c9b02e702020d2.png)
 
- 
+ 
 
  
 
 **2.1 Add New Team Member in VersionOne**
 
- 1.Click to Admin on the left-top, Click on  **Add New members** button
+ 1.Click to Admin on the left-top, Click on  **Add New members** button
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-7.png](media/abf6082c570dd0be016eb8dd5b7a8882.png)
 
- 
+ 
 
 2.It will opens a Pop-up window , click on **Add Member** Button
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-8.png](media/eaa5380d8525ac1b3e432f4bb91921ed.png)
 
- 
+ 
 
 3.It will opens a Member form, fill the Details & Save
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-9.png](media/771f6c720f34aba1689dc7021aed24e0.png)
 
- 
+ 
 
 4.User is added & Listed in the Members. If you to change any thing just click
 EDIT button
@@ -118,7 +118,7 @@ EDIT button
 
  
 
- 
+ 
 
 **2.2 Project Settings in VersionOne**
 
@@ -129,15 +129,15 @@ information as you may need at this stage
 
  
 
-1.Select **Admin**> **Projects.**
+1.Select **Admin**> **Projects.**
 
- 2.Expand the **System (All Projects) **project
+ 2.Expand the **System (All Projects) **project
 
- 3.Click on the **Add Child Project**button to create the new project.
+ 3.Click on the **Add Child Project**button to create the new project.
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-11.png](media/fb32e6e403e60d3fa15096dd2002e7fe.png)
 
- 
+ 
 
 4.Enter the project details as appropriate & Save
 
@@ -147,7 +147,7 @@ information as you may need at this stage
 
 ## **3. Project Management Activities**
 
- **3.1 Product Planning in VersionOne**
+ **3.1 Product Planning in VersionOne**
 
 It is your first practical step towards organizing your backlogs and ranking the
 stories as you need for executing tests.
@@ -159,7 +159,7 @@ when there are numerous such stories, defects, and tests.
 
 You can add stories and defects as many as you need or access them from any
 project or sprint. Filtering allows you to drag and drop any item from the
-backlog for prioritization purpose.  Stories can be imported from excel sheets
+backlog for prioritization purpose.  Stories can be imported from excel sheets
 or created directly from the Add Story Inline menu situated on the right side of
 the Product Planning page.
 
@@ -168,7 +168,7 @@ stories by title, ID, Priority, Estimation point and project
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-13.png](media/070028fcd91f865ac6a4b323064a834d.png)
 
- 
+ 
 
 **Backlog Importing Page**:
 
@@ -183,11 +183,11 @@ column or row have to be corrected to complete the upload process.
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-14.png](media/6bacbeedddfb780cc4dd8943f4021c34.png)
 
- 
+ 
 
  
 
-**3.2 Release Planning in VersionOne**
+**3.2 Release Planning in VersionOne**
 
 In this feature of VersionOne, you can move any backlog story to any of the
 releases. Release planning offers two approaches namely, Tactical and Strategic.
@@ -219,7 +219,7 @@ terms of time
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/05/versionone_smlcodes-15.png](media/bda5a0542a67b9e5c37049218040a08c.png)
 
- 
+ 
 
 For Sprint release, you can view tests report metrics to measure your progress
 towards the completion of the sprint.
@@ -232,7 +232,7 @@ towards the completion of the sprint.
 
 -   Standup Dashboard Report
 
- 
+ 
  
 
 **3.3 Sprint/Iteration-planning in VersionOne**
@@ -296,10 +296,10 @@ types consist of the following
 
 By clicking on sprint tracking tab, we step into the execution of the tests.
 
- 
+ 
  
 
-**3.4 Sprint/Iteration Tracking in VersionOne**
+**3.4 Sprint/Iteration Tracking in VersionOne**
 
 Once you create the tests, it is now time to execute your tests. You would see
 what you have to test and update stories, tests and the defects on a daily
@@ -307,7 +307,7 @@ basis. You can go through dashboards to view status and progress. Key agile
 metrics, the status of each story and defect are available for viewing in the
 standard dashboard.
  
-You can just drag and drop each of the stories and defects as you execute them. 
+You can just drag and drop each of the stories and defects as you execute them. 
 It gives the overall picture of how a team is doing regarding running the tasks
 and the tests. Following describes what you can do in the Sprint Iteration
 section.
@@ -331,7 +331,7 @@ section.
     for e.g. defect or test status. It shows the individual test status during
     the testing cycle.
 
- 
+ 
 
 **The reporting metrics for sprint tracking include the following:**
 

@@ -59,10 +59,10 @@ makes it suitable for .Net projects.
 
 
 **Travis CI**  
-**Travis CI** is an open source continuous integration tool which is written in
+**Travis CI** is an open source continuous integration tool which is written in
 RUBY. It’s easily get sync with GitHub. It’s supports platforms like Linux, Mac
 or iOS and also supports many languages in which Node js, php, Xcode, python,
-java, are few of them. It also performs parallel test runs using their great
+java, are few of them. It also performs parallel test runs using their great
 APIs and command line tools. **Free for open repositories, Enterprise for
 private.**  
 <https://travis-ci.org/getting_started>
@@ -246,7 +246,7 @@ Access Jenkins : <http://192.168.33.10:8080/login?from=%2F>
 
 ![](media/d75a30fbbc076c915f1c91a495b54fa1.png)
 
-In the terminal window, we’ll use the **cat** command to display the password:
+In the terminal window, we’ll use the **cat** command to display the password:
 `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
 
 

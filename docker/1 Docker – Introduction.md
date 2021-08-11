@@ -117,19 +117,19 @@ container to ensure that your application works seamlessly in any environment
 
 #### What is Container ?
 
-Docker Container is a standardized unit which can be created on the fly to
+Docker Container is a standardized unit which can be created on the fly to
 deploy a particular application or environment. It could be an Ubuntu container,
 CentOs container, etc. to full-fill the requirement from an operating system
-point of view. Also, it could be an application-oriented container like CakePHP
+point of view. Also, it could be an application-oriented container like CakePHP
 container or a Tomcat-Ubuntu container etc.
 
 <u>**Let’s understand it with an example:**</u>  
-A company needs to develop a Java Application. In order to do so the
+A company needs to develop a Java Application. In order to do so the
 **developer** will setup an environment with tomcat server installed in it. Once
 the application is developed, it needs to be tested by the tester.
 
-Now the **tester** will again set up tomcat environment from the scratch to test
-the application. Once the application testing is done, it will be deployed on
+Now the **tester** will again set up tomcat environment from the scratch to test
+the application. Once the application testing is done, it will be deployed on
 the production server.
 
 Again, the **production** needs an environment with tomcat installed on it, so
@@ -141,7 +141,7 @@ approach:
 
 2.  There could be a version mismatch in different setups i.e. the developer &
     tester may have installed tomcat 7, however the system admin installed
-    tomcat 9 on the production server. 
+    tomcat 9 on the production server. 
 
 Now, I will show you how Docker container can be used to prevent this loss.
 
@@ -210,7 +210,7 @@ Docker Architecture
 Docker Architecture includes
 * Docker client – used to trigger Docker commands,
 * Docker Host – running the Docker Daemon 
-* Docker Registry – storing Docker Images. 
+* Docker Registry – storing Docker Images. 
 * The Docker Daemon running within.
 * Docker Host - is responsible for the images and containers.
 
@@ -237,9 +237,9 @@ Docker Engine Architecture
 Docker Engine is simply the docker application that is installed on your host
 machine. It works like a client-server application which uses:
 
--   A **server** which is a type of long-running program called a daemon process
+-   A **server** which is a type of long-running program called a daemon process
 
--   A command line interface (CLI) **client**
+-   A command line interface (CLI) **client**
 
 -   REST API is used for communication between the CLI client and Docker Daemon
 
@@ -254,7 +254,7 @@ from the CLI client to the Docker Daemon.
 
 Docker Image can be compared to a template which is used to create Docker
 Containers. They are the building blocks of a Docker Container. These Docker
-Images are created using the build command. These Read only templates are used
+Images are created using the build command. These Read only templates are used
 for creating containers by using the run command.
 
 ![](media/e58214c275d87d723d74b63dddaef823.png)
@@ -264,11 +264,11 @@ for creating containers by using the run command.
 Containers are the ready applications created from Docker Images or you can say
 a Docker Container is a running instance of a Docker Image and they hold the
 entire package needed to run the application. This happens to be the
-ultimate utility of Docker.
+ultimate utility of Docker.
 
 ### Docker Registry?
 
-Docker Registry is where the Docker Images are stored. The Registry can be
+Docker Registry is where the Docker Images are stored. The Registry can be
 either a user’s local repository or a public repository like a Docker Hub
 allowing multiple users to collaborate in building an application.
 
@@ -381,7 +381,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-**Install Docker on Ubuntu 14.04 LTS(latest versions not working)**  
+**Install Docker on Ubuntu 14.04 LTS(latest versions not working)**  
 We will begin by installing with the following:
 ```powershell
 sudo apt-get install docker.io
