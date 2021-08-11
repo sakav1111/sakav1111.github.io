@@ -68,11 +68,11 @@ Here is a description of what each directory represents:
 
 -   **templates**: This directory is reserved for templates that will generate
     files on remote hosts. Templates typically use variables defined on files
-    located in the vars directory, and on host information that is collected at
+    located in the vars directory, and on host information that is collected at
     runtime.
 
 -   **tasks**: This directory contains one or more files with tasks that would
-    normally be defined in the tasks section of a regular Ansible playbook.
+    normally be defined in the tasks section of a regular Ansible playbook.
     These tasks can directly reference files and templates contained in their
     respective directories within the role, without the need to provide a full
     path to the file.

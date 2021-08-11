@@ -30,7 +30,7 @@ application server at the end of a build.
 ![](media/f6dab027d46cfb202a23a7e9fa0c2b24.png)
 
 **Configure Job**  
-Add **post-build** action \> **Deploy war/ear to a container** option.
+Add **post-build** action \> **Deploy war/ear to a container** option.
 
 ![](media/aa2d8a43d9c19a1b0bc42b28ced28410.png)
 

@@ -31,7 +31,7 @@ other location.
 2.Configuring Apache Ant in Windows
 ------------------------------------
 
-1.To install [Apache Ant](http://ant.apache.org/bindownload.cgi) on Windows,
+1.To install [Apache Ant](http://ant.apache.org/bindownload.cgi) on Windows,
 you just need to download the Ant’s zip file
 
 ![](media/e7883b4f3b8de4eac7f65a1f6c4c1d7c.png)
@@ -40,7 +40,7 @@ you just need to download the Ant’s zip file
 
 ![](media/ec52006103de1cbeab2b519060783b58.png)
 
-3.Configure the **JAVA_HOME** Windows environment variables by specifying Java
+3.Configure the **JAVA_HOME** Windows environment variables by specifying Java
 Installation Location
 
 **Control Panel → User Accounts → User Accounts → Change my Environment
@@ -48,12 +48,12 @@ Variables**
 
 ![](media/9565bc9e92d915c25893411ac679ba27.png)
 
-4.Add **ANT_HOME** as the Windows environment variable, and point it to your
+4.Add **ANT_HOME** as the Windows environment variable, and point it to your
 Ant folder
 
 ![](media/9fce195485844b35e59f1cf82615ef03.png)
 
-5.Update **PATH** variable, append **%ANT_HOME%\\bin** at the end, so that you
+5.Update **PATH** variable, append **%ANT_HOME%\\bin** at the end, so that you
 can run the Ant’s command everywhere
 
 ![](media/c765d216ed1fb136165ee34ba476cd7c.png)
@@ -226,7 +226,7 @@ In Maven if we write dependency details it will automatically contacts the repo
 server and downloads Jar files mentioned in pom.xml. In Ant manage the project
 external libraries with **Apache Ivy**
 
-**1.Create this file ivy.xml**
+**1.Create this file ivy.xml**
 
 We use Apache Ivy to get the project’s external libraries / dependencies.
 ```xml
@@ -241,9 +241,9 @@ We use Apache Ivy to get the project’s external libraries / dependencies.
 </ivy-module>
 ```
 
-**2.Update build.xml**
+**2.Update build.xml**
 
-Update build.xml, add ivy namespace on top, and “ivy" task to download the ivy
+Update build.xml, add ivy namespace on top, and “ivy" task to download the ivy
 module, and “resolve" task to ask Ivy module to download the external libraries
 ```xml
 //build.xml
@@ -275,7 +275,7 @@ $ ant ivy
 
 
 To download the external libraries, run task “resolve". The declared libraries
-will be downloaded to the project lib folder.
+will be downloaded to the project lib folder.
 ```xml
 $ ant resolve
 ```

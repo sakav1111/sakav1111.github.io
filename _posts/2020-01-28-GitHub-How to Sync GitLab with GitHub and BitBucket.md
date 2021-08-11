@@ -19,20 +19,20 @@ Sync GitLab to GitHub
 
 To set up a mirror from GitLab to GitHub, you need to follow these steps:
 
-1.Create a [GitHub personal access
-token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) with
-the `public_repo box` checked.
+1.Create a [GitHub personal access
+token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) with
+the `public_repo box` checked.
 
 **Creating GitHub token**  
 Profile > Settings > Developer settings > Personal access tokens > Generate
-New > Select the scopes, or permissions(public_repo  cheked) >Generate
+New > Select the scopes, or permissions(public_repo  cheked) >Generate
 
 copy the token to your clipboard : HXCGGJsdfCGGsAASSssassSDDSDZsss
 
 2.Login to Gitlab > Select Repository > Settings > Repository > Select :
 Mirroring repositories > Provide Below details
 
-3.Fill in the Git repository URL field using this format:
+3.Fill in the Git repository URL field using this format:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 https://<your_github_username>@github.com/<your_github_group or username>/<your_github_project>.git
@@ -43,14 +43,14 @@ https://smlcodes@github.com/smlcodes/springmvc.git
 
 Cross Check By hitting above URL in browser
 
-4.Fill in Password field with your GitHub personal access token.
+4.Fill in Password field with your GitHub personal access token.
 
 ![](media/2c438d80d8b73c69ebc4395385e2916b.png)
 
-5.Click the Mirror repository button.
+5.Click the Mirror repository button.
 
 The mirrored repository will be listed. For
-example, https://*****:*****\@github.com\<your_github_group>\<your_github_project>.git.
+example, https://*****:*****\@github.com\<your_github_group>\<your_github_project>.git.
 
 The repository will push soon. To force a push, click the appropriate button
 

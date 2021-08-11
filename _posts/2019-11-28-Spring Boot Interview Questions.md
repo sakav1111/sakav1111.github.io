@@ -68,14 +68,14 @@ applications only.
 
 ## How to connect to an external database like MSSQL or oracle with Spring boot?
 
-**Step 1** -The first step to connect the database like Oracle or MySql is
+**Step 1** -The first step to connect the database like Oracle or MySql is
 adding the dependency for your database connector to pom.xml.
 
-**Step 2** -The next step is the elimination of H2 Dependency from pom.xml
+**Step 2** -The next step is the elimination of H2 Dependency from pom.xml
 
-**Step 3** -Step 3 includes the schema and table to establish your database.
+**Step 3** -Step 3 includes the schema and table to establish your database.
 
-**Step 4** -The next step is configuring of the database by using Configure
+**Step 4** -The next step is configuring of the database by using Configure
 *application.properties* to connect to your database.
 
 **Step 5**-And the last step is to restart your device and your connection is
@@ -152,12 +152,12 @@ To Build WAR with out Tomact we need to below 2 Changes
 ```
 
 
-## What is Spring Boot DevTools used for?
+## What is Spring Boot DevTools used for?
 
 Spring Boot Developer Tools, or DevTools, is a set of tools making the
-development process easier. 
+development process easier. 
 
-The *spring-boot-devtools* module is automatically disabled if the application
+The *spring-boot-devtools* module is automatically disabled if the application
 runs in production
 
 By default, DevTools applies properties suitable to a development environment.
@@ -188,10 +188,10 @@ in **/META-INF/maven**, **/META-INF/resources**,**/resources,
 /static**, **/public or /templates** will not trigger a restart.
 
 But If you want to customize these exclusions you can use
-the **spring.devtools.restart.exclude** property.
+the **spring.devtools.restart.exclude** property.
 
 If you want to keep those defaults and add additional exclusions, use
-the **spring.devtools.restart.additional-exclude** property instead.
+the **spring.devtools.restart.additional-exclude** property instead.
 
 ## What is Hot swapping in spring boot?
 
@@ -217,37 +217,37 @@ public class DemoApplicationTests {
 }
 ```
 
-##  What is Spring Boot Actuator?
+##  What is Spring Boot Actuator?
 
 Spring Boot provides actuator to monitor and manage our application. **Actuator
 is a tool which has HTTP endpoints**. when application is pushed to production,
 you can choose to manage and monitor your application using HTTP endpoints.
 
 **The actuator provides features like auditing, health, metrics,
-environment information, thread dump etc.** using HTTP or JMX endpoints. Here
+environment information, thread dump etc.** using HTTP or JMX endpoints. Here
 are some of the most common built-in actuator endpoints:
 
--   *beans* – **Displays a complete list of all the Spring beans in your
+-   *beans* – **Displays a complete list of all the Spring beans in your
     application.**
 
--   auditevents – Exposes audit events information for the current application.
+-   auditevents – Exposes audit events information for the current application.
 
--   *caches* – Exposes available caches.
+-   *caches* – Exposes available caches.
 
--   *configprops* – Displays a collated list of all @ConfigurationProperties.
+-   *configprops* – Displays a collated list of all @ConfigurationProperties.
 
--   *health* – **Shows application health information**.
+-   *health* – **Shows application health information**.
 
--   *info* – Displays arbitrary application info.
+-   *info* – Displays arbitrary application info.
 
--   *metrics* – Shows ‘metrics’ information for the current application.
+-   *metrics* – Shows ‘metrics’ information for the current application.
 
--   *mappings* – **Displays a collated list of all @RequestMapping paths.**
+-   *mappings* – **Displays a collated list of all @RequestMapping paths.**
 
--   *sessions* – Allows retrieval and deletion of user sessions from a Spring
+-   *sessions* – Allows retrieval and deletion of user sessions from a Spring
     Session-backed session store.
 
--   threaddump – Performs a thread dump.
+-   threaddump – Performs a thread dump.
 
 ## How do you Change tomcat HTTP port & Context URL?
 
@@ -265,11 +265,11 @@ Yes, we can control logging with Spring Boot by specifying log levels on
 application.properties file.
 
 Spring Boot loads this file when it exists in
-the [classpath](http://www.java67.com/2012/08/what-is-path-and-classpath-in-java-difference.html) and
+the [classpath](http://www.java67.com/2012/08/what-is-path-and-classpath-in-java-difference.html) and
 it can be used to configure both Spring Boot and application code.  
   
 Spring Boot uses Commons Logging for all internal logging and you can change log
-levels by adding following lines in the **application.properties** file:  
+levels by adding following lines in the **application.properties** file:  
 ```java
 logging.level.org.springframework=DEBUG
 logging.level.com.demo=INFO

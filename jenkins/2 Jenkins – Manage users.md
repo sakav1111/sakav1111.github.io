@@ -115,8 +115,8 @@ To Test the LDAP Configuration, click on Test LADP settings
 SSO Configuration
 -----------------
 
-To provide SSO Services in our environment, we do use Keycloak as the central
-service. To use this in [Jenkins](http://www.jenkins.io/), we do use the OpenId
+To provide SSO Services in our environment, we do use Keycloak as the central
+service. To use this in [Jenkins](http://www.jenkins.io/), we do use the OpenId
 Connect Plugin.
 
 For this to work, a new client has to be created in the Keycloak System, and a

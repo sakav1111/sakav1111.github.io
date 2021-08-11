@@ -35,12 +35,12 @@ Creating a data source involves the following processes:
 
 **To create a JAAS J2C authentication, follow these steps:**
 
-1.  Go to **WebSphere Administration** Console > **Security** > **Global
+1.  Go to **WebSphere Administration** Console > **Security** > **Global
     Security**.
 
  
-2.  Expand **Java Authentication** and **Authorization Service** >
-    click **J2C authentication data **\> click **New**.
+2.  Expand **Java Authentication** and **Authorization Service** >
+    click **J2C authentication data **\> click **New**.
 
 
 
@@ -49,27 +49,27 @@ Creating a data source involves the following processes:
  ![](media/ibmimage1.png)
 
 You must enter your MySQL database alias, user name and password
-in **Alias**, **User ID** and **Password**.
+in **Alias**, **User ID** and **Password**.
 
-4.  Click **OK** : A screen appears to save the master configuration.
+4.  Click **OK** : A screen appears to save the master configuration.
 
-5.  Click **Save**.
+5.  Click **Save**.
 
 ## Creating a JDBC Provider
 
 **To create a JDBC provider, follow these steps:**
 
-1.  Go to **Resources** > **JDBC**, and click the **JDBC Provider**.
+1.  Go to **Resources** > **JDBC**, and click the **JDBC Provider**.
 
 
 2.  Select your server scope. The sope name may appear
-    as **Node=XXXXNode01**,** Server=server1**.
+    as **Node=XXXXNode01**,** Server=server1**.
 
-3.  Click **New**.
+3.  Click **New**.
 
-4.  Create a JDBC provider with name *MySQL JDBC Provider*.
+4.  Create a JDBC provider with name *MySQL JDBC Provider*.
 
-5.  Set *User defined* as **Database type**.
+5.  Set *User defined* as **Database type**.
 
 6.  Download MySQL connector j jar & provide class path :
     `C:\\IBM\\jars\\mysql-connector-java-5.1.47-bin.jar`
@@ -82,7 +82,7 @@ in **Alias**, **User ID** and **Password**.
 
 ![](media/ibmimage2.png) 
 
-7.  Click **Next**.
+7.  Click **Next**.
 
 
 
@@ -93,12 +93,12 @@ in **Alias**, **User ID** and **Password**.
 
 
 
-9.  Click **Next** and review your inputs.
+9.  Click **Next** and review your inputs.
 
 
 
 
-10. Click **Finish**.
+10. Click **Finish**.
 
 
 
@@ -107,46 +107,46 @@ in **Alias**, **User ID** and **Password**.
 
 **To create a Data source, follow these steps:**
 
-1.  Go to **Resources** > **JDBC**, and click **Data sources**.
+1.  Go to **Resources** > **JDBC**, and click **Data sources**.
 
 
 
 
 2.  Select you server Scope. The scope name may appear
-    as **Node=XXXXNode01**,** Server=server1**.
+    as **Node=XXXXNode01**,** Server=server1**.
 
 
 
 
-3.  Click **New**.
+3.  Click **New**.
 
 
 
 
-4.  Provide *ConsoleDBDS* as **Datasource Name**.
+4.  Provide *ConsoleDBDS* as **Datasource Name**.
 
 
 
 
-5.  Provide *jdbc/ConsoleDB* as **JNDI Name** (you must configure the
-    same JNDI name in the syncconsole.properties file).
+5.  Provide *jdbc/ConsoleDB* as **JNDI Name** (you must configure the
+    same JNDI name in the syncconsole.properties file).
 
 
 
 
-6.  Click **Next**.
+6.  Click **Next**.
 
 
 
 
-7.  Select an existing JDBC provider, for example, *MySQL JDBC
-    Provider* (created in [Creating a JDBC
+7.  Select an existing JDBC provider, for example, *MySQL JDBC
+    Provider* (created in [Creating a JDBC
     Provider](https://docs.kony.com/6_5/konylibrary/sync/kmf_sync_installation_windowsmanual_websphere/Content/Creating_Datasource_for_SyncConsole_Schema__MySQL_.htm#Creating___JDBC_Provider)).
 
 
 
 
-8.  Click **Next**.
+8.  Click **Next**.
 
 
 
@@ -156,7 +156,7 @@ in **Alias**, **User ID** and **Password**.
 
 
 
-10. Click **Next**.
+10. Click **Next**.
 
 
 
@@ -164,11 +164,11 @@ in **Alias**, **User ID** and **Password**.
 11. Setup security aliases shown below, choose already created JAAS --
     J2C Authentication Data here:
 
-**Component-managed authentication alias**: *XXXNode01/mysqlroot*\
-**Mapping configuration alias**: *DefaultPrincipalMapping*\
-**Container-managed authentication alias**: *XXXNode01/mysqlroot.*
+**Component-managed authentication alias**: *XXXNode01/mysqlroot*\
+**Mapping configuration alias**: *DefaultPrincipalMapping*\
+**Container-managed authentication alias**: *XXXNode01/mysqlroot.*
 
-12. Click **Next**, review changes, and then click **Finish**.
+12. Click **Next**, review changes, and then click **Finish**.
 
 ## Setting Custom Properties of Data Source
 
@@ -178,17 +178,17 @@ a data source.
 
 **To set the custom properties of a data source, follow these steps:**
 
-1.  Click **MySQL Data source** to open it.
+1.  Click **MySQL Data source** to open it.
 
 
 
 
-2.  Click **Custom Properties** under **Additional Properties** section.
+2.  Click **Custom Properties** under **Additional Properties** section.
 
 
 
 
-3.  Click **New** and set the following properties. If Customer property
+3.  Click **New** and set the following properties. If Customer property
     already exists with the below names, edit them and provide values.
  ```sql
 serverName = localhost (the host name or IP address of the MySQL server)

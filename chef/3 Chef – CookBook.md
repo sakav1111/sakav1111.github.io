@@ -103,8 +103,8 @@ Resources can be of many different types. Some common ones are:
 
 -   **cron**: Edit an existing cron file on the node
 
-You can learn about the [different resource
-types](http://docs.opscode.com/resource.html) here.
+You can learn about the [different resource
+types](http://docs.opscode.com/resource.html) here.
 
 ![](media/d3208fbe1a00797f0d70006e92f4cb09.png)
 

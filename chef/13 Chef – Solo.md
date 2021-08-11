@@ -12,7 +12,7 @@ tags:
 Chef – Solo
 ===========
 
-**Chef-solo** behaves as a standalone system, it is in itself a client & a
+**Chef-solo** behaves as a standalone system, it is in itself a client & a
 server.
 
 Errors
@@ -24,13 +24,13 @@ May be we need to create cookbooks under cookbooks folder.
 
 #### ERROR: RuntimeError: Please set EDITOR environment variable.
 
-You have to define EDITOR as environment variable.
+You have to define EDITOR as environment variable.
 
 Try
 
 export EDITOR=\$(which vi)
 
-To persist this, add it to \~/.bashrc or \~/.bash_profile.
+To persist this, add it to \~/.bashrc or \~/.bash_profile.
 
 #### ERROR: Cannot find a cookbook named learn_chef_apache2; did you forget to add metadata to a cookbook?
 
@@ -49,7 +49,7 @@ the same IP address, we get the error message
 
 ERROR: Net::SSH::HostKeyMismatch: fingerprint … does not match for “…”
 
-Open the **\~/.ssh/known_hosts** file and delete the line that contains the IP
+Open the **\~/.ssh/known_hosts** file and delete the line that contains the IP
 address of the server.
 
 #### [shorten file path in Any terminal](https://askubuntu.com/questions/302667/shorten-file-path-in-terminal)

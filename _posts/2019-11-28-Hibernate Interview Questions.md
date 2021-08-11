@@ -194,7 +194,7 @@ Vehicle.hbm.xml
 
 ![E:\\Users\\satyacodes\\Pictures\\12.png](media/370265e2d96963013179c976e9e5ac48.png)
 
-If we want to select a **Complete Object** from the database, we use POJO class
+If we want to select a **Complete Object** from the database, we use POJO class
 reference in place of `*` while constructing the query
 ```java
 // In SQL
@@ -209,7 +209,7 @@ Note: here s is the reference of EmployeeBo
 ```
 
 
-If we want to load the **Partial Object** from the database that is only
+If we want to load the **Partial Object** from the database that is only
 selective properties of an objects, then we need to replace column names with
 POJO class variable names
 ```java
@@ -244,16 +244,16 @@ changes may invalidate the cache
 
 ## First Level Cache & Second Level Cache?
 
-Every fresh session having its own **cache memory**, **Caching is a mechanism
-for storing the loaded objects into a cache memory**. 
+Every fresh session having its own **cache memory**, **Caching is a mechanism
+for storing the loaded objects into a cache memory**. 
 
-The advantage of cache mechanism is, whenever again we want to load the same
-object from the database then instead of hitting the database once again, it
+The advantage of cache mechanism is, whenever again we want to load the same
+object from the database then instead of hitting the database once again, it
 loads from the local cache memory only**, so that the no. of round trips between
-an application and a database server got decreased**.  It means caching
-mechanism increases the performance of the application.
+an application and a database server got decreased**.  It means caching
+mechanism increases the performance of the application.
 
-In hibernate we have two levels of caching
+In hibernate we have two levels of caching
 
 1.  **First Level Cache** (Session Cache)
 
@@ -261,22 +261,22 @@ In hibernate we have two levels of caching
 
 ### `1.First Level Cache`
 
--   By default, for each hibernate application, **the first level cache is
+-   By default, for each hibernate application, **the first level cache is
     automatically enabled. `We can’t Enable/Disable first level cache`**
 
--   the first level cache is associated with the **session** object and
-    **scope** of the cache **is limited to one session only**
+-   the first level cache is associated with the **session** object and
+    **scope** of the cache **is limited to one session only**
 
 -   When we load an object for the first time from the database then the object
-    will be loaded from the database and the loaded object will be stored in the
-    cache memory maintained by that session object
+    will be loaded from the database and the loaded object will be stored in the
+    cache memory maintained by that session object
 
--   If we load the same object once again, with in the same session, then the
-    object will be loaded from the local cache memory not from the database
+-   If we load the same object once again, with in the same session, then the
+    object will be loaded from the local cache memory not from the database
 
--   If we load the same object by opening other session, then again the object
+-   If we load the same object by opening other session, then again the object
     will load from the database and the loaded object will be stored in the
-    cache memory maintained by this new session
+    cache memory maintained by this new session
 
 **Example:**
 
@@ -305,20 +305,20 @@ will be destroyed
 5, again i created one new session and loaded the same object with id 101, but
 this time hibernate will loads the object from the database
 
-if we want to remove the objects that are stored in the cache memory, then we
-need to call either **evict() or clear()** methods
+if we want to remove the objects that are stored in the cache memory, then we
+need to call either **evict() or clear()** methods
 
 ### `2.Second Level Cache`
 
-Whenever we are loading any object from the database, then hibernate verify
-whether that object is available in the local cache(**first level
-cache**) memory of that particular session, if not available then hibernate
-verify whether the object is available in global cache(**second level cache)**,
-if not available then hibernate will hit the database and loads the object from
-there, and then **first stores in the local cache of the session , then in the
+Whenever we are loading any object from the database, then hibernate verify
+whether that object is available in the local cache(**first level
+cache**) memory of that particular session, if not available then hibernate
+verify whether the object is available in global cache(**second level cache)**,
+if not available then hibernate will hit the database and loads the object from
+there, and then **first stores in the local cache of the session , then in the
 global cache**
 
-**SessionFactory** holds the second level cache data. It is global for all the
+**SessionFactory** holds the second level cache data. It is global for all the
 session objects and not enabled by default.
 
 Different vendors have provided the implementation of Second Level Cache
@@ -331,10 +331,10 @@ Different vendors have provided the implementation of Second Level Cache
 
 4.  **JBoss Cache**
 
-To enable second level cache in the hibernate, then the following **3** changes
+To enable second level cache in the hibernate, then the following **3** changes
 are required
 
-1.**Add provider class** in hibernate configuration file
+1.**Add provider class** in hibernate configuration file
 ```java
 <property name="hibernate.cache.provider_class">
     org.hibernate.cache.EhCacheProvider
@@ -346,17 +346,17 @@ are required
 <cache usage="read-only" />
 ```
 
--   **read-only:** caching will work for read only operation.
+-   **read-only:** caching will work for read only operation.
 
--   **nonstrict-read-write:** caching will work for read and write but one at a
+-   **nonstrict-read-write:** caching will work for read and write but one at a
     time.
 
--   **read-write:** caching will work for read and write, can be used
+-   **read-write:** caching will work for read and write, can be used
     simultaneously.
 
--   **transactional:** caching will work for transaction.
+-   **transactional:** caching will work for transaction.
 
-3.create xml file called **ehcache.xml** and place where you have mapping and
+3.create xml file called **ehcache.xml** and place where you have mapping and
     configuration xml’s
 
 **Example:**
@@ -443,21 +443,21 @@ public class CacheDemo {
 
 -   Query and Criteria interface
 
-## Difference between get() vs load() method in Hibernate? (detailed answer) 
-The key difference between get() and load() method is that
+## Difference between get() vs load() method in Hibernate? (detailed answer) 
+The key difference between get() and load() method is that
 
 -   **load() will throw an exception** if an object with id passed to them is
     not found
 
 -   **get() will
-    return **[null](http://javarevisited.blogspot.com/2014/12/9-things-about-null-in-java.html)**.**
+    return **[null](http://javarevisited.blogspot.com/2014/12/9-things-about-null-in-java.html)**.**
 
 Another important difference is **that load can return proxy without hitting the
 database** unless required (when you access any attribute other than id) but
-get() always go to the database, so sometimes using load() can be faster than
-the get() method.
+get() always go to the database, so sometimes using load() can be faster than
+the get() method.
 
-It makes sense to use the load() method if you know the object exists but get()
+It makes sense to use the load() method if you know the object exists but get()
 method if you are not sure about object's existence.
 
 | **Parameter**      | **get**                                                                 | **load**                                                             |
@@ -465,11 +465,11 @@ method if you are not sure about object's existence.
 | Database retrieval | It always hits the database                                             | It does not hit database                                             |
 | If null            | If it does not get the object with id, it returns null, null in databse | If it does get the object with id, it throws ObjectNotFound in Cache |
 | Proxy              | It returns real object                                                  | It returns proxy object                                              |
-| Use                | If you are not sure if object with id exists or not, you can use get    | If you are sure about existence of object, you can use load          |
+| Use                | If you are not sure if object with id exists or not, you can use get    | If you are sure about existence of object, you can use load          |
 
 ## **What is the difference between save() and persist() method in Hibernate?**
 
--   **Serializable  Object save()** returns a Serializable object
+-   **Serializable  Object save()** returns a Serializable object
 
 -   **void persist()** method is void, so it doesn't return anything.
 
@@ -568,7 +568,7 @@ session.update(stock);
 
 
 Hibernate will only insert or update the STOCK table, no update on the foreign
-key column. [More detail example
+key column. [More detail example
 here…](http://www.mkyong.com/hibernate/inverse-true-example-and-explanation/)
 
 ### 2.cascade
@@ -605,7 +605,7 @@ session.update(stock);
 
 
 It will inserted or updated the record into STOCK table and call another insert
-or update statement (cascade="save-update") on StockDailyRecord. [More detail
+or update statement (cascade="save-update") on StockDailyRecord. [More detail
 example
 here…](http://www.mkyong.com/hibernate/hibernate-cascade-example-save-update-delete-and-delete-orphan/)
 
@@ -618,13 +618,13 @@ developers are worth to spend time to research on it, because misunderstand the
 concept or misuse it will bring serious performance or data integrity issue in
 your application.
 
-## **Does SessionFactory is thread-safe in Hibernate? (detailed answer)**  
+## **Does SessionFactory is thread-safe in Hibernate? (detailed answer)**  
 **SessionFactory is both Immutable and thread-safe** and it has just one single
 instance in Hibernate application. It is used to create Session object and it
 also provide caching by storing SQL queries stored by multiple session. The
 second level cache is maintained at SessionFactory level.
 
-## **Does Hibernate Session interface is thread-safe in Java? (detailed answer)**  
+## **Does Hibernate Session interface is thread-safe in Java? (detailed answer)**  
 No, Session object is not thread-safe in Hibernate and intended to be used
 with-in single thread in the application.
 
@@ -635,12 +635,12 @@ new Session** object afresh and give it to you. As session objects are not
 thread safe, you need to create one session object per request in multithreaded
 environment and one session per request in web applications too.
 
-**getCurrentSession()** When you call SessionFactory. getCurrentSession , **it
+**getCurrentSession()** When you call SessionFactory. getCurrentSession , **it
 creates a new Session if not exists , else use same session which is in current
 hibernate context**. It automatically flush and close session when transaction
 ends, so you do not need to do externally.If you are using hibernate in single
 threaded environment , you can use getCurrentSession, as it is faster in
-performance as compare to creating  new session each time.
+performance as compare to creating  new session each time.
 
 You need to add following property to hibernate.cfg.xml to use getCurrentSession
 method
@@ -673,14 +673,14 @@ in Entity class.
 
 ## How do you log SQL queries issued by the Hibernate framework in Java application?
 
-You can procedure the **show_sql** property to log [SQL
-queries](https://www.janbasktraining.com/blog/sql-union-all-operators/) delivered
+You can procedure the **show_sql** property to log [SQL
+queries](https://www.janbasktraining.com/blog/sql-union-all-operators/) delivered
 by the Hibernate framework
 
 ## What is named SQL query in Hibernate?
 
 Named queries are SQL queries which are defined in mapping document
-using **<sql-query>** tag and called using **Session.getNamedQuery()** method.
+using **<sql-query>** tag and called using **Session.getNamedQuery()** method.
 ```xml
 <sql-query name="findStudentByRollNumber">       
          <!--[CDATA[
@@ -690,8 +690,8 @@ using **<sql-query>** tag and called using **Session.getNamedQuery()** method.
 ```
 
 you can define named query in hibernate either by using annotations or XML
-mapping file, as I said above. **@NameQuery** is used to define single named
-query and **@NameQueries** is used to define multiple named query in hibernate.
+mapping file, as I said above. **@NameQuery** is used to define single named
+query and **@NameQueries** is used to define multiple named query in hibernate.
 ```java
 @NamedQueries({
 	@NamedQuery(
@@ -763,7 +763,7 @@ the database record was updated successful
 ## What is query cache in Hibernate?
 
 .Query cache can be used along with second level cache for improved performance.
-QueryCache actually stores the result of SQL query for future calls. Hibernate
+QueryCache actually stores the result of SQL query for future calls. Hibernate
 support various open source caching solution to implement Query cache e.g.
 EhCache
 

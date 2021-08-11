@@ -80,7 +80,7 @@ some key differences. Before Linux and Windows, UNIX dominated computer world.
 
 | **Comparison**               | **Linux**                                                                                                                                                     | **Unix**                                                                                                        |
 |------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| Definition                   | It is an open-source operating system, which is *freely available to everyone*.                                                                               | It is an operating system, which *can be only used by its copyrighters*.                                        |
+| Definition                   | It is an open-source operating system, which is *freely available to everyone*.                                                                               | It is an operating system, which *can be only used by its copyrighters*.                                        |
 | Examples                     | Ubuntu, Redhat, Fedora, etc.                                                                                                                                  | IBM AIX, HP-UX and Sun Solaris.                                                                                 |
 | Users                        | Anyone can use Linux like home user, developer or a student.                                                                                                  | It was developed mainly for servers, workstations and mainframes.                                               |
 | Usage                        | Used everywhere from servers, PC, smartphones, tablets to supercomputers.                                                                                     | used in servers, workstations& PCs.                                                                             |
@@ -101,10 +101,10 @@ enter key
 
 There are two types of shell commands
 
--   **Built-in shell commands:** They are part of a shell. Each shell has some
+-   **Built-in shell commands:** They are part of a shell. Each shell has some
     built in commands.
 
--   **External/Linux commands:** Each external command is a separate executable
+-   **External/Linux commands:** Each external command is a separate executable
     program written in C or other programming languages
 
  
@@ -115,7 +115,7 @@ There are two types of shell commands
 ![E:\\Users\\satyacodes\\Pictures\\12.png](media/0246a815e50cd29bf616959a2e65d371.png)
 
 All the directories in the Linux system comes under the root directory which is
-represented by a **forward** slash **(/)**
+represented by a **forward** slash **(/)**
 
 ![E:\\Users\\satyacodes\\Pictures\\12.png](media/d2e48b17a21b55a2714f32326e85fb97.png)
 
@@ -233,9 +233,9 @@ system partitions are also treated as files.
 
 We have following types of files in Linux
 
-1.  **Regular files (-):** It contain programs, executable files and text files.
+1.  **Regular files (-):** It contain programs, executable files and text files.
 
-2.  **Directory files (d):** It is shown in blue color. It contain list of
+2.  **Directory files (d):** It is shown in blue color. It contain list of
     files.
 
 3.  **Special files**
@@ -263,8 +263,8 @@ To work with files, we have following commands
 
 ### 3.1 “file" command 
 
-The **file** command is used to determine a file's type. The type printed will
-usually contain one of the words **text** (ASCII), **executable** or **data.**
+The **file** command is used to determine a file's type. The type printed will
+usually contain one of the words **text** (ASCII), **executable** or **data.**
 ```bash
 Syntax: file <filename>
 
@@ -329,7 +329,7 @@ Example
 
 
 To create multiple files just type all the file names with a single touch
-command 
+command 
 ```bash
 [smlcodes@centori files]$touch file1, file2, file3                               
 [smlcodes@centori files]$ls
@@ -404,7 +404,7 @@ rm <filename>
 
 ### 3.4 “cp" (copy) command
 
-The **cp** command is used to make copies of files and directories
+The **cp** command is used to make copies of files and directories
 
 **Syntax**
 ```bash
@@ -447,8 +447,8 @@ a.txt  files  j1,  j2  java  jsp  newfolder  spring
 
 ### 3.5 “mv" (move) command
 
-The mv command is used to move or rename files. **mv** renames
-file *SOURCE* to *DEST*, or moves the *SOURCE* file (or files) to *DIRECTORY*.
+The mv command is used to move or rename files. **mv** renames
+file *SOURCE* to *DEST*, or moves the *SOURCE* file (or files) to *DIRECTORY*.
 ```bash
 **Syntax:**
 mv [OPTION]... SOURCE... DIRECTORY
@@ -504,7 +504,7 @@ rename 's/old-name/new-name/'
 
 ### 3.7 “man" (manual) command
 
-  We can see the **manuals** for a command with the **man** command. On Linux
+  We can see the **manuals** for a command with the **man** command. On Linux
 and other Unix-like operating systems, man is the interface used to view the
 system's reference manuals
 ```bash
@@ -618,7 +618,7 @@ cat stands for "**catenate**." It reads data from files, and outputs their
 contents. It is the simplest way to display the contents of a file at the
 command line.
 
-**cat** is one of the most commonly-used commands in Linux. It can be used to:
+**cat** is one of the most commonly-used commands in Linux. It can be used to:
 
 -   **Display text files**
 
@@ -795,8 +795,8 @@ It will gives the history of previously executed commands
 # 5. Linux Pipes & Filters
 
 
-Linux Filter commands accept input data from **stdin** (standard input) and
-produce output on **stdout** (standard output). It transforms plain-text data
+Linux Filter commands accept input data from **stdin** (standard input) and
+produce output on **stdout** (standard output). It transforms plain-text data
 into a meaningful way and can be used with pipes to perform higher operations.
 
 These filters are very small programs that are designed for a specific function
@@ -870,7 +870,7 @@ In java we have follwing concepts
 
 ### 2.“cut" inside Pipes
 
- 'cut' command is used for selecting a specific column of a file.The coulmns can
+ 'cut' command is used for selecting a specific column of a file.The coulmns can
 be separated by a demiter like ‘ ’, ‘-’ , ‘,’(space, dash, comma) etc.
 ```bash
 Syntax: (here column number staers from 1,2,3…)
@@ -928,7 +928,7 @@ Dhoni-284
 
 ### 4. “comm" command  
 The 'comm' command compares two files or streams. By default, 'comm' will always
-display three columns. Both the files has to be in sorted order for 'comm'
+display three columns. Both the files has to be in sorted order for 'comm'
 command to be executed.
 
 1.  First column indicates non-matching items of first file
@@ -956,7 +956,7 @@ Here tee.txt is newly created file.
 
 
 ### 6. “tr" command  
-The command 'tr' stands for **'translate'**. It is used to translate, like from
+The command 'tr' stands for **'translate'**. It is used to translate, like from
 lowercase to uppercase and vice versa or new lines into spaces
 
 **Syntax**
@@ -983,8 +983,8 @@ uniq –c : command will counts the number of occurences of a word.
 
 ### 8. “wc" (Word Count) Command
 
-**wc**, or "word count," prints a count of **newlines**, **words**,
-and **bytes** for each input file.
+**wc**, or "word count," prints a count of **newlines**, **words**,
+and **bytes** for each input file.
 
 -   Wc –l : for line counts
 
@@ -1057,7 +1057,7 @@ We can use **Single bracket '>**'(overwrite) or **double bracket '>>'**
 (append) can be used to redirect standard output
 
 **Ovewrite (<):**  
-Commands with a single bracket **'>' overwrite** existing file content.
+Commands with a single bracket **'>' overwrite** existing file content.
 
 -   **>** : standard output
 
@@ -1065,13 +1065,13 @@ Commands with a single bracket **'>' overwrite** existing file content.
 
 -   **2>** : standard error
 
-Note: Writing **'1>'** or **'>' **and **'0<'** or **'<'** is same thing. But
-for stderr you have to write **'2>'**.
+Note: Writing **'1>'** or **'>' **and **'0<'** or **'<'** is same thing. But
+for stderr you have to write **'2>'**.
 
 ![E:\\Users\\satyacodes\\Pictures\\12.png](media/f06940ae165dd3b88036c10b1bec9e91.png)
 
 **Append(<<)**  
-Commands with a double bracket **'>>' do not overwrite **the existing file
+Commands with a double bracket **'>>' do not overwrite **the existing file
 content.
 
 -   **>>** - standard output
@@ -1085,7 +1085,7 @@ content.
 
 
 ###### I/O Redirect to a Program  
-**Pipe ’\|’** redirects a stream from one **program** to another. When pipe is
+**Pipe ’\|’** redirects a stream from one **program** to another. When pipe is
 used to send standard output of one program to another program, first program's
 data will not be displayed on the terminal, only the second program's data will
 be displayed
@@ -1101,10 +1101,10 @@ The bash shell has three standard streams in I/O redirection:
 -    `Standard input (stdin) :`  The stdin stream is numbered as stdin (0). The
     bash shell takes input from stdin. By default, keyboard is used as input.
 
--   `Standard output (stdout) :` The stdout stream is numbered as stdout (1).
+-   `Standard output (stdout) :` The stdout stream is numbered as stdout (1).
     The bash shell sends output to stdout. Output goes to display.
 
--   `Standard error (stderr) :` The stderr stream is numbered as stderr (2).
+-   `Standard error (stderr) :` The stderr stream is numbered as stderr (2).
     The bash shell sends error message to stderr. Error message goes to display
 
 
@@ -1153,9 +1153,9 @@ used to find a list of files having same pattern name.
 
 we may use following symbols in find command
 
--   **(.)** : For current directory name
+-   **(.)** : For current directory name
 
--   **(/)** : For root
+-   **(/)** : For root
 ```bash
 find . -name  	: Finding by Name
 find . –type	: Find by type
@@ -1187,8 +1187,8 @@ d: directory,	l:symbolic links, c: character devices, b: block devices
 
 ###### 2."locate" command 
 
-The **locate** command finds files by name. **locate** reads one or
-more databases prepared by **updatedb** and writes file names matching at least
+The **locate** command finds files by name. **locate** reads one or
+more databases prepared by **updatedb** and writes file names matching at least
 one of the PATTERNs to standard output.
 
 locate command is a background process and searches the file in database
@@ -1204,7 +1204,7 @@ locate sys.conf
 
 ###### 3."date" command
 
-The **date** command is used to print out, or change the value of, the system's
+The **date** command is used to print out, or change the value of, the system's
 time and date information.
 ```bash
 date syntax:
@@ -1396,7 +1396,7 @@ uid=79458(smlcodes) gid=79459(smlcodes) groups=79459(smlcodes) context=guest_u:g
 
 ### 2. “su" (Switch User) Command
 
-Su used to Change the current user ID to that of the superuser, or another user.
+Su used to Change the current user ID to that of the superuser, or another user.
 
 **su syntax**
 
@@ -1406,8 +1406,8 @@ su [options] [username]
 
 su – hope
 
-Switch the current user ID to that of user **hope**, and set the environment
-to **hope**'s login environment.
+Switch the current user ID to that of user **hope**, and set the environment
+to **hope**'s login environment.
 
 The su command, which is short for substitute user or switch user, is used to
 become another user during a login session.
@@ -1474,11 +1474,11 @@ userdel -r john
 ```
 
 
-#### 4. passwd 
+#### 4. passwd 
 
-The **passwd** command is used to change the password of a user account. A
-normal user can run **passwd** to change their own password, and a system
-administrator (the superuser) can use **passwd** to change another user's
+The **passwd** command is used to change the password of a user account. A
+normal user can run **passwd** to change their own password, and a system
+administrator (the superuser) can use **passwd** to change another user's
 password, or define how that account's password can be used or changed.
 
 **passwd syntax**
@@ -1493,7 +1493,7 @@ password, or define how that account's password can be used or changed.
 ```
 
 
-Running **passwd** with no options will change the password of the account
+Running **passwd** with no options will change the password of the account
 running the command. You will first be prompted to enter the account's current
 password:
 
@@ -1523,13 +1523,13 @@ the command line plus the default values from the system.
 
 >   groupadd [options] <group_name>
 
-**Example:** would create a new group called **"homegroup"**.
+**Example:** would create a new group called **"homegroup"**.
 
 >   groupadd homegroup
 
-#### 2. groupmod 
+#### 2. groupmod 
 
-The **groupmod** command modifies the definition of the specified GROUP
+The **groupmod** command modifies the definition of the specified GROUP
 
 **groupmod syntax**
 
@@ -1545,11 +1545,11 @@ The command groupdel will delete a group permanently from the system.
 
 **Syntax:**
 
->   groupdel **<group>**  
+>   groupdel **<group>**  
 
 **Example:**
 
->   groupdel **familygroup**
+>   groupdel **familygroup**
 
 
 
@@ -1559,18 +1559,18 @@ The command groupdel will delete a group permanently from the system.
 
 Every Linux system have three types of owners
 
-1.  **User:** A user is the one who created the file. By default, whosoever,
+1.  **User:** A user is the one who created the file. By default, whosoever,
     creates the file becomes the owner of the file. A user can create, delete,
     or modify the file.
 
-2.  **Group:** A group can contain multiple users. All the users belonging to a
+2.  **Group:** A group can contain multiple users. All the users belonging to a
     group have same access permission for a file.
 
-3.  **Other:** Any one who has access to the file other
-    than **user** and **group** comes in the category of** other**. Other has
+3.  **Other:** Any one who has access to the file other
+    than **user** and **group** comes in the category of** other**. Other has
     neither created the file nor is a group member.
 
-Users and groups can be locally managed in **/etc/psswd** or **/etc/group.**
+Users and groups can be locally managed in **/etc/psswd** or **/etc/group.**
 
 To check perimissions of files , use ls –lh command
 
@@ -1578,10 +1578,10 @@ To check perimissions of files , use ls –lh command
 
 In above output we have r,w,x. following table explains what they are
 
-| **permission**  | **Value** | **on a file **            | **on a directory **              |
+| **permission**  | **Value** | **on a file **            | **on a directory **              |
 |-----------------|-----------|---------------------------|----------------------------------|
-| **r (read)**    | **4**     | read file content (cat)   | read directory content (ls)      |
-| **w (write)**   | **2**     | change file content (vi)  | create file in directory (touch) |
+| **r (read)**    | **4**     | read file content (cat)   | read directory content (ls)      |
+| **w (write)**   | **2**     | change file content (vi)  | create file in directory (touch) |
 | **x (execute)** | **1**     | execute the file          | enter the directory (cd)         |
 
 **File permissions order is like (-rwx-rwx-rwx), for example** drwxrwxr-x.
@@ -1656,7 +1656,7 @@ chmod +t hello.java
 
 We have two types of commands in shell.
 
--   **Built-in** commands are internal commands that are built-in the shell.
+-   **Built-in** commands are internal commands that are built-in the shell.
     Built-in commands are called from the shell and executed directly within the
     shell itself. example of built-in commands are 'pwd', 'help', 'type', 'set',
     'unset', etc.
@@ -1746,8 +1746,8 @@ the **TCP/IP Internet protocol suite**.
 
 ###### 1. Network Interface Controller
 
-First, you have Network interface controller (NIC) (i.e. **network interface
-card**, **network adapter**, **LAN adapter**, **network card**). It's a piece of
+First, you have Network interface controller (NIC) (i.e. **network interface
+card**, **network adapter**, **LAN adapter**, **network card**). It's a piece of
 hardware that lets your computer talk to the internet.
 
 ###### 2. Router
@@ -1759,13 +1759,13 @@ between computers.
 
 ###### 3.MAC Address = Hardware Address = Physical Address
 
-Each Network Adapter has a ID, called [MAC
-address](http://en.wikipedia.org/wiki/MAC_address) (aka **hardware
-address**, **physical address**). This ID is burned into the hardware. (“MAC" is
+Each Network Adapter has a ID, called [MAC
+address](http://en.wikipedia.org/wiki/MAC_address) (aka **hardware
+address**, **physical address**). This ID is burned into the hardware. (“MAC" is
 abbreviation for “Media Access Control" (the name is historical).)
 
 MAC address is a 48 bits number. Usually written as 6 groups of 2 hex digits.
-For example, 01-23-45-67-89-abor 01:23:45:67:89:ab. Each 2 hex is a octet.
+For example, 01-23-45-67-89-abor 01:23:45:67:89:ab. Each 2 hex is a octet.
 
 **We can find the MAC address of the Network Adapters by using**
 
@@ -1791,36 +1791,36 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 **IP address is used to identify all internet devices**. (Each internet device
 may have one ore more IP address.) It's part of the IP protocol. There are 2
 versions of IP
-address: [IPv4](http://en.wikipedia.org/wiki/IPv4) and [IPv6](http://en.wikipedia.org/wiki/IPv6).
+address: [IPv4](http://en.wikipedia.org/wiki/IPv4) and [IPv6](http://en.wikipedia.org/wiki/IPv6).
 
 -   **IPv4 address** = 32 bits (4 octets). Usually written in 4 groups, each as
-    a decimal. For example, 172.16.254.1 (for IPv4), each decimal group is 1
+    a decimal. For example, 172.16.254.1 (for IPv4), each decimal group is 1
     octet.
 
 -   **IPv6 address** = 128 bits (16 octets). Usually written in 8 groups, 4
     digits of hex per group, separated by colon, with leading 0 omitted, for
-    example, 2001:db8:0:1234:0:567:8:1. Each group of hex represents 2 octets.
+    example, 2001:db8:0:1234:0:567:8:1. Each group of hex represents 2 octets.
 
 IPv4 is the older standard. Because it's only 32 bits, good for 2\^32 unique
 address (about 4.2 billion). This is not enough since late 1990s. So, IPv6 was
 invented.
 
-to find the IP address any router use : ip route. 
+to find the IP address any router use : ip route. 
 
 ###### 5. Host, Hostname
 
 A “host" typically refers to a particular computer (or internet device).
-A [Hostname](http://en.wikipedia.org/wiki/Hostname) is basically just a name for
+A [Hostname](http://en.wikipedia.org/wiki/Hostname) is basically just a name for
 a machine. It is used mostly as a human-friendly form to identify a machine.
 
 A host/machine may have more than one IP address (because it can have multiple
 Network Adapter, or, a computer can be setup to function as a router, etc.).
 
- to find your hostname use : hostname
+ to find your hostname use : hostname
 
 ###### 6.Port Number
 
-**port** → a integer number. **It serves as a address for software application
+**port** → a integer number. **It serves as a address for software application
 to talk to TCP**. **IP address is used to identify a computer**. Once the packet
 arrived on the computer, the port number serves as a address to identify the
 software that send/receive messages
@@ -1838,7 +1838,7 @@ connection, and call functions/methods to send/receive data on it.
 
 ###### 8. Routing
 
-[Routing](http://en.wikipedia.org/wiki/Routing) is one of the most important
+[Routing](http://en.wikipedia.org/wiki/Routing) is one of the most important
 element in internet, because it is routing that moves data.
 
 By definition, a router has 2 or more network adapters, because a router is used
@@ -1866,7 +1866,7 @@ and in some cases, metrics (distances) associated with those routes. The routing
 table contains information about the topology of the network immediately around
 it.
 
-To see the routing table your my computer use : ip route or route
+To see the routing table your my computer use : ip route or route
 
 [satya@centori \~]$ip route
 
@@ -1881,9 +1881,9 @@ default via 217.182.88.1 dev eth0 proto static metric 100
 3.Linux Neworking Commands
 --------------------------
 
-###### 1.ifconfig 
+###### 1.ifconfig 
 
-**ifconfig** stands for "interface configuration". It is used to view and change
+**ifconfig** stands for "interface configuration". It is used to view and change
 the configuration of the network interfaces on your system.
 ```bash
 [smlcodes@centori ~]$ifconfig                                                     
@@ -1914,69 +1914,69 @@ the system.
 
 ###### 2. PING Command
 
-**PING (Packet INternet Groper) command is the best way to test connectivity
-between two nodes**. Whether it is Local Area Network (LAN) or Wide Area
-Network (WAN). Ping use ICMP (Internet Control Message Protocol) to communicate
-to other devices. You can ping host name of ip address using below command.
+**PING (Packet INternet Groper) command is the best way to test connectivity
+between two nodes**. Whether it is Local Area Network (LAN) or Wide Area
+Network (WAN). Ping use ICMP (Internet Control Message Protocol) to communicate
+to other devices. You can ping host name of ip address using below command.
 
 **syyntax:**
 
->   ping <destination>  
+>   ping <destination>  
 
 **Example:**
 
->   ping satya.com  
+>   ping satya.com  
 
 ###### 3. TRACEROUTE Command
 
-traceroute is a network troubleshooting utility which **shows number of hops
+traceroute is a network troubleshooting utility which **shows number of hops
 taken to reach destination also determine packets traveling path**. Below we are
-tracing route to global DNS server IP Address and able to reach destination also
+tracing route to global DNS server IP Address and able to reach destination also
 shows path of that packet is traveling.
 
 **Syntax:**
 
->   traceroute **<destination>**  
+>   traceroute **<destination>**  
 
 **Exmaple:**
 
->   traceroute satya.com  
+>   traceroute satya.com  
 
 ###### 4. NETSTAT Command
 
-**Netstat (Network Statistic)** command display connection info, routing table
-information etc. To displays routing table information use option as -r.
+**Netstat (Network Statistic)** command display connection info, routing table
+information etc. To displays routing table information use option as -r.
 
 **Syntax:**
 
->   netstat  
+>   netstat  
 
 ###### 5. DIG Command
 
-**Dig (domain information groper)** query DNS related information like A
-Record, CNAME, MX Record etc. This command mainly use to
-troubleshoot DNS related query.
+**Dig (domain information groper)** query DNS related information like A
+Record, CNAME, MX Record etc. This command mainly use to
+troubleshoot DNS related query.
 
 **Syntax:**
 
->   dig <domainName> 
+>   dig <domainName> 
 
 ###### 6. NSLOOKUP Command
 
-nslookup command also use to find out DNS related query. The following examples
-shows A Record (IP Address) of satya.com.
+nslookup command also use to find out DNS related query. The following examples
+shows A Record (IP Address) of satya.com.
 
 **Syntax:**
 
->   nslookup <domainName>  
+>   nslookup <domainName>  
 
 **Example:**
 
->   nslookup satya.com 
+>   nslookup satya.com 
 
 ###### 7. ROUTE Command
 
-route command also shows and manipulate ip routing table. In computer
+route command also shows and manipulate ip routing table. In computer
 networking, a router is a device responsible for forwarding network traffic.
 When datagrams arrive at a router, the router must determine the best way to
 route them to their destination.
@@ -1996,12 +1996,12 @@ Adding default Gateway
 
 ###### 8. HOST Command
 
-host command to find name to IP or IP to name in IPv4 or IPv6 and also
-query DNS records.
+host command to find name to IP or IP to name in IPv4 or IPv6 and also
+query DNS records.
 
 **Syntax:**
 
->   host  **<resourceName>**  
+>   host  **<resourceName>**  
 
 Example
 
@@ -2009,30 +2009,30 @@ Host satya.com
 
 ###### 9. ARP Command
 
-ARP stands for **Address Resolution Protocol**, will manipulates or displays the
+ARP stands for **Address Resolution Protocol**, will manipulates or displays the
 kernel's IPv4 network neighbour cache. It can add entries to the table, delete
 one, or display the current content.
 
 **Syntax:**
 
->   arp  
+>   arp  
 
 ###### 10. IWCONFIG Command
 
-iwconfig command in Linux is use to configure a wireless network interface. You
-can see and set the basic Wi-Fi details like SSID channel and encryption
+iwconfig command in Linux is use to configure a wireless network interface. You
+can see and set the basic Wi-Fi details like SSID channel and encryption
 
 IWCONFIG
 
 ###### 11. HOSTNAME Command
 
-hostname is to identify in a network. Execute hostname command to see the
+hostname is to identify in a network. Execute hostname command to see the
 hostname of your box. You can set hostname permanently
-in /etc/sysconfig/network. Need to reboot box once set a proper hostname.
+in /etc/sysconfig/network. Need to reboot box once set a proper hostname.
 
 **Syntax:**
 
->   hostname 
+>   hostname 
 
 ###### 12. whois
 
@@ -2042,11 +2042,11 @@ information.
 
 **Syntax:**
 
->   whois **<websiteName>**   
+>   whois **<websiteName>**   
 
 **Example:**
 
->   whois satya.com  
+>   whois satya.com  
 
 
 
@@ -2111,7 +2111,7 @@ Linux Process Management
 ------------------------
 
 Processes are the programs that are running on your machine. They are managed by
-the kernel and each process has an ID associated with it called the **process ID
+the kernel and each process has an ID associated with it called the **process ID
 (PID).**
 
 ###### 1."ps" command
@@ -2133,12 +2133,12 @@ Example:
 
 ###### 2."kill" command
 
-kill is used to send a signal to a process. The default signal for **kill** is
-TERM (which will terminate or "kill" the process). 
+kill is used to send a signal to a process. The default signal for **kill** is
+TERM (which will terminate or "kill" the process). 
 
 **Syntax:**
 
->   kill -SIGNAL <ProcessId(PID)>  
+>   kill -SIGNAL <ProcessId(PID)>  
 
 | **Signal Name** | **Signal Number** | **Signal Use**            |
 |-----------------|-------------------|---------------------------|
@@ -2155,22 +2155,22 @@ Kill -9 22891
 ###### 3.service
 
 The service command starts, stop and restart a daemon or services by calling the
-script. Usually all scripts are stored in **/etc/init.d** directory.It runs a
+script. Usually all scripts are stored in **/etc/init.d** directory.It runs a
 script in as predictable environment as possible.
 
 **Syntax:**
 
->   service script_name command  
+>   service script_name command  
 
 Here, command can be anyone from start, stop, restart and status.
 
--   **stop command : service script_name stop  **
+-   **stop command : service script_name stop  **
 
--   **start command : service script_name start  **
+-   **start command : service script_name start  **
 
--   **restart command : service script_name restart  **
+-   **restart command : service script_name restart  **
 
--   **status command : service script_name status  **
+-   **status command : service script_name status  **
 
 VI Editor Usefull commands
 --------------------------

@@ -825,7 +825,7 @@ az acr create --resource-group myResourceGroup --name satyajohnnycontainer --sku
 **Create AKS cluster with 2 worker nodes**
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-az aks create --resource-group myResourceGroup --name  --node-count 2 --enable-addons monitoring --generate-ssh-keys
+az aks create --resource-group myResourceGroup --name  --node-count 2 --enable-addons monitoring --generate-ssh-keys
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

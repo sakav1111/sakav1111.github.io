@@ -22,40 +22,40 @@ pageview: true
 ## Servlet Lifecycle & execution flow?
 
 -   When ever we deploys the application, container loads the application &
-    creates **ServletContext** Object & waits for the Request
+    creates **ServletContext** Object & waits for the Request
 
 -   if we give `<load-on-startup>1</load-on-startup>` container will
     create ServletConfig Object when the time of Deploying application
 
--   when we give the url : <http://localhost:8080/Servlets/hello>, request
-    goes to container, and it searches for **/hello**url pattern in web.xml
+-   when we give the url : <http://localhost:8080/Servlets/hello>, request
+    goes to container, and it searches for **/hello**url pattern in web.xml
 
--   xml searches for **/hello** , in **<servlet-mapping>** and
-    gets **Servelt-name**
+-   xml searches for **/hello** , in **<servlet-mapping>** and
+    gets **Servelt-name**
 
 -   container loads HelloServlet class and creates
-    creates **ServletConfig** Object and calls inti() method
+    creates **ServletConfig** Object and calls inti() method
 
--   for every request it will calls **service(req,res)** method, for 100
+-   for every request it will calls **service(req,res)** method, for 100
     requests it will execute 100 times
 
--   **destroy()** method will be called before servlet is removed from the
+-   **destroy()** method will be called before servlet is removed from the
     container, and finally it will be garbage collected as usual.
 
 ## HttpServlet flow of execution?
 
--   Container first calls **public Service(req,res)** method
+-   Container first calls **public Service(req,res)** method
 
--   Public Service() method internally calls **protected
-    Service(req,res)** method
+-   Public Service() method internally calls **protected
+    Service(req,res)** method
 
--   Protected Service() method will internally calling **doGet() or doPost() or
-    doXXX()** depends on the type of http method used by the client
+-   Protected Service() method will internally calling **doGet() or doPost() or
+    doXXX()** depends on the type of http method used by the client
 
--   If the client is **not specifying the type of Http** method then Http
-    protocol by **default consider GET method**,
+-   If the client is **not specifying the type of Http** method then Http
+    protocol by **default consider GET method**,
 
--   so **finally** the client request is processed at **doGet() method**
+-   so **finally** the client request is processed at **doGet() method**
 
 ## ServletRequest ?
 
@@ -63,15 +63,15 @@ ServletRequest is send to Server to process particular request. It can send
 following details to servlet by submitting FORM or by URL.we can get these
 details at server side
 
--   public String **getParameter(“paramname");**
+-   public String **getParameter(“paramname");**
 
--   public Enumeration **getParameterNames();**
+-   public Enumeration **getParameterNames();**
 
--   public String[] **getParamterValues(“paramname");**
+-   public String[] **getParamterValues(“paramname");**
 
-## How can we create deadlock condition on our servlet? ([detailed answer](http://javarevisited.blogspot.com/2010/10/what-is-deadlock-in-java-how-to-fix-it.html))
+## How can we create deadlock condition on our servlet? ([detailed answer](http://javarevisited.blogspot.com/2010/10/what-is-deadlock-in-java-how-to-fix-it.html))
 
-Ans: one simple way to call doPost() method inside doGet() and doGet()method
+Ans: one simple way to call doPost() method inside doGet() and doGet()method
 inside doPost() it will create deadlock situation for a servlet.
 
 **Difference between DOM and SAX parser in Java? (answer)**  
@@ -82,7 +82,7 @@ DOM loads whole XML File in memory while SAX doesn't.
 -   **DOM** is fast and should be preferred for **small files**.  
       
     Read
-    more: <http://www.java67.com/2018/03/top-50-core-java-interview-questions.html#ixzz5fuXtTqen>
+    more: <http://www.java67.com/2018/03/top-50-core-java-interview-questions.html#ixzz5fuXtTqen>
 
 ## What is JSESSIONID in J2EE Web application - JSP Servlet?
 
@@ -90,7 +90,7 @@ HTTP protocol and Web Servers are stateless, what it means is that for web
 server every request is a new request to process and they can’t identify if it’s
 coming from client that has been sending request previously.
 
-**Session** is a conversional state between client and server and it can consist
+**Session** is a conversional state between client and server and it can consist
 of multiple request and response between client and server.
 
 Since HTTP and Web Server both are stateless, the only way to maintain a session
@@ -111,8 +111,8 @@ application purposes to avoid any session related issues.
 
 ## How servlet session will work, if Cookies disabled?
 
-In a web app, when user logs in, a HttpSession is created using HttpSession s =
-request.getSession(true); This creates a cookie with jsessionid on the browser.
+In a web app, when user logs in, a HttpSession is created using HttpSession s =
+request.getSession(true); This creates a cookie with jsessionid on the browser.
 But if cookies are disabled on browser, How can i proceed with login?
 
 If Cookies are disabled. You should be using URL Rewriting mechanism for Session
@@ -132,8 +132,8 @@ because they contain tags which may not be allowed by their schema.
 
 ### Ant
 
-Ant’s build file, called **build.xml** should reside in the base directory of
-the project. However *there is no restriction on the file name or its location*.
+Ant’s build file, called **build.xml** should reside in the base directory of
+the project. However *there is no restriction on the file name or its location*.
 You are free to use other file names or save the build file in some other
 location
 

@@ -29,14 +29,14 @@ I solve this issue following below step:
 
 sudo su
 
-1.  Add a jenkins user with the home “/var/lib/jenkins”. {Note : I am keeping my
-    home directory in /var/lib/jenkins} :
+1.  Add a jenkins user with the home “/var/lib/jenkins”. {Note : I am keeping my
+    home directory in /var/lib/jenkins} :
 
 useradd -d /var/lib/jenkins Jenkins
 
 **From the Jenkins Master**
 
-Copy the id_rsa.pub key from the **Jenkins** user on the master.
+Copy the id_rsa.pub key from the **Jenkins** user on the master.
 
 cat /var/lib/jenkins/.ssh/id_rsa.pub
 

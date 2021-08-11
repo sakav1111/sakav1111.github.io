@@ -47,7 +47,7 @@ Check if your computer is directly connected to your friends computer. How does
 your data reach his computer?
 
 -   The message you send reaches the switch. The switch sends the message to
-    your friends machine. 
+    your friends machine. 
 
 -   A switch is a device which connects all the devices within a network. All
     your computers are connected to a switch!
@@ -126,7 +126,7 @@ Domain Name
 ![](media/869a2ffbca8225da250aa11b64ffb283.png)
 
 Domain Name is a name given to an IP address or a collection of IP addresses. No
-two organizations can have the same domain name.   
+two organizations can have the same domain name.   
   
 www.XYZ Company.com is the name given to the IP address of the computer within
 XYZ Company.com domain, which stores the XYZ Company website
@@ -185,7 +185,7 @@ the rest of the devices
 ![](media/5227a5d5432e507dcd50870844ef394f.png)
 
 The machine with the IP address responds back, giving details of its MAC
-address. MAC is a unique value given to a computer. 
+address. MAC is a unique value given to a computer. 
 
 ![](media/7a2ebe02520a0dfe786dedbca9104c04.png)
 
@@ -202,7 +202,7 @@ address?
 
 Different unique values are meant for different purposes. For example, your
 employee number though unique is relevant only within XYZ Company, whereas a
-unique passport number is relevant throughout the world.   
+unique passport number is relevant throughout the world.   
   
 Similarly, IP and MAC are meant for different purposes.
 

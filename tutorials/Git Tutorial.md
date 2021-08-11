@@ -48,7 +48,7 @@ centralized version control systems it is the server machine
 **3. Distributed version control systems**  
 In a distributed version control system each user has a complete local copy of a
 repository on his individual computer. The user can copy an existing repository.
-This copying process is typically called *cloning*. Every clone contains the
+This copying process is typically called *cloning*. Every clone contains the
 full history of the collection of files and a cloned repository has the same
 functionality as the original repository.
 
@@ -73,8 +73,8 @@ can Setup GIT in our machine by downloading it from below links
 
 ### Git configuration
 
-`git config` command allows you to configure your Git settings. Git stores all
-global configurations in **.gitconfig** file, which is located in your home
+`git config` command allows you to configure your Git settings. Git stores all
+global configurations in **.gitconfig** file, which is located in your home
 directory
 
 ```dos
@@ -94,12 +94,12 @@ Setting email id: This information is used by Git for each commit.
 
 ### `git init` – Create a new repository
 
-Every Git repository is stored in the **.git** folder of the directory in which
+Every Git repository is stored in the **.git** folder of the directory in which
 the Git repository has been created. This directory contains the complete
-history of the repository. The .**git/config** file contains the configuration
+history of the repository. The .**git/config** file contains the configuration
 for the repository.
 
-We use the git init command to create a Git repository in the current directory
+We use the git init command to create a Git repository in the current directory
 
 ```powershell
 kaveti_s@HYDPCMCSTS MINGW64 /e/Users/devops/Repos
@@ -127,7 +127,7 @@ In LoginDemo repo I want to add 3 files -index.jsp, signup.jsp, login.jsp.
 
 ![E:\\Users\\satyacodes\\Pictures\\12.png](media/2016ae8dc7d25dcc4cc9b937cca4c65a.png)
 
-We use git add command to put a snapshot of the file to the staging area.
+We use git add command to put a snapshot of the file to the staging area.
 
 ```powershell
 1.Adding single file to Stage

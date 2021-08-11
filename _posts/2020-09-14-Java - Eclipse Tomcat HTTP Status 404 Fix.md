@@ -43,7 +43,7 @@ Make sure you have created atleast one .jsp page
 
 Then in Eclipse
 
-1.  Click on **Window \> Show view \> Server or right click on the server in
+1.  Click on **Window \> Show view \> Server or right click on the server in
     "Servers" view, select "Properties".**
 
 2.  In the "General" panel, click on the "Switch Location" button.

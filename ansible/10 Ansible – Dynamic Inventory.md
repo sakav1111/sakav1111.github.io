@@ -12,7 +12,7 @@ tags:
 Ansible – Dynamic Inventory
 ===========================
 
-In Ansible, a static inventory file is a plain text file that contains a list of
+In Ansible, a static inventory file is a plain text file that contains a list of
 managed hosts declared under a host group using either hostnames or IP
 addresses.
 

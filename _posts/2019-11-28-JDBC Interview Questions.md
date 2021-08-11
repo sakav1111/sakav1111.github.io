@@ -26,12 +26,12 @@ salary.
 
 ## Difference between WHERE vs HAVING clause in SQL - GROUP BY Comparison with Example
 
-*main difference between WHERE and HAVING clause in SQL* is that, condition
-specified in WHERE clause is used while fetching data (rows) from table, on the
-other hand HAVING clause is later used to filter summarized data or grouped
+*main difference between WHERE and HAVING clause in SQL* is that, condition
+specified in WHERE clause is used while fetching data (rows) from table, on the
+other hand HAVING clause is later used to filter summarized data or grouped
 data.
 
-**SELECT** \* **FROM** Employee;
+**SELECT** \* **FROM** Employee;
 
 | **EMP_ID** | **EMP_NAME** | **EMP_AGE** | **EMP_SALARY** | **DEPT_ID** |
 |------------|--------------|-------------|----------------|-------------|
@@ -41,7 +41,7 @@ data.
 | 4          | Shikhar      | 27          | 6000           | 1           |
 | **5**      | **Vijay**    | **28**      | **5000**       | **2**       |
 
-**SELECT** \* **FROM** Department;
+**SELECT** \* **FROM** Department;
 
 | **DEPT_ID** | **DEPT_NAME** |
 |-------------|---------------|
@@ -64,9 +64,9 @@ GROUP BY d.DEPT_NAME;
 | Marketing     | 1                | 7000           |
 | Sales         | 2                | 8000           |
 
-From the number of employee (NUM_EMPLOYEE) column you can see that only Vijay
-who work for Marketing department is not included in result set because his
-earning 5000. This example shows that, condition in WHERE clause is used to
+From the number of employee (NUM_EMPLOYEE) column you can see that only Vijay
+who work for Marketing department is not included in result set because his
+earning 5000. This example shows that, condition in WHERE clause is used to
 filter rows before you aggregate them.
 
 ```sql
@@ -84,14 +84,14 @@ HAVING AVG_SALARY > 7000;
 | Accounting    | 1                | 8000           |
 | Sales         | 2                | 8000           |
 
-then HAVING clause comes in picture for final filtering, which is clear from
+then HAVING clause comes in picture for final filtering, which is clear from
 following query, now Marketing department is excluded because it doesn't pass
 condition in HAVING clause i.e AVG_SALARY > 7000
 
 ## What is JNDI?
 
 JNDI is the Java Naming and Directory Interface. It's used to separate the
-concerns of the application *developer* and the application *deployer*.
+concerns of the application *developer* and the application *deployer*.
 
 When you're writing an application which relies on a database, you shouldn't
 need to worry about the user name or password for connecting to that database.
@@ -103,7 +103,7 @@ For Doing that,
 
 2.  **Configure Resource name in web.xml**
 
-Add a file `META-INF/context.xml` into the root of your web application folder,
+Add a file `META-INF/context.xml` into the root of your web application folder,
 which defines database connection details
 ```xml
 <Context>
@@ -164,13 +164,13 @@ public class JDBC {
 
 There are 3 types of JDBC Statements, as given below:
 
--   **Statement**:  It will execute SQL query (static SQL query) against the
+-   **Statement**:  It will execute SQL query (static SQL query) against the
     database.
 
--   **Prepared Statement:**  Used when we want to execute SQL statement
-    repeatedly.  Input data is dynamic and  taken input at the run time.
+-   **Prepared Statement:**  Used when we want to execute SQL statement
+    repeatedly.  Input data is dynamic and  taken input at the run time.
 
--   **Callable Statement:** Used when we want to execute stored procedures.
+-   **Callable Statement:** Used when we want to execute stored procedures.
 ```java
 public CallableStatement prepareCall("{ call procedurename(?,?...?)}"); 
 CallableStatement cs=con.prepareCall("{call myprocedure(?,?)}");
@@ -199,10 +199,10 @@ time. Creating them on application start-up and reusing them result in better
 performance.
 
 ## **What is use of setAutoCommit(false) in JDBC ?**  
-By **default** setAutoCommit() is **TRUE** . making setAutoCommit(false) saves a
+By **default** setAutoCommit() is **TRUE** . making setAutoCommit(false) saves a
 lot of performance as it doesn't commit transaction automatically after each
 query and we do batch update. It allows you to handle it
-using **commit() and rollback().** 
+using **commit() and rollback().** 
 
 ## Batch Processing?
 
@@ -210,9 +210,9 @@ Instead of executing a single query, we can execute a group of queries. The
 java.sql.Statement and java.sql.PreparedStatement interfaces provide methods for
 batch processing
 
--   **void addBatch(String query) –** It adds query into batch.
+-   **void addBatch(String query) –** It adds query into batch.
 
--   **int[] executeBatch() –** It executes the batch of queries.
+-   **int[] executeBatch() –** It executes the batch of queries.
 
 ```java
 Statement stmt=con.createStatement();
@@ -227,4 +227,4 @@ stmt.executeBatch();//executing the batch
 only date part
 
 Read
-more: <http://www.java67.com/2018/03/top-50-core-java-interview-questions.html#ixzz5fuYL91FG>
+more: <http://www.java67.com/2018/03/top-50-core-java-interview-questions.html#ixzz5fuYL91FG>

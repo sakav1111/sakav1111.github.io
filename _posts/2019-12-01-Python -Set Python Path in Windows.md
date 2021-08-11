@@ -36,6 +36,6 @@ My Computer > Properties > Advanced System Settings > Environment Variables > Ed
 
 ![How to add to the pythonpath in windows](media/48a5c8de20639f60b0c8476fb3ae5122.png)
 
-Just type "python" on the **command line**
+Just type "python" on the **command line**
 
 ![Python Download and install](media/27808eedbcec20ec1e960663c098dae0.png)

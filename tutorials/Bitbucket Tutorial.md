@@ -22,13 +22,13 @@ accounts with an unlimited number of private. Bitbucket integrates with other
 Atlassian software **like Jira, HipChat, Confluence and Bamboo.**
 
 
-It is similar to [GitHub](https://en.wikipedia.org/wiki/GitHub), which primarily
-uses [Git](https://en.wikipedia.org/wiki/Git_(software)). Bitbucket has
+It is similar to [GitHub](https://en.wikipedia.org/wiki/GitHub), which primarily
+uses [Git](https://en.wikipedia.org/wiki/Git_(software)). Bitbucket has
 traditionally tailored itself towards helping professional developers with
 private proprietary code, especially since being acquired by Atlassian in
-2010. In September 2016, Bitbucket announced it had reached 5 million developers
+2010. In September 2016, Bitbucket announced it had reached 5 million developers
 and 900,000 teams on its
-platform.[[4]](https://en.wikipedia.org/wiki/Bitbucket#cite_note-4) Bitbucket
+platform.[[4]](https://en.wikipedia.org/wiki/Bitbucket#cite_note-4) Bitbucket
 has 3 deployment models: Cloud, Bitbucket Server and Data Center.
 
  
@@ -62,7 +62,7 @@ following features:
 
 -   Smart Mirroring
 
- 
+ 
 
 ### **Installing BitBucket in windows**
 
@@ -97,7 +97,7 @@ Let’s see how we can do it in BitBucket.
 Projects allow you to group repositories and to manage permissions for them in
 an aggregated way.
 
--   To create a project, go to **Projects** & click on **Create project**
+-   To create a project, go to **Projects** & click on **Create project**
 
     ![http://localhost:6666/sml/wp-content/uploads/2017/09/Bitbucket_turorial_smlcodes-1.png](media/6cfe334bdaf7bd91150bd34847476c59.png)
  
@@ -192,7 +192,7 @@ in text box.
 For Details Check this
 [article](https://confluence.atlassian.com/bitbucketserver046/using-bitbucket-server/controlling-access-to-code/using-ssh-keys-to-secure-git-operations/creating-ssh-keys?utm_campaign=in-app-help&utm_medium=in-app-help&utm_source=stash)
 
--   From the repository, click **Clone** in the sidebar & Copy the clone command
+-   From the repository, click **Clone** in the sidebar & Copy the clone command
     (SSH/HTTPS).
 
     ![http://localhost:6666/sml/wp-content/uploads/2017/09/Bitbucket_turorial_smlcodes-8.png](media/d57bf63117b82cfc91cd1df92d6f8bd6.png)

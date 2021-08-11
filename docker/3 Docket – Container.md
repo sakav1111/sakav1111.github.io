@@ -21,15 +21,15 @@ runtime instances of those images.
 Docker Engine
 -------------
 
-*Docker Engine* is a client-server application with these major components:
+*Docker Engine* is a client-server application with these major components:
 
 -   A server which is a type of long-running program called a daemon process
-    (the dockerd command).
+    (the dockerd command).
 
 -   A REST API which specifies interfaces that programs can use to talk to the
     daemon and instruct it what to do.
 
--   A command line interface (CLI) client (the docker command).
+-   A command line interface (CLI) client (the docker command).
 
 ![Docker Engine Components Flow](media/3185f40a56d6a22b714b444d515be3f0.png)
 
@@ -37,17 +37,17 @@ The CLI uses the Docker REST API to control or interact with the Docker daemon
 through scripting or direct CLI commands. Many other Docker applications use the
 underlying API and CLI.
 
-The daemon creates and manages Docker *objects*, such as images, containers,
+The daemon creates and manages Docker *objects*, such as images, containers,
 networks, and volumes.
 
 # Docker Architecture
 
 
-Docker uses a client-server architecture. The Docker *client* talks to the
-Docker *daemon(Docker Host, where actually docker containers run)*, which does
+Docker uses a client-server architecture. The Docker *client* talks to the
+Docker *daemon(Docker Host, where actually docker containers run)*, which does
 the heavy lifting of building, running, and distributing your Docker containers.
 
-The Docker client and daemon *can* run on the same system(we are doing same), or
+The Docker client and daemon *can* run on the same system(we are doing same), or
 you can connect a Docker client to a remote Docker daemon.
 
 The Docker client and daemon communicate using a REST API, over UNIX sockets or
@@ -64,19 +64,19 @@ communicate with other daemons to manage Docker services.
 ###### The Docker client
 
 The Docker client (docker) is the primary way that many Docker users interact
-with Docker. When you use commands such as docker run, the client sends these
-commands to dockerd, which carries them out. The docker command uses the Docker
+with Docker. When you use commands such as docker run, the client sends these
+commands to dockerd, which carries them out. The docker command uses the Docker
 API. The Docker client can communicate with more than one daemon.
 
 ###### Docker registries
 
-A Docker *registry* stores Docker images. Docker Hub is a public registry that
+A Docker *registry* stores Docker images. Docker Hub is a public registry that
 anyone can use, and Docker is configured to look for images on Docker Hub by
 default. You can even run your own private registry. If you use Docker
 Datacenter (DDC), it includes Docker Trusted Registry (DTR).
 
-When you use the docker pull or docker run commands, the required images are
-pulled from your configured registry. When you use the docker push command, your
+When you use the docker pull or docker run commands, the required images are
+pulled from your configured registry. When you use the docker push command, your
 image is pushed to your configured registry
 
 Commands
@@ -153,13 +153,13 @@ This command to attach your terminal’s standard input, output, and error (or a
 combination of the three) to a running container using the container’s ID or
 name.
 
-The docker exec and docker attach commands allow you to connect to a running
+The docker exec and docker attach commands allow you to connect to a running
 container.
 
--   To get an interactive shell to a container, use the exec command to start a
+-   To get an interactive shell to a container, use the exec command to start a
     new shell session.
 
--   The attach command attaches your terminal to a running container.
+-   The attach command attaches your terminal to a running container.
 
 
 

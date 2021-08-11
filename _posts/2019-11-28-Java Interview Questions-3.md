@@ -106,11 +106,11 @@ public static void fill(int[] a, int val)
 
 ## Comparable and Comparator
 
-**Comparator and comparable** in Java are two interfaces which is used to
+**Comparator and comparable** in Java are two interfaces which is used to
 implement sorting in Java.
 
 **Comparable** object is capable of comparing itself(this) with another object.
-The class itself must implements the **java.lang.Comparable** interface to
+The class itself must implements the **java.lang.Comparable** interface to
 compare its instances
 
 **Comparator** is external to the element type we are comparing. It’s a separate
@@ -119,11 +119,11 @@ compare by different members.
 
 ### Comparable interface
 
- It provide single sorting sequence only i.e. you can sort the elements on based
+ It provide single sorting sequence only i.e. you can sort the elements on based
 on single data member only. For example it may be rollno, name, age or any one
 of them, not all else.
 
-We use **public int compareTo(Object obj):** is used to compare the current
+We use **public int compareTo(Object obj):** is used to compare the current
 object with the specified object.
 
 -   **String class and Wrapper classes implements Comparable interface by
@@ -198,7 +198,7 @@ After : [Employee [id=101, name=Srini, salary=1000.0], Employee [id=102, name=RA
 Now, suppose we want sort Employees by their salary and names & also Default
 comparable method also Should there. In this case using comparable we get only
 one chance to implement the compareTo() method. The solution is
-using [Comparator](https://www.geeksforgeeks.org/comparator-interface-java/)
+using [Comparator](https://www.geeksforgeeks.org/comparator-interface-java/)
 
 ### Comparator Interface
 
@@ -293,12 +293,12 @@ EmpSalary :
     Comparator we don’t need to make any change in the class, **we can implement
     it in outside**.
 
--   **Comparable** interface is in **java.lang** package whereas **Comparator**
-    interface is present in **java.util** package.
+-   **Comparable** interface is in **java.lang** package whereas **Comparator**
+    interface is present in **java.util** package.
 
--   We don’t need to make any code changes at client side for using Comparable, 
-    Arrays.sort() or Collection.sort() methods automatically uses
-    the compareTo() method of the class. For Comparator, client needs to provide
+-   We don’t need to make any code changes at client side for using Comparable, 
+    Arrays.sort() or Collection.sort() methods automatically uses
+    the compareTo() method of the class. For Comparator, client needs to provide
     the Comparator class to use in compare() method.
 
 ## PriorityQueue : 
@@ -313,15 +313,15 @@ and the process of removing an element from the front of the Queue is called
 **Dequeue**.
 
 A priority queue in Java is a special type
-of [queue](https://www.callicoder.com/java-queue/) wherein all the elements
-are **ordered** 
+of [queue](https://www.callicoder.com/java-queue/) wherein all the elements
+are **ordered** 
 
 -   as per their **natural ordering** using Comparable or
 
--   based on a **custom Comparator** supplied at the time of creation.
+-   based on a **custom Comparator** supplied at the time of creation.
 
-The *front* of the priority queue contains the least element according to the
-specified ordering, and the *rear* of the priority queue contains the greatest
+The *front* of the priority queue contains the least element according to the
+specified ordering, and the *rear* of the priority queue contains the greatest
 element.
 
 ![Priority Queue Data Structure Example in Java](media/1ee06492469d82ed5aae715995c93c73.jpg)
@@ -353,15 +353,15 @@ q.add(500);
 ```
 
 Let’s say that we need to **create a priority queue of String** elements in
-which the **String with the smallest length is processed first.**
+which the **String with the smallest length is processed first.**
 
-We can create such a priority queue by passing a custom Comparator that compares
+We can create such a priority queue by passing a custom Comparator that compares
 two Strings by their length
 
 Since a priority queue needs to compare its elements and order them accordingly,
-the user defined class must implement the Comparable interface, or you must
-provide a Comparator while creating the priority queue. **Otherwise, the
-priority queue will throw a ClassCastException when you add new objects to it.**
+the user defined class must implement the Comparable interface, or you must
+provide a Comparator while creating the priority queue. **Otherwise, the
+priority queue will throw a ClassCastException when you add new objects to it.**
 
 ## **Difference between poll() and remove() method?**  
 Both poll() and remove() take out the object from the Queue but if **poll()
@@ -399,13 +399,13 @@ public class Test {
 ## What is the difference between ArrayList and Vector ?
 
 **Synchronization and Thread-Safe**  
-Vector is  synchronized while ArrayList is not synchronized 
+Vector is  synchronized while ArrayList is not synchronized 
 
 **Performance**  
 Vector is slow as it is thread safe . In comparison ArrayList is fast
 
 **Automatic Increase in Capacity**  
-A Vector defaults to **doubling size** ,ArrayList ,it increases its Array size
+A Vector defaults to **doubling size** ,ArrayList ,it increases its Array size
 by `(curr.capcity*3)/2  + 1` 
 
 ## **Enumeration & iterator**
@@ -419,14 +419,14 @@ environment because both are therad-safe but main difference is on performance
 Hashtable's performance become poor if the size of Hashtable become large
 because it will be locked for long time during iteration.
 
-but in case of **ConcurrentHaspMap  only specific part is locked** because
+but in case of **ConcurrentHaspMap  only specific part is locked** because
 concurrent HaspMap works on segmentation and other thread can access the element
 without iteration to complete. To learn more about how ConcurrentHashMap
 achieves it's thread-safety, scalability using lock stripping and non blocking
 algorithm
 
 Read
-more: <http://www.java67.com/2014/07/21-frequently-asked-java-interview-questions-answers.html#ixzz5fofpCIHh>
+more: <http://www.java67.com/2014/07/21-frequently-asked-java-interview-questions-answers.html#ixzz5fofpCIHh>
 
 ## Is it possible for two unequal objects to have the same hashcode?
 
@@ -435,7 +435,7 @@ can occur in hashmap. The equal hashcode contract only says **that two equal
 objects must have the identical hashcode**, but there is no indication to say
 anything about the unequal object.
 
-## **Differences between HashMap and HashTable in Java.**
+## **Differences between HashMap and HashTable in Java.**
 
 -   HashMap is **non synchronized**. It is not-thread safe and can’t be shared
     between many threads without proper synchronization code whereas Hashtable
@@ -449,7 +449,7 @@ anything about the unequal object.
 In order to use any object as Key in HashMap, it must implement equals and
 hashcode method in Java.
 
-##  What will happen if we put a key object in a HashMap which is already there ?
+##  What will happen if we put a key object in a HashMap which is already there ?
 
 if you put the same key again than it will replace the old mapping because
 HashMap doesn't allow duplicate keys
@@ -468,15 +468,15 @@ java
 .**The Collection specific remove() method throws Exception, but not Iterator
 based remove() method**
 
-Collection interface defines **remove(Object obj)** method to remove objects
-from Collection. List interface adds another method **remove(int index),** which
+Collection interface defines **remove(Object obj)** method to remove objects
+from Collection. List interface adds another method **remove(int index),** which
 is used to remove object at specific index. You can use any of these method to
 remove an entry from Collection, while not iterating.
 
-If we traversing a if we use Iterator's remove() method, it will removes current
+If we traversing a if we use Iterator's remove() method, it will removes current
 element from Iterator's perspective. If you use Collection's or
-List's remove() method during iteration then will
-throw **ConcurrentModificationException**.
+List's remove() method during iteration then will
+throw **ConcurrentModificationException**.
 
 ```java
 public class FailFastExample {
@@ -511,7 +511,7 @@ Exception in thread "main" java.util.ConcurrentModificationException
 
 -   You can lock the list while iterating by putting it in a synchronized block.
 
--   you can use **ConcurrentHashMap** and **CopyOnWriteArrayList**classes 
+-   you can use **ConcurrentHashMap** and **CopyOnWriteArrayList**classes 
 
 in single-threaded environment, You can use the iterator **remove()** function
 to remove the object from underlying collection object.
@@ -520,8 +520,8 @@ to remove the object from underlying collection object.
 
 Sorting is implemented using Comparable and Comparator in Java and when you call
 Collections.sort() it gets sorted based on the natural order specified
-in compareTo() method while Collections.sort(Comparator) will sort objects based
-on compare() method of Comparator. 
+in compareTo() method while Collections.sort(Comparator) will sort objects based
+on compare() method of Comparator. 
 
 ## Can we replace Hashtable with ConcurrentHashMap? ([answer](http://java67.blogspot.com/2014/07/21-frequently-asked-java-interview-questions-answers.html))
 
@@ -536,22 +536,22 @@ method of ConcurrentHashMap
 
 ## What is CopyOnWriteArrayList, how it is different than ArrayList and Vector? ([answer](http://java67.blogspot.com/2015/06/difference-between-synchronized-arraylist-and-copyOnWriteArrayList-java.html))
 
-Answer: 
+Answer: 
 
 Two things,
 
--   CopyOnWriteArrayList performs operation on **creating cloned copy of
+-   CopyOnWriteArrayList performs operation on **creating cloned copy of
     Arraylist**.
 
--   CopyOnWriteArrayList **doesn't throw any ConcurrentModification,** because
+-   CopyOnWriteArrayList **doesn't throw any ConcurrentModification,** because
     its acts on cloned copy of Object
 
-CopyOnWriteArrayList is new List implementation introduced in Java 1.5 which
+CopyOnWriteArrayList is new List implementation introduced in Java 1.5 which
 provides better concurrent access than Synchronized List. better concurrency is
 achieved by Copying ArrayList over each write and replace with original instead
 of locking.
 
-Also CopyOnWriteArrayList doesn't throw any ConcurrentModification Exception.
+Also CopyOnWriteArrayList doesn't throw any ConcurrentModification Exception.
 Its different than ArrayList because its thread-safe and ArrayList is not
 thread-safe and it's different than Vector in terms of Concurrency.
 
@@ -559,7 +559,7 @@ thread-safe and it's different than Vector in terms of Concurrency.
 
 Merge Sort Algorithm
 
-Merge Sort follows the rule of **Divide and Conquer** to sort a given set of
+Merge Sort follows the rule of **Divide and Conquer** to sort a given set of
 numbers/elements, recursively, hence consuming less time.
 
 ![](media/2d52b71ec24e35f5c3d9d31bfe822346.png)
@@ -599,15 +599,15 @@ partitioning the array around it such that:
 
 -   Right side contains all elements greater than the pivot
 
-**For example:** In the array {52, 37, 63, 14, 17, 8, 6, 25}, we
-take 25 as **pivot**. So after the first pass, the list will be changed like
+**For example:** In the array {52, 37, 63, 14, 17, 8, 6, 25}, we
+take 25 as **pivot**. So after the first pass, the list will be changed like
 this.
 
-{6 8 17 14 **25** 63 37 52}
+{6 8 17 14 **25** 63 37 52}
 
 Hence after the first pass, pivot will be set at its position, with all the
-elements **smaller** to it on its left and all the elements **larger** than to
-its right. Now 6 8 17 14 and 63 37 52 are considered as two separate subarrays,
+elements **smaller** to it on its left and all the elements **larger** than to
+its right. Now 6 8 17 14 and 63 37 52 are considered as two separate subarrays,
 and same recursive logic will be applied on them, and we will keep doing this
 until the complete array is sorted.
 
@@ -644,11 +644,11 @@ INPUT: (4,5), (3, 2) (4, 3) (5,4) (6,4)
 Now, there is two possible solution for the two pairs where the key is the same
 i.e. (4,5) and (4,3) as shown below:
 
-OUTPUT1: (3, 2),  (4, 5),  (4,3),  (5,4),  (6,4)  
-OUTPUT2: (3, 2),  (4, 3),  (4,5),  (5,4),  (6,4)
+OUTPUT1: (3, 2),  (4, 5),  (4,3),  (5,4),  (6,4)  
+OUTPUT2: (3, 2),  (4, 3),  (4,5),  (5,4),  (6,4)
 
 The sorting algorithm which will produce the first output will be known
-as stable sorting algorithm because the original order of equal keys are
+as stable sorting algorithm because the original order of equal keys are
 maintained, you can see that (4, 5) comes before (4,3) in the sorted order,
 which was the original order i.e. in the given input, (4, 5) comes before (4,3)
 .
@@ -660,28 +660,28 @@ comes before (4,5) which was not the case in the original input.
 
 Some examples of
 
--   **stable algorithms are Merge Sort, **[Insertion
-    Sort](http://www.java67.com/2014/09/insertion-sort-in-java-with-example.html)**, **[Bubble
+-   **stable algorithms are Merge Sort, **[Insertion
+    Sort](http://www.java67.com/2014/09/insertion-sort-in-java-with-example.html)**, **[Bubble
     Sort](http://javarevisited.blogspot.com/2014/08/bubble-sort-algorithm-in-java-with.html)**,
     and Binary Tree Sort**.
 
 -   **unstable algorithms** are
-     [QuickSort](http://javarevisited.blogspot.com/2014/08/quicksort-sorting-algorithm-in-java-in-place-example.html)**,
+     [QuickSort](http://javarevisited.blogspot.com/2014/08/quicksort-sorting-algorithm-in-java-in-place-example.html)**,
     Heap Sort, and Selection sort**
 
-If you remember, **Collections.sort()** method from Java Collection framework
+If you remember, **Collections.sort()** method from Java Collection framework
 uses iterative merge sort which is a stable algorithm.
 
 ## How much time does it take to retrieve an element if stored in HashMap, Binary tree, and a Linked list? how it change if you have millions of records?
 
--   **HashMap** it takes** O(1)** time,because it uses hashing to get element
+-   **HashMap** it takes** O(1)** time,because it uses hashing to get element
     location.
 
--   **Binary tree** it takes **O(logN)** where N is a number of nodes in the
+-   **Binary tree** it takes **O(logN)** where N is a number of nodes in the
     tree
 
--   **LinkedList** it takes **O(n)** time where n is a number of element in the
-    list. 
+-   **LinkedList** it takes **O(n)** time where n is a number of element in the
+    list. 
 
 Millions of records don't affect the performance if the data structure is
 working as expected e.g. HashMap has no or relatively less number of collision
@@ -788,14 +788,14 @@ TreeSet: [A, B, C, D, E]
 ## How do you get the last digit of an integer?
 
 By using **modulus operator(%), number % 10** returns the last digit of the
-number, for example, 
+number, for example, 
 
--   2345%10 will return 5
+-   2345%10 will return 5
 
--   567%10 will return 7.  
+-   567%10 will return 7.  
 
 Similarly, **division operator(/ )** can be used to get rid of the last digit of
- a number e.g.
+ a number e.g.
 
 -   2345/10 will give 234
 
@@ -863,13 +863,13 @@ class Main
 
 
 
-## Write code to check a String is palindrome or not? ([solution](http://www.java67.com/2015/06/how-to-check-is-string-is-palindrome-in.html))
+## Write code to check a String is palindrome or not? ([solution](http://www.java67.com/2015/06/how-to-check-is-string-is-palindrome-in.html))
 
 A palindrome is those String whose reverse is equal to the original. This can be
 done by using **either StringBuffer reverse()** method or by technique
 demonstrated in the solution here.
 
-## Write a method which will remove any given character from a String? ([solution](http://javarevisited.blogspot.sg/2015/04/how-to-remove-given-character-from.html))
+## Write a method which will remove any given character from a String? ([solution](http://javarevisited.blogspot.sg/2015/04/how-to-remove-given-character-from.html))
 
 you can remove a given character from String by converting it into a **char[]**
 array and comapare give char with each char of array, remove that & append
@@ -900,9 +900,9 @@ public class Test {
 sty kveti
 ```
 
-## Print all permutation of String? ([solution](https://javarevisited.blogspot.com/2015/08/how-to-find-all-permutations-of-string-java-example.html))
+## Print all permutation of String? ([solution](https://javarevisited.blogspot.com/2015/08/how-to-find-all-permutations-of-string-java-example.html))
 
-for a String of 3 characters like "xyz" has 6 possible permutations, xyz, xzy,
+for a String of 3 characters like "xyz" has 6 possible permutations, xyz, xzy,
 yxz, yzx, zxy, zyx
 
 ```java
@@ -933,10 +933,10 @@ ZXY
 ZYX
 ```
 
-## How to check if two String Are Anagram? ([solution](http://javarevisited.blogspot.sg/2013/03/Anagram-how-to-check-if-two-string-are-anagrams-example-tutorial.html))
+## How to check if two String Are Anagram? ([solution](http://javarevisited.blogspot.sg/2013/03/Anagram-how-to-check-if-two-string-are-anagrams-example-tutorial.html))
 
 two String are called anagram, if they contain same characters but on different
-order e.g. **army** and **mary**, **stop** and **pots** etc
+order e.g. **army** and **mary**, **stop** and **pots** etc
 
 ```java
 public class Anagram {
@@ -993,8 +993,8 @@ Fibonacci series upto 10 numbers :
 
 ## How to find the factorial of a number in Java
 
- the factorial of a number is calculated by formula **number\*(number -1**) till
-zero and since the **value of factorial zero is 1**.
+ the factorial of a number is calculated by formula **number\*(number -1**) till
+zero and since the **value of factorial zero is 1**.
 
 ```java
 public class Permutation {

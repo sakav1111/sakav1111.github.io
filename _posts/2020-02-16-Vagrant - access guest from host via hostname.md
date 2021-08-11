@@ -25,8 +25,8 @@ other on private networks.
 Private Network
 ---------------
 
- [private
-networks](https://www.vagrantup.com/docs/networking/private_network.html) should
+ [private
+networks](https://www.vagrantup.com/docs/networking/private_network.html) should
 never allow the general public access to your machine, public networks can.
 
 DHCP
@@ -43,8 +43,8 @@ end
 
 
 This will automatically assign an IP address from the reserved address space.
-The IP address can be determined by using vagrant ssh to SSH into the machine
-and using the appropriate command line tool to find the IP, such as ifconfig.
+The IP address can be determined by using vagrant ssh to SSH into the machine
+and using the appropriate command line tool to find the IP, such as ifconfig.
 
 Static IP
 ---------
@@ -76,14 +76,14 @@ end
 ```
 
 
-This will assign that IP to the machine. The entire /64 subnet will be reserved.
+This will assign that IP to the machine. The entire /64 subnet will be reserved.
 Please make sure to use the reserved local addresses approved for IPv6.
 
 Disable Auto-Configuration
 --------------------------
 
 If you want to manually configure the network interface yourself, you can
-disable Vagrant's auto-configure feature by specifying auto_config:
+disable Vagrant's auto-configure feature by specifying auto_config:
 ```yaml
 Vagrant.configure("2") do |config|
     config.vm.network "private_network", ip: "192.168.50.4",
@@ -98,7 +98,7 @@ Forwarded Ports
 
 f the guest machine is running a web server listening on port 80, you can make a
 forwarded port mapping to port 8080 (or anything) on your host machine. You can
-then open your browser to localhost:8080 and browse the website, while all
+then open your browser to localhost:8080 and browse the website, while all
 actual network data is being sent to the guest
 
 The forwarded port configuration expects two parameters, the port on the guest
