@@ -465,6 +465,10 @@ SpringBootTutorial:
         url:    /springboot/springboot-jparepository
       - title:  SpringBoot MongoDB and REST Example
         url:    /springboot/springboot-mongodb-and-rest-example
+      - title:  SpringBoot Advanced
+        url:    /springboot/springboot-advanced
+      - title:  SpringBoot Microservices
+        url:    /springboot/springboot-microservices
 
 
 #-----------------------------10.HibernateTutorial - Sidemenu----------------------------------------------
