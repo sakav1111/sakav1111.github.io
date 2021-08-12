@@ -14,16 +14,16 @@ A shell in a Linux operating system takes input from you in the form of
 commands, processes it, and then gives an output. There are two main shells in
 Linux:
 
-**1**. **The** **Bourne Shell**: The prompt for this shell is **$** and its
+**1**. **The** **Bourne Shell**: The prompt for this shell is **$** and its
 derivatives are listed below:
 
--   POSIX shell  also known as sh
+-   POSIX shell  also known as sh
 
 -   Korn Shell also known as sh
 
--   **B**ourne **A**gain **SH**ell also known as bash (most popular)
+-   **B**ourne **A**gain **SH**ell also known as bash (most popular)
 
-**2.** **The C shell**: The prompt for this shell is % and its subcategories
+**2.** **The C shell**: The prompt for this shell is % and its subcategories
 are:
 
 -   C shell also known as csh
@@ -35,17 +35,17 @@ are:
 Steps to write the Shell Script
 ----------------------------------
 
-1.  **Create a file** **using** a **vi** editor(or any other editor). 
+1.  **Create a file** **using** a **vi** editor(or any other editor). 
 
-2.  Name  script file with **extension .sh**
+2.  Name  script file with **extension .sh**
 
-3.  **Start** the script with **#! /bin/sh**
+3.  **Start** the script with **#! /bin/sh**
 
 4.  Write the code.
 
 5.  Save the script file as filename.sh
 
-6.  For **executing** the script type **bash filename.sh**
+6.  For **executing** the script type **bash filename.sh**
 
 "\#!" is an operator called shebang, which directs the script to the interpreter
 location. So, if we use"\#! /bin/sh" the script gets directed to the
@@ -55,7 +55,7 @@ bourne-shell.
 
 #### 1. Shell comments(\#)
 
-Comment means, that line will not take part in script execution. . In Shell, the
+Comment means, that line will not take part in script execution. . In Shell, the
 syntax to add a comment is
 
 \#comment
@@ -65,7 +65,7 @@ syntax to add a comment is
 #### 2.Shell Variables
 
 A variable in a unix script can be assigned any type of value, such as a text
-string or a number. In unix to create a variable, we simply put in our script: 
+string or a number. In unix to create a variable, we simply put in our script: 
 
 >   VARIABLE_NAME=value
 
@@ -113,8 +113,8 @@ Your name is : Satya, age is : 27
 
 #### 1.if -then -else
 
-The if then else condition loop states that **if** condition meets, output goes
-to if part otherwise it goes to **else** part. The word **fi** represents if
+The if then else condition loop states that **if** condition meets, output goes
+to if part otherwise it goes to **else** part. The word **fi** represents if
 loop termination .
 ```bash
 Syntax:
@@ -178,7 +178,7 @@ fi
 
 #### 3. For Loops
 
-**for** loops iterate through a set of values until the list is exhausted:
+**for** loops iterate through a set of values until the list is exhausted:
 ```bash
 #!/bin/sh
 for i in 1 2 3 4 5
@@ -297,8 +297,8 @@ Hello, Smlcodes- Values 100, 200
 
 Reading and writing files in linux is simple, you just use the standard
 utilities for reading files such
-as **cat**, **grep**, **tail**, **head**, **awk** etc.. Moreover, you primarily
-use the output redirect operator **>** and standard commands like **sed** for
+as **cat**, **grep**, **tail**, **head**, **awk** etc.. Moreover, you primarily
+use the output redirect operator **>** and standard commands like **sed** for
 writing files.
 
 Let's say we want to write a program that interacts with a user data file called
@@ -323,12 +323,12 @@ fi
 ```
 
 
-The code for this is very simple. To add a user you simple use **echo** to print
+The code for this is very simple. To add a user you simple use **echo** to print
 out the fields with commas between them, then you redirect the output using
-the **>>** operator. Using the **>** will redirect the output STDOUT to a
-file and overwrite the entire file, this is why we use **>>**instead, because
+the **>>** operator. Using the **>** will redirect the output STDOUT to a
+file and overwrite the entire file, this is why we use **>>**instead, because
 it will append to a file instead of overwriting the file. And to print out the
-file, we simply use the **cat** command, which will print out a file to the
+file, we simply use the **cat** command, which will print out a file to the
 console.
 
 Now let's add some users to have a test data set. Let's call the script
@@ -365,12 +365,12 @@ how to search and sort data
 #### Substrings
 
 Often times a programmer needs to be able to get a substring from a variable at
-a given position. In unix you can use the **expr** command to do this with
-the **substr** parameter. Let's say that we have the text string
+a given position. In unix you can use the **expr** command to do this with
+the **substr** parameter. Let's say that we have the text string
 "5283username$$2384/" and we want to get the text "username". To do this we
 need to read from position 5 for a length of 8. The parameters
-for **substr** are the input string, the starting position, and the length. See
-the following example: 
+for **substr** are the input string, the starting position, and the length. See
+the following example: 
 ```bash
 #!/bin/sh
 
@@ -384,9 +384,9 @@ echo "Sub: '$USER'"
 
 Sometimes you need to find text in a string. Maybe you want to list files but
 print only the text appearing before the ".". So if the filename is asdf.txt,
-you would want to print only asdf. To do this, you will use **expr index**, and
+you would want to print only asdf. To do this, you will use **expr index**, and
 pass it the string followed by the text for which you are searching. Let's try
-an example: 
+an example: 
 ```bash
 #!/bin/sh
 
@@ -411,12 +411,12 @@ done
 If the substring doesn't exist, 0 is returned. If 0 is returned, we want to make
 the IDX variable the length of the name so that we just display the whole
 filename. If a dot is found in the file, we want to subtract 1 from
-our **$IDX** variable because we don't want to display the dot. 
+our **$IDX** variable because we don't want to display the dot. 
 
 #### To lower/upper case
 
 If you want to transform a string to upper or lower case, you can do so with the
-unix **tr** command. Here's a simple example. 
+unix **tr** command. Here's a simple example. 
 ```bash
 #!/bin/sh
 
@@ -433,12 +433,12 @@ echo "Lower   : $STR_LOWER"
 #### Editing a file with sed
 
 If you want to edit a file from within your script, you can use the
-unix **sed** command. It will take a regular expression and a filename and put
+unix **sed** command. It will take a regular expression and a filename and put
 the file manipulations to standard output. For instance, let's say that we have
 a file with two fields "username" and "home directory". All the home directories
 start with "/home", but what if the admin changes the location of the "/home"
 directory to "/usr/local/home". We can have sed automatically update our file.
-Here is the file, save it as testfile2. 
+Here is the file, save it as testfile2. 
 ```bash
 user1 /home/user1
 root /home/root
@@ -450,9 +450,9 @@ user3 /home/user3
 We want our regular expression to search for "/home" and replace it with
 "/usr/local/home", a search expression is in the following format:
 "s/find/replace/", where "find" is the string you are searching for and
-"replace" is what you want to replace it with. Since the **/** character is a
+"replace" is what you want to replace it with. Since the **/** character is a
 special character, we will need to escape it with a backslash in our find and
-replace strings. Here is the command we will use to do the file edit: 
+replace strings. Here is the command we will use to do the file edit: 
 ```bash
 $ sed "s\/home\/usr\/local\/home/" testfile2 > tmp; cp tmp testfile2 
 $ cat testfile2 
@@ -463,10 +463,10 @@ user3 /usr/local/home/user3
 ```
 
 
-Notice that we redirect the output of sed to a file named **tmp**, we then on
+Notice that we redirect the output of sed to a file named **tmp**, we then on
 the same line copy the tmp file over the testfile2 file. We cannot specify
 testfile2 to be the output since it is also being read from by sed during the
-command. On the next line we **cat** the output and you can see the file
+command. On the next line we **cat** the output and you can see the file
 modifications.
 
 #### Automating another application
@@ -474,7 +474,7 @@ modifications.
 Sometimes we may want to automate another program or script. If the other script
 expects user input, we may want to write a script to automatically fill in that
 information. First let's create a simple program that accepts a user name and
-password: 
+password: 
 ```bash
 #!/bin/sh
 
@@ -493,9 +493,9 @@ else
 fi
 ```
 
-Save this file as **up.sh**. Now we need to create a script to automate this
+Save this file as **up.sh**. Now we need to create a script to automate this
 script. To do this, all we need to do is output the user name followed by the
-password to the command line, we will pass these as two parameters: 
+password to the command line, we will pass these as two parameters: 
 ```bash
 #!/bin/sh
 USER=$1
@@ -507,8 +507,8 @@ echo $PWD
 
 
 Now to run this automation script, we simply need to pipe the output to
-the **up.sh** script. First we will try to run it with an invalid user and
-password, then we will try to run it with the correct user and password: 
+the **up.sh** script. First we will try to run it with an invalid user and
+password, then we will try to run it with the correct user and password: 
 ```bash
 $ ./auto.sh testuser testpass | ./up.sh
 user:

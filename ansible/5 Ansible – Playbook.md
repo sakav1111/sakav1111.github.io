@@ -144,8 +144,8 @@ tasks:
 
 ## Playbook Variables
 
-**Playbook** variables are Similar to YAML dictionaries. To define a variable in
-a playbook, simply use the keyword **vars** before writing your variables with
+**Playbook** variables are Similar to YAML dictionaries. To define a variable in
+a playbook, simply use the keyword **vars** before writing your variables with
 indentation.
 
 To access the value of the variable `{{ variable }}`

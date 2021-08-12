@@ -18,7 +18,7 @@ pageview: true
 
 #### Change Apache port on Debian/Ubuntu
 
-Edit **/etc/apache2/ports.conf** file,
+Edit **/etc/apache2/ports.conf** file,
 ```powershell
 sudo vi /etc/apache2/ports.conf
 ```
@@ -27,7 +27,7 @@ sudo vi /etc/apache2/ports.conf
 Find the following line:  
 `Listen 80`
 
-And change it to a random number of your choice, for example **8090**.  
+And change it to a random number of your choice, for example **8090**.  
 `Listen 8090`
 
 This entry make the server to accept connections on port 8090 on all interfaces.
@@ -44,7 +44,7 @@ Save and close the file.
 <br>
 
 Additionally, in Ubuntu and Debian, you also have to change the port number
-in **/etc/apache2/sites-enabled/000-default.conf** file too.
+in **/etc/apache2/sites-enabled/000-default.conf** file too.
 ```powershell
 sudo vi /etc/apache2/sites-enabled/000-default.conf
 ```
@@ -78,7 +78,7 @@ tcp6    0   0 :::8090   ::: LISTEN  4066/apache2
 ```
 
 
-Then, open your web browser and navigate to URL: **http://IP-address:8090**.
+Then, open your web browser and navigate to URL: **http://IP-address:8090**.
 
 You should see the following screen:
 

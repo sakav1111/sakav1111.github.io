@@ -9,7 +9,7 @@ tags: [SonarQube]
 
 ## **1. Introduction -SonarQube Tutorial**
 
-[SonarQube](http://en.wikipedia.org/wiki/SonarQube)  (previously known as Sonar)
+[SonarQube](http://en.wikipedia.org/wiki/SonarQube)  (previously known as Sonar)
 is an open source platform for **Continuous Inspection of code** quality. It is
 written in java and supported for **25+ languages** such as Java, C/C++, C\#,
 PHP, Flex, Groovy, JavaScript, Python, PL/SQL, COBOL, etc, it is also used for
@@ -17,14 +17,14 @@ Android Development
 
 
 
-**1.1  SonarQube Architecture**  
+**1.1  SonarQube Architecture**  
 The SonarQube Platform is made of 4 components:
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/03/SonarQube-Tutorial-SmlCodes-1.png](media/109d4f9430d101b2874074f7f2c86741.png)
 
- 
+ 
 
-1.One **SonarQube Server** starting 3 main processes:
+1.One **SonarQube Server** starting 3 main processes:
 
 -   **Web Server** for developers, managers to browse quality snapshots and
     configure the SonarQube instance
@@ -36,7 +36,7 @@ The SonarQube Platform is made of 4 components:
 
 
 
-2.One **SonarQube Database** to store:
+2.One **SonarQube Database** to store:
 
 -   The configuration of the SonarQube instance (security, plugins settings,
     etc.)
@@ -45,15 +45,15 @@ The SonarQube Platform is made of 4 components:
 
 
 
-3.Multiple **SonarQube Plugins** installed on the server, possibly including
-language, SCM, integration, authentication, and governance plugins
+3.Multiple **SonarQube Plugins** installed on the server, possibly including
+language, SCM, integration, authentication, and governance plugins
 
 
 
-4.One or more**SonarQube Scanners** running on your Build / Continuous
-Integration Servers to analyze projects
+4.One or more**SonarQube Scanners** running on your Build / Continuous
+Integration Servers to analyze projects
 
- 
+ 
 
 **1.2 SonarQube Integration**
 
@@ -61,7 +61,7 @@ The following schema shows how SonarQube integrates with other ALM tools and
 where the various components of SonarQube are used.
 
 1.  Developers code in their IDEs and
-    use [SonarLint](http://en.wikipedia.org/wiki/SonarQube) to run the local
+    use [SonarLint](http://en.wikipedia.org/wiki/SonarQube) to run the local
     analysis.
 
 2.  Developers push their code into their favorite SCM: git, SVN, TFVC, ...
@@ -75,7 +75,7 @@ where the various components of SonarQube are used.
     SonarQube Database and displays the results in the UI.
 
 6.  Developers review, comment, challenge their Issues to manage and reduce
-    their Technical Debt through the SonarQube UI.
+    their Technical Debt through the SonarQube UI.
 
 7.  Managers receive Reports from the analysis.  
     Ops use APIs to automate configuration and extract data from SonarQube.  
@@ -83,13 +83,13 @@ where the various components of SonarQube are used.
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/03/SonarQube-Tutorial-SmlCodes-2.png](media/f62a8e385d26b237afd7ed3daf73ea62.png)
 
- 
+ 
 
 
 
 ## **2. Installation & Configuration**
 
-**1.**[Download](http://www.sonarsource.org/downloads/) and unzip the SonarQube
+**1.**[Download](http://www.sonarsource.org/downloads/) and unzip the SonarQube
 distribution (let's say in "C:\\sonarqube" or "/etc/sonarqube")
 
 
@@ -127,8 +127,8 @@ SonarQube
 
 
 
-5.You can Login by using default [System
-administrator](https://docs.sonarqube.org/display/SONAR/Authorization) credentials
+5.You can Login by using default [System
+administrator](https://docs.sonarqube.org/display/SONAR/Authorization) credentials
 **admin/admin**
 
 
@@ -138,7 +138,7 @@ administrator](https://docs.sonarqube.org/display/SONAR/Authorization) credenti
 SONAR_HOME\conf\sonar.properties
 ```
 
- 
+ 
 
 ### **2.1 Configure MySQL Database with SonarQube**
 
@@ -161,7 +161,7 @@ characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
 `C:\DevOps\sonarqube\bin\windows-x86-64\StartSonar.bat`
 
 
- 
+ 
 
 ### **2.2 SonarQube Runner** (Old, Use SonarScanner)
 
@@ -171,7 +171,7 @@ Runner](https://docs.sonarqube.org/display/SONARQUBE45/Installing+and+Configurin
 location. SonarQube Runner is recommended as the default launcher to analyze a
 project with SonarQube.
 
- 
+ 
 
 1.Set a new environment variable as **SONAR_RUNNER_HOME**. And its value should
 be the unzipped path of **sonar-runner zip file**.
@@ -179,14 +179,14 @@ Example,**“C:\\DevOps\\sonar-runner-2.4"** don’t put the semicolon (;)
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/03/SonarQube-Tutorial-SmlCodes-4.png](media/c98c1c05ee7e2e550e23d80b0623c90e.png)
 
- 
+ 
 
 **2**.Append Sonar Runner’s bin path **(%SONAR_RUNNER_HOME%\\bin)** to the
 environment variable **“PATH".**
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/03/SonarQube-Tutorial-SmlCodes-5.png](media/8c5bd639a9de2ec2c48d451d81942443.png)
 
- 
+ 
 
 3.Uncomment the following lines in the property file,
 ‘C:\\DevOps\\sonar-runner-2.4\\conf\\sonar-runner.properties’ and save it.
@@ -234,10 +234,10 @@ sonar.sourceEncoding=UTF-8
 `sonar-scanner`
 
 
- 
+ 
 
 ## **3. Analyzing Source Code**  
-SonarQube can perform analysis on [20+ different
+SonarQube can perform analysis on [20+ different
 languages](https://docs.sonarqube.org/display/PLUG/Plugin+Library). The outcome
 of this analysis will be quality measures and issues (instances where coding
 rules were broken). However, what gets analyzed will vary depending on the
@@ -245,14 +245,14 @@ language
 
 -   On all languages, "blame" data will automatically be imported from supported
     SCM providers. Git and SVN have supported automatically. Other providers
-    require [additional
+    require [additional
     plugins](https://docs.sonarqube.org/display/PLUG/Plugin+Library).
 
 -   On all languages, a static analysis of source code is performed (Java files,
     COBOL programs, etc.)
 
 -   A static analysis of compiled code can be performed for certain languages
-    (*.class*files in Java, *.dll* files in C\#, etc.)
+    (*.class*files in Java, *.dll* files in C\#, etc.)
 
 -   A dynamic analysis of code can be performed on certain languages.
 
@@ -264,23 +264,23 @@ end in the form of a report, which is then analyzed asynchronously server-side.
 
 
 
- 
+ 
 
 **3.1 Running Analysis**  
 First, you should install the plugin(s) for the language(s) of the project to be
-analyzed, either by [a direct
-download](https://docs.sonarqube.org/display/PLUG/Plugin+Library) or through
-the [update center](https://docs.sonarqube.org/display/SONAR/Update+Center).
+analyzed, either by [a direct
+download](https://docs.sonarqube.org/display/PLUG/Plugin+Library) or through
+the [update center](https://docs.sonarqube.org/display/SONAR/Update+Center).
 
 
 Then, you need to choose an analysis method. The following are available:
 
 -   [SonarQube
-    Scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner): Launch
+    Scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner): Launch
     analysis from the command line
 
 -   [SonarQube Scanner for
-    MSBuild](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+MSBuild): Launch
+    MSBuild](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+MSBuild): Launch
     analysis of .Net projects
 
 -   [SonarQube Scanner for
@@ -303,12 +303,12 @@ Then, you need to choose an analysis method. The following are available:
 sonarqube\\extensions\\plugins folder
 
 
- 
+ 
 
 **3.2 Using the Update Center behind a Proxy**  
 Update Center uses HTTP(S) connections to external servers to provide these
 services. If SonarQube is located behind a proxy, additional information must be
-provided in the *SONAR_HOME/conf/sonar.properties* configuration file:
+provided in the *SONAR_HOME/conf/sonar.properties* configuration file:
 ```bash
 http.proxyHost=<your.proxy.host>
 http.proxyPort=<yout.proxy.port>
@@ -318,7 +318,7 @@ http.proxyUser=<your.proxy.user>
 http.proxyPassword=<your.proxy.password>
 ```
 
- 
+ 
 
 ## **4. SonarQube Java Project Configuration**
 
@@ -327,7 +327,7 @@ http.proxyPassword=<your.proxy.password>
 ![http://localhost:6666/sml/wp-content/uploads/2017/03/SonarQube-Tutorial-SmlCodes-6.png](media/b995eb8aa67332b430d420f1934ec786.png)
 
 
-2.Create  **‘sonar-project.properties’** file  under the root folder of the
+2.Create  **‘sonar-project.properties’** file  under the root folder of the
 project
 
 
@@ -405,7 +405,7 @@ Module3.projectName=Module 3
 **SonarQube Eclipse Configuration with SonarLint Plugin**
 
 The SonarQube Eclipse plugin does not work with SonarQube 5.2+. It is replaced
-by [SonarLint for Eclipse](http://www.sonarlint.org/eclipse/index.html)**.**
+by [SonarLint for Eclipse](http://www.sonarlint.org/eclipse/index.html)**.**
 SonarLint is an Eclipse plugin that provides on-the-fly feedback to developers
 on new bugs and quality issues injected into Java, JavaScript, and PHP code. To
 Configure SonarLint in eclipse follow below steps.
@@ -448,7 +448,7 @@ Configure SonarLint in eclipse follow below steps.
 
 To add SonarQube Server to Eclipse do following things
 
-1.Select **File → New → Other →  SonarLint → New Server → Next → fill the
+1.Select **File → New → Other →  SonarLint → New Server → Next → fill the
 details**
 
 ![http://localhost:6666/sml/wp-content/uploads/2017/03/SonarQube-Tutorial-SmlCodes-19.png](media/2d25b6a39e680b6d3cd84e3702f626b1.png)
@@ -564,15 +564,15 @@ following commands
 Let's define the plugin in the pom.xml:
 ```xml
 <build>
-    <pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.4.0.905</version>
-            </plugin>
-        </plugins>
-    </pluginManagement>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.4.0.905</version>
+            </plugin>
+        </plugins>
+    </pluginManagement>
 </build>
 ```
 

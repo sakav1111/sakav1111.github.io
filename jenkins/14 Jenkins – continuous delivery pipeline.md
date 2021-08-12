@@ -35,7 +35,7 @@ an automated fashion.
 A pipeline is a collection of jobs. Suppose I’m developing a small application
 on Jenkins and I want to build, test and deploy it.
 
-To do this, I will allot 3 jobs to perform each process. So, job1 would be for
+To do this, I will allot 3 jobs to perform each process. So, job1 would be for
 build, job2 would perform tests and job3 for deployment. I can use the Jenkins
 build pipeline plugin to perform this task. After creating three jobs and
 chaining them in a sequence, the build plugin will run these jobs as a pipeline
@@ -85,7 +85,7 @@ Using Delivery Pipeline Plug-in
 
 ![](media/06d719e205b7e6ba9eb98d89fc557966.png)
 
-Install **Delivery Pipeline** plugin
+Install **Delivery Pipeline** plugin
 
 ![](media/e382218cf2a13808d0e1105275efb0c7.png)
 
@@ -228,12 +228,12 @@ pipelines with several processes (build, test, unit test, integration test,
 pre-deploy, deploy, monitor) running 100’s of jobs?
 
 The maintenance cost for such a complex pipeline is huge and increases with the
-number of processes.To overcome this issue, a new feature called **Jenkins
-Pipeline Project** was introduced.
+number of processes.To overcome this issue, a new feature called **Jenkins
+Pipeline Project** was introduced.
 
 The key feature of this pipeline is to define the entire deployment flow through
 code. Instead of building several jobs for each phase, you can now code the
-entire workflow and put it in a **Jenkinsfile**
+entire workflow and put it in a **Jenkinsfile**
 
 It is written based on two syntaxes, namely:
 

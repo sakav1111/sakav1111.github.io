@@ -16,7 +16,7 @@ Chef Provisioning helps you to use the power of Chef to create your whole
 infrastructure for you.
 
 No matter whether you want to create a cluster of Vagrant
-boxes, [Docker](https://subscription.packtpub.com/tech/docker) instances, or
+boxes, [Docker](https://subscription.packtpub.com/tech/docker) instances, or
 Cloud servers, Chef Provisioning lets you define your infrastructure in a simple
 recipe and run it idempotently.
 
@@ -25,25 +25,25 @@ how “to create a Vagrant machine and install nginx “on it
 
 Chef Provisioning comes with a selection of drivers for all kinds of
 infrastructures, including Fog (supporting Amazon
-EC2, [OpenStack](https://subscription.packtpub.com/search?released=Available&tool=OpenStack),
+EC2, [OpenStack](https://subscription.packtpub.com/search?released=Available&tool=OpenStack),
 and others), VMware VSphere, Vagrant (supporting Virtualbox and VMware Fusion),
 various Containers, such as
-LXC [Docker](https://subscription.packtpub.com/tech/docker) “and Secure Shell
+LXC [Docker](https://subscription.packtpub.com/tech/docker) “and Secure Shell
 (SSH).
 
 In this recipe, we make sure that we can use the directives provided by Chef
-Provisioning by requiring *chef/provisioning* library.
+Provisioning by requiring *chef/provisioning* library.
 
 Then, we configure the driver that we want to use. We use Vagrant and tell Chef
-to use the *opscode-ubuntu-14.04* Vagrant box to spin up our machine.
+to use the *opscode-ubuntu-14.04* Vagrant box to spin up our machine.
 
 Using the machine resource, we ask Chef to spin up a Vagrant machine and
-configure it using Chef by applying the role *web_server*.
+configure it using Chef by applying the role *web_server*.
 
-The *web_server* role uses the cookbook *my_cookbook* to configure the newly
+The *web_server* role uses the cookbook *my_cookbook* to configure the newly
 created Vagrant machine. To make sure that all the required cookbooks are
-available to Chef, we use *berks install* and *berks vendor cookbooks*.
-The *berks vendor cookbooks* installs all the required cookbooks in the local
+available to Chef, we use *berks install* and *berks vendor cookbooks*.
+The *berks vendor cookbooks* installs all the required cookbooks in the local
 cookbooks directory. The Chef client can access the cookbooks here, without the
 need for a Chef server.
 
@@ -51,7 +51,7 @@ Finally, we use the Chef client to execute our Chef Provisioning recipe. It will
 spin up the defined Vagrant machine and execute a Chef client run on it.
 
 Chef Provisioning will put the Vagrant Virtual Machine (VM) definition into the
-directory *\~/.chef/vms*. To manage the Vagrant VM, you need to change to this
+directory *\~/.chef/vms*. To manage the Vagrant VM, you need to change to this
 directory.
 
 

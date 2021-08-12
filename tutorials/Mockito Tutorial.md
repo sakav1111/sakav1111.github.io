@@ -21,11 +21,11 @@ StockService stockServiceMock;
 2.Methods & Usage
 -----------------
 
-All trhese methods are **static,** import provided by Mockito  
+All trhese methods are **static,** import provided by Mockito  
 `import static org.mockito.Mockito.*;`
 
 **when(...).thenReturn(...); -** adds a functionality to a mock object using the
-methods when(). Then()
+methods when(). Then()
 ```java
 when(...).thenReturn(...);
 ```
@@ -62,7 +62,7 @@ public class MathApplicationTester {
 }
 ```
 
-**verify()** method is ensure whether a mock method is being called with
+**verify()** method is ensure whether a mock method is being called with
 reequired arguments or not
 ```java
 //verify call to calcService is made or not with same arguments       verify(calcService).add(20.0, 30.0);
@@ -106,7 +106,7 @@ verify(calcService, atMost(3)).add(10.0,20.0);
 
 
 ### **InOrder** class -
-takes care of the order of method calls 
+takes care of the order of method calls 
 ```java
 //create an inOrder verifier for a single mock
 InOrder inOrder = inOrder(calcService);

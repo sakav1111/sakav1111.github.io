@@ -49,7 +49,7 @@ app.controller('myCtrl', function($scope) {
 ## Internal Working
 
 -   The **AngularJS JavaScript** file is loaded, and the Angular global object
-    $scope  is created. The JavaScript file that registers the controller
+    $scope  is created. The JavaScript file that registers the controller
     functions is executed.
 
 -   AngularJS scans the HTML to look for **AngularJS apps and views** and finds
@@ -83,7 +83,7 @@ displays only the names containing the letter "i".
 -   In AngularJS, a service is a **function, or object**, that is available for
     your AngularJS application.
 
--   AngularJS has about 30 built-in services. One of them is the $location
+-   AngularJS has about 30 built-in services. One of them is the $location
     service.
 
 1.$location
@@ -99,10 +99,10 @@ app.controller('customersCtrl', function($scope, $location) {
 
 
 
-2.$http 
+2.$http 
 
-**$http** is an AngularJS service for reading data from remote servers. The
-AngularJS $http service makes a request to the server, and returns a response.
+**$http** is an AngularJS service for reading data from remote servers. The
+AngularJS $http service makes a request to the server, and returns a response.
 ```html
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
@@ -115,7 +115,7 @@ app.controller('myCtrl', function($scope, $http) {
 
 More on Http
 
-The example above uses the .get method of the $http service.
+The example above uses the .get method of the $http service.
 
 The .get method is a shortcut method of the $http service. There are several
 shortcut methods:
@@ -199,7 +199,7 @@ app.controller('myCtrl', function($scope) {
 
 If you want to navigate to different pages in your application, but you also
 want the application to be a SPA (Single Page Application), with no page
-reloading, you can use the ngRoute module.
+reloading, you can use the ngRoute module.
 
 ```html
 var app = angular.module('userregistrationsystem', [ 'ngRoute', 'ngResource' ]);
@@ -245,13 +245,13 @@ The key features of AngularJS are:
 
 ## Can AngularJS have multiple ng-app directives in a single page?
 
-**Yes, But** Only one AngularJS application can be auto-bootstrapped per HTML
+**Yes, But** Only one AngularJS application can be auto-bootstrapped per HTML
 document. The first ngApp found in the document will be used to define the root
 element to auto-bootstrap as an application.
 
-If another ng-app directive has been placed then it will not be processed by
+If another ng-app directive has been placed then it will not be processed by
 AngularJS and we will need to manually bootstrap the second app, instead of
-using second ng-app directive.
+using second ng-app directive.
 
 ## Explain the architecture of AngularJS?
 
@@ -273,7 +273,7 @@ The 3 main directives of angular js are
     for its custom attributes and camelCase for the corresponding directives
     which implement them.
 
--   **ng-model:-** directive allows us to bind values of HTML controls (input,
+-   **ng-model:-** directive allows us to bind values of HTML controls (input,
     select, textarea) to application data. When using ngModel, not only change
     in the scope reflected in the view, but changes in the view are reflected
     back into the scope.
@@ -298,19 +298,19 @@ components. AngularJS uses two-way data binding. In one-way binding, the scope
 variable in the html is set to the first value that its model is assigned to.
 
 In two-way binding, the scope variable changes its value every time its model
-binds to a different value. 
+binds to a different value. 
 
 ## Explain what a digest cycle is in AngularJS?
 
 During every digest cycle, all new scope model values are compared against the
 previous values. This is called dirty checking. If change is detected, watches
 set on the new model are fired and another digest cycle executes. This goes on
-until all models are stable. 
+until all models are stable. 
 
 The digest cycle is triggered automatically but it can be called manually using
 **“.$apply()".**
 
-## What is Single Page Application (SPA)? 
+## What is Single Page Application (SPA)? 
 
 SPA is the concept whereby pages are loaded from the server not by doing post
 backs, rather by creating a single shell page or master page and loading the web

@@ -15,25 +15,25 @@ The binary repository is a natural extension to the source code repository, in
 that it will store the outcome of your build process, often denoted as
 artifacts.
 
--   **Java**: jar, ear, war etc has [Maven](https://maven.apache.org/) and the
-    official [MavenCentral](https://search.maven.org/). There are many other
+-   **Java**: jar, ear, war etc has [Maven](https://maven.apache.org/) and the
+    official [MavenCentral](https://search.maven.org/). There are many other
     package managers that will use the maven binary repository format as well
-    ([ivy](http://ant.apache.org/ivy/), [gradle](https://gradle.org/) etc).
+    ([ivy](http://ant.apache.org/ivy/), [gradle](https://gradle.org/) etc).
 
--   **.Net**:  [nuget](https://www.nuget.org/) for .NET components (DLL and EXE) but
+-   **.Net**:  [nuget](https://www.nuget.org/) for .NET components (DLL and EXE) but
     can also be used as a distribution mechanism under windows thorugh systems
-    like [Chocolatey](https://chocolatey.org/). Newer versions of Powershell can
-    also leverage this to distribute powershell modules though the [powershell
-    gallery](https://www.powershellgallery.com/) of which one could build a
+    like [Chocolatey](https://chocolatey.org/). Newer versions of Powershell can
+    also leverage this to distribute powershell modules though the [powershell
+    gallery](https://www.powershellgallery.com/) of which one could build a
     local distribution with a binary repository and a repository in nuget
-    format. Also check [OneGet](https://github.com/OneGet/oneget) if Windows
+    format. Also check [OneGet](https://github.com/OneGet/oneget) if Windows
     distribution management is of interest to you.
 
--   **JavaScript** : we have [npm](https://www.npmjs.com/) which is one of the
-    most popular, will require [nodejs](https://nodejs.org/en/).
+-   **JavaScript** : we have [npm](https://www.npmjs.com/) which is one of the
+    most popular, will require [nodejs](https://nodejs.org/en/).
 
--   **python** : there is [pip](https://pypi.python.org/pypi/pip) and the official
-    package index [pypi](https://pypi.python.org/pypi), which one can also
+-   **python** : there is [pip](https://pypi.python.org/pypi/pip) and the official
+    package index [pypi](https://pypi.python.org/pypi), which one can also
     create a local instance through binary repository that will support the
     format.
 
@@ -45,7 +45,7 @@ with the source code.
 
 The difference between source code repository and binary repository was to think
 of it like:  Github or Bitbucket is useful to maintain all `'code'`  Jfrog
-Artifactory is useful to maintain the built `'binary'` 
+Artifactory is useful to maintain the built `'binary'` 
 
 <br>
 
@@ -188,7 +188,7 @@ Enter : Repository Key : Maven-artifacts (for example) \> Save &Finish
 
 ![](media/b934def7fbc10e9d8830d2e3b88658b9.png)
 
-To delete repository , admin \> Repositories" (Ex."Local") \> click the **x** on
+To delete repository , admin \> Repositories" (Ex."Local") \> click the **x** on
 the right end of the repository you want to delete
 
 ![](media/ae2b065eee1fe5dc0d0fa442c11c2c9e.png)
@@ -246,8 +246,8 @@ To
 ```
 
 
-Then, go into your **JUnit-Maven** directory, and add the
-following **distributionManagement** section to your **pom.xml**
+Then, go into your **JUnit-Maven** directory, and add the
+following **distributionManagement** section to your **pom.xml**
 ```xml
 <distributionManagement>
     <repository>

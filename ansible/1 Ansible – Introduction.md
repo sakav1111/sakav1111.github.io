@@ -26,7 +26,7 @@ Architecture
 ------------
 
 Ansible is entirely agentless, which means Ansible works by connecting your
-nodes through **SSH** (by default).
+nodes through **SSH** (by default).
 
 Ansible pushes small programs after connecting to your nodes which are known as
 "**Ansible Modules**". Ansible runs that module on your nodes and removes them
@@ -38,7 +38,7 @@ when finished.
 -   Any machine with Ansible installed.
 
 -   You can run commands and playbooks,
-    invoking /usr/bin/ansible or /usr/bin/ansible-playbook, from any control
+    invoking /usr/bin/ansible or /usr/bin/ansible-playbook, from any control
     node.
 
 -   You can use any computer that has Python installed on it as a control node -
@@ -163,30 +163,30 @@ Workflow
 --------
 
 Ansible works by connecting to your nodes and pushing out a small program
-called **Ansible modules** to them. Then Ansible executed these modules and
+called **Ansible modules** to them. Then Ansible executed these modules and
 removed them after finished.
 
 ![Ansible Workflow](media/35a0f5cfaf541c189ffafc2b3e6feb46.png)
 
--   In the above image, the **Management Node** is the controlling node that
+-   In the above image, the **Management Node** is the controlling node that
     controls the entire execution of the playbook.
 
--   The **inventory** file provides the list of hosts where the Ansible modules
+-   The **inventory** file provides the list of hosts where the Ansible modules
     need to be run.
 
--   The **Management Node** makes an **SSH** connection and executes the small
+-   The **Management Node** makes an **SSH** connection and executes the small
     modules on the host's machine and install the software.
 
 **Ansible has three main files that you need to consider:**
 
--   **Host/inventory file:** Contains the entry of the nodes that need to be
+-   **Host/inventory file:** Contains the entry of the nodes that need to be
     managed
 
--   **Ansible.cfg file:** Located by default at **/etc/ansible/ansible.cfg**, it
+-   **Ansible.cfg file:** Located by default at **/etc/ansible/ansible.cfg**, it
     has the necessary privilege escalation options and the location of the
     inventory file
 
--   **Main file:** A playbook that has modules that perform various tasks on a
+-   **Main file:** A playbook that has modules that perform various tasks on a
     host listed in an inventory or host file
 
 Installation

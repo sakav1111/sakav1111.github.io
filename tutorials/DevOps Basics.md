@@ -257,9 +257,9 @@ computer network resources.
 Virtualization gained huge momentum because of **Vmware** as it has solved the
 problem of **running multiple OS and apps on one physical computer**.
 
-#### isolated system 
+#### isolated system 
 
-**isolated system** (plural **isolated systems**) (physics) A **system** that
+**isolated system** (plural **isolated systems**) (physics) A **system** that
 does not interact with its surroundings; that is, its total energy and mass stay
 constant
 
@@ -836,8 +836,8 @@ hello
 
 ### Command Line Arguments
 
- we use the variables **$1** to represent the first command line argument,
-**$2** to represent the second command line argument and so on. 
+ we use the variables **$1** to represent the first command line argument,
+**$2** to represent the second command line argument and so on. 
 
 ###### Ask The User For Input
 ```bash
@@ -893,7 +893,7 @@ The SSH command consists of 3 distinct parts
 ssh {user}@{host}
 
 When you hit enter, you will be prompted to enter the password for the requested
-account.  If your password is correct, you will be greeted with a remote
+account.  If your password is correct, you will be greeted with a remote
 terminal window.
 
 There are three different encryption technologies used by SSH:

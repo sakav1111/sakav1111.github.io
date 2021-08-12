@@ -233,7 +233,7 @@ Webservice client for Testing . This wsgen tool is available in $JDK/bin folder
 -   JAX-RS is a specification for RESTful Web Services with Java and it is given
     by Sun.
 
--   *Jersey* from Oracle, *Resteasy *from Jboss are the implementations of
+-   *Jersey* from Oracle, *Resteasy *from Jboss are the implementations of
     JAX-RS
 
 ## majorly used annotations in RESTFul webservices
@@ -345,7 +345,7 @@ public class PathParamService {
 ## How to set different status code in HTTP response?
 
 For setting HTTP status code other than 200, we have to
-use javax.ws.rs.core.Response class for response. Below are some of the sample
+use javax.ws.rs.core.Response class for response. Below are some of the sample
 return statements showing it’s usage.
 ```java
 return Response.status(422).entity(exception).build();
@@ -503,8 +503,8 @@ Web services are stateless so we can’t maintain user sessions in web services.
 
 Service Oriented Architecture (SOA) is an architectural pattern where
 applications are designed in terms of services that can be accessed through
-communication protocol over network. SOA is a [design
-pattern](https://www.journaldev.com/1827/java-design-patterns-example-tutorial) and
+communication protocol over network. SOA is a [design
+pattern](https://www.journaldev.com/1827/java-design-patterns-example-tutorial) and
 doesn’t go into implementation.
 
 Web Services can be thought of as Services in SOAP architecture and providing
@@ -513,9 +513,9 @@ means to implement SOA pattern.
 ## Name some frameworks in Java to implement SOAP web services?
 
 We can create SOAP web services using JAX-WS API, however some of the other
-frameworks that can be used are Apache Axis and Apache CXF. 
+frameworks that can be used are Apache Axis and Apache CXF. 
 
-## What is use of javax.xml.ws.Endpoint class?
+## What is use of javax.xml.ws.Endpoint class?
 
 Endpoint class provides useful methods to create endpoint and publish existing
 implementation as web service. This comes handy in testing web services before
@@ -547,24 +547,24 @@ Some of the important JAX-RS annotations are:
 -   **@Path:** used to specify the relative path of class and methods. We can
     get the URI of a webservice by scanning the Path annotation value.
 
--   **@GET, @PUT, @POST, @DELETE and @HEAD**: used to specify the HTTP
+-   **@GET, @PUT, @POST, @DELETE and @HEAD**: used to specify the HTTP
     request type for a method.
 
--   **@Produces, @Consumes:** used to specify the request and response types.
+-   **@Produces, @Consumes:** used to specify the request and response types.
 
 -   **@PathParam:** used to bind the method parameter to path value by parsing
     it.
 
 ## What is purpose of different HTTP Request Types in RESTful Web Service?
 
--   **GET** request on /employee/101, you can retrieve details of that user.
+-   **GET** request on /employee/101, you can retrieve details of that user.
 
--   **POST** on employe/102 would create a new user with employee id 102,
+-   **POST** on employe/102 would create a new user with employee id 102,
 
--   **PUT** request type on /employee/101 can be used to update details of
+-   **PUT** request type on /employee/101 can be used to update details of
     employee with id 101.
 
--   **DELETE** method on /employee/101 can be used to remove data for that id.
+-   **DELETE** method on /employee/101 can be used to remove data for that id.
 
 By the way, in the case of PUT and POST method representation would be in the
 **request body**

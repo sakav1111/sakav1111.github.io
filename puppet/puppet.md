@@ -1,7 +1,7 @@
 Puppet – Introduction
 =====================
 
-Puppet is a Configuration Management tool that is used for deploying,
+Puppet is a Configuration Management tool that is used for deploying,
 configuring and managing servers. It performs the following functions:
 
 -   Defining distinct configurations for each and every host, and continuously
@@ -12,7 +12,7 @@ configuring and managing servers. It performs the following functions:
 -   Dynamic scaling-up and scaling-down of machines.
 
 -   Providing control over all your configured machines, so a centralized
-    (master-server or repo-based) change gets propagated to all, automatically.
+    (master-server or repo-based) change gets propagated to all, automatically.
 
 Puppet Introduction
 -------------------
@@ -20,9 +20,9 @@ Puppet Introduction
 Puppet comes in two varieties, Puppet Enterprise and open source Puppet. It runs
 on most Linux distributions, various UNIX platforms, and Windows.
 
-**Puppet master(Puppet Server)** server—which runs the Puppet Server
-software—can be used to control all your other servers, or **Puppet
-agent** nodes.
+**Puppet master(Puppet Server)** server—which runs the Puppet Server
+software—can be used to control all your other servers, or **Puppet
+agent** nodes.
 
 ![puppet configuration](media/b4b32be4d588feb8f5cda141d7d15948.jpg)
 
@@ -43,7 +43,7 @@ any changes it will automatically update those.
 
 -   Puppet Modules on: Module Forge and GitHub
 
-Architecture of Puppet
+Architecture of Puppet
 ----------------------
 
 ![](media/2b1c1ed91b9b1916e3a5e892e8bc7ae5.jpg)
@@ -65,7 +65,7 @@ pulled when required.
 
 **Facts**
 
-**Facts** are the details related to the node or the master machine, which are
+**Facts** are the details related to the node or the master machine, which are
 basically used for analyzing the current status of any node. On the basis of
 facts, changes are done on any target machine. There are pre-defined and custom
 facts in Puppet.
@@ -83,12 +83,12 @@ How it Works
 The following functions are performed in the above image:
 
 -   The Puppet Agent sends the Facts to the Puppet Master. Facts are
-    basically key/value data pair that represents some aspect of Slave state,
+    basically key/value data pair that represents some aspect of Slave state,
     such as its IP address, up-time, operating system, or whether it’s a virtual
     machine. I will explain Facts in detail later in the blog.
 
 -   Puppet Master uses the facts to compile a Catalog that defines how the
-    Slave should be configured. Catalog is a document that describes the desired
+    Slave should be configured. Catalog is a document that describes the desired
     state for each resource that Puppet Master manages on a Slave. I will
     explain catalogs and resources in detail later.
 
@@ -350,10 +350,10 @@ vi /etc/sysconfig/puppetserver
 
 **Open Firewall Ports on Machines**  
 To make the Puppet server manage the client’s server centrally, one needs to
-open a specified port on all the machines, i.e. **8140**
+open a specified port on all the machines, i.e. **8140**
 
 **Puppet Configuration File**  
-The main configuration file for Puppet is **etc/puppet/puppet.conf**.
+The main configuration file for Puppet is **etc/puppet/puppet.conf**.
 
 All Puppet related settings such as the definition of Puppet master, Puppet
 agent, Puppet apply and certificates are defined in this file.
@@ -417,16 +417,16 @@ Notice: Applied catalog in 0.13 seconds
 Version Control System 
 -----------------------
 
-Puppet defines your infrastructure as code, so we can use version control to
+Puppet defines your infrastructure as code, so we can use version control to
 track those changes.
 
-To use version control for Puppet, we'll set up what's called a control
-repository, or control repo. We'll configure an open source tool called r10k to
-point at the control repo. 
+To use version control for Puppet, we'll set up what's called a control
+repository, or control repo. We'll configure an open source tool called r10k to
+point at the control repo. 
 
-And, when it runs, it will deploy the code to the Puppet master. The control
-repo is a set of directories and files set up in a specific way that r10k
-understands. 
+And, when it runs, it will deploy the code to the Puppet master. The control
+repo is a set of directories and files set up in a specific way that r10k
+understands. 
 
 ![](media/0acb2be202b76ca35217280e791a282b.png)
 
@@ -508,8 +508,8 @@ Directory Structure
 Puppet – Resources
 ==================
 
-Resources are a way of defining a specific unit of configuration. For example, a
-file or a system user would be a single resource.
+Resources are a way of defining a specific unit of configuration. For example, a
+file or a system user would be a single resource.
 
 ### Resource Syntx
 
@@ -540,7 +540,7 @@ Puppet forge
 
 <https://forge.puppet.com/>
 
-Puppet code can be packaged into modules in order to be shared with others on
+Puppet code can be packaged into modules in order to be shared with others on
 the Puppet Forge.
 
 Ref.
@@ -562,16 +562,16 @@ free memory was 440 initially. i kept 400 in JAVA_ARGS initially.
 
 #### ubuntu systemctl: command not found
 
-1.  First you need to check if **systemd** package is installed - sudo dpkg -l
+1.  First you need to check if **systemd** package is installed - sudo dpkg -l
     \| grep systemd.
 
-2.  If not then install it by hands sudo apt-get install systemd. But if it does
-    it might be damaged, so you may try to reinstall it sudo apt-get install
+2.  If not then install it by hands sudo apt-get install systemd. But if it does
+    it might be damaged, so you may try to reinstall it sudo apt-get install
     --reinstall systemd.
 
 3.  If the package is installed, even after reinstallation it does not work,
-    list the full path of the files inside this package sudo dpkg -L systemd.
+    list the full path of the files inside this package sudo dpkg -L systemd.
     Maybe binary files are located in a directory that is not included
-    into **\$PATH** variable.
+    into **\$PATH** variable.
 
 #### puppetserver.service: Loaded: error (Reason: No such file or directory)

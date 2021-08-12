@@ -25,7 +25,7 @@ that needs to be shared among more than one node. For example:
 
 
 
-<u>**Elements of Chef Databags**</u>
+<u> **Elements of Chef Databags** </u>
 
 -   DATA BAG
 

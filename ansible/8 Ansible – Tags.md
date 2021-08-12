@@ -22,10 +22,10 @@ adding command-line options.
 When you execute a playbook, you can filter tasks based on the tags in two ways,
 such as:
 
-1.  On the command line, with the **-tags** or **-skip-tags** options.
+1.  On the command line, with the **-tags** or **-skip-tags** options.
 
 2.  In Ansible configuration settings, with
-    the **TAGS_RUN** and **TAGS_SKIP** options.
+    the **TAGS_RUN** and **TAGS_SKIP** options.
 
 an example that tags two tasks with different tags, such as:
 ```yaml
@@ -52,7 +52,7 @@ then you can use the -tags option on the command line.
 `ansible-playbook example.yml --tags "configuration,packages"  `
 
 if you want to run a playbook without certain tagged tasks, then you can use
-the **-skip-tags** command-line option.  
+the **-skip-tags** command-line option.  
 ```yaml
 ansible-playbook example.yml --skip-tags "packages"
 ```

@@ -29,7 +29,7 @@ pageview: true
 
 ## What is the default scope of bean in Spring framework? ([answer](http://javarevisited.blogspot.sg/2012/05/what-is-bean-scope-in-spring-mvc.html))
 
-The default scope of a **Spring bean** is the **Singleton** scope and in the
+The default scope of a **Spring bean** is the **Singleton** scope and in the
 **WebApplication** default scope of a spring bean is **request** scope.
 
 Singleton bean means the same instance of a bean is shared with all other beans,
@@ -50,7 +50,7 @@ However, we can change spring bean scope to request, prototype or session to
 achieve thread-safety at the cost of performance. It’s a design decision and
 based on the project requirements.
 
-### <br>What is Inversion of Control concept, how does Spring support IOC? ([answer](http://javarevisited.blogspot.sg/2012/12/inversion-of-control-dependency-injection-design-pattern-spring-example-tutorial.html))
+### <br>What is Inversion of Control concept, how does Spring support IOC? ([answer](http://javarevisited.blogspot.sg/2012/12/inversion-of-control-dependency-injection-design-pattern-spring-example-tutorial.html))
 
 **Removing bean creation things from developer End.** The simple meaning of
 inversion of the control means that now the framework, Spring is responsible for
@@ -60,12 +60,12 @@ developer to framework.
 
 ## **What is the difference between @Autowired and @Inject annotation in Spring?**
 
-The **@Inject** annotation also serves the same purpose as **@Autowired,** but
-the main difference between them is that 
+The **@Inject** annotation also serves the same purpose as **@Autowired,** but
+the main difference between them is that 
 
--   **@Inject** is a **standard annotation(JRS -330)** for dependency injection
+-   **@Inject** is a **standard annotation(JRS -330)** for dependency injection
 
--   **@Autowired** is **spring specific.**
+-   **@Autowired** is **spring specific.**
 
 ## How to create ApplicationContext in a Java Program?
 
@@ -170,7 +170,7 @@ public class DBConnection {
 
 ## How do you turn on annotation based autowiring?
 
--   Include <context:annotation-config > in bean configuration file.
+-   Include <context:annotation-config > in bean configuration file.
 
 -   Use **AnnotationConfigApplicationContext** to get Context Object.
 
@@ -179,9 +179,9 @@ public class DBConnection {
 | **BeanFactory**                                           | **ApplicationContext**                             |
 |-----------------------------------------------------------|----------------------------------------------------|
 | It uses **Lazy initialization**                           | It uses **Eager/ Aggressive initialization**       |
-| It explicitly provides a resource object using the syntax | It creates and manages resource objects on its own |
-| It **doesn’t supports internationalization**              | It supports internationalization                   |
-| It doesn’t supports annotation based dependency           | It supports annotation based dependency            |
+| It explicitly provides a resource object using the syntax | It creates and manages resource objects on its own |
+| It **doesn’t supports internationalization**              | It supports internationalization                   |
+| It doesn’t supports annotation based dependency           | It supports annotation based dependency            |
 
 ## Can we have multiple Spring configuration files in one project?
 
@@ -216,7 +216,7 @@ ApplicationContext context = new ClassPathXmlApplicationContext("spring-all.xml"
 
 ## What is ViewResolver in Spring?
 
-*ViewResolver* implementations are used to resolve the view pages by name.
+*ViewResolver* implementations are used to resolve the view pages by name.
 Usually we configure it in the spring bean configuration file. For example:
 ```xml
 <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -236,23 +236,23 @@ In this pattern, View resolver holds mapping of different views, controller
 return name of the view, which is then passed to View Resolver for selecting an
 appropriate view.
 
-## **What is the difference between @Controller and @RestController?**
+## **What is the difference between @Controller and @RestController?**
 
 @RestController is better when you are developing RESTful web services using
-Spring MVC framework. It's a combination of **@Controller + @ResponseBody**
+Spring MVC framework. It's a combination of **@Controller + @ResponseBody**
 annotation which allows the controller to directly write the response and
 bypassing the view resolution process, which is not required for RESTful web
-service.   
+service.   
   
 It also instructs DispatcherServlet to use different HttpMessageConverters to
 represent the response in the format client is expecting e.g.
 HttpMessageJackson2Convert to represent response in JSON format and JAXB based
 message converts to generate XML response
 
-## **What does @RequestMapping annotation do? (answer)**
+## **What does @RequestMapping annotation do? (answer)**
 
-The @RequestMapping annotation is used to map web requests to Spring Controller
-methods. You can map request based upon HTTP methods  e.g. GET and POST and
+The @RequestMapping annotation is used to map web requests to Spring Controller
+methods. You can map request based upon HTTP methods  e.g. GET and POST and
 various other parameters.
 
 For examples, if you are developing RESTful Web Service using Spring then you
@@ -269,7 +269,7 @@ public Book save(@RequestBody Book aBook) {
 
 ## **When do you need @ResponseBody annotation in Spring MVC?**
 
-The @ResponseBody annotation can be put on a method to indicates that the
+The @ResponseBody annotation can be put on a method to indicates that the
 return type should be written directly to the HTTP response body (and not placed
 in a Model, or interpreted as a view name).
 ```java
@@ -281,21 +281,21 @@ public String helloWorld() {
 ```
 
 
-Alternatively, you can also use @RestController annotation instead
-of @Controller annotation. This will remove the need for
-using @ResponseBody because as discussed in the previous answer, it comes
-automatically with @RestController annotation.
+Alternatively, you can also use @RestController annotation instead
+of @Controller annotation. This will remove the need for
+using @ResponseBody because as discussed in the previous answer, it comes
+automatically with @RestController annotation.
 
 ## **What does @PathVariable do in Spring MVC? Why it's useful in REST with Spring?**
 
-For example, in the URL http://myapp.com/books/101 if you want to extract 101
-the id, then you can use @PathVariable annotation of Spring MVC
+For example, in the URL http://myapp.com/books/101 if you want to extract 101
+the id, then you can use @PathVariable annotation of Spring MVC
 
-## **Where do you need @EnableWebMVC? (answer)**
+## **Where do you need @EnableWebMVC? (answer)**
 
-The @EnableWebMvc annotation is required to **enable Spring MVC when Java
+The @EnableWebMvc annotation is required to **enable Spring MVC when Java
 configuration is used to configure Spring MVC instead of XML**. It is equivalent
-to <mvc: annotation-driven>  in XML configuration.
+to <mvc: annotation-driven>  in XML configuration.
 
 ## How to Call Stored procedure in Spring Framework?
 
@@ -330,8 +330,8 @@ public class EmployeeInfo extends StoredProcedure
 
 There are two ways to get Container specific objects in the spring bean.
 
-**Using @Autowired** annotation with bean variable of
-type ServletContext and ServletConfig. They will work only in servlet container
+**Using @Autowired** annotation with bean variable of
+type ServletContext and ServletConfig. They will work only in servlet container
 specific environment only though.They alreay comes with Server jar
 ```java
 @Autowired
@@ -342,7 +342,7 @@ ServletContext servletContext;
 ## How to upload file in Spring MVC Application?
 
 Spring provides built-in support for uploading files
-through **MultipartResolver** interface implementations. 
+through **MultipartResolver** interface implementations. 
 
 
 
@@ -351,7 +351,7 @@ through **MultipartResolver** interface implementations. 
 
 For using servlet container configured JNDI DataSource, we need to configure it
 in the spring bean configuration file and then inject it to spring beans as
-dependencies. Then we can use it with **JdbcTemplate** to perform database
+dependencies. Then we can use it with **JdbcTemplate** to perform database
 operations
 ```java
 <beans:bean id="dbDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
@@ -375,8 +375,8 @@ The most common approach we probably all know is to use a server generated
 secret token (Session key) in the form of a JSESSIONID cookie. Initial setup for
 this is near nothing these days perhaps making you forget you have a choice to
 make here in the first place. Even without further using this “Session key" to
-store any other state “in the session", the key itself is in fact *state* as
-well.  I.e. without a shared and persistent storage of these keys, no successful
+store any other state “in the session", the key itself is in fact *state* as
+well.  I.e. without a shared and persistent storage of these keys, no successful
 authentication will survive a server reboot or requests being load balanced to
 another server.
 

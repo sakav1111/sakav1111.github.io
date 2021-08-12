@@ -23,7 +23,7 @@ In a strongly typed language compiler ensure type correctness, for example, you
 **can not store the number in String or vice-versa**.
 
 Java is a strongly typed language, that's why you have different data types
-Ex **int, float, String, char, boolean etc.**
+Ex **int, float, String, char, boolean etc.**
 
 On the other hand, weakly typed language don't enforce type checking at compile
 time and they tree values based upon context. **Python and Perl** are two
@@ -44,7 +44,7 @@ numeric string in number type.
     software is working properly or not e.g. in a flight booking website, you
     should be able to book, cancel or change flights.
 
-## What is the difference between iteration and recursion? ([detailed answer](http://javarevisited.blogspot.sg/2012/12/recursion-in-java-with-example-programming.html))
+## What is the difference between iteration and recursion? ([detailed answer](http://javarevisited.blogspot.sg/2012/12/recursion-in-java-with-example-programming.html))
 
 -   **Iteration** uses a loop to perform the same step again and again.
 
@@ -58,13 +58,13 @@ your program. Purists never wrote a single line of application code without
 writing a test for that. It greatly improve code quality and often attributed as
 a quality of rockstar developers.
 
-## How do you find a running Java process on UNIX? 
+## How do you find a running Java process on UNIX? 
 
-You can use the combination of **'ps' and 'grep'** command to find any process
-running on UNIX machine. ps -e will list every process i.e. process from all
-user not just you and  ps -f will give you full details including PID, which
+You can use the combination of **'ps' and 'grep'** command to find any process
+running on UNIX machine. ps -e will list every process i.e. process from all
+user not just you and  ps -f will give you full details including PID, which
 will be required if you want to investigate more or would like to kill this
-process using kill command.
+process using kill command.
 
 ps -ef | grep "java"
 
@@ -309,11 +309,11 @@ method completes
 ### **Difference between PATH and Classpath in Java?**  
 Answer : PATH is a environment variable in Java which is used to help Java
 program to compile and run.To set the PATH variable we have to
-include JDK_HOME/bin directory in PATH environment variable and also we cannot
+include JDK_HOME/bin directory in PATH environment variable and also we cannot
 override this variable.
 
-On the other hand,  [ClassPath
-variable](http://java67.blogspot.sg/2012/08/what-is-path-and-classpath-in-java-difference.html) is
+On the other hand,  [ClassPath
+variable](http://java67.blogspot.sg/2012/08/what-is-path-and-classpath-in-java-difference.html) is
 used by class loader to locate and load compiled Java codes stored in .class
 file. We you want to run JUnit from any where from cmdline you eed to add
 Junit.jar in class path.
@@ -336,18 +336,18 @@ into machine code and execute it.
 
 **JVM :** is a Specification, **HotSpot** : is a implementation of JVM.
 
-[HotSpot](http://en.wikipedia.org/wiki/HotSpot)** **is an implementation of the
+[HotSpot](http://en.wikipedia.org/wiki/HotSpot)** **is an implementation of the
 JVM concept, originally developed by Sun and now owned by Oracle. There are
 other implementations of the JVM specification,
-like [JRockit](http://en.wikipedia.org/wiki/JRockit), [IBM
+like [JRockit](http://en.wikipedia.org/wiki/JRockit), [IBM
 J9](http://en.wikipedia.org/wiki/IBM_J9), among many others.
 
 **Is Java a pure object oriented language? (answer)**  
 Java is not a pure object-oriented programming language e.g. There are many
 things in Java which are not objects e.g. primitive data types
-e.g. boolean, char, short, int, long, float, double, different kinds of
-arithmetic, logical and bitwise operator e.g. +, -. *, /, &&, || etc. Few
-pure OO languages are **Smalltalk** and **Eiffel**.
+e.g. boolean, char, short, int, long, float, double, different kinds of
+arithmetic, logical and bitwise operator e.g. +, -. *, /, &&, || etc. Few
+pure OO languages are **Smalltalk** and **Eiffel**.
 
 **There are seven qualities to be satisfied for a programming language to be
 pure Object Oriented. They are:**  
@@ -402,11 +402,11 @@ from file system, network or any other location
 -   Bootstrap ClassLoader - **JRE/lib/rt.jar**
 
 -   Extension ClassLoader - **JRE/lib/ext** or any directory denoted
-    by java.ext.dirs
+    by java.ext.dirs
 
--   Application ClassLoader - **CLASSPATH environment
-    variable, -classpath or -cp option, Class-Path attribute of Manifest
-    inside **[JAR
+-   Application ClassLoader - **CLASSPATH environment
+    variable, -classpath or -cp option, Class-Path attribute of Manifest
+    inside **[JAR
     file](http://javarevisited.blogspot.sg/2012/03/how-to-create-and-execute-jar-file-in.html)**.**
 
 ![Class Loader in Java BootStrap Extension and Application](media/3438307fb91a1358228d96022b257978.png)
@@ -425,9 +425,9 @@ memory goes back to Heap space.
 **How to increase heap size in Java**
 
 Default size of Heap space in Java is 128MB on most of 32 bit
-Sun's [JVM](http://javarevisited.blogspot.sg/2011/12/jre-jvm-jdk-jit-in-java-programming.html) but
+Sun's [JVM](http://javarevisited.blogspot.sg/2011/12/jre-jvm-jdk-jit-in-java-programming.html) but
 its highly varies from JVM to JVM. change size of heap space by using JVM
-**options -Xms and -Xmx**. Xms denotes starting size of Heap while -Xmx denotes
+**options -Xms and -Xmx**. Xms denotes starting size of Heap while -Xmx denotes
 maximum size of Heap in Java.
 
 **Java Heap and Garbage Collection**
@@ -497,12 +497,12 @@ Collector will run on whole heap space
 
 ## Does Garbage collection occur in permanent generation space in JVM?
 
-**YES, Garbage Collection occur in PermGen space as well. and if PermGen space
+**YES, Garbage Collection occur in PermGen space as well. and if PermGen space
 is full or cross a threshold, it can trigger Full GC(Main Thread).** If you look
 at output of GC you will find that PermGen space is also garbage collected. This
 is why correct sizing of PermGen space is important to avoid frequent full GC.
-You can control size of PermGen space by [JVM
-options](http://javarevisited.blogspot.sg/2011/11/hotspot-jvm-options-java-examples.html) -XX:PermGenSize and
+You can control size of PermGen space by [JVM
+options](http://javarevisited.blogspot.sg/2011/11/hotspot-jvm-options-java-examples.html) -XX:PermGenSize and
 -XX:MaxPermGenSize.
 
 ## Types of Garbage Collectors
@@ -515,7 +515,7 @@ explicit deletion and no memory is given back to the operating system.
 
 ![](media/d02a55f23a2e203b785f000cfd7ef742.png)
 
-Java has **four types of garbage collectors**,
+Java has **four types of garbage collectors**,
 
 -   [Serial Garbage
     Collector](https://javapapers.com/java/types-of-java-garbage-collectors/#serial-garbage-collector)
@@ -545,7 +545,7 @@ used by the JVM. We can choose them by passing the choice as JVM argument
 -   it may not be suitable for a server environment. It is best suited for
     simple command-line programs.
 
-Turn on the **-XX:+UseSerialGC **JVM argument to use the serial garbage
+Turn on the **-XX:+UseSerialGC **JVM argument to use the serial garbage
 collector.
 
 #### 2. Parallel Garbage Collector
@@ -568,7 +568,7 @@ collector.
 
 -   Here your application won’t pass/stop
 
-Turn on the **XX:+USeParNewGC** JVM argument to use the CMS garbage collector.
+Turn on the **XX:+USeParNewGC** JVM argument to use the CMS garbage collector.
 
 ![](media/8c9bda99fa0f542b1e718efcca19fe64.png)
 
@@ -584,7 +584,7 @@ Turn on the **XX:+USeParNewGC** JVM argument to use the CMS garbage collector.
 
 -   G1 collector prioritizes the region based on most garbage first.
 
-Turn on **the –XX:+UseG1GC JVM** argument to use the G1 garbage collector.
+Turn on **the –XX:+UseG1GC JVM** argument to use the G1 garbage collector.
 
 ![](media/24649538831db226d2f6a4f876047896.png)
 
@@ -594,10 +594,10 @@ Turn on **the –XX:+UseG1GC JVM** argument to use the G1 garbage collector.
 
 **Java 8 Improvement**
 
-Turn on the **-XX:+UseStringDeduplication **JVM argument while using G1 garbage
+Turn on the **-XX:+UseStringDeduplication **JVM argument while using G1 garbage
 collector**. This optimizes the heap memory by removing duplicate String values
-to a single char[] array**. This option is introduced in [Java
-8](https://javapapers.com/java/java-8-features/) u 20.
+to a single char[] array**. This option is introduced in [Java
+8](https://javapapers.com/java/java-8-features/) u 20.
 
 Given all the above four types of Java garbage collectors, which one to use
 depends on the application scenario, hardware available and the throughput
@@ -643,15 +643,15 @@ pool and just sit there till the whole program ends (ie. the JVM).The String
 Const. pool cleaned up when the class is unloaded by the JVM.
 
 ## How to you monitor garbage collection activities?
-just to check whether candidate has ever monitored GC activities or not. You can
+just to check whether candidate has ever monitored GC activities or not. You can
 monitor garbage collection activities either offline or real-time. You can use
-tools like **JConsole** and **VisualVM** VM with its Visual GC plug-in to
+tools like **JConsole** and **VisualVM** VM with its Visual GC plug-in to
 monitor real time garbage collection activities and memory status of JVM or you
 can redirect Garbage collection output to a log file for offline analysis by
-using -XlogGC=&lt;PATH> JVM parameter. Anyway you should always enable GC
-options like -XX:PrintGCDetails -X:verboseGCand -XX:PrintGCTimeStamps as it
-doesn't impact [application
-performance](http://javarevisited.blogspot.sg/2012/01/improve-performance-java-database.html) much
+using -XlogGC=&lt;PATH> JVM parameter. Anyway you should always enable GC
+options like -XX:PrintGCDetails -X:verboseGCand -XX:PrintGCTimeStamps as it
+doesn't impact [application
+performance](http://javarevisited.blogspot.sg/2012/01/improve-performance-java-database.html) much
 but provide useful states for performance monitoring.
 
 ![](media/88015acfb687957254ed8e87e568c4b1.png)
@@ -661,10 +661,10 @@ but provide useful states for performance monitoring.
 ##  How do you identify minor and major garbage collection in Java?
 
 -   Minor collection prints **GC** if garbage
-    collection [logging](http://javarevisited.blogspot.sg/2011/05/top-10-tips-on-logging-in-java.html) is
-    enable using **–verbose:gc or -XX:PrintGCDetails**
+    collection [logging](http://javarevisited.blogspot.sg/2011/05/top-10-tips-on-logging-in-java.html) is
+    enable using **–verbose:gc or -XX:PrintGCDetails**
 
--   Major collection prints **“Full GC".** 
+-   Major collection prints **“Full GC".** 
 
 ##  How to Generate GC Log File?
 
@@ -681,7 +681,7 @@ Or add visual-gc plugin to visualVM
 ## What Security model used by Java?
 
 **Sandbox**. The sandbox security model makes it easier to work with software
-that comes from sources you don't fully trust. 
+that comes from sources you don't fully trust. 
 
 ## What is “Phontom" memory
 
@@ -711,7 +711,7 @@ Whenever you start a Java application, you're first starting the JVM and then
 telling it which application to run. The answer to "which JVM" is simply: The
 JVM that you loaded the application with! for example, for execution of applets
 a separate JVM may exist and another JVM can be started by the User for
-execution of Java Byte Code, on a single machine. 
+execution of Java Byte Code, on a single machine. 
 
 ## Difference between Object Oriented and Object Based language
 
@@ -740,17 +740,17 @@ It’s Empty, but not Null.
 The answer to this question depends on version of java you are using. **Prior to
 JDK 5, main method was not mandatory in a java program.**
 
--   You could write your full code under [static
-    block](https://www.geeksforgeeks.org/g-fact-79/) and it ran normally.
+-   You could write your full code under [static
+    block](https://www.geeksforgeeks.org/g-fact-79/) and it ran normally.
 
 -   The static block is first executed as soon as the class is loaded before the
-    main(); 
+    main(); 
 
 Read
-more: <https://javarevisited.blogspot.com/2012/10/10-garbage-collection-interview-question-answer.html#ixzz5fwmNzRHE>
+more: <https://javarevisited.blogspot.com/2012/10/10-garbage-collection-interview-question-answer.html#ixzz5fwmNzRHE>
 
 Read
-more: <https://javarevisited.blogspot.com/2012/10/10-garbage-collection-interview-question-answer.html#ixzz5fwm9nzDa>
+more: <https://javarevisited.blogspot.com/2012/10/10-garbage-collection-interview-question-answer.html#ixzz5fwm9nzDa>
 
 # Data Types
 
@@ -758,7 +758,7 @@ more: <https://javarevisited.blogspot.com/2012/10/10-garbage-collection-intervi
 ## How do you convert bytes to String?
 
 you can convert bytes to the string using string constructor which
-accepts byte[], just make sure that right character encoding otherwise
+accepts byte[], just make sure that right character encoding otherwise
 platform's default character encoding will be used which may or may not be same.
 ```java
 String str = new String(bytes, "UTF-8");
@@ -807,7 +807,7 @@ Volatile Example
 
 **To avoid this, we need to use ‘volatile’ keyword for fields.**
 
--   The Java **volatile** keyword is used to mark a Java variable as **"being
+-   The Java **volatile** keyword is used to mark a Java variable as **"being
     stored in main memory**".
 
 -   that means, every **read** of a volatile variable will **be read from the
@@ -831,7 +831,7 @@ Volatile Example
 
 ### Amtomic Problem
 
- Atomic - forming a single irreducible unit or component in a larger system.
+ Atomic - forming a single irreducible unit or component in a larger system.
 
 Increment (++) is an **Compound Operation(multiple). AtomicVaribles** makes
 compound operations as **Atomic(Single)**
@@ -852,10 +852,10 @@ Another Way using Atomic Variables
 
 ## Atomic Varibles
 
-The [java.util.concurrent.atomic](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/package-summary.html) package
+The [java.util.concurrent.atomic](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/package-summary.html) package
 defines classes that support atomic operations on single variables. All classes
-have **get and set methods** that work like reads and writes
-on volatile variables.
+have **get and set methods** that work like reads and writes
+on volatile variables.
 
 We have following Atomic classes
 
@@ -893,7 +893,7 @@ Common methods
 ## What will this return 3*0.1 == 0.3? true or false?
 
 Both are not equal, because floating point arithmetic has a certain precision.
-Check the difference (a-b) it should be really small.
+Check the difference (a-b) it should be really small.
 
 **In computer memory, floats and doubles are stored using** [IEEE
 754](https://en.wikipedia.org/wiki/IEEE_754) **standard format.**
@@ -901,12 +901,12 @@ Check the difference (a-b) it should be really small.
 -   f1 = (0.1+0.1+0.1….11 times) = 1.0999999999999999
 -   f2 = 0.1*11 = 1.1
 
-In [BigDecimal](https://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html) class,
+In [BigDecimal](https://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html) class,
 **you can specify the rounding mode** and exact precision which you want to use.
 **Using the exact precision limit, rounding errors are mostly solved. Best part
-is that BigDecimal numbers are immutable** i.e. if you create a BigDecimal BD
-with value “1.23", that object will remain “1.23" and can never be changed. You
-can use it’s .compareTo() method to compare to BigDecimal numbers
+is that BigDecimal numbers are immutable** i.e. if you create a BigDecimal BD
+with value “1.23", that object will remain “1.23" and can never be changed. You
+can use it’s .compareTo() method to compare to BigDecimal numbers
 ```java
 private static void testBdEquality()
 {
@@ -920,9 +920,9 @@ private static void testBdEquality()
 ```
 
 
-## **Which one will take more memory, an int or Integer? (answer)**  
+## **Which one will take more memory, an int or Integer? (answer)**  
 An Integer object will take more memory. an Integer is the an object and it
- store meta data overhead about the object and int is primitive type so its
+ store meta data overhead about the object and int is primitive type so its
 takes less space.
 
 ## Autoboxing and Unboxing?
@@ -967,23 +967,23 @@ int val = i.intValue();
 
 ## **How does Autoboxing of Integer works in Java? (**[answer](http://javarevisited.blogspot.sg/2012/07/auto-boxing-and-unboxing-in-java-be.html#axzz59AWpr6cb)**)**
 
-Compiler uses valueOf() method to convert primitive to Object 
-uses intValue(), doubleValue() etc to get primitive value from Object.
+Compiler uses valueOf() method to convert primitive to Object 
+uses intValue(), doubleValue() etc to get primitive value from Object.
 
 ## what if I make main() private/protected ?
 
- if you do not make main() method public, there is no compilation error. You
-will **runtime error** because matching main() method is not present. Remember
-that whole syntax should match to execute main() method.
+ if you do not make main() method public, there is no compilation error. You
+will **runtime error** because matching main() method is not present. Remember
+that whole syntax should match to execute main() method.
 
-Error: Main method not found in class Main, please define the main method as:
+Error: Main method not found in class Main, please define the main method as:
 
-   public static void main(String[] args)
+   public static void main(String[] args)
 
 ## What is blank final variable?
 
-A **blank final** variable in Java is
-a [final](https://www.geeksforgeeks.org/g-fact-48/) variable that is not
+A **blank final** variable in Java is
+a [final](https://www.geeksforgeeks.org/g-fact-48/) variable that is not
 initialized during declaration. Below is a simple example of blank final.
 
 // A simple blank final example
@@ -1015,12 +1015,12 @@ final int i;
 ## Why Java does not support Operator Overloading?
 
 The meaning of an operator is always same for variable of basic types like: int,
-float, double etc. For example: To add two integers, *+* operator is used. 
+float, double etc. For example: To add two integers, *+* operator is used. 
 
 However, for user-defined types (like: objects), you can redefine the way
 operator works. For example: If there are two objects of a class that contains
 string as its data members. You can redefine the meaning of + operator and use
-it to concatenate those strings. 
+it to concatenate those strings. 
 
 To overload an operator, a special operator function is defined inside the class
 as
@@ -1063,22 +1063,22 @@ int main()
 }
 ```
 
--   This function is called when *++* operator operates on the object
-    of *Test* class (object *t* in this case).
+-   This function is called when *++* operator operates on the object
+    of *Test* class (object *t* in this case).
 
--   In the program, void operator ++ () operator function is defined
-    (inside *Test* class).
+-   In the program, void operator ++ () operator function is defined
+    (inside *Test* class).
 
--   This function increments the value of *count* by 1 for *t* object.
+-   This function increments the value of *count* by 1 for *t* object.
 
-**Why Java Doesn't Support it?** 
+**Why Java Doesn't Support it?** 
 
 **1.Java is Simple, No Confusions Please!!**  
 Java does not support operator overloading: Java is relatively a very simple
 language to use compared C/C++ with the non-support of complex and confusing
-features like **pointers**, **multiple inheritance** and **operator
+features like **pointers**, **multiple inheritance** and **operator
 overloading**. These features are rarely used in practice and at the same time
-poorly understood by the language beginners. 
+poorly understood by the language beginners. 
 
 **2.JVM Performance: How many things Should i do?**  
 Form JVM perspective supporting operator overloading is more difficult and if
@@ -1086,14 +1086,14 @@ the **same thing can be achieved by using method overloading in more intuitive
 and clean way it does make sense to not support operator overloading in java**.
 a complex JVM will result in slower JVM
 
-## **Can you store String in an Integer array in Java? compile time error or runtime exception? [**[answer](http://javarevisited.blogspot.co.uk/2013/11/java-array-101-for-programmers-and.html)**]**
+## **Can you store String in an Integer array in Java? compile time error or runtime exception? [**[answer](http://javarevisited.blogspot.co.uk/2013/11/java-array-101-for-programmers-and.html)**]**
 
 -   You cannot store an String in an array of primitive int, it will result in
     compile time error as shown below,
 
--   but if you create an array of Object and assign String[] to it and then try
+-   but if you create an array of Object and assign String[] to it and then try
     to store Integer object on it. Compiler won't be able to detect that and it
-    will throw ArrayStoreExcpetion at runtime
+    will throw ArrayStoreExcpetion at runtime
 
 ```java
 int[] primes = new int[10];
@@ -1103,7 +1103,7 @@ Object[] names = new String[3];
 names[0] = new Integer(0);// ArrayStoreException at runtime
 ```
 
-## **What is difference between ArrayIndexOutfOBounds and ArrayStoreException? [**[answer](http://javarevisited.blogspot.sg/2014/05/exception-in-thread-main-arrayindexoutofboundsexception-java.html)**]**
+## **What is difference between ArrayIndexOutfOBounds and ArrayStoreException? [**[answer](http://javarevisited.blogspot.sg/2014/05/exception-in-thread-main-arrayindexoutofboundsexception-java.html)**]**
 
 `ArrayIndexOutOfBoundsException` comes when your code tries to access an invalid
 index for a given array e.g. negative index or higher index than length - 1.
@@ -1111,12 +1111,12 @@ index for a given array e.g. negative index or higher index than length - 1.
 `ArrayStoreException` comes when you have stored an element of type other than
 type of array, as shown in above example.
 
-## **Is it legal to initialize an array int i[] = {1, 2, 3, 4, 5}; [answer]**
+## **Is it legal to initialize an array int i[] = {1, 2, 3, 4, 5}; [answer]**
 
 Yes, it’s perfectly legal. You can create and initialize array in same line in
 Java.
 
-## **Where does array stored in memory? [answer]**
+## **Where does array stored in memory? [answer]**
 
 Array is created in heap space of JVM memory**. Since array is object in Java**,
 even if you create array locally inside a method or block, object is always
@@ -1130,11 +1130,11 @@ Array concept interview questions and answers in Java
 
 Steps to Solve this
 
-1.initialize array 
+1.initialize array 
 
 2.Choose **start** index
 
-3.Choose **end** index 
+3.Choose **end** index 
 
 4.Swap the elements using **temp** variable
 
@@ -1214,10 +1214,10 @@ Recursive -Reversed array is
 
 
 ## **How do you reverse an array in Java?**  
-org.apache.commons.lang.ArrayUtils class to reverse Array in Java. As discussed
-in our last post [How to print array element in
+org.apache.commons.lang.ArrayUtils class to reverse Array in Java. As discussed
+in our last post [How to print array element in
 Java](http://javarevisited.blogspot.com/2012/12/3-example-to-print-array-values-in-java.html),
-We are using **Arrays.toString()** to print content of array.
+We are using **Arrays.toString()** to print content of array.
 ```java
 int[] iArray = new int[] {101,102,103,104,105};
 String[] sArray = new String[] {"one", "two", "three", "four", "five"};
@@ -1278,7 +1278,7 @@ Test t2 = (Test)t1.clone();
 collection determines that there are no more references to the object.
 
 **6.getClass**():Returns the runtime class of an **obj.getClass(),** or the
-class-literal (**Foo.class**) return a Class object, which contains some
+class-literal (**Foo.class**) return a Class object, which contains some
 metadata about the class:
 
 -   name
@@ -1322,17 +1322,17 @@ monitor.
 **11.notifyAll**():Wakes up all threads that are waiting on this object's
 monitor.
 
-`equals(Object otherObject)` – As method name suggests, is used to simply verify
+`equals(Object otherObject)` – As method name suggests, is used to simply verify
 the equality of two objects. It’s default implementation simply check the object
-references of two objects to verify their equality**. By default, two objects
+references of two objects to verify their equality**. By default, two objects
 are equal if and only if they are stored in the same memory address.**
 
-`hashcode()` – Returns a unique integer value for the object in runtime. By
+`hashcode()` – Returns a unique integer value for the object in runtime. By
 default, integer value is mostly derived from memory address of the object in
 heap (but it’s not mandatory always).
 
-If two objects are equal according to the equals(Object) method, then calling
-the hashCode method on each of the two objects must produce the same integer
+If two objects are equal according to the equals(Object) method, then calling
+the hashCode method on each of the two objects must produce the same integer
 result.
 
 **Whenever we override the equals() method, we should override hashcode()
@@ -1369,11 +1369,11 @@ public class Employe {
 }
 ```
 
-So are we done? If two objects are equal according to the `equals(Object)` method,
-then calling the `hashCode` method on each of the two objects must produce the
+So are we done? If two objects are equal according to the `equals(Object)` method,
+then calling the `hashCode` method on each of the two objects must produce the
 same integer result. **`But here it is not!!`**
 
-Not yet. Lets test again above modified Employee class in different way.
+Not yet. Lets test again above modified Employee class in different way.
 
 ```java
 public static void main(String[] args) {
@@ -1390,11 +1390,11 @@ public static void main(String[] args) {
 ```
 
 Above class prints two objects in the second print statement. If both employee
-objects have been equal, in a `Set` which stores only unique objects, there must
-be only one instance inside HashSet
+objects have been equal, in a `Set` which stores only unique objects, there must
+be only one instance inside HashSet
 
 We are missing the second important method `hashCode()`. As java docs say, `if you
-override equals()method then you must override hashCode() method`
+override equals()method then you must override hashCode() method`
 
 ```java
 public class Employe {
@@ -1430,11 +1430,11 @@ public class Employe {
 }
 ```
 
-[Apache commons](https://commons.apache.org/proper/commons-lang/) provide two
+[Apache commons](https://commons.apache.org/proper/commons-lang/) provide two
 excellent utility
-classes [EqualsBuilder](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html)
+classes [EqualsBuilder](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html)
 **&**
-[HashCodeBuilder](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html) 
+[HashCodeBuilder](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html) 
 for generating hash code and equals methods.
 
 ## Can a top-level class be private or protected?
@@ -1451,8 +1451,8 @@ Compiles but Runtime Error.
 
 ## Is it possible to make array volatile in Java?
 
-Yes, you can make an array (both primitive and reference type array e.g. an [int
-array](http://www.java67.com/2015/07/array-concepts-interview-questions-answers-java.html) and [String
+Yes, you can make an array (both primitive and reference type array e.g. an [int
+array](http://www.java67.com/2015/07/array-concepts-interview-questions-answers-java.html) and [String
 array](http://www.java67.com/2012/09/java-program-to-convert-string-arraylist-to-string-array.html))
 volatile in Java, but only changes to reference pointing to an array will be
 visible to all threads, not the whole array.
@@ -1466,13 +1466,13 @@ threads, but changes to individual indices(a[0], a[1]…a[n]) will not be covere
 under volatile guarantee i.e.  
 **primes = new int[20];**
 
-It will follow the **"happens-before"** rule(*Happens-before relationship is a
+It will follow the **"happens-before"** rule(*Happens-before relationship is a
 guarantee that action performed by one thread is visible to another action in
 different thread*.) and cause memory refresh, but following code will not do so
 
 if multiple threads are changing individual array elements e.g. storing updates,
-there won’t be any happens-before guarantee provided by the [volatile
-modifier](http://javarevisited.blogspot.com/2012/03/difference-between-transient-and.html) for
+there won’t be any happens-before guarantee provided by the [volatile
+modifier](http://javarevisited.blogspot.com/2012/03/difference-between-transient-and.html) for
 such modification
 
 **primes[0] = 10;**  
@@ -1482,16 +1482,16 @@ such modification
 So, if your use-case is to provide memory visibility guarantee for individual
 array elements than **volatile is not the right choice**. You must rely on other
 synchronization and a thread-safety mechanism to cover this case
-e.g. [synchronized](http://www.java67.com/2012/08/5-thread-interview-questions-answers-in.html)** keyword, **[atomic
+e.g. [synchronized](http://www.java67.com/2012/08/5-thread-interview-questions-answers-in.html)** keyword, **[atomic
 variables](http://javarevisited.blogspot.com/2011/07/java-multi-threading-interview.html)**,
-or **[ReentrantLock](http://javarevisited.blogspot.sg/2013/03/reentrantlock-example-in-java-synchronized-difference-vs-lock.html)**.**
+or **[ReentrantLock](http://javarevisited.blogspot.sg/2013/03/reentrantlock-example-in-java-synchronized-difference-vs-lock.html)**.**
 
 ## Is it possible to make ArrayList, Hashset volatile in Java?
 
 On a similar note, sometimes instead of an array, Interviewer put the collection
-i.e. they will ask *can you make a collection variable volatile in Java or
-not* e.g.
-an [ArrayList](http://www.java67.com/2015/06/20-java-arraylist-interview-questions.html) or [HashMap](http://javarevisited.blogspot.sg/2014/11/how-to-loop-hashmap-or-hashtable-in-jsp-example.html).
+i.e. they will ask *can you make a collection variable volatile in Java or
+not* e.g.
+an [ArrayList](http://www.java67.com/2015/06/20-java-arraylist-interview-questions.html) or [HashMap](http://javarevisited.blogspot.sg/2014/11/how-to-loop-hashmap-or-hashtable-in-jsp-example.html).
 The answer is same, of course, you can make a reference variable pointing to a
 Collection volatile in Java, but the happens-before guarantee will only be
 provided if the value of that reference variable is changed e.g. you assign a
@@ -1499,7 +1499,7 @@ new collection to it.
 
 Any modification done on actual collection object e.g. adding or removing
 elements from ArrayList will not invoke happens-before guarantee or memory
-barrier refresh. 
+barrier refresh. 
 
 ## What is a.hashCode() used for? How is it related to a.equals(b)?
 
@@ -1531,11 +1531,11 @@ are implemented based on this principle.**
 
 **Rules:**
 
--   Create Singleton class Object make it as PRIVATE
+-   Create Singleton class Object make it as PRIVATE
 
--   Create PRIVATE constructor
+-   Create PRIVATE constructor
 
--   Every Singleton class contains at least one factory method
+-   Every Singleton class contains at least one factory method
 
 ```java
 class Student {
@@ -1596,7 +1596,7 @@ public static Singleton getInstanceDC() {
 
 **Serialization** is a default process of serializing or persisting any object's
 state in Java. It's triggered by implementing Serializable interface which is a
-marker interface (an interface without any method). uses default implementation
+marker interface (an interface without any method). uses default implementation
 to handle the object serialization process.
 
 **Externalizable** is used to user defined serialization process and control
@@ -1616,7 +1616,7 @@ void writeExternal(ObjectOutput out)
 
 
 
-## **Difference between static and dynamic binding in Java? (detailed answer)**  
+## **Difference between static and dynamic binding in Java? (detailed answer)**  
 This is usually asked as follow-up of previous question, **static binding is
 related to overloaded method and dynamic binding is related to overridden
 method**.
@@ -1636,15 +1636,15 @@ dynamic binding at runtime.
 -   **Singleton**
 
 -   **Decorator**[design
-    pattern](https://www.journaldev.com/1827/java-design-patterns-example-tutorial) is
+    pattern](https://www.journaldev.com/1827/java-design-patterns-example-tutorial) is
     used to modify the functionality of an object at runtime.
 
 ## Can you explain Liskov Substitution principle?(Comes under inheritance )
 
-According to Liskov Substitution Principle, Subtypes must be substitutable for
+According to Liskov Substitution Principle, Subtypes must be substitutable for
 supertype i.e. methods or functions which uses superclass type must be able to
 work with
-the [object ](http://javarevisited.blogspot.com/2012/12/what-is-object-in-java-or-oops-example.html)of
+the [object ](http://javarevisited.blogspot.com/2012/12/what-is-object-in-java-or-oops-example.html)of
 subclass without any issue
 
 ## How to create an instance of any class without using new keyword
@@ -1710,16 +1710,16 @@ Error:Reference to MAX_VALUE is ambigious
 
 
 
-# Java OOPs Concepts 
+# Java OOPs Concepts 
 
 
-## **Can we prevent overriding a method without using the final modifier? (answer)**
+## **Can we prevent overriding a method without using the final modifier? (answer)**
 
 Yes, you can prevent the method overriding in Java without using the final
 modifier. In fact, there are several ways to accomplish it e.g. you can mark the
 method **private or static, those cannot be overridden.**
 
-## **Can we override a private method in Java? (**[answer](http://java67.blogspot.sg/2013/08/can-we-override-private-method-in-java-inner-class.html)**)**
+## **Can we override a private method in Java? (**[answer](http://java67.blogspot.sg/2013/08/can-we-override-private-method-in-java-inner-class.html)**)**
 
 No, you cannot. Since the private method is only accessible and visible inside
 the class they are declared, it's not possible to override them in subclasses.
@@ -1751,7 +1751,7 @@ The method show() from the type A is not visible at Demo.main(Demo.java:12)
 Though, you can override them inside the inner class as they are accessible
 there.
 
-## **Can we change the return type of method to subclass while overriding? (answer)**
+## **Can we change the return type of method to subclass while overriding? (answer)**
 
 Yes, you can, but only from Java 5 onward. This feature is known as **covariant
 method** overriding and it was introduced in JDK 5 release. This is immensely
@@ -1759,7 +1759,7 @@ helpful if original method return super-class e.g. clone() method return
 java.lang.Object. By using this, you can directly return the actual type,
 preventing client-side type casting of the result.
 
-## **Can we make a class both final and abstract at the same time? (**[answer](http://javarevisited.blogspot.com/2011/12/final-variable-method-class-java.html)**)**
+## **Can we make a class both final and abstract at the same time? (**[answer](http://javarevisited.blogspot.com/2011/12/final-variable-method-class-java.html)**)**
 
 No, you cannot apply both final and abstract keyword at the class same time
 because they are exactly opposite of each other. A final class in Java cannot be
@@ -1767,7 +1767,7 @@ extended and you cannot use an abstract class without extending and make it a
 concrete class. As per Java specification, the compiler will throw an error if
 you try to make a class abstract and final at the same time.
 
-## **Can we overload or override the main method in Java? (answer)**  
+## **Can we overload or override the main method in Java? (answer)**  
 No, since main() is a static method, you can only overload it, you cannot
 override it because the static method is resolved at compile time without
 needing object information hence we cannot override the main method in Java.
@@ -1804,8 +1804,8 @@ that **we cannot change their core logic and request processing**, **but we
 modify the desired application flow just by extending some classes and plugin
 them in configuration files.**
 
-For example, spring framework has class DispatcherServlet. This class acts
-as **front controller** for String based web applications. To use this class, we
+For example, spring framework has class DispatcherServlet. This class acts
+as **front controller** for String based web applications. To use this class, we
 are not required to modify this class**. All we need is to pass initialization
 parameters and we can extend it’s functionality the way we want.**
 
@@ -1821,8 +1821,8 @@ responsibility principle holds to classes. ISP says:
 “Clients should not be forced to implement unnecessary methods which they will
 not use"
 
-Take an example. Developer Alex created an interface Reportable and added two
-methods generateExcel() and generatedPdf(). Now client ‘A’ wants to use this
+Take an example. Developer Alex created an interface Reportable and added two
+methods generateExcel() and generatedPdf(). Now client ‘A’ wants to use this
 interface but he intend to use reports only in PDF format and not in excel. Will
 he be able to use the functionality easily?
 
@@ -1869,7 +1869,7 @@ need to change.**
 | **DESIGN PATTERN NAME**                                                                     | **PURPOSE**                                                                                                                                                                                                                                                             |
 |---------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Adapter](https://howtodoinjava.com/2014/05/10/adapter-design-pattern-in-java/)             | An adapter convert the interface of a class into another interface clients expect. It lets classes work together that couldn’t otherwise because of incompatible interfaces.                                                                                            |
-| [Bridge](https://howtodoinjava.com/design-patterns/structural/bridge-design-pattern/)       | Bridge design pattern is used to decouple a class into two parts – *abstraction* and it’s *implementation* – so that both can evolve in future without affecting each other. It increases the loose coupling between class abstraction and it’s implementation.         |
+| [Bridge](https://howtodoinjava.com/design-patterns/structural/bridge-design-pattern/)       | Bridge design pattern is used to decouple a class into two parts – *abstraction* and it’s *implementation* – so that both can evolve in future without affecting each other. It increases the loose coupling between class abstraction and it’s implementation.         |
 | [Composite](https://howtodoinjava.com/design-patterns/structural/composite-design-pattern/) | Composite design pattern helps to compose the objects into tree structures to represent whole-part hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.                                                                  |
 | [Decorator](https://howtodoinjava.com/design-patterns/structural/decorator-design-pattern/) | Decorator design pattern is used to add additional features or behaviors to a particular instance of a class, while not modifying the other instances of same class.                                                                                                    |
 | [Facade](https://howtodoinjava.com/design-patterns/structural/facade-design-pattern/)       | Facade design pattern provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.                                                                                                |
@@ -1902,7 +1902,7 @@ same basic interface for client classes.
 Strategy pattern allows you to **introduce new strategy without changing the
 code.**
 
-For example, the **Collections.sort()** method which sorts the list of the
+For example, the **Collections.sort()** method which sorts the list of the
 object uses the Strategy pattern to compare object. Since every object uses
 different comparison strategy you can compare various object differently without
 changing sort method.
@@ -1913,11 +1913,11 @@ Decorator pattern **provides new features without modifying the original
 class**. **Inheritance is the example.**
 
 **What is the difference between Decorator, Proxy and Adapter pattern in
-Java? (answer)**  
+Java? (answer)**  
 Again they look similar because their structure or class diagram is very similar
 but their intent is quite different. Decorator adds additional functionality
 without touching the class, Proxy provides access control and Adapter is used to
-make two incompatible interfaces work together. 
+make two incompatible interfaces work together. 
 
 ## What is a strongly typed programming language?
 
@@ -1925,7 +1925,7 @@ In a strongly typed language compiler ensure type correctness, for example, you
 **can not store the number in String or vice-versa**.
 
 Java is a strongly typed language, that's why you have different data types
-Ex **int, float, String, char, boolean etc.**
+Ex **int, float, String, char, boolean etc.**
 
 On the other hand, weakly typed language don't enforce type checking at compile
 time and they tree values based upon context. **Python and Perl** are two
@@ -1946,7 +1946,7 @@ numeric string in number type.
     software is working properly or not e.g. in a flight booking website, you
     should be able to book, cancel or change flights.
 
-## What is the difference between iteration and recursion? ([detailed answer](http://javarevisited.blogspot.sg/2012/12/recursion-in-java-with-example-programming.html))
+## What is the difference between iteration and recursion? ([detailed answer](http://javarevisited.blogspot.sg/2012/12/recursion-in-java-with-example-programming.html))
 
 -   **Iteration** uses a loop to perform the same step again and again.
 
@@ -1960,13 +1960,13 @@ your program. Purists never wrote a single line of application code without
 writing a test for that. It greatly improve code quality and often attributed as
 a quality of rockstar developers.
 
-## How do you find a running Java process on UNIX? 
+## How do you find a running Java process on UNIX? 
 
-You can use the combination of **'ps' and 'grep'** command to find any process
-running on UNIX machine. ps -e will list every process i.e. process from all
-user not just you and  ps -f will give you full details including PID, which
+You can use the combination of **'ps' and 'grep'** command to find any process
+running on UNIX machine. ps -e will list every process i.e. process from all
+user not just you and  ps -f will give you full details including PID, which
 will be required if you want to investigate more or would like to kill this
-process using kill command.
+process using kill command.
 
 ps -ef | grep "java"
 

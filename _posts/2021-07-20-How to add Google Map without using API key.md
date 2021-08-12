@@ -37,6 +37,11 @@ your HTML page.
 ```
 
 
-## #2- Using 3^rd^ party API Generator
+## #2- Using 3rd party API Generator
 
-Go to this Website: <https://www.embedgooglemap.net/>
+1. Go to this Website: <https://www.embedgooglemap.net/>
+
+2. Enter Address & Generate HTML Code
+
+![](../media/addreessampgooglepmap.png)
+That's It.

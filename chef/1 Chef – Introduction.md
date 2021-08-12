@@ -14,7 +14,7 @@ Chef – Introduction
 **Key Point** : if anything works manually, it will work with Automation. If any
 error , first check manual way is working or not.
 
-**Chef** is one of the most popular configuration management tools. It uses Ruby
+**Chef** is one of the most popular configuration management tools. It uses Ruby
 and handles configuration by packing details into what it calls recipes.
 
 Architecture 
@@ -111,15 +111,15 @@ types: **Package, Template, Service**, and so on.
     startup.
 
 **Chef supermarket**  
-The supermarket is a site that provides shared cookbooks. There is a public
+The supermarket is a site that provides shared cookbooks. There is a public
 supermarket that contains community-created and -maintained cookbooks. This site
 is hosted by Chef and is available
-at [https://supermarket.chef.io](https://supermarket.chef.io/)
+at [https://supermarket.chef.io](https://supermarket.chef.io/)
 
 ## Install the Chef Development kit (Chef DK) on Chef workstation
 
-Go to  [Chef Workstation downloads
-page](https://downloads.chef.io/chef-workstation) and Select URL of appropriate
+Go to  [Chef Workstation downloads
+page](https://downloads.chef.io/chef-workstation) and Select URL of appropriate
 package for your distribution.
 ```powershell
 wget

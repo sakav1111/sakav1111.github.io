@@ -175,7 +175,7 @@ application by running containers separately and then building a link between
 them.
 
 But for multiple container applications we can use the
-[docker-compose tool](https://dzone.com/articles/docker-basics-docker-compose).
+[docker-compose tool](https://dzone.com/articles/docker-basics-docker-compose).
 Docker CLI can manage a single container, but **docker-compose** can manage
 multiple containers and define the dependent services.
 
