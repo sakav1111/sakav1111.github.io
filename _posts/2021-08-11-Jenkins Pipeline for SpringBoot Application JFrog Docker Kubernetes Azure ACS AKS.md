@@ -231,7 +231,7 @@ applications.
 -   [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)
     will build and push the image straight to the Docker registry of choice.
 
-<u>**Using Local System**</u>  
+<u>  **Using Local System** </u>  
 Since we are not pushing to a Docker registry, we will tell Jib to use our local
 Docker installation by using the **dockerBuild** goal.
 
@@ -287,7 +287,7 @@ mvn compile com.google.cloud.tools:jib-maven-plugin:2.3.0:dockerBuild
 
 
 
-<u>**Using DockerHub**</u>
+<u> **Using DockerHub** </u>
 
 1.add registry credentials to the Maven **Maven\\conf\\settings.xml** file
 
