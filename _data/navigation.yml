@@ -467,6 +467,8 @@ SpringBootTutorial:
         url:    /springboot/springboot-mongodb-and-rest-example
       - title:  SpringBoot Advanced
         url:    /springboot/springboot-advanced
+      - title:  SpringBoot Security
+        url:    /springboot/springboot-security
       - title:  SpringBoot Microservices
         url:    /springboot/springboot-microservices
 
