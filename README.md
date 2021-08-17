@@ -27,7 +27,17 @@ Ref: https://pandoc.org/demos.html
 
 
 
+ ### Build Errors Fix
  
+ Find and Replace below symbols in all .md files with Notepad++
+ ```java
+‹
+œ
+™
+€
+Â
+```
+
 
 
 
