@@ -63,11 +63,11 @@ ServletRequest is send to Server to process particular request. It can send
 following details to servlet by submitting FORM or by URL.we can get these
 details at server side
 
--   public String **getParameter(“paramname");**
+-   public String **getParameter(-paramname");**
 
 -   public Enumeration **getParameterNames();**
 
--   public String[] **getParamterValues(“paramname");**
+-   public String[] **getParamterValues(-paramname");**
 
 ## How can we create deadlock condition on our servlet? ([detailed answer](http://javarevisited.blogspot.com/2010/10/what-is-deadlock-in-java-how-to-fix-it.html))
 

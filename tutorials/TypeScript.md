@@ -548,12 +548,12 @@ values can be scalar values or functions or even an array of other objects.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var object_name = {
-key1: “value1”, //scalar value
-key2: “value”,
+key1: -value1”, //scalar value
+key2: -value”,
 key3: function() {
 //functions
 },
-key4:[“content1”, “content2”]
+key4:[-content1”, -content2”]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An object can contain scalar values, functions and structures like arrays and

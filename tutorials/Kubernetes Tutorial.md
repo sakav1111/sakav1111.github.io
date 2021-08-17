@@ -313,7 +313,7 @@ deployment](https://martinfowler.com/bliki/BlueGreenDeployment.html) mechanism
 to reduce the complexity of handling multiple concurrent versions. (As there’s
 always only one version of the application running in the background) 
 
-In this, a component called “**Deployer**” that orchestrated the deployment was
+In this, a component called -**Deployer**” that orchestrated the deployment was
 created by their team by open sourcing their implementation under the Apache
 License as part of the Amdatu umbrella project. This mechanism performed the
 health checking on the pods before re-configuring the load balancer because they
@@ -385,7 +385,7 @@ Use case -2
 >   discovery were considered.
 
 -   That’s how folks, **Yahoo! JAPAN** built an automation toolchain for
-    “one-click” code deployment to Kubernetes running on OpenStack, with help
+    -one-click” code deployment to Kubernetes running on OpenStack, with help
     from **Google** and **Solinea**.
 
 Installation

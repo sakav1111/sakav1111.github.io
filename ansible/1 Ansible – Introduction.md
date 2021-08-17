@@ -49,12 +49,12 @@ when finished.
 
 #### Managed nodes  
 The network devices (and/or servers) you manage with Ansible. Managed nodes are
-also sometimes called “hosts”. Ansible is not installed on managed nodes.
+also sometimes called -hosts”. Ansible is not installed on managed nodes.
 
 #### Inventory  
 -   A list of managed nodes.
 
--   An inventory file is also sometimes called a “**hostfile**”. default
+-   An inventory file is also sometimes called a -**hostfile**”. default
     location is in./etc/ansible/hosts
 
 -   Your inventory can specify information like IP address for each managed
@@ -303,7 +303,7 @@ education: |
 
 **Variables**
 
-uses `“{{ var }}”` for variables. If we want to use previously declared variable,
+uses `-{{ var }}”` for variables. If we want to use previously declared variable,
 we must place between "{{ var }}"
 ```yaml
 foo: "{{ variable }}"

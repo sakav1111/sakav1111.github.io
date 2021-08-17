@@ -97,7 +97,7 @@ System.out.println(args[1]);
 ```
 
 
-The program correctly identifies the first two “words" as the arguments. Spaces
+The program correctly identifies the first two -words" as the arguments. Spaces
 are used to separate the arguments. If you want spaces inside an argument, you
 need to use quotes as in this example:
 ```powershell
@@ -664,7 +664,7 @@ but provide useful states for performance monitoring.
     collection [logging](http://javarevisited.blogspot.sg/2011/05/top-10-tips-on-logging-in-java.html) is
     enable using **–verbose:gc or -XX:PrintGCDetails**
 
--   Major collection prints **“Full GC".** 
+-   Major collection prints **-Full GC".** 
 
 ##  How to Generate GC Log File?
 
@@ -683,7 +683,7 @@ Or add visual-gc plugin to visualVM
 **Sandbox**. The sandbox security model makes it easier to work with software
 that comes from sources you don't fully trust. 
 
-## What is “Phontom" memory
+## What is -Phontom" memory
 
 **A memory that doesn’t exist in reality.**
 
@@ -905,7 +905,7 @@ In [BigDecimal](https://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.h
 **you can specify the rounding mode** and exact precision which you want to use.
 **Using the exact precision limit, rounding errors are mostly solved. Best part
 is that BigDecimal numbers are immutable** i.e. if you create a BigDecimal BD
-with value “1.23", that object will remain “1.23" and can never be changed. You
+with value -1.23", that object will remain -1.23" and can never be changed. You
 can use it’s .compareTo() method to compare to BigDecimal numbers
 ```java
 private static void testBdEquality()
@@ -1290,7 +1290,7 @@ metadata about the class:
 
 we can create Class object by following ways
 ```java
-Class c = Class.forName(“StudentBO")
+Class c = Class.forName(-StudentBO")
 Class c = StudentBO.class
 Class c = a.getClass();
 ```
@@ -1787,7 +1787,7 @@ Image result for solid design principles
 
 **1. Single Responsibility Principle**
 
-**“One class should have one and only one responsibility"**
+**-One class should have one and only one responsibility"**
 
 In other words, we should write, change and maintain a class for only one
 purpose**. If it is model class then it should strictly represent only one
@@ -1796,7 +1796,7 @@ without worrying the impacts of changes for another entity.
 
 **2. Open Closed Principle**
 
-**“Software components should be open for extension, but closed for
+**-Software components should be open for extension, but closed for
 modification"**
 
 If we take a look into any good framework like struts or spring, we will see
@@ -1811,14 +1811,14 @@ parameters and we can extend it’s functionality the way we want.**
 
 **3. Liskov’s Substitution Principle**
 
-“Derived types must be completely substitutable for their base types"
+-Derived types must be completely substitutable for their base types"
 
 **4. Interface Segregation/Separation Principle**
 
 This principle is my favorite one. It is applicable to interfaces as single
 responsibility principle holds to classes. ISP says:
 
-“Clients should not be forced to implement unnecessary methods which they will
+-Clients should not be forced to implement unnecessary methods which they will
 not use"
 
 Take an example. Developer Alex created an interface Reportable and added two

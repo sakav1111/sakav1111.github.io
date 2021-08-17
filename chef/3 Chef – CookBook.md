@@ -13,7 +13,7 @@ Chef – CookBook
 
 Cookbooks are created on the workstation and then uploaded to a **Chef server.** 
 
-From there, **recipes** and **policies** described within the cookbook can be assigned to nodes as part of the node’s **“run-list”**.
+From there, **recipes** and **policies** described within the cookbook can be assigned to nodes as part of the node’s **-run-list”**.
 
 A **run-list** is a sequential list of
 recipes and roles that are run on a node by `chef-client`.
@@ -77,8 +77,8 @@ Go to **apache_cookbook** directory & observe the File structure.
 
 -   Recipes are used to declare the state of **different resources**.
 
--   For instance, a resource could say “`the package x should be installed`”.
-    Another resource may say “`the x service should be running`”.
+-   For instance, a resource could say -`the package x should be installed`”.
+    Another resource may say -`the x service should be running`”.
 
 Resources can be of many different types. Some common ones are:
 
@@ -155,7 +155,7 @@ chef generate template apache_cookbook index.html
 
 ![](media/c81a94cfd6741c9bd76dc264b0ac4147.png)
 
-**2. Write “hello world” inside index.html.erb**
+**2. Write -hello world” inside index.html.erb**
 ```powershell
 # vi templates/index.html.erb
 <h1>

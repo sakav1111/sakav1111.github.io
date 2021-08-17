@@ -173,7 +173,7 @@ I want to create a new branch named **feature**, Here the Steps to do so.
 
 3.  Type a branch name, **feature**, into the new branch text box.
 
-4.  Select the blue **Create branch** box or hit “Enter" on your keyboard.
+4.  Select the blue **Create branch** box or hit -Enter" on your keyboard.
 
     ![](media/09ab5fbe7969b9941b33e63dde207a74.png)
  

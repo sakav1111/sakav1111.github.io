@@ -183,7 +183,7 @@ To restart Jenkins: **jenkins.exe restart**
 
 ## Explain how you can set up Jenkins job?
 
-Go to Jenkins top page, select “New Job", then choose “Build a free-style
+Go to Jenkins top page, select -New Job", then choose -Build a free-style
 software project".
 
 Now you can tell the elements of this freestyle job:

@@ -3278,7 +3278,7 @@ pageview: true
      }
      ```
      
-     Recommend always using the “object shorthand” form for the `mapDispatchToProps`
+     Recommend always using the -object shorthand” form for the `mapDispatchToProps`
         
      Redux wrap it in another function that looks like (…args) => dispatch(onTodoClick(…args)), and pass that wrapper function as a prop to your component.
       
@@ -4417,7 +4417,7 @@ pageview: true
  
     
 219. ### Do I need to keep all my state into Redux? Should I ever use react internal state?
-     It is up to developer decision. i.e, It is developer job to determine what kinds of state make up your application, and where each piece of state should live. Some users prefer to keep every single piece of data in Redux, to maintain a fully serializable and controlled version of their application at all times. Others prefer to keep non-critical or UI state, such as “is this dropdown currently open”, inside a component's internal state.
+     It is up to developer decision. i.e, It is developer job to determine what kinds of state make up your application, and where each piece of state should live. Some users prefer to keep every single piece of data in Redux, to maintain a fully serializable and controlled version of their application at all times. Others prefer to keep non-critical or UI state, such as -is this dropdown currently open”, inside a component's internal state.
 
      Below are the thumb rules to determine what kind of data should be put into Redux
      1. Do other parts of the application care about this data?
@@ -5188,7 +5188,7 @@ pageview: true
         return amount + interest;
      }
      ```
-     The above function is called “pure” because it does not attempt to change their inputs, and always return the same result for the same inputs. Hence, React has a single rule saying "All React components must act like pure functions with respect to their props."
+     The above function is called -pure” because it does not attempt to change their inputs, and always return the same result for the same inputs. Hence, React has a single rule saying "All React components must act like pure functions with respect to their props."
 
  
     
@@ -5468,7 +5468,7 @@ pageview: true
 277. ### Give an example on How to use context?
      **Context** is designed to share data that can be considered **global** for a tree of React components.
 
-     For example, in the code below lets manually thread through a “theme” prop in order to style the Button component.
+     For example, in the code below lets manually thread through a -theme” prop in order to style the Button component.
 
      ```javascript
      //Lets create a context with a default theme value "luna"
@@ -5638,7 +5638,7 @@ pageview: true
          }
      ```
 
-     Let's use this HOC to log all props that get passed to our “fancy button” component,
+     Let's use this HOC to log all props that get passed to our -fancy button” component,
 
      ```javascript
          class FancyButton extends React.Component {
@@ -5803,7 +5803,7 @@ pageview: true
  
     
 290. ### Is it prop must be named as render for render props?
-     Even though the pattern named render props, you don’t have to use a prop named render to use this pattern. i.e,  Any prop that is a function that a component uses to know what to render is technically a “render prop”. Lets take an example with the children prop for render props,
+     Even though the pattern named render props, you don’t have to use a prop named render to use this pattern. i.e,  Any prop that is a function that a component uses to know what to render is technically a -render prop”. Lets take an example with the children prop for render props,
 
      ```javascript
      <Mouse children={mouse => (
@@ -5811,7 +5811,7 @@ pageview: true
      )}/>
      ```
 
-     Actually children prop doesn’t need to be named in the list of “attributes” in JSX element. Instead, you can keep it directly inside element,
+     Actually children prop doesn’t need to be named in the list of -attributes” in JSX element. Instead, you can keep it directly inside element,
 
      ```javascript
      <Mouse>
@@ -5874,7 +5874,7 @@ pageview: true
  
     
 295. ### What is the typical use case of portals?
-     React portals are very useful when a parent component has overflow: hidden or has properties that affect the stacking context(z-index,position,opacity etc styles) and you need to visually “break out” of its container.
+     React portals are very useful when a parent component has overflow: hidden or has properties that affect the stacking context(z-index,position,opacity etc styles) and you need to visually -break out” of its container.
 
      For example, dialogs, global message notifications, hovercards, and tooltips.
 

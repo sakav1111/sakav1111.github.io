@@ -436,7 +436,7 @@ Login into Github, create new Repository
 
 ![](media/070b759fabbfdd6f5b96c838574ff9a8.png)
 
-**Create new Brach “production” and make production as default branch.**
+**Create new Brach -production” and make production as default branch.**
 
 On Branches Menu, type \`production\` & create branch
 

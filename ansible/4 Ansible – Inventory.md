@@ -12,7 +12,7 @@ tags:
 Ansible – Inventory 
 ====================
 
-Ansible works against multiple managed nodes or “hosts” in your infrastructure
+Ansible works against multiple managed nodes or -hosts” in your infrastructure
 at the same time, using a list or group of lists know as inventory.
 
 -   Inventory file contains list of Nodes & their IP/Hostnames
@@ -315,7 +315,7 @@ You can also define aliases in your inventory
 ```powershell
 web ansible_port=5555 ansible_host=192.0.2.50
 ```
-In the above example, running Ansible against the host alias “web” will connect to 192.0.2.50 on port 5555
+In the above example, running Ansible against the host alias -web” will connect to 192.0.2.50 on port 5555
 
 
 <br>

@@ -188,3 +188,4 @@ _site
 package-lock.json
 .sass-cache/
 .jekyll-metadata
+.jekyll-cache

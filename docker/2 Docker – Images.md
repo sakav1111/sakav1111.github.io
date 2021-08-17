@@ -93,7 +93,7 @@ root\@master:/home/vagrant/docker\# docker images -q
 ```
 
 
-**docker images -f “dangling=false”**  
+**docker images -f -dangling=false”**  
 Filter with Conditions : it will show only not running / not associated images.
 ```powershell
 root@master:/home/vagrant/docker# docker images -f "dangling=false"

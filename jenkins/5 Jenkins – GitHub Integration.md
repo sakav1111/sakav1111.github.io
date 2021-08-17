@@ -41,7 +41,7 @@ Now enter the item name and select the job type. For example, item name is
 
 ![](media/4e3bb0f14b01779333263570246ab678.png)
 
-Go to “Source Code Management” Tab \> Select Git \> Provide Github Repo URL
+Go to -Source Code Management” Tab \> Select Git \> Provide Github Repo URL
 \>Save / Apply
 
 Example : <https://github.com/smlcodes/JSPMaven.git>

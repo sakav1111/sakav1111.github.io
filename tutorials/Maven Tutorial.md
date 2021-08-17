@@ -245,12 +245,12 @@ repository in your pom.xml file like this
 ### 3.4 How to add Jar file to Maven Local Repository Manually 
 
 For example, [kaptcha](http://code.google.com/p/kaptcha/)**,** a popular third
-party Java library, used to generate **“captcha"** image to stop spam, but it’s
+party Java library, used to generate **-captcha"** image to stop spam, but it’s
 not available in the Maven center repository.
 
 Follow below steps to add this into Local Repository
 
-1. Download the “[kaptcha](http://code.google.com/p/kaptcha/downloads/list)“,
+1. Download the -[kaptcha](http://code.google.com/p/kaptcha/downloads/list)-,
 extract it and copy kaptcha-version.jar, in c drive for example.
 
 2. Run following command:
@@ -348,7 +348,7 @@ Normally, we just use the following two templates
 2.	`maven-archetype-quickstart` – Java Project (JAR)
 
 
-### Example: Create “MavenSample" Project using Maven
+### Example: Create -MavenSample" Project using Maven
 
 **1. Navigate to the folder you want to create the Java project. Type below
 command:**
@@ -371,7 +371,7 @@ in /src/test/java/.
 
 3.The above created Project is Normal Project**, Eclipse cannot recognize it to
 Importing, To make this as an Eclipse project, in terminal, navigate to
-“MavenSample" project, type this command
+-MavenSample" project, type this command
 
 `mvn eclipse:eclipse`  
 
@@ -514,7 +514,7 @@ structure**
 
 3.The above created Project is Normal Project **, Eclipse cannot recognize it to
 Importing, to make this as an Eclipse project, in terminal, navigate to
-“MavenSample" project, and type this command**
+-MavenSample" project, and type this command**
 ```java
 mvn eclipse:eclipse -Dwtpversion=2.0
 ```
@@ -574,19 +574,19 @@ Reference](http://maven.apache.org/guides/introduction/introduction-to-the-lifec
 
 ### 7.2 mvn package
 
-When you run “mvn package" command, it will compile source code, run unit test
-and pack it depends on your “packaging" tag in pom.xml file.
+When you run -mvn package" command, it will compile source code, run unit test
+and pack it depends on your -packaging" tag in pom.xml file.
 
 Maven is run by phases, read this [default Maven build
 lifecycle](http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) article
-for more detail. So, when the “**package**" phase is executed, all its above
-phases – “**validate**“, “**compile**" and “**test**“, including the current
-phase “**package**" will be executed orderly.
+for more detail. So, when the -**package**" phase is executed, all its above
+phases – -**validate**-, -**compile**" and -**test**-, including the current
+phase -**package**" will be executed orderly.
 
-1.  If **“packaging"=jar**, it will package your project into a “jar" file and
+1.  If **-packaging"=jar**, it will package your project into a -jar" file and
     put it into your target folder
 
-2.  If **“packaging"=war**, it will package your project into a “war" file and
+2.  If **-packaging"=war**, it will package your project into a -war" file and
     put it into your target folder
 ```java
 <project>
@@ -610,7 +610,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec
 
 ### 7.2 mvn clean
 
-In Maven based project, many cached output existed in your **“target"** folder.
+In Maven based project, many cached output existed in your **-target"** folder.
 When you want to build your project for deployment, you have to make sure clean
 all the cached output so that you are always get the latest for deployment.
 
@@ -652,12 +652,12 @@ for more different operations on mvn test refer
 
 ### 7.4 mvn install
 
-When we use “mvn install", it will package your project and deploy to local
+When we use -mvn install", it will package your project and deploy to local
 repository automatically, so that other developers can use it.
 
-When “**install**" phase is executed, all above phases “**validate**“,
-“**compile**“, “**test**“, “**package**“, “**integration-test**“, “**verify**"
-phase , including the current “**install**" phase will be executed orderly.
+When -**install**" phase is executed, all above phases -**validate**-,
+-**compile**-, -**test**-, -**package**-, -**integration-test**-, -**verify**"
+phase , including the current -**install**" phase will be executed orderly.
 Refer to this [Maven
 lifecycle](http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) for
 detail
@@ -694,7 +694,7 @@ After running **mvn install** , project structure is as below, & it creates
 
 ![C:\\Users\\kaveti_s\\Desktop\\temp.png](media/a1c513cf9c24fc541992c4ec4a66a644.png)
 
-It’s always recommended to run “**clean**" and “**install**" together, so that
+It’s always recommended to run -**clean**" and -**install**" together, so that
 you are always deploy the latest project to your local repository.
 
 **mvn clean install**
@@ -703,7 +703,7 @@ you are always deploy the latest project to your local repository.
 
 ### 7.5 mvn site
 
-“mvn site" is used to generate a documentation site for your project information
+-mvn site" is used to generate a documentation site for your project information
 
 ```java
 C:\MavenDemo\MavenSample>mvn site
@@ -739,7 +739,7 @@ documenet files
 
 ![](media/fb223488e447eb80d8443e64851a61f3.png)
 
-“mvn site:deploy" to deploy your generated documentation site to server
+-mvn site:deploy" to deploy your generated documentation site to server
 automatically, via WebDAV mechanism.
 
 ### 7.6 How to Deploy War File in Tomcat using Maven

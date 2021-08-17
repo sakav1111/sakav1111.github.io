@@ -37,13 +37,13 @@ We would need to create a data-bag to encrypt the sensitive data.
 ```powershell
 knife data bag create <my_databag> <my_databag_item>
 ```
-This would create a directory named “my_databag” which is our data-bag and this
-directory has created a file named “my_databag_item.json” which is a data-bag
+This would create a directory named -my_databag” which is our data-bag and this
+directory has created a file named -my_databag_item.json” which is a data-bag
 item.
 
 
 
-**we have “plain-text” content to encrypt:**
+**we have -plain-text” content to encrypt:**
 ```powershell
 {
  "id": "my_databag",

@@ -32,7 +32,7 @@ Creating New Environment
 #### 1. Create new Environment
 
 To Create new Environment, we need to create environments directory inside
-“**chef-repo**”.This is where we should put our environment files.
+-**chef-repo**”.This is where we should put our environment files.
 ```powershell
 cd ~/chef-repo/environments
 ```

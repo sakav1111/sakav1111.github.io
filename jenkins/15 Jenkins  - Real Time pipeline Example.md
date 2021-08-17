@@ -25,11 +25,11 @@ I solve this issue following below step:
 
 **From the target slave node's console**
 
-1.  Switch to the “root” user.
+1.  Switch to the -root” user.
 
 sudo su
 
-1.  Add a jenkins user with the home “/var/lib/jenkins”. {Note : I am keeping my
+1.  Add a jenkins user with the home -/var/lib/jenkins”. {Note : I am keeping my
     home directory in /var/lib/jenkins} :
 
 useradd -d /var/lib/jenkins Jenkins
@@ -48,7 +48,7 @@ mkdir /var/lib/jenkins/.ssh
 
 vi /var/lib/jenkins/.ssh/authorized_keys
 
-Paste the key from the Jenkins master into the file vim. Save with “:wq!”.
+Paste the key from the Jenkins master into the file vim. Save with -:wq!”.
 
 Caused by: java.io.IOException: Server returned HTTP response code: 403 for URL: http://localhost:6666/manager/text/list
 ------------------------------------------------------------------------------------------------------------------------

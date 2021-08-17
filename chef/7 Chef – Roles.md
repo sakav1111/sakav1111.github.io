@@ -24,7 +24,7 @@ yourself each time
 In your organization, if your infrastructure grows to be multiple, redundant
 servers that all perform the same basic tasks. For instance, these might be web
 servers that a load balancer passes requests to. They would all have the same
-basic configuration and could be said to each satisfy the same “role”.
+basic configuration and could be said to each satisfy the same -role”.
 
 You can set custom run lists for all the nodes in your roles and override
 attribute values from within your roles.

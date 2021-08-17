@@ -282,7 +282,7 @@ public class HelloWorldWebService {
 } 
 
 3.Configure web.xml
-In web.xml, register “com.sun.jersey.spi.container.servlet.ServletContainer“, and puts your Jersey service folder under “init-param“, “com.sun.jersey.config.property.packages
+In web.xml, register -com.sun.jersey.spi.container.servlet.ServletContainer-, and puts your Jersey service folder under -init-param-, -com.sun.jersey.config.property.packages
 
 <web-app>
 	<servlet>
@@ -423,9 +423,9 @@ We can download any type of files from the RESTful web services, **@produces**
 annotation
 
 We should annotate our method with
- - `@Produces(“text/plain“)` If you are expecting Text file as response
- - `@Produces(“image/your image type[.jpg/.png/.gif]")` for downloading any Image files
- - `@Produces(“application/pdf“)` for downloading PDF files
+ - `@Produces(-text/plain-)` If you are expecting Text file as response
+ - `@Produces(-image/your image type[.jpg/.png/.gif]")` for downloading any Image files
+ - `@Produces(-application/pdf-)` for downloading PDF files
  - `@Produces(MediaType.APPLICATION_JSON)`	-JSON
  - `@Produces(MediaType.APPLICATION_XML)`.	-XML
 

@@ -352,7 +352,7 @@ Just Bootstrap
 
 To set Cookbook to a Node 
 ```powershell
-knife node run_list add node1 “recipe[apache]”
+knife node run_list add node1 -recipe[apache]”
 node1:
  	run_list: recipe[apache]
 ```

@@ -41,7 +41,7 @@ of **{{ item }}.**
 
 ## Ansible loop with Index
 In some scenarios knowing the index value might come in handy. You can use
-the **“with indexed_items” **for this. The loop index will be available
+the **-with indexed_items” **for this. The loop index will be available
 at **item.0** and the value will be available at **item.1**. index value starts
 at zero as usual.
 ```yaml
@@ -68,11 +68,11 @@ You can also make changes to the index value like addition, subtraction etc.
 
 ## Ansible loop with conditional
 
-You can also use the “**when”** conditional statement along with the loop
+You can also use the -**when”** conditional statement along with the loop
 structure. Thus you can control the looping based on a variable or system facts.
 
 The following example will run the task when the loop value is the same as the
-“loop_1” variable. Note that “**item**” is not enclosed in double brackets.
+-loop_1” variable. Note that -**item**” is not enclosed in double brackets.
 ```yaml
 - hosts: all
   vars:

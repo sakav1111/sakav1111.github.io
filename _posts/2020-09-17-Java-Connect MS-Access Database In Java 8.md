@@ -22,9 +22,9 @@ Java - Connect MS-Access Database In Java 8
 Create MS-Access DB
 -------------------
 
--   Create MS-Access DB, should with extension **“.mdb”**
+-   Create MS-Access DB, should with extension **-.mdb”**
 
--   For this Example, we are using **“swingdb.mdb”** .
+-   For this Example, we are using **-swingdb.mdb”** .
 
 -   Create Table **login** with below data
 

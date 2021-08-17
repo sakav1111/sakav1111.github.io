@@ -38,7 +38,7 @@ while request scope means a bean is alive only for a request.
 ## Does Spring Bean provide thread safety?
 
 The default scope of Spring bean is *singleton*, so there will be *only one
-instance per context*. If two threads calls **factory.getBean(“s"),** it returns
+instance per context*. If two threads calls **factory.getBean(-s"),** it returns
 same object. if any threads changes bean property by setName() , then other
 thread may get inconsistence results.
 
@@ -374,8 +374,8 @@ called "Session Cookie Based" and the other one is "Token Based".
 The most common approach we probably all know is to use a server generated
 secret token (Session key) in the form of a JSESSIONID cookie. Initial setup for
 this is near nothing these days perhaps making you forget you have a choice to
-make here in the first place. Even without further using this “Session key" to
-store any other state “in the session", the key itself is in fact *state* as
+make here in the first place. Even without further using this -Session key" to
+store any other state -in the session", the key itself is in fact *state* as
 well.  I.e. without a shared and persistent storage of these keys, no successful
 authentication will survive a server reboot or requests being load balanced to
 another server.

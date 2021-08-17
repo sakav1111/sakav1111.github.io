@@ -40,7 +40,7 @@ operating system of Linux to install and use.
 |------------------|--------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **RHEL& CentOS** | Very stable and reliable; very well supported; used almost everywhere; very traditional layout and management approach         | Very long release cycle; packages will be older and generally more difficult to bring to current if required                                            |
 | **Fedora**       | Quite cutting-edge – sometimes bleeding-edge; lots of supported software with recent releases                                  | Can be less than stable due to fast-paced package and release updates; generally thought to be Red Hat’s testing distribution                           |
-| **Ubuntu**       | Solid release cycle based on LTS (Long Term Support) and intermediate releases; user friendly, with lots of “helper" commands  | Tends to move quickly and packages can be less stable than others; has unique conventions that don’t translate to other distributions                   |
+| **Ubuntu**       | Solid release cycle based on LTS (Long Term Support) and intermediate releases; user friendly, with lots of -helper" commands  | Tends to move quickly and packages can be less stable than others; has unique conventions that don’t translate to other distributions                   |
 | **Debian**       | Very stable and reliable; wide variety of support packages; all-volunteer maintainers; supports large variety of architectures | Very conservative; release cycle can be slow                                                                                                            |
 | **openSUSE**     | Stable, solid distribution; plenty of support packages; has sys admin tools such as YaST                                       | Has been stunted by Novell’s acquisition and dealings with Microsoft that assume rights over portions of Linux; has unique sys admin tools such as YaST |
 
@@ -261,7 +261,7 @@ To work with files, we have following commands
 | **mv**      | To rename or to move a file. |
 | **rename**  | To rename file.              |
 
-### 3.1 “file" command 
+### 3.1 -file" command 
 
 The **file** command is used to determine a file's type. The type printed will
 usually contain one of the words **text** (ASCII), **executable** or **data.**
@@ -314,7 +314,7 @@ img2.jpng: ASCII text
 img.png:   ASCII text
 ```
 
-### 3.2 “touch" command
+### 3.2 -touch" command
 
 The **touch** command is the easiest way to **create new, empty files**. It is
 also used to **change the timestamps** (i.e., dates and times of existing files
@@ -378,7 +378,7 @@ Change: 2017-08-01 08:23:36.216000000 +0200
 [smlcodes@centori files]$
 ```
 
-### 3.3 “rm" (remove) command
+### 3.3 -rm" (remove) command
 
 The **rm** command removes (deletes) files or directories. The command line
 doesn't have a recycle bin or trash unlike other GUI's to recover the files
@@ -402,7 +402,7 @@ rm <filename>
 
 ![E:\\Users\\satyacodes\\Pictures\\12.png](media/663fe5c0d8ac2a4a6d27210f0133709d.png)
 
-### 3.4 “cp" (copy) command
+### 3.4 -cp" (copy) command
 
 The **cp** command is used to make copies of files and directories
 
@@ -445,7 +445,7 @@ a.txt  files  j1,  j2  java  jsp  newfolder  spring
 1.txt  a.txt  b.txt  folder1  folder2
 ```
 
-### 3.5 “mv" (move) command
+### 3.5 -mv" (move) command
 
 The mv command is used to move or rename files. **mv** renames
 file *SOURCE* to *DEST*, or moves the *SOURCE* file (or files) to *DIRECTORY*.
@@ -481,7 +481,7 @@ mv [OPTION]... SOURCE... DIRECTORY
 2.txt  a.txt  b.txt  folder1  folder2
 ```
 
-### 3.6 “rename" command
+### 3.6 -rename" command
 
 When you want to rename a large group of files at once then it will be difficult
 to rename it with 'mv' command. In these cases, it is adviced to use 'rename'
@@ -502,7 +502,7 @@ rename 's/old-name/new-name/'
 | **rename (a-z)(A-Z)/ (A-Z)(a-z)** | Convert into upper case/lower case.       |
 | **rename -f**                     | Forcefully over write existing files.     |
 
-### 3.7 “man" (manual) command
+### 3.7 -man" (manual) command
 
   We can see the **manuals** for a command with the **man** command. On Linux
 and other Unix-like operating systems, man is the interface used to view the
@@ -543,7 +543,7 @@ cery frequently used commands on
 | **more**     | Command line diaplays contents in pager form that is either in more format. |
 | **less**     | Command line diaplays contents in pager form that is either in less format. |
 
-### 1. “head" command
+### 1. -head" command
 
 The 'head' command displays the starting content of a file. **By default, it
 displays starting 10 lines of any file.**
@@ -578,7 +578,7 @@ line2:sajkdasjkhdhsakhdaskhdaskj
 ```
 
 
-### 2. “tail" command
+### 2. -tail" command
 
 The 'tail' command displays the last lines of a file. By default, it will also
 display the last ten lines of a file
@@ -612,7 +612,7 @@ li20:sadjkasjkldlasjdlasjljl
 ```
 
 
-### 3. “cat" (catenate) command
+### 3. -cat" (catenate) command
 
 cat stands for "**catenate**." It reads data from files, and outputs their
 contents. It is the simplest way to display the contents of a file at the
@@ -680,7 +680,7 @@ In java we have follwing concepts
 | **cat -e [fileName]**                              | To display $ character at the end of each line.    |
 | **cat [fileName] <<EOF**                         | Used as page end marker.                            |
 
-### 4. “tac" command
+### 4. -tac" command
 
 The 'tac' command is the reverse of the 'cat' command. It is also known as 'cat'
 backwards. It will display the file content in reverse order.
@@ -698,7 +698,7 @@ In java we have follwing concepts
 ```
 
 
-### 5. “more" command
+### 5. -more" command
 
 'cat' command displays the file content. Same way 'more' command also displays
 the content of a file. Only difference is that, in case of larger files, 'cat'
@@ -750,7 +750,7 @@ DESCRIPTION
 --More--(32%)
 ```
 
-### 6. “less" command
+### 6. -less" command
 
 The 'less' command is same as 'more' command but include some more features.It
 automatically adjust with the width and height of the teminal window, while
@@ -826,7 +826,7 @@ which can be used as building blocks.
 
 11. **gzip**
 
-### 1.“cat" inside Pipes
+### 1.-cat" inside Pipes
 
 When we use cat command inside pipes, it moves the stdin to stout.
 ```bash
@@ -868,7 +868,7 @@ In java we have follwing concepts
 ```
 
 
-### 2.“cut" inside Pipes
+### 2.-cut" inside Pipes
 
  'cut' command is used for selecting a specific column of a file.The coulmns can
 be separated by a demiter like ‘ ’, ‘-’ , ‘,’(space, dash, comma) etc.
@@ -926,7 +926,7 @@ Dhoni-284
 
 
 
-### 4. “comm" command  
+### 4. -comm" command  
 The 'comm' command compares two files or streams. By default, 'comm' will always
 display three columns. Both the files has to be in sorted order for 'comm'
 command to be executed.
@@ -955,7 +955,7 @@ Here tee.txt is newly created file.
 
 
 
-### 6. “tr" command  
+### 6. -tr" command  
 The command 'tr' stands for **'translate'**. It is used to translate, like from
 lowercase to uppercase and vice versa or new lines into spaces
 
@@ -981,7 +981,7 @@ uniq –c : command will counts the number of occurences of a word.
 
 
 
-### 8. “wc" (Word Count) Command
+### 8. -wc" (Word Count) Command
 
 **wc**, or "word count," prints a count of **newlines**, **words**,
 and **bytes** for each input file.
@@ -996,7 +996,7 @@ and **bytes** for each input file.
 
 
 
-### 9. “od" (Octal dump) command
+### 9. -od" (Octal dump) command
 
 The 'od' term stands for octal dump. It displays content of a file in different
 human-readable formats like hexadecimal, octal and ASCII characters.
@@ -1011,7 +1011,7 @@ od -c <fileName> (display files in ASCII (backslashed) character format)
 
 ![E:\\Users\\satyacodes\\Pictures\\12.png](media/dd93c6febe544496bd41466abd0bf826.png)
 
-### 10. “sort" command
+### 10. -sort" command
 
 The 'sort' command sorts the file content in an alphabetical order.
 
@@ -1024,7 +1024,7 @@ column
 
 
 
-### 11. “gzip" command
+### 11. -gzip" command
 
 Gzip (GNU zip) is a compressing tool, which is used to truncate the file size.
 By default original file will be replaced by the compressed file ending with
@@ -1218,7 +1218,7 @@ Wednesday 02-08-17
 ```
 
 
-###### 4. “cal" command
+###### 4. -cal" command
 
 cal displays current month's calender with current day highlighted. We can also
 display past or future year's month with cal command.
@@ -1231,7 +1231,7 @@ cal [options] [[[day] month] year]
 
 
 
-###### 5.“sleep" command  
+###### 5.-sleep" command  
 sleep command let the terminal wait by the specified amount of time. By default
 it takes time in seconds
 ```bash
@@ -1394,7 +1394,7 @@ uid=79458(smlcodes) gid=79459(smlcodes) groups=79459(smlcodes) context=guest_u:g
 
 
 
-### 2. “su" (Switch User) Command
+### 2. -su" (Switch User) Command
 
 Su used to Change the current user ID to that of the superuser, or another user.
 
@@ -1667,7 +1667,7 @@ We have two types of commands in shell.
 
 ###### 1."type" command
 
-We can check the commands which are belongs to which type by “type" command
+We can check the commands which are belongs to which type by -type" command
 ```plaintext
 [smlcodes@centori ~]$type date                                                    
 date is /bin/date                                                                 
@@ -1677,7 +1677,7 @@ pwd is a shell builtin
 ```
 
 
-###### 2. “alias" command
+###### 2. -alias" command
 
 Sometimes typing commands can get really repetitive, or if you need to type a
 long command many times, it’s best to have an alias you can use for that. To
@@ -1697,7 +1697,7 @@ You can remove aliases with the unalias command:
 
 ###### 3 ."env" command
 
-“env" outputs a whole lot of information about the environment variables you
+-env" outputs a whole lot of information about the environment variables you
 currently have set.
 
 >   $env
@@ -1722,7 +1722,7 @@ online, or visiting a web page. What happens underneath?
 You application (email, chat, etc) breaks the data into thousands of tiny
 independent pieces. Each piece is called a Datagram (aka packet). Each datagram
 has embedded with it the destination IP address. Your computer send this
-datagram to your Router (aka “link"), and your router send it to a appropriate
+datagram to your Router (aka -link"), and your router send it to a appropriate
 node (another router or computer) on the network that's closer to the
 destination.
 
@@ -1761,8 +1761,8 @@ between computers.
 
 Each Network Adapter has a ID, called [MAC
 address](http://en.wikipedia.org/wiki/MAC_address) (aka **hardware
-address**, **physical address**). This ID is burned into the hardware. (“MAC" is
-abbreviation for “Media Access Control" (the name is historical).)
+address**, **physical address**). This ID is burned into the hardware. (-MAC" is
+abbreviation for -Media Access Control" (the name is historical).)
 
 MAC address is a 48 bits number. Usually written as 6 groups of 2 hex digits.
 For example, 01-23-45-67-89-abor 01:23:45:67:89:ab. Each 2 hex is a octet.
@@ -1809,7 +1809,7 @@ to find the IP address any router use : ip route.
 
 ###### 5. Host, Hostname
 
-A “host" typically refers to a particular computer (or internet device).
+A -host" typically refers to a particular computer (or internet device).
 A [Hostname](http://en.wikipedia.org/wiki/Hostname) is basically just a name for
 a machine. It is used mostly as a human-friendly form to identify a machine.
 

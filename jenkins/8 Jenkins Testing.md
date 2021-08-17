@@ -21,7 +21,7 @@ Create Job \> Free Style
 
 ![](media/2c7bfbd8e3638d86ecfbc6f27f2fc674.png)
 
-Next, **Post-build Step \> choose “Publish Junit test result report”**
+Next, **Post-build Step \> choose -Publish Junit test result report”**
 
 ![](media/22e8488d66438de94697342c8bd409ad.png)
 
@@ -33,4 +33,4 @@ Test report XMLs - location of reports xmls
 
     ![](media/14df6d6ac6d3587198a4323f3f070507.png)
 
--   For selenium, we need to add **“Hudson Selenium Plugin”**
+-   For selenium, we need to add **-Hudson Selenium Plugin”**

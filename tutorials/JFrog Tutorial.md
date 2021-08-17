@@ -165,7 +165,7 @@ Select : Maven \> Create
 
 ![](media/3088ea0cf179ca306b596ee8472f80ce.png)
 
-Click on Artifacts. We mostly use “libs-release-local” to store maven artifacts
+Click on Artifacts. We mostly use -libs-release-local” to store maven artifacts
 
 ![](media/bd92642f361caf8180e43cb8cac1c387.png)
 
@@ -222,12 +222,12 @@ pom.xml
 ![](media/8c048f9bf01bbc7444be38ed25266c0d.png)
 
 #### b. Upload artifact via maven Build 
-Go to JFrog home page \> ARTIFACTS\> choose the repository \>Click on “Set me
-up” \>Click on “Generate Maven Settings” \> Download Snippet.
+Go to JFrog home page \> ARTIFACTS\> choose the repository \>Click on -Set me
+up” \>Click on -Generate Maven Settings” \> Download Snippet.
 
 ![](media/84a6d13df4c94ad1ec07ece0c95064e6.png)
 
-Save downloaded “settings.xml” file under the Maven Home directory (typically
+Save downloaded -settings.xml” file under the Maven Home directory (typically
 **it is, user./home/.m2/settings.xml)**
 
 ![](media/dace7b3884620403147793972ba0b364.png)

@@ -137,8 +137,8 @@ Example: git add index.php
  
 2.Adding files of same type
 =========================================
-Syntax : git add “<wildcard>.<extension>"
-Example: git add “*.jsp"
+Syntax : git add -<wildcard>.<extension>"
+Example: git add -*.jsp"
  
 3.Adding all files at a time
 =========================================

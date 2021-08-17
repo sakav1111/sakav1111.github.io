@@ -308,7 +308,7 @@ set on the new model are fired and another digest cycle executes. This goes on
 until all models are stable. 
 
 The digest cycle is triggered automatically but it can be called manually using
-**“.$apply()".**
+**-.$apply()".**
 
 ## What is Single Page Application (SPA)? 
 

@@ -26,7 +26,7 @@ In this Example We are going to use Google Spreadsheet
 ![](media/f98577b52309ef0368a5d55263affb3a.png)
 
 
-Open the **Script editor…** by clicking “**Tools**” \> “**Script editor…**”  
+Open the **Script editor…** by clicking -**Tools**” \> -**Script editor…**”  
 ![](media/c4404a164946521db816e4504fa323e1.png)
 
 **Place below Code / Change Email-Id of existing code**

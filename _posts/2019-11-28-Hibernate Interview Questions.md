@@ -611,8 +611,8 @@ here…](http://www.mkyong.com/hibernate/hibernate-cascade-example-save-update-d
 
 #### Conclusion
 
-In short, the “inverse" is decide which side will update the foreign key, while
-“cascade" is decide what’s the follow by operation should execute. Both are look
+In short, the -inverse" is decide which side will update the foreign key, while
+-cascade" is decide what’s the follow by operation should execute. Both are look
 quite similar in relationship, but it’s totally two different things. Hibernate
 developers are worth to spend time to research on it, because misunderstand the
 concept or misuse it will bring serious performance or data integrity issue in
@@ -705,16 +705,16 @@ query and **@NameQueries** is used to define multiple named query in hibernate.
 ## Explain Criteria API
 
 Criteria is a simplified API for retrieving entities by composing Criterion
-objects. This is a very convenient approach for functionality like “search"
+objects. This is a very convenient approach for functionality like -search"
 screens where there is a variable number of conditions to be placed upon the
 result set.
 
 **Example:**
 ```java
 List employees = session.createCriteria(Employee.class)
-.add(Restrictions.like(“name", “a%") )
-.add(Restrictions.like(“address", “Boston"))
-.addOrder(Order.asc(“name") )
+.add(Restrictions.like(-name", -a%") )
+.add(Restrictions.like(-address", -Boston"))
+.addOrder(Order.asc(-name") )
 .list();
 ```
 

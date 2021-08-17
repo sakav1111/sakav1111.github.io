@@ -69,12 +69,12 @@ Ant build tool is used to manage a Java project, compile, and package it into a
 Jar file
 
 **1. Create a Java Project**  
-In Eclipse IDE, create a new Java project named **“HelloAnt".**
+In Eclipse IDE, create a new Java project named **-HelloAnt".**
 
 ![](media/66b9abf439f51111625e769a83f8a5d7.png)
 
 **2. Create Java Program**  
-Create a new Java class to print “Hello Ant!"
+Create a new Java class to print -Hello Ant!"
 ```java
 package com.smlcodes;
 
@@ -243,8 +243,8 @@ We use Apache Ivy to get the project’s external libraries / dependencies.
 
 **2.Update build.xml**
 
-Update build.xml, add ivy namespace on top, and “ivy" task to download the ivy
-module, and “resolve" task to ask Ivy module to download the external libraries
+Update build.xml, add ivy namespace on top, and -ivy" task to download the ivy
+module, and -resolve" task to ask Ivy module to download the external libraries
 ```xml
 //build.xml
 <project xmlns:ivy="antlib:org.apache.ivy.ant"
@@ -274,7 +274,7 @@ $ ant ivy
 ```
 
 
-To download the external libraries, run task “resolve". The declared libraries
+To download the external libraries, run task -resolve". The declared libraries
 will be downloaded to the project lib folder.
 ```xml
 $ ant resolve

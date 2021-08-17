@@ -608,7 +608,7 @@ we can also use DecimalFormat class with passing format
 **Enumeration in Java** is supported by keyword enum. enums are a special type
 of class that always
 extends [java.lang.Enum](https://docs.oracle.com/javase/10/docs/api/java/lang/Enum.html).enums
-are **Compile time Constants, because they are “public static final**
+are **Compile time Constants, because they are -public static final**
 
 Logically, **each enum is an instance of enum type** itself. So given enum can
 be seen as below declaration. **JVM internally adds ordinal and value
@@ -1174,7 +1174,7 @@ public class BusySpin {
 
 ##   What is race condition in Java? Given one example?  (answer)
 
-“Race condition occurs when two or more threads try to read & write a shared variable at the same time"
+-Race condition occurs when two or more threads try to read & write a shared variable at the same time"
 
 Because the thread scheduling algorithm can swap between threads at any time,
 **you don't know the order in which the threads will attempt to access the

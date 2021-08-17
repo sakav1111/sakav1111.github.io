@@ -115,7 +115,7 @@ Save & Build Now.
 
 #### 2.Unit testing and generating the JUnit test reports
 
-Now we will create one more Project for unit testing – “Gamelife-Testing”. Add
+Now we will create one more Project for unit testing – -Gamelife-Testing”. Add
 the same repository URL in the source code management tab, like we did in the
 previous job.
 
@@ -182,7 +182,7 @@ Go to your tomcat URL, with the context path. For me it is -
 
 #### 4. Configure Build Pipeline
 
-Add : “Build Pipeline” plug-in
+Add : -Build Pipeline” plug-in
 
 Go to Jenkins Home \> Click on + to add new Pipeline
 
@@ -201,7 +201,7 @@ configured in this pipeline.
 
 #### 5. Configure Delivery Pipeline
 
-Add : “Delivery Pipeline” plug-in
+Add : -Delivery Pipeline” plug-in
 
 Go to Jenkins Home \> Click on + to add new Pipeline
 

@@ -42,12 +42,12 @@ inserting ' config.ssh.insert_key = false' which resolved my issue.
 
 <https://www.thisprogrammingthing.com/2016/fixing-vagrant-connection-error/>
 
-#### ERROR: Net::SSH::HostKeyMismatch: fingerprint … does not match for “…”
+#### ERROR: Net::SSH::HostKeyMismatch: fingerprint … does not match for -…”
 
 If the known_hosts file already contains an entry for a different server with
 the same IP address, we get the error message
 
-ERROR: Net::SSH::HostKeyMismatch: fingerprint … does not match for “…”
+ERROR: Net::SSH::HostKeyMismatch: fingerprint … does not match for -…”
 
 Open the **\~/.ssh/known_hosts** file and delete the line that contains the IP
 address of the server.

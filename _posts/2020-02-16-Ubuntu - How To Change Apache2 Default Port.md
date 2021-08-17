@@ -33,7 +33,7 @@ And change it to a random number of your choice, for example **8090**.
 This entry make the server to accept connections on port 8090 on all interfaces.
 
 To make the server accept connections on port 8090 for a specific interface,
-just include the corresponding network interface’s IP address as shown below.  
+just include the corresponding network interface  s IP address as shown below.  
 `Listen 192.168.1.101:8090`
 
 This will be helpful if your server has multiple IP addresses or network

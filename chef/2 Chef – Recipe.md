@@ -12,7 +12,7 @@ tags:
 Chef – Recipe
 =============
 
-Chef written in Ruby. Now we are going to create a recipe **“hello.rb”**, here.
+Chef written in Ruby. Now we are going to create a recipe **-hello.rb”**, here.
 **rb** is Ruby extension. Collection of Recipes are called Cookbook.
 
 **chef-apply**
@@ -72,7 +72,7 @@ end
 
 **3.Apply recipe to Current System.**  
 The above Code means, create a **resource(file)** with name \`hello.txt\` with
-content as “**hello world”.** By executing chef-apply **hello.rd,** Chef will
+content as -**hello world”.** By executing chef-apply **hello.rd,** Chef will
 create a new file in our current infrastructure system
 
 ```powershell

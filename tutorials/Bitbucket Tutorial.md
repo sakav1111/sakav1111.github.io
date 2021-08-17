@@ -90,7 +90,7 @@ Similarly, BitBucket also perform above operations in its own way.
 
 
 
-Let’s see how we can do it in BitBucket.
+Let  s see how we can do it in BitBucket.
 
 
 **1. Creating projects in BitBucket**  

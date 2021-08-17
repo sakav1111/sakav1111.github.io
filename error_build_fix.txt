@@ -1,0 +1,34 @@
+      Generating...
+Error reading file C:/Git/satyacodes.gitlab.io/aws/37.AWS-Elastic Cache.md: invalid byte sequence in UTF-8
+Error reading file C:/Git/satyacodes.gitlab.io/mongodb/5.MongoDB Document Operations.md: invalid byte sequence in UTF-8
+Error reading file C:/Git/satyacodes.gitlab.io/servlets/3.Servlet API.md: invalid byte sequence in UTF-8
+Error reading file C:/Git/satyacodes.gitlab.io/spring/18.Spring ORM.md: invalid byte sequence in UTF-8
+Error reading file C:/Git/satyacodes.gitlab.io/webservices/19.JAX-RS FormParam.md: invalid byte sequence in UTF-8
+       Jekyll Feed: Generating feed for posts
+    Liquid Warning: Liquid syntax error (line 2118): [:dotdot, ".."] is not a valid expression in "{{...styles.panel.button, ...styles.panel.submitButton}}" in C:/Git/satyacodes.gitlab.io/_posts/2021-07-07-React Interview Questions.md
+	
+	
+    Liquid Warning: Liquid syntax error (line 2442): Unexpected character / in "{{ transform: 'rotate(90deg)', WebkitTransform: 'rotate(90deg)', // note the capital 'W' here msTransform: 'rotate(90deg)' // 'ms' is the only lowercase vendor prefix }}" in C:/Git/satyacodes.gitlab.io/_posts/2021-07-07-React Interview Questions.md
+	
+	
+    Liquid Warning: Liquid syntax error (line 5565): Expected end_of_string but found colon in "{{something: 'something'}}" in C:/Git/satyacodes.gitlab.io/_posts/2021-07-07-React Interview Questions.md
+    
+	Liquid Warning: Liquid syntax error (line 2118): [:dotdot, ".."] is not a valid expression in "{{...styles.panel.button, ...styles.panel.submitButton}}" in C:/Git/satyacodes.gitlab.io/_posts/2021-07-07-React Interview Questions.md/#excerpt
+    
+	
+	Liquid Warning: Liquid syntax error (line 2442): Unexpected character / in "{{ transform: 'rotate(90deg)', WebkitTransform: 'rotate(90deg)', // note the capital 'W' here msTransform: 'rotate(90deg)' // 'ms' is the only lowercase vendor prefix }}" in C:/Git/satyacodes.gitlab.io/_posts/2021-07-07-React Interview Questions.md/#excerpt
+    
+	
+	Liquid Warning: Liquid syntax error (line 5565): Expected end_of_string but found colon in "{{something: 'something'}}" in C:/Git/satyacodes.gitlab.io/_posts/2021-07-07-React Interview Questions.md/#excerpt
+	
+	
+	
+    Liquid Warning: Liquid syntax error (line 397): Expected end_of_string but found colon in "{{'color':'white'}}" in C:/Git/satyacodes.gitlab.io/_posts/2021-08-11-SpringBoot React MySQL Example Application.md
+	
+	
+    Liquid Warning: Liquid syntax error (line 397): Expected end_of_string but found colon in "{{'color':'white'}}" in C:/Git/satyacodes.gitlab.io/_posts/2021-08-11-SpringBoot React MySQL Example Application.md/#excerpt
+	
+	
+  Conversion error: Jekyll::Converters::Markdown encountered an error while converting 'spring/18.Spring ORM.md':
+                    The source text contains invalid characters for the used encoding UTF-8
+                    ------------------------------------------------

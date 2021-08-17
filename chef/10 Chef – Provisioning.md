@@ -20,7 +20,7 @@ boxes, [Docker](https://subscription.packtpub.com/tech/docker) instances, or
 Cloud servers, Chef Provisioning lets you define your infrastructure in a simple
 recipe and run it idempotently.
 
-how “to create a Vagrant machine and install nginx “on it
+how -to create a Vagrant machine and install nginx -on it
 ---------------------------------------------------------
 
 Chef Provisioning comes with a selection of drivers for all kinds of
@@ -28,7 +28,7 @@ infrastructures, including Fog (supporting Amazon
 EC2, [OpenStack](https://subscription.packtpub.com/search?released=Available&tool=OpenStack),
 and others), VMware VSphere, Vagrant (supporting Virtualbox and VMware Fusion),
 various Containers, such as
-LXC [Docker](https://subscription.packtpub.com/tech/docker) “and Secure Shell
+LXC [Docker](https://subscription.packtpub.com/tech/docker) -and Secure Shell
 (SSH).
 
 In this recipe, we make sure that we can use the directives provided by Chef

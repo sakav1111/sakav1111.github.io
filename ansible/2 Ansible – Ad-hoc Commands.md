@@ -125,7 +125,7 @@ a REPL that allows for running ad-hoc tasks against a chosen inventory
 4.**ansible-doc**  
 displays information on modules installed in Ansible libraries. It displays
     a terse listing of plugins and their short descriptions, provides a printout
-    of their DOCUMENTATION strings, and it can create a short “snippet” which
+    of their DOCUMENTATION strings, and it can create a short -snippet” which
     can be pasted into a playbook.
 
 

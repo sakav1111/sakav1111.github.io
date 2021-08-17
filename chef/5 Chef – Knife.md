@@ -212,7 +212,7 @@ cookbook_path [ '/Users/nshamrell/Projects/my_chef_repo/cookbooks' ]
 ```powershell
 knife cookbook site share "my_apache2_cookbook" "Web Servers"
 ```
-“Web Servers" - is category my cookbook
+-Web Servers" - is category my cookbook
 
 
 

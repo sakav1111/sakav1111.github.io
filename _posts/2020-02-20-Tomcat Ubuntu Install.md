@@ -26,7 +26,7 @@ Check if Java is Installed
 sudo apt update
 sudo apt install openjdk-8-jdk
 
-java –version
+java  -- version
 ```
 
 ### Download Tomcat 9

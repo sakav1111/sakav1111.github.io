@@ -137,7 +137,7 @@ Collections.sort() method it will throws
 	The method sort(List<T>) in the type Collections is not applicable for the arguments (List<Employee>)`
 
 Comparable is an interface defining a strategy of comparing an object with other
-objects of the same type. This is called the class’s “natural ordering".so we
+objects of the same type. This is called the class’s -natural ordering".so we
 need to define CompareTo() method
 
 ```java
