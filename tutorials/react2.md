@@ -209,9 +209,9 @@ This is the default output of our project in the browser:
 
 ![](media/3353b74199eaafbf73caae727de6a80b.png)
 
-**/public** folder contains files related to how the application will display on
+**/public** `(Generated code, from src)`folder contains files related to how the application will display on
 the client, the most important of those being `index.html`, which is the HTML
-template of our page.
+template of our page.It is generated code, developers no need to touch this code.
 
 **/src** folder contains all of the JavaScript, CSS, and image files that will
 be compiled into a bundle file and injected into **index.html.**
