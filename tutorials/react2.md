@@ -219,11 +219,11 @@ the client, the most important of those being `index.html`, which is the HTML
 template of our page.It is generated code, developers no need to touch this code.
 
 **/src** folder contains all of the JavaScript, CSS, and image files that will
-be compiled into a bundle file and injected into **index.html.**
+be compiled into a bundle file and injected into **index.html.**. Developers Write Source code here.
 
 The two files below are the only critical files:
 
--   **index.js:** This file is the entry point into our application. In our
+-   `index.js`: This file is the entry point into our application. In our
     code, a method called **ReactDOM.render()** is used to find an element with
     **id="root"** in the HTML and add content to it.
 
@@ -376,7 +376,7 @@ In React, there are two types of components that you can use:
 
 -   **Functional Components**
 
--   **Class Components**.
+-   **Class Components(Mostly used in Realtime)**.
 
 ### Functional Components 
 
