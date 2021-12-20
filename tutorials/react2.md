@@ -333,6 +333,15 @@ not be used:
 <div **id={user.id}**></div>
 ```
 
+Diffrence between JavaScript, JSX Attributes is - in JSX attributes are in camelCase(2nd Word is Start with CAPITAL Letter)
+```javascript
+className
+buttonName
+onClick
+onHower
+```
+
+
 
 Finally, When the JSX expressions are compiled, they are converted into
 JavaScript **objects**, representing React elements.
@@ -366,6 +375,100 @@ applies the DOM updates necessary to bring the DOM to the desired state.
 <br>
 
 
+
+## React - Inheritance
+
+```javascript
+import React, { Component } from "react";
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+      Hello, World
+      </div>
+    );
+  }
+}
+const ob = new App();
+console.log(ob);
+
+export default App;
+```
+
+App class extends component class. It inherts basic data componets, which are printed below 
+![](media/reactjs/objectdata.png)
+
+
+
+
+
+
+## React – Data Handling 
+
+To handle data in React, we do with properties, referred to as **props**, and
+with **state**
+
+### Props (Properties)
+
+Props is short form of "**Properties**". Functional components can accept arguments, similar to JavaScript functions.
+These arguments are called **props**, and represent an object.  
+
+For example, we can use props in our Hello component:
+```javascript
+function Hello(props) {
+  return <p>Hello, {props.name}!</p>;
+}
+```
+
+
+Props can be accessed in class components using **this.props**.
+```javascript
+class Hello extends React.Component {
+  render() {
+    return <p>Hello, {this.props.name}!</p>;
+  }
+}
+``` 
+An important thing to consider is that props are **read-only**, meaning
+components cannot modify their props.
+![](media/reactjs/propetrew.png)
+
+
+### State
+
+Many web apps need their components to change their data, for example, after
+user interaction (clicking a button, submitting a form, etc.).However, **props**
+cannot be changed.  
+
+In order to allow components to manage and change their data, React provides a
+feature called **state**.  
+**State** is an object that is added as a property in class components.
+
+**State** is just a simple object, that contains **key:value** pairs.Similar to
+props, the values can be accessed using **this.state**.
+```javascript
+class Hello extends React.Component {
+  state = {
+    name: "James"
+  }
+  render() {
+    return <h1>Hello {this.state.name}.</h1>;
+  }
+}
+```
+
+
+**Changing State**
+```javascript
+this.setState({   
+name: "James",   
+age: 25   
+});
+```
+
+
+
 ## React – Components 
 
 So far, we've created one component - the **App** component. Most React apps
@@ -377,6 +480,11 @@ In React, there are two types of components that you can use:
 -   **Functional Components**
 
 -   **Class Components(Mostly used in Realtime)**.
+
+![](media/reactjs/componnets.png)
+
+
+
 
 ### Functional Components 
 
@@ -597,70 +705,6 @@ In `index.html`, just place only <div> & **start** the Application
 
 
 
-
-
-## React – Data Handling 
-
-To handle data in React, we do with properties, referred to as **props**, and
-with **state**
-
-### Props
-
-Functional components can accept arguments, similar to JavaScript functions.
-These arguments are called **props**, and represent an object.  
-
-For example, we can use props in our Hello component:
-```javascript
-function Hello(props) {
-  return <p>Hello, {props.name}!</p>;
-}
-```
-
-
-Props can be accessed in class components using **this.props**.
-```javascript
-class Hello extends React.Component {
-  render() {
-    return <p>Hello, {this.props.name}!</p>;
-  }
-}
-``` 
-An important thing to consider is that props are **read-only**, meaning
-components cannot modify their props.
-
-
-
-### State
-
-Many web apps need their components to change their data, for example, after
-user interaction (clicking a button, submitting a form, etc.).However, **props**
-cannot be changed.  
-
-In order to allow components to manage and change their data, React provides a
-feature called **state**.  
-**State** is an object that is added as a property in class components.
-
-**State** is just a simple object, that contains **key:value** pairs.Similar to
-props, the values can be accessed using **this.state**.
-```javascript
-class Hello extends React.Component {
-  state = {
-    name: "James"
-  }
-  render() {
-    return <h1>Hello {this.state.name}.</h1>;
-  }
-}
-```
-
-
-**Changing State**
-```javascript
-this.setState({   
-name: "James",   
-age: 25   
-});
-```
 
 
 <br>
