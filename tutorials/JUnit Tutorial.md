@@ -1,3 +1,11 @@
+---
+title: JUnit Tutorial
+permalink: /tutorials/junit-tutorial
+key: junit-tutorial
+categories: [JUnit]
+tags: [JUnit]
+---
+
 1.JUNIT Introduction
 --------------------
 
