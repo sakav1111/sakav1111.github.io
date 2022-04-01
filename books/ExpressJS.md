@@ -1,6 +1,6 @@
 ---
 title: Express.js Tutorial
-permalink: "/tutorials/expressjs-tutorial"
+permalink: "/books/expressjs-tutorial"
 key: expressjs-tutorial
 categories:
 - ExpressJs
