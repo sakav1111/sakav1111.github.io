@@ -1,0 +1,2752 @@
+<!DOCTYPE html><html lang="en">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>SatyaCodes - SpringBoot- Microservices</title>
+
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.">
+<link rel="canonical" href="/springboot/springboot-microservices"><link rel="alternate" type="application/rss+xml" title="SatyaCodes" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet -->
+ <link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>SpringBoot- Microservices | SatyaCodes</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="SpringBoot- Microservices" />
+<meta name="author" content="Satya Kaveti" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:site_name" content="SatyaCodes" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="SpringBoot- Microservices" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Satya Kaveti"},"@type":"WebPage","description":"Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.","url":"/springboot/springboot-microservices","headline":"SpringBoot- Microservices","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- start custom head snippets -->
+
+<!-- end custom head snippets --><script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.4',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script></head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+
+    <div class="grid page__grid">
+
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">SpringBoot Tutorial</li><li class="toc-h2"><a href="/springboot/introduction">Introduction</a></li><li class="toc-h2"><a href="/springboot/creating-springboot-application">Creating SpringBoot Application</a></li><li class="toc-h2"><a href="/springboot/springboot-with-maven">SpringBoot with Maven</a></li><li class="toc-h2"><a href="/springboot/springboot-with-spring-initializer">SpringBoot with Spring Initializer</a></li><li class="toc-h2"><a href="/springboot/springboot-configurations">SpringBoot Configurations</a></li><li class="toc-h2"><a href="/springboot/springboot-mvc">SpringBoot MVC</a></li><li class="toc-h2"><a href="/springboot/springboot-restful">SpringBoot RESTful</a></li><li class="toc-h2"><a href="/springboot/springboot-database">SpringBoot Database</a></li><li class="toc-h2"><a href="/springboot/springboot-jpa-example">SpringBoot JPA Example</a></li><li class="toc-h2"><a href="/springboot/springboot-jparepository">SpringBoot JpaRepository</a></li><li class="toc-h2"><a href="/springboot/springboot-mongodb-and-rest-example">SpringBoot MongoDB and REST Example</a></li><li class="toc-h2"><a href="/springboot/springboot-advanced">SpringBoot Advanced</a></li><li class="toc-h2"><a href="/springboot/springboot-security">SpringBoot Security</a></li><li class="toc-h2 active"><a href="/springboot/springboot-microservices">SpringBoot Microservices</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="76px" height="76px" viewBox="0 0 76 76" enable-background="new 0 0 76 76" xml:space="preserve">  <image id="image0" width="76" height="76" x="0" y="0"
+    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAIAAABI9cZ8AAAAIGNIUk0AAHomAACAhAAA+gAAAIDo
+AAB1MAAA6mAAADqYAAAXcJy6UTwAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQflBwgJKRMy4DHU
+AAAAXnRFWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMACmlwdGMKICAgICAgMjgKMzg0MjQ5NGQwNDA0
+MDAwMDAwMDAwMDBmMWMwMjZlMDAwMzUyNDY0NzFjMDIwMDAwMDIwMDA0MDAKYJo9ngAAD4RJREFU
+eNrtm2tsE1fax894Lp7xeGzHzgUSbNI0YJJwSQKEWxWlUWkSKEIqq20RsBUrtewXpBatSlu1WvVT
+F7XbW1RKqxaqCiEl25KkYUkpYlPEQrkkAsIlgZAEcnOcOAQntseeGXveD09z3sFODLm1+/JyhCxn
+PHPm/M7znHOe838OhKqq6FEvut+7AY8hH0M+hnwM+UiWx5CPSqF+rxePGYQQBPEoQEYiEcyjqqqq
+qgAWiUTgCkEQcAV/+W+HxOZSVXVkZGR4eJiiKFmWRVHs6upiWTYQCJw6dSonJyc3N1eW5cTERIZh
+jEYjEOp0Op1ON3VUYiZiV6gTLCNJksvlunXr1ldffXXlyhWLxRIIBHw+3+DgIMMwCKGBgQGj0ZiW
+liaKYkZGhiAI69atKygoyMzMhBtIkpwi6jRDgr8pijI8PNzT09PY2Hjq1KnGxka32+12u8cbh1HX
+OY7Lysp6+eWXZ8+evXz5covFQtM0oE6+WdNSIpGIqqqiKN68eXPv3r1lZWVPPvkkwzCTsAD4Ksdx
+FoulvLx8YGDA6/WGQqFwODy5tk0DJOD5/f76+vo33ngjMzOT53ltcyfpYwSBEFq4cOHRo0fdbvfw
+8LAkSfCu3xQSXhkKhVpbW997772UlBTsUdMyMUIlq1atOnnypNvt9vl8sixPgnOSs6uqqgghWZab
+mpoqKirq6upaW1slScJsaszwg5+iroOpteuK9nFVVQmCOHv2bE1Njd1upyiKoqhJTEKTgYQWuFyu
+r7/++sCBA52dneFweDwGbYsRQiaTyWq1UhQlCILFYrHZbAzDeDwer9fb3d3d398vy3Is8KVLlzwe
+D8Mwer2eoibc5gk/AF56/vz5d999t76+HlsvFu/X8YCQIAjp6enp6enJyclZWVmzZ8+madpoNHIc
+R9O0TqeLRCKyLLtcrjt37nR1dd2+ffvMmTP37t3DnFevXm1vb09MTJRlmWGYiRpzYpCqqsqyXFtb
++/bbb7e0tICzafG0fyYkJGRnZ6empi5ZsiQrKyshIYFlWVgM4BMvgPBUWlpafn6+JEmBQKC6uvrz
+zz/3er3wqyiKfX19kiTBmJwpS8LwcLvd+/bt++KLL/r6+mLXN+jd5ORkg8HgdDqfeeYZp9MpCALL
+sgzDgLMxDANDCwixTcBBwuGwLMuCIGzbto2iqI8//tjn88HC6/V6FUUJh8Mw8Uy/JaHSO3fu7N69
+u6qqClwUE+JWkiSZlpa2detWp9OZkpIiCIJer2dZlmVZLZ5OpyNJktAUpFmugZPjuNTUVJZlfT4f
+QogkSb1ejwlnxJIEQbS3t7/++uvV1dXhcBhpAjf4TlFUenp6cXHx0qVL582bx/M8x3EcxwEeTdPY
+PyEixc9qDfLrdE9RDMNcvXr1o48+8ng8cIOiKD6fDw/y6YdUVdXj8bz11ltVVVVjDr/09PSSkpKV
+K1c6HA6e5w0GA3wCHvZMrd3G60pc54ULFzo6OrSdKAgCuPf0Q6qqGgwGP/jgg6qqqthdkiAICxYs
+ePHFF3NzczmO43neaDQaDAYYhFq8h28QLJt5eXlz585ta2tDCJEkuXr16kWLFuG5aqKQ8QJ0+Km2
+tvaVV15xu924EfC5ePHiDRs25OfnW61WQRCMRiOsCpPGwyUcDkuSVFlZ+emnn4qiuHLlyg0bNjgc
+joSEBKvVajAYaJqeWMfF9/L29vatW7f+8ssveEerqqpery8qKtqyZcucOXN4ngdCMCDeLkwlrItE
+IpIk+Xy+rq4ur9drNBppmuZ53mQyGY1GvV5PkuSEKhzXXcEhq6qqLly4oCUkSbKsrGzbtm1JSUkm
+kwlejP1zeva4BEFRFMdxDocjFAopigKzKwQPk6g/3pj0er11dXWKomjrLSwsfOGFF5KSkhISEiwW
+C8/zYEA8tUyRECCBCj6hf/HyM4kxGQ+yt7e3s7MTaUK2RYsWbd68efbs2Waz2WKxwEI/XQaM5QQ2
+NDrxTroTx4UkCKK3t3doaAhfYVm2rKwM1okoA6LRgGHaOaelqnhjUhAEjuPwlVAodPjwYbfbvWLF
+ihUrVpjNZu2eTbtjQvdvl2dIaJxAf403u4bD4Xv37u3YseP777/X7npIkuR5fsGCBcuWLTMajYsX
+LxZFMTk52WazzZkzh2EYHOVoIafibDMLqSjK6dOnd+3a1dTUhCGjolaWZRVFMRgMBoPB4XDQNG02
+mzMyMkpKSpJGC1Z6sNCIflvzjgsJu6pAIHDx4sU9e/acOnUqGAyCBKy9Z+xKCQIWT7vdXlRUNGvW
+rJycnHnz5hmNRp7nYYbEMfrvDBmJREKhkCiKnZ2dDQ0Np0+fPnnyZHd3t6IoGOaBModOp6MoymKx
+2O12q9W6ffv2oqIiQRAgKvptUB8Q1oXD4VAoFAwGRVH0er23bt26fPny7du3m5ub29vbQSkcky0K
+G19PS0tzOp2lpaXPP/98cnIyRVEQJM0o5wPCukgkAtqEJEnBYDAUCkmSJIri0NBQd3d3U1PT9evX
+dTrd9evXOzo6sIXHfdkorV6vX7t27e7du7OzsyFamlHOByvo4LeRSERRFKAFGUJRFDCyLMs9PT2n
+T59uampyuVwDAwMejyeOSIFh1qxZ8/7778+bN4/juElEpNMJiVGxQgEFmPGnoigjIyNer7erq+vK
+lStXrly5du2a2+0GIW/MoUsQxGuvvbZz505BEHien5zcPp2QsbS4YGBt8fv9bW1tdXV1J06ccLlc
+ODOnhVRVddWqVZ988klaWprZbGZZ9mGMqZVkH7JTJixJ4rUuSqXG5gVgQRBsNltOTs7GjRtramoO
+Hz4Mak1UW/v6+vr6+pKSkhRFgY7A+sB4GKqqhhUFEQRomQ+T3pt8flLbAlAowLAYWJZlnufNZvP8
++fMTEhL27t2rKEqs42CHhxYPDg663e6UlBSTyQTLKQQP8GC4rQ1VVKC2NmSxhEpLwwUFJMOQJPmA
+TcJUciGxRevAoKAODQ253e6qqqqEhITYt+fl5dXV1bW0tPT399+4ceOzzz4rLS1NS0vbtWvXwMCA
+z+eTJAlEurCiSGfPKsXFEZJUEYoQhJyaeu9vf/PcvOn1egOBQJw0yTRnmrUaHLaDXq93uVyBQCAq
+JFRV9YknnmBZtr29/eDBgz/88MPNmzeDwSBCqKOjw+v14hoig4NqRQVZXk60tiKEVIJACJG9vaa/
+/108c2bk1VelggJQXsYUgWYwnQ6oNE03Nzd/++23OGzAHgTN2r9//5kzZ27fvg1iJ0LIaDSuWbMG
+lB69Xk96vcSbb1KHDhGhEOARMPcQBAqFDMePI5dr8B//UPPyQJoZYyRPr7vGeu/du3e3b98+Zi+w
+LGu1WnG8jluWlZV1+PDha9eu9fb2BgKB0IEDEZZVCSJCECpC2n8RhCIEEUHo7vr1HU1N/f39fr8f
+Rr62zOA5HlVVJUnau3dvZWXlmFNCMBi8e/euOrrbVlWVZdm1a9fu3LkTkkIURSFZ1v3730QwiA14
+n7MgRKgqgZCpvp6orfX7/RCcRN02U+4K08+xY8f27dvn9/vHm/cwHk3Ts2bN2rhxY0lJSWJiIoQH
+er2ecLmIxkbos3FfRhBkIJB48OCA0xkoKNDpdCzLziAknlcURamsrHznnXe6u7vHi3jAl0iSzMzM
+LC4uzs/Ph1S8IAgmk4nneZqmdf/6l66tDXaxcd6KCIJvbibefHPor3/1rVtnsVhmBBJjyLLc2tpa
+UVHx5Zdfut3uMQnhfrPZ7HQ6Fy9eXFhY6HA4IH0Ce06Yk3R9fURFBZ5v4r0dIYIgDK2tuj17+m02
+NGfOdEJqTdfT03P27NlLly7V1tbeuHEjNmqFPymKMhgMdrt906ZNy5YtM5vNgAdsoJ7AblPp6KBa
+WtSxRmNUwfOtvqODPnIEbdo0PZDqaGIrFApdvny5pqbm2LFjzc3NcBYlKj+Lv9vt9qeffnrJkiVz
+585NTk7mOA6kE9iIMAxzn4SLD3TFd1ctLUJUe3vUxcmfGUAIBYPBixcvfvfdd1VVVZ2dnVpxJMpF
+wTmLi4ufffZZGHjcaNGm97SBaDgcjjid0lNPMUePTmhvEonpjgmn09FoqquhoeHQoUNHjhzp6elB
+YykD+IrFYsnKyiotLS0oKDCZTNrcHuBFZZ3/t1itob/8hWxooPr7H9KMCssO5uWlTA4S4w0ODv70
+008nTpw4fvx4T0+POqrfjYnHMExubu7GjRsXLlxotVo5joO1AeYVbXYodo2B65GCAmn1aqq6+oEe
+CzfcnT/f89RTE7YktD4YDHZ2dv744481NTUNDQ0jIyPxrYcQSkpKWr9+fVlZWUpKCqQu8dSiTTzH
+ebVOp2MEQdq8Wf+f/5AezwObqrBsT0kJSokyZFxIaKsoiufOnfvmm28aGxtv3LgBQk6s9bRPWa3W
+lStXFhcXL1myBPKWgiDg5OzD4KHRNEE4HEZFRf4//9lYXq4TxXh3q6pr+fJ7q1bx90cC40JC6wOB
+wLlz5yorK48cOdLb24t3sbF42IA6nS4zM3Pbtm1Lly4Fz8T+CQvDhJJfvyazDIbAjh1hv9+8f79O
+FMf2W1X1Ohydf/wjk5RkNBofDAkM169f//DDD+vq6uAI53iKo3YXn52dXVxcvGzZsvT0dIynTc5O
+VGIFCYKmab3NJr766l2WtXz1FeX1otHVBTfLn5TU8qc/STk5VqNREIToesZ0ua6urpdeeunnn39W
+788LjGk9juNSUlLy8/Ofe+65jIwMfHgAZ76mmNsDkUEURdHrRdXVln37uNZWYlQNjJDksMNxc8uW
+kaIiOMdmNpujNuhju2tbW9v58+dRjEYe9afBYMjNzS0sLMzJyZk1axacGcB4OHCZogYHxoTv/j/8
+wb1gAffPfxoaGwm/P2ixDC1aNFBYGMnIsAqC2WyGlGlUDWND2mw2u93e0tIS+5PBYLBYLKmpqVlZ
+WdnZ2dnZ2VarFU4kQeCiXR6mJQWAnRaAxdzcQEbGiNsdGh6W9HqJ51mGgc7F5/Wia4h1xXA4HAwG
+6+vry8vLL126BHvQ5ORkh8Nht9vT09Ptdjs+cEXTNMuyOHCZ+tGP8QqMfJCOQqEQaPkQP9I0rR8t
+2rxwPEjIC4RCoa6uro6OjqGhIVmWbTYbeAKMMYjCgAoHZTinP3OCP9byQSuDKQNySnHePgakqqqg
+r0CeJxgMYlEU6sKc+ChgnMBl2kuUtIFFszhvH3ezp9XFIbEBqzNGwt32+2aRH6bEy09iHRXvqqIK
++i84DzAlSIx6393/F5AmDPlolP8X/7XwMeSjUh5DPirlfwA1QTCTlERFOgAAACV0RVh0ZGF0ZTpj
+cmVhdGUAMjAyMS0wNy0wOFQxNzo0MDozOCswMzowMN3pZPAAAAAldEVYdGRhdGU6bW9kaWZ5ADIw
+MjEtMDctMDhUMTc6NDA6MzgrMDM6MDCstNxMAAAAAElFTkSuQmCC" />
+</svg>
+<a title="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." href="/">SatyaCodes</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/posts.html">AllPosts</a></li><li class="navigation__item"><a href="/tutorials.html">Tutorials</a></li><li class="navigation__item"><a href="/java.html">Java</a></li><li class="navigation__item"><a href="/devops.html">DevOps</a></li><li class="navigation__item"><a href="/books.html">Books</a></li><li class="navigation__item"><a href="/interview-questions.html">InterviewQ's</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div></aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>SpringBoot- Microservices</h1></header></div><meta itemprop="headline" content="SpringBoot- Microservices"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=SpringBoot">SpringBoot</a>
+            </li></ul></div><meta itemprop="author" content="Satya Kaveti"/>
+    <meta itemprop="keywords" content="SpringBoot"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h1 id="springboot-cloud--microservices">SpringBoot Cloud – Microservices</h1>
+
+<p>The major use-case for Spring Cloud is the ready-to-use solution that it
+provides to common problems observed in distributed environments like load
+balancing, service discovery, circuit breaking, etc., which can easily be
+integrated in an existing Spring project.</p>
+
+<p>Before we look at Spring Cloud, let’s have a brief overview on Microservice
+Architecture and the role of Spring Boot in creating microservices.</p>
+
+<p><a href="https://github.com/sivaprasadreddy/spring-boot-microservices-series">https://github.com/sivaprasadreddy/spring-boot-microservices-series</a></p>
+
+<h2 id="microservices">Microservices</h2>
+
+<h4 id="monoliths">Monoliths</h4>
+
+<p>Traditionally we are building large enterprise applications in modularised
+fashion, but finally deploy them together as a single deployment unit (EAR or
+WAR). These are called Monolithic applications.</p>
+
+<p>There are some issues with the monolithic architecture such as:</p>
+
+<ul>
+  <li>
+    <p>Large codebases become mess over the time</p>
+  </li>
+  <li>
+    <p>Multiple teams working on single codebase become tedious</p>
+  </li>
+  <li>
+    <p>It is not possible to scale up only certain parts of the application</p>
+  </li>
+  <li>
+    <p>Technology updates/rewrites become complex and expensive tasks</p>
+  </li>
+</ul>
+
+<p>Microservice architecture is a style of application development where the
+application is broken down into small services and these services have loose
+coupling among them. Following are the major advantages of using microservice
+architecture −</p>
+
+<p><strong>Advantages of MicroServices</strong></p>
+
+<ul>
+  <li>
+    <p>Comprehending smaller codebase is easy</p>
+  </li>
+  <li>
+    <p>Can independently scale up highly used services</p>
+  </li>
+  <li>
+    <p>Each team can focus on one (or few) MicroService(s)</p>
+  </li>
+  <li>
+    <p>Technology updates/rewrites become simpler</p>
+  </li>
+</ul>
+
+<p>SpringBoot and SpringCloud are a good choice for MicroServices</p>
+
+<p><br /></p>
+
+<h1 id="1-spring-cloud">1. Spring Cloud</h1>
+
+<p>Spring Cloud provides a collection of components which are useful in building
+distributed applications in cloud. We can develop these components on our own,
+however that would waste time in developing and maintaining this boilerplate
+code.</p>
+
+<p>That is where Spring Cloud comes into picture. It provides ready-to-use cloud
+patterns for common problems which are observed in a distributed environment.
+Some of the patterns which it attempts to address are −</p>
+
+<ul>
+  <li>
+    <p>Distributed Messaging</p>
+  </li>
+  <li>
+    <p>Load Balancing</p>
+  </li>
+  <li>
+    <p>Circuit Breakers</p>
+  </li>
+  <li>
+    <p>Routing</p>
+  </li>
+  <li>
+    <p>Distributed Logging</p>
+  </li>
+  <li>
+    <p>Service Registration</p>
+  </li>
+  <li>
+    <p>Distributed Lock</p>
+  </li>
+  <li>
+    <p>Centralized Configuration</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h4 id="spring-cloud-components">Spring Cloud Components</h4>
+
+<p>Let us now take a look at the various components which Spring Cloud provides and
+the problems these components solve</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Problem</strong></th>
+      <th><strong>Components</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Distributed Cloud Configuration</strong></td>
+      <td>Spring Cloud Configuration, Spring Cloud Zookeeper, Spring Consul Config</td>
+    </tr>
+    <tr>
+      <td><strong>Distributed Messaging</strong></td>
+      <td>Spring Stream with Kafka, Spring Stream with RabbitMQ</td>
+    </tr>
+    <tr>
+      <td><strong>Service Discovery</strong></td>
+      <td>Spring Cloud Eureka, Spring Cloud Consul, Spring Cloud Zookeeper</td>
+    </tr>
+    <tr>
+      <td><strong>Logging</strong></td>
+      <td>Spring Cloud Zipkin, Spring Cloud Sleuth</td>
+    </tr>
+    <tr>
+      <td><strong>Spring Service Communication</strong></td>
+      <td>Spring Hystrix, Spring Ribbon, Spring Feign, Spring Zuul</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h3 id="projects-of-spring-cloud">Projects Of Spring Cloud</h3>
+
+<p><strong>Spring Cloud Config Server:</strong> Configuring application properties, environment
+details etc. We can use Spring Cloud Config Server with git or Consul or
+ZooKeeper as config repository.</p>
+
+<p><strong>Service Registry and Discovery:</strong> As there could be many services and we need
+the ability to scale up or down dynamically, we need Service Registry and
+Discovery mechanism so that service-to-service communication should not depend
+on hard-coded hostnames and port numbers. Spring Cloud provides Netflix
+Eureka-based Service Registry and Discovery support with just minimal
+configuration. We can also use Consul or ZooKeeper for Service Registry and
+Discovery.</p>
+
+<p><img src="media/b1d366a4972e90fda4e75332831c83e7.jpeg" alt="" /></p>
+
+<p><strong>Circuit Breaker:</strong> In microservices based architecture, one service might
+depend on another service and if one service goes down then failures may cascade
+to other services as well. Spring Cloud provides Netflix Hystrix based Circuit
+Breaker to handle these kinds of issues.</p>
+
+<p><strong>Spring Cloud Data Streams:</strong> These days we may need to work with huge volumes
+of data streams using Kafka or Spark etc. Spring Cloud Data Streams provides
+higher-level abstractions to use those frameworks in an easier manner.</p>
+
+<p><strong>Spring Cloud Security:</strong> Some of the microservices needs to be accessible to
+authenticated users only and most likely we might want a <strong>Single Sign-On</strong>
+feature to propagate the authentication context across services. Spring Cloud
+Security provides authentication services using <strong>OAuth2</strong>.</p>
+
+<p><strong>Distributed Tracing:</strong> simple end-user action might trigger a chain of
+microservice calls, there should be a mechanism to trace the related call
+chains. We can use Spring Cloud Sleuth with Zipkin to trace the cross-service
+invocations.</p>
+
+<p><strong>Spring Cloud Contract:</strong> There is a high chance that separate teams work on
+different microservices. There should be a mechanism for teams to agree upon API
+endpoint contracts so that each team can develop their APIs independently.
+Spring Cloud Contract helps to create such contracts and validate them by both
+service provider and consumer.</p>
+
+<h3 id="1-spring-cloud-config-server">1. Spring Cloud Config Server</h3>
+
+<p>SpringBoot provides lot of flexibility in externalizing configuration properties
+via properties or YAML files. We can also configure properties for each
+environment (dev, qa, prod etc) separately using profile specific configuration
+files such as <strong>application.properties</strong>, <strong>application-dev.properties</strong>,
+<strong>application-prod.properties</strong> etc. But once the application is started we can
+not update the properties at runtime. If we change the properties we need to
+restart the application to use the updated configuration properties.</p>
+
+<p>We can create a Spring Cloud Config Server which provides the configuration
+values for all of our microservices. We can use <strong>git</strong>, <strong>svn</strong>, <strong>database</strong>
+or <strong>Consul</strong> as a backend to store the configuration parameters.</p>
+
+<p>Spring Cloud Config Server is nothing but a SpringBoot application with a
+configured configuration properties source. The configuration source can be a
+<strong>git</strong> repository, <strong>svn</strong> repository or Consul service
+(<a href="https://www.consul.io/">https://www.consul.io/</a>).</p>
+
+<p><img src="media/4695460600be78cfa735727537fa2bba.png" alt="" /></p>
+
+<p>Then we can configure the location of Spring Cloud Config server in our
+microservice so that it will load all the properties when we start the
+application. In addition to that, whenever we update the properties we can
+invoke <strong>/refresh</strong> REST endpoint in our microservice so that it will reload the
+configuration changes without requiring to restart the application.</p>
+
+<p><br /></p>
+
+<h1 id="1-springcloud--example">1. SpringCloud – Example</h1>
+
+<p>We are going to build a simple shopping cart application and assume we are going
+to start with the following microservices:</p>
+
+<ol>
+  <li>
+    <p><strong>catalog-service:</strong> It provides REST API to provide catalog information
+like products.</p>
+  </li>
+  <li>
+    <p><strong>inventory-service:</strong> It provides REST API to manage product inventory.</p>
+  </li>
+  <li>
+    <p><strong>cart-service:</strong> It provides REST API to hold the customer cart details.</p>
+  </li>
+  <li>
+    <p><strong>order-service:</strong> It provides REST API to manage orders.</p>
+  </li>
+  <li>
+    <p><strong>customer-service:</strong> It provides REST API to manage customer information.</p>
+  </li>
+  <li>
+    <p><strong>shoppingcart-ui:</strong> It is customer facing front-end web application.</p>
+  </li>
+</ol>
+
+<p>We are going to build various services and REST endpoints as we go through
+various microservice concepts.</p>
+
+<p><br /></p>
+
+<h2 id="acatalog-service">a.Catalog-Service</h2>
+
+<p>Create a SpringBoot app with <strong>Web, JPA, MySQL, Actuator, DevTools, Lombok</strong>
+starters</p>
+
+<h4 id="database--mysql-as-docker-container">Database : MySQL as Docker Container</h4>
+
+<p>We are going to use Docker and run MySQL as a Docker container.</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker-compose.yml</code></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">mysqldb</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s1">'</span><span class="s">mysql:5.7'</span>
+    <span class="na">container_name</span><span class="pi">:</span> <span class="s">mysqldb</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s1">'</span><span class="s">3306:3306'</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">MYSQL_ROOT_PASSWORD</span><span class="pi">:</span> <span class="s">passw0rd</span>
+      <span class="na">MYSQL_DATABASE</span><span class="pi">:</span> <span class="s">catalog</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Download &amp; Start MySQL Docker container</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker-compose up</code></p>
+
+<p><br /></p>
+
+<p>Open any MySQL Editor &amp; provide login details</p>
+
+<p><img src="media/3358cf3e8fb3e0a44267107b40306c68.png" alt="" /></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">`products`</span> <span class="p">(</span>
+	<span class="nv">`id`</span> <span class="p">(</span><span class="mi">20</span><span class="p">)</span>  <span class="p">,</span>
+	<span class="nv">`code`</span> <span class="p">(</span><span class="mi">255</span><span class="p">)</span>    <span class="s1">'latin1_swedish_ci'</span><span class="p">,</span>
+	<span class="nv">`description`</span> <span class="p">(</span><span class="mi">255</span><span class="p">)</span>     <span class="s1">'latin1_swedish_ci'</span><span class="p">,</span>
+	<span class="nv">`name`</span> <span class="p">(</span><span class="mi">255</span><span class="p">)</span>    <span class="s1">'latin1_swedish_ci'</span><span class="p">,</span>
+	<span class="nv">`price`</span>   <span class="p">,</span>
+	  <span class="p">(</span><span class="nv">`id`</span><span class="p">)</span>  <span class="p">,</span>
+	  <span class="nv">`UK_57ivhy5aj3qfmdvl6vxdfjs4p`</span> <span class="p">(</span><span class="nv">`code`</span><span class="p">)</span>  
+<span class="p">)</span>
+<span class="o">=</span><span class="s1">'latin1_swedish_ci'</span>
+<span class="o">=</span>
+<span class="p">;</span>
+</code></pre></div></div>
+
+<p><img src="media/166e7b770c469069175f4fb4660333c4.png" alt="" /></p>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">application.properties</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server.port=8181
+logging.level.catalog=debug
+ 
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/catalog?useSSL=false
+spring.datasource.username=root
+spring.datasource.password=passw0rd
+ 
+spring.datasource.initialization-mode=always
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+ 
+//expose all the Actuator endpoints
+management.endpoints.web.exposure.include=*
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><strong>Pom.xml</strong></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version= encoding=?&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">xmlns=</span> <span class="s">xmlns:xsi=</span>
+	<span class="na">xsi:schemaLocation=</span><span class="err">&gt;</span>
+	<span class="s">&lt;modelVersion</span><span class="nt">&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+	<span class="nt">&lt;parent&gt;</span>
+		<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+		<span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-parent<span class="nt">&lt;/artifactId&gt;</span>
+		<span class="nt">&lt;version&gt;</span>2.5.3<span class="nt">&lt;/version&gt;</span>
+		<span class="nt">&lt;relativePath/&gt;</span> <span class="c">&lt;!-- lookup parent from repository --&gt;</span>
+	<span class="nt">&lt;/parent&gt;</span>
+	<span class="nt">&lt;groupId&gt;</span>catalog<span class="nt">&lt;/groupId&gt;</span>
+	<span class="nt">&lt;artifactId&gt;</span>catalog-service<span class="nt">&lt;/artifactId&gt;</span>
+	<span class="nt">&lt;version&gt;</span>0.0.1-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+	<span class="nt">&lt;name&gt;</span>catalog-service<span class="nt">&lt;/name&gt;</span>
+	<span class="nt">&lt;description&gt;</span>Demo project for Spring Boot<span class="nt">&lt;/description&gt;</span>
+	<span class="nt">&lt;properties&gt;</span>
+		<span class="nt">&lt;java.version&gt;</span>11<span class="nt">&lt;/java.version&gt;</span>
+	<span class="nt">&lt;/properties&gt;</span>
+	<span class="nt">&lt;dependencies&gt;</span>
+		<span class="nt">&lt;dependency&gt;</span>
+			<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+			<span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span class="nt">&lt;/artifactId&gt;</span>
+		<span class="nt">&lt;/dependency&gt;</span>
+		<span class="nt">&lt;dependency&gt;</span>
+			<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+			<span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-data-jpa<span class="nt">&lt;/artifactId&gt;</span>
+		<span class="nt">&lt;/dependency&gt;</span>
+		<span class="nt">&lt;dependency&gt;</span>
+			<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+			<span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="nt">&lt;/artifactId&gt;</span>
+		<span class="nt">&lt;/dependency&gt;</span>
+
+		<span class="nt">&lt;dependency&gt;</span>
+			<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+			<span class="nt">&lt;artifactId&gt;</span>spring-boot-devtools<span class="nt">&lt;/artifactId&gt;</span>
+			<span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+			<span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+		<span class="nt">&lt;/dependency&gt;</span>
+		<span class="nt">&lt;dependency&gt;</span>
+			<span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
+			<span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
+			<span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+		<span class="nt">&lt;/dependency&gt;</span>
+		<span class="nt">&lt;dependency&gt;</span>
+			<span class="nt">&lt;groupId&gt;</span>org.projectlombok<span class="nt">&lt;/groupId&gt;</span>
+			<span class="nt">&lt;artifactId&gt;</span>lombok<span class="nt">&lt;/artifactId&gt;</span>
+			<span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+		<span class="nt">&lt;/dependency&gt;</span>
+		<span class="nt">&lt;dependency&gt;</span>
+			<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+			<span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-test<span class="nt">&lt;/artifactId&gt;</span>
+			<span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+		<span class="nt">&lt;/dependency&gt;</span>
+	<span class="nt">&lt;/dependencies&gt;</span>
+
+	<span class="nt">&lt;build&gt;</span>
+		<span class="nt">&lt;plugins&gt;</span>
+			<span class="nt">&lt;plugin&gt;</span>
+				<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+				<span class="nt">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+				<span class="nt">&lt;configuration&gt;</span>
+					<span class="nt">&lt;excludes&gt;</span>
+						<span class="nt">&lt;exclude&gt;</span>
+							<span class="nt">&lt;groupId&gt;</span>org.projectlombok<span class="nt">&lt;/groupId&gt;</span>
+							<span class="nt">&lt;artifactId&gt;</span>lombok<span class="nt">&lt;/artifactId&gt;</span>
+						<span class="nt">&lt;/exclude&gt;</span>
+					<span class="nt">&lt;/excludes&gt;</span>
+				<span class="nt">&lt;/configuration&gt;</span>
+			<span class="nt">&lt;/plugin&gt;</span>
+		<span class="nt">&lt;/plugins&gt;</span>
+	<span class="nt">&lt;/build&gt;</span>
+
+<span class="nt">&lt;/project&gt;</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">catalog</span><span class="o">.</span><span class="na">entity</span><span class="o">;</span>
+
+ <span class="n">lombok</span><span class="o">.</span><span class="na">Data</span><span class="o">;</span>
+ <span class="n">javax</span><span class="o">.</span><span class="na">persistence</span><span class="o">.*;</span>
+
+<span class="nd">@Data</span>
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"products"</span><span class="o">)</span>
+  <span class="nc">Product</span> <span class="o">{</span>
+	<span class="nd">@Id</span>
+	<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.)</span>
+	 <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+	
+	<span class="nd">@Column</span><span class="o">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="o">,</span> <span class="n">unique</span> <span class="o">=</span> <span class="o">)</span>
+	 <span class="nc">String</span> <span class="n">code</span><span class="o">;</span>
+	
+	<span class="nd">@Column</span><span class="o">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="o">)</span>
+	 <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	
+	 <span class="nc">String</span> <span class="n">description</span><span class="o">;</span>
+	
+	  <span class="n">price</span><span class="o">;</span>
+
+	
+	
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">catalog</span><span class="o">.</span><span class="na">repository</span><span class="o">;</span>
+  
+  <span class="nc">ProductRepository</span>  <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="nf">findByCode</span><span class="o">(</span><span class="nc">String</span> <span class="n">code</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="nd">@Transactional</span>
+<span class="nd">@Slf4j</span>
+  <span class="nc">ProductService</span> <span class="o">{</span>
+      <span class="nc">ProductRepository</span> <span class="n">productRepository</span><span class="o">;</span>
+ 
+    <span class="nd">@Autowired</span>
+     <span class="nc">ProductService</span><span class="o">(</span><span class="nc">ProductRepository</span> <span class="n">productRepository</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">.</span><span class="na">productRepository</span> <span class="o">=</span> <span class="n">productRepository</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+     <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="nf">findAllProducts</span><span class="o">()</span> <span class="o">{</span>
+    	
+    	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span>	<span class="n">productRepository</span><span class="o">.</span><span class="na">findAll</span><span class="o">();</span>
+    	<span class="o">(</span><span class="nc">Product</span> <span class="n">p</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+    		<span class="nc">System</span><span class="o">..</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+    	<span class="o">}</span>
+    	
+         <span class="n">list</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+     <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="nf">findProductByCode</span><span class="o">(</span><span class="nc">String</span> <span class="n">code</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">productRepository</span><span class="o">.</span><span class="na">findByCode</span><span class="o">(</span><span class="n">code</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RestController</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/api/products"</span><span class="o">)</span>
+<span class="nd">@Slf4j</span>
+  <span class="nc">ProductController</span> <span class="o">{</span>
+ 
+      <span class="nc">ProductService</span> <span class="n">productService</span><span class="o">;</span>
+ 
+    <span class="nd">@Autowired</span>
+     <span class="nc">ProductController</span><span class="o">(</span><span class="nc">ProductService</span> <span class="n">productService</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">.</span><span class="na">productService</span> <span class="o">=</span> <span class="n">productService</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">""</span><span class="o">)</span>
+     <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="nf">allProducts</span><span class="o">()</span> <span class="o">{</span>
+         <span class="n">productService</span><span class="o">.</span><span class="na">findAllProducts</span><span class="o">();</span>
+    <span class="o">}</span>
+ 
+	<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/{code}"</span><span class="o">)</span>
+	 <span class="nc">Product</span> <span class="nf">productByCode</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="nc">String</span> <span class="n">code</span><span class="o">)</span> <span class="o">{</span>
+		 <span class="n">productService</span><span class="o">.</span><span class="na">findProductByCode</span><span class="o">(</span><span class="n">code</span><span class="o">).</span><span class="na">orElseThrow</span><span class="o">(()</span> <span class="o">-&gt;</span>  <span class="nc">ProductNotFoundException</span><span class="o">(</span><span class="s">"Product with code ["</span> <span class="o">+</span> <span class="n">code</span> <span class="o">+</span> <span class="s">"] doesn't exist"</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Okay, now we can start our SpringBoot application and hit
+<a href="http://localhost:8181/api/products">http://localhost:8181/api/products</a></p>
+
+<p><img src="media/2491cd06912aa29ac7649c1f97a1f34a.png" alt="" /></p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h1 id="2-spring-cloud-config-server--to-store-our-properties">2. Spring Cloud Config Server – to Store our Properties</h1>
+
+<p>SpringBoot provides lot of flexibility in externalizing configuration properties
+via properties or YAML files. We can also configure properties for each
+environment (dev, qa, prod etc) separately using profile specific configuration
+files such as <strong>application.properties</strong>, <strong>application-dev.properties</strong>,
+<strong>application-prod.properties</strong> etc.</p>
+
+<p>But once the application is started we can not update the properties at runtime.
+If we change the properties we need to restart the application to use the
+updated configuration properties.</p>
+
+<p>To Solve this, We can use <strong>Spring Cloud Config Server</strong> to centralize all the
+applications configuration and use <strong>Spring Cloud Config Client</strong> module from
+the applications to consume configuration properties from Config Server. We can
+also update the configuration properties at runtime without requiring to restart
+the application.</p>
+
+<p>Spring Cloud Config Server is nothing but a SpringBoot application with a
+configured configuration properties source. The configuration source can be a
+<strong>git</strong> , <strong>svn</strong> or any
+repository.<img src="media/3628b78f8cb82705e6fce813faa9206d.png" alt="" /></p>
+
+<p><br /></p>
+
+<p>Steps to configure Spring Cloud Config Server</p>
+
+<p>1.Create a git repo to store our <strong>properties</strong> with different envromnets.</p>
+
+<p><a href="https://github.com/smlcodes/SpringConfigServer">https://github.com/smlcodes/SpringConfigServer</a></p>
+
+<p><img src="media/3d7f49b0401b952be22cb07e962f0b2a.png" alt="" /></p>
+
+<p><br /></p>
+
+<p>2.Let us create a SpringBoot application <strong>spring-cloud-config-server</strong> from
+<a href="http://start.spring.io/">http://start.spring.io</a> by selecting the starters
+<strong>Config Server</strong> and <strong>Actuator</strong>.</p>
+
+<p><br /></p>
+
+<p>3.To make our SpringBoot application as a SpringCloud Config Server, we just
+need to add <strong>@EnableConfigServer</strong> annotation to the main entry point class</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@SpringBootApplication</span>
+<span class="nd">@EnableConfigServer</span>
+  <span class="nc">SpringCloudConfigServerApplication</span> <span class="o">{</span>
+
+	   <span class="n">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">SpringApplication</span><span class="o">.(</span><span class="nc">SpringCloudConfigServerApplication</span><span class="o">.,</span> <span class="n">args</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>4.configure <strong>git url</strong> property pointing to the git repository in
+<strong>application.propertis</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spring.config.name=configserver
+server.port=8182
+spring.cloud.config.server.git.uri=https://github.com/smlcodes/SpringConfigServer.git
+spring.cloud.config.server.git.default-label=main
+management.security.enabled=false
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>5.Start the application. Spring Cloud Config Server exposes the <strong>following REST
+endpoints</strong> to get application specific configuration properties:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/{application}/{profile}[/{label}]
+/{application}-{profile}.yml
+/{label}/{application}-{profile}.yml
+/{application}-{profile}.properties
+/{label}/{application}-{profile}.properties
+</code></pre></div></div>
+
+<p>Here <strong>{application}</strong> refers to value of <strong>spring.config.name</strong> property,
+<strong>{profile}</strong> is an active profile and <strong>{label}</strong> is an optional git label
+(defaults to -master”).</p>
+
+<p>Now if you access the URL <strong>http://localhost:8182/catalogservice/default</strong> then
+you will get the following response with catalogservice <strong>default</strong>
+configuration details:</p>
+
+<p><img src="media/a6d9ee216bad10a22442d65702b206c9.png" alt="" /></p>
+
+<p><br /></p>
+
+<p>Similary we can enviroment propertils like</p>
+
+<ul>
+  <li>
+    <p><a href="http://localhost:8182/catalogservice/default">http://localhost:8182/catalogservice/default</a></p>
+  </li>
+  <li>
+    <p><a href="http://localhost:8182/catalogservice/dev">http://localhost:8182/catalogservice/dev</a></p>
+  </li>
+  <li>
+    <p><a href="http://localhost:8182/catalogservice/test">http://localhost:8182/catalogservice/test</a></p>
+  </li>
+  <li>
+    <p><a href="http://localhost:8182/catalogservice/prod">http://localhost:8182/catalogservice/prod</a></p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="spring-cloud-config-client-example">Spring Cloud Config Client Example</h3>
+
+<p>Let us see how we can create a SpringBoot application and use configuration
+properties from Config Server instead of putting them inside the application.</p>
+
+<p>1.Update <strong>catalog-service</strong> with <strong>Config Client,</strong> <strong>Web</strong> and <strong>Actuator</strong>
+starters.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-cloud-starter-config&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-cloud-starter-bootstrap&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><strong>2.Create REST Resource</strong></p>
+
+<p>Add one <strong>RestController</strong> to view the Server side property values in the
+response. And add a method to request/response the perticalur value from
+Repository values.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RefreshScope</span>
+<span class="nd">@RestController</span>
+ <span class="nc">SpringCloudConfigClinet</span><span class="o">{</span>
+	
+	    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${msg:Config Server is not working. Please check...}"</span><span class="o">)</span>
+	     <span class="nc">String</span> <span class="n">msg</span><span class="o">;</span>
+	 
+	    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/msg"</span><span class="o">)</span>
+	     <span class="nc">String</span> <span class="nf">getMsg</span><span class="o">()</span> <span class="o">{</span>
+	         <span class="o">.</span><span class="na">msg</span><span class="o">;</span>
+	    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Usually in SpringBoot application we configure properties in
+<strong>application.properties.</strong> But while using Spring Cloud Config Server we use
+<strong>bootstrap.properties</strong> or <strong>bootstrap.yml</strong> file to configure the URL of
+Config Server.</p>
+
+<p><br /></p>
+
+<p>Configure the following properties in
+<strong>src/main/resources/bootstrap.properties</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server.port=8181
+spring.application.name=catalogservice
+spring.cloud.config.uri=http://localhost:8182
+management.security.enabled=false
+</code></pre></div></div>
+
+<p><em>Note that the value of</em> <strong>spring.application.name</strong> <em>property should match with
+base filename (catalogservice) in config-repo</em></p>
+
+<p>Now run the following catalog-service main entry point class. We can access the
+actuator endpoint <strong>http://localhost:8181/env</strong> to see all the configuration
+properties.</p>
+
+<p><br /></p>
+
+<p>You open <a href="http://localhost:8181/msg">http://localhost:8181/msg</a> you get property value of msg
+<img src="media/b855ebaaac9cf783593db427345e8ea2.png" alt="" /></p>
+
+<p>Ref.
+<a href="https://www.sivalabs.in/2017/08/spring-cloud-tutorials-introduction-to-spring-cloud-config-server/">https://www.sivalabs.in/2017/08/spring-cloud-tutorials-introduction-to-spring-cloud-config-server/</a></p>
+
+<p>Now if we delete the <strong>application.properties</strong> file, the application will works
+normally.</p>
+
+<p><br /></p>
+
+<p><strong>3. Spring Cloud Service Registry and Discovery</strong></p>
+
+<p>In the microservices world, <strong>Service Registry and Discovery</strong> plays an
+important role because we most likely run multiple instances of services and we
+need a mechanism to call other services without hardcoding their hostnames or
+port numbers.</p>
+
+<ul>
+  <li>
+    <p>Think of it as a lookup service where microservices (clients) can register
+themselves and discover other registered microservices.</p>
+  </li>
+  <li>
+    <p>When a client microservice registers with Eureka it provides metadata such
+as host, port, and health indicator thus allowing for other microservices to
+discover it.</p>
+  </li>
+  <li>
+    <p>The discovery server expects a regular heartbeat message from each
+microservice instance. If an instance begins to consistently fail to send a
+heartbeat, the discovery server will remove the instance from his registry.</p>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Netflix Component Name</strong></th>
+      <th><strong>Functionality</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Eureka</td>
+      <td>Service Registration and Discovery</td>
+    </tr>
+    <tr>
+      <td>Ribbon</td>
+      <td>Dynamic Routing and Load Balancer</td>
+    </tr>
+    <tr>
+      <td>Hystrix</td>
+      <td>Circuit Breaker</td>
+    </tr>
+    <tr>
+      <td>Zuul</td>
+      <td>Edge Server</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Steps to create Netflix Eureka based Service Registry</p>
+
+<p>add <strong>Eureka Server</strong> starter.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>We need to add <strong>@EnableEurekaServer</strong> annotation on main class to make our
+SpringBoot application a Eureka Server based Service Registry.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@SpringBootApplication</span>
+<span class="nd">@EnableEurekaServer</span>
+  <span class="nc">SpringCloudEurekaServerApplication</span> <span class="o">{</span>
+
+	   <span class="n">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">SpringApplication</span><span class="o">.(</span><span class="nc">SpringCloudEurekaServerApplication</span><span class="o">.,</span> <span class="n">args</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>By default, each Eureka Server is also a Eureka client and needs at least one
+service URL to locate a peer. As we are going to have a single Eureka Server
+node (Standalone Mode), we are going to disable this client-side behavior by
+configuring the following properties in <strong>application.properties file</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spring.application.name=service-registry
+server.port=8761
+eureka.instance.hostname=localhost
+eureka.instance.client.registerWithEureka=false
+eureka.instance.client.fetchRegistry=false
+eureka.instance.client.serviceUrl.defaultZone=http://${eureka.instance.hostname}:${server.port}/eureka/
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Netflix Eureka Service provides UI where we can see all the details about
+registered services.Now run the main class, check url
+<a href="http://localhost:8761/"><strong>http://localhost:8761/</strong></a></p>
+
+<p><img src="media/fd10eb953a6865b1001cb72ea7be0001.png" alt="" /></p>
+
+<h3 id="register-catalog-service-to-eureka">Register Catalog-Service to Eureka</h3>
+
+<p>Add the <strong>Eureka Discovery</strong> starter to <strong>catalog-service</strong> which will add the
+following dependency.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>we just need to configure <strong>eureka.client.service-url.defaultZone</strong> property in
+<strong>application.properties</strong> to automatically register with the Eureka Server.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>With this configuration in place, start catalog-service and visit
+<strong>http://localhost:8761</strong>. You should see catalog-service is registered with
+<strong>SERVICE ID</strong> as <strong>CATALOG-SERVICE</strong>.
+<img src="media/752f88980ac73548af629685cce19325.png" alt="" /></p>
+
+<p><br /></p>
+
+<h2 id="binventory-service">b.Inventory-service</h2>
+
+<p>Create <strong>inventory-service</strong> SpringBoot application with <strong>Web, JPA, H2/MySQL,
+Actuator, Config Client and Eureka Discovery</strong> starters.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  `inventory` (
+	`id` (20)  ,
+	`quantity` (11)   ,
+	`product_code` (255)    'latin1_swedish_ci',
+	  (`id`)  ,
+	  `UK_40r5uxke3xlbf7qeqfhklx0uc` (`product_code`)  
+)
+='latin1_swedish_ci'
+=
+;
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><strong>Model class</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Data</span>
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"inventory"</span><span class="o">)</span>
+  <span class="nc">InventoryItem</span> <span class="o">{</span>
+	<span class="nd">@Id</span>
+	<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.)</span>
+	 <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+	
+	<span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"product_code"</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="o">,</span> <span class="n">unique</span> <span class="o">=</span> <span class="o">)</span>
+	 <span class="nc">String</span> <span class="n">productCode</span><span class="o">;</span>
+	
+	<span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"quantity"</span><span class="o">)</span>
+	 <span class="nc">Integer</span> <span class="n">availableQuantity</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>	
+	
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><strong>InventoryItemRepository</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nc">InventoryItemRepository</span>  <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">InventoryItem</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+	<span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">InventoryItem</span><span class="o">&gt;</span> <span class="nf">findByProductCode</span><span class="o">(</span><span class="nc">String</span> <span class="n">productCode</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><strong>InventoryController</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RestController</span>
+<span class="nd">@Slf4j</span>
+  <span class="nc">InventoryController</span> <span class="o">{</span>
+	  <span class="nc">InventoryItemRepository</span> <span class="n">inventoryItemRepository</span><span class="o">;</span>
+
+	<span class="nd">@Autowired</span>
+	 <span class="nc">InventoryController</span><span class="o">(</span><span class="nc">InventoryItemRepository</span> <span class="n">inventoryItemRepository</span><span class="o">)</span> <span class="o">{</span>
+		<span class="o">.</span><span class="na">inventoryItemRepository</span> <span class="o">=</span> <span class="n">inventoryItemRepository</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/api/inventory/{productCode}"</span><span class="o">)</span>	 
+	 <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">InventoryItem</span><span class="o">&gt;</span> <span class="nf">findInventoryByProductCode</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"productCode"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">productCode</span><span class="o">)</span> <span class="o">{</span>
+		<span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Finding inventory for product code :"</span> <span class="o">+</span> <span class="n">productCode</span><span class="o">);</span>
+		<span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">InventoryItem</span><span class="o">&gt;</span> <span class="n">inventoryItem</span> <span class="o">=</span> <span class="n">inventoryItemRepository</span><span class="o">.</span><span class="na">findByProductCode</span><span class="o">(</span><span class="n">productCode</span><span class="o">);</span>
+		 <span class="o">(</span><span class="n">inventoryItem</span><span class="o">.</span><span class="na">isPresent</span><span class="o">())</span> <span class="o">{</span>
+			  <span class="nc">ResponseEntity</span><span class="o">(</span><span class="n">inventoryItem</span><span class="o">,</span> <span class="nc">HttpStatus</span><span class="o">.);</span>
+		<span class="o">}</span>  <span class="o">{</span>
+			  <span class="nc">ResponseEntity</span><span class="o">(</span><span class="nc">HttpStatus</span><span class="o">.);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/api/inventory"</span><span class="o">)</span> 
+	 <span class="nc">List</span><span class="o">&lt;</span><span class="nc">InventoryItem</span><span class="o">&gt;</span> <span class="nf">getInventory</span><span class="o">()</span> <span class="o">{</span>
+		<span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Finding inventory for all products "</span><span class="o">);</span>
+		 <span class="n">inventoryItemRepository</span><span class="o">.</span><span class="na">findAll</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><strong>InventoryServiceApplication</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@SpringBootApplication</span>
+  <span class="nc">InventoryServiceApplication</span> <span class="o">{</span>
+
+	   <span class="n">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">SpringApplication</span><span class="o">.(</span><span class="nc">InventoryServiceApplication</span><span class="o">.,</span> <span class="n">args</span><span class="o">);</span>
+		
+		
+		<span class="nc">System</span><span class="o">..</span><span class="na">println</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">..</span><span class="na">println</span><span class="o">(</span><span class="s">"InventoryService ®   "</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">..</span><span class="na">println</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+	
+		
+		<span class="nc">System</span><span class="o">..</span><span class="na">println</span><span class="o">(</span><span class="s">" ==============================================="</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">..</span><span class="na">println</span><span class="o">(</span><span class="s">"http://localhost:9992/api/inventory/"</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">..</span><span class="na">println</span><span class="o">(</span><span class="s">" ==============================================="</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><strong>bootstrap.properties</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server.port=9992
+spring.application.name=inventoryservice
+spring.cloud.config.uri=http://localhost:501
+management.security.enabled=false
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+</code></pre></div></div>
+
+<p>Test API : <a href="http://localhost:9992/api/inventory/">http://localhost:9992/api/inventory/</a></p>
+
+<p><img src="media/6746839e9d4815d1303b5ee106483e02.png" alt="" /></p>
+
+<p><br /></p>
+
+<p>Now we can see Invetory Service in Eureka Server
+<img src="media/93273a09a071bd13d270bd558ba0d378.png" alt="" /></p>
+
+<p><br /></p>
+
+<p>Ref. <a href="https://www.sivalabs.in/2018/03/microservices-springcloud-eureka/">https://www.sivalabs.in/2018/03/microservices-springcloud-eureka/</a></p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h1 id="4-spring-cloud-load-balancing">4. Spring Cloud Load balancing</h1>
+
+<p>Lets remove <strong>server.port=9992</strong> from both boostrap &amp; git property file. And
+start 2 Inventoy instance manullay.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar -Dserver.port=9898 inventory-service-0.0.1-SNAPSHOT.jar
+java -jar -Dserver.port=9899 inventory-service-0.0.1-SNAPSHOT.jar
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Now you can visit Eureka Dashboard <strong>http://localhost:8761/</strong> and see 3
+instances of inventory-service registered.</p>
+
+<p><img src="media/f311c30f909904bdc403a94f11172e9f.png" alt="" /></p>
+
+<p><br /></p>
+
+<p>Suppoce we if want to call Inventory Service from Catalog Srervice, which of
+above 3 instance will call ?</p>
+
+<p>Suppose we want to invoke inventory-service REST endpoint from catalog-service.
+We can use <strong>RestTemplate</strong> to invoke REST endpoint but there are 2 instances
+running.</p>
+
+<p>We can register <strong>RestTemplate</strong> as a Spring bean with <strong>@LoadBalanced</strong>
+annotation. The RestTemplate with <strong>@LoadBalanced</strong> annotation will internally
+use <strong>Ribbon LoadBalancer</strong> to resolve the <strong>ServiceID</strong> and invoke REST
+endpoint using one of the available servers.</p>
+
+<p><br /></p>
+
+<p><strong>Catalog-service/ CatalogServiceApplication.java</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@SpringBootApplication</span>
+  <span class="nc">CatalogServiceApplication</span> <span class="o">{</span>
+ 
+    <span class="nd">@Bean</span>
+    <span class="nd">@LoadBalanced</span>
+     <span class="nc">RestTemplate</span> <span class="nf">restTemplate</span><span class="o">()</span> <span class="o">{</span>
+          <span class="nc">RestTemplate</span><span class="o">();</span>
+    <span class="o">}</span>
+ 
+       <span class="n">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SpringApplication</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="nc">CatalogServiceApplication</span><span class="o">.,</span> <span class="n">args</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Use RestTemplate to invoke <strong>inventory-service</strong> endpoint from
+<strong>catalog-service/ProductService.java</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="nd">@Transactional</span>
+<span class="nd">@Slf4j</span>
+  <span class="nc">ProductService</span> <span class="o">{</span>
+      <span class="nc">ProductRepository</span> <span class="n">productRepository</span><span class="o">;</span>
+      <span class="nc">RestTemplate</span> <span class="n">restTemplate</span><span class="o">;</span>
+    
+    <span class="nd">@Autowired</span>
+     <span class="nc">ProductService</span><span class="o">(</span><span class="nc">ProductRepository</span> <span class="n">productRepository</span><span class="o">,</span> <span class="nc">RestTemplate</span> <span class="n">restTemplate</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">.</span><span class="na">productRepository</span> <span class="o">=</span> <span class="n">productRepository</span><span class="o">;</span>
+        <span class="o">.</span><span class="na">restTemplate</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">;</span>
+    <span class="o">}</span>    
+    
+     <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="nf">findProductByCode</span><span class="o">(</span><span class="nc">String</span> <span class="n">code</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">Product</span><span class="o">&gt;</span> <span class="n">productOptional</span> <span class="o">=</span> <span class="n">productRepository</span><span class="o">.</span><span class="na">findByCode</span><span class="o">(</span><span class="n">code</span><span class="o">);</span>
+        <span class="o">(</span><span class="n">productOptional</span><span class="o">.</span><span class="na">isPresent</span><span class="o">())</span> <span class="o">{</span>
+            <span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Fetching inventory level for product_code: "</span><span class="o">+</span><span class="n">code</span><span class="o">);</span>
+            <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">ProductInventoryResponse</span><span class="o">&gt;</span> <span class="n">itemResponseEntity</span> <span class="o">=</span>
+                    <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForEntity</span><span class="o">(</span><span class="s">"http://inventory-service/api/inventory/{code}"</span><span class="o">,</span>
+                                                <span class="nc">ProductInventoryResponse</span><span class="o">.,</span>
+                                                <span class="n">code</span><span class="o">);</span>
+            <span class="o">(</span><span class="n">itemResponseEntity</span><span class="o">.</span><span class="na">getStatusCode</span><span class="o">()</span> <span class="o">==</span> <span class="nc">HttpStatus</span><span class="o">.)</span> <span class="o">{</span>
+                <span class="nc">Integer</span> <span class="n">quantity</span> <span class="o">=</span> <span class="n">itemResponseEntity</span><span class="o">.</span><span class="na">getBody</span><span class="o">().</span><span class="na">getAvailableQuantity</span><span class="o">();</span>
+                <span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Available quantity: "</span><span class="o">+</span><span class="n">quantity</span><span class="o">);</span>
+            <span class="o">}</span>  <span class="o">{</span>
+                <span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Unable to get inventory level for product_code: "</span><span class="o">+</span><span class="n">code</span> <span class="o">+</span>
+                <span class="s">", StatusCode: "</span><span class="o">+</span><span class="n">itemResponseEntity</span><span class="o">.</span><span class="na">getStatusCode</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+         <span class="n">productOptional</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Note that we have used <strong>http://inventory-service/api/inventory/{code}</strong> instead
+of <strong>http://localhost:9898/api/inventory/{code}</strong> or
+<strong>http://localhost:9999/api/inventory/{code}</strong></p>
+
+<p><img src="media/89c5bf79d9ed90582bfbc48f20433c14.png" alt="" /></p>
+
+<p><br /></p>
+
+<p>With this kind of automatic Service Registration and Discovery mechanism, we no
+need to worry about how many instances are running and what are their hostnames
+and ports etc.</p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h1 id="5-spring-cloud-circuit-breaker-using-netflix-hystrix">5. Spring Cloud Circuit Breaker using Netflix Hystrix</h1>
+
+<p>In the microservices world, to fulfill a client request one microservice may
+need to talk to other microservices. We should minimize this kind of direct
+dependencies on other microservices but in some cases it is unavoidable. If a
+microservice is down or not functioning properly then the issue may cascade up
+to the upstream services.</p>
+
+<p>Netflix created Hystrix library implementing <a href="https://martinfowler.com/bliki/CircuitBreaker.html">Circuit
+Breaker</a> pattern to address
+these kinds of issues. We can use <strong>Spring Cloud Netflix Hystrix Circuit
+Breaker</strong> to protect microservices from cascading failures.</p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="steps-to-spring-cloud-circuit-breaker-using-netflix-hystrix">Steps to Spring Cloud Circuit Breaker using Netflix Hystrix</h3>
+
+<p>From <strong>catalog-service</strong> we are invoking REST endpoint on <strong>inventory-service</strong>
+to get the inventory level of a product. What if inventory-service is down? What
+if inventory-service is taking too long to respond thereby slowing down all the
+services depending on it? We would like to have some <strong>timeouts</strong> and implement
+some <strong>fallback mechanism</strong>.</p>
+
+<p>Add <strong>Hystrix</strong> starter to catalog-service.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>To enable Circuit Breaker add <strong>@EnableCircuitBreaker</strong> annotation on
+catalog-service entry-point class.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@SpringBootApplication</span>
+<span class="nd">@EnableCircuitBreaker</span>
+  <span class="nc">CatalogServiceApplication</span> <span class="o">{</span>
+
+	<span class="nd">@Bean</span>
+	<span class="nd">@LoadBalanced</span>
+	 <span class="nc">RestTemplate</span> <span class="nf">restTemplate</span><span class="o">()</span> <span class="o">{</span>
+		  <span class="nc">RestTemplate</span><span class="o">();</span>
+	<span class="o">}</span>
+	
+	   <span class="n">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">SpringApplication</span><span class="o">.(</span><span class="nc">CatalogServiceApplication</span><span class="o">.,</span> <span class="n">args</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="nd">@Slf4j</span>
+  <span class="nc">InventoryServiceClient</span> <span class="o">{</span>
+      <span class="nc">RestTemplate</span> <span class="n">restTemplate</span><span class="o">;</span>
+ 
+    <span class="nd">@Autowired</span>
+     <span class="nc">InventoryServiceClient</span><span class="o">(</span><span class="nc">RestTemplate</span> <span class="n">restTemplate</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">.</span><span class="na">restTemplate</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+    <span class="nd">@HystrixCommand</span><span class="o">(</span><span class="n">fallbackMethod</span> <span class="o">=</span> <span class="s">"getDefaultProductInventoryByCode"</span><span class="o">)</span>
+     <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">ProductInventoryResponse</span><span class="o">&gt;</span> <span class="nf">getProductInventoryByCode</span><span class="o">(</span><span class="nc">String</span> <span class="n">productCode</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">ProductInventoryResponse</span><span class="o">&gt;</span> <span class="n">itemResponseEntity</span> <span class="o">=</span>
+                <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForEntity</span><span class="o">(</span><span class="s">"http://inventory-service/api/inventory/{code}"</span><span class="o">,</span>
+                        <span class="nc">ProductInventoryResponse</span><span class="o">.,</span>
+                        <span class="n">productCode</span><span class="o">);</span>
+         <span class="o">(</span><span class="n">itemResponseEntity</span><span class="o">.</span><span class="na">getStatusCode</span><span class="o">()</span> <span class="o">==</span> <span class="nc">HttpStatus</span><span class="o">.)</span> <span class="o">{</span>
+             <span class="nc">Optional</span><span class="o">.(</span><span class="n">itemResponseEntity</span><span class="o">.</span><span class="na">getBody</span><span class="o">());</span>
+        <span class="o">}</span>  <span class="o">{</span>
+            <span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Unable to get inventory level for product_code: "</span> <span class="o">+</span> <span class="n">productCode</span> <span class="o">+</span> <span class="s">", StatusCode: "</span> <span class="o">+</span> <span class="n">itemResponseEntity</span><span class="o">.</span><span class="na">getStatusCode</span><span class="o">());</span>
+             <span class="nc">Optional</span><span class="o">.();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+ 
+    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"unused"</span><span class="o">)</span>
+    <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">ProductInventoryResponse</span><span class="o">&gt;</span> <span class="nf">getDefaultProductInventoryByCode</span><span class="o">(</span><span class="nc">String</span> <span class="n">productCode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Returning default ProductInventoryByCode for productCode: "</span><span class="o">+</span><span class="n">productCode</span><span class="o">);</span>
+        <span class="nc">ProductInventoryResponse</span> <span class="n">response</span> <span class="o">=</span>  <span class="nc">ProductInventoryResponse</span><span class="o">();</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">setProductCode</span><span class="o">(</span><span class="n">productCode</span><span class="o">);</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">setAvailableQuantity</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span>
+         <span class="nc">Optional</span><span class="o">.(</span><span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>We have annotated the method from where we are making a REST call with
+<strong>@HystrixCommand(fallbackMethod = -getDefaultProductInventoryByCode”)</strong> so that
+if it doesn’t receive the response within the certain time limit the call gets
+timed out and invoke the configured fallback method.</p>
+
+<p>The fallback method should be defined in the same class and should have the same
+signature. In the fallback method <strong>getDefaultProductInventoryByCode()</strong> we are
+setting the <strong>availableQuantity</strong> to 50, obviously, this behavior depends on
+what business wants.</p>
+
+<p>Spring Cloud also provides a nice dashboard to monitor the status of Hystrix
+commands. Create a Spring Boot application with <strong>Hystrix Dashboard</strong> starter
+and annotate the main entry-point class with <strong>@EnableHystrixDashboard</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix-dashboard&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Now in Hystrix Dashboard home page enter
+<strong>http://localhost:8181/actuator/hystrix.stream</strong> as stream URL and give Catalog
+Service as Title and click on Monitor Stream
+button.<img src="media/629d8780e4f56690d2e5d03c189e7352.png" alt="" /></p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h1 id="6-spring-cloud-zuul-proxy-as-api-gateway">6. Spring Cloud Zuul Proxy as API Gateway</h1>
+
+<p>Spring Cloud provides Zuul proxy, similar to <strong>Nginx</strong>, that can be used to
+create API Gateway.</p>
+
+<p>API Gateway, aka Edge Service, provides a unified interface for a set of
+microservices so that clients no need to know about all the details of
+microservices internals. However, there are some pros and cons of using API
+Gateway pattern in microservices architecture.</p>
+
+<p><strong>Pros:</strong></p>
+
+<ul>
+  <li>
+    <p>Provides easier interface to clients</p>
+  </li>
+  <li>
+    <p>Can be used to prevent exposing the internal microservices structure to
+clients</p>
+  </li>
+  <li>
+    <p>Allows to refactor microservices without forcing the clients to refactor
+consuming logic</p>
+  </li>
+  <li>
+    <p>Can centralize cross-cutting concerns like security, monitoring, rate
+limiting etc</p>
+  </li>
+</ul>
+
+<p><strong>Cons:</strong></p>
+
+<ul>
+  <li>
+    <p>It could become a single point of failure if proper measures are not taken
+to make it highly available</p>
+  </li>
+  <li>
+    <p>Knowledge of various microservice API may creep into API Gateway</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h1 id="7-distributed-tracing-with-spring-cloud-sleuth-and-zipkin">7. Distributed Tracing with Spring Cloud Sleuth and Zipkin</h1>
+
+<p>One of the challenges in microservices architecture is the ability to debug
+issues. A simple user action might trigger a chain of downstream microservice
+calls. It would be tedious to trace the logs related to a particular user action
+across microservices.</p>
+
+<p>We can use <a href="http://cloud.spring.io/spring-cloud-static/Finchley.M7/single/spring-cloud.html#_spring_cloud_sleuth">Spring Cloud
+Sleuth</a>
+to handle these kinds of issues. Spring Cloud Sleuth provides the distributed
+tracing capabilities and we can also export these trace information to
+<a href="https://zipkin.io/">Zipkin</a> to visualize the call traces.</p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="ref">Ref.</h3>
+
+<p><a href="https://www.sivalabs.in/2018/03/microservices-using-springboot-spring-cloud-part-1-overview/">https://www.sivalabs.in/2018/03/microservices-using-springboot-spring-cloud-part-1-overview/</a></p>
+
+<p><a href="https://github.com/sivaprasadreddy/spring-boot-microservices-series">https://github.com/sivaprasadreddy/spring-boot-microservices-series</a></p>
+</div><div class="d-print-none"><footer class="article__footer"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet --></footer><div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/springboot/springboot-security">SpringBoot Security</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+//alert('start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert(' end .......');
+ 
+ document.onreadystatechange = function(){
+     if(document.readyState === 'complete'){
+         /*code here*/
+		 //alert('onreadystatechange comled ... start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert('onreadystatechange comled ... end .......');
+     }
+}
+
+</script></div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet --></div>
+            </div></div></div><div class="page__footer d-print-none"><footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Satya Kaveti"><meta itemprop="url" content="/"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© SatyaCodes 2020 ,
+        <a title="Satya Kaveti" href="about/">Satya Kaveti's Writing</a>.
+		<span>| <a href="about/">About Me</a> &nbsp |  </span>
+		<span><a href="/terms.html">Terms</a> &nbsp |  </span>
+		<span><a href="/contact.html">Contact</a> &nbsp |  </span>
+		<span><a href="http://www.satyacodesapps.ml/" target="_blank">Our Apps</a> &nbsp |  </span>
+		<span><a href="https://www.facebook.com/isatyakaveti" target="_blank"><i class="fab fa-facebook-f"></i></a> &nbsp |  </span>
+		<span><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube-square"></i></a> &nbsp |  </span>
+		<span><a href="https://in.linkedin.com/in/satyakaveti"target="_blank"><i class="fab fa-linkedin-in"></i></a> &nbsp | 
+		<span>[ 
+		<!-- Start of WebFreeCounter Code -->
+<a href="http://www.statworker.com/" target="_blank"><img src="https://www.webfreecounter.com/hit.php?id=gfpapx&nd=7&style=2" border="0" alt="statworker.com"></a>
+<!-- End of WebFreeCounter Code -->
+</span>
+<span><a href="https://statcounter.com/p12408441/?guest=1" target="_blank"> ]</a></span>
+
+
+      </div>
+    </div>
+  </div>
+</footer></div></div>
+    </div></div></div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal d-print-none js-page-gallery-modal"><div class="gallery"></div></div><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">Search</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text" />
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        Cancel</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script></div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+(function() {(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function swiper(options) {
+      var $window = $(window), $root = this, $swiperWrapper, $swiperSlides, $swiperButtonPrev, $swiperButtonNext,
+        initialSlide, animation, onChange, onChangeEnd,
+        rootWidth, count, preIndex, curIndex, translateX, CRITICAL_ANGLE = Math.PI / 3;
+
+      function setOptions(options) {
+        var _options = options || {};
+        initialSlide = _options.initialSlide || 0;
+        animation = _options.animation === undefined && true;
+        onChange = onChange || _options.onChange;
+        onChangeEnd = onChangeEnd || _options.onChangeEnd;
+      }
+
+      function init() {
+        $swiperWrapper = $root.find('.swiper__wrapper');
+        $swiperSlides = $root.find('.swiper__slide');
+        $swiperButtonPrev = $root.find('.swiper__button--prev');
+        $swiperButtonNext = $root.find('.swiper__button--next');
+        animation && $swiperWrapper.addClass('swiper__wrapper--animation');
+        calc(true);
+      }
+
+      function preCalc() {
+        rootWidth = $root.width();
+        count = $swiperWrapper.children('.swiper__slide').length;
+        if (count < 2) {
+          $swiperButtonPrev.addClass('d-none');
+          $swiperButtonNext.addClass('d-none');
+        }
+        curIndex = initialSlide || 0;
+        translateX = getTranslateXFromCurIndex();
+      }
+
+      var calc = (function() {
+        var preAnimation, $swiperSlide, $preSwiperSlide;
+        return function (needPreCalc, params) {
+          needPreCalc && preCalc();
+          var _animation = (params && params.animation !== undefined) ? params.animation : animation;
+          if (preAnimation === undefined || preAnimation !== _animation) {
+            preAnimation = _animation ? $swiperWrapper.addClass('swiper__wrapper--animation') :
+              $swiperWrapper.removeClass('swiper__wrapper--animation');
+          }
+          if (preIndex !== curIndex) {
+            ($preSwiperSlide = $swiperSlides.eq(preIndex)).removeClass('active');
+            ($swiperSlide = $swiperSlides.eq(curIndex)).addClass('active');
+            onChange && onChange(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+            if (onChangeEnd) {
+              if (_animation) {
+                setTimeout(function() {
+                  onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+                }, 400);
+              } else {
+                onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+              }
+            }
+            preIndex = curIndex;
+          }
+          $swiperWrapper.css('transform', 'translate(' + translateX + 'px, 0)');
+          if (count > 1) {
+            if (curIndex <= 0) {
+              $swiperButtonPrev.addClass('disabled');
+            } else {
+              $swiperButtonPrev.removeClass('disabled');
+            }
+            if (curIndex >= count - 1) {
+              $swiperButtonNext.addClass('disabled');
+            } else {
+              $swiperButtonNext.removeClass('disabled');
+            }
+          }
+        };
+      })();
+
+      function getTranslateXFromCurIndex() {
+        return curIndex <= 0 ? 0 : - rootWidth * curIndex;
+      }
+
+      function moveToIndex(index ,params) {
+        preIndex = curIndex;
+        curIndex = index;
+        translateX = getTranslateXFromCurIndex();
+        calc(false, params);
+      }
+
+      function move(type) {
+        var nextIndex = curIndex, unstableTranslateX;
+        if (type === 'prev') {
+          nextIndex > 0 && nextIndex--;
+        } else if (type === 'next') {
+          nextIndex < count - 1 && nextIndex++;
+        }
+        if (type === 'cur') {
+          moveToIndex(curIndex, { animation: true });
+          return;
+        }
+        unstableTranslateX = translateX % rootWidth !== 0;
+        if (nextIndex !== curIndex || unstableTranslateX) {
+          unstableTranslateX ? moveToIndex(nextIndex, { animation: true }) : moveToIndex(nextIndex);
+        }
+      }
+
+      setOptions(options);
+      init();
+      preIndex = curIndex;
+
+      $swiperButtonPrev.on('click', function(e) {
+        e.stopPropagation();
+        move('prev');
+      });
+      $swiperButtonNext.on('click', function(e) {
+        e.stopPropagation();
+        move('next');
+      });
+      $window.on('resize', function() {
+        calc(true, { animation: false });
+      });
+
+      (function() {
+        var pageX, pageY, velocityX, preTranslateX = translateX, timeStamp, touching;
+        function handleTouchstart(e) {
+          var point = e.touches ? e.touches[0] : e;
+          pageX = point.pageX;
+          pageY = point.pageY;
+          velocityX = 0;
+          preTranslateX = translateX;
+        }
+        function handleTouchmove(e) {
+          if (e.touches && e.touches.length > 1) {
+            return;
+          }
+          var point = e.touches ? e.touches[0] : e;
+          var deltaX = point.pageX - pageX;
+          var deltaY = point.pageY - pageY;
+          velocityX = deltaX / (e.timeStamp - timeStamp);
+          timeStamp = e.timeStamp;
+          if (e.cancelable && Math.abs(Math.atan(deltaY / deltaX)) < CRITICAL_ANGLE) {
+            touching = true;
+            translateX += deltaX;
+            calc(false, { animation: false });
+          }
+          pageX = point.pageX;
+          pageY = point.pageY;
+        }
+        function handleTouchend() {
+          touching = false;
+          var deltaX = translateX - preTranslateX;
+          var distance = deltaX + velocityX * rootWidth;
+          if (Math.abs(distance) > rootWidth / 2) {
+            distance > 0 ? move('prev') : move('next');
+          } else {
+            move('cur');
+          }
+        }
+        $swiperWrapper.on('touchstart', handleTouchstart);
+        $swiperWrapper.on('touchmove', handleTouchmove);
+        $swiperWrapper.on('touchend', handleTouchend);
+        $swiperWrapper.on('touchcancel', handleTouchend);
+
+        (function() {
+          var pressing = false, moved = false;
+          $swiperWrapper.on('mousedown', function(e) {
+            pressing = true; handleTouchstart(e);
+          });
+          $swiperWrapper.on('mousemove', function(e) {
+            pressing && (e.preventDefault(), moved = true, handleTouchmove(e));
+          });
+          $swiperWrapper.on('mouseup', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('mouseleave', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('click', function(e) {
+            moved && (e.stopPropagation(), moved = false);
+          });
+        })();
+
+        $root.on('touchmove', function(e) {
+          if (e.cancelable & touching) {
+            e.preventDefault();
+          }
+        });
+      })();
+
+      return {
+        setOptions: setOptions,
+        previous: function(){
+          move('prev');
+        },
+        next: function(){
+          move('next');
+        },
+        refresh: function() {
+          calc(true, { animation: false });
+        }
+      };
+    }
+    $.fn.swiper = swiper;
+  });
+})();
+var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var template =
+      '<div class="swiper gallery__swiper">' +
+        '<div class="swiper__wrapper">' +
+        '</div>' +
+        '<div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>' +
+        '<div class="swiper__button swiper__button--next fas fa-chevron-right"></div>' +
+      '</div>';
+    function setState($item, zoom, translate) {
+      $item.css('transform', 'scale(' + zoom + ') translate(' + translate.x +  'px,' + translate.y + 'px)');
+    }
+    function Gallery(root, items) {
+      this.$root = $(root);
+      this.$swiper = null;
+      this.$swiperWrapper = null;
+      this.$activeItem = null;
+      this.$items = [];
+      this.contentWidth = 0;
+      this.contentHeight = 0;
+      this.swiper = null;
+      this.items = items;
+      this.disabled = false;
+      this.curIndex = 0;
+      this.touchCenter = null;
+      this.lastTouchCenter = null;
+      this.zoomRect = null;
+      this.lastZoomRect = null;
+      this.lastTranslate = null;
+      this.translate = null;
+      this.lastZoom = 1;
+      this.preZoom = 1;
+      this.zoom = 1;
+    }
+    Gallery.prototype.init = function() {
+      var i, item, items = this.items, size, self = this, touchstartFingerCount = 0;
+      this.$root.append(template);
+      this.$swiper = this.$root.find('.gallery__swiper');
+      this.$swiperWrapper = this.$root.find('.swiper__wrapper');
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      for (i = 0; i < items.length; i++) {
+        item = items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        this.$items.push($(
+          '<div class="swiper__slide">' +
+            '<div class="gallery-item">' +
+              '<div class="gallery-item__content">' +
+                '<img src="' + item.src + '" style="width:' + size.w + 'px;height:' + size.h +  'px"/>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        ));
+      }
+      this.$swiperWrapper && this.$swiperWrapper.append(this.$items);
+      this.swiper = this.$swiper && this.$swiper.swiper({
+        onChangeEnd: function() {
+          self._handleChangeEnd.apply(self, Array.prototype.slice.call(arguments));
+        }
+      });
+      $(window).on('resize', function() {
+        if (self.disabled) { return; }
+        self._resizeImageSize();
+      });
+      // Char Code: 37  ⬅, 39  ➡
+      $(window).on('keyup', function(e) {
+        if (window.isFormElement(e.target || e.srcElement) || self.disabled) { return; }
+        if (e.which === 37) {
+          self.swiper && self.swiper.previous();
+        } else if (e.which === 39) {
+          self.swiper && self.swiper.next();
+        }
+      });
+      function getRect(touch0, touch1) {
+        return {
+          o: {
+            x: (touch0.pageX + touch1.pageX) / 2,
+            y: (touch0.pageY + touch1.pageY) / 2
+          },
+          w: Math.abs(touch0.pageX - touch1.pageX),
+          h: Math.abs(touch0.pageY - touch1.pageY)
+        };
+      }
+      function getTouches(e) {
+        return e.touches || e;
+      }
+      function getTouchesCount(e) {
+        if (e.touches) {
+          return e.touches.length;
+        } else {
+          return 1;
+        }
+      }
+      this.$swiperWrapper.on('touchstart', function(e) {
+        var touch0, touch1, rect;
+        touchstartFingerCount = getTouchesCount(e);
+        if (touchstartFingerCount > 1) {
+          touch0 = e.touches[0];
+          touch1 = e.touches[1];
+          rect = getRect(touch0, touch1);
+          self.lastZoomRect = { w: rect.w, h: rect.h };
+          self.lastTouchCenter = rect.o;
+        } else {
+          var touch = getTouches(e)[0];
+          self.lastTouchCenter = { x: touch.pageX, y: touch.pageY };
+        }
+      });
+      this.$swiperWrapper.on('touchmove', function(e) {
+        if (touchstartFingerCount === getTouchesCount(e)) {
+          if (touchstartFingerCount > 1) {
+            var touch0 = e.touches[0];
+            var touch1 = e.touches[1];
+            var rect = getRect(touch0, touch1);
+            self.zoomRect = { w: rect.w, h: rect.h };
+            self.touchCenter = rect.o;
+            self._zoom(); self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          } else {
+            var touch = getTouches(e)[0];
+            self.touchCenter = { x: touch.pageX, y: touch.pageY };
+            self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          }
+        }
+      });
+      this.$swiperWrapper.on('touchend', function(e) {
+        self.lastZoom = self.zoom;
+        self.lastTranslate = self.translate;
+        touchstartFingerCount = 0;
+      });
+      this.$root.on('touchmove', function(e) {
+        if (self.disabled) { return; }
+        e.preventDefault();
+      });
+    };
+
+    Gallery.prototype._translate = function() {
+      this.translate = this.touchCenter && this.lastTouchCenter && this.lastTranslate ? {
+        x: (this.touchCenter.x - this.lastTouchCenter.x) / this.zoom + this.lastTranslate.x,
+        y: (this.touchCenter.y - this.lastTouchCenter.y) / this.zoom + this.lastTranslate.y
+      } : { x: 0, y: 0 };
+    }
+    Gallery.prototype._zoom = function() {
+      this.zoom = (this.zoomRect.w + this.zoomRect.h) / (this.lastZoomRect.w + this.lastZoomRect.h) * this.lastZoom;
+      this.zoom > 1 ? this.$activeItem.addClass('zoom') : this.$activeItem.removeClass('zoom');
+      this.preZoom = this.zoom;
+    }
+
+    Gallery.prototype._calculateImageSize = function(w, h) {
+      var scale = 1;
+      if (this.contentWidth > 0 && this.contentHeight > 0 && w > 0 && h > 0) {
+        scale = Math.min(
+          Math.min(w, this.contentWidth) / w,
+          Math.min(h, this.contentHeight) / h);
+      }
+      return { w: Math.floor(w * scale), h: Math.floor(h * scale) };
+    };
+
+    Gallery.prototype._resizeImageSize = function() {
+      var i, $item, $items = this.$items, item, size;
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      if ($items.length < 1) { return; }
+      for (i = 0; i < $items.length; i++) {
+        item = this.items[i], $item = $items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        item.width = size.w; item.height = size.h;
+        $item && $item.find('img').css({ width: size.w, height: size.h });
+      }
+    };
+    Gallery.prototype._handleChangeEnd = function(index, $dom, preIndex, $preDom) {
+      this.curIndex = index;
+      this.lastZoomRect = null; this.lastZoomRect = null;
+      this.lastTranslate = this.translate = { x: 0, y:0 };
+      this.lastZoom = this.preZoom = this.zoom = 1;
+      this.$activeItem = $dom.find('.gallery-item__content');
+      setState($preDom.find('.gallery-item__content'), this.zoom, this.translate);
+    };
+
+    Gallery.prototype.refresh = function() {
+      this.swiper && this.swiper.refresh();
+      this._resizeImageSize();
+    };
+    Gallery.prototype.setOptions = function(options) {
+      this.disabled = options.disabled;
+      this.swiper && this.swiper.setOptions(options);
+    };
+    window.Gallery = Gallery;
+  });
+})();(function() {
+  window.imagesLoad = function(images) {
+    images = images || document.getElementsByTagName('img');
+    var imagesCount = images.length, loadedCount = 0, image;
+    var i, j, loaded = false, cbs = [];
+    imagesCount < 1 && (loaded = true);
+    for (i = 0; i < imagesCount; i++) {
+      image = images[i];
+      image.complete ? handleImageLoad() : image.addEventListener('load', handleImageLoad);
+    }
+    function handleImageLoad() {
+      loadedCount++;
+      if (loadedCount === imagesCount) {
+        loaded = true;
+        if (cbs.length > 0) {
+          for (j = 0; j < cbs.length; j++) {
+            cbs[j]();
+          }
+        }
+      }
+    }
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  };
+})();
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageGalleryModal = $('.js-page-gallery-modal');
+    var $images = $('.page__content').find('img:not(.lightbox-ignore)');
+    window.imagesLoad($images).then(function() {
+      /* global Gallery */
+      var pageGalleryModal = $pageGalleryModal.modal({ onChange: handleModalChange });
+      var gallery = null;
+      var modalVisible = false;
+      var i, items = [], image, item;
+      if($images && $images.length > 0) {
+        for (i = 0; i < $images.length; i++) {
+          image = $images.eq(i);
+          if (image.get(0).naturalWidth > 800) {
+            items.push({ src: image.attr('src'), w: image.get(0).naturalWidth, h: image.get(0).naturalHeight, $el: image});
+          }
+        }
+      }
+
+      if(items.length > 0) {
+        gallery = new Gallery('.gallery', items);
+        gallery.setOptions({ disabled: !modalVisible });
+        gallery.init();
+        for (i = 0; i < items.length; i++) {
+          item = items[i];
+          item.$el && (item.$el.addClass('popup-image'), item.$el.on('click', (function() {
+            var index = i;
+            return function() {
+              pageGalleryModal.show();
+              gallery.setOptions({ initialSlide: index });
+              gallery.refresh(true, { animation: false });
+            };
+          })()));
+        }
+      }
+
+      function handleModalChange(visible) {
+        modalVisible = visible;
+        gallery && gallery.setOptions({ disabled: !modalVisible });
+      }
+
+      $pageGalleryModal.on('click', function() {
+        pageGalleryModal.hide();
+      });
+    });
+  });
+})();/*(function () {
+
+})();*/
+</script><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageMask = $('.js-page-mask');
+    var $pageRoot = $('.js-page-root');
+    var $sidebarShow = $('.js-sidebar-show');
+    var $sidebarHide = $('.js-sidebar-hide');
+
+    function freeze(e) {
+      if (e.target === $pageMask[0]) {
+        e.preventDefault();
+      }
+    }
+    function stopBodyScrolling(bool) {
+      if (bool === true) {
+        window.addEventListener('touchmove', freeze, { passive: false });
+      } else {
+        window.removeEventListener('touchmove', freeze, { passive: false });
+      }
+    }
+
+    $sidebarShow.on('click', function() {
+      stopBodyScrolling(true); $pageRoot.addClass('show-sidebar');
+    });
+    $sidebarHide.on('click', function() {
+      stopBodyScrolling(false); $pageRoot.removeClass('show-sidebar');
+    });
+  });
+})();
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>

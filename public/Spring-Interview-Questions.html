@@ -1,0 +1,1505 @@
+<!DOCTYPE html><html lang="en">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>SatyaCodes - Spring - Interview Questions</title>
+
+<meta name="description" content="List out the new features available in Spring 4.0 and Spring 5.0?      Spring 2.5 Annotations/Autowire        Spring 3.0 Java Configuration        Spring 4.0...">
+<link rel="canonical" href="/Spring-Interview-Questions.html"><link rel="alternate" type="application/rss+xml" title="SatyaCodes" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet -->
+ <link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Spring - Interview Questions | SatyaCodes</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Spring - Interview Questions" />
+<meta name="author" content="Satya Kaveti" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="List out the new features available in Spring 4.0 and Spring 5.0? Spring 2.5 Annotations/Autowire Spring 3.0 Java Configuration Spring 4.0 is the first to support Java 8 features. Spring 5.0 has the support for Reactive Programming What is the default scope of bean in Spring framework? (answer) The default scope of a Spring bean is the Singleton scope and in the WebApplication default scope of a spring bean is request scope. Singleton bean means the same instance of a bean is shared with all other beans, while request scope means a bean is alive only for a request. Does Spring Bean provide thread safety? The default scope of Spring bean is singleton, so there will be only one instance per context. If two threads calls factory.getBean(-s”), it returns same object. if any threads changes bean property by setName() , then other thread may get inconsistence results. That means that all the having a class level variable that any thread can update will lead to inconsistent data. Hence in default mode spring beans are not thread-safe. However, we can change spring bean scope to request, prototype or session to achieve thread-safety at the cost of performance. It’s a design decision and based on the project requirements. What is Inversion of Control concept, how does Spring support IOC? (answer) Removing bean creation things from developer End. The simple meaning of inversion of the control means that now the framework, Spring is responsible for creating objects, wiring dependencies and managing their life-cycle instead of a developer, which was the case before. That’s where control is inverted from developer to framework. What is the difference between @Autowired and @Inject annotation in Spring? The @Inject annotation also serves the same purpose as @Autowired, but the main difference between them is that @Inject is a standard annotation(JRS -330) for dependency injection @Autowired is spring specific. How to create ApplicationContext in a Java Program? AnnotationConfigApplicationContext: If we are using Spring in standalone java applications and using annotations for Configuration, then we can use this to initialize the container and get the bean objects. ClassPathXmlApplicationContext: If we use SpringConfig.xml file in standalone application, then we can use this class to load the file and get the container object. FileSystemXmlApplicationContext: This is similar to ClassPathXmlApplicationContext except that the xml configuration file can be loaded from anywhere in the file system. Name some of the design patterns used in Spring Framework? Spring Framework is using a lot of design patterns, some of the common ones are: Singleton Pattern: Creating beans with default scope. Factory Pattern: Bean Factory classes Prototype Pattern: Bean scopes Adapter Pattern: Spring Web and Spring MVC Proxy Pattern: Spring Aspect Oriented Programming support Template Method Pattern: JdbcTemplate, HibernateTemplate etc Front Controller: Spring MVC DispatcherServlet Data Access Object: Spring DAO support Dependency Injection Aspect Oriented Programming How to inject a java.util.Properties into a Spring Bean? By writing in Spring bean xml file with ** tag &lt;bean id=&quot;configBean&quot; class=&quot;com.boraji.tutorial.spring.xml.DatabaseConfig&quot;&gt; &lt;property name=&quot;properties&quot;&gt; &lt;props&gt; &lt;prop key=&quot;driverClassName&quot;&gt;com.mysql.jdbc.Driver&lt;/prop&gt; &lt;prop key=&quot;url&quot;&gt;jdbc:mysql://localhost:3306/mydb&lt;/prop&gt; &lt;prop key=&quot;username&quot;&gt;root&lt;/prop&gt; &lt;prop key=&quot;password&quot;&gt;abcdxyz&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt; &lt;/bean&gt; util:properties in Spring reads configuration file from a location &lt;beans&gt; &lt;util:properties id=&quot;props&quot;&gt; &lt;prop key=&quot;driverClassName&quot;&gt;com.mysql.jdbc.Driver&lt;/prop&gt; &lt;prop key=&quot;url&quot;&gt;jdbc:mysql://localhost:3306/mydb&lt;/prop&gt; &lt;prop key=&quot;username&quot;&gt;root&lt;/prop&gt; &lt;prop key=&quot;password&quot;&gt;abcdxyz&lt;/prop&gt; &lt;/util:properties&gt; &lt;bean id=&quot;configBean&quot; class=&quot;com.boraji.tutorial.spring.xml.DatabaseConfig&quot;&gt; &lt;property name=&quot;properties&quot; ref=&quot;props&quot; /&gt; &lt;/bean&gt; &lt;/beans&gt; public class DBConnection { @Value(&quot;${DB_DRIVER_CLASS}&quot;) private String driverClass; @Value(&quot;${DB_URL}&quot;) private String dbURL; @Value(&quot;${DB_USERNAME}&quot;) private String userName; @Value(&quot;${DB_PASSWORD}&quot;) private char[] password; public DBConnection() { } public void printDBConfigs() { System.out.println(&quot;Driver Class = &quot; + driverClass); System.out.println(&quot;DB URL = &quot; + dbURL); System.out.println(&quot;User Name = &quot; + userName); // Never do below in production environment :D System.out.println(&quot;Password = &quot; + String.valueOf(password)); } } How do you turn on annotation based autowiring? Include in bean configuration file. Use AnnotationConfigApplicationContext to get Context Object. Differentiate between BeanFactory and ApplicationContext. BeanFactory ApplicationContext It uses Lazy initialization It uses Eager/ Aggressive initialization It explicitly provides a resource object using the syntax It creates and manages resource objects on its own It doesn’t supports internationalization It supports internationalization It doesn’t supports annotation based dependency It supports annotation based dependency Can we have multiple Spring configuration files in one project? You can load multiple Java-based configuration files: @Configuration @Import({MainConfig.class, SchedulerConfig.class}) public class AppConfig { //Or load one XML file that will contain all other configs: ApplicationContext context = new ClassPathXmlApplicationContext(&quot;spring-all.xml&quot;); //And inside this XML file you’ll have: &lt;import resource=&quot;main.xml&quot;/&gt; &lt;import resource=&quot;scheduler.xml&quot;/&gt; Spring MVC What’s the difference between @Component, @Controller, @Repository &amp; @Service annotations in Spring? ANNOTATION USE DESCRIPTION @Component Type Generic stereotype annotation for any Spring-managed component. @Controller Type Stereotypes a component as a Spring MVC controller. @Repository Type Stereotypes a component as a repository. Also indicates that SQLExceptions thrown from the component’s methods should be translated into Spring DataAccessExceptions. @Service Type Stereotypes a component as a service. What is ViewResolver in Spring? ViewResolver implementations are used to resolve the view pages by name. Usually we configure it in the spring bean configuration file. For example: &lt;beans:bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt; &lt;beans:property name=&quot;prefix&quot; value=&quot;/WEB-INF/views/&quot; /&gt; &lt;beans:property name=&quot;suffix&quot; value=&quot;.jsp&quot; /&gt; &lt;/beans:bean&gt; What is View Resolver pattern? how it works in Spring MVC View Resolver pattern is a J2EE pattern which allows a web application to dynamically choose it’s view technology e.g. HTML, JSP, Tapestry, JSF, XSLT or any other view technology. In this pattern, View resolver holds mapping of different views, controller return name of the view, which is then passed to View Resolver for selecting an appropriate view. What is the difference between @Controller and @RestController? @RestController is better when you are developing RESTful web services using Spring MVC framework. It’s a combination of @Controller + @ResponseBody annotation which allows the controller to directly write the response and bypassing the view resolution process, which is not required for RESTful web service. It also instructs DispatcherServlet to use different HttpMessageConverters to represent the response in the format client is expecting e.g. HttpMessageJackson2Convert to represent response in JSON format and JAXB based message converts to generate XML response What does @RequestMapping annotation do? (answer) The @RequestMapping annotation is used to map web requests to Spring Controller methods. You can map request based upon HTTP methods e.g. GET and POST and various other parameters. For examples, if you are developing RESTful Web Service using Spring then you can use produces and consumes property along with media type annotation to indicate that this method is only used to produce or consumers JSON as shown below: @RequestMapping (method = RequestMethod.POST, consumes=&quot;application/json&quot;) public Book save(@RequestBody Book aBook) { return bookRepository.save(aBook); } When do you need @ResponseBody annotation in Spring MVC? The @ResponseBody annotation can be put on a method to indicates that the return type should be written directly to the HTTP response body (and not placed in a Model, or interpreted as a view name). @RequestMapping(path = &quot;/hello&quot;, method = RequestMethod.PUT) @ResponseBody public String helloWorld() { return &quot;Hello World&quot;; } Alternatively, you can also use @RestController annotation instead of @Controller annotation. This will remove the need for using @ResponseBody because as discussed in the previous answer, it comes automatically with @RestController annotation. What does @PathVariable do in Spring MVC? Why it’s useful in REST with Spring? For example, in the URL http://myapp.com/books/101 if you want to extract 101 the id, then you can use @PathVariable annotation of Spring MVC Where do you need @EnableWebMVC? (answer) The @EnableWebMvc annotation is required to enable Spring MVC when Java configuration is used to configure Spring MVC instead of XML. It is equivalent to &lt;mvc: annotation-driven&gt; in XML configuration. How to Call Stored procedure in Spring Framework? To call a Stored procedure in Spring framework you need to create Class which will should extends StoredProcedure class. You just need to call the execute method from the DAO layer. public class EmployeeInfo extends StoredProcedure { private static final String EMP_ID = &quot;EMP_ID&quot;; private static final String EMP_NAME = &quot;EMP_NAME&quot;; private static final String JOIN_DATE = &quot;JOIN_DATE&quot;; public SnapshotSearchStoredProcedure(DataSource dataSource, String procedureName) { super(dataSource, procedureName); declareParameter(new SqlParameter(EMP_ID, Types.NUMERIC)); declareParameter(new SqlOutParameter(EMP_NAME, Types.VARCHAR)); declareParameter(new SqlOutParameter(JOIN_DATE, Types.VARCHAR)); compile (); } public Map execute(Integer empId) { Map&lt;String, Object&gt; inputs = new HashMap&lt;String, Object&gt;(); inputs.put(P_CLD_IDR, empId); Map&lt;String, Object&gt; result = execute (inputs); return result; } } How to get ServletContext and ServletConfig object in a Spring Bean? There are two ways to get Container specific objects in the spring bean. Using @Autowired annotation with bean variable of type ServletContext and ServletConfig. They will work only in servlet container specific environment only though.They alreay comes with Server jar @Autowired ServletContext servletContext; How to upload file in Spring MVC Application? Spring provides built-in support for uploading files through MultipartResolver interface implementations. How to use Tomcat JNDI DataSource in Spring Web Application? For using servlet container configured JNDI DataSource, we need to configure it in the spring bean configuration file and then inject it to spring beans as dependencies. Then we can use it with JdbcTemplate to perform database operations &lt;beans:bean id=&quot;dbDataSource&quot; class=&quot;org.springframework.jndi.JndiObjectFactoryBean&quot;&gt; &lt;beans:property name=&quot;jndiName&quot; value=&quot;java:comp/env/jdbc/MyLocalDB&quot;/&gt; &lt;/beans:bean&gt; Spring Security If we think about the meaning of authentication, it seems that it is all about a client identifying itself to the server. After client identification is done, the server can remember the client each time the request comes from the client. There are two common approaches to authentication mechanisms: one of them is called “Session Cookie Based” and the other one is “Token Based”. Session Cookie based The most common approach we probably all know is to use a server generated secret token (Session key) in the form of a JSESSIONID cookie. Initial setup for this is near nothing these days perhaps making you forget you have a choice to make here in the first place. Even without further using this -Session key” to store any other state -in the session”, the key itself is in fact state as well. I.e. without a shared and persistent storage of these keys, no successful authentication will survive a server reboot or requests being load balanced to another server. OAuth2 / API keys Whenever talking about REST APIs and Security; OAuth2 and other types of API keys are mentioned. Basically they involve sending custom tokens/keys within the HTTP Authorization header. When used properly both relieve clients from dealing with Cookies using the header instead. This solves CSRF vulnerabilities and other Cookie related issues. One thing they do not solve however is the need for the server to check the presented authentication keys, pretty much demanding some persistent and maintainable shared storage for linking the keys to users/authorizations. private HttpHeaders createHeaders(final String userId, final String password) { String auth = userId + &quot;:&quot; + password; byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(StandardCharsets.US_ASCII)); String authHeader = &quot;Basic &quot; + new String(encodedAuth); HttpHeaders headers = new HttpHeaders(); headers.set(&quot;Authorization&quot;, authHeader); return headers; } private ResponseEntity&lt;String&gt; makeRestCall(String url, String userId, String password) { // Basic Auth only. if (!&quot;&quot;.equals(userId) &amp;&amp; !&quot;&quot;.equals(password)) { return restOperations.exchange(url, HttpMethod.GET, new HttpEntity&lt;&gt;(createHeaders(userId, password)), String.class); } else { return restOperations.exchange(url, HttpMethod.GET, null, String.class); } }" />
+<meta property="og:description" content="List out the new features available in Spring 4.0 and Spring 5.0? Spring 2.5 Annotations/Autowire Spring 3.0 Java Configuration Spring 4.0 is the first to support Java 8 features. Spring 5.0 has the support for Reactive Programming What is the default scope of bean in Spring framework? (answer) The default scope of a Spring bean is the Singleton scope and in the WebApplication default scope of a spring bean is request scope. Singleton bean means the same instance of a bean is shared with all other beans, while request scope means a bean is alive only for a request. Does Spring Bean provide thread safety? The default scope of Spring bean is singleton, so there will be only one instance per context. If two threads calls factory.getBean(-s”), it returns same object. if any threads changes bean property by setName() , then other thread may get inconsistence results. That means that all the having a class level variable that any thread can update will lead to inconsistent data. Hence in default mode spring beans are not thread-safe. However, we can change spring bean scope to request, prototype or session to achieve thread-safety at the cost of performance. It’s a design decision and based on the project requirements. What is Inversion of Control concept, how does Spring support IOC? (answer) Removing bean creation things from developer End. The simple meaning of inversion of the control means that now the framework, Spring is responsible for creating objects, wiring dependencies and managing their life-cycle instead of a developer, which was the case before. That’s where control is inverted from developer to framework. What is the difference between @Autowired and @Inject annotation in Spring? The @Inject annotation also serves the same purpose as @Autowired, but the main difference between them is that @Inject is a standard annotation(JRS -330) for dependency injection @Autowired is spring specific. How to create ApplicationContext in a Java Program? AnnotationConfigApplicationContext: If we are using Spring in standalone java applications and using annotations for Configuration, then we can use this to initialize the container and get the bean objects. ClassPathXmlApplicationContext: If we use SpringConfig.xml file in standalone application, then we can use this class to load the file and get the container object. FileSystemXmlApplicationContext: This is similar to ClassPathXmlApplicationContext except that the xml configuration file can be loaded from anywhere in the file system. Name some of the design patterns used in Spring Framework? Spring Framework is using a lot of design patterns, some of the common ones are: Singleton Pattern: Creating beans with default scope. Factory Pattern: Bean Factory classes Prototype Pattern: Bean scopes Adapter Pattern: Spring Web and Spring MVC Proxy Pattern: Spring Aspect Oriented Programming support Template Method Pattern: JdbcTemplate, HibernateTemplate etc Front Controller: Spring MVC DispatcherServlet Data Access Object: Spring DAO support Dependency Injection Aspect Oriented Programming How to inject a java.util.Properties into a Spring Bean? By writing in Spring bean xml file with ** tag &lt;bean id=&quot;configBean&quot; class=&quot;com.boraji.tutorial.spring.xml.DatabaseConfig&quot;&gt; &lt;property name=&quot;properties&quot;&gt; &lt;props&gt; &lt;prop key=&quot;driverClassName&quot;&gt;com.mysql.jdbc.Driver&lt;/prop&gt; &lt;prop key=&quot;url&quot;&gt;jdbc:mysql://localhost:3306/mydb&lt;/prop&gt; &lt;prop key=&quot;username&quot;&gt;root&lt;/prop&gt; &lt;prop key=&quot;password&quot;&gt;abcdxyz&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt; &lt;/bean&gt; util:properties in Spring reads configuration file from a location &lt;beans&gt; &lt;util:properties id=&quot;props&quot;&gt; &lt;prop key=&quot;driverClassName&quot;&gt;com.mysql.jdbc.Driver&lt;/prop&gt; &lt;prop key=&quot;url&quot;&gt;jdbc:mysql://localhost:3306/mydb&lt;/prop&gt; &lt;prop key=&quot;username&quot;&gt;root&lt;/prop&gt; &lt;prop key=&quot;password&quot;&gt;abcdxyz&lt;/prop&gt; &lt;/util:properties&gt; &lt;bean id=&quot;configBean&quot; class=&quot;com.boraji.tutorial.spring.xml.DatabaseConfig&quot;&gt; &lt;property name=&quot;properties&quot; ref=&quot;props&quot; /&gt; &lt;/bean&gt; &lt;/beans&gt; public class DBConnection { @Value(&quot;${DB_DRIVER_CLASS}&quot;) private String driverClass; @Value(&quot;${DB_URL}&quot;) private String dbURL; @Value(&quot;${DB_USERNAME}&quot;) private String userName; @Value(&quot;${DB_PASSWORD}&quot;) private char[] password; public DBConnection() { } public void printDBConfigs() { System.out.println(&quot;Driver Class = &quot; + driverClass); System.out.println(&quot;DB URL = &quot; + dbURL); System.out.println(&quot;User Name = &quot; + userName); // Never do below in production environment :D System.out.println(&quot;Password = &quot; + String.valueOf(password)); } } How do you turn on annotation based autowiring? Include in bean configuration file. Use AnnotationConfigApplicationContext to get Context Object. Differentiate between BeanFactory and ApplicationContext. BeanFactory ApplicationContext It uses Lazy initialization It uses Eager/ Aggressive initialization It explicitly provides a resource object using the syntax It creates and manages resource objects on its own It doesn’t supports internationalization It supports internationalization It doesn’t supports annotation based dependency It supports annotation based dependency Can we have multiple Spring configuration files in one project? You can load multiple Java-based configuration files: @Configuration @Import({MainConfig.class, SchedulerConfig.class}) public class AppConfig { //Or load one XML file that will contain all other configs: ApplicationContext context = new ClassPathXmlApplicationContext(&quot;spring-all.xml&quot;); //And inside this XML file you’ll have: &lt;import resource=&quot;main.xml&quot;/&gt; &lt;import resource=&quot;scheduler.xml&quot;/&gt; Spring MVC What’s the difference between @Component, @Controller, @Repository &amp; @Service annotations in Spring? ANNOTATION USE DESCRIPTION @Component Type Generic stereotype annotation for any Spring-managed component. @Controller Type Stereotypes a component as a Spring MVC controller. @Repository Type Stereotypes a component as a repository. Also indicates that SQLExceptions thrown from the component’s methods should be translated into Spring DataAccessExceptions. @Service Type Stereotypes a component as a service. What is ViewResolver in Spring? ViewResolver implementations are used to resolve the view pages by name. Usually we configure it in the spring bean configuration file. For example: &lt;beans:bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt; &lt;beans:property name=&quot;prefix&quot; value=&quot;/WEB-INF/views/&quot; /&gt; &lt;beans:property name=&quot;suffix&quot; value=&quot;.jsp&quot; /&gt; &lt;/beans:bean&gt; What is View Resolver pattern? how it works in Spring MVC View Resolver pattern is a J2EE pattern which allows a web application to dynamically choose it’s view technology e.g. HTML, JSP, Tapestry, JSF, XSLT or any other view technology. In this pattern, View resolver holds mapping of different views, controller return name of the view, which is then passed to View Resolver for selecting an appropriate view. What is the difference between @Controller and @RestController? @RestController is better when you are developing RESTful web services using Spring MVC framework. It’s a combination of @Controller + @ResponseBody annotation which allows the controller to directly write the response and bypassing the view resolution process, which is not required for RESTful web service. It also instructs DispatcherServlet to use different HttpMessageConverters to represent the response in the format client is expecting e.g. HttpMessageJackson2Convert to represent response in JSON format and JAXB based message converts to generate XML response What does @RequestMapping annotation do? (answer) The @RequestMapping annotation is used to map web requests to Spring Controller methods. You can map request based upon HTTP methods e.g. GET and POST and various other parameters. For examples, if you are developing RESTful Web Service using Spring then you can use produces and consumes property along with media type annotation to indicate that this method is only used to produce or consumers JSON as shown below: @RequestMapping (method = RequestMethod.POST, consumes=&quot;application/json&quot;) public Book save(@RequestBody Book aBook) { return bookRepository.save(aBook); } When do you need @ResponseBody annotation in Spring MVC? The @ResponseBody annotation can be put on a method to indicates that the return type should be written directly to the HTTP response body (and not placed in a Model, or interpreted as a view name). @RequestMapping(path = &quot;/hello&quot;, method = RequestMethod.PUT) @ResponseBody public String helloWorld() { return &quot;Hello World&quot;; } Alternatively, you can also use @RestController annotation instead of @Controller annotation. This will remove the need for using @ResponseBody because as discussed in the previous answer, it comes automatically with @RestController annotation. What does @PathVariable do in Spring MVC? Why it’s useful in REST with Spring? For example, in the URL http://myapp.com/books/101 if you want to extract 101 the id, then you can use @PathVariable annotation of Spring MVC Where do you need @EnableWebMVC? (answer) The @EnableWebMvc annotation is required to enable Spring MVC when Java configuration is used to configure Spring MVC instead of XML. It is equivalent to &lt;mvc: annotation-driven&gt; in XML configuration. How to Call Stored procedure in Spring Framework? To call a Stored procedure in Spring framework you need to create Class which will should extends StoredProcedure class. You just need to call the execute method from the DAO layer. public class EmployeeInfo extends StoredProcedure { private static final String EMP_ID = &quot;EMP_ID&quot;; private static final String EMP_NAME = &quot;EMP_NAME&quot;; private static final String JOIN_DATE = &quot;JOIN_DATE&quot;; public SnapshotSearchStoredProcedure(DataSource dataSource, String procedureName) { super(dataSource, procedureName); declareParameter(new SqlParameter(EMP_ID, Types.NUMERIC)); declareParameter(new SqlOutParameter(EMP_NAME, Types.VARCHAR)); declareParameter(new SqlOutParameter(JOIN_DATE, Types.VARCHAR)); compile (); } public Map execute(Integer empId) { Map&lt;String, Object&gt; inputs = new HashMap&lt;String, Object&gt;(); inputs.put(P_CLD_IDR, empId); Map&lt;String, Object&gt; result = execute (inputs); return result; } } How to get ServletContext and ServletConfig object in a Spring Bean? There are two ways to get Container specific objects in the spring bean. Using @Autowired annotation with bean variable of type ServletContext and ServletConfig. They will work only in servlet container specific environment only though.They alreay comes with Server jar @Autowired ServletContext servletContext; How to upload file in Spring MVC Application? Spring provides built-in support for uploading files through MultipartResolver interface implementations. How to use Tomcat JNDI DataSource in Spring Web Application? For using servlet container configured JNDI DataSource, we need to configure it in the spring bean configuration file and then inject it to spring beans as dependencies. Then we can use it with JdbcTemplate to perform database operations &lt;beans:bean id=&quot;dbDataSource&quot; class=&quot;org.springframework.jndi.JndiObjectFactoryBean&quot;&gt; &lt;beans:property name=&quot;jndiName&quot; value=&quot;java:comp/env/jdbc/MyLocalDB&quot;/&gt; &lt;/beans:bean&gt; Spring Security If we think about the meaning of authentication, it seems that it is all about a client identifying itself to the server. After client identification is done, the server can remember the client each time the request comes from the client. There are two common approaches to authentication mechanisms: one of them is called “Session Cookie Based” and the other one is “Token Based”. Session Cookie based The most common approach we probably all know is to use a server generated secret token (Session key) in the form of a JSESSIONID cookie. Initial setup for this is near nothing these days perhaps making you forget you have a choice to make here in the first place. Even without further using this -Session key” to store any other state -in the session”, the key itself is in fact state as well. I.e. without a shared and persistent storage of these keys, no successful authentication will survive a server reboot or requests being load balanced to another server. OAuth2 / API keys Whenever talking about REST APIs and Security; OAuth2 and other types of API keys are mentioned. Basically they involve sending custom tokens/keys within the HTTP Authorization header. When used properly both relieve clients from dealing with Cookies using the header instead. This solves CSRF vulnerabilities and other Cookie related issues. One thing they do not solve however is the need for the server to check the presented authentication keys, pretty much demanding some persistent and maintainable shared storage for linking the keys to users/authorizations. private HttpHeaders createHeaders(final String userId, final String password) { String auth = userId + &quot;:&quot; + password; byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(StandardCharsets.US_ASCII)); String authHeader = &quot;Basic &quot; + new String(encodedAuth); HttpHeaders headers = new HttpHeaders(); headers.set(&quot;Authorization&quot;, authHeader); return headers; } private ResponseEntity&lt;String&gt; makeRestCall(String url, String userId, String password) { // Basic Auth only. if (!&quot;&quot;.equals(userId) &amp;&amp; !&quot;&quot;.equals(password)) { return restOperations.exchange(url, HttpMethod.GET, new HttpEntity&lt;&gt;(createHeaders(userId, password)), String.class); } else { return restOperations.exchange(url, HttpMethod.GET, null, String.class); } }" />
+<meta property="og:site_name" content="SatyaCodes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-11-11T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Spring - Interview Questions" />
+<script type="application/ld+json">
+{"datePublished":"2017-11-11T00:00:00+00:00","dateModified":"2017-11-11T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/Spring-Interview-Questions.html"},"author":{"@type":"Person","name":"Satya Kaveti"},"@type":"BlogPosting","description":"List out the new features available in Spring 4.0 and Spring 5.0? Spring 2.5 Annotations/Autowire Spring 3.0 Java Configuration Spring 4.0 is the first to support Java 8 features. Spring 5.0 has the support for Reactive Programming What is the default scope of bean in Spring framework? (answer) The default scope of a Spring bean is the Singleton scope and in the WebApplication default scope of a spring bean is request scope. Singleton bean means the same instance of a bean is shared with all other beans, while request scope means a bean is alive only for a request. Does Spring Bean provide thread safety? The default scope of Spring bean is singleton, so there will be only one instance per context. If two threads calls factory.getBean(-s”), it returns same object. if any threads changes bean property by setName() , then other thread may get inconsistence results. That means that all the having a class level variable that any thread can update will lead to inconsistent data. Hence in default mode spring beans are not thread-safe. However, we can change spring bean scope to request, prototype or session to achieve thread-safety at the cost of performance. It’s a design decision and based on the project requirements. What is Inversion of Control concept, how does Spring support IOC? (answer) Removing bean creation things from developer End. The simple meaning of inversion of the control means that now the framework, Spring is responsible for creating objects, wiring dependencies and managing their life-cycle instead of a developer, which was the case before. That’s where control is inverted from developer to framework. What is the difference between @Autowired and @Inject annotation in Spring? The @Inject annotation also serves the same purpose as @Autowired, but the main difference between them is that @Inject is a standard annotation(JRS -330) for dependency injection @Autowired is spring specific. How to create ApplicationContext in a Java Program? AnnotationConfigApplicationContext: If we are using Spring in standalone java applications and using annotations for Configuration, then we can use this to initialize the container and get the bean objects. ClassPathXmlApplicationContext: If we use SpringConfig.xml file in standalone application, then we can use this class to load the file and get the container object. FileSystemXmlApplicationContext: This is similar to ClassPathXmlApplicationContext except that the xml configuration file can be loaded from anywhere in the file system. Name some of the design patterns used in Spring Framework? Spring Framework is using a lot of design patterns, some of the common ones are: Singleton Pattern: Creating beans with default scope. Factory Pattern: Bean Factory classes Prototype Pattern: Bean scopes Adapter Pattern: Spring Web and Spring MVC Proxy Pattern: Spring Aspect Oriented Programming support Template Method Pattern: JdbcTemplate, HibernateTemplate etc Front Controller: Spring MVC DispatcherServlet Data Access Object: Spring DAO support Dependency Injection Aspect Oriented Programming How to inject a java.util.Properties into a Spring Bean? By writing in Spring bean xml file with ** tag &lt;bean id=&quot;configBean&quot; class=&quot;com.boraji.tutorial.spring.xml.DatabaseConfig&quot;&gt; &lt;property name=&quot;properties&quot;&gt; &lt;props&gt; &lt;prop key=&quot;driverClassName&quot;&gt;com.mysql.jdbc.Driver&lt;/prop&gt; &lt;prop key=&quot;url&quot;&gt;jdbc:mysql://localhost:3306/mydb&lt;/prop&gt; &lt;prop key=&quot;username&quot;&gt;root&lt;/prop&gt; &lt;prop key=&quot;password&quot;&gt;abcdxyz&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt; &lt;/bean&gt; util:properties in Spring reads configuration file from a location &lt;beans&gt; &lt;util:properties id=&quot;props&quot;&gt; &lt;prop key=&quot;driverClassName&quot;&gt;com.mysql.jdbc.Driver&lt;/prop&gt; &lt;prop key=&quot;url&quot;&gt;jdbc:mysql://localhost:3306/mydb&lt;/prop&gt; &lt;prop key=&quot;username&quot;&gt;root&lt;/prop&gt; &lt;prop key=&quot;password&quot;&gt;abcdxyz&lt;/prop&gt; &lt;/util:properties&gt; &lt;bean id=&quot;configBean&quot; class=&quot;com.boraji.tutorial.spring.xml.DatabaseConfig&quot;&gt; &lt;property name=&quot;properties&quot; ref=&quot;props&quot; /&gt; &lt;/bean&gt; &lt;/beans&gt; public class DBConnection { @Value(&quot;${DB_DRIVER_CLASS}&quot;) private String driverClass; @Value(&quot;${DB_URL}&quot;) private String dbURL; @Value(&quot;${DB_USERNAME}&quot;) private String userName; @Value(&quot;${DB_PASSWORD}&quot;) private char[] password; public DBConnection() { } public void printDBConfigs() { System.out.println(&quot;Driver Class = &quot; + driverClass); System.out.println(&quot;DB URL = &quot; + dbURL); System.out.println(&quot;User Name = &quot; + userName); // Never do below in production environment :D System.out.println(&quot;Password = &quot; + String.valueOf(password)); } } How do you turn on annotation based autowiring? Include in bean configuration file. Use AnnotationConfigApplicationContext to get Context Object. Differentiate between BeanFactory and ApplicationContext. BeanFactory ApplicationContext It uses Lazy initialization It uses Eager/ Aggressive initialization It explicitly provides a resource object using the syntax It creates and manages resource objects on its own It doesn’t supports internationalization It supports internationalization It doesn’t supports annotation based dependency It supports annotation based dependency Can we have multiple Spring configuration files in one project? You can load multiple Java-based configuration files: @Configuration @Import({MainConfig.class, SchedulerConfig.class}) public class AppConfig { //Or load one XML file that will contain all other configs: ApplicationContext context = new ClassPathXmlApplicationContext(&quot;spring-all.xml&quot;); //And inside this XML file you’ll have: &lt;import resource=&quot;main.xml&quot;/&gt; &lt;import resource=&quot;scheduler.xml&quot;/&gt; Spring MVC What’s the difference between @Component, @Controller, @Repository &amp; @Service annotations in Spring? ANNOTATION USE DESCRIPTION @Component Type Generic stereotype annotation for any Spring-managed component. @Controller Type Stereotypes a component as a Spring MVC controller. @Repository Type Stereotypes a component as a repository. Also indicates that SQLExceptions thrown from the component’s methods should be translated into Spring DataAccessExceptions. @Service Type Stereotypes a component as a service. What is ViewResolver in Spring? ViewResolver implementations are used to resolve the view pages by name. Usually we configure it in the spring bean configuration file. For example: &lt;beans:bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt; &lt;beans:property name=&quot;prefix&quot; value=&quot;/WEB-INF/views/&quot; /&gt; &lt;beans:property name=&quot;suffix&quot; value=&quot;.jsp&quot; /&gt; &lt;/beans:bean&gt; What is View Resolver pattern? how it works in Spring MVC View Resolver pattern is a J2EE pattern which allows a web application to dynamically choose it’s view technology e.g. HTML, JSP, Tapestry, JSF, XSLT or any other view technology. In this pattern, View resolver holds mapping of different views, controller return name of the view, which is then passed to View Resolver for selecting an appropriate view. What is the difference between @Controller and @RestController? @RestController is better when you are developing RESTful web services using Spring MVC framework. It’s a combination of @Controller + @ResponseBody annotation which allows the controller to directly write the response and bypassing the view resolution process, which is not required for RESTful web service. It also instructs DispatcherServlet to use different HttpMessageConverters to represent the response in the format client is expecting e.g. HttpMessageJackson2Convert to represent response in JSON format and JAXB based message converts to generate XML response What does @RequestMapping annotation do? (answer) The @RequestMapping annotation is used to map web requests to Spring Controller methods. You can map request based upon HTTP methods e.g. GET and POST and various other parameters. For examples, if you are developing RESTful Web Service using Spring then you can use produces and consumes property along with media type annotation to indicate that this method is only used to produce or consumers JSON as shown below: @RequestMapping (method = RequestMethod.POST, consumes=&quot;application/json&quot;) public Book save(@RequestBody Book aBook) { return bookRepository.save(aBook); } When do you need @ResponseBody annotation in Spring MVC? The @ResponseBody annotation can be put on a method to indicates that the return type should be written directly to the HTTP response body (and not placed in a Model, or interpreted as a view name). @RequestMapping(path = &quot;/hello&quot;, method = RequestMethod.PUT) @ResponseBody public String helloWorld() { return &quot;Hello World&quot;; } Alternatively, you can also use @RestController annotation instead of @Controller annotation. This will remove the need for using @ResponseBody because as discussed in the previous answer, it comes automatically with @RestController annotation. What does @PathVariable do in Spring MVC? Why it’s useful in REST with Spring? For example, in the URL http://myapp.com/books/101 if you want to extract 101 the id, then you can use @PathVariable annotation of Spring MVC Where do you need @EnableWebMVC? (answer) The @EnableWebMvc annotation is required to enable Spring MVC when Java configuration is used to configure Spring MVC instead of XML. It is equivalent to &lt;mvc: annotation-driven&gt; in XML configuration. How to Call Stored procedure in Spring Framework? To call a Stored procedure in Spring framework you need to create Class which will should extends StoredProcedure class. You just need to call the execute method from the DAO layer. public class EmployeeInfo extends StoredProcedure { private static final String EMP_ID = &quot;EMP_ID&quot;; private static final String EMP_NAME = &quot;EMP_NAME&quot;; private static final String JOIN_DATE = &quot;JOIN_DATE&quot;; public SnapshotSearchStoredProcedure(DataSource dataSource, String procedureName) { super(dataSource, procedureName); declareParameter(new SqlParameter(EMP_ID, Types.NUMERIC)); declareParameter(new SqlOutParameter(EMP_NAME, Types.VARCHAR)); declareParameter(new SqlOutParameter(JOIN_DATE, Types.VARCHAR)); compile (); } public Map execute(Integer empId) { Map&lt;String, Object&gt; inputs = new HashMap&lt;String, Object&gt;(); inputs.put(P_CLD_IDR, empId); Map&lt;String, Object&gt; result = execute (inputs); return result; } } How to get ServletContext and ServletConfig object in a Spring Bean? There are two ways to get Container specific objects in the spring bean. Using @Autowired annotation with bean variable of type ServletContext and ServletConfig. They will work only in servlet container specific environment only though.They alreay comes with Server jar @Autowired ServletContext servletContext; How to upload file in Spring MVC Application? Spring provides built-in support for uploading files through MultipartResolver interface implementations. How to use Tomcat JNDI DataSource in Spring Web Application? For using servlet container configured JNDI DataSource, we need to configure it in the spring bean configuration file and then inject it to spring beans as dependencies. Then we can use it with JdbcTemplate to perform database operations &lt;beans:bean id=&quot;dbDataSource&quot; class=&quot;org.springframework.jndi.JndiObjectFactoryBean&quot;&gt; &lt;beans:property name=&quot;jndiName&quot; value=&quot;java:comp/env/jdbc/MyLocalDB&quot;/&gt; &lt;/beans:bean&gt; Spring Security If we think about the meaning of authentication, it seems that it is all about a client identifying itself to the server. After client identification is done, the server can remember the client each time the request comes from the client. There are two common approaches to authentication mechanisms: one of them is called “Session Cookie Based” and the other one is “Token Based”. Session Cookie based The most common approach we probably all know is to use a server generated secret token (Session key) in the form of a JSESSIONID cookie. Initial setup for this is near nothing these days perhaps making you forget you have a choice to make here in the first place. Even without further using this -Session key” to store any other state -in the session”, the key itself is in fact state as well. I.e. without a shared and persistent storage of these keys, no successful authentication will survive a server reboot or requests being load balanced to another server. OAuth2 / API keys Whenever talking about REST APIs and Security; OAuth2 and other types of API keys are mentioned. Basically they involve sending custom tokens/keys within the HTTP Authorization header. When used properly both relieve clients from dealing with Cookies using the header instead. This solves CSRF vulnerabilities and other Cookie related issues. One thing they do not solve however is the need for the server to check the presented authentication keys, pretty much demanding some persistent and maintainable shared storage for linking the keys to users/authorizations. private HttpHeaders createHeaders(final String userId, final String password) { String auth = userId + &quot;:&quot; + password; byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(StandardCharsets.US_ASCII)); String authHeader = &quot;Basic &quot; + new String(encodedAuth); HttpHeaders headers = new HttpHeaders(); headers.set(&quot;Authorization&quot;, authHeader); return headers; } private ResponseEntity&lt;String&gt; makeRestCall(String url, String userId, String password) { // Basic Auth only. if (!&quot;&quot;.equals(userId) &amp;&amp; !&quot;&quot;.equals(password)) { return restOperations.exchange(url, HttpMethod.GET, new HttpEntity&lt;&gt;(createHeaders(userId, password)), String.class); } else { return restOperations.exchange(url, HttpMethod.GET, null, String.class); } }","url":"/Spring-Interview-Questions.html","headline":"Spring - Interview Questions","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- start custom head snippets -->
+
+<!-- end custom head snippets --><script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.4',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script></head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="76px" height="76px" viewBox="0 0 76 76" enable-background="new 0 0 76 76" xml:space="preserve">  <image id="image0" width="76" height="76" x="0" y="0"
+    xlink:href="data:image/png;base64,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" />
+</svg>
+<a title="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." href="/">SatyaCodes</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/posts.html">AllPosts</a></li><li class="navigation__item"><a href="/tutorials.html">Tutorials</a></li><li class="navigation__item"><a href="/java.html">Java</a></li><li class="navigation__item"><a href="/devops.html">DevOps</a></li><li class="navigation__item"><a href="/books.html">Books</a></li><li class="navigation__item"><a href="/interview-questions.html">InterviewQ's</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div></aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Spring - Interview Questions</h1></header></div><meta itemprop="headline" content="Spring - Interview Questions"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=Interview">Interview</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 11, 2017</span>
+            </li></ul></div><meta itemprop="author" content="Satya Kaveti"/><meta itemprop="datePublished" content="2017-11-11T00:00:00+00:00">
+    <meta itemprop="keywords" content="Interview"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="list-out-the-new-features-available-in-spring-40-and-spring-50">List out the new features available in Spring 4.0 and Spring 5.0?</h2>
+
+<ul>
+  <li>
+    <p>Spring 2.5 <strong>Annotations/Autowire</strong></p>
+  </li>
+  <li>
+    <p>Spring 3.0 <strong>Java Configuration</strong></p>
+  </li>
+  <li>
+    <p>Spring 4.0 is the first to support <strong>Java 8 features</strong>.</p>
+  </li>
+  <li>
+    <p>Spring 5.0 has the support for <strong>Reactive Programming</strong></p>
+  </li>
+</ul>
+
+<h2 id="what-is-the-default-scope-of-bean-in-spring-framework-answer">What is the default scope of bean in Spring framework? (<a href="http://javarevisited.blogspot.sg/2012/05/what-is-bean-scope-in-spring-mvc.html">answer</a>)</h2>
+
+<p>The default scope of a <strong>Spring bean</strong> is the <strong>Singleton</strong> scope and in the
+<strong>WebApplication</strong> default scope of a spring bean is <strong>request</strong> scope.</p>
+
+<p>Singleton bean means the same instance of a bean is shared with all other beans,
+while request scope means a bean is alive only for a request.</p>
+
+<h2 id="does-spring-bean-provide-thread-safety">Does Spring Bean provide thread safety?</h2>
+
+<p>The default scope of Spring bean is <em>singleton</em>, so there will be <em>only one
+instance per context</em>. If two threads calls <strong>factory.getBean(-s”),</strong> it returns
+same object. if any threads changes bean property by setName() , then other
+thread may get inconsistence results.</p>
+
+<p>That means that all the having a class level variable that any thread can update
+will lead to inconsistent data. <strong>Hence in default mode spring beans are not
+thread-safe</strong>.</p>
+
+<p>However, we can change spring bean scope to request, prototype or session to
+achieve thread-safety at the cost of performance. It’s a design decision and
+based on the project requirements.</p>
+
+<h3 id="what-is-inversion-of-control-concept-how-does-spring-support-ioc-answer"><br />What is Inversion of Control concept, how does Spring support IOC? (<a href="http://javarevisited.blogspot.sg/2012/12/inversion-of-control-dependency-injection-design-pattern-spring-example-tutorial.html">answer</a>)</h3>
+
+<p><strong>Removing bean creation things from developer End.</strong> The simple meaning of
+inversion of the control means that now the framework, Spring is responsible for
+creating objects, wiring dependencies and managing their life-cycle instead of a
+developer, which was the case before. That’s where control is inverted from
+developer to framework.</p>
+
+<h2 id="what-is-the-difference-between-autowired-and-inject-annotation-in-spring"><strong>What is the difference between @Autowired and @Inject annotation in Spring?</strong></h2>
+
+<p>The <strong>@Inject</strong> annotation also serves the same purpose as <strong>@Autowired,</strong> but
+the main difference between them is that</p>
+
+<ul>
+  <li>
+    <p><strong>@Inject</strong> is a <strong>standard annotation(JRS -330)</strong> for dependency injection</p>
+  </li>
+  <li>
+    <p><strong>@Autowired</strong> is <strong>spring specific.</strong></p>
+  </li>
+</ul>
+
+<h2 id="how-to-create-applicationcontext-in-a-java-program">How to create ApplicationContext in a Java Program?</h2>
+
+<ul>
+  <li>
+    <p><strong>AnnotationConfigApplicationContext</strong>: If we are using Spring in standalone
+java applications and <em>using annotations for Configuration</em>, then we can use
+this to initialize the container and get the bean objects.</p>
+  </li>
+  <li>
+    <p><strong>ClassPathXmlApplicationContext</strong>: If we use <em>SpringConfig.xml</em> file in
+standalone application, then we can use this class to load the file and get
+the container object.</p>
+  </li>
+  <li>
+    <p><strong>FileSystemXmlApplicationContext</strong>: This is similar to
+ClassPathXmlApplicationContext except that the <em>xml configuration file can
+be loaded from anywhere in the file system.</em></p>
+  </li>
+</ul>
+
+<h2 id="name-some-of-the-design-patterns-used-in-spring-framework">Name some of the design patterns used in Spring Framework?</h2>
+
+<p>Spring Framework is using a lot of design patterns, some of the common ones are:</p>
+
+<ol>
+  <li>
+    <p>Singleton Pattern: Creating beans with default scope.</p>
+  </li>
+  <li>
+    <p><a href="https://www.journaldev.com/1392/factory-design-pattern-in-java">Factory
+Pattern</a>:
+Bean Factory classes</p>
+  </li>
+  <li>
+    <p><a href="https://www.journaldev.com/1440/prototype-design-pattern-in-java">Prototype
+Pattern</a>:
+Bean scopes</p>
+  </li>
+  <li>
+    <p><a href="https://www.journaldev.com/1487/adapter-design-pattern-java">Adapter
+Pattern</a>:
+Spring Web and Spring MVC</p>
+  </li>
+  <li>
+    <p><a href="https://www.journaldev.com/1572/proxy-design-pattern">Proxy Pattern</a>:
+Spring Aspect Oriented Programming support</p>
+  </li>
+  <li>
+    <p><a href="https://www.journaldev.com/1763/template-method-design-pattern-in-java">Template Method
+Pattern</a>:
+JdbcTemplate, HibernateTemplate etc</p>
+  </li>
+  <li>
+    <p>Front Controller: Spring MVC DispatcherServlet</p>
+  </li>
+  <li>
+    <p>Data Access Object: Spring DAO support</p>
+  </li>
+  <li>
+    <p>Dependency Injection</p>
+  </li>
+  <li>
+    <p>Aspect Oriented Programming</p>
+  </li>
+</ol>
+
+<h2 id="how-to-inject-a-javautilproperties-into-a-spring-bean">How to inject a java.util.Properties into a Spring Bean?</h2>
+
+<p>By writing in Spring bean xml file with *<property>* tag</property></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">bean</span> <span class="n">id</span><span class="o">=</span><span class="s">"configBean"</span> <span class="kd">class</span><span class="err">="</span><span class="nc">com</span><span class="o">.</span><span class="na">boraji</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">spring</span><span class="o">.</span><span class="na">xml</span><span class="o">.</span><span class="na">DatabaseConfig</span><span class="s">"&gt;
+ &lt;property name="</span><span class="n">properties</span><span class="s">"&gt;
+ 	&lt;props&gt;
+  &lt;prop key="</span><span class="n">driverClassName</span><span class="s">"&gt;com.mysql.jdbc.Driver&lt;/prop&gt;
+  &lt;prop key="</span><span class="n">url</span><span class="s">"&gt;jdbc:mysql://localhost:3306/mydb&lt;/prop&gt;
+  &lt;prop key="</span><span class="n">username</span><span class="s">"&gt;root&lt;/prop&gt;
+  &lt;prop key="</span><span class="n">password</span><span class="s">"&gt;abcdxyz&lt;/prop&gt;
+ 	&lt;/props&gt;
+ &lt;/property&gt;
+	&lt;/bean&gt;
+util:properties in Spring reads configuration file from a location
+&lt;beans&gt;
+	&lt;util:properties id="</span><span class="n">props</span><span class="s">"&gt;
+ &lt;prop key="</span><span class="n">driverClassName</span><span class="s">"&gt;com.mysql.jdbc.Driver&lt;/prop&gt;
+ &lt;prop key="</span><span class="n">url</span><span class="s">"&gt;jdbc:mysql://localhost:3306/mydb&lt;/prop&gt;
+ &lt;prop key="</span><span class="n">username</span><span class="s">"&gt;root&lt;/prop&gt;
+ &lt;prop key="</span><span class="n">password</span><span class="s">"&gt;abcdxyz&lt;/prop&gt;
+	&lt;/util:properties&gt;
+
+	&lt;bean id="</span><span class="n">configBean</span><span class="s">" class="</span><span class="n">com</span><span class="o">.</span><span class="na">boraji</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">spring</span><span class="o">.</span><span class="na">xml</span><span class="o">.</span><span class="na">DatabaseConfig</span><span class="s">"&gt;
+ &lt;property name="</span><span class="n">properties</span><span class="s">" ref="</span><span class="n">props</span><span class="s">" /&gt;
+	&lt;/bean&gt;
+&lt;/beans&gt;
+
+public class DBConnection {
+
+	@Value("</span><span class="err">$</span><span class="o">{</span><span class="no">DB_DRIVER_CLASS</span><span class="o">}</span><span class="s">")
+	private String driverClass;
+	@Value("</span><span class="err">$</span><span class="o">{</span><span class="no">DB_URL</span><span class="o">}</span><span class="s">")
+	private String dbURL;
+	@Value("</span><span class="err">$</span><span class="o">{</span><span class="no">DB_USERNAME</span><span class="o">}</span><span class="s">")
+	private String userName;
+	@Value("</span><span class="err">$</span><span class="o">{</span><span class="no">DB_PASSWORD</span><span class="o">}</span><span class="s">")
+	private char[] password;
+
+	public DBConnection() {
+	}
+
+	public void printDBConfigs() {
+ System.out.println("</span><span class="nc">Driver</span> <span class="nc">Class</span> <span class="o">=</span> <span class="s">" + driverClass);
+ System.out.println("</span><span class="no">DB</span> <span class="no">URL</span> <span class="o">=</span> <span class="s">" + dbURL);
+ System.out.println("</span><span class="nc">User</span> <span class="nc">Name</span> <span class="o">=</span> <span class="s">" + userName);
+
+ // Never do below in production environment :D
+ System.out.println("</span><span class="nc">Password</span> <span class="o">=</span> <span class="err">"</span> <span class="o">+</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">password</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="how-do-you-turn-on-annotation-based-autowiring">How do you turn on annotation based autowiring?</h2>
+
+<ul>
+  <li>
+    <p>Include <context:annotation-config> in bean configuration file.</context:annotation-config></p>
+  </li>
+  <li>
+    <p>Use <strong>AnnotationConfigApplicationContext</strong> to get Context Object.</p>
+  </li>
+</ul>
+
+<h2 id="differentiate-between-beanfactory-and-applicationcontext">Differentiate between BeanFactory and ApplicationContext.</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>BeanFactory</strong></th>
+      <th><strong>ApplicationContext</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>It uses <strong>Lazy initialization</strong></td>
+      <td>It uses <strong>Eager/ Aggressive initialization</strong></td>
+    </tr>
+    <tr>
+      <td>It explicitly provides a resource object using the syntax</td>
+      <td>It creates and manages resource objects on its own</td>
+    </tr>
+    <tr>
+      <td>It <strong>doesn’t supports internationalization</strong></td>
+      <td>It supports internationalization</td>
+    </tr>
+    <tr>
+      <td>It doesn’t supports annotation based dependency</td>
+      <td>It supports annotation based dependency</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="can-we-have-multiple-spring-configuration-files-in-one-project">Can we have multiple Spring configuration files in one project?</h2>
+
+<p>You can load multiple Java-based configuration files:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="nd">@Import</span><span class="o">({</span><span class="nc">MainConfig</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">SchedulerConfig</span><span class="o">.</span><span class="na">class</span><span class="o">})</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppConfig</span> <span class="o">{</span>
+
+<span class="c1">//Or load one XML file that will contain all other configs:</span>
+<span class="nc">ApplicationContext</span> <span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">"spring-all.xml"</span><span class="o">);</span>
+
+<span class="c1">//And inside this XML file you’ll have:</span>
+<span class="o">&lt;</span><span class="kn">import</span> <span class="nn">resource</span><span class="o">=</span><span class="s">"main.xml"</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="kn">import</span> <span class="nn">resource</span><span class="o">=</span><span class="s">"scheduler.xml"</span><span class="o">/&gt;</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="spring-mvc">Spring MVC</h1>
+
+<h2 id="whats-the-difference-between-component-controller-repository--service-annotations-in-spring">What’s the difference between @Component, @Controller, @Repository &amp; @Service annotations in Spring?</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>ANNOTATION</strong></th>
+      <th><strong>USE</strong></th>
+      <th><strong>DESCRIPTION</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>@Component</strong></td>
+      <td>Type</td>
+      <td>Generic stereotype annotation for any Spring-managed component.</td>
+    </tr>
+    <tr>
+      <td><strong>@Controller</strong></td>
+      <td>Type</td>
+      <td>Stereotypes a component as a Spring MVC controller.</td>
+    </tr>
+    <tr>
+      <td><strong>@Repository</strong></td>
+      <td>Type</td>
+      <td>Stereotypes a component as a repository. Also indicates that SQLExceptions thrown from the component’s methods should be translated into Spring DataAccessExceptions.</td>
+    </tr>
+    <tr>
+      <td><strong>@Service</strong></td>
+      <td>Type</td>
+      <td>Stereotypes a component as a service.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="what-is-viewresolver-in-spring">What is ViewResolver in Spring?</h2>
+
+<p><em>ViewResolver</em> implementations are used to resolve the view pages by name.
+Usually we configure it in the spring bean configuration file. For example:</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;beans:bean</span> <span class="na">class=</span><span class="s">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">"prefix"</span> <span class="na">value=</span><span class="s">"/WEB-INF/views/"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">"suffix"</span> <span class="na">value=</span><span class="s">".jsp"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans:bean&gt;</span>
+</code></pre></div></div>
+
+<h2 id="what-is-view-resolver-pattern-how-it-works-in-spring-mvc">What is View Resolver pattern? how it works in Spring MVC</h2>
+
+<p>View Resolver pattern is a J2EE pattern which allows a web application to
+dynamically choose it’s view technology e.g. HTML, JSP, Tapestry, JSF, XSLT or
+any other view technology.</p>
+
+<p>In this pattern, View resolver holds mapping of different views, controller
+return name of the view, which is then passed to View Resolver for selecting an
+appropriate view.</p>
+
+<h2 id="what-is-the-difference-between-controller-and-restcontroller"><strong>What is the difference between @Controller and @RestController?</strong></h2>
+
+<p>@RestController is better when you are developing RESTful web services using
+Spring MVC framework. It’s a combination of <strong>@Controller + @ResponseBody</strong>
+annotation which allows the controller to directly write the response and
+bypassing the view resolution process, which is not required for RESTful web
+service.</p>
+
+<p>It also instructs DispatcherServlet to use different HttpMessageConverters to
+represent the response in the format client is expecting e.g.
+HttpMessageJackson2Convert to represent response in JSON format and JAXB based
+message converts to generate XML response</p>
+
+<h2 id="what-does-requestmapping-annotation-do-answer"><strong>What does @RequestMapping annotation do? (answer)</strong></h2>
+
+<p>The @RequestMapping annotation is used to map web requests to Spring Controller
+methods. You can map request based upon HTTP methods  e.g. GET and POST and
+various other parameters.</p>
+
+<p>For examples, if you are developing RESTful Web Service using Spring then you
+can use produces and consumes property along with media type annotation to
+indicate that this method is only used to produce or consumers JSON as shown
+below:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RequestMapping</span> <span class="o">(</span><span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">,</span> <span class="n">consumes</span><span class="o">=</span><span class="s">"application/json"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">Book</span> <span class="nf">save</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">Book</span> <span class="n">aBook</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">return</span> <span class="n">bookRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">aBook</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="when-do-you-need-responsebody-annotation-in-spring-mvc"><strong>When do you need @ResponseBody annotation in Spring MVC?</strong></h2>
+
+<p>The @ResponseBody annotation can be put on a method to indicates that the
+return type should be written directly to the HTTP response body (and not placed
+in a Model, or interpreted as a view name).</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">"/hello"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="nc">RequestMethod</span><span class="o">.</span><span class="na">PUT</span><span class="o">)</span>
+<span class="nd">@ResponseBody</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">helloWorld</span><span class="o">()</span> <span class="o">{</span>
+   <span class="k">return</span> <span class="s">"Hello World"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Alternatively, you can also use @RestController annotation instead
+of @Controller annotation. This will remove the need for
+using @ResponseBody because as discussed in the previous answer, it comes
+automatically with @RestController annotation.</p>
+
+<h2 id="what-does-pathvariable-do-in-spring-mvc-why-its-useful-in-rest-with-spring"><strong>What does @PathVariable do in Spring MVC? Why it’s useful in REST with Spring?</strong></h2>
+
+<p>For example, in the URL http://myapp.com/books/101 if you want to extract 101
+the id, then you can use @PathVariable annotation of Spring MVC</p>
+
+<h2 id="where-do-you-need-enablewebmvc-answer"><strong>Where do you need @EnableWebMVC? (answer)</strong></h2>
+
+<p>The @EnableWebMvc annotation is required to <strong>enable Spring MVC when Java
+configuration is used to configure Spring MVC instead of XML</strong>. It is equivalent
+to &lt;mvc: annotation-driven&gt;  in XML configuration.</p>
+
+<h2 id="how-to-call-stored-procedure-in-spring-framework">How to Call Stored procedure in Spring Framework?</h2>
+
+<p>To call a Stored procedure in Spring framework you need to create Class which
+will should extends <strong>StoredProcedure</strong> class. You just need to call the execute
+method from the DAO layer.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EmployeeInfo</span> <span class="kd">extends</span> <span class="nc">StoredProcedure</span> 
+<span class="o">{</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">EMP_ID</span> <span class="o">=</span> <span class="s">"EMP_ID"</span><span class="o">;</span> 
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">EMP_NAME</span> <span class="o">=</span> <span class="s">"EMP_NAME"</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">JOIN_DATE</span> <span class="o">=</span> <span class="s">"JOIN_DATE"</span><span class="o">;</span>
+   <span class="kd">public</span> <span class="nf">SnapshotSearchStoredProcedure</span><span class="o">(</span><span class="nc">DataSource</span> <span class="n">dataSource</span><span class="o">,</span> <span class="nc">String</span> <span class="n">procedureName</span><span class="o">)</span> 
+   <span class="o">{</span>
+       <span class="kd">super</span><span class="o">(</span><span class="n">dataSource</span><span class="o">,</span> <span class="n">procedureName</span><span class="o">);</span> 
+       <span class="n">declareParameter</span><span class="o">(</span><span class="k">new</span> <span class="nc">SqlParameter</span><span class="o">(</span><span class="no">EMP_ID</span><span class="o">,</span> <span class="nc">Types</span><span class="o">.</span><span class="na">NUMERIC</span><span class="o">));</span>
+       <span class="n">declareParameter</span><span class="o">(</span><span class="k">new</span> <span class="nc">SqlOutParameter</span><span class="o">(</span><span class="no">EMP_NAME</span><span class="o">,</span> <span class="nc">Types</span><span class="o">.</span><span class="na">VARCHAR</span><span class="o">));</span>
+       <span class="n">declareParameter</span><span class="o">(</span><span class="k">new</span> <span class="nc">SqlOutParameter</span><span class="o">(</span><span class="no">JOIN_DATE</span><span class="o">,</span> <span class="nc">Types</span><span class="o">.</span><span class="na">VARCHAR</span><span class="o">));</span>
+       <span class="n">compile</span> <span class="o">();</span>
+   <span class="o">}</span>
+   <span class="kd">public</span> <span class="nc">Map</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">empId</span><span class="o">)</span> 
+   <span class="o">{</span>
+       <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">inputs</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;();</span>
+       <span class="n">inputs</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="no">P_CLD_IDR</span><span class="o">,</span> <span class="n">empId</span><span class="o">);</span>
+       <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">execute</span> <span class="o">(</span><span class="n">inputs</span><span class="o">);</span>
+       <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="how-to-get-servletcontext-and-servletconfig-object-in-a-spring-bean">How to get ServletContext and ServletConfig object in a Spring Bean?</h2>
+
+<p>There are two ways to get Container specific objects in the spring bean.</p>
+
+<p><strong>Using @Autowired</strong> annotation with bean variable of
+type ServletContext and ServletConfig. They will work only in servlet container
+specific environment only though.They alreay comes with Server jar</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Autowired</span>
+<span class="nc">ServletContext</span> <span class="n">servletContext</span><span class="o">;</span>
+</code></pre></div></div>
+
+<h2 id="how-to-upload-file-in-spring-mvc-application">How to upload file in Spring MVC Application?</h2>
+
+<p>Spring provides built-in support for uploading files
+through <strong>MultipartResolver</strong> interface implementations.</p>
+
+<h2 id="how-to-use-tomcat-jndi-datasource-in-spring-web-application">How to use Tomcat JNDI DataSource in Spring Web Application?</h2>
+
+<p>For using servlet container configured JNDI DataSource, we need to configure it
+in the spring bean configuration file and then inject it to spring beans as
+dependencies. Then we can use it with <strong>JdbcTemplate</strong> to perform database
+operations</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nl">beans:</span><span class="n">bean</span> <span class="n">id</span><span class="o">=</span><span class="s">"dbDataSource"</span> <span class="kd">class</span><span class="err">="</span><span class="nc">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">jndi</span><span class="o">.</span><span class="na">JndiObjectFactoryBean</span><span class="s">"&gt;
+    &lt;beans:property name="</span><span class="n">jndiName</span><span class="s">" value="</span><span class="nl">java:</span><span class="n">comp</span><span class="o">/</span><span class="n">env</span><span class="o">/</span><span class="n">jdbc</span><span class="o">/</span><span class="nc">MyLocalDB</span><span class="err">"</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="nl">beans:</span><span class="n">bean</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="spring-security">Spring Security</h2>
+
+<p>If we think about the meaning of authentication, it seems that it is all about a
+client identifying itself to the server. After client identification is done,
+the server can remember the client each time the request comes from the client.
+There are two common approaches to authentication mechanisms: one of them is
+called “Session Cookie Based” and the other one is “Token Based”.</p>
+
+<h2 id="session-cookie-based">Session Cookie based</h2>
+
+<p>The most common approach we probably all know is to use a server generated
+secret token (Session key) in the form of a JSESSIONID cookie. Initial setup for
+this is near nothing these days perhaps making you forget you have a choice to
+make here in the first place. Even without further using this -Session key” to
+store any other state -in the session”, the key itself is in fact <em>state</em> as
+well.  I.e. without a shared and persistent storage of these keys, no successful
+authentication will survive a server reboot or requests being load balanced to
+another server.</p>
+
+<h2 id="oauth2--api-keys">OAuth2 / API keys</h2>
+
+<p>Whenever talking about REST APIs and Security; OAuth2 and other types of API
+keys are mentioned. Basically they involve sending custom tokens/keys within the
+HTTP Authorization header. When used properly both relieve clients from dealing
+with Cookies using the header instead. This solves CSRF vulnerabilities and
+other Cookie related issues. One thing they do not solve however is the need for
+the server to check the presented authentication keys, pretty much demanding
+some persistent and maintainable shared storage for linking the keys to
+users/authorizations.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="nc">HttpHeaders</span> <span class="nf">createHeaders</span><span class="o">(</span><span class="kd">final</span> <span class="nc">String</span> <span class="n">userId</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+ <span class="nc">String</span> <span class="n">auth</span> <span class="o">=</span> <span class="n">userId</span> <span class="o">+</span> <span class="s">":"</span> <span class="o">+</span> <span class="n">password</span><span class="o">;</span>
+ <span class="kt">byte</span><span class="o">[]</span> <span class="n">encodedAuth</span> <span class="o">=</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64</span><span class="o">(</span><span class="n">auth</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">US_ASCII</span><span class="o">));</span>
+ <span class="nc">String</span> <span class="n">authHeader</span> <span class="o">=</span> <span class="s">"Basic "</span> <span class="o">+</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">encodedAuth</span><span class="o">);</span>
+
+ <span class="nc">HttpHeaders</span> <span class="n">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HttpHeaders</span><span class="o">();</span>
+ <span class="n">headers</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="n">authHeader</span><span class="o">);</span>
+ <span class="k">return</span> <span class="n">headers</span><span class="o">;</span>
+	<span class="o">}</span>
+
+
+<span class="kd">private</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">makeRestCall</span><span class="o">(</span><span class="nc">String</span> <span class="n">url</span><span class="o">,</span> <span class="nc">String</span> <span class="n">userId</span><span class="o">,</span>
+ 	<span class="nc">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+ <span class="c1">// Basic Auth only.</span>
+ <span class="k">if</span> <span class="o">(!</span><span class="s">""</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">userId</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="s">""</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">password</span><span class="o">))</span> <span class="o">{</span>
+ 	<span class="k">return</span> <span class="n">restOperations</span><span class="o">.</span><span class="na">exchange</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="nc">HttpMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span>
+  	<span class="k">new</span> <span class="nc">HttpEntity</span><span class="o">&lt;&gt;(</span><span class="n">createHeaders</span><span class="o">(</span><span class="n">userId</span><span class="o">,</span> <span class="n">password</span><span class="o">)),</span>
+  	<span class="nc">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+ <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+ 	<span class="k">return</span> <span class="n">restOperations</span><span class="o">.</span><span class="na">exchange</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="nc">HttpMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span>
+  	<span class="nc">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+ <span class="o">}</span>
+
+	<span class="o">}</span>
+</code></pre></div></div>
+</div><section class="article__sharing d-print-none"><!-- Addthis BEGIN --><script type="text/javascript"
+    src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dd2bcde40b385b7"></script>
+  <div class="addthis_inline_share_toolbox addthis_default_style"></div><!-- Addthis END -->
+</section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2017-11-11T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet --></footer><div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/Spring-Boot-Interview-Questions.html">Spring Boot - Interview Questions</a></div><div class="next"><span>NEXT</span><a href="/Spring-MVC-Interview-Questions.html">Spring MVC - Interview Questions</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+//alert('start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert(' end .......');
+ 
+ document.onreadystatechange = function(){
+     if(document.readyState === 'complete'){
+         /*code here*/
+		 //alert('onreadystatechange comled ... start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert('onreadystatechange comled ... end .......');
+     }
+}
+
+</script></div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet --></div>
+            </div></div></div><div class="page__footer d-print-none"><footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Satya Kaveti"><meta itemprop="url" content="/"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© SatyaCodes 2020 ,
+        <a title="Satya Kaveti" href="about/">Satya Kaveti's Writing</a>.
+		<span>| <a href="about/">About Me</a> &nbsp |  </span>
+		<span><a href="/terms.html">Terms</a> &nbsp |  </span>
+		<span><a href="/contact.html">Contact</a> &nbsp |  </span>
+		<span><a href="http://www.satyacodesapps.ml/" target="_blank">Our Apps</a> &nbsp |  </span>
+		<span><a href="https://www.facebook.com/isatyakaveti" target="_blank"><i class="fab fa-facebook-f"></i></a> &nbsp |  </span>
+		<span><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube-square"></i></a> &nbsp |  </span>
+		<span><a href="https://in.linkedin.com/in/satyakaveti"target="_blank"><i class="fab fa-linkedin-in"></i></a> &nbsp | 
+		<span>[ 
+		<!-- Start of WebFreeCounter Code -->
+<a href="http://www.statworker.com/" target="_blank"><img src="https://www.webfreecounter.com/hit.php?id=gfpapx&nd=7&style=2" border="0" alt="statworker.com"></a>
+<!-- End of WebFreeCounter Code -->
+</span>
+<span><a href="https://statcounter.com/p12408441/?guest=1" target="_blank"> ]</a></span>
+
+
+      </div>
+    </div>
+  </div>
+</footer></div></div>
+    </div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">Search</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text" />
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        Cancel</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script></div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+/*(function () {
+
+})();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>

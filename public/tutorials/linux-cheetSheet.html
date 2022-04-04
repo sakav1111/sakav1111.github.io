@@ -1,0 +1,2725 @@
+<!DOCTYPE html><html lang="en">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>SatyaCodes - Linux CheetSheet</title>
+
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.">
+<link rel="canonical" href="/tutorials/linux-cheetSheet"><link rel="alternate" type="application/rss+xml" title="SatyaCodes" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet -->
+ <link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Linux CheetSheet | SatyaCodes</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Linux CheetSheet" />
+<meta name="author" content="Satya Kaveti" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:site_name" content="SatyaCodes" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Linux CheetSheet" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Satya Kaveti"},"@type":"WebPage","description":"Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.","url":"/tutorials/linux-cheetSheet","headline":"Linux CheetSheet","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- start custom head snippets -->
+
+<!-- end custom head snippets --><script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.4',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script></head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root">
+<div class="page__main js-page-main page__viewport has-aside cell cell--auto">
+
+      <div class="page__main-inner">
+<div class="page__header d-print-none">
+<header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="76px" height="76px" viewbox="0 0 76 76" enable-background="new 0 0 76 76" xml:space="preserve">  <image id="image0" width="76" height="76" x="0" y="0" xlink:href="data:image/png;base64,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"></image>
+</svg>
+<a title="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." href="/">SatyaCodes</a>
+</div>
+<button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button>
+</div>
+<nav class="navigation">
+        <ul>
+<li class="navigation__item"><a href="/posts.html">AllPosts</a></li>
+<li class="navigation__item navigation__item--active"><a href="/tutorials.html">Tutorials</a></li>
+<li class="navigation__item"><a href="/java.html">Java</a></li>
+<li class="navigation__item"><a href="/devops.html">DevOps</a></li>
+<li class="navigation__item"><a href="/books.html">Books</a></li>
+<li class="navigation__item"><a href="/interview-questions.html">InterviewQ's</a></li>
+<li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li>
+</ul>
+      </nav>
+</div>
+  </header>
+</div>
+<div class="page__content"><div class="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div></aside></div>
+
+              <div class="col-main cell cell--auto">
+<!-- start custom main top snippet -->
+
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Linux CheetSheet</h1></header></div>
+<meta itemprop="headline" content="Linux CheetSheet">
+<div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm" href="/archive.html?tag=Linux">Linux</a>
+            </li></ul></div>
+<meta itemprop="author" content="Satya Kaveti">
+    <meta itemprop="keywords" content="Linux">
+<div class="js-article-content">
+<div class="layout--article">
+<!-- start custom article top snippet -->
+
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody">
+<h1 id="linux-tutorial">Linux Tutorial</h1>
+
+<h3 id="table-of-contents">Table of Contents</h3>
+
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Topic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><a href="#user-information"><strong>User information</strong></a></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><a href="#file-and-directory-commands"><strong>File and directory commands</strong></a></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><a href="#file-permissions"><strong>File permissions</strong></a></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><a href="#networking"><strong>Networking</strong></a></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><a href="#installing-packages"><strong>Installing packages</strong></a></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><a href="#disk-usage"><strong>Disk usage</strong></a></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><a href="#system-and-hardware-information"><strong>System and Hardware information</strong></a></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td><a href="#search-files"><strong>Search Files</strong></a></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td><a href="#ssh"><strong>SSH</strong></a></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td><a href="#vi/vim-commands"><strong>Vi/Vim-commands</strong></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="user-information">User Information</h3>
+
+<ol>
+  <li>
+    <p><strong>who</strong> It is used to get information about currently logged in user on to system. If you don’t provide any option or arguments, the command displays the following information for each logged-in user.</p>
+
+    <ol>
+      <li>Login name of the user</li>
+      <li>User terminal</li>
+      <li>Date &amp; Time of login</li>
+      <li>Remote host name of the user</li>
+    </ol>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">who
+</span>sudheer :0 2019-08-04 01:21 <span class="o">(</span>:0<span class="o">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>whoami:</strong> It display the system’s username</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">whoami
+</span>sudheer
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>id:</strong> It display the user identification(the real and effective user and group IDs) information</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">id
+</span><span class="nv">uid</span><span class="o">=</span>1000<span class="o">(</span>sj<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1000<span class="o">(</span>sj<span class="o">)</span> <span class="nb">groups</span><span class="o">=</span>1000<span class="o">(</span>sj<span class="o">)</span>,4<span class="o">(</span>adm<span class="o">)</span>,24<span class="o">(</span>cdrom<span class="o">)</span>,27<span class="o">(</span><span class="nb">sudo</span><span class="o">)</span>,30<span class="o">(</span>dip<span class="o">)</span>,46<span class="o">(</span>plugdev<span class="o">)</span>,120<span class="o">(</span>lpadmin<span class="o">)</span>,131<span class="o">(</span>lxd<span class="o">)</span>,132<span class="o">(</span>sambashare<span class="o">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>groups:</strong> This command is used to display all the groups for which the user belongs to.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>group
+sj: sj, adm, cdrom, <span class="nb">sudo</span>, dip, plugdev, lpadmin, lxd, sambashare
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>finger:</strong>  Used to check the information of any currently logged in users. i.e, It displays users login time, tty (name), idle time, home directory, shell name etc.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>finger
+Login     Name       Tty      Idle  Login Time   Office     Office Phone
+sj        sj        <span class="k">*</span>:0             Aug 28 01:27 <span class="o">(</span>:0<span class="o">)</span>
+</code></pre></div>    </div>
+
+    <p>This may not be available by default in many linux machines. In this case, you need to install it manually.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>finger
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>users:</strong> Displays usernames of all users currently logged on the system.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">users
+</span>sj
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>grep:</strong> It  is a powerful pattern searching tool to find information about a specific user from the system accounts file: /etc/passwd.</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>```cmd
+$ grep -i sj /etc/passwd
+sj:x:1000:1000:sj,,,:/home/sj:/bin/bash
+```
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>W Command:</strong> It(W) is a command-line utility that displays information about currently logged in users and what each user is doing.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> w <span class="o">[</span>OPTIONS] <span class="o">[</span>USER]
+
+ Example:
+ w
+  18:45:04 up  2:09,  1 user,  load average: 0.09, 0.07, 0.02
+ USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+ sj       :0       :0               01:27   ?xdm?   1:14   0.01s /usr/lib/gdm3/g
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>last or lastb:</strong> Displays a list of last logged in users on the system. You can pass user names to display their login and hostname details.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> last <span class="o">[</span>options] <span class="o">[</span>username...] <span class="o">[</span>tty...]
+
+ Example:
+
+ last
+ sj       :0           :0               Fri Aug 28 01:27    gone - no <span class="nb">logout
+ </span>reboot   system boot  5.4.0-29-generic Fri Aug 28 01:27   still running
+ sj       :0           :0               Wed Jul 29 11:46 - crash <span class="o">(</span>29+13:40<span class="o">)</span>
+ reboot   system boot  5.4.0-29-generic Wed Jul 29 11:45   still running
+ sj       :0           :0               Thu May 14 21:04 - crash <span class="o">(</span>75+14:41<span class="o">)</span>
+ reboot   system boot  5.4.0-29-generic Thu May 14 21:03   still running
+
+ wtmp begins Thu May 14 21:03:56 2020
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>lastlog:</strong> The <code class="language-plaintext highlighter-rouge">lastlog</code> command is used to find the details of a recent login of all users or of a given user.</p>
+
+    <pre><code class="language-cmd">$ lastlog
+
+Username         Port     From             Latest
+root                                       **Never logged in**
+daemon                                     **Never logged in**
+bin                                        **Never logged in**
+sys                                        **Never logged in**
+sync                                       **Never logged in**
+games                                      **Never logged in**
+man                                        **Never logged in**
+lp                                         **Never logged in**
+mail                                       **Never logged in**
+news                                       **Never logged in**
+</code></pre>
+  </li>
+</ol>
+
+<h3 id="file-and-directory-commands">File and directory commands</h3>
+
+<ol>
+  <li>
+<strong>pwd</strong> The pwd(Present Working Directory) command is used to print the name of the present/current working directory starting from the root.
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">pwd</span>
+/home/sj/Desktop/Linux
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>mkdir</strong> The mkdir(make directory) command allows users to create directories or folders.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir </span>ubuntu
+<span class="nv">$ </span><span class="nb">ls
+</span>ubuntu
+</code></pre></div>    </div>
+
+    <p>The option ‘-p’ is used to create multiple directories or parent directories at once.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> dir1/dir2/dir3
+<span class="nv">$ </span><span class="nb">cd </span>dir1/dir2/dir3
+~/Desktop/Linux/dir1/dir2/dir3<span class="err">$</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>rmdir</strong>: The rmdir(remove directories) is used to remove <em>empty</em> directories. Can be used to delete multiple empty directories as well. Safer to use compared to <code class="language-plaintext highlighter-rouge">rm -r FolderName</code>. This command can also be forced to delete non-empty directories.</p>
+
+    <ol>
+      <li>Remove empty directory:</li>
+    </ol>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">rmdir </span>FolderName
+</code></pre></div>    </div>
+
+    <ol>
+      <li>Remove multiple directories:</li>
+    </ol>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">rmdir </span>FolderName1 FolderName2 FolderName3
+</code></pre></div>    </div>
+
+    <ol>
+      <li>Remove non-empty directories:</li>
+    </ol>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">rmdir </span>FolderName1 <span class="nt">--ignore-fail-on-non-empty</span>
+</code></pre></div>    </div>
+
+    <ol>
+      <li>Remove entire directory tree. This command is similar to <code class="language-plaintext highlighter-rouge">rmdir a/b/c a/b a</code>:</li>
+    </ol>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">rmdir</span> <span class="nt">-p</span> a/b/c
+</code></pre></div>    </div>
+  </li>
+  <li>
+<strong>rm</strong>: The rm(remove) command is used to remove objects such as files, directories, symbolic links etc from the file system.
+    <ol>
+      <li>Remove file: The rm command is used to remove or delete a file
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">rm </span>file_name
+</code></pre></div>        </div>
+      </li>
+      <li>Remove file forcefully: The rm command with -f option is used for removal of file without prompting for confirmation.
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-f</span> filename
+</code></pre></div>        </div>
+      </li>
+      <li>Remove directory: The rm command with -r option is used to remove the directory and its contents recursively.
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-r</span> myDir
+</code></pre></div>        </div>
+      </li>
+      <li>Remove directory forcefully: The rm command with -rf option is used to forcefully remove directory recursively.
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> myDir
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li>
+<strong>touch</strong>: The touch command is is used to create, change and modify timestamps of a file without any content.
+    <ol>
+      <li>
+<strong>Create a new file:</strong> You can create a single file at a time using touch command. The file created is an empty file.
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="nb">touch </span>file_name
+</code></pre></div>        </div>
+      </li>
+      <li>
+<strong>Create multiple files:</strong> You can create the multiple numbers of files at the same time.
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="nb">touch </span>file1_name file2_name file3_name
+</code></pre></div>        </div>
+      </li>
+      <li>
+<strong>Change access time:</strong> The touch command with <code class="language-plaintext highlighter-rouge">a</code> option is used to change the access time of a file.
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="nb">touch</span> <span class="nt">-a</span> file_name
+</code></pre></div>        </div>
+      </li>
+      <li>
+<strong>Change modification time:</strong> The touch command with <code class="language-plaintext highlighter-rouge">m</code> option is used to change the modified time.
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="nb">touch</span> <span class="nt">-m</span> file_name
+</code></pre></div>        </div>
+      </li>
+      <li>
+<strong>Use timestamp of other file:</strong> The touch command with <code class="language-plaintext highlighter-rouge">r</code> option is used to get timestamp of another file.
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="nb">touch</span> <span class="nt">-r</span> file2 file1
+</code></pre></div>        </div>
+
+        <p>In the above example, we get the timestamp of file1 for file2.</p>
+      </li>
+      <li>
+<strong>Create file with Specific time:</strong> The touch command with ‘t’ option is used to create a file with specified time.
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="nb">touch</span> <span class="nt">-t</span> 1911010000 file_name
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p><strong>cat</strong>: The cat command is used to create single or multiple files, view contain of file, concatenate files and redirect output in terminal or files.</p>
+
+    <ol>
+      <li>
+        <p><strong>View file contents:</strong> You can view contents of a single or more files by mentioning the filenames.</p>
+
+        <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="nb">cat </span>file_name1 file_name2
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="file-permissions">File permissions</h3>
+<p>Since Linux is a multi-user operating system, it is necessary to provide security to prevent people from accessing each other’s confidential files.
+So Linux divides authorization into 2 levels,</p>
+
+<ol>
+  <li>
+    <p><strong>Ownership:</strong>
+Each file or directory has assigned with 3 types of owners
+i. <strong>User:</strong> Owner of the file who created it.
+ii. <strong>Group:</strong> Group of users with the same access permissions to the file or directory.
+iii. <strong>Other:</strong> Applies to all other users on the system</p>
+  </li>
+  <li>
+    <p><strong>Permissions:</strong>
+Each file or directory has following permissions for the above 3 types of owners.</p>
+
+    <p>i.   <strong>Read:</strong> Give you the authority to open and read a file and lists its content for a directory.</p>
+
+    <p>ii.  <strong>Write:</strong> Give you the authority to modify the contents of a file and add, remove and rename files stored in the directory.</p>
+
+    <p>iii. <strong>Execute:</strong> Give you the authority to run the program in Unix/Linux.</p>
+
+    <p>The permissions are indicated with below characters,</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  r = read permission
+
+  w = write permission
+
+  x = execute permission
+
+  \- = no permission
+</code></pre></div>    </div>
+
+    <p>The above authorization levels represented in a diagram</p>
+  </li>
+</ol>
+
+<p><img src="https://github.com/sudheerj/Linux-cheat-sheet/blob/master/images/permissions.png" width="600" height="400"></p>
+
+<p>There is a need to restrict own file/directory access to others.</p>
+
+<p><strong>Change access:</strong>
+The <code class="language-plaintext highlighter-rouge">chmod</code> command is used to change the access mode of a file.  This command is used to set permissions (read, write, execute) on a file/directory for the owner, group and the others group.</p>
+
+<pre><code class="language-cmd">chmod [reference][operator][mode] file...
+
+Example
+chmod ugo-rwx test.txt
+</code></pre>
+
+<p>There are 2 ways to use this command,</p>
+
+<ol>
+  <li>
+    <p><strong>Absolute mode:</strong>
+The file permissions will be represented in a three-digit octal number.</p>
+
+    <p>The possible permissions types represented in a number format as below.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Permission Type</th>
+          <th>Number</th>
+          <th>Symbol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>No Permission</td>
+          <td>0</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Execute</td>
+          <td>1</td>
+          <td>–x</td>
+        </tr>
+        <tr>
+          <td>Write</td>
+          <td>2</td>
+          <td>-w-</td>
+        </tr>
+        <tr>
+          <td>Execute + Write</td>
+          <td>3</td>
+          <td>-wx</td>
+        </tr>
+        <tr>
+          <td>Read</td>
+          <td>4</td>
+          <td>r–</td>
+        </tr>
+        <tr>
+          <td>Read + Execute</td>
+          <td>5</td>
+          <td>r-x</td>
+        </tr>
+        <tr>
+          <td>Read + Write</td>
+          <td>6</td>
+          <td>rw-</td>
+        </tr>
+        <tr>
+          <td>Read + Write + Execute</td>
+          <td>7</td>
+          <td>rwx</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<p>Let’s update the permissions in absolute mode with an example as below,</p>
+
+<pre><code class="language-cmd">    chmode 764 test.txt
+</code></pre>
+
+<ol>
+  <li>
+    <p><strong>Symbolic mode:</strong>
+In the symbolic mode, you can modify permissions of a specific owner unlike absolute mode.</p>
+
+    <p>The owners are represented as below,</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Owner</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>u</td>
+          <td>user/owner</td>
+        </tr>
+        <tr>
+          <td>g</td>
+          <td>group</td>
+        </tr>
+        <tr>
+          <td>o</td>
+          <td>other</td>
+        </tr>
+        <tr>
+          <td>a</td>
+          <td>all</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>and the list of mathematical symbols to modify the file permissions as follows,</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Operator</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>+</td>
+          <td>Adds permission</td>
+        </tr>
+        <tr>
+          <td>-</td>
+          <td>Removes the permission</td>
+        </tr>
+        <tr>
+          <td>=</td>
+          <td>Assign the permission</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<p><strong>Changing Ownership and Group:</strong>
+It is possible to change the the ownership and group of a file/directory using <code class="language-plaintext highlighter-rouge">chown</code> command.</p>
+
+<pre><code class="language-cmd">chown user filename
+chown user:group filename
+
+Example:
+chown John test.txt
+chown John:Admin test.txt
+</code></pre>
+
+<p><strong>Change group-owner only:</strong>
+Sometimes you may need to change group owner only. In this case, chgrp command need to be used</p>
+
+<pre><code class="language-cmd">chgrp group_name filename
+
+Example:
+sudo chgrp Administrator test.txt
+</code></pre>
+
+<h3 id="networking">Networking</h3>
+
+<ol>
+  <li>
+<strong>Display network information:</strong> <code class="language-plaintext highlighter-rouge">ifconfig</code> command is used to display all network information(ip address, ports etc)</li>
+</ol>
+
+<pre><code class="language-cmd">ifconfig -a
+</code></pre>
+
+<ol>
+  <li>
+    <p><strong>Test connection to a remote machine:</strong> Send an echo request to test connection of a remote machine.</p>
+
+    <pre><code class="language-cmd">ping &lt;ip-address&gt; or hostname
+
+Example:
+ping 10.0.0.11
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Show IP Address:</strong> Display ip address of a currennt machine</p>
+
+    <pre><code class="language-cmd">hostname -I
+(OR)
+ip addr show
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Active ports:</strong> Shows active or listening ports</p>
+
+    <pre><code class="language-cmd"> netstat -pnltu
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Find information about domain:</strong> <code class="language-plaintext highlighter-rouge">whois</code> command is used to find out information about a domain, such as the owner of the domain, the owner’s contact information, and the nameservers used by domain.</p>
+
+    <pre><code class="language-cmd">whois [domain]
+
+Example:
+whois google.com
+</code></pre>
+  </li>
+</ol>
+
+<h3 id="installing-packages">Installing packages</h3>
+
+<ol>
+  <li><strong>Install package:</strong></li>
+</ol>
+
+<pre><code class="language-cmd">yum install package_name
+</code></pre>
+
+<ol>
+  <li>
+<strong>Package description:</strong>
+The info command is used to display brief details about a package.</li>
+</ol>
+
+<pre><code class="language-cmd">yum info package_name
+</code></pre>
+
+<ol>
+  <li>
+<strong>Uninstall package:</strong>
+The remove command is used to remove or uninstall package name.
+    <pre><code class="language-cmd">yum remove package_name
+</code></pre>
+  </li>
+  <li><strong>Install package from local file:</strong></li>
+</ol>
+
+<p>It is also possible to install package from local file named package_name.rpm.</p>
+
+<pre><code class="language-cmd">rpm -i package_name.rpm
+</code></pre>
+
+<ol>
+  <li><strong>Install from source code:</strong></li>
+</ol>
+
+<pre><code class="language-cmd">tar zxvf sourcecode.tar.gz
+cd sourcecode
+./configure
+make
+make install
+</code></pre>
+
+<h3 id="disk-usage">Disk usage</h3>
+
+<ol>
+  <li>
+<strong>Synopsis:</strong> <code class="language-plaintext highlighter-rouge">du</code> command is used to check the information of disk usage of files and directories on a machine</li>
+</ol>
+
+<pre><code class="language-cmd">du [OPTION]... [FILE]...
+</code></pre>
+
+<ol>
+  <li>
+<strong>Disk usage of a directory:</strong> To find out the disk usage summary of a /home/ directory tree and each of its sub directories</li>
+</ol>
+
+<pre><code class="language-cmd">du  /home/
+</code></pre>
+
+<ol>
+  <li>
+<strong>Disk usage in human readable format:</strong> To find out the disk usage in human readable format</li>
+</ol>
+
+<pre><code class="language-cmd">du  -h /home/
+</code></pre>
+
+<ol>
+  <li>
+<strong>Total disk usage of a directory:</strong> To find out the total disk usage</li>
+</ol>
+
+<pre><code class="language-cmd">du  -sh /home/
+</code></pre>
+
+<ol>
+  <li>
+<strong>Total disk usage of all files and directories:</strong> To find out the total disk usage of files and directories</li>
+</ol>
+
+<pre><code class="language-cmd">du  -ah /home/
+</code></pre>
+
+<ol>
+  <li>
+<strong>Total disk usage of all files and directories upto certain depth:</strong> print the total for a directory only if it is N or fewer levels below the command</li>
+</ol>
+
+<pre><code class="language-cmd">du  -ah --max-depth 2 /home/
+</code></pre>
+
+<ol>
+  <li>
+<strong>Total disk usage with excluded files:</strong> To find out the total disk usage of files and directories, but excludes the files that matches given pattern.</li>
+</ol>
+
+<pre><code class="language-cmd">du -ah --exclude="*.txt" /home/
+</code></pre>
+
+<ol>
+  <li>
+<strong>Help:</strong> This command gives information about <code class="language-plaintext highlighter-rouge">du</code>
+</li>
+</ol>
+
+<pre><code class="language-cmd">du  --help
+</code></pre>
+
+<h3 id="system-and-hardware-information">System and Hardware information</h3>
+
+<ol>
+  <li>
+<strong>Print all information</strong>: <code class="language-plaintext highlighter-rouge">uname</code> is mainly used to print system information.</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">uname</span> <span class="nt">-a</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+<strong>Print kernel name</strong>:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">uname</span> <span class="nt">-s</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+<strong>Print kernel release</strong>:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">uname</span> <span class="nt">-r</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+<strong>Print Architecture</strong>:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">uname</span> <span class="nt">-m</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+<strong>Print Operating System</strong>:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">uname</span> <span class="nt">-o</span>
+</code></pre></div></div>
+
+<h3 id="search-files">Search Files</h3>
+
+<ol>
+  <li>
+<strong>Pattern search:</strong>
+The <code class="language-plaintext highlighter-rouge">grep</code> command is used to search patterns in files.</li>
+</ol>
+
+<pre><code class="language-cmd">grep pattern files
+grep -i // Case sensitive
+grep -r // Recursive
+grep -v // Inverted search
+
+Example:
+grep "^hello" test.txt // Hello John
+grep -i "hELLo" text.txt // Hello John
+</code></pre>
+
+<ol>
+  <li><strong>Find files and directories:</strong></li>
+</ol>
+
+<p>The <code class="language-plaintext highlighter-rouge">find</code> command is used to find or search files and directories by file name, folder name, creation date, modification date, owner and permissions etc and perform subsequent operations on them.</p>
+
+<p>i. <strong>Search file with name:</strong></p>
+
+<pre><code class="language-cmd">find ./directory_name -name file_name
+
+Example:
+find ./test -name test.txt // ./test/test.txt
+</code></pre>
+
+<p>ii. <strong>Search file with pattern:</strong></p>
+
+<pre><code class="language-cmd">find ./directory_name -name file_pattern
+
+Example:
+find ./test -name *.txt // ./test/test.txt
+</code></pre>
+
+<p>iii. <strong>Search file with executable action:</strong></p>
+
+<pre><code class="language-cmd">find ./directory_name -name file_name -exec command
+
+Example:
+find ./test -name test.txt -exec rm -i {} \; // Search file and delete it after confirmation
+</code></pre>
+
+<p>iv. <strong>Search for empty files or directories:</strong></p>
+
+<p>The find command is used to search all empty folders and files in the entered directory or sub-directories.</p>
+
+<pre><code class="language-cmd">find ./directory_name -empty
+
+Example:
+find ./test -empty
+//./test/test1
+//./test/test2
+//./test/test1.txt
+</code></pre>
+
+<p>v. <strong>Search for files with permissions:</strong></p>
+
+<p>The find command is used to find all the files in the mentioned directory or sub-directory with the given permissions</p>
+
+<pre><code class="language-cmd">find ./directory_name -perm permission_code
+
+Example:
+find ./test -perm 664
+</code></pre>
+
+<p>vi. <strong>Search text within multiple files:</strong></p>
+
+<pre><code class="language-cmd">find ./ -type f -name file_pattern -exec grep some_text  {} \;
+
+Example:
+find ./ -type f -name "*.txt" -exec grep 'World'  {} \; // Hello World
+</code></pre>
+
+<ol>
+  <li>
+<strong>Whereis to locate binary or source files for a command:</strong>
+The whereis command in Linux is used to locate the binary, source, and manual page files for a command. i.e, It is used to It is used to find executables of a program, its man pages and configuration files.</li>
+</ol>
+
+<pre><code class="language-cmd">whereis command_name
+
+Example:
+whereis netstat //netstat:  /bin/netstat /usr/share/man/man8/netstat.8.gz(i.e, executable and location of its man page)
+</code></pre>
+
+<ol>
+  <li>
+<strong>Locate to find files:</strong>
+The locate command is used to find the files by name. This command is faster compared to find command because it searches database for the filename instead of searching your filesystem.</li>
+</ol>
+
+<pre><code class="language-cmd">locate [OPTION] PATTERN
+
+Example:
+locate "*.txt" -n 10 // 10 file search results ending with .txt extension
+</code></pre>
+
+<h3 id="ssh">SSH</h3>
+
+<p>SSH (Secure Shell) is a network protocol that enables secure remote connections between two systems.</p>
+
+<ol>
+  <li>
+<strong>Connect remote machine using IP address or machine name:</strong> The remote server can be connected with local user name using either host name or IP address</li>
+</ol>
+
+<pre><code class="language-cmd">ssh &lt;host-name&gt; or &lt;ip-address&gt;
+
+Example:
+ssh 192.111.66.100
+ssh test.remoteserver.com
+</code></pre>
+
+<ol>
+  <li>
+<strong>Connect remote machine using username:</strong> It is also possible specify a user for an SSH connection.</li>
+</ol>
+
+<pre><code class="language-cmd">ssh username@hostname_or_ip-address
+
+Example:
+ssh john@192.0.0.22
+ssh john@test.remoteserver.com
+</code></pre>
+
+<ol>
+  <li>
+<strong>:Connect remote machine using custom port</strong> By default, the SSH server listens for a connection on port 22. But you can also specify the custom port.</li>
+</ol>
+
+<pre><code class="language-cmd">ssh &lt;host-name&gt; or &lt;ip-address&gt; -p port_number
+
+Example:
+ssh test.remoteserver.com -p 3322
+</code></pre>
+
+<ol>
+  <li>
+<strong>Generate SSH keys using keygen:</strong> SSH Keygen is used to generate a key pair which consists of public and private keys to improve the security of SSH connections.</li>
+</ol>
+
+<pre><code class="language-cmd">ssh-keygen -t rsa
+</code></pre>
+
+<ol>
+  <li>
+<strong>Copying SSH keys to servers:</strong> For SSH authentication, <code class="language-plaintext highlighter-rouge">ssh-copy-id</code> command will be used to copy public key(id_rsa.pub) to server.</li>
+</ol>
+
+<pre><code class="language-cmd">ssh-copy-id hostname_or_IP
+</code></pre>
+
+<ol>
+  <li>
+<strong>Copy a File Remotely over SSH:</strong> SCP tool is used to securely copy files over the SSH protocol.</li>
+</ol>
+
+<pre><code class="language-cmd">scp fileName user@remotehost:destinationPath
+
+Example:
+scp test.txt test@10.0.0.64:/home/john/Desktop
+</code></pre>
+
+<ol>
+  <li>
+<strong>Edit SSH Config File</strong> SSH server options customized by editing the settings in <code class="language-plaintext highlighter-rouge">sshd_config</code> file.</li>
+</ol>
+
+<pre><code class="language-cmd">sudo vim /etc/ssh/sshd_config
+</code></pre>
+
+<ol>
+  <li>
+<strong>Run commands on a remote server</strong> SSH commands can be executed on remote machine using the local machine.</li>
+</ol>
+
+<pre><code class="language-cmd">ssh test.remoteserver.com mkdir NewDirectoryName // Creating directory on remote machine
+</code></pre>
+
+<ol>
+  <li>
+<strong>Restart SSH service:</strong> You need to restart the service in Linux after making changes to SSH configuration.</li>
+</ol>
+
+<pre><code class="language-cmd">sudo ssh service restart
+(or)
+sudo sshd service restart
+</code></pre>
+
+<h3 id="vivim-commands">Vi/Vim-commands</h3>
+
+<p>Vi editor is the most popular text editor from the early days of Unix. Whereas Vim(Vi IMproved) is an improved version of vi editor to be used in CLI (command line interface) for mainly text editing tasks in many configuration files. Some of the other alternatives are Elvis, Nvi, Nano, Joe, and Vile.
+It has two main operation modes,</p>
+
+<ol>
+  <li>
+<strong>Command Mode:</strong> It allows the entry of commands to manipulate text.</li>
+  <li>
+<strong>Entry mode(Or Insert mode):</strong> It allows typed characters on the keyboard into the current file.</li>
+</ol>
+
+<h4 id="1-start-with-vi-editor">1. Start with Vi Editor</h4>
+
+<p>You can create a new file or open an existing file using <code class="language-plaintext highlighter-rouge">vi filename</code> command.</p>
+
+<pre><code class="language-cmd"> vi &lt;filename_NEW&gt; or &lt;filename_EXISTING&gt; // Create a new file or open an existing file
+
+ Example:
+ vi first.txt
+</code></pre>
+
+<p>Let’s see how do you create file, enter the content and leave the CLI by saving the changes.</p>
+
+<ol>
+  <li>Create a new file named <code class="language-plaintext highlighter-rouge">first.txt</code>
+</li>
+  <li>Press <code class="language-plaintext highlighter-rouge">i</code> to enter the insert mode</li>
+  <li>Enter the text “Hello World!”</li>
+  <li>Save the text and exit by pressing <code class="language-plaintext highlighter-rouge">:wq!</code> command</li>
+  <li>Check the entered text</li>
+</ol>
+
+<h4 id="2-cursor-movement">2. Cursor movement</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>These commands will be used in Command mode.
+</code></pre></div></div>
+
+<h5 id="move-cursor">Move cursor</h5>
+
+<p>You can use arrow keys(left, right, up and down) to move the cursor on the terminal. But you can also other keys for this behavior.</p>
+
+<pre><code class="language-cmd"> h        # Move left
+ j        # Move down
+ k        # Move up
+ l        # Move right
+</code></pre>
+
+<h5 id="jump-one-word">Jump one word</h5>
+
+<p>These commands used to jump one word at a time</p>
+
+<pre><code class="language-cmd">w        # Jump forwards to the start of a word
+W        # Jump forwards to the start of a WORD
+e        # Jump forwards to the start of a word
+E        # Jump forwards to the start of a WORD
+b        # Jump backwords to the start of a word
+B        # Jump backwords to the start of a WORD
+</code></pre>
+
+<h5 id="jump-to-start-or-end-of-a-line-or-next-line">Jump to start or end of a line or next line</h5>
+
+<p>These commands used to jump starting or ending of a line or a next line.</p>
+
+<pre><code class="language-cmd">^        # Jump to the start of a current line
+$        # Jump to the end of a current line
+return   # Jump to the start of a next line
+</code></pre>
+
+<h5 id="move-sides">Move sides</h5>
+
+<p>These commands used to moves all sides of the screen</p>
+
+<pre><code class="language-cmd">Backspace # Move cursor one character to the left
+Spacebar  # Move cursor one character to the right
+H(High)   # Move cursor to the top of the screen
+M(Middle) # Move cursor to the middle of the screen
+L(Low)    # Move cursor to the bottom of the screen
+</code></pre>
+
+<h5 id="paging-and-scrolling">Paging and Scrolling</h5>
+
+<p>Paging is used to moves the cursor up or down through the text a full screen at a time. Whereas Scrolling happens line by line.</p>
+
+<pre><code class="language-cmd">Ctrl + f     # move forward one full screen
+Ctrl + b     # move backward one full screen
+Ctrl + d     # move forward half a screen
+Ctrl + u     # move backward half a screen
+</code></pre>
+
+<h5 id="inserting-text">Inserting Text</h5>
+
+<p>These commands places vi in entry mode from command mode. First, you need to be in command mode to use the below commands.</p>
+
+<h6 id="insert">Insert</h6>
+
+<pre><code class="language-cmd">i    # Insert text to the left of the cursor
+I    # Insert text at the beginning of a line
+ESC  # Exit insert mode
+</code></pre>
+
+<h6 id="append">Append</h6>
+
+<pre><code class="language-cmd">a    # Insert(or Append) text to the right of the cursor
+A    # Insert(or Append) text at the end of a line
+</code></pre>
+
+<h6 id="open-a-line">Open a line</h6>
+
+<pre><code class="language-cmd">o    # Open a line below the current cursor position
+O    # open a line above the current cursor position
+</code></pre>
+
+<h5 id="editing-text">Editing Text</h5>
+
+<ol>
+  <li>
+    <p><strong>Change word:</strong> Change word/part of word to right of cursor</p>
+
+    <pre><code class="language-cmd"> cw
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Change line</strong> Change entire line</p>
+
+    <pre><code class="language-cmd"> cc
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Change line from specific character</strong> Change from cursor to end of line</p>
+
+    <pre><code class="language-cmd"> C
+</code></pre>
+  </li>
+</ol>
+
+<h5 id="deleting-text">Deleting Text</h5>
+
+<ol>
+  <li>
+    <p><strong>Deleting One Character:</strong> Position the cursor over the character to be deleted and type x</p>
+
+    <pre><code class="language-cmd"> x
+ X       //To delete one character before the cursor
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Deleting a Word:</strong> Position the cursor at the beginning of the word and type dw</p>
+
+    <pre><code class="language-cmd"> dw
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Deleting a Line:</strong> Position the cursor anywhere on the line and type dd.</p>
+
+    <pre><code class="language-cmd"> dd
+</code></pre>
+  </li>
+</ol>
+
+<h5 id="cut-copy--paste">Cut, Copy &amp; Paste</h5>
+
+<p>Copy, Cut and Paste operations can be done in either Normal or visual Mode.</p>
+
+<ol>
+  <li>
+    <p><strong>Normal mode:</strong> This mode appears on click of <code class="language-plaintext highlighter-rouge">Esc</code> key.</p>
+
+    <p><strong>Copy</strong> There are various copy or yank commands based on amount of text to be copied. The <code class="language-plaintext highlighter-rouge">y</code> character is used to perform this operation.</p>
+
+    <p>i. Copy an entire line: Just place the cursor at the beginning of the line and type <code class="language-plaintext highlighter-rouge">yy</code></p>
+
+    <pre><code class="language-cmd">yy
+</code></pre>
+
+    <p>ii.Copy three lines: Just place the cursor from where to start copying and type <code class="language-plaintext highlighter-rouge">3yy</code></p>
+
+    <pre><code class="language-cmd">3yy
+</code></pre>
+
+    <p>iii. Copy word with trailing whitespace: Place the cursor at the beginning of the word and type <code class="language-plaintext highlighter-rouge">yaw</code></p>
+
+    <pre><code class="language-cmd">yaw
+</code></pre>
+
+    <p>iv. Copy word without trailing whitespace: Place the cursor at the beginning of the word and type <code class="language-plaintext highlighter-rouge">yiw</code>.</p>
+
+    <pre><code class="language-cmd">yiw
+</code></pre>
+
+    <p>v. Copy right of the cursor: Copy text right of the cursor to the end of line using <code class="language-plaintext highlighter-rouge">y$</code> command</p>
+
+    <pre><code class="language-cmd">y$
+</code></pre>
+
+    <p>vi.Copy left of the cursor: Copy text left of the cursor to the end of line using <code class="language-plaintext highlighter-rouge">y^</code> command</p>
+
+    <pre><code class="language-cmd">y^
+</code></pre>
+
+    <p>vii. Copy text between the cursor and character: Copy text between the cursor and specified character.</p>
+
+    <pre><code class="language-cmd">ytx(Copy until x and x is excluded)
+yfx(Copy until x and x is included)
+</code></pre>
+
+    <p><strong>Cut</strong> There are various cutting or deleting commands based on amount of text to be deleted. The <code class="language-plaintext highlighter-rouge">d</code> character is used to perform this operation.</p>
+
+    <p>i. Cut entire line: Cut the entire line where the cursor is located</p>
+
+    <pre><code class="language-cmd">dd
+</code></pre>
+
+    <p>ii.Cut three lines: Cut the three lines starting from the place where cursor is located</p>
+
+    <pre><code class="language-cmd">3dd
+</code></pre>
+
+    <p>iii.Cut right of the cursor: Cut the text from the right of the cursor till the end of line</p>
+
+    <pre><code class="language-cmd">d$
+</code></pre>
+
+    <p>iii.Cut left of the cursor: Cut the text from the left of the cursor till the beginning of line</p>
+
+    <pre><code class="language-cmd">d^
+</code></pre>
+
+    <p><strong>Paste</strong> This operation is performed using <code class="language-plaintext highlighter-rouge">p</code> command to paste the selected text</p>
+
+    <pre><code class="language-cmd">p
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Visual Mode</strong> In this mode, first select the text using below keys</p>
+
+    <ol>
+      <li>v (lowercase): To select individual characters</li>
+      <li>V (uppercase): To select the entire line</li>
+      <li>Ctrl+v: To select by block</li>
+    </ol>
+
+    <p>and perform copy, cut and paste operations using y,d and p commands</p>
+  </li>
+</ol>
+
+<h5 id="exiting">Exiting</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>These commands are used to exit from the file.
+```cmd
+:w	    # Write (save) the file, but don't exit
+:wq	    # Write (save) and quit
+:wq!	# Force write (save) and quit
+:q	    # Quit, but it fails if anything has changed
+:q!	    # Quit and throw away for any changes
+```
+</code></pre></div></div>
+
+</div>
+<div class="d-print-none"><footer class="article__footer"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet --></footer></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+//alert('start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert(' end .......');
+ 
+ document.onreadystatechange = function(){
+     if(document.readyState === 'complete'){
+         /*code here*/
+		 //alert('onreadystatechange comled ... start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert('onreadystatechange comled ... end .......');
+     }
+}
+
+</script>
+</div>
+<section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet -->
+</div>
+            </div></div></div>
+<div class="page__footer d-print-none"><footer class="footer py-4 js-page-footer">
+  <div class="main">
+<div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Satya Kaveti">
+<meta itemprop="url" content="/">
+<meta itemprop="description" content="I am an amazing person.">
+<div class="footer__author-links">
+<div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"></ul>
+</div>
+</div>
+    </div>
+<div class="site-info mt-2">
+      <div>© SatyaCodes 2020 ,
+        <a title="Satya Kaveti" href="about/">Satya Kaveti's Writing</a>.
+		<span>| <a href="about/">About Me</a> &amp;nbsp |  </span>
+		<span><a href="/terms.html">Terms</a> &amp;nbsp |  </span>
+		<span><a href="/contact.html">Contact</a> &amp;nbsp |  </span>
+		<span><a href="http://www.satyacodesapps.ml/" target="_blank">Our Apps</a> &amp;nbsp |  </span>
+		<span><a href="https://www.facebook.com/isatyakaveti" target="_blank"><i class="fab fa-facebook-f"></i></a> &amp;nbsp |  </span>
+		<span><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube-square"></i></a> &amp;nbsp |  </span>
+		<span><a href="https://in.linkedin.com/in/satyakaveti" target="_blank"><i class="fab fa-linkedin-in"></i></a> &amp;nbsp | 
+		<span>[ 
+		<!-- Start of WebFreeCounter Code -->
+<a href="http://www.statworker.com/" target="_blank"><img src="https://www.webfreecounter.com/hit.php?id=gfpapx&amp;nd=7&amp;style=2" border="0" alt="statworker.com"></a>
+<!-- End of WebFreeCounter Code -->
+</span>
+<span><a href="https://statcounter.com/p12408441/?guest=1" target="_blank"> ]</a></span>
+
+
+      </span>
+</div>
+    </div>
+  </div>
+</footer></div>
+</div>
+    </div>
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal d-print-none js-page-gallery-modal"><div class="gallery"></div></div>
+<div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal">
+<script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">Search</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text">
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        Cancel</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script>
+</div>
+</div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+(function() {(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function swiper(options) {
+      var $window = $(window), $root = this, $swiperWrapper, $swiperSlides, $swiperButtonPrev, $swiperButtonNext,
+        initialSlide, animation, onChange, onChangeEnd,
+        rootWidth, count, preIndex, curIndex, translateX, CRITICAL_ANGLE = Math.PI / 3;
+
+      function setOptions(options) {
+        var _options = options || {};
+        initialSlide = _options.initialSlide || 0;
+        animation = _options.animation === undefined && true;
+        onChange = onChange || _options.onChange;
+        onChangeEnd = onChangeEnd || _options.onChangeEnd;
+      }
+
+      function init() {
+        $swiperWrapper = $root.find('.swiper__wrapper');
+        $swiperSlides = $root.find('.swiper__slide');
+        $swiperButtonPrev = $root.find('.swiper__button--prev');
+        $swiperButtonNext = $root.find('.swiper__button--next');
+        animation && $swiperWrapper.addClass('swiper__wrapper--animation');
+        calc(true);
+      }
+
+      function preCalc() {
+        rootWidth = $root.width();
+        count = $swiperWrapper.children('.swiper__slide').length;
+        if (count < 2) {
+          $swiperButtonPrev.addClass('d-none');
+          $swiperButtonNext.addClass('d-none');
+        }
+        curIndex = initialSlide || 0;
+        translateX = getTranslateXFromCurIndex();
+      }
+
+      var calc = (function() {
+        var preAnimation, $swiperSlide, $preSwiperSlide;
+        return function (needPreCalc, params) {
+          needPreCalc && preCalc();
+          var _animation = (params && params.animation !== undefined) ? params.animation : animation;
+          if (preAnimation === undefined || preAnimation !== _animation) {
+            preAnimation = _animation ? $swiperWrapper.addClass('swiper__wrapper--animation') :
+              $swiperWrapper.removeClass('swiper__wrapper--animation');
+          }
+          if (preIndex !== curIndex) {
+            ($preSwiperSlide = $swiperSlides.eq(preIndex)).removeClass('active');
+            ($swiperSlide = $swiperSlides.eq(curIndex)).addClass('active');
+            onChange && onChange(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+            if (onChangeEnd) {
+              if (_animation) {
+                setTimeout(function() {
+                  onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+                }, 400);
+              } else {
+                onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+              }
+            }
+            preIndex = curIndex;
+          }
+          $swiperWrapper.css('transform', 'translate(' + translateX + 'px, 0)');
+          if (count > 1) {
+            if (curIndex <= 0) {
+              $swiperButtonPrev.addClass('disabled');
+            } else {
+              $swiperButtonPrev.removeClass('disabled');
+            }
+            if (curIndex >= count - 1) {
+              $swiperButtonNext.addClass('disabled');
+            } else {
+              $swiperButtonNext.removeClass('disabled');
+            }
+          }
+        };
+      })();
+
+      function getTranslateXFromCurIndex() {
+        return curIndex <= 0 ? 0 : - rootWidth * curIndex;
+      }
+
+      function moveToIndex(index ,params) {
+        preIndex = curIndex;
+        curIndex = index;
+        translateX = getTranslateXFromCurIndex();
+        calc(false, params);
+      }
+
+      function move(type) {
+        var nextIndex = curIndex, unstableTranslateX;
+        if (type === 'prev') {
+          nextIndex > 0 && nextIndex--;
+        } else if (type === 'next') {
+          nextIndex < count - 1 && nextIndex++;
+        }
+        if (type === 'cur') {
+          moveToIndex(curIndex, { animation: true });
+          return;
+        }
+        unstableTranslateX = translateX % rootWidth !== 0;
+        if (nextIndex !== curIndex || unstableTranslateX) {
+          unstableTranslateX ? moveToIndex(nextIndex, { animation: true }) : moveToIndex(nextIndex);
+        }
+      }
+
+      setOptions(options);
+      init();
+      preIndex = curIndex;
+
+      $swiperButtonPrev.on('click', function(e) {
+        e.stopPropagation();
+        move('prev');
+      });
+      $swiperButtonNext.on('click', function(e) {
+        e.stopPropagation();
+        move('next');
+      });
+      $window.on('resize', function() {
+        calc(true, { animation: false });
+      });
+
+      (function() {
+        var pageX, pageY, velocityX, preTranslateX = translateX, timeStamp, touching;
+        function handleTouchstart(e) {
+          var point = e.touches ? e.touches[0] : e;
+          pageX = point.pageX;
+          pageY = point.pageY;
+          velocityX = 0;
+          preTranslateX = translateX;
+        }
+        function handleTouchmove(e) {
+          if (e.touches && e.touches.length > 1) {
+            return;
+          }
+          var point = e.touches ? e.touches[0] : e;
+          var deltaX = point.pageX - pageX;
+          var deltaY = point.pageY - pageY;
+          velocityX = deltaX / (e.timeStamp - timeStamp);
+          timeStamp = e.timeStamp;
+          if (e.cancelable && Math.abs(Math.atan(deltaY / deltaX)) < CRITICAL_ANGLE) {
+            touching = true;
+            translateX += deltaX;
+            calc(false, { animation: false });
+          }
+          pageX = point.pageX;
+          pageY = point.pageY;
+        }
+        function handleTouchend() {
+          touching = false;
+          var deltaX = translateX - preTranslateX;
+          var distance = deltaX + velocityX * rootWidth;
+          if (Math.abs(distance) > rootWidth / 2) {
+            distance > 0 ? move('prev') : move('next');
+          } else {
+            move('cur');
+          }
+        }
+        $swiperWrapper.on('touchstart', handleTouchstart);
+        $swiperWrapper.on('touchmove', handleTouchmove);
+        $swiperWrapper.on('touchend', handleTouchend);
+        $swiperWrapper.on('touchcancel', handleTouchend);
+
+        (function() {
+          var pressing = false, moved = false;
+          $swiperWrapper.on('mousedown', function(e) {
+            pressing = true; handleTouchstart(e);
+          });
+          $swiperWrapper.on('mousemove', function(e) {
+            pressing && (e.preventDefault(), moved = true, handleTouchmove(e));
+          });
+          $swiperWrapper.on('mouseup', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('mouseleave', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('click', function(e) {
+            moved && (e.stopPropagation(), moved = false);
+          });
+        })();
+
+        $root.on('touchmove', function(e) {
+          if (e.cancelable & touching) {
+            e.preventDefault();
+          }
+        });
+      })();
+
+      return {
+        setOptions: setOptions,
+        previous: function(){
+          move('prev');
+        },
+        next: function(){
+          move('next');
+        },
+        refresh: function() {
+          calc(true, { animation: false });
+        }
+      };
+    }
+    $.fn.swiper = swiper;
+  });
+})();
+var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var template =
+      '<div class="swiper gallery__swiper">' +
+        '<div class="swiper__wrapper">' +
+        '</div>' +
+        '<div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>' +
+        '<div class="swiper__button swiper__button--next fas fa-chevron-right"></div>' +
+      '</div>';
+    function setState($item, zoom, translate) {
+      $item.css('transform', 'scale(' + zoom + ') translate(' + translate.x +  'px,' + translate.y + 'px)');
+    }
+    function Gallery(root, items) {
+      this.$root = $(root);
+      this.$swiper = null;
+      this.$swiperWrapper = null;
+      this.$activeItem = null;
+      this.$items = [];
+      this.contentWidth = 0;
+      this.contentHeight = 0;
+      this.swiper = null;
+      this.items = items;
+      this.disabled = false;
+      this.curIndex = 0;
+      this.touchCenter = null;
+      this.lastTouchCenter = null;
+      this.zoomRect = null;
+      this.lastZoomRect = null;
+      this.lastTranslate = null;
+      this.translate = null;
+      this.lastZoom = 1;
+      this.preZoom = 1;
+      this.zoom = 1;
+    }
+    Gallery.prototype.init = function() {
+      var i, item, items = this.items, size, self = this, touchstartFingerCount = 0;
+      this.$root.append(template);
+      this.$swiper = this.$root.find('.gallery__swiper');
+      this.$swiperWrapper = this.$root.find('.swiper__wrapper');
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      for (i = 0; i < items.length; i++) {
+        item = items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        this.$items.push($(
+          '<div class="swiper__slide">' +
+            '<div class="gallery-item">' +
+              '<div class="gallery-item__content">' +
+                '<img src="' + item.src + '" style="width:' + size.w + 'px;height:' + size.h +  'px"/>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        ));
+      }
+      this.$swiperWrapper && this.$swiperWrapper.append(this.$items);
+      this.swiper = this.$swiper && this.$swiper.swiper({
+        onChangeEnd: function() {
+          self._handleChangeEnd.apply(self, Array.prototype.slice.call(arguments));
+        }
+      });
+      $(window).on('resize', function() {
+        if (self.disabled) { return; }
+        self._resizeImageSize();
+      });
+      // Char Code: 37  ⬅, 39  ➡
+      $(window).on('keyup', function(e) {
+        if (window.isFormElement(e.target || e.srcElement) || self.disabled) { return; }
+        if (e.which === 37) {
+          self.swiper && self.swiper.previous();
+        } else if (e.which === 39) {
+          self.swiper && self.swiper.next();
+        }
+      });
+      function getRect(touch0, touch1) {
+        return {
+          o: {
+            x: (touch0.pageX + touch1.pageX) / 2,
+            y: (touch0.pageY + touch1.pageY) / 2
+          },
+          w: Math.abs(touch0.pageX - touch1.pageX),
+          h: Math.abs(touch0.pageY - touch1.pageY)
+        };
+      }
+      function getTouches(e) {
+        return e.touches || e;
+      }
+      function getTouchesCount(e) {
+        if (e.touches) {
+          return e.touches.length;
+        } else {
+          return 1;
+        }
+      }
+      this.$swiperWrapper.on('touchstart', function(e) {
+        var touch0, touch1, rect;
+        touchstartFingerCount = getTouchesCount(e);
+        if (touchstartFingerCount > 1) {
+          touch0 = e.touches[0];
+          touch1 = e.touches[1];
+          rect = getRect(touch0, touch1);
+          self.lastZoomRect = { w: rect.w, h: rect.h };
+          self.lastTouchCenter = rect.o;
+        } else {
+          var touch = getTouches(e)[0];
+          self.lastTouchCenter = { x: touch.pageX, y: touch.pageY };
+        }
+      });
+      this.$swiperWrapper.on('touchmove', function(e) {
+        if (touchstartFingerCount === getTouchesCount(e)) {
+          if (touchstartFingerCount > 1) {
+            var touch0 = e.touches[0];
+            var touch1 = e.touches[1];
+            var rect = getRect(touch0, touch1);
+            self.zoomRect = { w: rect.w, h: rect.h };
+            self.touchCenter = rect.o;
+            self._zoom(); self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          } else {
+            var touch = getTouches(e)[0];
+            self.touchCenter = { x: touch.pageX, y: touch.pageY };
+            self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          }
+        }
+      });
+      this.$swiperWrapper.on('touchend', function(e) {
+        self.lastZoom = self.zoom;
+        self.lastTranslate = self.translate;
+        touchstartFingerCount = 0;
+      });
+      this.$root.on('touchmove', function(e) {
+        if (self.disabled) { return; }
+        e.preventDefault();
+      });
+    };
+
+    Gallery.prototype._translate = function() {
+      this.translate = this.touchCenter && this.lastTouchCenter && this.lastTranslate ? {
+        x: (this.touchCenter.x - this.lastTouchCenter.x) / this.zoom + this.lastTranslate.x,
+        y: (this.touchCenter.y - this.lastTouchCenter.y) / this.zoom + this.lastTranslate.y
+      } : { x: 0, y: 0 };
+    }
+    Gallery.prototype._zoom = function() {
+      this.zoom = (this.zoomRect.w + this.zoomRect.h) / (this.lastZoomRect.w + this.lastZoomRect.h) * this.lastZoom;
+      this.zoom > 1 ? this.$activeItem.addClass('zoom') : this.$activeItem.removeClass('zoom');
+      this.preZoom = this.zoom;
+    }
+
+    Gallery.prototype._calculateImageSize = function(w, h) {
+      var scale = 1;
+      if (this.contentWidth > 0 && this.contentHeight > 0 && w > 0 && h > 0) {
+        scale = Math.min(
+          Math.min(w, this.contentWidth) / w,
+          Math.min(h, this.contentHeight) / h);
+      }
+      return { w: Math.floor(w * scale), h: Math.floor(h * scale) };
+    };
+
+    Gallery.prototype._resizeImageSize = function() {
+      var i, $item, $items = this.$items, item, size;
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      if ($items.length < 1) { return; }
+      for (i = 0; i < $items.length; i++) {
+        item = this.items[i], $item = $items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        item.width = size.w; item.height = size.h;
+        $item && $item.find('img').css({ width: size.w, height: size.h });
+      }
+    };
+    Gallery.prototype._handleChangeEnd = function(index, $dom, preIndex, $preDom) {
+      this.curIndex = index;
+      this.lastZoomRect = null; this.lastZoomRect = null;
+      this.lastTranslate = this.translate = { x: 0, y:0 };
+      this.lastZoom = this.preZoom = this.zoom = 1;
+      this.$activeItem = $dom.find('.gallery-item__content');
+      setState($preDom.find('.gallery-item__content'), this.zoom, this.translate);
+    };
+
+    Gallery.prototype.refresh = function() {
+      this.swiper && this.swiper.refresh();
+      this._resizeImageSize();
+    };
+    Gallery.prototype.setOptions = function(options) {
+      this.disabled = options.disabled;
+      this.swiper && this.swiper.setOptions(options);
+    };
+    window.Gallery = Gallery;
+  });
+})();(function() {
+  window.imagesLoad = function(images) {
+    images = images || document.getElementsByTagName('img');
+    var imagesCount = images.length, loadedCount = 0, image;
+    var i, j, loaded = false, cbs = [];
+    imagesCount < 1 && (loaded = true);
+    for (i = 0; i < imagesCount; i++) {
+      image = images[i];
+      image.complete ? handleImageLoad() : image.addEventListener('load', handleImageLoad);
+    }
+    function handleImageLoad() {
+      loadedCount++;
+      if (loadedCount === imagesCount) {
+        loaded = true;
+        if (cbs.length > 0) {
+          for (j = 0; j < cbs.length; j++) {
+            cbs[j]();
+          }
+        }
+      }
+    }
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  };
+})();
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageGalleryModal = $('.js-page-gallery-modal');
+    var $images = $('.page__content').find('img:not(.lightbox-ignore)');
+    window.imagesLoad($images).then(function() {
+      /* global Gallery */
+      var pageGalleryModal = $pageGalleryModal.modal({ onChange: handleModalChange });
+      var gallery = null;
+      var modalVisible = false;
+      var i, items = [], image, item;
+      if($images && $images.length > 0) {
+        for (i = 0; i < $images.length; i++) {
+          image = $images.eq(i);
+          if (image.get(0).naturalWidth > 800) {
+            items.push({ src: image.attr('src'), w: image.get(0).naturalWidth, h: image.get(0).naturalHeight, $el: image});
+          }
+        }
+      }
+
+      if(items.length > 0) {
+        gallery = new Gallery('.gallery', items);
+        gallery.setOptions({ disabled: !modalVisible });
+        gallery.init();
+        for (i = 0; i < items.length; i++) {
+          item = items[i];
+          item.$el && (item.$el.addClass('popup-image'), item.$el.on('click', (function() {
+            var index = i;
+            return function() {
+              pageGalleryModal.show();
+              gallery.setOptions({ initialSlide: index });
+              gallery.refresh(true, { animation: false });
+            };
+          })()));
+        }
+      }
+
+      function handleModalChange(visible) {
+        modalVisible = visible;
+        gallery && gallery.setOptions({ disabled: !modalVisible });
+      }
+
+      $pageGalleryModal.on('click', function() {
+        pageGalleryModal.hide();
+      });
+    });
+  });
+})();/*(function () {
+
+})();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>

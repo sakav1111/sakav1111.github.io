@@ -1,0 +1,2521 @@
+<!DOCTYPE html><html lang="en">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>SatyaCodes - DevOps Tutorial</title>
+
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.">
+<link rel="canonical" href="/tutorials/devops-tutorial"><link rel="alternate" type="application/rss+xml" title="SatyaCodes" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet -->
+ <link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>DevOps Tutorial | SatyaCodes</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="DevOps Tutorial" />
+<meta name="author" content="Satya Kaveti" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:site_name" content="SatyaCodes" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="DevOps Tutorial" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Satya Kaveti"},"@type":"WebPage","description":"Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.","url":"/tutorials/devops-tutorial","headline":"DevOps Tutorial","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- start custom head snippets -->
+
+<!-- end custom head snippets --><script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.4',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script></head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="76px" height="76px" viewBox="0 0 76 76" enable-background="new 0 0 76 76" xml:space="preserve">  <image id="image0" width="76" height="76" x="0" y="0"
+    xlink:href="data:image/png;base64,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" />
+</svg>
+<a title="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." href="/">SatyaCodes</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/posts.html">AllPosts</a></li><li class="navigation__item navigation__item--active"><a href="/tutorials.html">Tutorials</a></li><li class="navigation__item"><a href="/java.html">Java</a></li><li class="navigation__item"><a href="/devops.html">DevOps</a></li><li class="navigation__item"><a href="/books.html">Books</a></li><li class="navigation__item"><a href="/interview-questions.html">InterviewQ's</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div></aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>DevOps Tutorial</h1></header></div><meta itemprop="headline" content="DevOps Tutorial"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=DevOps">DevOps</a>
+            </li></ul></div><meta itemprop="author" content="Satya Kaveti"/>
+    <meta itemprop="keywords" content="DevOps"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h1 id="1devops-introduction">1.DevOps Introduction</h1>
+
+<p>We can say from the very beginning software industry is divided into two parts
+,<strong>Development and Operations.</strong></p>
+
+<ul>
+  <li>
+    <p><strong>Development</strong> focuses on creating and testing software’s.</p>
+  </li>
+  <li>
+    <p><strong>Operations</strong> is focused on delivering those software’s to user in form of
+a website or as an installable software.</p>
+  </li>
+</ul>
+
+<p>Once delivered we our job is</p>
+
+<ul>
+  <li>
+    <p>maintain the software,</p>
+  </li>
+  <li>
+    <p>we deliver new features to our users</p>
+  </li>
+  <li>
+    <p>make sure the software’s stay up and running and healthy</p>
+  </li>
+</ul>
+
+<p>if we make quick changes (adding new features continuously) then stability
+becomes an issue. We are living in a world where there are frequent changes to
+our software’s and apps.</p>
+
+<ul>
+  <li>
+    <p>Developers aim to create latest features quickly and rapidly.</p>
+  </li>
+  <li>
+    <p>Operations aim is to keep systems stable.</p>
+  </li>
+  <li>
+    <p>Quick changes are the user demand.</p>
+  </li>
+  <li>
+    <p>User also needs stable software or Apps.</p>
+  </li>
+</ul>
+
+<p>DevOps whole and sole objective is to Deliver latest and greatest features to
+the user with stability.</p>
+
+<p><img src="media/74d5bf572337bd22e06cea6674673e00.png" alt="http://www.visualpath.in/devopstutorials/img/change.png" /></p>
+
+<p><img src="media/dcd41bdb533b9b90251486d7e28a366b.png" alt="http://www.visualpath.in/devopstutorials/img/devopsenter1.png" /></p>
+
+<h2 id="devops-lifecycle">DevOps LifeCycle</h2>
+
+<p>DevOps Lifecycle includes Development and Operations teams working together. As
+Developers work on their agile iterations, Ops must work in setting up systems
+and automating the procedure of deployment.</p>
+
+<p>agile model gives code repeatedly to deploy it on systems, that’s going to be
+continuous release of code and that must be continuously deployed to many
+servers in Dev, QA, Staging &amp; Production environments.</p>
+
+<p>If the code deployment process is not automated then ops team must manually do
+the deployment. Deployment may include below mentioned procedures.</p>
+
+<ul>
+  <li>
+    <p>Create servers if they don’t exist (On cloud or virtual env).</p>
+  </li>
+  <li>
+    <p>Install and setup prerequisites or dependencies on servers.</p>
+  </li>
+  <li>
+    <p>Build the software from raw source code (If not done by Developers).</p>
+  </li>
+  <li>
+    <p>Deploy software to servers.</p>
+  </li>
+  <li>
+    <p>Do config changes to OS and software.</p>
+  </li>
+  <li>
+    <p>Setup Monitoring.</p>
+  </li>
+  <li>
+    <p>Feedback &amp; Report.</p>
+  </li>
+</ul>
+
+<p>For this, all the process must be automated, we must automate first Build and
+Release process which includes.</p>
+
+<ul>
+  <li>
+    <p>Developers push the code in a centralised place.</p>
+  </li>
+  <li>
+    <p>Fetch the developers code.</p>
+  </li>
+  <li>
+    <p>Validate code.</p>
+  </li>
+  <li>
+    <p>Build &amp; test code</p>
+  </li>
+  <li>
+    <p>Package it into distributable format(software/artifacts).</p>
+  </li>
+  <li>
+    <p>Release it.</p>
+  </li>
+</ul>
+
+<p><img src="media/b862bae08d32bf30eef3ae76e2ba2cd2.png" alt="http://www.visualpath.in/devopstutorials/img/lifecycle.png" /></p>
+
+<p>The DevOps Lifecycle Looks Like This:</p>
+
+<ul>
+  <li>
+    <p>Check in code</p>
+  </li>
+  <li>
+    <p>Pull code changes for build</p>
+  </li>
+  <li>
+    <p>Run tests (continuous integration server to generate builds &amp; arrange
+releases): Test individual models, run integration tests, and run user
+acceptance tests.</p>
+  </li>
+  <li>
+    <p>Store artefacts and build repository (repository for storing artefacts,
+results &amp; releases)</p>
+  </li>
+  <li>
+    <p>Deploy and release (release automation product to deploy apps)</p>
+  </li>
+  <li>
+    <p>Configure environment</p>
+  </li>
+  <li>
+    <p>Update databases</p>
+  </li>
+  <li>
+    <p>Update apps</p>
+  </li>
+  <li>
+    <p>Push to users – who receive tested app updates frequently and without
+interruption</p>
+  </li>
+  <li>
+    <p>Application &amp; Network Performance Monitoring (preventive safeguard)</p>
+  </li>
+  <li>
+    <p>Rinse and repeat</p>
+  </li>
+</ul>
+
+<h2 id="what-is-continuous-integration">What Is Continuous Integration.</h2>
+
+<p>Developers will push their code several times in a day to a central repository,
+every time there is code change it should be pulled, built, tested and notify to
+the user. <strong>No deployment involved here</strong></p>
+
+<p><img src="media/efde7d645274b1208eee056dbb997364.png" alt="" /></p>
+
+<p>Refer in old devops notes</p>
+
+<h2 id="devops-tools">DevOps Tools</h2>
+
+<p><img src="media/5f11d771876f20b61f15d0460f2fa49e.png" alt="https://www.netforthtech.com/wp-content/uploads/2018/10/Top-10-DevOps-Tools-1076x540.png" /></p>
+
+<p><img src="media/2c33a134c8a0afc69f1f758e56e161aa.jpg" alt="https://miro.medium.com/max/8192/1*v0DBmS6ZFpT1Bjb8-B5scg.jpeg" /></p>
+
+<p><strong>Version Control Systems:</strong></p>
+
+<p>Is used to store the source code, a central place to keep all the code and
+tracks its version.</p>
+
+<p>For Example:</p>
+
+<ul>
+  <li>
+    <p>Git</p>
+  </li>
+  <li>
+    <p>SVN</p>
+  </li>
+  <li>
+    <p>TFS</p>
+  </li>
+  <li>
+    <p>Github</p>
+  </li>
+  <li>
+    <p>bitbucket</p>
+  </li>
+</ul>
+
+<p><strong>Build Tools:</strong></p>
+
+<p>Build process is where we take the raw source code, test it and build it into a
+software. This process is automated by build tools.</p>
+
+<p>For Example:</p>
+
+<ul>
+  <li>
+    <p>Maven</p>
+  </li>
+  <li>
+    <p>ANT</p>
+  </li>
+  <li>
+    <p>MSBuild</p>
+  </li>
+  <li>
+    <p>Gradle</p>
+  </li>
+  <li>
+    <p>NANT</p>
+  </li>
+</ul>
+
+<p><strong>Continuous Integration Tools:</strong></p>
+
+<p>For Example:</p>
+
+<ul>
+  <li>
+    <p>Jenkins</p>
+  </li>
+  <li>
+    <p>Circle CI</p>
+  </li>
+  <li>
+    <p>Hudson</p>
+  </li>
+  <li>
+    <p>Bamboo</p>
+  </li>
+  <li>
+    <p>Teamcity</p>
+  </li>
+</ul>
+
+<p><strong>Configuration Management Tools:</strong></p>
+
+<p>Also known as automation tools, can be used to automate system related tasks
+like software installation, service setup, file push/pull etc. Also used to
+automate cloud and virtual infrastructure.</p>
+
+<p>For Example:</p>
+
+<ul>
+  <li>
+    <p>Ansible</p>
+  </li>
+  <li>
+    <p>Chef</p>
+  </li>
+  <li>
+    <p>Puppet</p>
+  </li>
+  <li>
+    <p>Saltstack</p>
+  </li>
+</ul>
+
+<p><strong>Cloud Computing:</strong></p>
+
+<p>Well this is not any tool but a service accessed by users through internet. A
+service that provides us with compute resource to create virtual servers,
+virtual storage, networks etc. There are few providers in the market who gives
+us public cloud computing services.</p>
+
+<p>For Example:</p>
+
+<ul>
+  <li>
+    <p>AWS</p>
+  </li>
+  <li>
+    <p>Azure</p>
+  </li>
+  <li>
+    <p>Google Cloud</p>
+  </li>
+  <li>
+    <p>Rackspace</p>
+  </li>
+</ul>
+
+<p><strong>Monitoring Tools:</strong></p>
+
+<p>Is used to monitor our infrastructure and application health. It sends us
+notifications and reports through email or other means.</p>
+
+<p>For Example:</p>
+
+<ul>
+  <li>
+    <p>Nagios</p>
+  </li>
+  <li>
+    <p>Sensu</p>
+  </li>
+  <li>
+    <p>Icinga</p>
+  </li>
+  <li>
+    <p>Zenoss</p>
+  </li>
+  <li>
+    <p>Monit</p>
+  </li>
+</ul>
+
+<p><strong>Containers &amp; Microservices:</strong></p>
+
+<p>Well to be very frank this cannot be described to you right now. Its described
+in detail in separate chapter. We need to have lot of Infra &amp; Development
+knowledge to understand this category of tool.</p>
+
+<p>For Example:</p>
+
+<ul>
+  <li>
+    <p>Docker</p>
+  </li>
+  <li>
+    <p>RKT</p>
+  </li>
+  <li>
+    <p>Kubernetes</p>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <h1 id="virtualization">Virtualization</h1>
+  </li>
+</ol>
+
+<p>In computing, virtualization refers to the act of creating a virtual version of
+something, including virtual computer hardware platforms, storage devices, and
+computer network resources.</p>
+
+<p>Virtualization gained huge momentum because of <strong>Vmware</strong> as it has solved the
+problem of <strong>running multiple OS and apps on one physical computer</strong>.</p>
+
+<h4 id="isolated-system">isolated system</h4>
+
+<p><strong>isolated system</strong> (plural <strong>isolated systems</strong>) (physics) A <strong>system</strong> that
+does not interact with its surroundings; that is, its total energy and mass stay
+constant</p>
+
+<p>Applications runs on servers. We deploy one application per server because we
+want our applications to be isolated. For example, if we need web app, db app
+and few backend apps. We may end up having multiple physical system each running
+a single instance of that app.</p>
+
+<p><img src="media/5a31ef6f7788d5dad255a1230e076857.png" alt="https://www.redhat.com/cms/managed-files/styles/xlarge/s3/virtualization-vs-containers_transparent.png?itok=xXeraNhk" /></p>
+
+<p><img src="media/a47da8a4ac2f1d73a69d08ec4a4f7aa3.png" alt="https://miro.medium.com/max/10698/1*wE7TrQmFyRTDwh6VpbkbMQ.png" /></p>
+
+<h2 id="the-virtual-machine">The Virtual Machine</h2>
+
+<p>A virtual computer system is known as a -virtual machine” (VM): a tightly
+isolated software container with an operating system and application inside.
+Each self-contained VM is completely independent. Putting multiple VMs on a
+single computer enables several operating systems and applications to run on
+just one physical server, or -host”.</p>
+
+<p>VMs have the following characteristics, which offer several benefits.</p>
+
+<ul>
+  <li>
+    <p>Partitioning</p>
+  </li>
+  <li>
+    <p>Run multiple operating systems on one physical machine</p>
+  </li>
+  <li>
+    <p>Divide system resources between virtual machines</p>
+  </li>
+  <li>
+    <p>Isolation</p>
+  </li>
+  <li>
+    <p>Provide fault and security isolation at the hardware level</p>
+  </li>
+  <li>
+    <p>Preserve performance with advanced resource controls</p>
+  </li>
+  <li>
+    <p>Encapsulation</p>
+  </li>
+  <li>
+    <p>Save the entire state of a virtual machine to files</p>
+  </li>
+  <li>
+    <p>Hardware Independence</p>
+  </li>
+  <li>
+    <p>Provision or migrate any virtual machine to any physical server</p>
+  </li>
+</ul>
+
+<h2 id="hypervisors">Hypervisors</h2>
+
+<p>As generally we install OS on the physical server and then install our apps on
+that. By setting up Hypervisor on the physical server we can create multiple VMs
+each with their own OS.</p>
+
+<p>There are two types of hypervisors:</p>
+
+<p><strong>Type 1</strong></p>
+
+<p>hypervisors run directly on the system hardware. They are often referred to as a
+“native” or “bare metal” hypervisors.</p>
+
+<p>They get installed on a physical computer like an OS. <strong>So instead of installing
+OS</strong> we install Hypervisor to achieve virtualization.</p>
+
+<p>We can activate/deactivate this on Boot menu(F12)</p>
+
+<p>Example:</p>
+
+<ul>
+  <li>
+    <p>Microsoft Hyper-V</p>
+  </li>
+  <li>
+    <p>VMware ESX/ESXi.</p>
+  </li>
+  <li>
+    <p>Xen Hypervisors</p>
+  </li>
+</ul>
+
+<p><strong>Type 2</strong></p>
+
+<p>Type 2 hypervisors run on a host operating system. In this kind, we install
+hypervisor on the OS like Linux or windows.</p>
+
+<p>Example:</p>
+
+<ul>
+  <li>
+    <p>Vmware server/workstation/player</p>
+  </li>
+  <li>
+    <p>Oracle virtualbox.</p>
+  </li>
+</ul>
+
+<p><img src="media/3362f40abff503776bebcc21dfd57519.png" alt="http://www.visualpath.in/devopstutorials/img/virtualization3.png" /></p>
+
+<p><strong>Host Operating System (Host OS).</strong></p>
+
+<p>This is the operating system of the physical computer on which VirtualBox was
+installed. There are versions of VirtualBox for Windows, Mac OS X, Linux and
+Solaris hosts.</p>
+
+<p><strong>Guest Operating System (Guest OS).</strong></p>
+
+<p>This is the operating system that is running inside the virtual machine.</p>
+
+<p>Installing virtualbox on windows.</p>
+
+<p>Installing OS on the newly created VM.</p>
+
+<p><a href="https://youtu.be/63_kPIQUPp8">https://youtu.be/63_kPIQUPp8</a></p>
+
+<p><br /></p>
+
+<h1 id="2bash-scripting">2.Bash Scripting</h1>
+
+<h2 id="shell-commands-list">Shell Commands list</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="c">##############################################################################</span>
+<span class="c"># SHORTCUTS and HISTORY</span>
+<span class="c">##############################################################################</span>
+
+CTRL+A  <span class="c"># move to beginning of line</span>
+CTRL+C  <span class="c"># halts the current command</span>
+CTRL+L  <span class="c"># clears screen and redisplay the line</span>
+<span class="nb">history</span>   <span class="c"># shows command line history</span>
+<span class="o">!!</span>        <span class="c"># repeats the last command</span>
+<span class="o">!</span>&lt;n&gt;      <span class="c"># refers to command line 'n'</span>
+<span class="o">!</span>&lt;string&gt; <span class="c"># refers to command starting with 'string'</span>
+
+<span class="nb">exit</span>      <span class="c"># logs out of current session</span>
+
+
+<span class="c">##############################################################################</span>
+<span class="c"># BASH BASICS</span>
+<span class="c">##############################################################################</span>
+
+<span class="nb">env</span>                 <span class="c"># displays all environment variables</span>
+
+<span class="nb">echo</span> <span class="nv">$SHELL</span>         <span class="c"># displays the shell you're using</span>
+/bin/bash
+
+<span class="nb">echo</span> <span class="nv">$BASH_VERSION</span>  <span class="c"># displays bash version</span>
+4.2.46<span class="o">(</span>2<span class="o">)</span><span class="nt">-release</span>
+
+bash                <span class="c"># if you want to use bash (type exit to go back to your previously opened shell)</span>
+whereis bash        <span class="c"># locates the binary, source and manual-page for a command</span>
+which bash          <span class="c"># finds out which program is executed as 'bash' (default: /bin/bash, can change across environments)</span>
+
+clear               <span class="c"># clears content on window (hide displayed lines)</span>
+
+
+<span class="c">##############################################################################</span>
+<span class="c"># FILE COMMANDS</span>
+<span class="c">##############################################################################</span>
+
+
+<span class="nb">ls</span>                            <span class="c"># lists files in current directory, ls &lt;dir&gt; print files in a specific directory</span>
+<span class="nb">ls</span> <span class="nt">-l</span>                         <span class="c"># lists your files in 'long format', which contains the exact size of the file, who owns the file and who has the right to look at it, and when it was last modified</span>
+<span class="nb">ls</span> <span class="nt">-a</span>                         <span class="c"># lists all files, including hidden files (name beginning with '.')</span>
+<span class="nb">ln</span> <span class="nt">-s</span> &lt;filename&gt; &lt;<span class="nb">link</span><span class="o">&gt;</span>       <span class="c"># creates symbolic link to file</span>
+<span class="nb">touch</span> &lt;filename&gt;              <span class="c"># creates or updates (edit) your file</span>
+<span class="nb">cat</span> &lt;filename&gt;                <span class="c"># prints file raw content (will not be interpreted)</span>
+any_command <span class="o">&gt;</span> &lt;filename&gt;      <span class="c"># '&gt;' is used to perform redirections, it will set any_command's stdout to file instead of "real stdout" (generally /dev/stdout)</span>
+more &lt;filename&gt;               <span class="c"># shows the first part of a file (move with space and type q to quit)</span>
+<span class="nb">head</span> &lt;filename&gt;               <span class="c"># outputs the first lines of file (default: 10 lines)</span>
+<span class="nb">tail</span> &lt;filename&gt;               <span class="c"># outputs the last lines of file (useful with -f option) (default: 10 lines)</span>
+vim &lt;filename&gt;                <span class="c"># opens a file in VIM (VI iMproved) text editor, will create it if it doesn't exist</span>
+<span class="nb">mv</span> &lt;filename1&gt; &lt;dest&gt;         <span class="c"># moves a file to destination, behavior will change based on 'dest' type (dir: file is placed into dir; file: file will replace dest (tip: useful for renaming))</span>
+<span class="nb">cp</span> &lt;filename1&gt; &lt;dest&gt;         <span class="c"># copies a file</span>
+<span class="nb">rm</span> &lt;filename&gt;                 <span class="c"># removes a file</span>
+diff &lt;filename1&gt; &lt;filename2&gt;  <span class="c"># compares files, and shows where they differ</span>
+<span class="nb">wc</span> &lt;filename&gt;                 <span class="c"># tells you how many lines, words and characters there are in a file. Use -lwc (lines, word, character) to ouput only 1 of those informations</span>
+<span class="nb">chmod</span> <span class="nt">-options</span> &lt;filename&gt;     <span class="c"># lets you change the read, write, and execute permissions on your files (more infos: SUID, GUID)</span>
+<span class="nb">gzip</span> &lt;filename&gt;               <span class="c"># compresses files using gzip algorithm</span>
+<span class="nb">gunzip</span> &lt;filename&gt;             <span class="c"># uncompresses files compressed by gzip</span>
+gzcat &lt;filename&gt;              <span class="c"># lets you look at gzipped file without actually having to gunzip it</span>
+lpr &lt;filename&gt;                <span class="c"># prints the file</span>
+lpq                           <span class="c"># checks out the printer queue</span>
+lprm &lt;jobnumber&gt;              <span class="c"># removes something from the printer queue</span>
+genscript                     <span class="c"># converts plain text files into postscript for printing and gives you some options for formatting</span>
+dvips &lt;filename&gt;              <span class="c"># prints .dvi files (i.e. files produced by LaTeX)</span>
+<span class="nb">grep</span> &lt;pattern&gt; &lt;filenames&gt;    <span class="c"># looks for the string in the files</span>
+<span class="nb">grep</span> <span class="nt">-r</span> &lt;pattern&gt; &lt;<span class="nb">dir</span><span class="o">&gt;</span>       <span class="c"># search recursively for pattern in directory</span>
+
+
+<span class="c">##############################################################################</span>
+<span class="c"># DIRECTORY COMMANDS</span>
+<span class="c">##############################################################################</span>
+
+
+<span class="nb">mkdir</span> &lt;<span class="nb">dirname</span><span class="o">&gt;</span>  <span class="c"># makes a new directory</span>
+<span class="nb">cd</span>               <span class="c"># changes to home</span>
+<span class="nb">cd</span> &lt;<span class="nb">dirname</span><span class="o">&gt;</span>     <span class="c"># changes directory</span>
+<span class="nb">pwd</span>              <span class="c"># tells you where you currently are</span>
+
+
+<span class="c">##############################################################################</span>
+<span class="c"># SSH, SYSTEM INFO &amp; NETWORK COMMANDS</span>
+<span class="c">##############################################################################</span>
+
+
+ssh user@host            <span class="c"># connects to host as user</span>
+ssh <span class="nt">-p</span> &lt;port&gt; user@host  <span class="c"># connects to host on specified port as user</span>
+ssh-copy-id user@host    <span class="c"># adds your ssh key to host for user to enable a keyed or passwordless login</span>
+
+<span class="nb">whoami</span>                   <span class="c"># returns your username</span>
+passwd                   <span class="c"># lets you change your password</span>
+quota <span class="nt">-v</span>                 <span class="c"># shows what your disk quota is</span>
+<span class="nb">date</span>                     <span class="c"># shows the current date and time</span>
+cal                      <span class="c"># shows the month's calendar</span>
+<span class="nb">uptime</span>                   <span class="c"># shows current uptime</span>
+w                        <span class="c"># displays whois online</span>
+finger &lt;user&gt;            <span class="c"># displays information about user</span>
+<span class="nb">uname</span> <span class="nt">-a</span>                 <span class="c"># shows kernel information</span>
+man &lt;<span class="nb">command</span><span class="o">&gt;</span>            <span class="c"># shows the manual for specified command</span>
+<span class="nb">df</span>                       <span class="c"># shows disk usage</span>
+<span class="nb">du</span> &lt;filename&gt;            <span class="c"># shows the disk usage of the files and directories in filename (du -s give only a total)</span>
+last &lt;yourUsername&gt;      <span class="c"># lists your last logins</span>
+ps <span class="nt">-u</span> yourusername       <span class="c"># lists your processes</span>
+<span class="nb">kill</span> &lt;PID&gt;               <span class="c"># kills the processes with the ID you gave</span>
+killall &lt;processname&gt;    <span class="c"># kill all processes with the name</span>
+top                      <span class="c"># displays your currently active processes</span>
+<span class="nb">bg</span>                       <span class="c"># lists stopped or background jobs ; resume a stopped job in the background</span>
+<span class="nb">fg</span>                       <span class="c"># brings the most recent job in the foreground</span>
+<span class="nb">fg</span> &lt;job&gt;                 <span class="c"># brings job to the foreground</span>
+
+ping &lt;host&gt;              <span class="c"># pings host and outputs results</span>
+whois &lt;domain&gt;           <span class="c"># gets whois information for domain</span>
+dig &lt;domain&gt;             <span class="c"># gets DNS information for domain</span>
+dig <span class="nt">-x</span> &lt;host&gt;            <span class="c"># reverses lookup host</span>
+wget &lt;file&gt;              <span class="c"># downloads file</span>
+
+
+<span class="c">##############################################################################</span>
+<span class="c"># VARIABLES</span>
+<span class="c">##############################################################################</span>
+
+
+<span class="nv">varname</span><span class="o">=</span>value                <span class="c"># defines a variable</span>
+<span class="nv">varname</span><span class="o">=</span>value <span class="nb">command</span>        <span class="c"># defines a variable to be in the environment of a particular subprocess</span>
+<span class="nb">echo</span> <span class="nv">$varname</span>                <span class="c"># checks a variable's value</span>
+<span class="nb">echo</span> <span class="nv">$$</span>                      <span class="c"># prints process ID of the current shell</span>
+<span class="nb">echo</span> <span class="nv">$!</span>                      <span class="c"># prints process ID of the most recently invoked background job</span>
+<span class="nb">echo</span> <span class="nv">$?</span>                      <span class="c"># displays the exit status of the last command</span>
+<span class="nb">export </span><span class="nv">VARNAME</span><span class="o">=</span>value         <span class="c"># defines an environment variable (will be available in subprocesses)</span>
+
+array[0]<span class="o">=</span>valA                <span class="c"># how to define an array</span>
+array[1]<span class="o">=</span>valB
+array[2]<span class="o">=</span>valC
+<span class="nv">array</span><span class="o">=([</span>2]<span class="o">=</span>valC <span class="o">[</span>0]<span class="o">=</span>valA <span class="o">[</span>1]<span class="o">=</span>valB<span class="o">)</span>  <span class="c"># another way</span>
+<span class="nv">array</span><span class="o">=(</span>valA valB valC<span class="o">)</span>              <span class="c"># and another</span>
+
+<span class="k">${</span><span class="nv">array</span><span class="p">[i]</span><span class="k">}</span>                  <span class="c"># displays array's value for this index. If no index is supplied, array element 0 is assumed</span>
+<span class="k">${#</span><span class="nv">array</span><span class="p">[i]</span><span class="k">}</span>                 <span class="c"># to find out the length of any element in the array</span>
+<span class="k">${#</span><span class="nv">array</span><span class="p">[@]</span><span class="k">}</span>                 <span class="c"># to find out how many values there are in the array</span>
+
+<span class="nb">declare</span> <span class="nt">-a</span>                   <span class="c"># the variables are treaded as arrays</span>
+<span class="nb">declare</span> <span class="nt">-f</span>                   <span class="c"># uses function names only</span>
+<span class="nb">declare</span> <span class="nt">-F</span>                   <span class="c"># displays function names without definitions</span>
+<span class="nb">declare</span> <span class="nt">-i</span>                   <span class="c"># the variables are treaded as integers</span>
+<span class="nb">declare</span> <span class="nt">-r</span>                   <span class="c"># makes the variables read-only</span>
+<span class="nb">declare</span> <span class="nt">-x</span>                   <span class="c"># marks the variables for export via the environment</span>
+
+<span class="k">${</span><span class="nv">varname</span><span class="k">:-</span><span class="nv">word</span><span class="k">}</span>             <span class="c"># if varname exists and isn't null, return its value; otherwise return word</span>
+<span class="k">${</span><span class="nv">varname</span>:<span class="p">=word</span><span class="k">}</span>             <span class="c"># if varname exists and isn't null, return its value; otherwise set it word and then return its value</span>
+<span class="k">${</span><span class="nv">varname</span>:?message<span class="k">}</span>          <span class="c"># if varname exists and isn't null, return its value; otherwise print varname, followed by message and abort the current command or script</span>
+<span class="k">${</span><span class="nv">varname</span>:+word<span class="k">}</span>             <span class="c"># if varname exists and isn't null, return word; otherwise return null</span>
+<span class="k">${</span><span class="nv">varname</span>:offset:length<span class="k">}</span>     <span class="c"># performs substring expansion. It returns the substring of $varname starting at offset and up to length characters</span>
+
+<span class="k">${</span><span class="nv">variable</span><span class="p">#pattern</span><span class="k">}</span>          <span class="c"># if the pattern matches the beginning of the variable's value, delete the shortest part that matches and return the rest</span>
+<span class="k">${</span><span class="nv">variable</span><span class="p">##pattern</span><span class="k">}</span>         <span class="c"># if the pattern matches the beginning of the variable's value, delete the longest part that matches and return the rest</span>
+<span class="k">${</span><span class="nv">variable</span><span class="p">%pattern</span><span class="k">}</span>          <span class="c"># if the pattern matches the end of the variable's value, delete the shortest part that matches and return the rest</span>
+<span class="k">${</span><span class="nv">variable</span><span class="p">%%pattern</span><span class="k">}</span>         <span class="c"># if the pattern matches the end of the variable's value, delete the longest part that matches and return the rest</span>
+<span class="k">${</span><span class="nv">variable</span><span class="p">/pattern/string</span><span class="k">}</span>   <span class="c"># the longest match to pattern in variable is replaced by string. Only the first match is replaced</span>
+<span class="k">${</span><span class="nv">variable</span><span class="p">//pattern/string</span><span class="k">}</span>  <span class="c"># the longest match to pattern in variable is replaced by string. All matches are replaced</span>
+
+<span class="k">${#</span><span class="nv">varname</span><span class="k">}</span>                  <span class="c"># returns the length of the value of the variable as a character string</span>
+
+<span class="k">*</span><span class="o">(</span>patternlist<span class="o">)</span>               <span class="c"># matches zero or more occurrences of the given patterns</span>
++<span class="o">(</span>patternlist<span class="o">)</span>               <span class="c"># matches one or more occurrences of the given patterns</span>
+?<span class="o">(</span>patternlist<span class="o">)</span>               <span class="c"># matches zero or one occurrence of the given patterns</span>
+@<span class="o">(</span>patternlist<span class="o">)</span>               <span class="c"># matches exactly one of the given patterns</span>
+<span class="o">!(</span>patternlist<span class="o">)</span>               <span class="c"># matches anything except one of the given patterns</span>
+
+<span class="si">$(</span>UNIX <span class="nb">command</span><span class="si">)</span>              <span class="c"># command substitution: runs the command and returns standard output</span>
+
+
+<span class="c">##############################################################################</span>
+<span class="c"># FUNCTIONS</span>
+<span class="c">##############################################################################</span>
+
+
+<span class="c"># The function refers to passed arguments by position (as if they were positional parameters), that is, $1, $2, and so forth.</span>
+<span class="c"># $@ is equal to "$1" "$2"... "$N", where N is the number of positional parameters. $# holds the number of positional parameters.</span>
+
+
+<span class="k">function </span>functname<span class="o">()</span> <span class="o">{</span>
+  shell commands
+<span class="o">}</span>
+
+<span class="nb">unset</span> <span class="nt">-f</span> functname  <span class="c"># deletes a function definition</span>
+<span class="nb">declare</span> <span class="nt">-f</span>          <span class="c"># displays all defined functions in your login session</span>
+
+
+<span class="c">##############################################################################</span>
+<span class="c"># FLOW CONTROLS</span>
+<span class="c">##############################################################################</span>
+
+
+statement1 <span class="o">&amp;&amp;</span> statement2  <span class="c"># and operator</span>
+statement1 <span class="o">||</span> statement2  <span class="c"># or operator</span>
+
+<span class="nt">-a</span>                        <span class="c"># and operator inside a test conditional expression</span>
+<span class="nt">-o</span>                        <span class="c"># or operator inside a test conditional expression</span>
+
+<span class="c"># STRINGS</span>
+
+str1 <span class="o">==</span> str2               <span class="c"># str1 matches str2</span>
+str1 <span class="o">!=</span> str2               <span class="c"># str1 does not match str2</span>
+str1 &lt; str2                <span class="c"># str1 is less than str2 (alphabetically)</span>
+str1 <span class="o">&gt;</span> str2                <span class="c"># str1 is greater than str2 (alphabetically)</span>
+<span class="nt">-n</span> str1                    <span class="c"># str1 is not null (has length greater than 0)</span>
+<span class="nt">-z</span> str1                    <span class="c"># str1 is null (has length 0)</span>
+
+<span class="c"># FILES</span>
+
+<span class="nt">-a</span> file                   <span class="c"># file exists</span>
+<span class="nt">-d</span> file                   <span class="c"># file exists and is a directory</span>
+<span class="nt">-e</span> file                   <span class="c"># file exists; same -a</span>
+<span class="nt">-f</span> file                   <span class="c"># file exists and is a regular file (i.e., not a directory or other special type of file)</span>
+<span class="nt">-r</span> file                   <span class="c"># you have read permission</span>
+<span class="nt">-s</span> file                   <span class="c"># file exists and is not empty</span>
+<span class="nt">-w</span> file                   <span class="c"># your have write permission</span>
+<span class="nt">-x</span> file                   <span class="c"># you have execute permission on file, or directory search permission if it is a directory</span>
+<span class="nt">-N</span> file                   <span class="c"># file was modified since it was last read</span>
+<span class="nt">-O</span> file                   <span class="c"># you own file</span>
+<span class="nt">-G</span> file                   <span class="c"># file's group ID matches yours (or one of yours, if you are in multiple groups)</span>
+file1 <span class="nt">-nt</span> file2           <span class="c"># file1 is newer than file2</span>
+file1 <span class="nt">-ot</span> file2           <span class="c"># file1 is older than file2</span>
+
+<span class="c"># NUMBERS</span>
+
+<span class="nt">-lt</span>                       <span class="c"># less than</span>
+<span class="nt">-le</span>                       <span class="c"># less than or equal</span>
+<span class="nt">-eq</span>                       <span class="c"># equal</span>
+<span class="nt">-ge</span>                       <span class="c"># greater than or equal</span>
+<span class="nt">-gt</span>                       <span class="c"># greater than</span>
+<span class="nt">-ne</span>                       <span class="c"># not equal</span>
+
+<span class="k">if </span>condition
+<span class="k">then
+  </span>statements
+<span class="o">[</span><span class="k">elif </span>condition
+  <span class="k">then </span>statements...]
+<span class="o">[</span><span class="k">else
+  </span>statements]
+<span class="k">fi
+
+for </span>x <span class="k">in</span> <span class="o">{</span>1..10<span class="o">}</span>
+<span class="k">do
+  </span>statements
+<span class="k">done
+
+for </span>name <span class="o">[</span><span class="k">in </span>list]
+<span class="k">do
+  </span>statements that can use <span class="nv">$name</span>
+<span class="k">done
+
+for</span> <span class="o">((</span> initialisation <span class="p">;</span> ending condition <span class="p">;</span> update <span class="o">))</span>
+<span class="k">do
+  </span>statements...
+<span class="k">done
+
+case</span> expression <span class="k">in
+  </span>pattern1 <span class="p">)</span>
+    statements <span class="p">;;</span>
+  pattern2 <span class="p">)</span>
+    statements <span class="p">;;</span>
+<span class="k">esac</span>
+
+<span class="k">select </span>name <span class="o">[</span><span class="k">in </span>list]
+<span class="k">do
+  </span>statements that can use <span class="nv">$name</span>
+<span class="k">done
+
+while </span>condition<span class="p">;</span> <span class="k">do
+  </span>statements
+<span class="k">done
+
+until </span>condition<span class="p">;</span> <span class="k">do
+  </span>statements
+<span class="k">done</span>
+
+<span class="c">##############################################################################</span>
+<span class="c"># COMMAND-LINE PROCESSING CYCLE</span>
+<span class="c">##############################################################################</span>
+
+
+<span class="c"># The default order for command lookup is functions, followed by built-ins, with scripts and executables last.</span>
+<span class="c"># There are three built-ins that you can use to override this order: `command`, `builtin` and `enable`.</span>
+
+<span class="nb">command</span>  <span class="c"># removes alias and function lookup. Only built-ins and commands found in the search path are executed</span>
+<span class="nb">builtin</span>  <span class="c"># looks up only built-in commands, ignoring functions and commands found in PATH</span>
+<span class="nb">enable</span>   <span class="c"># enables and disables shell built-ins</span>
+
+<span class="nb">eval</span>     <span class="c"># takes arguments and run them through the command-line processing steps all over again</span>
+
+
+<span class="c">##############################################################################</span>
+<span class="c"># INPUT/OUTPUT REDIRECTORS</span>
+<span class="c">##############################################################################</span>
+
+
+cmd1|cmd2  <span class="c"># pipe; takes standard output of cmd1 as standard input to cmd2</span>
+&lt; file     <span class="c"># takes standard input from file</span>
+<span class="o">&gt;</span> file     <span class="c"># directs standard output to file</span>
+<span class="o">&gt;&gt;</span> file    <span class="c"># directs standard output to file; append to file if it already exists</span>
+<span class="o">&gt;</span>|file     <span class="c"># forces standard output to file even if noclobber is set</span>
+n&gt;|file    <span class="c"># forces output to file from file descriptor n even if noclobber is set</span>
+&lt;<span class="o">&gt;</span> file    <span class="c"># uses file as both standard input and standard output</span>
+n&lt;<span class="o">&gt;</span>file    <span class="c"># uses file as both input and output for file descriptor n</span>
+n&gt;file     <span class="c"># directs file descriptor n to file</span>
+n&lt;file     <span class="c"># takes file descriptor n from file</span>
+n&gt;&gt;file    <span class="c"># directs file description n to file; append to file if it already exists</span>
+n&gt;&amp;        <span class="c"># duplicates standard output to file descriptor n</span>
+n&lt;&amp;        <span class="c"># duplicates standard input from file descriptor n</span>
+n&gt;&amp;m       <span class="c"># file descriptor n is made to be a copy of the output file descriptor</span>
+n&lt;&amp;m       <span class="c"># file descriptor n is made to be a copy of the input file descriptor</span>
+&amp;&gt;file     <span class="c"># directs standard output and standard error to file</span>
+&lt;&amp;-        <span class="c"># closes the standard input</span>
+<span class="o">&gt;</span>&amp;-        <span class="c"># closes the standard output</span>
+n&gt;&amp;-       <span class="c"># closes the ouput from file descriptor n</span>
+n&lt;&amp;-       <span class="c"># closes the input from file descripor n</span>
+
+
+<span class="c">##############################################################################</span>
+<span class="c"># PROCESS HANDLING</span>
+<span class="c">##############################################################################</span>
+
+
+<span class="c"># To suspend a job, type CTRL+Z while it is running. You can also suspend a job with CTRL+Y.</span>
+<span class="c"># This is slightly different from CTRL+Z in that the process is only stopped when it attempts to read input from terminal.</span>
+<span class="c"># Of course, to interrupt a job, type CTRL+C.</span>
+
+myCommand &amp;  <span class="c"># runs job in the background and prompts back the shell</span>
+
+<span class="nb">jobs</span>         <span class="c"># lists all jobs (use with -l to see associated PID)</span>
+
+<span class="nb">fg</span>           <span class="c"># brings a background job into the foreground</span>
+<span class="nb">fg</span> %+        <span class="c"># brings most recently invoked background job</span>
+<span class="nb">fg</span> %-        <span class="c"># brings second most recently invoked background job</span>
+<span class="nb">fg</span> %N        <span class="c"># brings job number N</span>
+<span class="nb">fg</span> %string   <span class="c"># brings job whose command begins with string</span>
+<span class="nb">fg</span> %?string  <span class="c"># brings job whose command contains string</span>
+
+<span class="nb">kill</span> <span class="nt">-l</span>               <span class="c"># returns a list of all signals on the system, by name and number</span>
+<span class="nb">kill </span>PID              <span class="c"># terminates process with specified PID</span>
+<span class="nb">kill</span> <span class="nt">-s</span> SIGKILL 4500  <span class="c"># sends a signal to force or terminate the process</span>
+<span class="nb">kill</span> <span class="nt">-15</span> 913          <span class="c"># Ending PID 913 process with signal 15 (TERM)</span>
+
+ps           <span class="c"># prints a line of information about the current running login shell and any processes running under it</span>
+ps <span class="nt">-a</span>        <span class="c"># selects all processes with a tty except session leaders</span>
+
+<span class="nb">trap </span>cmd sig1 sig2  <span class="c"># executes a command when a signal is received by the script</span>
+<span class="nb">trap</span> <span class="s2">""</span> sig1 sig2   <span class="c"># ignores that signals</span>
+<span class="nb">trap</span> - sig1 sig2    <span class="c"># resets the action taken when the signal is received to the default</span>
+
+<span class="nb">disown</span> &lt;PID|JID&gt;    <span class="c"># removes the process from the list of jobs</span>
+
+<span class="nb">wait</span>                <span class="c"># waits until all background jobs have finished</span>
+
+
+<span class="c">##############################################################################</span>
+<span class="c"># TIPS &amp; TRICKS</span>
+<span class="c">##############################################################################</span>
+
+
+<span class="c"># set an alias</span>
+<span class="nb">cd</span><span class="p">;</span> nano .bash_profile
+<span class="o">&gt;</span> <span class="nb">alias </span><span class="nv">gentlenode</span><span class="o">=</span><span class="s1">'ssh admin@gentlenode.com -p 3404'</span>  <span class="c"># add your alias in .bash_profile</span>
+
+<span class="c"># to quickly go to a specific directory</span>
+<span class="nb">cd</span><span class="p">;</span> nano .bashrc
+<span class="o">&gt;</span> <span class="nb">shopt</span> <span class="nt">-s</span> cdable_vars
+<span class="o">&gt;</span> <span class="nb">export </span><span class="nv">websites</span><span class="o">=</span><span class="s2">"/Users/mac/Documents/websites"</span>
+
+<span class="nb">source</span> .bashrc
+<span class="nb">cd</span> <span class="nv">$websites</span>
+
+
+<span class="c">##############################################################################</span>
+<span class="c"># DEBUGGING SHELL PROGRAMS</span>
+<span class="c">##############################################################################</span>
+
+
+bash <span class="nt">-n</span> scriptname  <span class="c"># don't run commands; check for syntax errors only</span>
+<span class="nb">set</span> <span class="nt">-o</span> noexec       <span class="c"># alternative (set option in script)</span>
+
+bash <span class="nt">-v</span> scriptname  <span class="c"># echo commands before running them</span>
+<span class="nb">set</span> <span class="nt">-o</span> verbose      <span class="c"># alternative (set option in script)</span>
+
+bash <span class="nt">-x</span> scriptname  <span class="c"># echo commands after command-line processing</span>
+<span class="nb">set</span> <span class="nt">-o</span> xtrace       <span class="c"># alternative (set option in script)</span>
+
+<span class="nb">trap</span> <span class="s1">'echo $varname'</span> EXIT  <span class="c"># useful when you want to print out the values of variables at the point that your script exits</span>
+
+<span class="k">function </span>errtrap <span class="o">{</span>
+  <span class="nv">es</span><span class="o">=</span><span class="nv">$?</span>
+  <span class="nb">echo</span> <span class="s2">"ERROR line </span><span class="nv">$1</span><span class="s2">: Command exited with status </span><span class="nv">$es</span><span class="s2">."</span>
+<span class="o">}</span>
+
+<span class="nb">trap</span> <span class="s1">'errtrap $LINENO'</span> ERR  <span class="c"># is run whenever a command in the surrounding script or function exits with non-zero status</span>
+
+<span class="k">function </span>dbgtrap <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"badvar is </span><span class="nv">$badvar</span><span class="s2">"</span>
+<span class="o">}</span>
+
+<span class="nb">trap </span>dbgtrap DEBUG  <span class="c"># causes the trap code to be executed before every statement in a function or script</span>
+<span class="c"># ...section of code in which the problem occurs...</span>
+<span class="nb">trap</span> - DEBUG  <span class="c"># turn off the DEBUG trap</span>
+
+<span class="k">function </span>returntrap <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"A return occurred"</span>
+<span class="o">}</span>
+
+<span class="nb">trap </span>returntrap RETURN  <span class="c"># is executed each time a shell function or a script executed with the . or source commands finishes executing</span>
+</code></pre></div></div>
+
+<h2 id="bash-script">Bash Script</h2>
+
+<p>Anything you can run normally on the command line can be put into a script and
+it will do exactly the same thing. Similarly, anything you can put into a script
+can also be run normally on the command line and it will do exactly the same
+thing.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi test.sh
+<span class="nt">---------------------</span>
+<span class="c">#!/bin/bash</span>
+<span class="c"># A sample Bash script</span>
+<span class="nb">echo </span>Hello World!
+</code></pre></div></div>
+
+<p><strong>#!/bin/bash</strong></p>
+
+<ul>
+  <li>
+    <p>Tells type of interpreter to use while running script</p>
+  </li>
+  <li>
+    <p><strong>#!</strong> is called as the <strong>SHEBANG</strong> character</p>
+  </li>
+  <li>
+    <p>if we change that to /usr/bin/python then it tells the script to use python
+interpreter.</p>
+  </li>
+</ul>
+
+<p><strong>#</strong> -</p>
+
+<p>This is a comment. Anything after # is not executed.</p>
+
+<p>Whenever you create a file in Linux system by default it will not have an
+execute permission, this is for security reasons. You make your script
+executable and then you can run it.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>satyacodes]# ./print.sh
+bash: ./print.sh: Permission denied
+
+<span class="o">[</span>satyacodes]# <span class="nb">chmod </span>755 print.sh
+
+<span class="o">[</span>satyacodes]# ./print.sh
+hello
+<span class="o">[</span>satyacodes]#
+</code></pre></div></div>
+
+<h3 id="command-line-arguments">Command Line Arguments</h3>
+
+<p>we use the variables <strong>$1</strong> to represent the first command line argument,
+<strong>$2</strong> to represent the second command line argument and so on.</p>
+
+<h6 id="ask-the-user-for-input">Ask The User For Input</h6>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print.sh
+<span class="nt">------------------</span>
+<span class="nb">echo</span> <span class="s2">"Enter your Name ?"</span>
+<span class="nb">read </span>name
+<span class="nb">echo</span> <span class="s2">"Hello, </span><span class="nv">$name</span><span class="s2">"</span>
+<span class="nt">--------------------------</span>
+<span class="o">[</span>satyacodes]# ./print.sh
+Enter your Name ?
+Satya
+Hello, Satya
+
+<span class="nb">echo </span>Enter your Name, Profession &amp; Interests <span class="k">in </span>same order seprated by a space?
+<span class="nb">read </span>name profession interest
+<span class="nb">echo </span>Your entered name is: <span class="nv">$name</span>
+<span class="nb">echo </span>Your profession is: <span class="nv">$profession</span>
+<span class="nb">echo </span>Your are interested <span class="k">in</span>: <span class="nv">$interest</span>
+
+<span class="nt">-----------------------------------------</span>
+<span class="o">[</span>satyacodes]# ./print.sh
+Enter your Name, Profession,Interests <span class="k">in </span>same order seprated by a space?
+Satya SSE Movies
+Your entered name is: Satya
+Your profession is: SSE
+Your are interested <span class="k">in</span>: Movies
+</code></pre></div></div>
+
+<h2 id="ssh---running-command-on-remote-serversnodes">SSH - Running Command On Remote Servers/Nodes</h2>
+
+<p><a href="https://www.hostinger.in/tutorials/ssh-tutorial-how-does-ssh-work">https://www.hostinger.in/tutorials/ssh-tutorial-how-does-ssh-work</a></p>
+
+<p>SSH is used to connect Remote Servers from Your System &amp; do Operations. But how
+will you tell your system is Secure to Connect &amp; perform Operations ?</p>
+
+<p>SSH, or Secure Shell, is a remote administration protocol that allows users to
+control and modify their remote servers over the Internet.</p>
+
+<p>It provides a mechanism for authenticating a remote user, transferring inputs
+from the client to the host, and relaying the output back to the client.</p>
+
+<p>If you’re using Linux or Mac, then using SSH is very simple. If you use Windows,
+you will need to utilize an SSH client to open SSH connections. The most popular
+SSH client is <strong>PuTTY</strong></p>
+
+<p>The SSH command consists of 3 distinct parts</p>
+
+<p>ssh {user}@{host}</p>
+
+<p>When you hit enter, you will be prompted to enter the password for the requested
+account.  If your password is correct, you will be greeted with a remote
+terminal window.</p>
+
+<p>There are three different encryption technologies used by SSH:</p>
+
+<ol>
+  <li>
+    <p>Symmetrical encryption</p>
+  </li>
+  <li>
+    <p>Asymmetrical encryption</p>
+  </li>
+  <li>
+    <p>Hashing.</p>
+  </li>
+</ol>
+
+<p><img src="media/16aaebb5644786200e60d38c838f74cc.png" alt="" /></p>
+
+<p><img src="media/7cb59c5c2c5a5886ad7f488f025d5ab8.png" alt="" /></p>
+
+<p><a href="https://www.youtube.com/watch?v=y2SWzw9D4RA">https://www.youtube.com/watch?v=y2SWzw9D4RA</a></p>
+
+<p><img src="media/438aa71f63fd24f79cf371f3aebeced1.png" alt="" /></p>
+
+</div><div class="d-print-none"><footer class="article__footer"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet --></footer></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+//alert('start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert(' end .......');
+ 
+ document.onreadystatechange = function(){
+     if(document.readyState === 'complete'){
+         /*code here*/
+		 //alert('onreadystatechange comled ... start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert('onreadystatechange comled ... end .......');
+     }
+}
+
+</script></div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet --></div>
+            </div></div></div><div class="page__footer d-print-none"><footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Satya Kaveti"><meta itemprop="url" content="/"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© SatyaCodes 2020 ,
+        <a title="Satya Kaveti" href="about/">Satya Kaveti's Writing</a>.
+		<span>| <a href="about/">About Me</a> &nbsp |  </span>
+		<span><a href="/terms.html">Terms</a> &nbsp |  </span>
+		<span><a href="/contact.html">Contact</a> &nbsp |  </span>
+		<span><a href="http://www.satyacodesapps.ml/" target="_blank">Our Apps</a> &nbsp |  </span>
+		<span><a href="https://www.facebook.com/isatyakaveti" target="_blank"><i class="fab fa-facebook-f"></i></a> &nbsp |  </span>
+		<span><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube-square"></i></a> &nbsp |  </span>
+		<span><a href="https://in.linkedin.com/in/satyakaveti"target="_blank"><i class="fab fa-linkedin-in"></i></a> &nbsp | 
+		<span>[ 
+		<!-- Start of WebFreeCounter Code -->
+<a href="http://www.statworker.com/" target="_blank"><img src="https://www.webfreecounter.com/hit.php?id=gfpapx&nd=7&style=2" border="0" alt="statworker.com"></a>
+<!-- End of WebFreeCounter Code -->
+</span>
+<span><a href="https://statcounter.com/p12408441/?guest=1" target="_blank"> ]</a></span>
+
+
+      </div>
+    </div>
+  </div>
+</footer></div></div>
+    </div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal d-print-none js-page-gallery-modal"><div class="gallery"></div></div><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">Search</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text" />
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        Cancel</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script></div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+(function() {(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function swiper(options) {
+      var $window = $(window), $root = this, $swiperWrapper, $swiperSlides, $swiperButtonPrev, $swiperButtonNext,
+        initialSlide, animation, onChange, onChangeEnd,
+        rootWidth, count, preIndex, curIndex, translateX, CRITICAL_ANGLE = Math.PI / 3;
+
+      function setOptions(options) {
+        var _options = options || {};
+        initialSlide = _options.initialSlide || 0;
+        animation = _options.animation === undefined && true;
+        onChange = onChange || _options.onChange;
+        onChangeEnd = onChangeEnd || _options.onChangeEnd;
+      }
+
+      function init() {
+        $swiperWrapper = $root.find('.swiper__wrapper');
+        $swiperSlides = $root.find('.swiper__slide');
+        $swiperButtonPrev = $root.find('.swiper__button--prev');
+        $swiperButtonNext = $root.find('.swiper__button--next');
+        animation && $swiperWrapper.addClass('swiper__wrapper--animation');
+        calc(true);
+      }
+
+      function preCalc() {
+        rootWidth = $root.width();
+        count = $swiperWrapper.children('.swiper__slide').length;
+        if (count < 2) {
+          $swiperButtonPrev.addClass('d-none');
+          $swiperButtonNext.addClass('d-none');
+        }
+        curIndex = initialSlide || 0;
+        translateX = getTranslateXFromCurIndex();
+      }
+
+      var calc = (function() {
+        var preAnimation, $swiperSlide, $preSwiperSlide;
+        return function (needPreCalc, params) {
+          needPreCalc && preCalc();
+          var _animation = (params && params.animation !== undefined) ? params.animation : animation;
+          if (preAnimation === undefined || preAnimation !== _animation) {
+            preAnimation = _animation ? $swiperWrapper.addClass('swiper__wrapper--animation') :
+              $swiperWrapper.removeClass('swiper__wrapper--animation');
+          }
+          if (preIndex !== curIndex) {
+            ($preSwiperSlide = $swiperSlides.eq(preIndex)).removeClass('active');
+            ($swiperSlide = $swiperSlides.eq(curIndex)).addClass('active');
+            onChange && onChange(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+            if (onChangeEnd) {
+              if (_animation) {
+                setTimeout(function() {
+                  onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+                }, 400);
+              } else {
+                onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+              }
+            }
+            preIndex = curIndex;
+          }
+          $swiperWrapper.css('transform', 'translate(' + translateX + 'px, 0)');
+          if (count > 1) {
+            if (curIndex <= 0) {
+              $swiperButtonPrev.addClass('disabled');
+            } else {
+              $swiperButtonPrev.removeClass('disabled');
+            }
+            if (curIndex >= count - 1) {
+              $swiperButtonNext.addClass('disabled');
+            } else {
+              $swiperButtonNext.removeClass('disabled');
+            }
+          }
+        };
+      })();
+
+      function getTranslateXFromCurIndex() {
+        return curIndex <= 0 ? 0 : - rootWidth * curIndex;
+      }
+
+      function moveToIndex(index ,params) {
+        preIndex = curIndex;
+        curIndex = index;
+        translateX = getTranslateXFromCurIndex();
+        calc(false, params);
+      }
+
+      function move(type) {
+        var nextIndex = curIndex, unstableTranslateX;
+        if (type === 'prev') {
+          nextIndex > 0 && nextIndex--;
+        } else if (type === 'next') {
+          nextIndex < count - 1 && nextIndex++;
+        }
+        if (type === 'cur') {
+          moveToIndex(curIndex, { animation: true });
+          return;
+        }
+        unstableTranslateX = translateX % rootWidth !== 0;
+        if (nextIndex !== curIndex || unstableTranslateX) {
+          unstableTranslateX ? moveToIndex(nextIndex, { animation: true }) : moveToIndex(nextIndex);
+        }
+      }
+
+      setOptions(options);
+      init();
+      preIndex = curIndex;
+
+      $swiperButtonPrev.on('click', function(e) {
+        e.stopPropagation();
+        move('prev');
+      });
+      $swiperButtonNext.on('click', function(e) {
+        e.stopPropagation();
+        move('next');
+      });
+      $window.on('resize', function() {
+        calc(true, { animation: false });
+      });
+
+      (function() {
+        var pageX, pageY, velocityX, preTranslateX = translateX, timeStamp, touching;
+        function handleTouchstart(e) {
+          var point = e.touches ? e.touches[0] : e;
+          pageX = point.pageX;
+          pageY = point.pageY;
+          velocityX = 0;
+          preTranslateX = translateX;
+        }
+        function handleTouchmove(e) {
+          if (e.touches && e.touches.length > 1) {
+            return;
+          }
+          var point = e.touches ? e.touches[0] : e;
+          var deltaX = point.pageX - pageX;
+          var deltaY = point.pageY - pageY;
+          velocityX = deltaX / (e.timeStamp - timeStamp);
+          timeStamp = e.timeStamp;
+          if (e.cancelable && Math.abs(Math.atan(deltaY / deltaX)) < CRITICAL_ANGLE) {
+            touching = true;
+            translateX += deltaX;
+            calc(false, { animation: false });
+          }
+          pageX = point.pageX;
+          pageY = point.pageY;
+        }
+        function handleTouchend() {
+          touching = false;
+          var deltaX = translateX - preTranslateX;
+          var distance = deltaX + velocityX * rootWidth;
+          if (Math.abs(distance) > rootWidth / 2) {
+            distance > 0 ? move('prev') : move('next');
+          } else {
+            move('cur');
+          }
+        }
+        $swiperWrapper.on('touchstart', handleTouchstart);
+        $swiperWrapper.on('touchmove', handleTouchmove);
+        $swiperWrapper.on('touchend', handleTouchend);
+        $swiperWrapper.on('touchcancel', handleTouchend);
+
+        (function() {
+          var pressing = false, moved = false;
+          $swiperWrapper.on('mousedown', function(e) {
+            pressing = true; handleTouchstart(e);
+          });
+          $swiperWrapper.on('mousemove', function(e) {
+            pressing && (e.preventDefault(), moved = true, handleTouchmove(e));
+          });
+          $swiperWrapper.on('mouseup', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('mouseleave', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('click', function(e) {
+            moved && (e.stopPropagation(), moved = false);
+          });
+        })();
+
+        $root.on('touchmove', function(e) {
+          if (e.cancelable & touching) {
+            e.preventDefault();
+          }
+        });
+      })();
+
+      return {
+        setOptions: setOptions,
+        previous: function(){
+          move('prev');
+        },
+        next: function(){
+          move('next');
+        },
+        refresh: function() {
+          calc(true, { animation: false });
+        }
+      };
+    }
+    $.fn.swiper = swiper;
+  });
+})();
+var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var template =
+      '<div class="swiper gallery__swiper">' +
+        '<div class="swiper__wrapper">' +
+        '</div>' +
+        '<div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>' +
+        '<div class="swiper__button swiper__button--next fas fa-chevron-right"></div>' +
+      '</div>';
+    function setState($item, zoom, translate) {
+      $item.css('transform', 'scale(' + zoom + ') translate(' + translate.x +  'px,' + translate.y + 'px)');
+    }
+    function Gallery(root, items) {
+      this.$root = $(root);
+      this.$swiper = null;
+      this.$swiperWrapper = null;
+      this.$activeItem = null;
+      this.$items = [];
+      this.contentWidth = 0;
+      this.contentHeight = 0;
+      this.swiper = null;
+      this.items = items;
+      this.disabled = false;
+      this.curIndex = 0;
+      this.touchCenter = null;
+      this.lastTouchCenter = null;
+      this.zoomRect = null;
+      this.lastZoomRect = null;
+      this.lastTranslate = null;
+      this.translate = null;
+      this.lastZoom = 1;
+      this.preZoom = 1;
+      this.zoom = 1;
+    }
+    Gallery.prototype.init = function() {
+      var i, item, items = this.items, size, self = this, touchstartFingerCount = 0;
+      this.$root.append(template);
+      this.$swiper = this.$root.find('.gallery__swiper');
+      this.$swiperWrapper = this.$root.find('.swiper__wrapper');
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      for (i = 0; i < items.length; i++) {
+        item = items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        this.$items.push($(
+          '<div class="swiper__slide">' +
+            '<div class="gallery-item">' +
+              '<div class="gallery-item__content">' +
+                '<img src="' + item.src + '" style="width:' + size.w + 'px;height:' + size.h +  'px"/>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        ));
+      }
+      this.$swiperWrapper && this.$swiperWrapper.append(this.$items);
+      this.swiper = this.$swiper && this.$swiper.swiper({
+        onChangeEnd: function() {
+          self._handleChangeEnd.apply(self, Array.prototype.slice.call(arguments));
+        }
+      });
+      $(window).on('resize', function() {
+        if (self.disabled) { return; }
+        self._resizeImageSize();
+      });
+      // Char Code: 37  ⬅, 39  ➡
+      $(window).on('keyup', function(e) {
+        if (window.isFormElement(e.target || e.srcElement) || self.disabled) { return; }
+        if (e.which === 37) {
+          self.swiper && self.swiper.previous();
+        } else if (e.which === 39) {
+          self.swiper && self.swiper.next();
+        }
+      });
+      function getRect(touch0, touch1) {
+        return {
+          o: {
+            x: (touch0.pageX + touch1.pageX) / 2,
+            y: (touch0.pageY + touch1.pageY) / 2
+          },
+          w: Math.abs(touch0.pageX - touch1.pageX),
+          h: Math.abs(touch0.pageY - touch1.pageY)
+        };
+      }
+      function getTouches(e) {
+        return e.touches || e;
+      }
+      function getTouchesCount(e) {
+        if (e.touches) {
+          return e.touches.length;
+        } else {
+          return 1;
+        }
+      }
+      this.$swiperWrapper.on('touchstart', function(e) {
+        var touch0, touch1, rect;
+        touchstartFingerCount = getTouchesCount(e);
+        if (touchstartFingerCount > 1) {
+          touch0 = e.touches[0];
+          touch1 = e.touches[1];
+          rect = getRect(touch0, touch1);
+          self.lastZoomRect = { w: rect.w, h: rect.h };
+          self.lastTouchCenter = rect.o;
+        } else {
+          var touch = getTouches(e)[0];
+          self.lastTouchCenter = { x: touch.pageX, y: touch.pageY };
+        }
+      });
+      this.$swiperWrapper.on('touchmove', function(e) {
+        if (touchstartFingerCount === getTouchesCount(e)) {
+          if (touchstartFingerCount > 1) {
+            var touch0 = e.touches[0];
+            var touch1 = e.touches[1];
+            var rect = getRect(touch0, touch1);
+            self.zoomRect = { w: rect.w, h: rect.h };
+            self.touchCenter = rect.o;
+            self._zoom(); self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          } else {
+            var touch = getTouches(e)[0];
+            self.touchCenter = { x: touch.pageX, y: touch.pageY };
+            self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          }
+        }
+      });
+      this.$swiperWrapper.on('touchend', function(e) {
+        self.lastZoom = self.zoom;
+        self.lastTranslate = self.translate;
+        touchstartFingerCount = 0;
+      });
+      this.$root.on('touchmove', function(e) {
+        if (self.disabled) { return; }
+        e.preventDefault();
+      });
+    };
+
+    Gallery.prototype._translate = function() {
+      this.translate = this.touchCenter && this.lastTouchCenter && this.lastTranslate ? {
+        x: (this.touchCenter.x - this.lastTouchCenter.x) / this.zoom + this.lastTranslate.x,
+        y: (this.touchCenter.y - this.lastTouchCenter.y) / this.zoom + this.lastTranslate.y
+      } : { x: 0, y: 0 };
+    }
+    Gallery.prototype._zoom = function() {
+      this.zoom = (this.zoomRect.w + this.zoomRect.h) / (this.lastZoomRect.w + this.lastZoomRect.h) * this.lastZoom;
+      this.zoom > 1 ? this.$activeItem.addClass('zoom') : this.$activeItem.removeClass('zoom');
+      this.preZoom = this.zoom;
+    }
+
+    Gallery.prototype._calculateImageSize = function(w, h) {
+      var scale = 1;
+      if (this.contentWidth > 0 && this.contentHeight > 0 && w > 0 && h > 0) {
+        scale = Math.min(
+          Math.min(w, this.contentWidth) / w,
+          Math.min(h, this.contentHeight) / h);
+      }
+      return { w: Math.floor(w * scale), h: Math.floor(h * scale) };
+    };
+
+    Gallery.prototype._resizeImageSize = function() {
+      var i, $item, $items = this.$items, item, size;
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      if ($items.length < 1) { return; }
+      for (i = 0; i < $items.length; i++) {
+        item = this.items[i], $item = $items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        item.width = size.w; item.height = size.h;
+        $item && $item.find('img').css({ width: size.w, height: size.h });
+      }
+    };
+    Gallery.prototype._handleChangeEnd = function(index, $dom, preIndex, $preDom) {
+      this.curIndex = index;
+      this.lastZoomRect = null; this.lastZoomRect = null;
+      this.lastTranslate = this.translate = { x: 0, y:0 };
+      this.lastZoom = this.preZoom = this.zoom = 1;
+      this.$activeItem = $dom.find('.gallery-item__content');
+      setState($preDom.find('.gallery-item__content'), this.zoom, this.translate);
+    };
+
+    Gallery.prototype.refresh = function() {
+      this.swiper && this.swiper.refresh();
+      this._resizeImageSize();
+    };
+    Gallery.prototype.setOptions = function(options) {
+      this.disabled = options.disabled;
+      this.swiper && this.swiper.setOptions(options);
+    };
+    window.Gallery = Gallery;
+  });
+})();(function() {
+  window.imagesLoad = function(images) {
+    images = images || document.getElementsByTagName('img');
+    var imagesCount = images.length, loadedCount = 0, image;
+    var i, j, loaded = false, cbs = [];
+    imagesCount < 1 && (loaded = true);
+    for (i = 0; i < imagesCount; i++) {
+      image = images[i];
+      image.complete ? handleImageLoad() : image.addEventListener('load', handleImageLoad);
+    }
+    function handleImageLoad() {
+      loadedCount++;
+      if (loadedCount === imagesCount) {
+        loaded = true;
+        if (cbs.length > 0) {
+          for (j = 0; j < cbs.length; j++) {
+            cbs[j]();
+          }
+        }
+      }
+    }
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  };
+})();
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageGalleryModal = $('.js-page-gallery-modal');
+    var $images = $('.page__content').find('img:not(.lightbox-ignore)');
+    window.imagesLoad($images).then(function() {
+      /* global Gallery */
+      var pageGalleryModal = $pageGalleryModal.modal({ onChange: handleModalChange });
+      var gallery = null;
+      var modalVisible = false;
+      var i, items = [], image, item;
+      if($images && $images.length > 0) {
+        for (i = 0; i < $images.length; i++) {
+          image = $images.eq(i);
+          if (image.get(0).naturalWidth > 800) {
+            items.push({ src: image.attr('src'), w: image.get(0).naturalWidth, h: image.get(0).naturalHeight, $el: image});
+          }
+        }
+      }
+
+      if(items.length > 0) {
+        gallery = new Gallery('.gallery', items);
+        gallery.setOptions({ disabled: !modalVisible });
+        gallery.init();
+        for (i = 0; i < items.length; i++) {
+          item = items[i];
+          item.$el && (item.$el.addClass('popup-image'), item.$el.on('click', (function() {
+            var index = i;
+            return function() {
+              pageGalleryModal.show();
+              gallery.setOptions({ initialSlide: index });
+              gallery.refresh(true, { animation: false });
+            };
+          })()));
+        }
+      }
+
+      function handleModalChange(visible) {
+        modalVisible = visible;
+        gallery && gallery.setOptions({ disabled: !modalVisible });
+      }
+
+      $pageGalleryModal.on('click', function() {
+        pageGalleryModal.hide();
+      });
+    });
+  });
+})();/*(function () {
+
+})();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+      - title:  Webservices
+        url:    /webservices/webservices
+      - title:  SOAP
+        url:    /webservices/soap
+      - title:  REST
+        url:    /webservices/rest
+      - title:  Java Web Services API
+        url:    /webservices/java-web-services-api
+      - title:  JAX-WS
+        url:    /webservices/jax-ws
+      - title:  Diffrence between RPC-Style and Document Style
+        url:    /webservices/diffrence-between-rpc-style-and-document-style
+      - title:  JAX-WS Annotations
+        url:    /webservices/jax-ws-annotations
+      - title:  JAX-WS RPC Style
+        url:    /webservices/jax-ws-rpc-style
+      - title:  JAX-WS Document Style
+        url:    /webservices/jax-ws-document-style
+      - title:  JAX-WS Tools
+        url:    /webservices/jax-ws-tools
+      - title:  JAX-RS RESTFul
+        url:    /webservices/jax-rs-restful
+      - title:  JAX-RS Annotations
+        url:    /webservices/jax-rs-annotations
+      - title:  JAX-RS JERSEY
+        url:    /webservices/jax-rs-jersey
+      - title:  JAX-RS RESTEasy
+        url:    /webservices/jax-rs-resteasy
+      - title:  JAX-RS Path annotation
+        url:    /webservices/jax-rs-path-annotation
+      - title:  JAX-RS PathParam
+        url:    /webservices/jax-rs-pathparam
+      - title:  JAX-RS QueryParam
+        url:    /webservices/jax-rs-queryparam
+      - title:  JAX-RS DefaultValue
+        url:    /webservices/jax-rs-defaultvalue
+      - title:  JAX-RS MatrixParam
+        url:    /webservices/jax-rs-matrixparam
+      - title:  JAX-RS FormParam
+        url:    /webservices/jax-rs-formparam
+      - title:  JAX-RS HeaderParam
+        url:    /webservices/jax-rs-headerparam
+      - title:  JAX-RS Context
+        url:    /webservices/jax-rs-context
+      - title:  JAX-RS Download files
+        url:    /webservices/jax-rs-download-files
+      - title:  JAX-RS JSON
+        url:    /webservices/jax-rs-json
+      - title:  JAX-RS JSON RESTEasy
+        url:    /webservices/jax-rs-json-resteasy
+      - title:  JAX-RS XML
+        url:    /webservices/jax-rs-xml
+      - title:  JAX-RS RESTFul Java Clinets
+        url:    /webservices/jax-rs-restful-java-clinets
+      - title:  How to Test RESTful Web Services
+        url:    /webservices/how-to-test-restful-web-services

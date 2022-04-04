@@ -2331,7 +2331,7 @@ pageview: true
          * Using *spread operator*:
 
              ```javascript
-             const user = { ...this.state.user, age: 42 }
+             const user = { this.state.user, age: 42 }
              this.setState({ user })
              ```
 
@@ -2340,7 +2340,7 @@ pageview: true
          ```javascript
          this.setState(prevState => ({
            user: {
-             ...prevState.user,
+             prevState.user,
              age: 42
            }
          }))
@@ -2479,7 +2479,7 @@ pageview: true
        render(){
          return (
            <User type="customer">
-             //...
+             //
            </User>
          )
        }
@@ -2853,8 +2853,8 @@ pageview: true
      ```jsx harmony
      <Router>
        <Switch>
-         <Route {/* ... */} />
-         <Route {/* ... */} />
+         <Route {/*  */} />
+         <Route {/*  */} />
        </Switch>
      </Router>
      ```
@@ -3011,7 +3011,7 @@ pageview: true
     
 143. ### How to use `<FormattedMessage>` as placeholder using React Intl?
 
-     The `<Formatted... />` components from `react-intl` return elements, not plain text, so they can't be used for placeholders, alt text, etc. In that case, you should use lower level API `formatMessage()`. You can inject the `intl` object into your component using `injectIntl()` higher-order component and then format the message using `formatMessage()` available on that object.
+     The `<Formatted />` components from `react-intl` return elements, not plain text, so they can't be used for placeholders, alt text, etc. In that case, you should use lower level API `formatMessage()`. You can inject the `intl` object into your component using `injectIntl()` higher-order component and then format the message using `formatMessage()` available on that object.
 
      ```jsx harmony
      import React from 'react'
@@ -3452,7 +3452,7 @@ pageview: true
          }
 
          class MyApp extends React.Component {
-           // ...define your main app here
+           // define your main app here
          }
 
          export default connect(mapStateToProps, mapDispatchToProps)(MyApp)
@@ -3476,7 +3476,7 @@ pageview: true
 
          @connect(mapStateToProps, mapDispatchToProps)
          export default class MyApp extends React.Component {
-           // ...define your main app here
+           // define your main app here
          }
          ```
 
@@ -3626,7 +3626,7 @@ pageview: true
            switch (action.type) {
              case ADD_TODO:
                return [
-                 ...state,
+                 state,
                  {
                    text: action.text,
                    completed: false
@@ -3986,7 +3986,7 @@ pageview: true
     
 197. ### Why is DevTools not loading in Chrome for local files?
 
-     If you opened a local HTML file in your browser (`file://...`) then you must first open *Chrome Extensions* and check `Allow access to file URLs`.
+     If you opened a local HTML file in your browser (`file://`) then you must first open *Chrome Extensions* and check `Allow access to file URLs`.
 
 
  
@@ -4133,7 +4133,7 @@ pageview: true
      ├─ node_modules/
      ├─ public/
      ├─ src/
-     │  └─ ...
+     │  └─ 
      ├─ package.json
      ├─ tsconfig.json
      ├─ tsconfig.prod.json
@@ -4218,11 +4218,11 @@ pageview: true
      ```javascript
      class Component extends React.Component {
        static propTypes = {
-         // ...
+         // 
        }
 
        static someMethod() {
-         // ...
+         // 
        }
      }
      ```
@@ -4231,11 +4231,11 @@ pageview: true
 
      ```javascript
      class Component extends React.Component {
-        ....
+        .
      }
 
-     Component.propTypes = {...}
-     Component.someMethod = function(){....}
+     Component.propTypes = {}
+     Component.someMethod = function(){.}
      ```
 
 
@@ -4385,7 +4385,7 @@ pageview: true
      function ppHOC(WrappedComponent) {
       return class PP extends React.Component {
         render() {
-          return <WrappedComponent {...this.props}/>
+          return <WrappedComponent {this.props}/>
         }
       }
      }
@@ -4613,11 +4613,11 @@ pageview: true
      // Your ESLint configuration
      {
        "plugins": [
-         // ...
+         // 
          "react-hooks"
        ],
        "rules": {
-         // ...
+         // 
          "react-hooks/rules-of-hooks": "error"
        }
      }
@@ -4715,7 +4715,7 @@ pageview: true
      try {
        showButton();
      } catch (error) {
-       // ...
+       // 
      }
      ```
      Whereas error boundaries wrap declarative code as below,
@@ -4797,7 +4797,7 @@ pageview: true
 
      ```javascript
      class MyButton extends React.Component {
-       // ...
+       // 
      }
 
      MyButton.defaultProps = {
@@ -4881,7 +4881,7 @@ pageview: true
 
      ```javascript
      function withSubscription(WrappedComponent) {
-       class WithSubscription extends React.Component {/* ... */}
+       class WithSubscription extends React.Component {/*  */}
        WithSubscription.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
        return WithSubscription;
      }
@@ -5015,7 +5015,7 @@ pageview: true
         When you apply a HOC to a component the new component does not have any of the static methods of the original component
         ```javascript
         // Define a static method
-        WrappedComponent.staticMethod = function() {/*...*/}
+        WrappedComponent.staticMethod = function() {/**/}
         // Now apply a HOC
         const EnhancedComponent = enhance(WrappedComponent);
 
@@ -5026,7 +5026,7 @@ pageview: true
 
         ```javascript
         function enhance(WrappedComponent) {
-          class Enhance extends React.Component {/*...*/}
+          class Enhance extends React.Component {/**/}
           // Must know exactly which method(s) to copy :(
           Enhance.staticMethod = WrappedComponent.staticMethod;
           return Enhance;
@@ -5045,7 +5045,7 @@ pageview: true
 
      ```javascript
      const WrappedComponent = React.forwardRef((props, ref) => {
-       return <LogProps {...props} forwardedRef={ref} />;
+       return <LogProps {props} forwardedRef={ref} />;
      });
      ```
 
@@ -5054,7 +5054,7 @@ pageview: true
      ```javascript
      const WrappedComponent = React.forwardRef(
        function myFunction(props, ref) {
-         return <LogProps {...props} forwardedRef={ref} />;
+         return <LogProps {props} forwardedRef={ref} />;
        }
      );
      ```
@@ -5064,11 +5064,11 @@ pageview: true
      ```javascript
      function logProps(Component) {
        class LogProps extends React.Component {
-         // ...
+         // 
        }
 
        function forwardRef(props, ref) {
-         return <LogProps {...props} forwardedRef={ref} />;
+         return <LogProps {props} forwardedRef={ref} />;
        }
 
        // Give this component a more helpful display name in DevTools.
@@ -5427,7 +5427,7 @@ pageview: true
      function MyComponent() {
        return (
          <div>
-           <Suspense fallback={<div>Loading...</div>}>
+           <Suspense fallback={<div>Loading</div>}>
              <OtherComponent />
            </Suspense>
          </div>
@@ -5452,7 +5452,7 @@ pageview: true
 
      const App = () => (
        <Router>
-         <Suspense fallback={<div>Loading...</div>}>
+         <Suspense fallback={<div>Loading</div>}>
            <Switch>
              <Route exact path="/" component={Home}/>
              <Route path="/about" component={About}/>
@@ -5529,11 +5529,11 @@ pageview: true
            }
            componentDidUpdate() {
              let value = this.context;
-             /* ... */
+             /*  */
            }
            componentWillUnmount() {
              let value = this.context;
-             /* ... */
+             /*  */
            }
            render() {
              let value = this.context;
@@ -5625,15 +5625,15 @@ pageview: true
              }
 
              render() {
-               const {forwardedRef, ...rest} = this.props;
+               const {forwardedRef, rest} = this.props;
 
                // Assign the custom prop "forwardedRef" as a ref
-               return <Component ref={forwardedRef} {...rest} />;
+               return <Component ref={forwardedRef} {rest} />;
              }
            }
 
            return React.forwardRef((props, ref) => {
-             return <LogProps {...props} forwardedRef={ref} />;
+             return <LogProps {props} forwardedRef={ref} />;
            });
          }
      ```
@@ -5643,10 +5643,10 @@ pageview: true
      ```javascript
          class FancyButton extends React.Component {
            focus() {
-             // ...
+             // 
            }
 
-           // ...
+           // 
          }
          export default logProps(FancyButton);
      ```
@@ -5703,7 +5703,7 @@ pageview: true
  
     
 286. ### Is it possible to use react without JSX?
-     Yes, JSX is not mandatory for using React. Actually it is convenient when you don’t want to set up compilation in your build environment. Each JSX element is just syntactic sugar for calling `React.createElement(component, props, ...children)`.
+     Yes, JSX is not mandatory for using React. Actually it is convenient when you don’t want to set up compilation in your build environment. Each JSX element is just syntactic sugar for calling `React.createElement(component, props, children)`.
 
      For example, let us take a greeting example with JSX,
 
@@ -5845,7 +5845,7 @@ pageview: true
          render() {
            return (
              <Mouse render={mouse => (
-               <Component {...this.props} mouse={mouse} />
+               <Component {this.props} mouse={mouse} />
              )}/>
            );
          }
@@ -6144,7 +6144,7 @@ pageview: true
          <SomeComponent someData={this.props.someData} dispatch={this.props.dispatch} />
 
          // in es6
-         <SomeComponent {...this.props} />
+         <SomeComponent {this.props} />
          ```
      3. Arrow functions: Makes compact syntax
          ```javascript

@@ -1,0 +1,2628 @@
+<!DOCTYPE html><html lang="en">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>SatyaCodes - VueJs Tutorial</title>
+
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.">
+<link rel="canonical" href="/tutorials/vuejs-tutorial"><link rel="alternate" type="application/rss+xml" title="SatyaCodes" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet -->
+ <link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>VueJs Tutorial | SatyaCodes</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="VueJs Tutorial" />
+<meta name="author" content="Satya Kaveti" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:site_name" content="SatyaCodes" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="VueJs Tutorial" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Satya Kaveti"},"@type":"WebPage","description":"Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.","url":"/tutorials/vuejs-tutorial","headline":"VueJs Tutorial","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- start custom head snippets -->
+
+<!-- end custom head snippets --><script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.4',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script></head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="76px" height="76px" viewBox="0 0 76 76" enable-background="new 0 0 76 76" xml:space="preserve">  <image id="image0" width="76" height="76" x="0" y="0"
+    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAIAAABI9cZ8AAAAIGNIUk0AAHomAACAhAAA+gAAAIDo
+AAB1MAAA6mAAADqYAAAXcJy6UTwAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQflBwgJKRMy4DHU
+AAAAXnRFWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMACmlwdGMKICAgICAgMjgKMzg0MjQ5NGQwNDA0
+MDAwMDAwMDAwMDBmMWMwMjZlMDAwMzUyNDY0NzFjMDIwMDAwMDIwMDA0MDAKYJo9ngAAD4RJREFU
+eNrtm2tsE1fax894Lp7xeGzHzgUSbNI0YJJwSQKEWxWlUWkSKEIqq20RsBUrtewXpBatSlu1WvVT
+F7XbW1RKqxaqCiEl25KkYUkpYlPEQrkkAsIlgZAEcnOcOAQntseeGXveD09z3sFODLm1+/JyhCxn
+PHPm/M7znHOe838OhKqq6FEvut+7AY8hH0M+hnwM+UiWx5CPSqF+rxePGYQQBPEoQEYiEcyjqqqq
+qgAWiUTgCkEQcAV/+W+HxOZSVXVkZGR4eJiiKFmWRVHs6upiWTYQCJw6dSonJyc3N1eW5cTERIZh
+jEYjEOp0Op1ON3VUYiZiV6gTLCNJksvlunXr1ldffXXlyhWLxRIIBHw+3+DgIMMwCKGBgQGj0ZiW
+liaKYkZGhiAI69atKygoyMzMhBtIkpwi6jRDgr8pijI8PNzT09PY2Hjq1KnGxka32+12u8cbh1HX
+OY7Lysp6+eWXZ8+evXz5covFQtM0oE6+WdNSIpGIqqqiKN68eXPv3r1lZWVPPvkkwzCTsAD4Ksdx
+FoulvLx8YGDA6/WGQqFwODy5tk0DJOD5/f76+vo33ngjMzOT53ltcyfpYwSBEFq4cOHRo0fdbvfw
+8LAkSfCu3xQSXhkKhVpbW997772UlBTsUdMyMUIlq1atOnnypNvt9vl8sixPgnOSs6uqqgghWZab
+mpoqKirq6upaW1slScJsaszwg5+iroOpteuK9nFVVQmCOHv2bE1Njd1upyiKoqhJTEKTgYQWuFyu
+r7/++sCBA52dneFweDwGbYsRQiaTyWq1UhQlCILFYrHZbAzDeDwer9fb3d3d398vy3Is8KVLlzwe
+D8Mwer2eoibc5gk/AF56/vz5d999t76+HlsvFu/X8YCQIAjp6enp6enJyclZWVmzZ8+madpoNHIc
+R9O0TqeLRCKyLLtcrjt37nR1dd2+ffvMmTP37t3DnFevXm1vb09MTJRlmWGYiRpzYpCqqsqyXFtb
++/bbb7e0tICzafG0fyYkJGRnZ6empi5ZsiQrKyshIYFlWVgM4BMvgPBUWlpafn6+JEmBQKC6uvrz
+zz/3er3wqyiKfX19kiTBmJwpS8LwcLvd+/bt++KLL/r6+mLXN+jd5ORkg8HgdDqfeeYZp9MpCALL
+sgzDgLMxDANDCwixTcBBwuGwLMuCIGzbto2iqI8//tjn88HC6/V6FUUJh8Mw8Uy/JaHSO3fu7N69
+u6qqClwUE+JWkiSZlpa2detWp9OZkpIiCIJer2dZlmVZLZ5OpyNJktAUpFmugZPjuNTUVJZlfT4f
+QogkSb1ejwlnxJIEQbS3t7/++uvV1dXhcBhpAjf4TlFUenp6cXHx0qVL582bx/M8x3EcxwEeTdPY
+PyEixc9qDfLrdE9RDMNcvXr1o48+8ng8cIOiKD6fDw/y6YdUVdXj8bz11ltVVVVjDr/09PSSkpKV
+K1c6HA6e5w0GA3wCHvZMrd3G60pc54ULFzo6OrSdKAgCuPf0Q6qqGgwGP/jgg6qqqthdkiAICxYs
+ePHFF3NzczmO43neaDQaDAYYhFq8h28QLJt5eXlz585ta2tDCJEkuXr16kWLFuG5aqKQ8QJ0+Km2
+tvaVV15xu924EfC5ePHiDRs25OfnW61WQRCMRiOsCpPGwyUcDkuSVFlZ+emnn4qiuHLlyg0bNjgc
+joSEBKvVajAYaJqeWMfF9/L29vatW7f+8ssveEerqqpery8qKtqyZcucOXN4ngdCMCDeLkwlrItE
+IpIk+Xy+rq4ur9drNBppmuZ53mQyGY1GvV5PkuSEKhzXXcEhq6qqLly4oCUkSbKsrGzbtm1JSUkm
+kwlejP1zeva4BEFRFMdxDocjFAopigKzKwQPk6g/3pj0er11dXWKomjrLSwsfOGFF5KSkhISEiwW
+C8/zYEA8tUyRECCBCj6hf/HyM4kxGQ+yt7e3s7MTaUK2RYsWbd68efbs2Waz2WKxwEI/XQaM5QQ2
+NDrxTroTx4UkCKK3t3doaAhfYVm2rKwM1okoA6LRgGHaOaelqnhjUhAEjuPwlVAodPjwYbfbvWLF
+ihUrVpjNZu2eTbtjQvdvl2dIaJxAf403u4bD4Xv37u3YseP777/X7npIkuR5fsGCBcuWLTMajYsX
+LxZFMTk52WazzZkzh2EYHOVoIafibDMLqSjK6dOnd+3a1dTUhCGjolaWZRVFMRgMBoPB4XDQNG02
+mzMyMkpKSpJGC1Z6sNCIflvzjgsJu6pAIHDx4sU9e/acOnUqGAyCBKy9Z+xKCQIWT7vdXlRUNGvW
+rJycnHnz5hmNRp7nYYbEMfrvDBmJREKhkCiKnZ2dDQ0Np0+fPnnyZHd3t6IoGOaBModOp6MoymKx
+2O12q9W6ffv2oqIiQRAgKvptUB8Q1oXD4VAoFAwGRVH0er23bt26fPny7du3m5ub29vbQSkcky0K
+G19PS0tzOp2lpaXPP/98cnIyRVEQJM0o5wPCukgkAtqEJEnBYDAUCkmSJIri0NBQd3d3U1PT9evX
+dTrd9evXOzo6sIXHfdkorV6vX7t27e7du7OzsyFamlHOByvo4LeRSERRFKAFGUJRFDCyLMs9PT2n
+T59uampyuVwDAwMejyeOSIFh1qxZ8/7778+bN4/juElEpNMJiVGxQgEFmPGnoigjIyNer7erq+vK
+lStXrly5du2a2+0GIW/MoUsQxGuvvbZz505BEHien5zcPp2QsbS4YGBt8fv9bW1tdXV1J06ccLlc
+ODOnhVRVddWqVZ988klaWprZbGZZ9mGMqZVkH7JTJixJ4rUuSqXG5gVgQRBsNltOTs7GjRtramoO
+Hz4Mak1UW/v6+vr6+pKSkhRFgY7A+sB4GKqqhhUFEQRomQ+T3pt8flLbAlAowLAYWJZlnufNZvP8
++fMTEhL27t2rKEqs42CHhxYPDg663e6UlBSTyQTLKQQP8GC4rQ1VVKC2NmSxhEpLwwUFJMOQJPmA
+TcJUciGxRevAoKAODQ253e6qqqqEhITYt+fl5dXV1bW0tPT399+4ceOzzz4rLS1NS0vbtWvXwMCA
+z+eTJAlEurCiSGfPKsXFEZJUEYoQhJyaeu9vf/PcvOn1egOBQJw0yTRnmrUaHLaDXq93uVyBQCAq
+JFRV9YknnmBZtr29/eDBgz/88MPNmzeDwSBCqKOjw+v14hoig4NqRQVZXk60tiKEVIJACJG9vaa/
+/108c2bk1VelggJQXsYUgWYwnQ6oNE03Nzd/++23OGzAHgTN2r9//5kzZ27fvg1iJ0LIaDSuWbMG
+lB69Xk96vcSbb1KHDhGhEOARMPcQBAqFDMePI5dr8B//UPPyQJoZYyRPr7vGeu/du3e3b98+Zi+w
+LGu1WnG8jluWlZV1+PDha9eu9fb2BgKB0IEDEZZVCSJCECpC2n8RhCIEEUHo7vr1HU1N/f39fr8f
+Rr62zOA5HlVVJUnau3dvZWXlmFNCMBi8e/euOrrbVlWVZdm1a9fu3LkTkkIURSFZ1v3730QwiA14
+n7MgRKgqgZCpvp6orfX7/RCcRN02U+4K08+xY8f27dvn9/vHm/cwHk3Ts2bN2rhxY0lJSWJiIoQH
+er2ecLmIxkbos3FfRhBkIJB48OCA0xkoKNDpdCzLziAknlcURamsrHznnXe6u7vHi3jAl0iSzMzM
+LC4uzs/Ph1S8IAgmk4nneZqmdf/6l66tDXaxcd6KCIJvbibefHPor3/1rVtnsVhmBBJjyLLc2tpa
+UVHx5Zdfut3uMQnhfrPZ7HQ6Fy9eXFhY6HA4IH0Ce06Yk3R9fURFBZ5v4r0dIYIgDK2tuj17+m02
+NGfOdEJqTdfT03P27NlLly7V1tbeuHEjNmqFPymKMhgMdrt906ZNy5YtM5vNgAdsoJ7AblPp6KBa
+WtSxRmNUwfOtvqODPnIEbdo0PZDqaGIrFApdvny5pqbm2LFjzc3NcBYlKj+Lv9vt9qeffnrJkiVz
+585NTk7mOA6kE9iIMAxzn4SLD3TFd1ctLUJUe3vUxcmfGUAIBYPBixcvfvfdd1VVVZ2dnVpxJMpF
+wTmLi4ufffZZGHjcaNGm97SBaDgcjjid0lNPMUePTmhvEonpjgmn09FoqquhoeHQoUNHjhzp6elB
+YykD+IrFYsnKyiotLS0oKDCZTNrcHuBFZZ3/t1itob/8hWxooPr7H9KMCssO5uWlTA4S4w0ODv70
+008nTpw4fvx4T0+POqrfjYnHMExubu7GjRsXLlxotVo5joO1AeYVbXYodo2B65GCAmn1aqq6+oEe
+CzfcnT/f89RTE7YktD4YDHZ2dv744481NTUNDQ0jIyPxrYcQSkpKWr9+fVlZWUpKCqQu8dSiTTzH
+ebVOp2MEQdq8Wf+f/5AezwObqrBsT0kJSokyZFxIaKsoiufOnfvmm28aGxtv3LgBQk6s9bRPWa3W
+lStXFhcXL1myBPKWgiDg5OzD4KHRNEE4HEZFRf4//9lYXq4TxXh3q6pr+fJ7q1bx90cC40JC6wOB
+wLlz5yorK48cOdLb24t3sbF42IA6nS4zM3Pbtm1Lly4Fz8T+CQvDhJJfvyazDIbAjh1hv9+8f79O
+FMf2W1X1Ohydf/wjk5RkNBofDAkM169f//DDD+vq6uAI53iKo3YXn52dXVxcvGzZsvT0dIynTc5O
+VGIFCYKmab3NJr766l2WtXz1FeX1otHVBTfLn5TU8qc/STk5VqNREIToesZ0ua6urpdeeunnn39W
+788LjGk9juNSUlLy8/Ofe+65jIwMfHgAZ76mmNsDkUEURdHrRdXVln37uNZWYlQNjJDksMNxc8uW
+kaIiOMdmNpujNuhju2tbW9v58+dRjEYe9afBYMjNzS0sLMzJyZk1axacGcB4OHCZogYHxoTv/j/8
+wb1gAffPfxoaGwm/P2ixDC1aNFBYGMnIsAqC2WyGlGlUDWND2mw2u93e0tIS+5PBYLBYLKmpqVlZ
+WdnZ2dnZ2VarFU4kQeCiXR6mJQWAnRaAxdzcQEbGiNsdGh6W9HqJ51mGgc7F5/Wia4h1xXA4HAwG
+6+vry8vLL126BHvQ5ORkh8Nht9vT09Ptdjs+cEXTNMuyOHCZ+tGP8QqMfJCOQqEQaPkQP9I0rR8t
+2rxwPEjIC4RCoa6uro6OjqGhIVmWbTYbeAKMMYjCgAoHZTinP3OCP9byQSuDKQNySnHePgakqqqg
+r0CeJxgMYlEU6sKc+ChgnMBl2kuUtIFFszhvH3ezp9XFIbEBqzNGwt32+2aRH6bEy09iHRXvqqIK
++i84DzAlSIx6393/F5AmDPlolP8X/7XwMeSjUh5DPirlfwA1QTCTlERFOgAAACV0RVh0ZGF0ZTpj
+cmVhdGUAMjAyMS0wNy0wOFQxNzo0MDozOCswMzowMN3pZPAAAAAldEVYdGRhdGU6bW9kaWZ5ADIw
+MjEtMDctMDhUMTc6NDA6MzgrMDM6MDCstNxMAAAAAElFTkSuQmCC" />
+</svg>
+<a title="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." href="/">SatyaCodes</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/posts.html">AllPosts</a></li><li class="navigation__item navigation__item--active"><a href="/tutorials.html">Tutorials</a></li><li class="navigation__item"><a href="/java.html">Java</a></li><li class="navigation__item"><a href="/devops.html">DevOps</a></li><li class="navigation__item"><a href="/books.html">Books</a></li><li class="navigation__item"><a href="/interview-questions.html">InterviewQ's</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div></aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>VueJs Tutorial</h1></header></div><meta itemprop="headline" content="VueJs Tutorial"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=VueJs">VueJs</a>
+            </li></ul></div><meta itemprop="author" content="Satya Kaveti"/>
+    <meta itemprop="keywords" content="VueJs"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h1 id="vue-tutorial">Vue Tutorial</h1>
+
+<h2 id="what-is-vue"><a href="https://www.satyacodes.ml/#what-is-vue"></a>What is Vue?</h2>
+
+<ul>
+  <li>Vue (or Vue.js) is an open-source front-end JavaScript framework</li>
+  <li>Vue is the <strong>view</strong> layer of an MVC application (Model View Controller)</li>
+  <li>Vue is currently <a href="https://github.com/vuejs/vue">one of the most popular</a> JavaScript libraries/frameworks</li>
+  <li>Unlike other popular JavaScript projects, Vue is not backed by a large corporation like React (Facebook) or Angular (Google). Vue was originally written by <a href="https://github.com/yyx990803">Evan You</a> and the open-source community.</li>
+</ul>
+
+<h2 id="setup-and-installation"><a href="https://www.satyacodes.ml/#setup-and-installation"></a>Setup and Installation</h2>
+
+<p>There are two main ways to set up Vue - in a Node project, or directly injected into a static HTML file. I’d first like to take a look at setting up Vue in an HTML file, as it’s the simplest setup and introduction. Those who have only ever used a library like jQuery will be most familiar with this method. If you’ve already used React or another JavaScript framework, feel free to skip to the next section.</p>
+
+<p>We can just create a basic HTML file and add a link to a Vue CDN in the head, and create a <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> with an id of <code class="language-plaintext highlighter-rouge">app</code>.</p>
+
+<h3 id="static-html-file"><a href="https://www.satyacodes.ml/#static-html-file"></a>Static HTML File</h3>
+
+<p>index.html</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width,initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+    <span class="nt">&lt;title&gt;</span>Vue App<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>We can create a simple “Hello World” with Vue. Using double brackets, we’ll render <code class="language-plaintext highlighter-rouge">message</code> in <code class="language-plaintext highlighter-rouge">app</code>. In the <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> tag, we’ll link the data and the DOM. We create a new <code class="language-plaintext highlighter-rouge">Vue</code>, and the <code class="language-plaintext highlighter-rouge">message</code> property on <code class="language-plaintext highlighter-rouge">data</code> will be rendered.</p>
+
+<p>index.html</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width,initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+    <span class="nt">&lt;title&gt;</span>Vue App<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+    <span class="nt">&lt;script&gt;</span>
+      <span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+        <span class="na">el</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Hello Vue!</span><span class="dl">'</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">})</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>We can see the data render.</p>
+
+<p><a href="https://www.taniarascia.com/static/1196b1563a48f699ca40439dd8413cfc/24def/vue1.png"><img src="https://www.taniarascia.com/static/1196b1563a48f699ca40439dd8413cfc/a6d36/vue1.png" alt="vue1" title="vue1" /></a></p>
+
+<p>At this point, it’s not very impressive, and it’s what you’ll learn in <a href="https://vuejs.org/v2/guide/">the introduction of the documentation</a>, but it drives home the important point that Vue is just JavaScript, and there’s no need to get nervous about Node, Babel, Webpack, and so on.</p>
+
+<h3 id="vue-cli"><a href="https://www.satyacodes.ml/#vue-cli"></a>Vue CLI</h3>
+
+<p>More often, you won’t be injecting Vue into a static HTML file, but you’ll be taking advantage of the Node ecosystem. The easiest way we can do this is vue <a href="https://cli.vuejs.org/">Vue CLI</a>, or the Vue Command Line Interface. As mentioned in the prerequisites, you should be familiar with Node and npm/yarn and how to work with local and global packages.</p>
+
+<p>First, we’ll install Vue CLI.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># install with npm
+npm i -g @vue/cli @vue/cli-service-global
+
+# install with yarn
+yarn global add @vue/cli @vue/cli-service-global
+</code></pre></div></div>
+
+<p>Now that we have Vue CLI installed globally, we can use the <code class="language-plaintext highlighter-rouge">vue</code> command anywhere. We’ll use <a href="https://cli.vuejs.org/guide/creating-a-project.html#vue-create">vue create</a> to start a new project.</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">vue create</code> is the equivalent to <code class="language-plaintext highlighter-rouge">create-react-app</code>.</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vue create vue-app
+</code></pre></div></div>
+
+<p>You’ll be given an option to do default or manual, and we can just select default.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Vue CLI v3.7.0
+? Please pick a preset: (Use arrow keys)
+❯ default (babel, eslint)
+  Manually select features
+</code></pre></div></div>
+
+<p>Once that’s done, you can move to the new app that’s been created and <code class="language-plaintext highlighter-rouge">serve</code> to run the dev server.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd vue-app
+npm run serve
+# or
+yarn serve
+</code></pre></div></div>
+
+<p>Once that’s done, you can navigate to <code class="language-plaintext highlighter-rouge">http://localhost:8080/</code> to see the default page.</p>
+
+<p><a href="https://www.taniarascia.com/static/5cd35242c76a022104f9ab8762a0e8e1/57f7d/vue2.png"><img src="https://www.taniarascia.com/static/5cd35242c76a022104f9ab8762a0e8e1/a6d36/vue2.png" alt="vue2" title="vue2" /></a></p>
+
+<p>At this point, you’re all set up and ready to go with Vue. If you’re using Visual Studio Code, install the <a href="https://marketplace.visualstudio.com/items?itemName=octref.vetur">Vetur</a> plugin for syntax highlighting, formatting, and so on.</p>
+
+<h3 id="vue-devtools"><a href="https://www.satyacodes.ml/#vue-devtools"></a>Vue DevTools</h3>
+
+<p>One final thing to have in your toolbelt while working with Vue is Vue DevTools. It’s an add-on to regular DeveloperTools which will show you all the information about your components - their state, methods, etc.</p>
+
+<ul>
+  <li><a href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en">Vue DevTools on Chrome</a></li>
+  <li><a href="https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/">Vue DevTools on FireFox</a></li>
+</ul>
+
+<p><a href="https://www.taniarascia.com/static/d34ebca09bd90df7fe20e5fb4494819a/6871f/vue3.png"><img src="https://www.taniarascia.com/static/d34ebca09bd90df7fe20e5fb4494819a/a6d36/vue3.png" alt="vue3" title="vue3" /></a></p>
+
+<h2 id="getting-started"><a href="https://www.satyacodes.ml/#getting-started"></a>Getting Started</h2>
+
+<p>Congrats, you’re all set up! You have a new Vue boilerplate app. In the project files, you have a <code class="language-plaintext highlighter-rouge">public</code> folder which contains <code class="language-plaintext highlighter-rouge">index.html</code>, and an <code class="language-plaintext highlighter-rouge">src</code> folder with <code class="language-plaintext highlighter-rouge">main.js</code> as the entry point. We’re introduced to <code class="language-plaintext highlighter-rouge">.vue</code> files, with the <code class="language-plaintext highlighter-rouge">HelloWorld.vue</code> and <code class="language-plaintext highlighter-rouge">App.vue</code> components.</p>
+
+<p><a href="https://www.taniarascia.com/static/5ca780d4da294dbfdbcfb1ce88d04007/4a70a/vue4.png"><img src="https://www.taniarascia.com/static/5ca780d4da294dbfdbcfb1ce88d04007/a6d36/vue4.png" alt="vue4" title="vue4" /></a></p>
+
+<h3 id="entry-point"><a href="https://www.satyacodes.ml/#entry-point"></a>Entry point</h3>
+
+<p>In <code class="language-plaintext highlighter-rouge">main.js</code>, we’re bringing in <code class="language-plaintext highlighter-rouge">Vue</code> and rendering the App to our app div in <code class="language-plaintext highlighter-rouge">index.html</code>. This file won’t need to change.</p>
+
+<p>src/main.js</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Vue</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./App.vue</span><span class="dl">'</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">productionTip</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">render</span><span class="p">:</span> <span class="p">(</span><span class="nx">h</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">h</span><span class="p">(</span><span class="nx">App</span><span class="p">),</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="anatomy-of-a-vue-file"><a href="https://www.satyacodes.ml/#anatomy-of-a-vue-file"></a>Anatomy of a Vue file</h2>
+
+<p>Anything else we make will be a <code class="language-plaintext highlighter-rouge">.vue</code> file, which always consists of three things:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;template&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;script&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;style&gt;</code></li>
+</ul>
+
+<p>And looks like this:</p>
+
+<p>example.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;&lt;</span><span class="sr">/template</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">component-name</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">style</span> <span class="nx">scoped</span><span class="o">&gt;&lt;</span><span class="sr">/style</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p>This may seem strange to you, as it did to me at first. I originally learned front end coding with a focus on separation of concerns for HTML, CSS, and JavaScript, and here we have all three together. Yet JavaScript and the way we design apps has evolved, and keeping our styles and view and component coupled together is generally considered an advantage and improves maintainability.</p>
+
+<p>The data and logic for the component goes in the <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> tag, but only <code class="language-plaintext highlighter-rouge">name</code> is required. The <code class="language-plaintext highlighter-rouge">&lt;style&gt;</code> tag is just CSS. We have the advantage of being able to scope the CSS so it only applies to this component and not globally with the <code class="language-plaintext highlighter-rouge">scoped</code> attribute.</p>
+
+<p>Now let’s start actually building this app.</p>
+
+<p>As always, this tutorial is about functionality, not styles, so I’m just going to link to <a href="https://github.com/taniarascia/primitive">Primitive UI</a> in the <code class="language-plaintext highlighter-rouge">index.html</code> file to add some easy default styles.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;link rel="stylesheet" href="https://unpkg.com/primitive-ui/dist/css/main.css" /&gt;
+</code></pre></div></div>
+
+<h2 id="creating-a-component"><a href="https://www.satyacodes.ml/#creating-a-component"></a>Creating a Component</h2>
+
+<p>Create a file called <code class="language-plaintext highlighter-rouge">EmployeeTable.vue</code> in <code class="language-plaintext highlighter-rouge">src/components</code>. We’re going to create a table with some static data in here.</p>
+
+<p>src/components/EmployeeTable.vue</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"employee-table"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;table&gt;</span>
+      <span class="nt">&lt;thead&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th&gt;</span>Employee name<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;th&gt;</span>Employee email<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;/thead&gt;</span>
+      <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;td&gt;</span>Richard Hendricks<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>richard@piedpiper.com<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;td&gt;</span>Bertram Gilfoyle<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>gilfoyle@piedpiper.com<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;td&gt;</span>Dinesh Chugtai<span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>dinesh@piedpiper.com<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;/tbody&gt;</span>
+    <span class="nt">&lt;/table&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">employee-table</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;style </span><span class="na">scoped</span><span class="nt">&gt;&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<p>In Vue, the convention is that the filename and import will be in PascalCase, such as <code class="language-plaintext highlighter-rouge">EmployeeTable</code>, but when used in a template, this will translate to kebab-case, <code class="language-plaintext highlighter-rouge">&lt;employee-table&gt;</code>. This uses the proper conventions for JavaScript and HTML respectively.</p>
+
+<blockquote>
+  <p>I’m wrapping the template in a <code class="language-plaintext highlighter-rouge">div</code> which isn’t strictly necessary, but a template can only have one root child element, so this makes it easy to add additional elements going forward.</p>
+</blockquote>
+
+<p>We’re exporting <code class="language-plaintext highlighter-rouge">EmployeeTable</code> and importing it into <code class="language-plaintext highlighter-rouge">App.vue</code>. In our <code class="language-plaintext highlighter-rouge">import</code>, we can use <code class="language-plaintext highlighter-rouge">@</code> to reference the <code class="language-plaintext highlighter-rouge">src</code> folder. <code class="language-plaintext highlighter-rouge">App.vue</code> knows which components it can use via the <code class="language-plaintext highlighter-rouge">components</code> property. All imported components must be added there. I’ve also added in some global styles.</p>
+
+<p>src/App.vue</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">class=</span><span class="s">"small-container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Employees<span class="nt">&lt;/h1&gt;</span>
+
+    <span class="nt">&lt;employee-table</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="k">import</span> <span class="nx">EmployeeTable</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/components/EmployeeTable.vue</span><span class="dl">'</span>
+
+  <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">app</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nx">EmployeeTable</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+  <span class="nt">button</span> <span class="p">{</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#009435</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#009435</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nc">.small-container</span> <span class="p">{</span>
+    <span class="nl">max-width</span><span class="p">:</span> <span class="m">680px</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<p>So here’s what we have so far.</p>
+
+<p><a href="https://www.taniarascia.com/static/6c537c31085146adfee3e555bcd1680e/cb1ac/vue5.png"><img src="https://www.taniarascia.com/static/6c537c31085146adfee3e555bcd1680e/a6d36/vue5.png" alt="vue5" title="vue5" /></a></p>
+
+<p>We want to refactor this already to use data in the form of arrays and object as opposed to hard coding all our values into the table. So let’s add a <code class="language-plaintext highlighter-rouge">data()</code> method, and return an <code class="language-plaintext highlighter-rouge">employees</code> array. We’re also going to add IDs to each one to make them uniquely identifiable.</p>
+
+<p>App.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">EmployeeTable</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/components/EmployeeTable.vue</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">app</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">EmployeeTable</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">employees</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Richard Hendricks</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">richard@piedpiper.com</span><span class="dl">'</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bertram Gilfoyle</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">gilfoyle@piedpiper.com</span><span class="dl">'</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+          <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Dinesh Chugtai</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">dinesh@piedpiper.com</span><span class="dl">'</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">],</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Data is like React state.</p>
+</blockquote>
+
+<p>Now we have this data on <code class="language-plaintext highlighter-rouge">App.vue</code>, but we want to pass it to <code class="language-plaintext highlighter-rouge">EmployeeTable</code>. We can do that by passing the data down as a property. An attribute that begins with a colon <code class="language-plaintext highlighter-rouge">:</code> will allow you to pass data. The more verbose version would be <code class="language-plaintext highlighter-rouge">v-bind</code>. In this case we’ll pass our <code class="language-plaintext highlighter-rouge">employees</code> array.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;employee-table :employees="employees" /&gt;
+
+&lt;!-- this is the same thing --&gt;
+&lt;employee-table v-bind:employees="employees" /&gt;
+</code></pre></div></div>
+
+<p>Now on the <code class="language-plaintext highlighter-rouge">EmployeeTable</code> side, we want to retrieve that data, so we tell the component that it will receive props, in this case an <code class="language-plaintext highlighter-rouge">Array</code>.</p>
+
+<p>EmployeeTable.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">employee-table</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">employees</span><span class="p">:</span> <span class="nb">Array</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>You might also see an array of strings instead of each value and type for props, like <code class="language-plaintext highlighter-rouge">props: [ 'employees' ]</code>, which also works but is less explicit.</p>
+</blockquote>
+
+<h3 id="loops"><a href="https://www.satyacodes.ml/#loops"></a>Loops</h3>
+
+<p>Now that we have the data, we want to loop through the data and display the DOM nodes accordingly. We’ll do this with the <code class="language-plaintext highlighter-rouge">v-for</code> attribute. Now that we can retrieve <code class="language-plaintext highlighter-rouge">employees</code> in <code class="language-plaintext highlighter-rouge">EmployeeTable</code>, we’ll display one table row per employee.</p>
+
+<p>EmployeeTable.vue</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"employee-table"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;table&gt;</span>
+      <span class="c">&lt;!-- ...thead... --&gt;</span>
+      <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;tr</span> <span class="na">v-for=</span><span class="s">"employee in employees"</span> <span class="na">:key=</span><span class="s">"employee.id"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;/tbody&gt;</span>
+    <span class="nt">&lt;/table&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre></div></div>
+
+<p>Vue (like React) has a requirement for uniquely identifying any element in an array, so we’ll use <code class="language-plaintext highlighter-rouge">:key</code> on the table row and set it to a unique value.</p>
+
+<p>Now our table hasn’t changed from a view perspective, but it is now set up to work with data more efficiently.</p>
+
+<p><a href="https://www.taniarascia.com/static/6c537c31085146adfee3e555bcd1680e/cb1ac/vue5.png"><img src="https://www.taniarascia.com/static/6c537c31085146adfee3e555bcd1680e/a6d36/vue5.png" alt="vue5" title="vue5" /></a></p>
+
+<h2 id="working-with-forms"><a href="https://www.satyacodes.ml/#working-with-forms"></a>Working with Forms</h2>
+
+<p>Now we’re successfully accomplishing the “Read” portion of a CRUD app, but the next most important thing to do is add the ability to create a new employee. We’re going to create an add employee form.</p>
+
+<p>Make <code class="language-plaintext highlighter-rouge">EmployeeForm.vue</code> and set it up a field to enter name, email, and a button to submit. I’ll go ahead and create an <code class="language-plaintext highlighter-rouge">employee</code> data property with <code class="language-plaintext highlighter-rouge">name</code> and <code class="language-plaintext highlighter-rouge">email</code> on it.</p>
+
+<p>src/components/EmployeeForm.vue</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"employee-form"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;form&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Employee name<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Employee Email<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;button&gt;</span>Add Employee<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">employee-form</span><span class="dl">'</span><span class="p">,</span>
+    <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="na">employee</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">name</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+          <span class="na">email</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;style </span><span class="na">scoped</span><span class="nt">&gt;</span>
+  <span class="nt">form</span> <span class="p">{</span>
+    <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">2rem</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<p>We’ll also need to add this to App.vue</p>
+
+<p>src/components/App.vue</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">class=</span><span class="s">"small-container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Employees<span class="nt">&lt;/h1&gt;</span>
+
+    <span class="nt">&lt;employee-form</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;employee-table</span> <span class="na">:employees=</span><span class="s">"employees"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="k">import</span> <span class="nx">EmployeeTable</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/components/EmployeeTable.vue</span><span class="dl">'</span>
+  <span class="k">import</span> <span class="nx">EmployeeForm</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/components/EmployeeForm.vue</span><span class="dl">'</span>
+
+  <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">app</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nx">EmployeeTable</span><span class="p">,</span>
+      <span class="nx">EmployeeForm</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="c1">// ...</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p><a href="https://www.taniarascia.com/static/6540a3e97e627d03403ae8f1cced5cac/8170e/vue6.png"><img src="https://www.taniarascia.com/static/6540a3e97e627d03403ae8f1cced5cac/a6d36/vue6.png" alt="vue6" title="vue6" /></a></p>
+
+<p>Now we have to figure out how to get the data that we’re writing in the input into Vue’s component state. To do that we’ll use <code class="language-plaintext highlighter-rouge">v-model</code>. <a href="https://vuejs.org/v2/guide/forms.html">v-model</a> is some built-in Vue syntactic sugar for updating an input value with an onchange event.</p>
+
+<p>EmployeeForm.vue</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"employee-form"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;form&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Employee name<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">v-model=</span><span class="s">"employee.name"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Employee Email<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">v-model=</span><span class="s">"employee.email"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;button&gt;</span>Add Employee<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre></div></div>
+
+<p>Now that you’ve added this, you can see in Vue DevTools that the state of the component changes. We just need to submit these values and update the parent (App) state with the new employee object.</p>
+
+<h3 id="event-listeners"><a href="https://www.satyacodes.ml/#event-listeners"></a>Event listeners</h3>
+
+<p>We want to do an <code class="language-plaintext highlighter-rouge">onsubmit</code> event on the form. We can do that with <code class="language-plaintext highlighter-rouge">v-on:submit</code>, or <code class="language-plaintext highlighter-rouge">@submit</code> for short. This convention will be the same for <code class="language-plaintext highlighter-rouge">@click</code>/<code class="language-plaintext highlighter-rouge">v-on:click</code> or any other similar event. The <code class="language-plaintext highlighter-rouge">submit</code> event also has a handy <code class="language-plaintext highlighter-rouge">prevent</code> we can add to it, which is the same as putting <code class="language-plaintext highlighter-rouge">event.preventDefault()</code> inside the submit function, since we won’t be using the default GET/POST methods provided by forms.</p>
+
+<p>Let’s add this to the form, and reference a <code class="language-plaintext highlighter-rouge">handleSubmit</code> method we’ll make.</p>
+
+<p>EmployeeForm.vue</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;form @submit.prevent="handleSubmit"&gt;&lt;/form&gt;
+</code></pre></div></div>
+
+<h3 id="methods"><a href="https://www.satyacodes.ml/#methods"></a>Methods</h3>
+
+<p>Now we’re going to create our first method on a component. Below <code class="language-plaintext highlighter-rouge">data()</code>, we can create a <code class="language-plaintext highlighter-rouge">methods</code> object, which will contain all the custom methods we create. Let’s add <code class="language-plaintext highlighter-rouge">handleSubmit</code> there.</p>
+
+<p>EmployeeForm.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">employee-form</span><span class="dl">'</span><span class="p">,</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">employee</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+        <span class="na">email</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">handleSubmit</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">testing handleSubmit</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="emitting-events-to-the-parent"><a href="https://www.satyacodes.ml/#emitting-events-to-the-parent"></a>Emitting events to the parent</h3>
+
+<p>Now if you try to submit the form, you’ll see the message logged in the console. We know the form submit method is working properly, so we can pass the data up to <code class="language-plaintext highlighter-rouge">App</code> now. We’ll do this using <code class="language-plaintext highlighter-rouge">$emit</code>.</p>
+
+<p>Emit broadcasts a name of an event and data to its parent component, like so.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this.$emit('name-of-emitted-event', dataToPass)
+</code></pre></div></div>
+
+<p>In our case, we’ll create an event called <code class="language-plaintext highlighter-rouge">add:employee</code>, and pass <code class="language-plaintext highlighter-rouge">this.employee</code>.</p>
+
+<p>EmployeeForm.vue</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>handleSubmit() {
+  this.$emit('add:employee', this.employee)
+}
+</code></pre></div></div>
+
+<blockquote>
+  <p>The <code class="language-plaintext highlighter-rouge">add:employee</code> syntax (as opposed to <code class="language-plaintext highlighter-rouge">add-employee</code> or something else) is recommended in <a href="https://vuejs.org/v2/guide/components-custom-events.html#sync-Modifier">the Vue documentation</a></p>
+</blockquote>
+
+<p>Once you add this, click to add form button and go to Vue DevTools. You’ll see a notification for a new event, and it will tell you the name, source, and payload, which in this case is an object we created.</p>
+
+<p><a href="https://www.taniarascia.com/static/1a946bea1d7845c8a003af21f6fb2088/b75f8/vue7.png"><img src="https://www.taniarascia.com/static/1a946bea1d7845c8a003af21f6fb2088/a6d36/vue7.png" alt="vue7" title="vue7" /></a></p>
+
+<h3 id="retrieving-events-from-the-child"><a href="https://www.satyacodes.ml/#retrieving-events-from-the-child"></a>Retrieving events from the child</h3>
+
+<p>Now <code class="language-plaintext highlighter-rouge">employee-form</code> is broadcasting its emitted event, but we need to capture the event and value in the parent to work with it.</p>
+
+<p>The first thing we need to do is make <code class="language-plaintext highlighter-rouge">employee-form</code> acknowledge and handle the emitted event, and invoke a new method. It will look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;component @name-of-emitted-event="methodToCallOnceEmitted"&gt;&lt;/component&gt;
+</code></pre></div></div>
+
+<p>So let’s add that to <code class="language-plaintext highlighter-rouge">App.vue</code>.</p>
+
+<p>App.vue</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;employee-form @add:employee="addEmployee" /&gt;
+</code></pre></div></div>
+
+<p>Now we just have to create the <code class="language-plaintext highlighter-rouge">addEmployee</code> method on <code class="language-plaintext highlighter-rouge">App.vue</code>, which will modify the employees array by adding a new item to it. That will essentially look like this:</p>
+
+<p>App.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nx">addEmployee</span><span class="p">(</span><span class="nx">employee</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">employees</span> <span class="o">=</span> <span class="p">[...</span><span class="k">this</span><span class="p">.</span><span class="nx">employees</span><span class="p">,</span> <span class="nx">employee</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Since I have to make an <code class="language-plaintext highlighter-rouge">id</code> as well, I’ll just write some code to get the new employees ID based on number of items in the array. Note that in a real database, this ID would be uniquely generated or auto incremented.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">addEmployee</span><span class="p">(</span><span class="nx">employee</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">lastId</span> <span class="o">=</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">employees</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span>
+      <span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">employees</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">employees</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">].</span><span class="nx">id</span>
+      <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">lastId</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">newEmployee</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="nx">employee</span><span class="p">,</span> <span class="nx">id</span> <span class="p">};</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">employees</span> <span class="o">=</span> <span class="p">[...</span><span class="k">this</span><span class="p">.</span><span class="nx">employees</span><span class="p">,</span> <span class="nx">newEmployee</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now with this, you can add new employees. Note that the new employee will not persist, as it is front end only and not connected to a database.</p>
+
+<p><a href="https://www.taniarascia.com/static/d952f412385fe8e8181ff72201f0aaf6/3d22e/vue8.png"><img src="https://www.taniarascia.com/static/d952f412385fe8e8181ff72201f0aaf6/a6d36/vue8.png" alt="vue8" title="vue8" /></a></p>
+
+<h2 id="basic-form-validation"><a href="https://www.satyacodes.ml/#basic-form-validation"></a>Basic form validation</h2>
+
+<p>This technically works, but we can clean it up a little. We want to…</p>
+
+<ul>
+  <li>Show a success message if everything went through</li>
+  <li>Show an error message if something was missing</li>
+  <li>Highlight the inputs that have invalid data</li>
+  <li>Clear the inputs after the form is done submitting properly, and</li>
+  <li>Focus on the first item in the input after successful submission</li>
+</ul>
+
+<h3 id="computed-properties"><a href="https://www.satyacodes.ml/#computed-properties"></a>Computed properties</h3>
+
+<p>In Vue, we can use <a href="https://vuejs.org/v2/guide/computed.html">computed properties</a>, which are functions that are automatically computed when something changes. This way we can avoid putting complex logic in the Vue template itself. I’m just going to put a basic check to make sure the field isn’t empty for both fields.</p>
+
+<p>EmployeeForm.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">computed</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nx">invalidName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">employee</span><span class="p">.</span><span class="nx">name</span> <span class="o">===</span> <span class="dl">''</span>
+  <span class="p">},</span>
+
+  <span class="nx">invalidEmail</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">employee</span><span class="p">.</span><span class="nx">email</span> <span class="o">===</span> <span class="dl">''</span>
+  <span class="p">},</span>
+<span class="p">},</span>
+</code></pre></div></div>
+
+<p>To set all this up, I’m going to add a <code class="language-plaintext highlighter-rouge">submitting</code> state, to check whether or not the form is currently being submitted, an <code class="language-plaintext highlighter-rouge">error</code> state if something went wrong, and a <code class="language-plaintext highlighter-rouge">success</code> state if it went through properly.</p>
+
+<p>EmployeeForm.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">submitting</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">error</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">success</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">employee</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+      <span class="na">email</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The submit function will first clear whether or not <code class="language-plaintext highlighter-rouge">success</code> or <code class="language-plaintext highlighter-rouge">error</code> have been set, the start submitting. It’ll check our computed properties, and if either is true, an <code class="language-plaintext highlighter-rouge">error</code> will be set. If not, we can submit, and set all the states back to default.</p>
+
+<p>EmployeeForm.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nx">handleSubmit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">submitting</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">clearStatus</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">invalidName</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">invalidEmail</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">error</span> <span class="o">=</span> <span class="kc">true</span>
+      <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">add:employee</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">employee</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">employee</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+      <span class="na">email</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">error</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">success</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">submitting</span> <span class="o">=</span> <span class="kc">false</span>
+  <span class="p">},</span>
+
+  <span class="nx">clearStatus</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">success</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">error</span> <span class="o">=</span> <span class="kc">false</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Since we want an error message and a success message, I’ll set up the CSS for that.</p>
+
+<p>EmployeeForm.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">style</span> <span class="nx">scoped</span><span class="o">&gt;</span>
+  <span class="nx">form</span> <span class="p">{</span>
+    <span class="nx">margin</span><span class="o">-</span><span class="nx">bottom</span><span class="p">:</span> <span class="mi">2</span><span class="nx">rem</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="p">[</span><span class="kd">class</span><span class="o">*=</span><span class="dl">'</span><span class="s1">-message</span><span class="dl">'</span><span class="p">]</span> <span class="p">{</span>
+    <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="p">:</span> <span class="mi">500</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="p">.</span><span class="nx">error</span><span class="o">-</span><span class="nx">message</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="err">#</span><span class="nx">d33c40</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="p">.</span><span class="nx">success</span><span class="o">-</span><span class="nx">message</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="err">#</span><span class="mi">32</span><span class="nx">a95d</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/style</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p>Finally, we’ll set up the form. If the form is submitting and one of the computed properties is invalid, we want to set a <code class="language-plaintext highlighter-rouge">has-error</code> class on the input. Using <code class="language-plaintext highlighter-rouge">:class=</code> ensures that the class will be treated as JavaScript instead of a plain string. We can make sure the statuses get cleared on focus and keypress events, and we have success and error messages displayed accordingly at the bottom.</p>
+
+<p>EmployeeForm.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">form</span> <span class="p">@</span><span class="nd">submit</span><span class="p">.</span><span class="nx">prevent</span><span class="o">=</span><span class="dl">"</span><span class="s2">handleSubmit</span><span class="dl">"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span><span class="nx">Employee</span> <span class="nx">name</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">input</span>
+    <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span>
+    <span class="p">:</span><span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">{ 'has-error': submitting &amp;&amp; invalidName }</span><span class="dl">"</span>
+    <span class="nx">v</span><span class="o">-</span><span class="nx">model</span><span class="o">=</span><span class="dl">"</span><span class="s2">employee.name</span><span class="dl">"</span>
+    <span class="p">@</span><span class="nd">focus</span><span class="o">=</span><span class="dl">"</span><span class="s2">clearStatus</span><span class="dl">"</span>
+    <span class="p">@</span><span class="nd">keypress</span><span class="o">=</span><span class="dl">"</span><span class="s2">clearStatus</span><span class="dl">"</span>
+  <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span><span class="nx">Employee</span> <span class="nx">Email</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">input</span>
+    <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span>
+    <span class="p">:</span><span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">{ 'has-error': submitting &amp;&amp; invalidEmail }</span><span class="dl">"</span>
+    <span class="nx">v</span><span class="o">-</span><span class="nx">model</span><span class="o">=</span><span class="dl">"</span><span class="s2">employee.email</span><span class="dl">"</span>
+    <span class="p">@</span><span class="nd">focus</span><span class="o">=</span><span class="dl">"</span><span class="s2">clearStatus</span><span class="dl">"</span>
+  <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="dl">"</span><span class="s2">error &amp;&amp; submitting</span><span class="dl">"</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">error-message</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="err">❗</span><span class="nx">Please</span> <span class="nx">fill</span> <span class="nx">out</span> <span class="nx">all</span> <span class="nx">required</span> <span class="nx">fields</span>
+  <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="dl">"</span><span class="s2">success</span><span class="dl">"</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">success-message</span><span class="dl">"</span><span class="o">&gt;</span><span class="err">✅</span> <span class="nx">Employee</span> <span class="nx">successfully</span> <span class="nx">added</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">button</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">Employee</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/form</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<h3 id="conditonals"><a href="https://www.satyacodes.ml/#conditonals"></a>Conditonals</h3>
+
+<p>You’ll notice a <code class="language-plaintext highlighter-rouge">v-if</code> property. This is a <a href="https://vuejs.org/v2/guide/conditional.html">conditional in Vue</a>. In this case, the <code class="language-plaintext highlighter-rouge">&lt;p&gt;</code> element will only be displayed if the condition is true.</p>
+
+<p>There is also a <code class="language-plaintext highlighter-rouge">v-else-if</code>, and <code class="language-plaintext highlighter-rouge">v-else</code> property, which work the same as their vanilla JS counterparts.</p>
+
+<p>Now that that’s complete, we can see these conditionally rendered elements. Here’s the error message on a missing field.</p>
+
+<p><a href="https://www.taniarascia.com/static/ef397872f6bf5b99852e420da96d46e9/3e992/vue9.png"><img src="https://www.taniarascia.com/static/ef397872f6bf5b99852e420da96d46e9/a6d36/vue9.png" alt="vue9" title="vue9" /></a></p>
+
+<p>And here’s the success message.</p>
+
+<p><a href="https://www.taniarascia.com/static/825ca1993d6c1c1ff8bf8f35789f9bad/ec09f/vue10.png"><img src="https://www.taniarascia.com/static/825ca1993d6c1c1ff8bf8f35789f9bad/a6d36/vue10.png" alt="vue10" title="vue10" /></a></p>
+
+<h3 id="adding-a-reference"><a href="https://www.satyacodes.ml/#adding-a-reference"></a>Adding a reference</h3>
+
+<p>There’s one more small improvement we can make. After submitting the form, it would be nice if the focus went back on the first item to make it easy to add many items without clicking around. We can do that with <a href="https://vuejs.org/v2/api/#vm-refs">refs</a>, which we can use to target a specific element.</p>
+
+<p>We can just add a ref to the first input…</p>
+
+<p>EmployeeForm.vue</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input ref="first" ... /&gt;
+</code></pre></div></div>
+
+<p>And <code class="language-plaintext highlighter-rouge">focus</code> that ref after submitting the form in <code class="language-plaintext highlighter-rouge">handleSubmit</code>.</p>
+
+<p>EmployeeForm.vue</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this.$emit('add:employee', this.employee)
+this.$refs.first.focus()
+</code></pre></div></div>
+
+<p>Now after you submit the focus will automatically go to the first field in the form. The <code class="language-plaintext highlighter-rouge">@keypress</code> event to <code class="language-plaintext highlighter-rouge">clearStatus</code> we added to it before will ensure the success or error message goes away once you start typing.</p>
+
+<blockquote>
+  <p>Our <code class="language-plaintext highlighter-rouge">EmployeeForm</code> file is complete, and you can <a href="https://github.com/taniarascia/vue-tutorial/blob/master/src/components/EmployeeForm.vue">view the source</a> of the completed file in case you got lost along the way.</p>
+</blockquote>
+
+<h2 id="deleting-items"><a href="https://www.satyacodes.ml/#deleting-items"></a>Deleting Items</h2>
+
+<p>Now that the form is done, we have to finish the other actions on the table - editing and deleting. We’ll start with deleting, which is an easier operation.</p>
+
+<p>First, we’ll update the table to have an “Actions” row, and add buttons for editing and deleting.</p>
+
+<p>EmployeeTable.vue</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"employee-table"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;table&gt;</span>
+      <span class="nt">&lt;thead&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;th&gt;</span>Employee name<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;th&gt;</span>Employee email<span class="nt">&lt;/th&gt;</span>
+          <span class="nt">&lt;th&gt;</span>Actions<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;/thead&gt;</span>
+      <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;tr</span> <span class="na">v-for=</span><span class="s">"employee in employees"</span> <span class="na">:key=</span><span class="s">"employee.id"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;</span>
+            <span class="nt">&lt;button&gt;</span>Edit<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;button&gt;</span>Delete<span class="nt">&lt;/button&gt;</span>
+          <span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;/tbody&gt;</span>
+    <span class="nt">&lt;/table&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;style </span><span class="na">scoped</span><span class="nt">&gt;</span>
+  <span class="nt">button</span> <span class="p">{</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">0.5rem</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<p>We’ll emit an event like before, this time called <code class="language-plaintext highlighter-rouge">deleteEmployee</code>. We can pass the <code class="language-plaintext highlighter-rouge">id</code> of the employee as the payload.</p>
+
+<p>EmployeeTable.vue</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;button @click="$emit('delete:employee', employee.id)"&gt;Delete&lt;/button&gt;
+</code></pre></div></div>
+
+<p>Back in <code class="language-plaintext highlighter-rouge">App.vue</code>, we have to tell <code class="language-plaintext highlighter-rouge">employee-table</code> to perform an action on <code class="language-plaintext highlighter-rouge">delete-employee</code>…</p>
+
+<p>App.vue</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;employee-table :employees="employees" @delete:employee="deleteEmployee" /&gt;
+</code></pre></div></div>
+
+<p>And we’ll filter the deleted row out.</p>
+
+<p>App.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nx">addEmployee</span><span class="p">(</span><span class="nx">employee</span><span class="p">)</span> <span class="p">{...},</span>
+  <span class="nx">deleteEmployee</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">employees</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">employees</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span>
+      <span class="nx">employee</span> <span class="o">=&gt;</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">id</span> <span class="o">!==</span> <span class="nx">id</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now you’ll notice you can delete items. Let’s just add a message in case there are no employees.</p>
+
+<p>EmployeeTable.vue</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"employee-table"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">v-if=</span><span class="s">"employees.length &lt; 1"</span> <span class="na">class=</span><span class="s">"empty-table"</span><span class="nt">&gt;</span>No employees<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;table</span> <span class="na">v-else</span><span class="nt">&gt;</span>
+    ...
+  <span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>We can successfully add and delete employees now.</p>
+
+<p><a href="https://www.taniarascia.com/static/e80f851c9e6132a6169c28249c0d7eb2/9ce1c/vue11.png"><img src="https://www.taniarascia.com/static/e80f851c9e6132a6169c28249c0d7eb2/a6d36/vue11.png" alt="vue11" title="vue11" /></a></p>
+
+<h3 id="editing-items"><a href="https://www.satyacodes.ml/#editing-items"></a>Editing Items</h3>
+
+<p>Editing is a little more complex than deleting. The setup from <code class="language-plaintext highlighter-rouge">App.vue</code> is simple though, so we’ll do that first. Just add the <code class="language-plaintext highlighter-rouge">edit:employee</code> event that we’ll be making:</p>
+
+<p>App.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">employee</span><span class="o">-</span><span class="nx">table</span>
+  <span class="p">:</span><span class="nx">employees</span><span class="o">=</span><span class="dl">"</span><span class="s2">employees</span><span class="dl">"</span>
+  <span class="p">@</span><span class="nd">delete</span><span class="p">:</span><span class="nx">employee</span><span class="o">=</span><span class="dl">"</span><span class="s2">deleteEmployee</span><span class="dl">"</span>
+  <span class="p">@</span><span class="nd">edit</span><span class="p">:</span><span class="nx">employee</span><span class="o">=</span><span class="dl">"</span><span class="s2">editEmployee</span><span class="dl">"</span>
+<span class="o">/&gt;</span>
+</code></pre></div></div>
+
+<p>And create the <code class="language-plaintext highlighter-rouge">editEmployee</code> method, which will take <code class="language-plaintext highlighter-rouge">id</code> and <code class="language-plaintext highlighter-rouge">updatedEmployee</code> parameters, map through the <code class="language-plaintext highlighter-rouge">employees</code> array, and update the correct employee.</p>
+
+<p>App.vue</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>editEmployee(id, updatedEmployee) {
+  this.employees = this.employees.map(employee =&gt;
+    employee.id === id ? updatedEmployee : employee
+  )
+}
+</code></pre></div></div>
+
+<p>Simple enough.</p>
+
+<p>Now back in <code class="language-plaintext highlighter-rouge">EmployeeTable.vue</code>, we’ll basically want to make an “edit mode” that is enabled when the button is pressed.</p>
+
+<p>EmployeeTable.vue</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;button @click="editMode(employee.id)"&gt;Edit&lt;/button&gt;
+</code></pre></div></div>
+
+<p>We’ll create an <code class="language-plaintext highlighter-rouge">editing</code> state that will get set to the <code class="language-plaintext highlighter-rouge">id</code> of the row that’s currently being edited when <code class="language-plaintext highlighter-rouge">editMode</code> is enabled. <code class="language-plaintext highlighter-rouge">EmployeeTable</code> will have it’s own local <code class="language-plaintext highlighter-rouge">editEmployee</code> method, which emits <code class="language-plaintext highlighter-rouge">edit:employee</code> to <code class="language-plaintext highlighter-rouge">App</code> if the fields aren’t empty, and resets the <code class="language-plaintext highlighter-rouge">editing</code> state.</p>
+
+<p>EmployeeTable.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">editing</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+<span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nx">editMode</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">editing</span> <span class="o">=</span> <span class="nx">id</span>
+  <span class="p">},</span>
+
+  <span class="nx">editEmployee</span><span class="p">(</span><span class="nx">employee</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">employee</span><span class="p">.</span><span class="nx">name</span> <span class="o">===</span> <span class="dl">''</span> <span class="o">||</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">email</span> <span class="o">===</span> <span class="dl">''</span><span class="p">)</span> <span class="k">return</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">edit:employee</span><span class="dl">'</span><span class="p">,</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">employee</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">editing</span> <span class="o">=</span> <span class="kc">null</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here’s the current state of our table row - we’re just displaying the values.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;tr</span> <span class="na">v-for=</span><span class="s">"employee in employees"</span> <span class="na">:key=</span><span class="s">"employee.id"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;td&gt;</span>
+    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"editMode(employee.id)"</span><span class="nt">&gt;</span>Edit<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"$emit('delete:employee', employee.id)"</span><span class="nt">&gt;</span>Delete<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+</code></pre></div></div>
+
+<p>To make it editable, we’ll check if <code class="language-plaintext highlighter-rouge">editing === employee.id</code> is true for a particular row, and display and input instead. We’ll also add a cancel button that will cancel the editing by setting it to null.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;tr</span> <span class="na">v-for=</span><span class="s">"employee in employees"</span> <span class="na">:key=</span><span class="s">"employee.id"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">v-if=</span><span class="s">"editing === employee.id"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">v-model=</span><span class="s">"employee.name"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">v-else</span><span class="nt">&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">v-if=</span><span class="s">"editing === employee.id"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">v-model=</span><span class="s">"employee.email"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">v-else</span><span class="nt">&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">v-if=</span><span class="s">"editing === employee.id"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"editEmployee(employee)"</span><span class="nt">&gt;</span>Save<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"muted-button"</span> <span class="err">@</span><span class="na">click=</span><span class="s">"editing = null"</span><span class="nt">&gt;</span>Cancel<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">v-else</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"editMode(employee.id)"</span><span class="nt">&gt;</span>Edit<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"$emit('delete:employee', employee.id)"</span><span class="nt">&gt;</span>Delete<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+</code></pre></div></div>
+
+<p>And now I can edit a single row at a time!</p>
+
+<p><a href="https://www.taniarascia.com/static/ed682041260a6a0bb0c07cb51f805d21/efb68/vue12.png"><img src="https://www.taniarascia.com/static/ed682041260a6a0bb0c07cb51f805d21/a6d36/vue12.png" alt="vue12" title="vue12" /></a></p>
+
+<p>Editing works, but you still can’t cancel the state from updating with this code, even if the new values don’t get sent to the API call. We’ll create <code class="language-plaintext highlighter-rouge">cancelEdit</code>, and make the cancel button call <code class="language-plaintext highlighter-rouge">@click="cancelEdit(employee)"</code> and remove <code class="language-plaintext highlighter-rouge">.id</code> from the edit button. We’ll make a cached employee that we can return to.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">editMode</span><span class="p">(</span><span class="nx">employee</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">cachedEmployee</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">employee</span><span class="p">)</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">editing</span> <span class="o">=</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">id</span>
+<span class="p">},</span>
+<span class="nx">cancelEdit</span><span class="p">(</span><span class="nx">employee</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">employee</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">cachedEmployee</span><span class="p">)</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">editing</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>At this point, the app is technically complete, but a real production app will probably be making API calls to a back end database, so we’ll make a mock version of that.</p>
+
+<blockquote>
+  <p>If you’d like to view a completed version of the app before we get into the API calls, you can <a href="https://codesandbox.io/s/m3126z3w8p">view this CodeSandbox demo</a>].</p>
+</blockquote>
+
+<h2 id="making-asynchronous-rest-api-calls"><a href="https://www.satyacodes.ml/#making-asynchronous-rest-api-calls"></a>Making Asynchronous REST API Calls</h2>
+
+<p>We’re going to use <a href="https://jsonplaceholder.typicode.com/">JSON Placeholder</a> to make fake API calls that will give us real responses. We can <code class="language-plaintext highlighter-rouge">GET</code> values (for example, visit <a href="https://jsonplaceholder.typicode.com/users">https://jsonplaceholder.typicode.com/users</a> to see the <code class="language-plaintext highlighter-rouge">users</code> JSON we’ll be using), and we can make <code class="language-plaintext highlighter-rouge">POST</code>, <code class="language-plaintext highlighter-rouge">PUT</code>, and <code class="language-plaintext highlighter-rouge">DELETE</code> requests. These requests will not persist in a real database because they’re for example purposes.</p>
+
+<blockquote>
+  <p>If you’re not familiar with REST, please <a href="https://code.tutsplus.com/tutorials/code-your-first-api-with-nodejs-and-express-understanding-rest-apis--cms-31697">read this article</a></p>
+</blockquote>
+
+<p>An asynchronous method with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">async/await</a> will look something like this, using a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch">try/catch</a> block.</p>
+
+<blockquote>
+  <p>We’ll use the built-in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> that Node and the browser have access to, however other options like <a href="https://github.com/axios/axios">Axios</a> are available and popular. I just prefer to use Fetch because it’s one less dependency to install for example purposes.</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="nx">asynchronousMethod</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+
+    <span class="c1">// do something with `data`</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do something with `error`</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>So at this point, I’ll replace all our CRUD methods with <code class="language-plaintext highlighter-rouge">async</code> methods, and update the data via the API as well as the front end.</p>
+
+<h3 id="lifecycle-methods"><a href="https://www.satyacodes.ml/#lifecycle-methods"></a>Lifecycle methods</h3>
+
+<p>With GET, we’ll want to remove all the pre-populated data we have in the <code class="language-plaintext highlighter-rouge">employees</code> array, and replace it with the data from the API. We’ll call that <code class="language-plaintext highlighter-rouge">GET</code> in the <code class="language-plaintext highlighter-rouge">mounted</code> <a href="https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram">lifecycle method</a>.</p>
+
+<blockquote>
+  <p>If you’re familiar with React, you’ll know about lifecycle methods already, and this is the Vue equivalent of <code class="language-plaintext highlighter-rouge">componentDidMount</code>.</p>
+</blockquote>
+
+<p><a href="https://vuejs.org/v2/api/#mounted"><code class="language-plaintext highlighter-rouge">mounted</code></a> tells our component to perform the action once the component is actually inserted to the DOM. This is a common way to display data from an API. (Some use the <code class="language-plaintext highlighter-rouge">created</code> lifecycle for this task.)</p>
+
+<p>App.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">app</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">EmployeeTable</span><span class="p">,</span>
+    <span class="nx">EmployeeForm</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">employees</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getEmployees</span><span class="p">()</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>So now we can update all our CRUD methods with their asynchronous API-call equivalents.</p>
+
+<h3 id="get"><a href="https://www.satyacodes.ml/#get"></a>GET</h3>
+
+<p>Retrieve a resource.</p>
+
+<p>App.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="nx">getEmployees</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://jsonplaceholder.typicode.com/users</span><span class="dl">'</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">employees</span> <span class="o">=</span> <span class="nx">data</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="post"><a href="https://www.satyacodes.ml/#post"></a>POST</h3>
+
+<p>Create a new resource (non-idempotent).</p>
+
+<p>App.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="nx">addEmployee</span><span class="p">(</span><span class="nx">employee</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://jsonplaceholder.typicode.com/users</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">employee</span><span class="p">),</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json; charset=UTF-8</span><span class="dl">'</span> <span class="p">},</span>
+    <span class="p">})</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">employees</span> <span class="o">=</span> <span class="p">[...</span><span class="k">this</span><span class="p">.</span><span class="nx">employees</span><span class="p">,</span> <span class="nx">data</span><span class="p">]</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="put"><a href="https://www.satyacodes.ml/#put"></a>PUT</h3>
+
+<p>Update an exiting resource (idempotent).</p>
+
+<p>App.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="nx">editEmployee</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">updatedEmployee</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`https://jsonplaceholder.typicode.com/users/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PUT</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">updatedEmployee</span><span class="p">),</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json; charset=UTF-8</span><span class="dl">'</span> <span class="p">},</span>
+    <span class="p">})</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">employees</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">employees</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">employee</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">employee</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">id</span> <span class="p">?</span> <span class="nx">data</span> <span class="p">:</span> <span class="nx">employee</span><span class="p">))</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="delete"><a href="https://www.satyacodes.ml/#delete"></a>DELETE</h3>
+
+<p>Remove an existing resource.</p>
+
+<p>App.vue</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="nx">deleteEmployee</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`https://jsonplaceholder.typicode.com/users/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">DELETE</span><span class="dl">"</span>
+    <span class="p">});</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">employees</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">employees</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">employee</span> <span class="o">=&gt;</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">id</span> <span class="o">!==</span> <span class="nx">id</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Okay, all API calls should be working properly, and we’re getting data from JSON Placeholder instead of our own, static data.</p>
+
+<p><a href="https://www.taniarascia.com/static/5183a389429e3e57c5cea4314fdc21b5/6fa81/vue13.png"><img src="https://www.taniarascia.com/static/5183a389429e3e57c5cea4314fdc21b5/a6d36/vue13.png" alt="vue13" title="vue13" /></a></p>
+
+<p>And the app is complete! You can <a href="https://taniarascia.github.io/vue-tutorial/">check out the live demo</a> or <a href="https://github.com/taniarascia/vue-tutorial">view the source</a>.</p>
+
+<h2 id="deploying-a-build-to-github-pages"><a href="https://www.satyacodes.ml/#deploying-a-build-to-github-pages"></a>Deploying a Build to GitHub Pages</h2>
+
+<p>You might want to deploy your newly completed app to GitHub pages, a static site host. Assuming you’ve already created a repository and committed to master, using the steps below…</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add origin https://github.com/username/vue-app
+git add .
+git commit -m "initial commit"
+git push -u origin master
+</code></pre></div></div>
+
+<p>You can commit the build with the following steps:</p>
+
+<p>Create a <code class="language-plaintext highlighter-rouge">gh-pages</code> branch.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout -b gh-pages
+</code></pre></div></div>
+
+<p>Remove the <code class="language-plaintext highlighter-rouge">dist</code> directory from <code class="language-plaintext highlighter-rouge">.gitignore</code>.</p>
+
+<p>Create <code class="language-plaintext highlighter-rouge">vue.config.js</code> and add the <code class="language-plaintext highlighter-rouge">publicPath</code> of your GitHub</p>
+
+<p>vue.config.js</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module.exports = {
+  publicPath: 'vue-app',
+}
+</code></pre></div></div>
+
+<p>Create a build, which will output the <code class="language-plaintext highlighter-rouge">dist</code> folder.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+# or
+yarn build
+</code></pre></div></div>
+
+<p>Add the build, commit, and send it to <code class="language-plaintext highlighter-rouge">gh-pages</code> on GitHub.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add dist
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit -m "gh-pages commit"
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git subtree push --prefix dist origin gh-pages
+</code></pre></div></div>
+
+<p>And within a minute or two, it should be all hosted!</p>
+
+<h2 id="conclusion"><a href="https://www.satyacodes.ml/#conclusion"></a>Conclusion</h2>
+
+<p>Wow, that was a lot. We learned what Vue is, how to set up a Vue project via static HTML or Vue Cli, and how to make a complete CRUD app in Vue. We learned about Vue components, data, methods, computed methods, lifecycles, conditionals, events, form handling, and building. If you went through and did this whole tutorial, you should feel pretty good starting to build your own apps from scratch in Vue.</p>
+
+<p>From here, you might want to look into <a href="https://vuex.vuejs.org/">Vuex</a> for state management (similar to React’s Redux), and <a href="https://router.vuejs.org/">Vue Router</a> for front-end routing (similar to React Router DOM). The great part about the Vue environment is that it’s batteries optional, but official batteries also included should you need it.</p>
+
+<p>A lot of work went into creating this app and tutorial, and if you enjoyed it I hope you share it with anyone you think might benefit from it! If you see any mistakes, please let me know.</p>
+
+<ul>
+  <li><a href="https://github.com/taniarascia/vue-tutorial">View Source</a></li>
+  <li><a href="https://taniarascia.github.io/vue-tutorial/">View Demo</a></li>
+</ul>
+</div><div class="d-print-none"><footer class="article__footer"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet --></footer></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+//alert('start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert(' end .......');
+ 
+ document.onreadystatechange = function(){
+     if(document.readyState === 'complete'){
+         /*code here*/
+		 //alert('onreadystatechange comled ... start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert('onreadystatechange comled ... end .......');
+     }
+}
+
+</script></div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet --></div>
+            </div></div></div><div class="page__footer d-print-none"><footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Satya Kaveti"><meta itemprop="url" content="/"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© SatyaCodes 2020 ,
+        <a title="Satya Kaveti" href="about/">Satya Kaveti's Writing</a>.
+		<span>| <a href="about/">About Me</a> &nbsp |  </span>
+		<span><a href="/terms.html">Terms</a> &nbsp |  </span>
+		<span><a href="/contact.html">Contact</a> &nbsp |  </span>
+		<span><a href="http://www.satyacodesapps.ml/" target="_blank">Our Apps</a> &nbsp |  </span>
+		<span><a href="https://www.facebook.com/isatyakaveti" target="_blank"><i class="fab fa-facebook-f"></i></a> &nbsp |  </span>
+		<span><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube-square"></i></a> &nbsp |  </span>
+		<span><a href="https://in.linkedin.com/in/satyakaveti"target="_blank"><i class="fab fa-linkedin-in"></i></a> &nbsp | 
+		<span>[ 
+		<!-- Start of WebFreeCounter Code -->
+<a href="http://www.statworker.com/" target="_blank"><img src="https://www.webfreecounter.com/hit.php?id=gfpapx&nd=7&style=2" border="0" alt="statworker.com"></a>
+<!-- End of WebFreeCounter Code -->
+</span>
+<span><a href="https://statcounter.com/p12408441/?guest=1" target="_blank"> ]</a></span>
+
+
+      </div>
+    </div>
+  </div>
+</footer></div></div>
+    </div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal d-print-none js-page-gallery-modal"><div class="gallery"></div></div><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">Search</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text" />
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        Cancel</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script></div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+(function() {(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function swiper(options) {
+      var $window = $(window), $root = this, $swiperWrapper, $swiperSlides, $swiperButtonPrev, $swiperButtonNext,
+        initialSlide, animation, onChange, onChangeEnd,
+        rootWidth, count, preIndex, curIndex, translateX, CRITICAL_ANGLE = Math.PI / 3;
+
+      function setOptions(options) {
+        var _options = options || {};
+        initialSlide = _options.initialSlide || 0;
+        animation = _options.animation === undefined && true;
+        onChange = onChange || _options.onChange;
+        onChangeEnd = onChangeEnd || _options.onChangeEnd;
+      }
+
+      function init() {
+        $swiperWrapper = $root.find('.swiper__wrapper');
+        $swiperSlides = $root.find('.swiper__slide');
+        $swiperButtonPrev = $root.find('.swiper__button--prev');
+        $swiperButtonNext = $root.find('.swiper__button--next');
+        animation && $swiperWrapper.addClass('swiper__wrapper--animation');
+        calc(true);
+      }
+
+      function preCalc() {
+        rootWidth = $root.width();
+        count = $swiperWrapper.children('.swiper__slide').length;
+        if (count < 2) {
+          $swiperButtonPrev.addClass('d-none');
+          $swiperButtonNext.addClass('d-none');
+        }
+        curIndex = initialSlide || 0;
+        translateX = getTranslateXFromCurIndex();
+      }
+
+      var calc = (function() {
+        var preAnimation, $swiperSlide, $preSwiperSlide;
+        return function (needPreCalc, params) {
+          needPreCalc && preCalc();
+          var _animation = (params && params.animation !== undefined) ? params.animation : animation;
+          if (preAnimation === undefined || preAnimation !== _animation) {
+            preAnimation = _animation ? $swiperWrapper.addClass('swiper__wrapper--animation') :
+              $swiperWrapper.removeClass('swiper__wrapper--animation');
+          }
+          if (preIndex !== curIndex) {
+            ($preSwiperSlide = $swiperSlides.eq(preIndex)).removeClass('active');
+            ($swiperSlide = $swiperSlides.eq(curIndex)).addClass('active');
+            onChange && onChange(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+            if (onChangeEnd) {
+              if (_animation) {
+                setTimeout(function() {
+                  onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+                }, 400);
+              } else {
+                onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+              }
+            }
+            preIndex = curIndex;
+          }
+          $swiperWrapper.css('transform', 'translate(' + translateX + 'px, 0)');
+          if (count > 1) {
+            if (curIndex <= 0) {
+              $swiperButtonPrev.addClass('disabled');
+            } else {
+              $swiperButtonPrev.removeClass('disabled');
+            }
+            if (curIndex >= count - 1) {
+              $swiperButtonNext.addClass('disabled');
+            } else {
+              $swiperButtonNext.removeClass('disabled');
+            }
+          }
+        };
+      })();
+
+      function getTranslateXFromCurIndex() {
+        return curIndex <= 0 ? 0 : - rootWidth * curIndex;
+      }
+
+      function moveToIndex(index ,params) {
+        preIndex = curIndex;
+        curIndex = index;
+        translateX = getTranslateXFromCurIndex();
+        calc(false, params);
+      }
+
+      function move(type) {
+        var nextIndex = curIndex, unstableTranslateX;
+        if (type === 'prev') {
+          nextIndex > 0 && nextIndex--;
+        } else if (type === 'next') {
+          nextIndex < count - 1 && nextIndex++;
+        }
+        if (type === 'cur') {
+          moveToIndex(curIndex, { animation: true });
+          return;
+        }
+        unstableTranslateX = translateX % rootWidth !== 0;
+        if (nextIndex !== curIndex || unstableTranslateX) {
+          unstableTranslateX ? moveToIndex(nextIndex, { animation: true }) : moveToIndex(nextIndex);
+        }
+      }
+
+      setOptions(options);
+      init();
+      preIndex = curIndex;
+
+      $swiperButtonPrev.on('click', function(e) {
+        e.stopPropagation();
+        move('prev');
+      });
+      $swiperButtonNext.on('click', function(e) {
+        e.stopPropagation();
+        move('next');
+      });
+      $window.on('resize', function() {
+        calc(true, { animation: false });
+      });
+
+      (function() {
+        var pageX, pageY, velocityX, preTranslateX = translateX, timeStamp, touching;
+        function handleTouchstart(e) {
+          var point = e.touches ? e.touches[0] : e;
+          pageX = point.pageX;
+          pageY = point.pageY;
+          velocityX = 0;
+          preTranslateX = translateX;
+        }
+        function handleTouchmove(e) {
+          if (e.touches && e.touches.length > 1) {
+            return;
+          }
+          var point = e.touches ? e.touches[0] : e;
+          var deltaX = point.pageX - pageX;
+          var deltaY = point.pageY - pageY;
+          velocityX = deltaX / (e.timeStamp - timeStamp);
+          timeStamp = e.timeStamp;
+          if (e.cancelable && Math.abs(Math.atan(deltaY / deltaX)) < CRITICAL_ANGLE) {
+            touching = true;
+            translateX += deltaX;
+            calc(false, { animation: false });
+          }
+          pageX = point.pageX;
+          pageY = point.pageY;
+        }
+        function handleTouchend() {
+          touching = false;
+          var deltaX = translateX - preTranslateX;
+          var distance = deltaX + velocityX * rootWidth;
+          if (Math.abs(distance) > rootWidth / 2) {
+            distance > 0 ? move('prev') : move('next');
+          } else {
+            move('cur');
+          }
+        }
+        $swiperWrapper.on('touchstart', handleTouchstart);
+        $swiperWrapper.on('touchmove', handleTouchmove);
+        $swiperWrapper.on('touchend', handleTouchend);
+        $swiperWrapper.on('touchcancel', handleTouchend);
+
+        (function() {
+          var pressing = false, moved = false;
+          $swiperWrapper.on('mousedown', function(e) {
+            pressing = true; handleTouchstart(e);
+          });
+          $swiperWrapper.on('mousemove', function(e) {
+            pressing && (e.preventDefault(), moved = true, handleTouchmove(e));
+          });
+          $swiperWrapper.on('mouseup', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('mouseleave', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('click', function(e) {
+            moved && (e.stopPropagation(), moved = false);
+          });
+        })();
+
+        $root.on('touchmove', function(e) {
+          if (e.cancelable & touching) {
+            e.preventDefault();
+          }
+        });
+      })();
+
+      return {
+        setOptions: setOptions,
+        previous: function(){
+          move('prev');
+        },
+        next: function(){
+          move('next');
+        },
+        refresh: function() {
+          calc(true, { animation: false });
+        }
+      };
+    }
+    $.fn.swiper = swiper;
+  });
+})();
+var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var template =
+      '<div class="swiper gallery__swiper">' +
+        '<div class="swiper__wrapper">' +
+        '</div>' +
+        '<div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>' +
+        '<div class="swiper__button swiper__button--next fas fa-chevron-right"></div>' +
+      '</div>';
+    function setState($item, zoom, translate) {
+      $item.css('transform', 'scale(' + zoom + ') translate(' + translate.x +  'px,' + translate.y + 'px)');
+    }
+    function Gallery(root, items) {
+      this.$root = $(root);
+      this.$swiper = null;
+      this.$swiperWrapper = null;
+      this.$activeItem = null;
+      this.$items = [];
+      this.contentWidth = 0;
+      this.contentHeight = 0;
+      this.swiper = null;
+      this.items = items;
+      this.disabled = false;
+      this.curIndex = 0;
+      this.touchCenter = null;
+      this.lastTouchCenter = null;
+      this.zoomRect = null;
+      this.lastZoomRect = null;
+      this.lastTranslate = null;
+      this.translate = null;
+      this.lastZoom = 1;
+      this.preZoom = 1;
+      this.zoom = 1;
+    }
+    Gallery.prototype.init = function() {
+      var i, item, items = this.items, size, self = this, touchstartFingerCount = 0;
+      this.$root.append(template);
+      this.$swiper = this.$root.find('.gallery__swiper');
+      this.$swiperWrapper = this.$root.find('.swiper__wrapper');
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      for (i = 0; i < items.length; i++) {
+        item = items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        this.$items.push($(
+          '<div class="swiper__slide">' +
+            '<div class="gallery-item">' +
+              '<div class="gallery-item__content">' +
+                '<img src="' + item.src + '" style="width:' + size.w + 'px;height:' + size.h +  'px"/>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        ));
+      }
+      this.$swiperWrapper && this.$swiperWrapper.append(this.$items);
+      this.swiper = this.$swiper && this.$swiper.swiper({
+        onChangeEnd: function() {
+          self._handleChangeEnd.apply(self, Array.prototype.slice.call(arguments));
+        }
+      });
+      $(window).on('resize', function() {
+        if (self.disabled) { return; }
+        self._resizeImageSize();
+      });
+      // Char Code: 37  ⬅, 39  ➡
+      $(window).on('keyup', function(e) {
+        if (window.isFormElement(e.target || e.srcElement) || self.disabled) { return; }
+        if (e.which === 37) {
+          self.swiper && self.swiper.previous();
+        } else if (e.which === 39) {
+          self.swiper && self.swiper.next();
+        }
+      });
+      function getRect(touch0, touch1) {
+        return {
+          o: {
+            x: (touch0.pageX + touch1.pageX) / 2,
+            y: (touch0.pageY + touch1.pageY) / 2
+          },
+          w: Math.abs(touch0.pageX - touch1.pageX),
+          h: Math.abs(touch0.pageY - touch1.pageY)
+        };
+      }
+      function getTouches(e) {
+        return e.touches || e;
+      }
+      function getTouchesCount(e) {
+        if (e.touches) {
+          return e.touches.length;
+        } else {
+          return 1;
+        }
+      }
+      this.$swiperWrapper.on('touchstart', function(e) {
+        var touch0, touch1, rect;
+        touchstartFingerCount = getTouchesCount(e);
+        if (touchstartFingerCount > 1) {
+          touch0 = e.touches[0];
+          touch1 = e.touches[1];
+          rect = getRect(touch0, touch1);
+          self.lastZoomRect = { w: rect.w, h: rect.h };
+          self.lastTouchCenter = rect.o;
+        } else {
+          var touch = getTouches(e)[0];
+          self.lastTouchCenter = { x: touch.pageX, y: touch.pageY };
+        }
+      });
+      this.$swiperWrapper.on('touchmove', function(e) {
+        if (touchstartFingerCount === getTouchesCount(e)) {
+          if (touchstartFingerCount > 1) {
+            var touch0 = e.touches[0];
+            var touch1 = e.touches[1];
+            var rect = getRect(touch0, touch1);
+            self.zoomRect = { w: rect.w, h: rect.h };
+            self.touchCenter = rect.o;
+            self._zoom(); self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          } else {
+            var touch = getTouches(e)[0];
+            self.touchCenter = { x: touch.pageX, y: touch.pageY };
+            self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          }
+        }
+      });
+      this.$swiperWrapper.on('touchend', function(e) {
+        self.lastZoom = self.zoom;
+        self.lastTranslate = self.translate;
+        touchstartFingerCount = 0;
+      });
+      this.$root.on('touchmove', function(e) {
+        if (self.disabled) { return; }
+        e.preventDefault();
+      });
+    };
+
+    Gallery.prototype._translate = function() {
+      this.translate = this.touchCenter && this.lastTouchCenter && this.lastTranslate ? {
+        x: (this.touchCenter.x - this.lastTouchCenter.x) / this.zoom + this.lastTranslate.x,
+        y: (this.touchCenter.y - this.lastTouchCenter.y) / this.zoom + this.lastTranslate.y
+      } : { x: 0, y: 0 };
+    }
+    Gallery.prototype._zoom = function() {
+      this.zoom = (this.zoomRect.w + this.zoomRect.h) / (this.lastZoomRect.w + this.lastZoomRect.h) * this.lastZoom;
+      this.zoom > 1 ? this.$activeItem.addClass('zoom') : this.$activeItem.removeClass('zoom');
+      this.preZoom = this.zoom;
+    }
+
+    Gallery.prototype._calculateImageSize = function(w, h) {
+      var scale = 1;
+      if (this.contentWidth > 0 && this.contentHeight > 0 && w > 0 && h > 0) {
+        scale = Math.min(
+          Math.min(w, this.contentWidth) / w,
+          Math.min(h, this.contentHeight) / h);
+      }
+      return { w: Math.floor(w * scale), h: Math.floor(h * scale) };
+    };
+
+    Gallery.prototype._resizeImageSize = function() {
+      var i, $item, $items = this.$items, item, size;
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      if ($items.length < 1) { return; }
+      for (i = 0; i < $items.length; i++) {
+        item = this.items[i], $item = $items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        item.width = size.w; item.height = size.h;
+        $item && $item.find('img').css({ width: size.w, height: size.h });
+      }
+    };
+    Gallery.prototype._handleChangeEnd = function(index, $dom, preIndex, $preDom) {
+      this.curIndex = index;
+      this.lastZoomRect = null; this.lastZoomRect = null;
+      this.lastTranslate = this.translate = { x: 0, y:0 };
+      this.lastZoom = this.preZoom = this.zoom = 1;
+      this.$activeItem = $dom.find('.gallery-item__content');
+      setState($preDom.find('.gallery-item__content'), this.zoom, this.translate);
+    };
+
+    Gallery.prototype.refresh = function() {
+      this.swiper && this.swiper.refresh();
+      this._resizeImageSize();
+    };
+    Gallery.prototype.setOptions = function(options) {
+      this.disabled = options.disabled;
+      this.swiper && this.swiper.setOptions(options);
+    };
+    window.Gallery = Gallery;
+  });
+})();(function() {
+  window.imagesLoad = function(images) {
+    images = images || document.getElementsByTagName('img');
+    var imagesCount = images.length, loadedCount = 0, image;
+    var i, j, loaded = false, cbs = [];
+    imagesCount < 1 && (loaded = true);
+    for (i = 0; i < imagesCount; i++) {
+      image = images[i];
+      image.complete ? handleImageLoad() : image.addEventListener('load', handleImageLoad);
+    }
+    function handleImageLoad() {
+      loadedCount++;
+      if (loadedCount === imagesCount) {
+        loaded = true;
+        if (cbs.length > 0) {
+          for (j = 0; j < cbs.length; j++) {
+            cbs[j]();
+          }
+        }
+      }
+    }
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  };
+})();
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageGalleryModal = $('.js-page-gallery-modal');
+    var $images = $('.page__content').find('img:not(.lightbox-ignore)');
+    window.imagesLoad($images).then(function() {
+      /* global Gallery */
+      var pageGalleryModal = $pageGalleryModal.modal({ onChange: handleModalChange });
+      var gallery = null;
+      var modalVisible = false;
+      var i, items = [], image, item;
+      if($images && $images.length > 0) {
+        for (i = 0; i < $images.length; i++) {
+          image = $images.eq(i);
+          if (image.get(0).naturalWidth > 800) {
+            items.push({ src: image.attr('src'), w: image.get(0).naturalWidth, h: image.get(0).naturalHeight, $el: image});
+          }
+        }
+      }
+
+      if(items.length > 0) {
+        gallery = new Gallery('.gallery', items);
+        gallery.setOptions({ disabled: !modalVisible });
+        gallery.init();
+        for (i = 0; i < items.length; i++) {
+          item = items[i];
+          item.$el && (item.$el.addClass('popup-image'), item.$el.on('click', (function() {
+            var index = i;
+            return function() {
+              pageGalleryModal.show();
+              gallery.setOptions({ initialSlide: index });
+              gallery.refresh(true, { animation: false });
+            };
+          })()));
+        }
+      }
+
+      function handleModalChange(visible) {
+        modalVisible = visible;
+        gallery && gallery.setOptions({ disabled: !modalVisible });
+      }
+
+      $pageGalleryModal.on('click', function() {
+        pageGalleryModal.hide();
+      });
+    });
+  });
+})();/*(function () {
+
+})();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>

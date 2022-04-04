@@ -469,9 +469,14 @@ SpringBootTutorial:
         url:    /springboot/springboot-advanced
       - title:  SpringBoot Security
         url:    /springboot/springboot-security
+
+        
+  - title:      SpringBoot Microservices
+    children:
       - title:  SpringBoot Microservices
         url:    /springboot/springboot-microservices
-
+        
+        
 
 #-----------------------------10.HibernateTutorial - Sidemenu----------------------------------------------
 HibernateTutorial:
@@ -616,8 +621,16 @@ SpringTutorial:
         url:    /spring/spring-jee
       - title:  Spring Annotations
         url:    /spring/spring-annotations
-
-
+        
+  - title:      Spring Batch
+    children:
+      - title:  Spring Batch
+        url:    /spring/spring-batch
+        
+  - title:      Spring Transactions
+    children:
+      - title:  Spring Transactions
+        url:    /spring/spring-transaction
 
 
 #-----------------------------12. WebServices - Sidemenu --------------------------

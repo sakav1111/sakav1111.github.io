@@ -1,0 +1,1911 @@
+<!DOCTYPE html><html lang="en">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>SatyaCodes - Hibernate - Interview Questions</title>
+
+<meta name="description" content="HibernateEmployeeBo.javapublic class EmployeeBo {	 private int eid;	 private String name;	 private String address;	  	//setters / getters}//Example: Employee...">
+<link rel="canonical" href="/Hibernate-Interview-Questions.html"><link rel="alternate" type="application/rss+xml" title="SatyaCodes" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet -->
+ <link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Hibernate - Interview Questions | SatyaCodes</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Hibernate - Interview Questions" />
+<meta name="author" content="Satya Kaveti" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Hibernate EmployeeBo.java public class EmployeeBo { private int eid; private String name; private String address; //setters / getters } //Example: EmployeeBo.hbm.xml &lt;hibernate-mapping&gt; &lt;class name=&quot;bo.EmployeeBo&quot; table=&quot;employee&quot;&gt; &lt;id name=&quot;eid&quot; column=&quot;eid&quot;&gt; &lt;generator class=&quot;assigned&quot; /&gt; &lt;/id&gt; &lt;property name=&quot;name&quot; column=&quot;name&quot; /&gt; &lt;property name=&quot;address&quot; column=&quot;address&quot; /&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; //hibernate.cfg.xml &lt;? xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt; &lt;! DOCTYPE hibernate-configuration PUBLIC &quot;-//Hibernate/Hibernate Configuration DTD 3.0//EN&quot; &quot;http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd&quot;&gt; &lt;hibernate-configuration&gt; &lt;session-factory&gt; &lt;! -- Database connection settings --&gt; &lt;property name=&quot;connection.driver_class&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt; &lt;property name=&quot;connection.url&quot;&gt;jdbc:mysql://localhost:3306/mydb&lt;/property&gt; &lt;property name=&quot;connection.username&quot;&gt;root&lt;/property&gt; &lt;property name=&quot;connection.password&quot;&gt;root&lt;/property&gt; &lt;property name=&quot;connection.pool_size&quot;&gt;1&lt;/property&gt; &lt;!-- Hibernate Properties --&gt; &lt;property name=&quot;dialect&quot;&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt; &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt; &lt;property name=&quot;hbm2ddl.auto&quot;&gt;validate&lt;/property&gt; &lt;!-- Mapping file name(s)--&gt; &lt;mapping resource=&quot;res/employee.hbm.xml&quot;/&gt; &lt;/session-factory&gt; &lt;/hibernate-configuration&gt; public class EmployeeSave { public static void main(String[] args) { Configuration cfg = new Configuration(); cfg.configure(&quot;hibernate.cfg.xml&quot;); SessionFactory factory = cfg.buildSessionFactory(); Session session = factory.openSession(); EmployeeBo bo = new EmployeeBo(); bo.setEid(5); bo.setName(&quot;DILEEP&quot;); bo.setAddress(&quot;BANGLORE&quot;); Transaction tx = session.beginTransaction(); session.save(bo); System.out.println(&quot;Employee Data saved successfully.....!!&quot;); tx.commit(); session.close(); factory.close(); } } Session class methods Select Object get(Class , Serializable id) Object load(Class, Serializable id) Insert Serializable save(Object object) void persist(Object object) void saveOrUpdate(Object object) Update Object merge(Object object) void update(Object object) Delete void delete(Object object) Clear void evict(Object object) : Remove this instance from the session cache. void clear() : Completely clear the session. Other boolean isDirty() : Does this session contain any changes which must be synchronized with the database? In other words, would any DML operations be executed if we flushed this session? void refresh(Object object) Re-read the state of the given instance from the underlying database. 1.Table per class hierarchy Vehicle.hbm.xml &lt;hibernate-mapping&gt; &lt;class name=&quot;inheritance.Vehicle&quot; table=&quot;vehicle&quot;&gt; &lt;id name=&quot;vid&quot; column=&quot;vid&quot;&gt;&lt;/id&gt; &lt;discriminator column=&quot;DISC&quot; type=&quot;string&quot;/&gt; &lt;property name=&quot;price&quot; column=&quot;price&quot;&gt;&lt;/property&gt; &lt;subclass name=&quot;inheritance.Bike&quot; discriminator-value=&quot;BIKE_DISC&quot;&gt; &lt;property name=&quot;biketype&quot; column=&quot;biketype&quot;&gt;&lt;/property&gt; &lt;/subclass&gt; &lt;subclass name=&quot;inheritance.Car&quot; discriminator-value=&quot;CAR_DISC&quot;&gt; &lt;property name=&quot;cartype&quot; column=&quot;cartype&quot;&gt;&lt;/property&gt; &lt;/subclass&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; 2. Table per sub-class hierarchy Vehicle.hbm.xml &lt;hibernate-mapping&gt; &lt;class name=&quot;inheritance.Vehicle&quot; table=&quot;vehicle&quot;&gt; &lt;id name=&quot;vid&quot; column=&quot;vid&quot;&gt;&lt;/id&gt; &lt;property name=&quot;price&quot; column=&quot;price&quot;&gt;&lt;/property&gt; &lt;joined-subclass name=&quot;inheritance.Bike&quot; table=&quot;bike&quot;&gt; &lt;key column=&quot;BIKE_KEY&quot; /&gt; &lt;property name=&quot;biketype&quot; column=&quot;type&quot;&gt;&lt;/property&gt; &lt;/joined-subclass&gt; &lt;joined-subclass name=&quot;inheritance.Car&quot; table=&quot;car&quot;&gt; &lt;key column=&quot;CAR_KEY&quot; /&gt; &lt;property name=&quot;cartype&quot; column=&quot;type&quot;&gt;&lt;/property&gt; &lt;/joined-subclass&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; 3.Table per concrete class hierarchy Vehicle.hbm.xml &lt;hibernate-mapping&gt; &lt;class name=&quot;inheritance.Vehicle&quot; table=&quot;vehicle&quot;&gt; &lt;id name=&quot;vid&quot; column=&quot;vid&quot;&gt;&lt;/id&gt; &lt;property name=&quot;price&quot; column=&quot;price&quot;&gt;&lt;/property&gt; &lt;union-subclass name=&quot;inheritance.Bike&quot; table=&quot;bike&quot;&gt; &lt;property name=&quot;biketype&quot; column=&quot;type&quot;&gt;&lt;/property&gt; &lt;/union-subclass&gt; &lt;union-subclass name=&quot;inheritance.Car&quot; table=&quot;car&quot;&gt; &lt;property name=&quot;cartype&quot; column=&quot;type&quot;&gt;&lt;/property&gt; &lt;/union-subclass&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; If we want to select a Complete Object from the database, we use POJO class reference in place of * while constructing the query // In SQL sql&gt; select * from Employee Note: Employee is the table name. // In HQL hql&gt; select s from EmployeeBo s [ or ] from EmployeeBo s Note: here s is the reference of EmployeeBo If we want to load the Partial Object from the database that is only selective properties of an objects, then we need to replace column names with POJO class variable names // In SQL sql&gt; select eid,name,address from Employee Note: eid,name,address are the columns of Employee the table. // In HQL hql&gt; select s.eid,s.name,s.address from EmployeeBo s What are advantages of Hibernate? Lazy Loading Caching You do not need to maintain JDBC code , Hibernate takes care of it. You need to write less code It provides high level object oriented API What is caching? Anything you can do to minimize traffic between a database and an application server is probably a good thing. In theory, an application ought to be able to maintain a cache containing data already loaded from the database, and only hit the database when information has to be updated. When the database is hit, the changes may invalidate the cache First Level Cache &amp; Second Level Cache? Every fresh session having its own cache memory, Caching is a mechanism for storing the loaded objects into a cache memory. The advantage of cache mechanism is, whenever again we want to load the same object from the database then instead of hitting the database once again, it loads from the local cache memory only, so that the no. of round trips between an application and a database server got decreased. It means caching mechanism increases the performance of the application. In hibernate we have two levels of caching First Level Cache (Session Cache) Second Level Cache (Session Factory Cache/ JVM Level Cache) 1.First Level Cache By default, for each hibernate application, the first level cache is automatically enabled. We can’t Enable/Disable first level cache the first level cache is associated with the session object and scope of the cache is limited to one session only When we load an object for the first time from the database then the object will be loaded from the database and the loaded object will be stored in the cache memory maintained by that session object If we load the same object once again, with in the same session, then the object will be loaded from the local cache memory not from the database If we load the same object by opening other session, then again the object will load from the database and the loaded object will be stored in the cache memory maintained by this new session Example: Session session = factory.openSession(); Object ob1 = session.get(Actor.class, new Integer(101)); //1 Object ob2 = session.get(Actor.class, new Integer(101));//2 Object ob3 = session.get(Actor.class, new Integer(101));//3 session.close();//4 Session ses2 = factory.openSession(); Object ob5 = ses2.get(Actor.class, new Integer(101));//5 1, We are loaded object with id 101, now it will load the object from the database only as its the first time, and keeps this object in the session cache 2,3 i tried to load the same object 2 times, but here the object will be loaded from the stored cache only not from the database, as we are in the same session 4, we close the first session, so the cache memory related this session also will be destroyed 5, again i created one new session and loaded the same object with id 101, but this time hibernate will loads the object from the database if we want to remove the objects that are stored in the cache memory, then we need to call either evict() or clear() methods 2.Second Level Cache Whenever we are loading any object from the database, then hibernate verify whether that object is available in the local cache(first level cache) memory of that particular session, if not available then hibernate verify whether the object is available in global cache(second level cache), if not available then hibernate will hit the database and loads the object from there, and then first stores in the local cache of the session , then in the global cache SessionFactory holds the second level cache data. It is global for all the session objects and not enabled by default. Different vendors have provided the implementation of Second Level Cache EH Cache OS Cache Swarm Cache JBoss Cache To enable second level cache in the hibernate, then the following 3 changes are required 1.Add provider class in hibernate configuration file &lt;property name=&quot;hibernate.cache.provider_class&quot;&gt; org.hibernate.cache.EhCacheProvider &lt;/property&gt; 2.Configure cache element for a class in hibernate mapping file &lt;cache usage=&quot;read-only&quot; /&gt; read-only: caching will work for read only operation. nonstrict-read-write: caching will work for read and write but one at a time. read-write: caching will work for read and write, can be used simultaneously. transactional: caching will work for transaction. 3.create xml file called ehcache.xml and place where you have mapping and configuration xml’s Example: public class Employee { private int eid; private String name; private String address; //Setters &amp; Getteers } Employee.hbm.xml &lt;hibernate-mapping package=&quot;cache&quot;&gt; &lt;class name=&quot;Employee&quot; table=&quot;employee&quot;&gt; &lt;cache usage=&quot;read-only&quot; /&gt; &lt;id name=&quot;eid&quot; column=&quot;eid&quot;&gt; &lt;generator class=&quot;native&quot;&gt;&lt;/generator&gt; &lt;/id&gt; &lt;property name=&quot;name&quot;&gt;&lt;/property&gt; &lt;property name=&quot;address&quot;&gt;&lt;/property&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; ehcache.xml &lt;?xml version=&quot;1.0&quot;?&gt; &lt;ehcache&gt; &lt;defaultCache maxElementsInMemory=&quot;100&quot; eternal=&quot;false&quot; timeToIdleSeconds=&quot;120&quot; timeToLiveSeconds=&quot;200&quot; /&gt; &lt;cache name=&quot;cache.Employee&quot; maxElementsInMemory=&quot;100&quot; eternal=&quot;false&quot; timeToIdleSeconds=&quot;5&quot; timeToLiveSeconds=&quot;200&quot; /&gt; &lt;/ehcache&gt; hibernate.cfg.xml &lt;hibernate-configuration&gt; &lt;session-factory&gt; &lt;property&gt; Driver Class, URL, Username, password, etc &lt;/property&gt; &lt;property name=&quot;cache.provider_class&quot;&gt;org.hibernate.cache.EhCacheProvider&lt;/property&gt; &lt;property name=&quot;hibernate.cache.use_second_level_cache&quot;&gt;true&lt;/property&gt; &lt;mapping resource=&quot;cache/employee.hbm.xml&quot; /&gt; &lt;/session-factory&gt; &lt;/hibernate-configuration&gt; CacheDemo.java package cache; import org.hibernate.*; import org.hibernate.cfg.*; public class CacheDemo { public static void main(String[] args) { //1.Load Configuration Configuration cfg = new Configuration(); cfg.configure(&quot;hibernate.cfg.xml&quot;); //2.Create Session SessionFactory sf = cfg.buildSessionFactory(); Session session = sf.openSession(); //3.Perform Operations Object ob = session.load(Employee.class, new Integer(1)); Employee bo = (Employee) ob; System.out.println(&quot;SELECTED DATA\n ================&quot;); System.out.println(&quot;SNO : &quot;+bo.getEid()); System.out.println(&quot;NAME : &quot;+bo.getName()); System.out.println(&quot;ADDRESS : &quot;+bo.getAddress()); } } What are some core interfaces of hibernate? Configuration SessionFactory Session Transaction Query and Criteria interface Difference between get() vs load() method in Hibernate? (detailed answer) The key difference between get() and load() method is that load() will throw an exception if an object with id passed to them is not found get() will return **null.** Another important difference is that load can return proxy without hitting the database unless required (when you access any attribute other than id) but get() always go to the database, so sometimes using load() can be faster than the get() method. It makes sense to use the load() method if you know the object exists but get() method if you are not sure about object’s existence. Parameter get load Database retrieval It always hits the database It does not hit database If null If it does not get the object with id, it returns null, null in databse If it does get the object with id, it throws ObjectNotFound in Cache Proxy It returns real object It returns proxy object Use If you are not sure if object with id exists or not, you can use get If you are sure about existence of object, you can use load What is the difference between save() and persist() method in Hibernate? Serializable Object save() returns a Serializable object void persist() method is void, so it doesn’t return anything. What is the difference between and merge and update? Employee emp1 = new Employee(); emp1.setEmpId(100); emp1.setEmpName(&quot;Dinesh&quot;); Session session1 = createNewHibernateSession(); session1.saveOrUpdate(emp1); session1.close(); //emp1 object in detached state now emp1.setEmpName(&quot;Dinesh Rajput&quot;);//Updated Name //Create session again Session session2 = createNewHibernateSession(); Employee emp2 =(Employee)session2.get(Employee.class, 100); //emp2 object in persistent state with id 100 //below we try to make on detached object with id 100 to persistent state by using update method of hibernate session2.update(emp1);//It occurs the exception NonUniqueObjectException because emp2 object is having employee with same empid as 100 in Cache.Here cache is not Empty. See diageram. //to avoid this exception we are using merge like given below instead of session.update(emp1); session2.merge(emp1); //it merge the object state with emp2 session2.update(emp1); //Now it will work with exception Update: Suppose we are dealing with any employee object in the same session then we should use update() or saveOrUpdate() method. if you are sure that the session does not contains an already persistent instance with the same identifier,then use update to save the data in hibernate Merge: Suppose we are creating a session and load an employee object. Now object in session cache. If we close the session at this point and we edit state of object and tried to save using update() it will throw exception. To make object persistent we need to open another session. Now we load same object again in current session. So if we want to update present object with previous object changes we have to use merge() method. Merge method will merge changes of both states of object and will save in database. if you want to save your modifications at any time with out knowing about the state of an session, then use merge() in hibernate. Different between cascade and inverse Many Hibernate developers are confusing about the cascade option and inverse keyword. In some ways. They really look quite similar at the beginning; both are related with relationship. However, there is no relationship between cascade and inverse, both are totally different notions. 1.inverse This is used to decide which side is the relationship owner to manage the relationship (insert or update of the foreign key column). Example In this example, the relationship owner is belonging to stockDailyRecords (inverse=true). &lt;!-- Stock.hbm.xml --&gt; &lt;hibernate-mapping&gt; &lt;class name=&quot;Stock&quot; table=&quot;stock&quot;&gt; ... &lt;set name=&quot;stockDailyRecords&quot; table=&quot;stock_daily_record&quot; inverse=&quot;true&quot;&gt; &lt;key&gt; &lt;column name=&quot;STOCK_ID&quot; not-null=&quot;true&quot; /&gt; &lt;/key&gt; &lt;one-to-many class=&quot;StockDailyRecord&quot; /&gt; &lt;/set&gt; ... When you save or update the stock object session.save(stock); session.update(stock); Hibernate will only insert or update the STOCK table, no update on the foreign key column. More detail example here… 2.cascade In cascade, after one operation (save, update and delete) is done, it decide whether it need to call other operations (save, update and delete) on another entities which has relationship with each other. Example In this example, the cascade=”save-update” is declare on stockDailyRecords. &lt;!-- Stock.hbm.xml --&gt; &lt;hibernate-mapping&gt; &lt;class name=&quot;com.mkyong.common.Stock&quot; table=&quot;stock&quot; ...&gt; ... &lt;set name=&quot;stockDailyRecords&quot; table=&quot;stock_daily_record&quot; cascade=&quot;save-update&quot; inverse=&quot;true&quot;&gt; &lt;key&gt; &lt;column name=&quot;STOCK_ID&quot; not-null=&quot;true&quot; /&gt; &lt;/key&gt; &lt;one-to-many class=&quot;com.mkyong.common.StockDailyRecord&quot; /&gt; &lt;/set&gt; ... Copy When you save or update the stock object session.save(stock); session.update(stock); It will inserted or updated the record into STOCK table and call another insert or update statement (cascade=”save-update”) on StockDailyRecord. More detail example here… Conclusion In short, the -inverse” is decide which side will update the foreign key, while -cascade” is decide what’s the follow by operation should execute. Both are look quite similar in relationship, but it’s totally two different things. Hibernate developers are worth to spend time to research on it, because misunderstand the concept or misuse it will bring serious performance or data integrity issue in your application. Does SessionFactory is thread-safe in Hibernate? (detailed answer) SessionFactory is both Immutable and thread-safe and it has just one single instance in Hibernate application. It is used to create Session object and it also provide caching by storing SQL queries stored by multiple session. The second level cache is maintained at SessionFactory level. Does Hibernate Session interface is thread-safe in Java? (detailed answer) No, Session object is not thread-safe in Hibernate and intended to be used with-in single thread in the application. What is difference between getCurrentSession() and openSession() in Hibernate? openSession() When you call SessionFactory.openSession, it always create new Session object afresh and give it to you. As session objects are not thread safe, you need to create one session object per request in multithreaded environment and one session per request in web applications too. getCurrentSession() When you call SessionFactory. getCurrentSession , it creates a new Session if not exists , else use same session which is in current hibernate context. It automatically flush and close session when transaction ends, so you do not need to do externally.If you are using hibernate in single threaded environment , you can use getCurrentSession, as it is faster in performance as compare to creating new session each time. You need to add following property to hibernate.cfg.xml to use getCurrentSession method &lt;session-factory&gt; &lt;!-- Put other elements here --&gt; &lt;property name=&quot;hibernate.current_session_context_class&quot;&gt;&lt;/property&gt; &lt;/session-factory&gt; If you do not configure above property, you will get error as below. Exception in thread “main” org.hibernate.HibernateException: No CurrentSessionContext configured! Can you declare Entity(Bean) class as final in hibernate? Yes, you can declare entity class as final but it is not considered as a good practice because hibernate uses proxy pattern for lazy initialization, If you declare it as final then hibernate won’t be able to create sub class and won’t be able to use proxy pattern, so it will limit performance and improvement options. Does entity class (Bean) in hibernate require no arg constructor? Yes, Entity class in hibernate requires no arg constructor because Hibernate use reflection to create instance of entity class and it mandates no arg constructor in Entity class. How do you log SQL queries issued by the Hibernate framework in Java application? You can procedure the show_sql property to log SQL queries delivered by the Hibernate framework What is named SQL query in Hibernate? Named queries are SQL queries which are defined in mapping document using **** tag and called using **Session.getNamedQuery()** method. &lt;sql-query name=&quot;findStudentByRollNumber&quot;&gt; &lt;!--[CDATA[ select * from Student student where student.rollNumber = :rollNumber ]]--&gt; &lt;/sql-query&gt; you can define named query in hibernate either by using annotations or XML mapping file, as I said above. @NameQuery is used to define single named query and @NameQueries is used to define multiple named query in hibernate. @NamedQueries({ @NamedQuery( name = &quot;findStockByStockCode&quot;, query = &quot;from Stock s where s.stockCode = :stockCode&quot; ) }) Explain Criteria API Criteria is a simplified API for retrieving entities by composing Criterion objects. This is a very convenient approach for functionality like -search” screens where there is a variable number of conditions to be placed upon the result set. Example: List employees = session.createCriteria(Employee.class) .add(Restrictions.like(-name&quot;, -a%&quot;) ) .add(Restrictions.like(-address&quot;, -Boston&quot;)) .addOrder(Order.asc(-name&quot;) ) .list(); How do you switch between relational databases without code changes? Using Hibernate SQL Dialects, we can switch databases. Hibernate will generate appropriate hql queries based on the dialect defined. What is Hibernate proxy? The proxy attribute enables lazy initialization of persistent instances of the class. Hibernate will initially return CGLIB proxies which implement the named interface. The actual persistent object will be loaded when a method of the proxy is invoked. What is automatic dirty checking? Automatic dirty checking is a feature that saves us the effort of explicitly asking Hibernate to update the database when we modify the state of an object inside a transaction. If Dirty-checking is enabled, if we forget to call save() before the commit, dirty-checking automatically saves the data into the database. Consider the below code which loads a simple Entity from the database and updates it. public static void testUpdate() { Session session = sessionFactory.openSession(); Transaction transaction = session.beginTransaction(); Entity entity = (Entity) session.load(Entity.class, 1); entity.setData(&quot;Updating the data&quot;); transaction.commit(); session.close(); } Although we haven’t made any session.update(entity) call, the logs indicate that the database record was updated successful What is query cache in Hibernate? .Query cache can be used along with second level cache for improved performance. QueryCache actually stores the result of SQL query for future calls. Hibernate support various open source caching solution to implement Query cache e.g. EhCache What are two types of Collections in hibernate? Sorted Collection Ordered Collection Parameter Sorted Collection Ordered Collection Sorting Sorted collection uses java’s sorting API to sort the collection. Ordered Collections uses order by clause while retrieval of objects Default It is enabled by default It is not enabled by default, you need to enable it explicitly What is lazy loading in hibernate? Sometimes you have two entities and there’s a relationship between them. For example, you might have an entity called University and another entity called Student public class University { private String id; private String name; private String address; private List&lt;Student&gt; students; // setters and getters } Now when you load a University from the database, JPA loads its id, name, and address fields for you. But you have two options for students: to load it together with the rest of the fields (i.e. eagerly) or to load it on-demand (i.e. lazily) when you call the university’s getStudents() method. @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER) @JoinColumn(name=&quot;countryId&quot;) private List&lt;Student&gt; students; FetchType.LAZY : It fetches the child entities lazily, that is, at the time of fetching parent entity it just fetches proxy (created by cglib or any other utility) of the child entities and when you access any property of child entity then it is actually fetched by hibernate. FetchType.EAGER: it fetches the child entities along with parent. Lazy initialization improves performance by avoiding unnecessary computation and reduce memory requirements. Eager initialization takes more memory consumption and processing speed is slow. lazy=&quot;true/false in xml" />
+<meta property="og:description" content="Hibernate EmployeeBo.java public class EmployeeBo { private int eid; private String name; private String address; //setters / getters } //Example: EmployeeBo.hbm.xml &lt;hibernate-mapping&gt; &lt;class name=&quot;bo.EmployeeBo&quot; table=&quot;employee&quot;&gt; &lt;id name=&quot;eid&quot; column=&quot;eid&quot;&gt; &lt;generator class=&quot;assigned&quot; /&gt; &lt;/id&gt; &lt;property name=&quot;name&quot; column=&quot;name&quot; /&gt; &lt;property name=&quot;address&quot; column=&quot;address&quot; /&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; //hibernate.cfg.xml &lt;? xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt; &lt;! DOCTYPE hibernate-configuration PUBLIC &quot;-//Hibernate/Hibernate Configuration DTD 3.0//EN&quot; &quot;http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd&quot;&gt; &lt;hibernate-configuration&gt; &lt;session-factory&gt; &lt;! -- Database connection settings --&gt; &lt;property name=&quot;connection.driver_class&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt; &lt;property name=&quot;connection.url&quot;&gt;jdbc:mysql://localhost:3306/mydb&lt;/property&gt; &lt;property name=&quot;connection.username&quot;&gt;root&lt;/property&gt; &lt;property name=&quot;connection.password&quot;&gt;root&lt;/property&gt; &lt;property name=&quot;connection.pool_size&quot;&gt;1&lt;/property&gt; &lt;!-- Hibernate Properties --&gt; &lt;property name=&quot;dialect&quot;&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt; &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt; &lt;property name=&quot;hbm2ddl.auto&quot;&gt;validate&lt;/property&gt; &lt;!-- Mapping file name(s)--&gt; &lt;mapping resource=&quot;res/employee.hbm.xml&quot;/&gt; &lt;/session-factory&gt; &lt;/hibernate-configuration&gt; public class EmployeeSave { public static void main(String[] args) { Configuration cfg = new Configuration(); cfg.configure(&quot;hibernate.cfg.xml&quot;); SessionFactory factory = cfg.buildSessionFactory(); Session session = factory.openSession(); EmployeeBo bo = new EmployeeBo(); bo.setEid(5); bo.setName(&quot;DILEEP&quot;); bo.setAddress(&quot;BANGLORE&quot;); Transaction tx = session.beginTransaction(); session.save(bo); System.out.println(&quot;Employee Data saved successfully.....!!&quot;); tx.commit(); session.close(); factory.close(); } } Session class methods Select Object get(Class , Serializable id) Object load(Class, Serializable id) Insert Serializable save(Object object) void persist(Object object) void saveOrUpdate(Object object) Update Object merge(Object object) void update(Object object) Delete void delete(Object object) Clear void evict(Object object) : Remove this instance from the session cache. void clear() : Completely clear the session. Other boolean isDirty() : Does this session contain any changes which must be synchronized with the database? In other words, would any DML operations be executed if we flushed this session? void refresh(Object object) Re-read the state of the given instance from the underlying database. 1.Table per class hierarchy Vehicle.hbm.xml &lt;hibernate-mapping&gt; &lt;class name=&quot;inheritance.Vehicle&quot; table=&quot;vehicle&quot;&gt; &lt;id name=&quot;vid&quot; column=&quot;vid&quot;&gt;&lt;/id&gt; &lt;discriminator column=&quot;DISC&quot; type=&quot;string&quot;/&gt; &lt;property name=&quot;price&quot; column=&quot;price&quot;&gt;&lt;/property&gt; &lt;subclass name=&quot;inheritance.Bike&quot; discriminator-value=&quot;BIKE_DISC&quot;&gt; &lt;property name=&quot;biketype&quot; column=&quot;biketype&quot;&gt;&lt;/property&gt; &lt;/subclass&gt; &lt;subclass name=&quot;inheritance.Car&quot; discriminator-value=&quot;CAR_DISC&quot;&gt; &lt;property name=&quot;cartype&quot; column=&quot;cartype&quot;&gt;&lt;/property&gt; &lt;/subclass&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; 2. Table per sub-class hierarchy Vehicle.hbm.xml &lt;hibernate-mapping&gt; &lt;class name=&quot;inheritance.Vehicle&quot; table=&quot;vehicle&quot;&gt; &lt;id name=&quot;vid&quot; column=&quot;vid&quot;&gt;&lt;/id&gt; &lt;property name=&quot;price&quot; column=&quot;price&quot;&gt;&lt;/property&gt; &lt;joined-subclass name=&quot;inheritance.Bike&quot; table=&quot;bike&quot;&gt; &lt;key column=&quot;BIKE_KEY&quot; /&gt; &lt;property name=&quot;biketype&quot; column=&quot;type&quot;&gt;&lt;/property&gt; &lt;/joined-subclass&gt; &lt;joined-subclass name=&quot;inheritance.Car&quot; table=&quot;car&quot;&gt; &lt;key column=&quot;CAR_KEY&quot; /&gt; &lt;property name=&quot;cartype&quot; column=&quot;type&quot;&gt;&lt;/property&gt; &lt;/joined-subclass&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; 3.Table per concrete class hierarchy Vehicle.hbm.xml &lt;hibernate-mapping&gt; &lt;class name=&quot;inheritance.Vehicle&quot; table=&quot;vehicle&quot;&gt; &lt;id name=&quot;vid&quot; column=&quot;vid&quot;&gt;&lt;/id&gt; &lt;property name=&quot;price&quot; column=&quot;price&quot;&gt;&lt;/property&gt; &lt;union-subclass name=&quot;inheritance.Bike&quot; table=&quot;bike&quot;&gt; &lt;property name=&quot;biketype&quot; column=&quot;type&quot;&gt;&lt;/property&gt; &lt;/union-subclass&gt; &lt;union-subclass name=&quot;inheritance.Car&quot; table=&quot;car&quot;&gt; &lt;property name=&quot;cartype&quot; column=&quot;type&quot;&gt;&lt;/property&gt; &lt;/union-subclass&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; If we want to select a Complete Object from the database, we use POJO class reference in place of * while constructing the query // In SQL sql&gt; select * from Employee Note: Employee is the table name. // In HQL hql&gt; select s from EmployeeBo s [ or ] from EmployeeBo s Note: here s is the reference of EmployeeBo If we want to load the Partial Object from the database that is only selective properties of an objects, then we need to replace column names with POJO class variable names // In SQL sql&gt; select eid,name,address from Employee Note: eid,name,address are the columns of Employee the table. // In HQL hql&gt; select s.eid,s.name,s.address from EmployeeBo s What are advantages of Hibernate? Lazy Loading Caching You do not need to maintain JDBC code , Hibernate takes care of it. You need to write less code It provides high level object oriented API What is caching? Anything you can do to minimize traffic between a database and an application server is probably a good thing. In theory, an application ought to be able to maintain a cache containing data already loaded from the database, and only hit the database when information has to be updated. When the database is hit, the changes may invalidate the cache First Level Cache &amp; Second Level Cache? Every fresh session having its own cache memory, Caching is a mechanism for storing the loaded objects into a cache memory. The advantage of cache mechanism is, whenever again we want to load the same object from the database then instead of hitting the database once again, it loads from the local cache memory only, so that the no. of round trips between an application and a database server got decreased. It means caching mechanism increases the performance of the application. In hibernate we have two levels of caching First Level Cache (Session Cache) Second Level Cache (Session Factory Cache/ JVM Level Cache) 1.First Level Cache By default, for each hibernate application, the first level cache is automatically enabled. We can’t Enable/Disable first level cache the first level cache is associated with the session object and scope of the cache is limited to one session only When we load an object for the first time from the database then the object will be loaded from the database and the loaded object will be stored in the cache memory maintained by that session object If we load the same object once again, with in the same session, then the object will be loaded from the local cache memory not from the database If we load the same object by opening other session, then again the object will load from the database and the loaded object will be stored in the cache memory maintained by this new session Example: Session session = factory.openSession(); Object ob1 = session.get(Actor.class, new Integer(101)); //1 Object ob2 = session.get(Actor.class, new Integer(101));//2 Object ob3 = session.get(Actor.class, new Integer(101));//3 session.close();//4 Session ses2 = factory.openSession(); Object ob5 = ses2.get(Actor.class, new Integer(101));//5 1, We are loaded object with id 101, now it will load the object from the database only as its the first time, and keeps this object in the session cache 2,3 i tried to load the same object 2 times, but here the object will be loaded from the stored cache only not from the database, as we are in the same session 4, we close the first session, so the cache memory related this session also will be destroyed 5, again i created one new session and loaded the same object with id 101, but this time hibernate will loads the object from the database if we want to remove the objects that are stored in the cache memory, then we need to call either evict() or clear() methods 2.Second Level Cache Whenever we are loading any object from the database, then hibernate verify whether that object is available in the local cache(first level cache) memory of that particular session, if not available then hibernate verify whether the object is available in global cache(second level cache), if not available then hibernate will hit the database and loads the object from there, and then first stores in the local cache of the session , then in the global cache SessionFactory holds the second level cache data. It is global for all the session objects and not enabled by default. Different vendors have provided the implementation of Second Level Cache EH Cache OS Cache Swarm Cache JBoss Cache To enable second level cache in the hibernate, then the following 3 changes are required 1.Add provider class in hibernate configuration file &lt;property name=&quot;hibernate.cache.provider_class&quot;&gt; org.hibernate.cache.EhCacheProvider &lt;/property&gt; 2.Configure cache element for a class in hibernate mapping file &lt;cache usage=&quot;read-only&quot; /&gt; read-only: caching will work for read only operation. nonstrict-read-write: caching will work for read and write but one at a time. read-write: caching will work for read and write, can be used simultaneously. transactional: caching will work for transaction. 3.create xml file called ehcache.xml and place where you have mapping and configuration xml’s Example: public class Employee { private int eid; private String name; private String address; //Setters &amp; Getteers } Employee.hbm.xml &lt;hibernate-mapping package=&quot;cache&quot;&gt; &lt;class name=&quot;Employee&quot; table=&quot;employee&quot;&gt; &lt;cache usage=&quot;read-only&quot; /&gt; &lt;id name=&quot;eid&quot; column=&quot;eid&quot;&gt; &lt;generator class=&quot;native&quot;&gt;&lt;/generator&gt; &lt;/id&gt; &lt;property name=&quot;name&quot;&gt;&lt;/property&gt; &lt;property name=&quot;address&quot;&gt;&lt;/property&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; ehcache.xml &lt;?xml version=&quot;1.0&quot;?&gt; &lt;ehcache&gt; &lt;defaultCache maxElementsInMemory=&quot;100&quot; eternal=&quot;false&quot; timeToIdleSeconds=&quot;120&quot; timeToLiveSeconds=&quot;200&quot; /&gt; &lt;cache name=&quot;cache.Employee&quot; maxElementsInMemory=&quot;100&quot; eternal=&quot;false&quot; timeToIdleSeconds=&quot;5&quot; timeToLiveSeconds=&quot;200&quot; /&gt; &lt;/ehcache&gt; hibernate.cfg.xml &lt;hibernate-configuration&gt; &lt;session-factory&gt; &lt;property&gt; Driver Class, URL, Username, password, etc &lt;/property&gt; &lt;property name=&quot;cache.provider_class&quot;&gt;org.hibernate.cache.EhCacheProvider&lt;/property&gt; &lt;property name=&quot;hibernate.cache.use_second_level_cache&quot;&gt;true&lt;/property&gt; &lt;mapping resource=&quot;cache/employee.hbm.xml&quot; /&gt; &lt;/session-factory&gt; &lt;/hibernate-configuration&gt; CacheDemo.java package cache; import org.hibernate.*; import org.hibernate.cfg.*; public class CacheDemo { public static void main(String[] args) { //1.Load Configuration Configuration cfg = new Configuration(); cfg.configure(&quot;hibernate.cfg.xml&quot;); //2.Create Session SessionFactory sf = cfg.buildSessionFactory(); Session session = sf.openSession(); //3.Perform Operations Object ob = session.load(Employee.class, new Integer(1)); Employee bo = (Employee) ob; System.out.println(&quot;SELECTED DATA\n ================&quot;); System.out.println(&quot;SNO : &quot;+bo.getEid()); System.out.println(&quot;NAME : &quot;+bo.getName()); System.out.println(&quot;ADDRESS : &quot;+bo.getAddress()); } } What are some core interfaces of hibernate? Configuration SessionFactory Session Transaction Query and Criteria interface Difference between get() vs load() method in Hibernate? (detailed answer) The key difference between get() and load() method is that load() will throw an exception if an object with id passed to them is not found get() will return **null.** Another important difference is that load can return proxy without hitting the database unless required (when you access any attribute other than id) but get() always go to the database, so sometimes using load() can be faster than the get() method. It makes sense to use the load() method if you know the object exists but get() method if you are not sure about object’s existence. Parameter get load Database retrieval It always hits the database It does not hit database If null If it does not get the object with id, it returns null, null in databse If it does get the object with id, it throws ObjectNotFound in Cache Proxy It returns real object It returns proxy object Use If you are not sure if object with id exists or not, you can use get If you are sure about existence of object, you can use load What is the difference between save() and persist() method in Hibernate? Serializable Object save() returns a Serializable object void persist() method is void, so it doesn’t return anything. What is the difference between and merge and update? Employee emp1 = new Employee(); emp1.setEmpId(100); emp1.setEmpName(&quot;Dinesh&quot;); Session session1 = createNewHibernateSession(); session1.saveOrUpdate(emp1); session1.close(); //emp1 object in detached state now emp1.setEmpName(&quot;Dinesh Rajput&quot;);//Updated Name //Create session again Session session2 = createNewHibernateSession(); Employee emp2 =(Employee)session2.get(Employee.class, 100); //emp2 object in persistent state with id 100 //below we try to make on detached object with id 100 to persistent state by using update method of hibernate session2.update(emp1);//It occurs the exception NonUniqueObjectException because emp2 object is having employee with same empid as 100 in Cache.Here cache is not Empty. See diageram. //to avoid this exception we are using merge like given below instead of session.update(emp1); session2.merge(emp1); //it merge the object state with emp2 session2.update(emp1); //Now it will work with exception Update: Suppose we are dealing with any employee object in the same session then we should use update() or saveOrUpdate() method. if you are sure that the session does not contains an already persistent instance with the same identifier,then use update to save the data in hibernate Merge: Suppose we are creating a session and load an employee object. Now object in session cache. If we close the session at this point and we edit state of object and tried to save using update() it will throw exception. To make object persistent we need to open another session. Now we load same object again in current session. So if we want to update present object with previous object changes we have to use merge() method. Merge method will merge changes of both states of object and will save in database. if you want to save your modifications at any time with out knowing about the state of an session, then use merge() in hibernate. Different between cascade and inverse Many Hibernate developers are confusing about the cascade option and inverse keyword. In some ways. They really look quite similar at the beginning; both are related with relationship. However, there is no relationship between cascade and inverse, both are totally different notions. 1.inverse This is used to decide which side is the relationship owner to manage the relationship (insert or update of the foreign key column). Example In this example, the relationship owner is belonging to stockDailyRecords (inverse=true). &lt;!-- Stock.hbm.xml --&gt; &lt;hibernate-mapping&gt; &lt;class name=&quot;Stock&quot; table=&quot;stock&quot;&gt; ... &lt;set name=&quot;stockDailyRecords&quot; table=&quot;stock_daily_record&quot; inverse=&quot;true&quot;&gt; &lt;key&gt; &lt;column name=&quot;STOCK_ID&quot; not-null=&quot;true&quot; /&gt; &lt;/key&gt; &lt;one-to-many class=&quot;StockDailyRecord&quot; /&gt; &lt;/set&gt; ... When you save or update the stock object session.save(stock); session.update(stock); Hibernate will only insert or update the STOCK table, no update on the foreign key column. More detail example here… 2.cascade In cascade, after one operation (save, update and delete) is done, it decide whether it need to call other operations (save, update and delete) on another entities which has relationship with each other. Example In this example, the cascade=”save-update” is declare on stockDailyRecords. &lt;!-- Stock.hbm.xml --&gt; &lt;hibernate-mapping&gt; &lt;class name=&quot;com.mkyong.common.Stock&quot; table=&quot;stock&quot; ...&gt; ... &lt;set name=&quot;stockDailyRecords&quot; table=&quot;stock_daily_record&quot; cascade=&quot;save-update&quot; inverse=&quot;true&quot;&gt; &lt;key&gt; &lt;column name=&quot;STOCK_ID&quot; not-null=&quot;true&quot; /&gt; &lt;/key&gt; &lt;one-to-many class=&quot;com.mkyong.common.StockDailyRecord&quot; /&gt; &lt;/set&gt; ... Copy When you save or update the stock object session.save(stock); session.update(stock); It will inserted or updated the record into STOCK table and call another insert or update statement (cascade=”save-update”) on StockDailyRecord. More detail example here… Conclusion In short, the -inverse” is decide which side will update the foreign key, while -cascade” is decide what’s the follow by operation should execute. Both are look quite similar in relationship, but it’s totally two different things. Hibernate developers are worth to spend time to research on it, because misunderstand the concept or misuse it will bring serious performance or data integrity issue in your application. Does SessionFactory is thread-safe in Hibernate? (detailed answer) SessionFactory is both Immutable and thread-safe and it has just one single instance in Hibernate application. It is used to create Session object and it also provide caching by storing SQL queries stored by multiple session. The second level cache is maintained at SessionFactory level. Does Hibernate Session interface is thread-safe in Java? (detailed answer) No, Session object is not thread-safe in Hibernate and intended to be used with-in single thread in the application. What is difference between getCurrentSession() and openSession() in Hibernate? openSession() When you call SessionFactory.openSession, it always create new Session object afresh and give it to you. As session objects are not thread safe, you need to create one session object per request in multithreaded environment and one session per request in web applications too. getCurrentSession() When you call SessionFactory. getCurrentSession , it creates a new Session if not exists , else use same session which is in current hibernate context. It automatically flush and close session when transaction ends, so you do not need to do externally.If you are using hibernate in single threaded environment , you can use getCurrentSession, as it is faster in performance as compare to creating new session each time. You need to add following property to hibernate.cfg.xml to use getCurrentSession method &lt;session-factory&gt; &lt;!-- Put other elements here --&gt; &lt;property name=&quot;hibernate.current_session_context_class&quot;&gt;&lt;/property&gt; &lt;/session-factory&gt; If you do not configure above property, you will get error as below. Exception in thread “main” org.hibernate.HibernateException: No CurrentSessionContext configured! Can you declare Entity(Bean) class as final in hibernate? Yes, you can declare entity class as final but it is not considered as a good practice because hibernate uses proxy pattern for lazy initialization, If you declare it as final then hibernate won’t be able to create sub class and won’t be able to use proxy pattern, so it will limit performance and improvement options. Does entity class (Bean) in hibernate require no arg constructor? Yes, Entity class in hibernate requires no arg constructor because Hibernate use reflection to create instance of entity class and it mandates no arg constructor in Entity class. How do you log SQL queries issued by the Hibernate framework in Java application? You can procedure the show_sql property to log SQL queries delivered by the Hibernate framework What is named SQL query in Hibernate? Named queries are SQL queries which are defined in mapping document using **** tag and called using **Session.getNamedQuery()** method. &lt;sql-query name=&quot;findStudentByRollNumber&quot;&gt; &lt;!--[CDATA[ select * from Student student where student.rollNumber = :rollNumber ]]--&gt; &lt;/sql-query&gt; you can define named query in hibernate either by using annotations or XML mapping file, as I said above. @NameQuery is used to define single named query and @NameQueries is used to define multiple named query in hibernate. @NamedQueries({ @NamedQuery( name = &quot;findStockByStockCode&quot;, query = &quot;from Stock s where s.stockCode = :stockCode&quot; ) }) Explain Criteria API Criteria is a simplified API for retrieving entities by composing Criterion objects. This is a very convenient approach for functionality like -search” screens where there is a variable number of conditions to be placed upon the result set. Example: List employees = session.createCriteria(Employee.class) .add(Restrictions.like(-name&quot;, -a%&quot;) ) .add(Restrictions.like(-address&quot;, -Boston&quot;)) .addOrder(Order.asc(-name&quot;) ) .list(); How do you switch between relational databases without code changes? Using Hibernate SQL Dialects, we can switch databases. Hibernate will generate appropriate hql queries based on the dialect defined. What is Hibernate proxy? The proxy attribute enables lazy initialization of persistent instances of the class. Hibernate will initially return CGLIB proxies which implement the named interface. The actual persistent object will be loaded when a method of the proxy is invoked. What is automatic dirty checking? Automatic dirty checking is a feature that saves us the effort of explicitly asking Hibernate to update the database when we modify the state of an object inside a transaction. If Dirty-checking is enabled, if we forget to call save() before the commit, dirty-checking automatically saves the data into the database. Consider the below code which loads a simple Entity from the database and updates it. public static void testUpdate() { Session session = sessionFactory.openSession(); Transaction transaction = session.beginTransaction(); Entity entity = (Entity) session.load(Entity.class, 1); entity.setData(&quot;Updating the data&quot;); transaction.commit(); session.close(); } Although we haven’t made any session.update(entity) call, the logs indicate that the database record was updated successful What is query cache in Hibernate? .Query cache can be used along with second level cache for improved performance. QueryCache actually stores the result of SQL query for future calls. Hibernate support various open source caching solution to implement Query cache e.g. EhCache What are two types of Collections in hibernate? Sorted Collection Ordered Collection Parameter Sorted Collection Ordered Collection Sorting Sorted collection uses java’s sorting API to sort the collection. Ordered Collections uses order by clause while retrieval of objects Default It is enabled by default It is not enabled by default, you need to enable it explicitly What is lazy loading in hibernate? Sometimes you have two entities and there’s a relationship between them. For example, you might have an entity called University and another entity called Student public class University { private String id; private String name; private String address; private List&lt;Student&gt; students; // setters and getters } Now when you load a University from the database, JPA loads its id, name, and address fields for you. But you have two options for students: to load it together with the rest of the fields (i.e. eagerly) or to load it on-demand (i.e. lazily) when you call the university’s getStudents() method. @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER) @JoinColumn(name=&quot;countryId&quot;) private List&lt;Student&gt; students; FetchType.LAZY : It fetches the child entities lazily, that is, at the time of fetching parent entity it just fetches proxy (created by cglib or any other utility) of the child entities and when you access any property of child entity then it is actually fetched by hibernate. FetchType.EAGER: it fetches the child entities along with parent. Lazy initialization improves performance by avoiding unnecessary computation and reduce memory requirements. Eager initialization takes more memory consumption and processing speed is slow. lazy=&quot;true/false in xml" />
+<meta property="og:site_name" content="SatyaCodes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-11-11T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Hibernate - Interview Questions" />
+<script type="application/ld+json">
+{"datePublished":"2017-11-11T00:00:00+00:00","dateModified":"2017-11-11T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/Hibernate-Interview-Questions.html"},"author":{"@type":"Person","name":"Satya Kaveti"},"@type":"BlogPosting","description":"Hibernate EmployeeBo.java public class EmployeeBo { private int eid; private String name; private String address; //setters / getters } //Example: EmployeeBo.hbm.xml &lt;hibernate-mapping&gt; &lt;class name=&quot;bo.EmployeeBo&quot; table=&quot;employee&quot;&gt; &lt;id name=&quot;eid&quot; column=&quot;eid&quot;&gt; &lt;generator class=&quot;assigned&quot; /&gt; &lt;/id&gt; &lt;property name=&quot;name&quot; column=&quot;name&quot; /&gt; &lt;property name=&quot;address&quot; column=&quot;address&quot; /&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; //hibernate.cfg.xml &lt;? xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt; &lt;! DOCTYPE hibernate-configuration PUBLIC &quot;-//Hibernate/Hibernate Configuration DTD 3.0//EN&quot; &quot;http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd&quot;&gt; &lt;hibernate-configuration&gt; &lt;session-factory&gt; &lt;! -- Database connection settings --&gt; &lt;property name=&quot;connection.driver_class&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt; &lt;property name=&quot;connection.url&quot;&gt;jdbc:mysql://localhost:3306/mydb&lt;/property&gt; &lt;property name=&quot;connection.username&quot;&gt;root&lt;/property&gt; &lt;property name=&quot;connection.password&quot;&gt;root&lt;/property&gt; &lt;property name=&quot;connection.pool_size&quot;&gt;1&lt;/property&gt; &lt;!-- Hibernate Properties --&gt; &lt;property name=&quot;dialect&quot;&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt; &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt; &lt;property name=&quot;hbm2ddl.auto&quot;&gt;validate&lt;/property&gt; &lt;!-- Mapping file name(s)--&gt; &lt;mapping resource=&quot;res/employee.hbm.xml&quot;/&gt; &lt;/session-factory&gt; &lt;/hibernate-configuration&gt; public class EmployeeSave { public static void main(String[] args) { Configuration cfg = new Configuration(); cfg.configure(&quot;hibernate.cfg.xml&quot;); SessionFactory factory = cfg.buildSessionFactory(); Session session = factory.openSession(); EmployeeBo bo = new EmployeeBo(); bo.setEid(5); bo.setName(&quot;DILEEP&quot;); bo.setAddress(&quot;BANGLORE&quot;); Transaction tx = session.beginTransaction(); session.save(bo); System.out.println(&quot;Employee Data saved successfully.....!!&quot;); tx.commit(); session.close(); factory.close(); } } Session class methods Select Object get(Class , Serializable id) Object load(Class, Serializable id) Insert Serializable save(Object object) void persist(Object object) void saveOrUpdate(Object object) Update Object merge(Object object) void update(Object object) Delete void delete(Object object) Clear void evict(Object object) : Remove this instance from the session cache. void clear() : Completely clear the session. Other boolean isDirty() : Does this session contain any changes which must be synchronized with the database? In other words, would any DML operations be executed if we flushed this session? void refresh(Object object) Re-read the state of the given instance from the underlying database. 1.Table per class hierarchy Vehicle.hbm.xml &lt;hibernate-mapping&gt; &lt;class name=&quot;inheritance.Vehicle&quot; table=&quot;vehicle&quot;&gt; &lt;id name=&quot;vid&quot; column=&quot;vid&quot;&gt;&lt;/id&gt; &lt;discriminator column=&quot;DISC&quot; type=&quot;string&quot;/&gt; &lt;property name=&quot;price&quot; column=&quot;price&quot;&gt;&lt;/property&gt; &lt;subclass name=&quot;inheritance.Bike&quot; discriminator-value=&quot;BIKE_DISC&quot;&gt; &lt;property name=&quot;biketype&quot; column=&quot;biketype&quot;&gt;&lt;/property&gt; &lt;/subclass&gt; &lt;subclass name=&quot;inheritance.Car&quot; discriminator-value=&quot;CAR_DISC&quot;&gt; &lt;property name=&quot;cartype&quot; column=&quot;cartype&quot;&gt;&lt;/property&gt; &lt;/subclass&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; 2. Table per sub-class hierarchy Vehicle.hbm.xml &lt;hibernate-mapping&gt; &lt;class name=&quot;inheritance.Vehicle&quot; table=&quot;vehicle&quot;&gt; &lt;id name=&quot;vid&quot; column=&quot;vid&quot;&gt;&lt;/id&gt; &lt;property name=&quot;price&quot; column=&quot;price&quot;&gt;&lt;/property&gt; &lt;joined-subclass name=&quot;inheritance.Bike&quot; table=&quot;bike&quot;&gt; &lt;key column=&quot;BIKE_KEY&quot; /&gt; &lt;property name=&quot;biketype&quot; column=&quot;type&quot;&gt;&lt;/property&gt; &lt;/joined-subclass&gt; &lt;joined-subclass name=&quot;inheritance.Car&quot; table=&quot;car&quot;&gt; &lt;key column=&quot;CAR_KEY&quot; /&gt; &lt;property name=&quot;cartype&quot; column=&quot;type&quot;&gt;&lt;/property&gt; &lt;/joined-subclass&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; 3.Table per concrete class hierarchy Vehicle.hbm.xml &lt;hibernate-mapping&gt; &lt;class name=&quot;inheritance.Vehicle&quot; table=&quot;vehicle&quot;&gt; &lt;id name=&quot;vid&quot; column=&quot;vid&quot;&gt;&lt;/id&gt; &lt;property name=&quot;price&quot; column=&quot;price&quot;&gt;&lt;/property&gt; &lt;union-subclass name=&quot;inheritance.Bike&quot; table=&quot;bike&quot;&gt; &lt;property name=&quot;biketype&quot; column=&quot;type&quot;&gt;&lt;/property&gt; &lt;/union-subclass&gt; &lt;union-subclass name=&quot;inheritance.Car&quot; table=&quot;car&quot;&gt; &lt;property name=&quot;cartype&quot; column=&quot;type&quot;&gt;&lt;/property&gt; &lt;/union-subclass&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; If we want to select a Complete Object from the database, we use POJO class reference in place of * while constructing the query // In SQL sql&gt; select * from Employee Note: Employee is the table name. // In HQL hql&gt; select s from EmployeeBo s [ or ] from EmployeeBo s Note: here s is the reference of EmployeeBo If we want to load the Partial Object from the database that is only selective properties of an objects, then we need to replace column names with POJO class variable names // In SQL sql&gt; select eid,name,address from Employee Note: eid,name,address are the columns of Employee the table. // In HQL hql&gt; select s.eid,s.name,s.address from EmployeeBo s What are advantages of Hibernate? Lazy Loading Caching You do not need to maintain JDBC code , Hibernate takes care of it. You need to write less code It provides high level object oriented API What is caching? Anything you can do to minimize traffic between a database and an application server is probably a good thing. In theory, an application ought to be able to maintain a cache containing data already loaded from the database, and only hit the database when information has to be updated. When the database is hit, the changes may invalidate the cache First Level Cache &amp; Second Level Cache? Every fresh session having its own cache memory, Caching is a mechanism for storing the loaded objects into a cache memory. The advantage of cache mechanism is, whenever again we want to load the same object from the database then instead of hitting the database once again, it loads from the local cache memory only, so that the no. of round trips between an application and a database server got decreased. It means caching mechanism increases the performance of the application. In hibernate we have two levels of caching First Level Cache (Session Cache) Second Level Cache (Session Factory Cache/ JVM Level Cache) 1.First Level Cache By default, for each hibernate application, the first level cache is automatically enabled. We can’t Enable/Disable first level cache the first level cache is associated with the session object and scope of the cache is limited to one session only When we load an object for the first time from the database then the object will be loaded from the database and the loaded object will be stored in the cache memory maintained by that session object If we load the same object once again, with in the same session, then the object will be loaded from the local cache memory not from the database If we load the same object by opening other session, then again the object will load from the database and the loaded object will be stored in the cache memory maintained by this new session Example: Session session = factory.openSession(); Object ob1 = session.get(Actor.class, new Integer(101)); //1 Object ob2 = session.get(Actor.class, new Integer(101));//2 Object ob3 = session.get(Actor.class, new Integer(101));//3 session.close();//4 Session ses2 = factory.openSession(); Object ob5 = ses2.get(Actor.class, new Integer(101));//5 1, We are loaded object with id 101, now it will load the object from the database only as its the first time, and keeps this object in the session cache 2,3 i tried to load the same object 2 times, but here the object will be loaded from the stored cache only not from the database, as we are in the same session 4, we close the first session, so the cache memory related this session also will be destroyed 5, again i created one new session and loaded the same object with id 101, but this time hibernate will loads the object from the database if we want to remove the objects that are stored in the cache memory, then we need to call either evict() or clear() methods 2.Second Level Cache Whenever we are loading any object from the database, then hibernate verify whether that object is available in the local cache(first level cache) memory of that particular session, if not available then hibernate verify whether the object is available in global cache(second level cache), if not available then hibernate will hit the database and loads the object from there, and then first stores in the local cache of the session , then in the global cache SessionFactory holds the second level cache data. It is global for all the session objects and not enabled by default. Different vendors have provided the implementation of Second Level Cache EH Cache OS Cache Swarm Cache JBoss Cache To enable second level cache in the hibernate, then the following 3 changes are required 1.Add provider class in hibernate configuration file &lt;property name=&quot;hibernate.cache.provider_class&quot;&gt; org.hibernate.cache.EhCacheProvider &lt;/property&gt; 2.Configure cache element for a class in hibernate mapping file &lt;cache usage=&quot;read-only&quot; /&gt; read-only: caching will work for read only operation. nonstrict-read-write: caching will work for read and write but one at a time. read-write: caching will work for read and write, can be used simultaneously. transactional: caching will work for transaction. 3.create xml file called ehcache.xml and place where you have mapping and configuration xml’s Example: public class Employee { private int eid; private String name; private String address; //Setters &amp; Getteers } Employee.hbm.xml &lt;hibernate-mapping package=&quot;cache&quot;&gt; &lt;class name=&quot;Employee&quot; table=&quot;employee&quot;&gt; &lt;cache usage=&quot;read-only&quot; /&gt; &lt;id name=&quot;eid&quot; column=&quot;eid&quot;&gt; &lt;generator class=&quot;native&quot;&gt;&lt;/generator&gt; &lt;/id&gt; &lt;property name=&quot;name&quot;&gt;&lt;/property&gt; &lt;property name=&quot;address&quot;&gt;&lt;/property&gt; &lt;/class&gt; &lt;/hibernate-mapping&gt; ehcache.xml &lt;?xml version=&quot;1.0&quot;?&gt; &lt;ehcache&gt; &lt;defaultCache maxElementsInMemory=&quot;100&quot; eternal=&quot;false&quot; timeToIdleSeconds=&quot;120&quot; timeToLiveSeconds=&quot;200&quot; /&gt; &lt;cache name=&quot;cache.Employee&quot; maxElementsInMemory=&quot;100&quot; eternal=&quot;false&quot; timeToIdleSeconds=&quot;5&quot; timeToLiveSeconds=&quot;200&quot; /&gt; &lt;/ehcache&gt; hibernate.cfg.xml &lt;hibernate-configuration&gt; &lt;session-factory&gt; &lt;property&gt; Driver Class, URL, Username, password, etc &lt;/property&gt; &lt;property name=&quot;cache.provider_class&quot;&gt;org.hibernate.cache.EhCacheProvider&lt;/property&gt; &lt;property name=&quot;hibernate.cache.use_second_level_cache&quot;&gt;true&lt;/property&gt; &lt;mapping resource=&quot;cache/employee.hbm.xml&quot; /&gt; &lt;/session-factory&gt; &lt;/hibernate-configuration&gt; CacheDemo.java package cache; import org.hibernate.*; import org.hibernate.cfg.*; public class CacheDemo { public static void main(String[] args) { //1.Load Configuration Configuration cfg = new Configuration(); cfg.configure(&quot;hibernate.cfg.xml&quot;); //2.Create Session SessionFactory sf = cfg.buildSessionFactory(); Session session = sf.openSession(); //3.Perform Operations Object ob = session.load(Employee.class, new Integer(1)); Employee bo = (Employee) ob; System.out.println(&quot;SELECTED DATA\\n ================&quot;); System.out.println(&quot;SNO : &quot;+bo.getEid()); System.out.println(&quot;NAME : &quot;+bo.getName()); System.out.println(&quot;ADDRESS : &quot;+bo.getAddress()); } } What are some core interfaces of hibernate? Configuration SessionFactory Session Transaction Query and Criteria interface Difference between get() vs load() method in Hibernate? (detailed answer) The key difference between get() and load() method is that load() will throw an exception if an object with id passed to them is not found get() will return **null.** Another important difference is that load can return proxy without hitting the database unless required (when you access any attribute other than id) but get() always go to the database, so sometimes using load() can be faster than the get() method. It makes sense to use the load() method if you know the object exists but get() method if you are not sure about object’s existence. Parameter get load Database retrieval It always hits the database It does not hit database If null If it does not get the object with id, it returns null, null in databse If it does get the object with id, it throws ObjectNotFound in Cache Proxy It returns real object It returns proxy object Use If you are not sure if object with id exists or not, you can use get If you are sure about existence of object, you can use load What is the difference between save() and persist() method in Hibernate? Serializable Object save() returns a Serializable object void persist() method is void, so it doesn’t return anything. What is the difference between and merge and update? Employee emp1 = new Employee(); emp1.setEmpId(100); emp1.setEmpName(&quot;Dinesh&quot;); Session session1 = createNewHibernateSession(); session1.saveOrUpdate(emp1); session1.close(); //emp1 object in detached state now emp1.setEmpName(&quot;Dinesh Rajput&quot;);//Updated Name //Create session again Session session2 = createNewHibernateSession(); Employee emp2 =(Employee)session2.get(Employee.class, 100); //emp2 object in persistent state with id 100 //below we try to make on detached object with id 100 to persistent state by using update method of hibernate session2.update(emp1);//It occurs the exception NonUniqueObjectException because emp2 object is having employee with same empid as 100 in Cache.Here cache is not Empty. See diageram. //to avoid this exception we are using merge like given below instead of session.update(emp1); session2.merge(emp1); //it merge the object state with emp2 session2.update(emp1); //Now it will work with exception Update: Suppose we are dealing with any employee object in the same session then we should use update() or saveOrUpdate() method. if you are sure that the session does not contains an already persistent instance with the same identifier,then use update to save the data in hibernate Merge: Suppose we are creating a session and load an employee object. Now object in session cache. If we close the session at this point and we edit state of object and tried to save using update() it will throw exception. To make object persistent we need to open another session. Now we load same object again in current session. So if we want to update present object with previous object changes we have to use merge() method. Merge method will merge changes of both states of object and will save in database. if you want to save your modifications at any time with out knowing about the state of an session, then use merge() in hibernate. Different between cascade and inverse Many Hibernate developers are confusing about the cascade option and inverse keyword. In some ways. They really look quite similar at the beginning; both are related with relationship. However, there is no relationship between cascade and inverse, both are totally different notions. 1.inverse This is used to decide which side is the relationship owner to manage the relationship (insert or update of the foreign key column). Example In this example, the relationship owner is belonging to stockDailyRecords (inverse=true). &lt;!-- Stock.hbm.xml --&gt; &lt;hibernate-mapping&gt; &lt;class name=&quot;Stock&quot; table=&quot;stock&quot;&gt; ... &lt;set name=&quot;stockDailyRecords&quot; table=&quot;stock_daily_record&quot; inverse=&quot;true&quot;&gt; &lt;key&gt; &lt;column name=&quot;STOCK_ID&quot; not-null=&quot;true&quot; /&gt; &lt;/key&gt; &lt;one-to-many class=&quot;StockDailyRecord&quot; /&gt; &lt;/set&gt; ... When you save or update the stock object session.save(stock); session.update(stock); Hibernate will only insert or update the STOCK table, no update on the foreign key column. More detail example here… 2.cascade In cascade, after one operation (save, update and delete) is done, it decide whether it need to call other operations (save, update and delete) on another entities which has relationship with each other. Example In this example, the cascade=”save-update” is declare on stockDailyRecords. &lt;!-- Stock.hbm.xml --&gt; &lt;hibernate-mapping&gt; &lt;class name=&quot;com.mkyong.common.Stock&quot; table=&quot;stock&quot; ...&gt; ... &lt;set name=&quot;stockDailyRecords&quot; table=&quot;stock_daily_record&quot; cascade=&quot;save-update&quot; inverse=&quot;true&quot;&gt; &lt;key&gt; &lt;column name=&quot;STOCK_ID&quot; not-null=&quot;true&quot; /&gt; &lt;/key&gt; &lt;one-to-many class=&quot;com.mkyong.common.StockDailyRecord&quot; /&gt; &lt;/set&gt; ... Copy When you save or update the stock object session.save(stock); session.update(stock); It will inserted or updated the record into STOCK table and call another insert or update statement (cascade=”save-update”) on StockDailyRecord. More detail example here… Conclusion In short, the -inverse” is decide which side will update the foreign key, while -cascade” is decide what’s the follow by operation should execute. Both are look quite similar in relationship, but it’s totally two different things. Hibernate developers are worth to spend time to research on it, because misunderstand the concept or misuse it will bring serious performance or data integrity issue in your application. Does SessionFactory is thread-safe in Hibernate? (detailed answer) SessionFactory is both Immutable and thread-safe and it has just one single instance in Hibernate application. It is used to create Session object and it also provide caching by storing SQL queries stored by multiple session. The second level cache is maintained at SessionFactory level. Does Hibernate Session interface is thread-safe in Java? (detailed answer) No, Session object is not thread-safe in Hibernate and intended to be used with-in single thread in the application. What is difference between getCurrentSession() and openSession() in Hibernate? openSession() When you call SessionFactory.openSession, it always create new Session object afresh and give it to you. As session objects are not thread safe, you need to create one session object per request in multithreaded environment and one session per request in web applications too. getCurrentSession() When you call SessionFactory. getCurrentSession , it creates a new Session if not exists , else use same session which is in current hibernate context. It automatically flush and close session when transaction ends, so you do not need to do externally.If you are using hibernate in single threaded environment , you can use getCurrentSession, as it is faster in performance as compare to creating new session each time. You need to add following property to hibernate.cfg.xml to use getCurrentSession method &lt;session-factory&gt; &lt;!-- Put other elements here --&gt; &lt;property name=&quot;hibernate.current_session_context_class&quot;&gt;&lt;/property&gt; &lt;/session-factory&gt; If you do not configure above property, you will get error as below. Exception in thread “main” org.hibernate.HibernateException: No CurrentSessionContext configured! Can you declare Entity(Bean) class as final in hibernate? Yes, you can declare entity class as final but it is not considered as a good practice because hibernate uses proxy pattern for lazy initialization, If you declare it as final then hibernate won’t be able to create sub class and won’t be able to use proxy pattern, so it will limit performance and improvement options. Does entity class (Bean) in hibernate require no arg constructor? Yes, Entity class in hibernate requires no arg constructor because Hibernate use reflection to create instance of entity class and it mandates no arg constructor in Entity class. How do you log SQL queries issued by the Hibernate framework in Java application? You can procedure the show_sql property to log SQL queries delivered by the Hibernate framework What is named SQL query in Hibernate? Named queries are SQL queries which are defined in mapping document using **** tag and called using **Session.getNamedQuery()** method. &lt;sql-query name=&quot;findStudentByRollNumber&quot;&gt; &lt;!--[CDATA[ select * from Student student where student.rollNumber = :rollNumber ]]--&gt; &lt;/sql-query&gt; you can define named query in hibernate either by using annotations or XML mapping file, as I said above. @NameQuery is used to define single named query and @NameQueries is used to define multiple named query in hibernate. @NamedQueries({ @NamedQuery( name = &quot;findStockByStockCode&quot;, query = &quot;from Stock s where s.stockCode = :stockCode&quot; ) }) Explain Criteria API Criteria is a simplified API for retrieving entities by composing Criterion objects. This is a very convenient approach for functionality like -search” screens where there is a variable number of conditions to be placed upon the result set. Example: List employees = session.createCriteria(Employee.class) .add(Restrictions.like(-name&quot;, -a%&quot;) ) .add(Restrictions.like(-address&quot;, -Boston&quot;)) .addOrder(Order.asc(-name&quot;) ) .list(); How do you switch between relational databases without code changes? Using Hibernate SQL Dialects, we can switch databases. Hibernate will generate appropriate hql queries based on the dialect defined. What is Hibernate proxy? The proxy attribute enables lazy initialization of persistent instances of the class. Hibernate will initially return CGLIB proxies which implement the named interface. The actual persistent object will be loaded when a method of the proxy is invoked. What is automatic dirty checking? Automatic dirty checking is a feature that saves us the effort of explicitly asking Hibernate to update the database when we modify the state of an object inside a transaction. If Dirty-checking is enabled, if we forget to call save() before the commit, dirty-checking automatically saves the data into the database. Consider the below code which loads a simple Entity from the database and updates it. public static void testUpdate() { Session session = sessionFactory.openSession(); Transaction transaction = session.beginTransaction(); Entity entity = (Entity) session.load(Entity.class, 1); entity.setData(&quot;Updating the data&quot;); transaction.commit(); session.close(); } Although we haven’t made any session.update(entity) call, the logs indicate that the database record was updated successful What is query cache in Hibernate? .Query cache can be used along with second level cache for improved performance. QueryCache actually stores the result of SQL query for future calls. Hibernate support various open source caching solution to implement Query cache e.g. EhCache What are two types of Collections in hibernate? Sorted Collection Ordered Collection Parameter Sorted Collection Ordered Collection Sorting Sorted collection uses java’s sorting API to sort the collection. Ordered Collections uses order by clause while retrieval of objects Default It is enabled by default It is not enabled by default, you need to enable it explicitly What is lazy loading in hibernate? Sometimes you have two entities and there’s a relationship between them. For example, you might have an entity called University and another entity called Student public class University { private String id; private String name; private String address; private List&lt;Student&gt; students; // setters and getters } Now when you load a University from the database, JPA loads its id, name, and address fields for you. But you have two options for students: to load it together with the rest of the fields (i.e. eagerly) or to load it on-demand (i.e. lazily) when you call the university’s getStudents() method. @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER) @JoinColumn(name=&quot;countryId&quot;) private List&lt;Student&gt; students; FetchType.LAZY : It fetches the child entities lazily, that is, at the time of fetching parent entity it just fetches proxy (created by cglib or any other utility) of the child entities and when you access any property of child entity then it is actually fetched by hibernate. FetchType.EAGER: it fetches the child entities along with parent. Lazy initialization improves performance by avoiding unnecessary computation and reduce memory requirements. Eager initialization takes more memory consumption and processing speed is slow. lazy=&quot;true/false in xml","url":"/Hibernate-Interview-Questions.html","headline":"Hibernate - Interview Questions","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- start custom head snippets -->
+
+<!-- end custom head snippets --><script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.4',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script></head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="76px" height="76px" viewBox="0 0 76 76" enable-background="new 0 0 76 76" xml:space="preserve">  <image id="image0" width="76" height="76" x="0" y="0"
+    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAIAAABI9cZ8AAAAIGNIUk0AAHomAACAhAAA+gAAAIDo
+AAB1MAAA6mAAADqYAAAXcJy6UTwAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQflBwgJKRMy4DHU
+AAAAXnRFWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMACmlwdGMKICAgICAgMjgKMzg0MjQ5NGQwNDA0
+MDAwMDAwMDAwMDBmMWMwMjZlMDAwMzUyNDY0NzFjMDIwMDAwMDIwMDA0MDAKYJo9ngAAD4RJREFU
+eNrtm2tsE1fax894Lp7xeGzHzgUSbNI0YJJwSQKEWxWlUWkSKEIqq20RsBUrtewXpBatSlu1WvVT
+F7XbW1RKqxaqCiEl25KkYUkpYlPEQrkkAsIlgZAEcnOcOAQntseeGXveD09z3sFODLm1+/JyhCxn
+PHPm/M7znHOe838OhKqq6FEvut+7AY8hH0M+hnwM+UiWx5CPSqF+rxePGYQQBPEoQEYiEcyjqqqq
+qgAWiUTgCkEQcAV/+W+HxOZSVXVkZGR4eJiiKFmWRVHs6upiWTYQCJw6dSonJyc3N1eW5cTERIZh
+jEYjEOp0Op1ON3VUYiZiV6gTLCNJksvlunXr1ldffXXlyhWLxRIIBHw+3+DgIMMwCKGBgQGj0ZiW
+liaKYkZGhiAI69atKygoyMzMhBtIkpwi6jRDgr8pijI8PNzT09PY2Hjq1KnGxka32+12u8cbh1HX
+OY7Lysp6+eWXZ8+evXz5covFQtM0oE6+WdNSIpGIqqqiKN68eXPv3r1lZWVPPvkkwzCTsAD4Ksdx
+FoulvLx8YGDA6/WGQqFwODy5tk0DJOD5/f76+vo33ngjMzOT53ltcyfpYwSBEFq4cOHRo0fdbvfw
+8LAkSfCu3xQSXhkKhVpbW997772UlBTsUdMyMUIlq1atOnnypNvt9vl8sixPgnOSs6uqqgghWZab
+mpoqKirq6upaW1slScJsaszwg5+iroOpteuK9nFVVQmCOHv2bE1Njd1upyiKoqhJTEKTgYQWuFyu
+r7/++sCBA52dneFweDwGbYsRQiaTyWq1UhQlCILFYrHZbAzDeDwer9fb3d3d398vy3Is8KVLlzwe
+D8Mwer2eoibc5gk/AF56/vz5d999t76+HlsvFu/X8YCQIAjp6enp6enJyclZWVmzZ8+madpoNHIc
+R9O0TqeLRCKyLLtcrjt37nR1dd2+ffvMmTP37t3DnFevXm1vb09MTJRlmWGYiRpzYpCqqsqyXFtb
++/bbb7e0tICzafG0fyYkJGRnZ6empi5ZsiQrKyshIYFlWVgM4BMvgPBUWlpafn6+JEmBQKC6uvrz
+zz/3er3wqyiKfX19kiTBmJwpS8LwcLvd+/bt++KLL/r6+mLXN+jd5ORkg8HgdDqfeeYZp9MpCALL
+sgzDgLMxDANDCwixTcBBwuGwLMuCIGzbto2iqI8//tjn88HC6/V6FUUJh8Mw8Uy/JaHSO3fu7N69
+u6qqClwUE+JWkiSZlpa2detWp9OZkpIiCIJer2dZlmVZLZ5OpyNJktAUpFmugZPjuNTUVJZlfT4f
+QogkSb1ejwlnxJIEQbS3t7/++uvV1dXhcBhpAjf4TlFUenp6cXHx0qVL582bx/M8x3EcxwEeTdPY
+PyEixc9qDfLrdE9RDMNcvXr1o48+8ng8cIOiKD6fDw/y6YdUVdXj8bz11ltVVVVjDr/09PSSkpKV
+K1c6HA6e5w0GA3wCHvZMrd3G60pc54ULFzo6OrSdKAgCuPf0Q6qqGgwGP/jgg6qqqthdkiAICxYs
+ePHFF3NzczmO43neaDQaDAYYhFq8h28QLJt5eXlz585ta2tDCJEkuXr16kWLFuG5aqKQ8QJ0+Km2
+tvaVV15xu924EfC5ePHiDRs25OfnW61WQRCMRiOsCpPGwyUcDkuSVFlZ+emnn4qiuHLlyg0bNjgc
+joSEBKvVajAYaJqeWMfF9/L29vatW7f+8ssveEerqqpery8qKtqyZcucOXN4ngdCMCDeLkwlrItE
+IpIk+Xy+rq4ur9drNBppmuZ53mQyGY1GvV5PkuSEKhzXXcEhq6qqLly4oCUkSbKsrGzbtm1JSUkm
+kwlejP1zeva4BEFRFMdxDocjFAopigKzKwQPk6g/3pj0er11dXWKomjrLSwsfOGFF5KSkhISEiwW
+C8/zYEA8tUyRECCBCj6hf/HyM4kxGQ+yt7e3s7MTaUK2RYsWbd68efbs2Waz2WKxwEI/XQaM5QQ2
+NDrxTroTx4UkCKK3t3doaAhfYVm2rKwM1okoA6LRgGHaOaelqnhjUhAEjuPwlVAodPjwYbfbvWLF
+ihUrVpjNZu2eTbtjQvdvl2dIaJxAf403u4bD4Xv37u3YseP777/X7npIkuR5fsGCBcuWLTMajYsX
+LxZFMTk52WazzZkzh2EYHOVoIafibDMLqSjK6dOnd+3a1dTUhCGjolaWZRVFMRgMBoPB4XDQNG02
+mzMyMkpKSpJGC1Z6sNCIflvzjgsJu6pAIHDx4sU9e/acOnUqGAyCBKy9Z+xKCQIWT7vdXlRUNGvW
+rJycnHnz5hmNRp7nYYbEMfrvDBmJREKhkCiKnZ2dDQ0Np0+fPnnyZHd3t6IoGOaBModOp6MoymKx
+2O12q9W6ffv2oqIiQRAgKvptUB8Q1oXD4VAoFAwGRVH0er23bt26fPny7du3m5ub29vbQSkcky0K
+G19PS0tzOp2lpaXPP/98cnIyRVEQJM0o5wPCukgkAtqEJEnBYDAUCkmSJIri0NBQd3d3U1PT9evX
+dTrd9evXOzo6sIXHfdkorV6vX7t27e7du7OzsyFamlHOByvo4LeRSERRFKAFGUJRFDCyLMs9PT2n
+T59uampyuVwDAwMejyeOSIFh1qxZ8/7778+bN4/juElEpNMJiVGxQgEFmPGnoigjIyNer7erq+vK
+lStXrly5du2a2+0GIW/MoUsQxGuvvbZz505BEHien5zcPp2QsbS4YGBt8fv9bW1tdXV1J06ccLlc
+ODOnhVRVddWqVZ988klaWprZbGZZ9mGMqZVkH7JTJixJ4rUuSqXG5gVgQRBsNltOTs7GjRtramoO
+Hz4Mak1UW/v6+vr6+pKSkhRFgY7A+sB4GKqqhhUFEQRomQ+T3pt8flLbAlAowLAYWJZlnufNZvP8
++fMTEhL27t2rKEqs42CHhxYPDg663e6UlBSTyQTLKQQP8GC4rQ1VVKC2NmSxhEpLwwUFJMOQJPmA
+TcJUciGxRevAoKAODQ253e6qqqqEhITYt+fl5dXV1bW0tPT399+4ceOzzz4rLS1NS0vbtWvXwMCA
+z+eTJAlEurCiSGfPKsXFEZJUEYoQhJyaeu9vf/PcvOn1egOBQJw0yTRnmrUaHLaDXq93uVyBQCAq
+JFRV9YknnmBZtr29/eDBgz/88MPNmzeDwSBCqKOjw+v14hoig4NqRQVZXk60tiKEVIJACJG9vaa/
+/108c2bk1VelggJQXsYUgWYwnQ6oNE03Nzd/++23OGzAHgTN2r9//5kzZ27fvg1iJ0LIaDSuWbMG
+lB69Xk96vcSbb1KHDhGhEOARMPcQBAqFDMePI5dr8B//UPPyQJoZYyRPr7vGeu/du3e3b98+Zi+w
+LGu1WnG8jluWlZV1+PDha9eu9fb2BgKB0IEDEZZVCSJCECpC2n8RhCIEEUHo7vr1HU1N/f39fr8f
+Rr62zOA5HlVVJUnau3dvZWXlmFNCMBi8e/euOrrbVlWVZdm1a9fu3LkTkkIURSFZ1v3730QwiA14
+n7MgRKgqgZCpvp6orfX7/RCcRN02U+4K08+xY8f27dvn9/vHm/cwHk3Ts2bN2rhxY0lJSWJiIoQH
+er2ecLmIxkbos3FfRhBkIJB48OCA0xkoKNDpdCzLziAknlcURamsrHznnXe6u7vHi3jAl0iSzMzM
+LC4uzs/Ph1S8IAgmk4nneZqmdf/6l66tDXaxcd6KCIJvbibefHPor3/1rVtnsVhmBBJjyLLc2tpa
+UVHx5Zdfut3uMQnhfrPZ7HQ6Fy9eXFhY6HA4IH0Ce06Yk3R9fURFBZ5v4r0dIYIgDK2tuj17+m02
+NGfOdEJqTdfT03P27NlLly7V1tbeuHEjNmqFPymKMhgMdrt906ZNy5YtM5vNgAdsoJ7AblPp6KBa
+WtSxRmNUwfOtvqODPnIEbdo0PZDqaGIrFApdvny5pqbm2LFjzc3NcBYlKj+Lv9vt9qeffnrJkiVz
+585NTk7mOA6kE9iIMAxzn4SLD3TFd1ctLUJUe3vUxcmfGUAIBYPBixcvfvfdd1VVVZ2dnVpxJMpF
+wTmLi4ufffZZGHjcaNGm97SBaDgcjjid0lNPMUePTmhvEonpjgmn09FoqquhoeHQoUNHjhzp6elB
+YykD+IrFYsnKyiotLS0oKDCZTNrcHuBFZZ3/t1itob/8hWxooPr7H9KMCssO5uWlTA4S4w0ODv70
+008nTpw4fvx4T0+POqrfjYnHMExubu7GjRsXLlxotVo5joO1AeYVbXYodo2B65GCAmn1aqq6+oEe
+CzfcnT/f89RTE7YktD4YDHZ2dv744481NTUNDQ0jIyPxrYcQSkpKWr9+fVlZWUpKCqQu8dSiTTzH
+ebVOp2MEQdq8Wf+f/5AezwObqrBsT0kJSokyZFxIaKsoiufOnfvmm28aGxtv3LgBQk6s9bRPWa3W
+lStXFhcXL1myBPKWgiDg5OzD4KHRNEE4HEZFRf4//9lYXq4TxXh3q6pr+fJ7q1bx90cC40JC6wOB
+wLlz5yorK48cOdLb24t3sbF42IA6nS4zM3Pbtm1Lly4Fz8T+CQvDhJJfvyazDIbAjh1hv9+8f79O
+FMf2W1X1Ohydf/wjk5RkNBofDAkM169f//DDD+vq6uAI53iKo3YXn52dXVxcvGzZsvT0dIynTc5O
+VGIFCYKmab3NJr766l2WtXz1FeX1otHVBTfLn5TU8qc/STk5VqNREIToesZ0ua6urpdeeunnn39W
+788LjGk9juNSUlLy8/Ofe+65jIwMfHgAZ76mmNsDkUEURdHrRdXVln37uNZWYlQNjJDksMNxc8uW
+kaIiOMdmNpujNuhju2tbW9v58+dRjEYe9afBYMjNzS0sLMzJyZk1axacGcB4OHCZogYHxoTv/j/8
+wb1gAffPfxoaGwm/P2ixDC1aNFBYGMnIsAqC2WyGlGlUDWND2mw2u93e0tIS+5PBYLBYLKmpqVlZ
+WdnZ2dnZ2VarFU4kQeCiXR6mJQWAnRaAxdzcQEbGiNsdGh6W9HqJ51mGgc7F5/Wia4h1xXA4HAwG
+6+vry8vLL126BHvQ5ORkh8Nht9vT09Ptdjs+cEXTNMuyOHCZ+tGP8QqMfJCOQqEQaPkQP9I0rR8t
+2rxwPEjIC4RCoa6uro6OjqGhIVmWbTYbeAKMMYjCgAoHZTinP3OCP9byQSuDKQNySnHePgakqqqg
+r0CeJxgMYlEU6sKc+ChgnMBl2kuUtIFFszhvH3ezp9XFIbEBqzNGwt32+2aRH6bEy09iHRXvqqIK
++i84DzAlSIx6393/F5AmDPlolP8X/7XwMeSjUh5DPirlfwA1QTCTlERFOgAAACV0RVh0ZGF0ZTpj
+cmVhdGUAMjAyMS0wNy0wOFQxNzo0MDozOCswMzowMN3pZPAAAAAldEVYdGRhdGU6bW9kaWZ5ADIw
+MjEtMDctMDhUMTc6NDA6MzgrMDM6MDCstNxMAAAAAElFTkSuQmCC" />
+</svg>
+<a title="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." href="/">SatyaCodes</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/posts.html">AllPosts</a></li><li class="navigation__item"><a href="/tutorials.html">Tutorials</a></li><li class="navigation__item"><a href="/java.html">Java</a></li><li class="navigation__item"><a href="/devops.html">DevOps</a></li><li class="navigation__item"><a href="/books.html">Books</a></li><li class="navigation__item"><a href="/interview-questions.html">InterviewQ's</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div></aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Hibernate - Interview Questions</h1></header></div><meta itemprop="headline" content="Hibernate - Interview Questions"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=Interview">Interview</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 11, 2017</span>
+            </li></ul></div><meta itemprop="author" content="Satya Kaveti"/><meta itemprop="datePublished" content="2017-11-11T00:00:00+00:00">
+    <meta itemprop="keywords" content="Interview"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h1 id="hibernate">Hibernate</h1>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">EmployeeBo</span><span class="o">.</span><span class="na">java</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EmployeeBo</span> <span class="o">{</span>
+	 <span class="kd">private</span> <span class="kt">int</span> <span class="n">eid</span><span class="o">;</span>
+	 <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	 <span class="kd">private</span> <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>	 
+ 	<span class="c1">//setters / getters</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//Example: EmployeeBo.hbm.xml
+<span class="nt">&lt;hibernate-mapping&gt;</span>
+	<span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">"bo.EmployeeBo"</span> <span class="na">table=</span><span class="s">"employee"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">"eid"</span> <span class="na">column=</span><span class="s">"eid"</span><span class="nt">&gt;</span>
+ 	<span class="nt">&lt;generator</span> <span class="na">class=</span><span class="s">"assigned"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;/id&gt;</span>
+ <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">column=</span><span class="s">"name"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"address"</span> <span class="na">column=</span><span class="s">"address"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;/class&gt;</span>
+<span class="nt">&lt;/hibernate-mapping&gt;</span>
+
+//hibernate.cfg.xml
+  <span class="cp">&lt;? xml version='1.0' encoding='utf-8'?&gt;</span>
+<span class="cp">&lt;! DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd"&gt;</span>
+
+<span class="nt">&lt;hibernate-configuration&gt;</span>
+    <span class="nt">&lt;session-factory&gt;</span>
+        <span class="cp">&lt;! -- Database connection settings --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"connection.driver_class"</span><span class="nt">&gt;</span>com.mysql.jdbc.Driver<span class="nt">&lt;/property&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"connection.url"</span><span class="nt">&gt;</span>jdbc:mysql://localhost:3306/mydb<span class="nt">&lt;/property&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"connection.username"</span><span class="nt">&gt;</span>root<span class="nt">&lt;/property&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"connection.password"</span><span class="nt">&gt;</span>root<span class="nt">&lt;/property&gt;</span>        
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"connection.pool_size"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/property&gt;</span>
+        
+        <span class="c">&lt;!-- Hibernate Properties --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"dialect"</span><span class="nt">&gt;</span>org.hibernate.dialect.MySQLDialect<span class="nt">&lt;/property&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"show_sql"</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
+            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hbm2ddl.auto"</span><span class="nt">&gt;</span>validate<span class="nt">&lt;/property&gt;</span>  
+      
+<span class="c">&lt;!-- Mapping file name(s)--&gt;</span>
+        <span class="nt">&lt;mapping</span> <span class="na">resource=</span><span class="s">"res/employee.hbm.xml"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/session-factory&gt;</span>
+<span class="nt">&lt;/hibernate-configuration&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EmployeeSave</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+ <span class="nc">Configuration</span> <span class="n">cfg</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Configuration</span><span class="o">();</span>
+ <span class="n">cfg</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">"hibernate.cfg.xml"</span><span class="o">);</span>
+ 
+ <span class="nc">SessionFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="na">buildSessionFactory</span><span class="o">();</span>
+ <span class="nc">Session</span> <span class="n">session</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">openSession</span><span class="o">();</span>
+ 
+ <span class="nc">EmployeeBo</span> <span class="n">bo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EmployeeBo</span><span class="o">();</span>
+ <span class="n">bo</span><span class="o">.</span><span class="na">setEid</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+ <span class="n">bo</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"DILEEP"</span><span class="o">);</span>
+ <span class="n">bo</span><span class="o">.</span><span class="na">setAddress</span><span class="o">(</span><span class="s">"BANGLORE"</span><span class="o">);</span>
+
+ <span class="nc">Transaction</span> <span class="n">tx</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">beginTransaction</span><span class="o">();</span>
+ <span class="n">session</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">bo</span><span class="o">);</span>
+ <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Employee Data saved successfully.....!!"</span><span class="o">);</span>
+ <span class="n">tx</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+ <span class="n">session</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+ <span class="n">factory</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="session-class-methods">Session class methods</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Select</span>
+    <span class="nc">Object</span>	<span class="nf">get</span><span class="o">(</span><span class="nc">Class</span> <span class="o">,</span> <span class="nc">Serializable</span> <span class="n">id</span><span class="o">)</span>
+    <span class="nc">Object</span>	<span class="nf">load</span><span class="o">(</span><span class="nc">Class</span><span class="o">,</span> <span class="nc">Serializable</span> <span class="n">id</span><span class="o">)</span>
+
+<span class="nc">Insert</span>
+    <span class="nc">Serializable</span>	<span class="nf">save</span><span class="o">(</span><span class="nc">Object</span> <span class="n">object</span><span class="o">)</span> 
+    <span class="kt">void</span> <span class="nf">persist</span><span class="o">(</span><span class="nc">Object</span> <span class="n">object</span><span class="o">)</span> 
+    <span class="kt">void</span> <span class="nf">saveOrUpdate</span><span class="o">(</span><span class="nc">Object</span> <span class="n">object</span><span class="o">)</span> 
+
+<span class="nc">Update</span>
+    <span class="nc">Object</span>	<span class="nf">merge</span><span class="o">(</span><span class="nc">Object</span> <span class="n">object</span><span class="o">)</span> 
+    <span class="kt">void</span>	<span class="nf">update</span><span class="o">(</span><span class="nc">Object</span> <span class="n">object</span><span class="o">)</span> 
+
+<span class="nc">Delete</span>
+    <span class="kt">void</span>	<span class="nf">delete</span><span class="o">(</span><span class="nc">Object</span> <span class="n">object</span><span class="o">)</span> 
+
+
+<span class="nc">Clear</span>
+    <span class="kt">void</span>	<span class="nf">evict</span><span class="o">(</span><span class="nc">Object</span> <span class="n">object</span><span class="o">)</span> <span class="o">:</span>   <span class="nc">Remove</span> <span class="k">this</span> <span class="n">instance</span> <span class="n">from</span> <span class="n">the</span> <span class="n">session</span> <span class="n">cache</span><span class="o">.</span>
+    <span class="kt">void</span>	<span class="nf">clear</span><span class="o">()</span>   <span class="o">:</span>   <span class="nc">Completely</span> <span class="n">clear</span> <span class="n">the</span> <span class="n">session</span><span class="o">.</span>
+
+
+<span class="nc">Other</span>
+<span class="kt">boolean</span>	<span class="nf">isDirty</span><span class="o">()</span> <span class="o">:</span>          <span class="nc">Does</span> <span class="k">this</span> <span class="n">session</span> <span class="n">contain</span> <span class="n">any</span> <span class="n">changes</span> <span class="n">which</span> <span class="n">must</span> <span class="n">be</span> <span class="kd">synchronized</span> <span class="n">with</span> <span class="n">the</span> <span class="n">database</span><span class="o">?</span> <span class="nc">In</span> <span class="n">other</span> <span class="n">words</span><span class="o">,</span> <span class="n">would</span> <span class="n">any</span> <span class="no">DML</span> <span class="n">operations</span> <span class="n">be</span> <span class="n">executed</span> <span class="k">if</span> <span class="n">we</span> <span class="n">flushed</span> <span class="k">this</span> <span class="n">session</span><span class="o">?</span>
+
+<span class="kt">void</span>	<span class="nf">refresh</span><span class="o">(</span><span class="nc">Object</span> <span class="n">object</span><span class="o">)</span> 
+<span class="nc">Re</span><span class="o">-</span><span class="n">read</span> <span class="n">the</span> <span class="n">state</span> <span class="n">of</span> <span class="n">the</span> <span class="n">given</span> <span class="n">instance</span> <span class="n">from</span> <span class="n">the</span> <span class="n">underlying</span> <span class="n">database</span><span class="o">.</span>
+</code></pre></div></div>
+
+<h3 id="1table-per-class-hierarchy">1.Table per class hierarchy</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Vehicle.hbm.xml
+<span class="nt">&lt;hibernate-mapping&gt;</span>
+  <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">"inheritance.Vehicle"</span> <span class="na">table=</span><span class="s">"vehicle"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">"vid"</span> <span class="na">column=</span><span class="s">"vid"</span><span class="nt">&gt;&lt;/id&gt;</span>
+	<span class="nt">&lt;discriminator</span> <span class="na">column=</span><span class="s">"DISC"</span> <span class="na">type=</span><span class="s">"string"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"price"</span> <span class="na">column=</span><span class="s">"price"</span><span class="nt">&gt;&lt;/property&gt;</span>
+	
+	<span class="nt">&lt;subclass</span> <span class="na">name=</span><span class="s">"inheritance.Bike"</span> <span class="na">discriminator-value=</span><span class="s">"BIKE_DISC"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"biketype"</span> <span class="na">column=</span><span class="s">"biketype"</span><span class="nt">&gt;&lt;/property&gt;</span>	
+	<span class="nt">&lt;/subclass&gt;</span> 
+	
+<span class="nt">&lt;subclass</span> <span class="na">name=</span><span class="s">"inheritance.Car"</span> <span class="na">discriminator-value=</span><span class="s">"CAR_DISC"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"cartype"</span> <span class="na">column=</span><span class="s">"cartype"</span><span class="nt">&gt;&lt;/property&gt;</span>	
+	<span class="nt">&lt;/subclass&gt;</span>  
+  <span class="nt">&lt;/class&gt;</span>
+<span class="nt">&lt;/hibernate-mapping&gt;</span>
+</code></pre></div></div>
+
+<p><img src="media/0225d147a6b8b5d9b80e5f2e5ba9e691.png" alt="E:\Users\satyacodes\Pictures\12.png" /></p>
+
+<h3 id="2-table-per-sub-class-hierarchy">2. Table per sub-class hierarchy</h3>
+
+<p><strong>Vehicle.hbm.xml</strong></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;hibernate-mapping&gt;</span>
+	<span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">"inheritance.Vehicle"</span> <span class="na">table=</span><span class="s">"vehicle"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">"vid"</span> <span class="na">column=</span><span class="s">"vid"</span><span class="nt">&gt;&lt;/id&gt;</span> 
+	<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"price"</span> <span class="na">column=</span><span class="s">"price"</span><span class="nt">&gt;&lt;/property&gt;</span>
+	
+	<span class="nt">&lt;joined-subclass</span> <span class="na">name=</span><span class="s">"inheritance.Bike"</span> <span class="na">table=</span><span class="s">"bike"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;key</span> <span class="na">column=</span><span class="s">"BIKE_KEY"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"biketype"</span> <span class="na">column=</span><span class="s">"type"</span><span class="nt">&gt;&lt;/property&gt;</span>	
+	<span class="nt">&lt;/joined-subclass&gt;</span>
+ 
+	 <span class="nt">&lt;joined-subclass</span> <span class="na">name=</span><span class="s">"inheritance.Car"</span> <span class="na">table=</span><span class="s">"car"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;key</span> <span class="na">column=</span><span class="s">"CAR_KEY"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"cartype"</span> <span class="na">column=</span><span class="s">"type"</span><span class="nt">&gt;&lt;/property&gt;</span>	
+	<span class="nt">&lt;/joined-subclass&gt;</span>	 	 
+	<span class="nt">&lt;/class&gt;</span>
+<span class="nt">&lt;/hibernate-mapping&gt;</span>
+</code></pre></div></div>
+
+<p><img src="media/b4e61853d48770224d12d18797c4e15e.png" alt="E:\Users\satyacodes\Pictures\12.png" /></p>
+
+<h3 id="3table-per-concrete-class-hierarchy">3.Table per concrete class hierarchy</h3>
+
+<p><strong>Vehicle.hbm.xml</strong></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;hibernate-mapping&gt;</span>
+	<span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">"inheritance.Vehicle"</span> <span class="na">table=</span><span class="s">"vehicle"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">"vid"</span> <span class="na">column=</span><span class="s">"vid"</span><span class="nt">&gt;&lt;/id&gt;</span> 
+	<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"price"</span> <span class="na">column=</span><span class="s">"price"</span><span class="nt">&gt;&lt;/property&gt;</span>
+	
+	<span class="nt">&lt;union-subclass</span> <span class="na">name=</span><span class="s">"inheritance.Bike"</span> <span class="na">table=</span><span class="s">"bike"</span><span class="nt">&gt;</span> 
+ <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"biketype"</span> <span class="na">column=</span><span class="s">"type"</span><span class="nt">&gt;&lt;/property&gt;</span>	
+	<span class="nt">&lt;/union-subclass&gt;</span>
+ 
+	 <span class="nt">&lt;union-subclass</span> <span class="na">name=</span><span class="s">"inheritance.Car"</span> <span class="na">table=</span><span class="s">"car"</span><span class="nt">&gt;</span>  
+ <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"cartype"</span> <span class="na">column=</span><span class="s">"type"</span><span class="nt">&gt;&lt;/property&gt;</span>	
+	<span class="nt">&lt;/union-subclass&gt;</span>	 	 
+	<span class="nt">&lt;/class&gt;</span>
+<span class="nt">&lt;/hibernate-mapping&gt;</span>
+</code></pre></div></div>
+
+<p><img src="media/370265e2d96963013179c976e9e5ac48.png" alt="E:\Users\satyacodes\Pictures\12.png" /></p>
+
+<p>If we want to select a <strong>Complete Object</strong> from the database, we use POJO class
+reference in place of <code class="language-plaintext highlighter-rouge">*</code> while constructing the query</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// In SQL</span>
+<span class="n">sql</span><span class="o">&gt;</span> <span class="n">select</span> <span class="o">*</span> <span class="n">from</span> <span class="nc">Employee</span>
+<span class="nl">Note:</span> <span class="nc">Employee</span> <span class="n">is</span> <span class="n">the</span> <span class="n">table</span> <span class="n">name</span><span class="o">.</span>
+
+<span class="c1">// In HQL</span>
+<span class="n">hql</span><span class="o">&gt;</span> <span class="n">select</span> <span class="n">s</span> <span class="n">from</span> <span class="nc">EmployeeBo</span> <span class="n">s</span>
+<span class="o">[</span> <span class="n">or</span> <span class="o">]</span>
+<span class="n">from</span> <span class="nc">EmployeeBo</span> <span class="n">s</span>
+<span class="nl">Note:</span> <span class="n">here</span> <span class="n">s</span> <span class="n">is</span> <span class="n">the</span> <span class="n">reference</span> <span class="n">of</span> <span class="nc">EmployeeBo</span>
+</code></pre></div></div>
+
+<p>If we want to load the <strong>Partial Object</strong> from the database that is only
+selective properties of an objects, then we need to replace column names with
+POJO class variable names</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// In SQL</span>
+<span class="n">sql</span><span class="o">&gt;</span> <span class="n">select</span> <span class="n">eid</span><span class="o">,</span><span class="n">name</span><span class="o">,</span><span class="n">address</span> <span class="n">from</span> <span class="nc">Employee</span>
+<span class="nl">Note:</span> <span class="n">eid</span><span class="o">,</span><span class="n">name</span><span class="o">,</span><span class="n">address</span> <span class="n">are</span> <span class="n">the</span> <span class="n">columns</span> <span class="n">of</span> <span class="nc">Employee</span> <span class="n">the</span> <span class="n">table</span><span class="o">.</span>
+
+<span class="c1">// In HQL</span>
+<span class="n">hql</span><span class="o">&gt;</span> <span class="n">select</span> <span class="n">s</span><span class="o">.</span><span class="na">eid</span><span class="o">,</span><span class="n">s</span><span class="o">.</span><span class="na">name</span><span class="o">,</span><span class="n">s</span><span class="o">.</span><span class="na">address</span> <span class="n">from</span> <span class="nc">EmployeeBo</span> <span class="n">s</span>
+</code></pre></div></div>
+
+<h2 id="what-are-advantages-of-hibernate">What are advantages of Hibernate?</h2>
+
+<ul>
+  <li>
+    <p>Lazy Loading</p>
+  </li>
+  <li>
+    <p>Caching</p>
+  </li>
+  <li>
+    <p>You do not need to maintain JDBC code , Hibernate takes care of it.</p>
+  </li>
+  <li>
+    <p>You need to write less code</p>
+  </li>
+  <li>
+    <p>It provides high level object oriented API</p>
+  </li>
+</ul>
+
+<h2 id="what-is-caching">What is caching?</h2>
+
+<p>Anything you can do to minimize traffic between a database and an application
+server is probably a good thing. In theory, an application ought to be able to
+maintain a cache containing data already loaded from the database, and only hit
+the database when information has to be updated. When the database is hit, the
+changes may invalidate the cache</p>
+
+<h2 id="first-level-cache--second-level-cache">First Level Cache &amp; Second Level Cache?</h2>
+
+<p>Every fresh session having its own <strong>cache memory</strong>, <strong>Caching is a mechanism
+for storing the loaded objects into a cache memory</strong>.</p>
+
+<p>The advantage of cache mechanism is, whenever again we want to load the same
+object from the database then instead of hitting the database once again, it
+loads from the local cache memory only<strong>, so that the no. of round trips between
+an application and a database server got decreased</strong>.  It means caching
+mechanism increases the performance of the application.</p>
+
+<p>In hibernate we have two levels of caching</p>
+
+<ol>
+  <li>
+    <p><strong>First Level Cache</strong> (Session Cache)</p>
+  </li>
+  <li>
+    <p><strong>Second Level Cache</strong> (Session Factory Cache/ JVM Level Cache)</p>
+  </li>
+</ol>
+
+<h3 id="1first-level-cache"><code class="language-plaintext highlighter-rouge">1.First Level Cache</code></h3>
+
+<ul>
+  <li>
+    <p>By default, for each hibernate application, <strong>the first level cache is
+automatically enabled. <code class="language-plaintext highlighter-rouge">We can’t Enable/Disable first level cache</code></strong></p>
+  </li>
+  <li>
+    <p>the first level cache is associated with the <strong>session</strong> object and
+<strong>scope</strong> of the cache <strong>is limited to one session only</strong></p>
+  </li>
+  <li>
+    <p>When we load an object for the first time from the database then the object
+will be loaded from the database and the loaded object will be stored in the
+cache memory maintained by that session object</p>
+  </li>
+  <li>
+    <p>If we load the same object once again, with in the same session, then the
+object will be loaded from the local cache memory not from the database</p>
+  </li>
+  <li>
+    <p>If we load the same object by opening other session, then again the object
+will load from the database and the loaded object will be stored in the
+cache memory maintained by this new session</p>
+  </li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Session</span> <span class="n">session</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">openSession</span><span class="o">();</span>
+<span class="nc">Object</span> <span class="n">ob1</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Actor</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">101</span><span class="o">));</span> <span class="c1">//1</span>
+ 
+<span class="nc">Object</span> <span class="n">ob2</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Actor</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">101</span><span class="o">));</span><span class="c1">//2</span>
+<span class="nc">Object</span> <span class="n">ob3</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Actor</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">101</span><span class="o">));</span><span class="c1">//3</span>
+<span class="n">session</span><span class="o">.</span><span class="na">close</span><span class="o">();</span><span class="c1">//4</span>
+ 
+<span class="nc">Session</span> <span class="n">ses2</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">openSession</span><span class="o">();</span>
+<span class="nc">Object</span> <span class="n">ob5</span> <span class="o">=</span> <span class="n">ses2</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Actor</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">101</span><span class="o">));</span><span class="c1">//5</span>
+</code></pre></div></div>
+
+<p>1, We are loaded object with id 101, now it will load the object from the
+database only as its the first time, and keeps this object in the session cache</p>
+
+<p>2,3 i tried to load the same object 2 times, but here the object will be loaded
+from the stored cache only not from the database, as we are in the same session</p>
+
+<p>4, we close the first session, so the cache memory related this session also
+will be destroyed</p>
+
+<p>5, again i created one new session and loaded the same object with id 101, but
+this time hibernate will loads the object from the database</p>
+
+<p>if we want to remove the objects that are stored in the cache memory, then we
+need to call either <strong>evict() or clear()</strong> methods</p>
+
+<h3 id="2second-level-cache"><code class="language-plaintext highlighter-rouge">2.Second Level Cache</code></h3>
+
+<p>Whenever we are loading any object from the database, then hibernate verify
+whether that object is available in the local cache(<strong>first level
+cache</strong>) memory of that particular session, if not available then hibernate
+verify whether the object is available in global cache(<strong>second level cache)</strong>,
+if not available then hibernate will hit the database and loads the object from
+there, and then <strong>first stores in the local cache of the session , then in the
+global cache</strong></p>
+
+<p><strong>SessionFactory</strong> holds the second level cache data. It is global for all the
+session objects and not enabled by default.</p>
+
+<p>Different vendors have provided the implementation of Second Level Cache</p>
+
+<ol>
+  <li>
+    <p><strong>EH Cache</strong></p>
+  </li>
+  <li>
+    <p><strong>OS Cache</strong></p>
+  </li>
+  <li>
+    <p><strong>Swarm Cache</strong></p>
+  </li>
+  <li>
+    <p><strong>JBoss Cache</strong></p>
+  </li>
+</ol>
+
+<p>To enable second level cache in the hibernate, then the following <strong>3</strong> changes
+are required</p>
+
+<p>1.<strong>Add provider class</strong> in hibernate configuration file</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">property</span> <span class="n">name</span><span class="o">=</span><span class="s">"hibernate.cache.provider_class"</span><span class="o">&gt;</span>
+    <span class="n">org</span><span class="o">.</span><span class="na">hibernate</span><span class="o">.</span><span class="na">cache</span><span class="o">.</span><span class="na">EhCacheProvider</span>
+<span class="o">&lt;/</span><span class="n">property</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>2.<strong>Configure cache element</strong> for a class in hibernate mapping file</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">cache</span> <span class="n">usage</span><span class="o">=</span><span class="s">"read-only"</span> <span class="o">/&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><strong>read-only:</strong> caching will work for read only operation.</p>
+  </li>
+  <li>
+    <p><strong>nonstrict-read-write:</strong> caching will work for read and write but one at a
+time.</p>
+  </li>
+  <li>
+    <p><strong>read-write:</strong> caching will work for read and write, can be used
+simultaneously.</p>
+  </li>
+  <li>
+    <p><strong>transactional:</strong> caching will work for transaction.</p>
+  </li>
+</ul>
+
+<p>3.create xml file called <strong>ehcache.xml</strong> and place where you have mapping and
+    configuration xml’s</p>
+
+<p><strong>Example:</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Employee</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">eid</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
+<span class="c1">//Setters &amp; Getteers</span>
+<span class="o">}</span>
+
+<span class="nc">Employee</span><span class="o">.</span><span class="na">hbm</span><span class="o">.</span><span class="na">xml</span>
+<span class="o">&lt;</span><span class="n">hibernate</span><span class="o">-</span><span class="n">mapping</span> <span class="kn">package</span><span class="err">="</span><span class="nn">cache</span><span class="s">"&gt;
+	&lt;class name="</span><span class="nc">Employee</span><span class="s">" table="</span><span class="n">employee</span><span class="s">"&gt;
+ &lt;cache usage="</span><span class="n">read</span><span class="o">-</span><span class="n">only</span><span class="s">" /&gt;
+ &lt;id name="</span><span class="n">eid</span><span class="s">" column="</span><span class="n">eid</span><span class="s">"&gt;
+ 	&lt;generator class="</span><span class="kd">native</span><span class="s">"&gt;&lt;/generator&gt;
+ &lt;/id&gt;
+ &lt;property name="</span><span class="n">name</span><span class="s">"&gt;&lt;/property&gt;
+ &lt;property name="</span><span class="n">address</span><span class="s">"&gt;&lt;/property&gt;
+	&lt;/class&gt;
+&lt;/hibernate-mapping&gt;
+
+ehcache.xml
+&lt;?xml version="</span><span class="mf">1.0</span><span class="s">"?&gt;
+&lt;ehcache&gt;
+	&lt;defaultCache maxElementsInMemory="</span><span class="mi">100</span><span class="s">" eternal="</span><span class="kc">false</span><span class="s">"
+ timeToIdleSeconds="</span><span class="mi">120</span><span class="s">" timeToLiveSeconds="</span><span class="mi">200</span><span class="s">" /&gt;
+	&lt;cache name="</span><span class="n">cache</span><span class="o">.</span><span class="na">Employee</span><span class="s">" maxElementsInMemory="</span><span class="mi">100</span><span class="s">"
+ eternal="</span><span class="kc">false</span><span class="s">" timeToIdleSeconds="</span><span class="mi">5</span><span class="s">" timeToLiveSeconds="</span><span class="mi">200</span><span class="s">" /&gt;
+&lt;/ehcache&gt;  
+
+hibernate.cfg.xml
+&lt;hibernate-configuration&gt;
+	&lt;session-factory&gt;
+ &lt;property&gt; Driver Class, URL, Username, password, etc &lt;/property&gt;
+ &lt;property name="</span><span class="n">cache</span><span class="o">.</span><span class="na">provider_class</span><span class="s">"&gt;org.hibernate.cache.EhCacheProvider&lt;/property&gt;
+ &lt;property name="</span><span class="n">hibernate</span><span class="o">.</span><span class="na">cache</span><span class="o">.</span><span class="na">use_second_level_cache</span><span class="s">"&gt;true&lt;/property&gt;
+ &lt;mapping resource="</span><span class="n">cache</span><span class="o">/</span><span class="n">employee</span><span class="o">.</span><span class="na">hbm</span><span class="o">.</span><span class="na">xml</span><span class="s">" /&gt; 
+	&lt;/session-factory&gt;
+&lt;/hibernate-configuration&gt;
+
+CacheDemo.java
+package cache;
+
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+public class CacheDemo {
+
+	public static void main(String[] args) { 
+ 
+ //1.Load Configuration 
+ Configuration cfg = new Configuration();
+ cfg.configure("</span><span class="n">hibernate</span><span class="o">.</span><span class="na">cfg</span><span class="o">.</span><span class="na">xml</span><span class="s">");
+ 
+ //2.Create Session
+ SessionFactory sf = cfg.buildSessionFactory();
+ Session session = sf.openSession(); 
+ 
+ //3.Perform Operations
+ Object ob = session.load(Employee.class, new Integer(1));
+ Employee bo = (Employee) ob;
+ 
+ System.out.println("</span><span class="no">SELECTED</span> <span class="no">DATA</span><span class="err">\</span><span class="n">n</span> <span class="o">================</span><span class="s">");
+ System.out.println("</span><span class="no">SNO</span> <span class="o">:</span> <span class="s">"+bo.getEid());
+ System.out.println("</span><span class="no">NAME</span> <span class="o">:</span> <span class="s">"+bo.getName());
+ System.out.println("</span><span class="no">ADDRESS</span> <span class="o">:</span> <span class="err">"</span><span class="o">+</span><span class="n">bo</span><span class="o">.</span><span class="na">getAddress</span><span class="o">());</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="media/12a09bafc42f9c75584e4fd8265be2ab.png" alt="12" /></p>
+
+<h2 id="what-are-some-core-interfaces-of-hibernate">What are some core interfaces of hibernate?</h2>
+
+<ul>
+  <li>
+    <p>Configuration</p>
+  </li>
+  <li>
+    <p>SessionFactory</p>
+  </li>
+  <li>
+    <p>Session</p>
+  </li>
+  <li>
+    <p>Transaction</p>
+  </li>
+  <li>
+    <p>Query and Criteria interface</p>
+  </li>
+</ul>
+
+<h2 id="difference-between-get-vs-load-method-in-hibernate-detailed-answer">Difference between get() vs load() method in Hibernate? (detailed answer)</h2>
+<p>The key difference between get() and load() method is that</p>
+
+<ul>
+  <li>
+    <p><strong>load() will throw an exception</strong> if an object with id passed to them is
+not found</p>
+  </li>
+  <li>
+    <p><strong>get() will
+return **<a href="http://javarevisited.blogspot.com/2014/12/9-things-about-null-in-java.html">null</a></strong>.**</p>
+  </li>
+</ul>
+
+<p>Another important difference is <strong>that load can return proxy without hitting the
+database</strong> unless required (when you access any attribute other than id) but
+get() always go to the database, so sometimes using load() can be faster than
+the get() method.</p>
+
+<p>It makes sense to use the load() method if you know the object exists but get()
+method if you are not sure about object’s existence.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Parameter</strong></th>
+      <th><strong>get</strong></th>
+      <th><strong>load</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Database retrieval</td>
+      <td>It always hits the database</td>
+      <td>It does not hit database</td>
+    </tr>
+    <tr>
+      <td>If null</td>
+      <td>If it does not get the object with id, it returns null, null in databse</td>
+      <td>If it does get the object with id, it throws ObjectNotFound in Cache</td>
+    </tr>
+    <tr>
+      <td>Proxy</td>
+      <td>It returns real object</td>
+      <td>It returns proxy object</td>
+    </tr>
+    <tr>
+      <td>Use</td>
+      <td>If you are not sure if object with id exists or not, you can use get</td>
+      <td>If you are sure about existence of object, you can use load</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="what-is-the-difference-between-save-and-persist-method-in-hibernate"><strong>What is the difference between save() and persist() method in Hibernate?</strong></h2>
+
+<ul>
+  <li>
+    <p><strong>Serializable  Object save()</strong> returns a Serializable object</p>
+  </li>
+  <li>
+    <p><strong>void persist()</strong> method is void, so it doesn’t return anything.</p>
+  </li>
+</ul>
+
+<p><img src="media/462393950ac7f223f70599e3d8d7264a.png" alt="" /></p>
+
+<h2 id="what-is-the-difference-between-and-merge-and-update">What is the difference between and merge and update?</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Employee</span> <span class="n">emp1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Employee</span><span class="o">();</span>
+ <span class="n">emp1</span><span class="o">.</span><span class="na">setEmpId</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+ <span class="n">emp1</span><span class="o">.</span><span class="na">setEmpName</span><span class="o">(</span><span class="s">"Dinesh"</span><span class="o">);</span>
+ <span class="nc">Session</span> <span class="n">session1</span> <span class="o">=</span> <span class="n">createNewHibernateSession</span><span class="o">();</span>
+ <span class="n">session1</span><span class="o">.</span><span class="na">saveOrUpdate</span><span class="o">(</span><span class="n">emp1</span><span class="o">);</span>
+ <span class="n">session1</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+ <span class="c1">//emp1 object in detached state now</span>
+
+ <span class="n">emp1</span><span class="o">.</span><span class="na">setEmpName</span><span class="o">(</span><span class="s">"Dinesh Rajput"</span><span class="o">);</span><span class="c1">//Updated Name</span>
+ 
+      <span class="c1">//Create session again</span>
+ <span class="nc">Session</span> <span class="n">session2</span> <span class="o">=</span> <span class="n">createNewHibernateSession</span><span class="o">();</span>
+ <span class="nc">Employee</span> <span class="n">emp2</span> <span class="o">=(</span><span class="nc">Employee</span><span class="o">)</span><span class="n">session2</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="nc">Employee</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+ <span class="c1">//emp2 object in persistent state with id 100</span>
+
+<span class="c1">//below we try to make on detached object with id 100 to persistent state by using update method of hibernate</span>
+ <span class="n">session2</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">emp1</span><span class="o">);</span><span class="c1">//It occurs the exception NonUniqueObjectException because emp2 object is having employee with same empid as 100 in Cache.Here cache is not Empty. See diageram. </span>
+
+<span class="c1">//to avoid this exception we are using merge like given below instead of session.update(emp1);</span>
+
+ <span class="n">session2</span><span class="o">.</span><span class="na">merge</span><span class="o">(</span><span class="n">emp1</span><span class="o">);</span> <span class="c1">//it merge the object state with emp2</span>
+ <span class="n">session2</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">emp1</span><span class="o">);</span> <span class="c1">//Now it will work with exception</span>
+</code></pre></div></div>
+
+<p><img src="media/6774acb7be738e3973a7440645b9028e.png" alt="Difference Between Merge And Update Methods In Hibernate" /></p>
+
+<p><strong>Update:</strong></p>
+
+<ul>
+  <li>
+    <p>Suppose we are dealing with any employee object in the same session then we
+should use update() or saveOrUpdate() method.</p>
+  </li>
+  <li>
+    <p>if you are sure that the session does not contains an already persistent
+instance with the same identifier,then use update to save the data in
+hibernate</p>
+  </li>
+</ul>
+
+<p><strong>Merge:</strong></p>
+
+<ul>
+  <li>
+    <p>Suppose we are creating a session and load an employee object. Now object in
+session cache. If we close the session at this point and we edit state of
+object and tried to save using update() it will throw exception. To make
+object persistent we need to open another session. Now we load same object
+again in current session. So if we want to update present object with
+previous object changes we have to use merge() method. Merge method will
+merge changes of both states of object and will save in database.</p>
+  </li>
+  <li>
+    <p>if you want to save your modifications at any time with out knowing about
+the state of an session, then use merge() in hibernate.</p>
+  </li>
+</ul>
+
+<h2 id="different-between-cascade-and-inverse">Different between cascade and inverse</h2>
+
+<p>Many Hibernate developers are confusing about the cascade option and inverse
+keyword. In some ways. They really look quite similar at the beginning; both are
+related with relationship.</p>
+
+<p>However, there is no relationship between cascade and inverse, both are totally
+different notions.</p>
+
+<h3 id="1inverse">1.inverse</h3>
+
+<p>This is used to decide which side is the relationship owner to manage the
+relationship (insert or update of the foreign key column).</p>
+
+<p>Example</p>
+
+<p>In this example, the relationship owner is belonging to stockDailyRecords
+(inverse=true).</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Stock.hbm.xml --&gt;</span>
+<span class="nt">&lt;hibernate-mapping&gt;</span>
+    <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">"Stock"</span> <span class="na">table=</span><span class="s">"stock"</span><span class="nt">&gt;</span>
+    ...
+    <span class="nt">&lt;set</span> <span class="na">name=</span><span class="s">"stockDailyRecords"</span> <span class="na">table=</span><span class="s">"stock_daily_record"</span> <span class="na">inverse=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;key&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"STOCK_ID"</span> <span class="na">not-null=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;one-to-many</span> <span class="na">class=</span><span class="s">"StockDailyRecord"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/set&gt;</span>
+    ...
+</code></pre></div></div>
+
+<p>When you save or update the stock object</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">session</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">stock</span><span class="o">);</span>
+<span class="n">session</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">stock</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Hibernate will only insert or update the STOCK table, no update on the foreign
+key column. <a href="http://www.mkyong.com/hibernate/inverse-true-example-and-explanation/">More detail example
+here…</a></p>
+
+<h3 id="2cascade">2.cascade</h3>
+
+<p>In cascade, after one operation (save, update and delete) is done, it decide
+whether it need to call other operations (save, update and delete) on another
+entities which has relationship with each other.</p>
+
+<p>Example</p>
+
+<p>In this example, the cascade=”save-update” is declare on stockDailyRecords.</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Stock.hbm.xml --&gt;</span>
+<span class="nt">&lt;hibernate-mapping&gt;</span>
+    <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">"com.mkyong.common.Stock"</span> <span class="na">table=</span><span class="s">"stock"</span> <span class="err">...</span><span class="nt">&gt;</span>
+    ...
+    <span class="nt">&lt;set</span> <span class="na">name=</span><span class="s">"stockDailyRecords"</span> <span class="na">table=</span><span class="s">"stock_daily_record"</span> 
+        <span class="na">cascade=</span><span class="s">"save-update"</span> <span class="na">inverse=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;key&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"STOCK_ID"</span> <span class="na">not-null=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;one-to-many</span> <span class="na">class=</span><span class="s">"com.mkyong.common.StockDailyRecord"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/set&gt;</span>
+    ...
+Copy
+</code></pre></div></div>
+
+<p>When you save or update the stock object</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>session.save(stock);
+session.update(stock);
+</code></pre></div></div>
+
+<p>It will inserted or updated the record into STOCK table and call another insert
+or update statement (cascade=”save-update”) on StockDailyRecord. <a href="http://www.mkyong.com/hibernate/hibernate-cascade-example-save-update-delete-and-delete-orphan/">More detail
+example
+here…</a></p>
+
+<h4 id="conclusion">Conclusion</h4>
+
+<p>In short, the -inverse” is decide which side will update the foreign key, while
+-cascade” is decide what’s the follow by operation should execute. Both are look
+quite similar in relationship, but it’s totally two different things. Hibernate
+developers are worth to spend time to research on it, because misunderstand the
+concept or misuse it will bring serious performance or data integrity issue in
+your application.</p>
+
+<h2 id="does-sessionfactory-is-thread-safe-in-hibernate-detailed-answer"><strong>Does SessionFactory is thread-safe in Hibernate? (detailed answer)</strong></h2>
+<p><strong>SessionFactory is both Immutable and thread-safe</strong> and it has just one single
+instance in Hibernate application. It is used to create Session object and it
+also provide caching by storing SQL queries stored by multiple session. The
+second level cache is maintained at SessionFactory level.</p>
+
+<h2 id="does-hibernate-session-interface-is-thread-safe-in-java-detailed-answer"><strong>Does Hibernate Session interface is thread-safe in Java? (detailed answer)</strong></h2>
+<p>No, Session object is not thread-safe in Hibernate and intended to be used
+with-in single thread in the application.</p>
+
+<h2 id="what-is-difference-between-getcurrentsession-and-opensession-in-hibernate">What is difference between getCurrentSession() and openSession() in Hibernate?</h2>
+
+<p><strong>openSession()</strong> When you call SessionFactory.openSession, it <strong>always create
+new Session</strong> object afresh and give it to you. As session objects are not
+thread safe, you need to create one session object per request in multithreaded
+environment and one session per request in web applications too.</p>
+
+<p><strong>getCurrentSession()</strong> When you call SessionFactory. getCurrentSession , <strong>it
+creates a new Session if not exists , else use same session which is in current
+hibernate context</strong>. It automatically flush and close session when transaction
+ends, so you do not need to do externally.If you are using hibernate in single
+threaded environment , you can use getCurrentSession, as it is faster in
+performance as compare to creating  new session each time.</p>
+
+<p>You need to add following property to hibernate.cfg.xml to use getCurrentSession
+method</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;session-factory&gt;</span>
+<span class="c">&lt;!--  Put other elements here --&gt;</span>
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hibernate.current_session_context_class"</span><span class="nt">&gt;&lt;/property&gt;</span>
+<span class="nt">&lt;/session-factory&gt;</span>
+</code></pre></div></div>
+
+<p>If you do not configure above property, you will get error as below.</p>
+
+<p>Exception in thread “main” org.hibernate.HibernateException: No
+CurrentSessionContext configured!</p>
+
+<h2 id="can-you-declare-entitybean-class-as-final-in-hibernate">Can you declare Entity(Bean) class as final in hibernate?</h2>
+
+<p>Yes, you can declare entity class as final but it is not considered as a good
+practice because hibernate uses <strong>proxy pattern for lazy initialization</strong>,</p>
+
+<p>If you declare it as final then hibernate won’t be able to create sub class and
+won’t be able to use proxy pattern, so it will limit performance and improvement
+options.</p>
+
+<h2 id="does-entity-class-bean-in-hibernate-require-no-arg-constructor">Does entity class (Bean) in hibernate require no arg constructor?</h2>
+
+<p>Yes, Entity class in hibernate requires no arg constructor because Hibernate use
+reflection to create instance of entity class and it mandates no arg constructor
+in Entity class.</p>
+
+<h2 id="how-do-you-log-sql-queries-issued-by-the-hibernate-framework-in-java-application">How do you log SQL queries issued by the Hibernate framework in Java application?</h2>
+
+<p>You can procedure the <strong>show_sql</strong> property to log <a href="https://www.janbasktraining.com/blog/sql-union-all-operators/">SQL
+queries</a> delivered
+by the Hibernate framework</p>
+
+<h2 id="what-is-named-sql-query-in-hibernate">What is named SQL query in Hibernate?</h2>
+
+<p>Named queries are SQL queries which are defined in mapping document
+using **<sql-query>** tag and called using **Session.getNamedQuery()** method.</sql-query></p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;sql-query</span> <span class="na">name=</span><span class="s">"findStudentByRollNumber"</span><span class="nt">&gt;</span>       
+         <span class="c">&lt;!--[CDATA[
+            select * from Student student where student.rollNumber = :rollNumber
+          ]]--&gt;</span>     
+<span class="nt">&lt;/sql-query&gt;</span>
+</code></pre></div></div>
+
+<p>you can define named query in hibernate either by using annotations or XML
+mapping file, as I said above. <strong>@NameQuery</strong> is used to define single named
+query and <strong>@NameQueries</strong> is used to define multiple named query in hibernate.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@NamedQueries</span><span class="o">({</span>
+	<span class="nd">@NamedQuery</span><span class="o">(</span>
+	<span class="n">name</span> <span class="o">=</span> <span class="s">"findStockByStockCode"</span><span class="o">,</span>
+	<span class="n">query</span> <span class="o">=</span> <span class="s">"from Stock s where s.stockCode = :stockCode"</span>
+	<span class="o">)</span>
+<span class="o">})</span>
+</code></pre></div></div>
+
+<h2 id="explain-criteria-api">Explain Criteria API</h2>
+
+<p>Criteria is a simplified API for retrieving entities by composing Criterion
+objects. This is a very convenient approach for functionality like -search”
+screens where there is a variable number of conditions to be placed upon the
+result set.</p>
+
+<p><strong>Example:</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span> <span class="n">employees</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">createCriteria</span><span class="o">(</span><span class="nc">Employee</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Restrictions</span><span class="o">.</span><span class="na">like</span><span class="o">(-</span><span class="n">name</span><span class="s">", -a%"</span><span class="o">)</span> <span class="o">)</span>
+<span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Restrictions</span><span class="o">.</span><span class="na">like</span><span class="o">(-</span><span class="n">address</span><span class="s">", -Boston"</span><span class="o">))</span>
+<span class="o">.</span><span class="na">addOrder</span><span class="o">(</span><span class="nc">Order</span><span class="o">.</span><span class="na">asc</span><span class="o">(-</span><span class="n">name</span><span class="err">"</span><span class="o">)</span> <span class="o">)</span>
+<span class="o">.</span><span class="na">list</span><span class="o">();</span>
+</code></pre></div></div>
+
+<h2 id="how-do-you-switch-between-relational-databases-without-code-changes">How do you switch between relational databases without code changes?</h2>
+
+<p>Using Hibernate SQL Dialects, we can switch databases. Hibernate will generate
+appropriate hql queries based on the dialect defined.</p>
+
+<h2 id="what-is-hibernate-proxy">What is Hibernate proxy?</h2>
+
+<p>The proxy attribute enables lazy initialization of persistent instances of the
+class. Hibernate will initially return CGLIB proxies which implement the named
+interface. The actual persistent object will be loaded when a method of the
+proxy is invoked.</p>
+
+<p><img src="media/baf6b76c2fbf801489bfd99ff9a16bc6.png" alt="proxy object and lazy and eager initialization" /></p>
+
+<h2 id="what-is-automatic-dirty-checking">What is automatic dirty checking?</h2>
+
+<p>Automatic dirty checking is a feature that saves us the effort of explicitly
+asking Hibernate to update the database when we modify the state of an object
+inside a transaction.</p>
+
+<p><strong>If Dirty-checking is enabled, if we forget to call save() before the commit,
+dirty-checking automatically saves the data into the database.</strong></p>
+
+<p>Consider the below code which loads a simple Entity from the database and
+updates it.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testUpdate</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">Session</span> <span class="n">session</span> <span class="o">=</span> <span class="n">sessionFactory</span><span class="o">.</span><span class="na">openSession</span><span class="o">();</span>
+    <span class="nc">Transaction</span> <span class="n">transaction</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">beginTransaction</span><span class="o">();</span>    
+    <span class="nc">Entity</span> <span class="n">entity</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Entity</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">load</span><span class="o">(</span><span class="nc">Entity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="n">entity</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="s">"Updating the data"</span><span class="o">);</span>
+    <span class="n">transaction</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+    <span class="n">session</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Although we haven’t made any session.update(entity) call, the logs indicate that
+the database record was updated successful</p>
+
+<h2 id="what-is-query-cache-in-hibernate">What is query cache in Hibernate?</h2>
+
+<p>.Query cache can be used along with second level cache for improved performance.
+QueryCache actually stores the result of SQL query for future calls. Hibernate
+support various open source caching solution to implement Query cache e.g.
+EhCache</p>
+
+<h2 id="what-are-two-types-of-collections-in-hibernate">What are two types of Collections in hibernate?</h2>
+
+<ul>
+  <li>
+    <p>Sorted Collection</p>
+  </li>
+  <li>
+    <p>Ordered Collection</p>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Parameter</strong></th>
+      <th><strong>Sorted Collection</strong></th>
+      <th><strong>Ordered Collection</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sorting</td>
+      <td>Sorted collection uses java’s sorting API to sort the collection.</td>
+      <td>Ordered Collections uses order by clause while retrieval of objects</td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td>It is enabled by default</td>
+      <td>It is not enabled by default, you need to enable it explicitly</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="what-is-lazy-loading-in-hibernate">What is lazy loading in hibernate?</h2>
+
+<p>Sometimes you have two entities and there’s a relationship between them. For
+example, you might have an entity called University and another entity called
+Student</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">University</span> <span class="o">{</span>
+ <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+ <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+ <span class="kd">private</span> <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
+ <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">students</span><span class="o">;</span>
+ <span class="c1">// setters and getters</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now when you load a University from the database, JPA loads its id, name, and
+address fields for you. But you have two options for students: to load it
+together with the rest of the fields (i.e. eagerly) or to load it on-demand
+(i.e. lazily) when you call the university’s getStudents() method.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@OneToMany</span><span class="o">(</span><span class="n">cascade</span><span class="o">=</span><span class="nc">CascadeType</span><span class="o">.</span><span class="na">ALL</span><span class="o">,</span> <span class="n">fetch</span><span class="o">=</span><span class="nc">FetchType</span><span class="o">.</span><span class="na">EAGER</span><span class="o">)</span>
+	<span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"countryId"</span><span class="o">)</span>
+	<span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Student</span><span class="o">&gt;</span> <span class="n">students</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">FetchType.LAZY</code> : It fetches the child entities lazily, that is, at the time of
+fetching parent entity it just fetches proxy (created by cglib or any other
+utility) of the child entities and when you access any property of child entity
+then it is actually fetched by hibernate.</p>
+
+<p><code class="language-plaintext highlighter-rouge">FetchType.EAGER:</code> it fetches the child entities along with parent.</p>
+
+<p>Lazy initialization improves performance by avoiding unnecessary computation and
+reduce memory requirements.</p>
+
+<p>Eager initialization takes more memory consumption and processing speed is slow.<br />
+<code class="language-plaintext highlighter-rouge">lazy="true/false in xml</code></p>
+</div><section class="article__sharing d-print-none"><!-- Addthis BEGIN --><script type="text/javascript"
+    src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dd2bcde40b385b7"></script>
+  <div class="addthis_inline_share_toolbox addthis_default_style"></div><!-- Addthis END -->
+</section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2017-11-11T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet --></footer><div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/AngularJS-Interview-Questions.html">AngularJs - Interview Questions</a></div><div class="next"><span>NEXT</span><a href="/JDBC-Interview-Questions.html">JDBC - Interview Questions</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+//alert('start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert(' end .......');
+ 
+ document.onreadystatechange = function(){
+     if(document.readyState === 'complete'){
+         /*code here*/
+		 //alert('onreadystatechange comled ... start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert('onreadystatechange comled ... end .......');
+     }
+}
+
+</script></div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet --></div>
+            </div></div></div><div class="page__footer d-print-none"><footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Satya Kaveti"><meta itemprop="url" content="/"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© SatyaCodes 2020 ,
+        <a title="Satya Kaveti" href="about/">Satya Kaveti's Writing</a>.
+		<span>| <a href="about/">About Me</a> &nbsp |  </span>
+		<span><a href="/terms.html">Terms</a> &nbsp |  </span>
+		<span><a href="/contact.html">Contact</a> &nbsp |  </span>
+		<span><a href="http://www.satyacodesapps.ml/" target="_blank">Our Apps</a> &nbsp |  </span>
+		<span><a href="https://www.facebook.com/isatyakaveti" target="_blank"><i class="fab fa-facebook-f"></i></a> &nbsp |  </span>
+		<span><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube-square"></i></a> &nbsp |  </span>
+		<span><a href="https://in.linkedin.com/in/satyakaveti"target="_blank"><i class="fab fa-linkedin-in"></i></a> &nbsp | 
+		<span>[ 
+		<!-- Start of WebFreeCounter Code -->
+<a href="http://www.statworker.com/" target="_blank"><img src="https://www.webfreecounter.com/hit.php?id=gfpapx&nd=7&style=2" border="0" alt="statworker.com"></a>
+<!-- End of WebFreeCounter Code -->
+</span>
+<span><a href="https://statcounter.com/p12408441/?guest=1" target="_blank"> ]</a></span>
+
+
+      </div>
+    </div>
+  </div>
+</footer></div></div>
+    </div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">Search</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text" />
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        Cancel</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script></div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+/*(function () {
+
+})();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>

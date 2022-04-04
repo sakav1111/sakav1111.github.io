@@ -1,0 +1,22 @@
+youtube-dl linkedin learning
+https://teenenggr.com/2019/07/21/linkedin-learning-video-downloader/
+
+https://github.com/J3Patel/linkedin-learning-video-downloader
+
+
+http://cracksurl.com/allavsoft/
+
+https://github.com/r00tmebaby/LinkedIn-Downloader
+
+
+git remote add github https://github.com/sakav1111/sakav1111.github.io.git
+
+git push origin   (GitLab)
+git push github   (GitHub)
+
+
+
+You would pull down changes in similar fashion:
+
+git pull origin   (GitLab)
+git pull github   (GitHub)

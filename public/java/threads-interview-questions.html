@@ -1,0 +1,2317 @@
+<!DOCTYPE html><html lang="en">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>SatyaCodes - Java- Threads Interview Questions</title>
+
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.">
+<link rel="canonical" href="/java/threads-interview-questions"><link rel="alternate" type="application/rss+xml" title="SatyaCodes" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet -->
+ <link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Java- Threads Interview Questions | SatyaCodes</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Java- Threads Interview Questions" />
+<meta name="author" content="Satya Kaveti" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:site_name" content="SatyaCodes" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Java- Threads Interview Questions" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Satya Kaveti"},"@type":"WebPage","description":"Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.","url":"/java/threads-interview-questions","headline":"Java- Threads Interview Questions","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- start custom head snippets -->
+
+<!-- end custom head snippets --><script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.4',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script></head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+
+    <div class="grid page__grid">
+
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Java Tutorial</li><li class="toc-h2"><a href="/java/fundamentals">Fundamentals</a></li><li class="toc-h2"><a href="/java/datatypes">Datatypes</a></li><li class="toc-h2"><a href="/java/variables">Variables</a></li><li class="toc-h2"><a href="/java/operators">Operators</a></li><li class="toc-h2"><a href="/java/flow-control">Flow Control</a></li><li class="toc-h2"><a href="/java/access-modifiers">Access Modifiers</a></li><li class="toc-h2"><a href="/java/nested-classes">Nested Classes</a></li><li class="toc-h2"><a href="/java/fundamentals-interview-questions">Fundamentals - Interview Questions</a></li><li class="toc-h1">Interfaces</li><li class="toc-h2"><a href="/java/interfaces">Interfaces</a></li><li class="toc-h2"><a href="/java/interface-enhancements">Interface Enhancements</a></li><li class="toc-h1">OOPS</li><li class="toc-h2"><a href="/java/abstraction-encapsulation">Abstraction-Encapsulation</a></li><li class="toc-h2"><a href="/java/inheritance">Inheritance</a></li><li class="toc-h2"><a href="/java/static-instance-control-flows">Static-Instance Control flows</a></li><li class="toc-h2"><a href="/java/constructor">Constructor</a></li><li class="toc-h1">Exception Handling</li><li class="toc-h2"><a href="/java/exception-handling">Exception Handling</a></li><li class="toc-h2"><a href="/java/exception-hierarchy">Exception Hierarchy</a></li><li class="toc-h2"><a href="/java/try-catch-finally">try-catch-finally</a></li><li class="toc-h2"><a href="/java/user-defined-exceptions">User Defined Exceptions</a></li><li class="toc-h2"><a href="/java/exceptionhandling-overriding-rules">ExceptionHandling Overriding rules</a></li><li class="toc-h2"><a href="/java/exception-handling-enhancements">Exception handling Enhancements</a></li><li class="toc-h2"><a href="/java/exception-handling-interview-questions">Exception Handling Interview Questions</a></li><li class="toc-h1">java.lang Package</li><li class="toc-h2"><a href="/java/lang-package">java.lang package</a></li><li class="toc-h2"><a href="/java/string-class">String Class</a></li><li class="toc-h2"><a href="/java/stringbuffer-and-stringbuilder">StringBuffer and StringBuilder</a></li><li class="toc-h2"><a href="/java/wrapper-classes">Wrapper classes</a></li><li class="toc-h2"><a href="/java/garbage-collection">Garbage Collection</a></li><li class="toc-h2"><a href="/java/reflection-api">Reflection API</a></li><li class="toc-h2"><a href="/java/lang-interview-questions">java.lang-Interview Questions</a></li><li class="toc-h1">java.io Package</li><li class="toc-h2"><a href="/java/java-io">java-io</a></li><li class="toc-h2"><a href="/java/byte-streams">Byte Streams</a></li><li class="toc-h2"><a href="/java/character-streams">Character Streams</a></li><li class="toc-h2"><a href="/java/buffered-streams">Buffered Streams</a></li><li class="toc-h2"><a href="/java/data-streams">Data Streams</a></li><li class="toc-h2"><a href="/java/object-streams">Object Streams</a></li><li class="toc-h2"><a href="/java/java-nio">Java NIO</a></li><li class="toc-h1">Multithreading</li><li class="toc-h2"><a href="/java/threads">Threads</a></li><li class="toc-h2"><a href="/java/what-is-thread">What is Thread</a></li><li class="toc-h2"><a href="/java/thread-class">Thread class</a></li><li class="toc-h2"><a href="/java/runnable-interface">Runnable Interface</a></li><li class="toc-h2"><a href="/java/interrupting-a-thread">Interrupting a Thread</a></li><li class="toc-h2"><a href="/java/joining-thread">Joining Thread</a></li><li class="toc-h2"><a href="/java/thread-priority">Thread Priority</a></li><li class="toc-h2"><a href="/java/daemon-thread">Daemon Thread</a></li><li class="toc-h2"><a href="/java/synchronization">Synchronization</a></li><li class="toc-h2"><a href="/java/inter-thread-communication">Inter Thread Communication</a></li><li class="toc-h1">java.util.Concurrency</li><li class="toc-h2"><a href="/java/java-util-concurrency">java-util-Concurrency</a></li><li class="toc-h2"><a href="/java/synchronization-vs-locks">Synchronization VS Locks</a></li><li class="toc-h2"><a href="/java/readwritelock">ReadWriteLock</a></li><li class="toc-h2"><a href="/java/conditions">Conditions</a></li><li class="toc-h2"><a href="/java/synchronization-utils">Synchronization Utils</a></li><li class="toc-h2"><a href="/java/binary-semaphore">Binary Semaphore</a></li><li class="toc-h2"><a href="/java/countdownlatch">CountDownLatch</a></li><li class="toc-h2"><a href="/java/cyclicbrarrier">CyclicBrarrier</a></li><li class="toc-h2"><a href="/java/phaser">Phaser</a></li><li class="toc-h2"><a href="/java/exchanger">Exchanger</a></li><li class="toc-h1">Executor Framework</li><li class="toc-h2"><a href="/java/executor-framework">Executor Framework</a></li><li class="toc-h2"><a href="/java/threadpools">ThreadPools</a></li><li class="toc-h2"><a href="/java/executorservice-api">ExecutorService API</a></li><li class="toc-h2"><a href="/java/fork-join">Fork Join</a></li><li class="toc-h2"><a href="/java/custom-threadpool">Custom ThreadPool</a></li><li class="toc-h2"><a href="/java/atomic-variables">Atomic Variables</a></li><li class="toc-h2 active"><a href="/java/threads-interview-questions">Threads Interview Questions</a></li><li class="toc-h1">Collections</li><li class="toc-h2"><a href="/java/traditional-data-structures">Traditional Data Structures</a></li><li class="toc-h2"><a href="/java/linked-list">Linked List</a></li><li class="toc-h2"><a href="/java/stack">Stack</a></li><li class="toc-h2"><a href="/java/queue">Queue</a></li><li class="toc-h2"><a href="/java/trees">Trees</a></li><li class="toc-h2"><a href="/java/sorting-algorithms">Sorting Algorithms</a></li><li class="toc-h2"><a href="/java/bubble-sort">Bubble Sort</a></li><li class="toc-h2"><a href="/java/insertion-sort">Insertion Sort</a></li><li class="toc-h2"><a href="/java/selection-sort">Selection Sort</a></li><li class="toc-h2"><a href="/java/merge-sort">Merge Sort</a></li><li class="toc-h2"><a href="/java/quick-sort">Quick Sort</a></li><li class="toc-h2"><a href="/java/searching-algorithms">Searching Algorithms</a></li><li class="toc-h2"><a href="/java/java-collections-framework">Java Collections Framework</a></li><li class="toc-h2"><a href="/java/list">List</a></li><li class="toc-h2"><a href="/java/arraylist">ArrayList</a></li><li class="toc-h2"><a href="/java/linkedlist">LinkedList</a></li><li class="toc-h2"><a href="/java/vector">Vector</a></li><li class="toc-h2"><a href="/java/stack">Stack</a></li><li class="toc-h2"><a href="/java/map">Map</a></li><li class="toc-h2"><a href="/java/hashmap">HashMap</a></li><li class="toc-h2"><a href="/java/linkedhashmap">LinkedHashMap</a></li><li class="toc-h2"><a href="/java/treemap">TreeMap</a></li><li class="toc-h2"><a href="/java/identityhashmap">IdentityHashMap</a></li><li class="toc-h2"><a href="/java/weakhashmap">WeakHashMap</a></li><li class="toc-h2"><a href="/java/legacy-classes-on-map">Legacy Classes on Map</a></li><li class="toc-h2"><a href="/java/set">Set</a></li><li class="toc-h2"><a href="/java/hashset">HashSet</a></li><li class="toc-h2"><a href="/java/linkedhashset">LinkedHashSet</a></li><li class="toc-h2"><a href="/java/treeset">TreeSet</a></li><li class="toc-h2"><a href="/java/comparable-vs-comparator">Comparable vs Comparator</a></li><li class="toc-h2"><a href="/java/queue">Queue</a></li><li class="toc-h2"><a href="/java/concurrent-collections">Concurrent Collections</a></li><li class="toc-h2"><a href="/java/java-util-arrays">java-util-Arrays</a></li><li class="toc-h2"><a href="/java/java-util-collections">java-util-Collections</a></li><li class="toc-h1">Stream API</li><li class="toc-h2"><a href="/java/stream-api">Stream API</a></li><li class="toc-h2"><a href="/java/lambdas">Lambdas</a></li><li class="toc-h2"><a href="/java/streams">Streams</a></li><li class="toc-h1">Java UI</li><li class="toc-h2"><a href="/java/java-ui">Java UI</a></li><li class="toc-h2"><a href="/java/swing-basics">Swing Basics</a></li><li class="toc-h2"><a href="/java/awt">AWT</a></li><li class="toc-h2"><a href="/java/events-handling">Events Handling</a></li><li class="toc-h2"><a href="/java/components">Components</a></li><li class="toc-h1">Features by Version</li><li class="toc-h2"><a href="/java/java-4">Java 4</a></li><li class="toc-h2"><a href="/java/java-5">Java 5</a></li><li class="toc-h2"><a href="/java/java-7">Java 7</a></li><li class="toc-h2"><a href="/java/java-8">Java 8</a></li><li class="toc-h2"><a href="/java/java-9">Java 9</a></li><li class="toc-h2"><a href="/java/java-10">Java 10</a></li><li class="toc-h2"><a href="/java/java-11">Java 11</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="76px" height="76px" viewBox="0 0 76 76" enable-background="new 0 0 76 76" xml:space="preserve">  <image id="image0" width="76" height="76" x="0" y="0"
+    xlink:href="data:image/png;base64,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" />
+</svg>
+<a title="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." href="/">SatyaCodes</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/posts.html">AllPosts</a></li><li class="navigation__item"><a href="/tutorials.html">Tutorials</a></li><li class="navigation__item navigation__item--active"><a href="/java.html">Java</a></li><li class="navigation__item"><a href="/devops.html">DevOps</a></li><li class="navigation__item"><a href="/books.html">Books</a></li><li class="navigation__item"><a href="/interview-questions.html">InterviewQ's</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div></aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Java- Threads Interview Questions</h1></header></div><meta itemprop="headline" content="Java- Threads Interview Questions"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=Java">Java</a>
+            </li></ul></div><meta itemprop="author" content="Satya Kaveti"/>
+    <meta itemprop="keywords" content="Java"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h1 id="threads-interview-questions">Threads Interview Questions</h1>
+
+<p>StampedLock</p>
+
+<p>Same as ReadWriteLock, but it returns a stamp represented by a <strong>long</strong> value.
+Each Stamp is a unique value, that stamp value compared at unlockWrote()</p>
+
+<p>ExecutorService executor = Executors.newFixedThreadPool(2);</p>
+
+<p>Map&lt;String, String&gt; map = new HashMap&lt;&gt;();</p>
+
+<p>StampedLock lock = new StampedLock();</p>
+
+<p>executor.submit(() -&gt; {</p>
+
+<p>long stamp = lock.writeLock();</p>
+
+<p>try {</p>
+
+<p>sleep(1);</p>
+
+<p>map.put(“foo”, “bar”);</p>
+
+<p>} finally {</p>
+
+<p>lock.unlockWrite(stamp);</p>
+
+<p>}</p>
+
+<p>});</p>
+
+<p>Runnable readTask = () -&gt; {</p>
+
+<p>long stamp = lock.readLock();</p>
+
+<p>try {</p>
+
+<p>System.out.println(map.get(“foo”));</p>
+
+<p>sleep(1);</p>
+
+<p>} finally {</p>
+
+<p>lock.unlockRead(stamp);</p>
+
+<p>}</p>
+
+<p>};</p>
+
+<p>executor.submit(readTask);</p>
+
+<p>executor.submit(readTask);</p>
+
+<p>stop(executor);</p>
+
+<h6 id="what-happens-if-we-starts-same-threadob-twice">What happens if we starts same Thread(ob) Twice?</h6>
+
+<p>public class ThreadDemo extends Thread {</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Override
+
+public void run() {
+
+    System.out.println("Iam Running");
+
+}
+
+public static void main(String[] args) {
+
+    ThreadDemo ob = new ThreadDemo();
+
+    ob.start();
+
+    ob.start();
+
+}
+</code></pre></div></div>
+
+<p>}</p>
+
+<p>Exception in thread “main” java.lang.IllegalThreadStateException</p>
+
+<p>at java.lang.Thread.start(Thread.java:705)</p>
+
+<p>at threads.ThreadDemo.main(ThreadDemo.java:11)</p>
+
+<p>Iam Running</p>
+
+<h6 id="what-guarantee-volatile-variable-provides">What guarantee volatile variable provides?</h6>
+
+<p>volatile provides the guarantee, changes made in one thread is visible to
+others.</p>
+
+<h6 id="what-is-busy-spin"><a href="https://netjs.blogspot.com/2016/06/busy-spinning-in-multi-threading.html">What is busy spin?</a></h6>
+
+<p>Busy spinning or busy wait in a multi-threaded environment is a technique where
+other threads loop continuously waiting for a thread to complete its task and
+signal them to start.</p>
+
+<p>while(spinningFlag){</p>
+
+<p>System.out.println(“Waiting busy spinning”);</p>
+
+<p>}</p>
+
+<p><strong>What is Thread Dump? How do you take thread dump in Java?</strong><br />
+Process has multiple Threads. <strong>Thread dump</strong> is a summary of the state of
+all <strong>threads</strong> of the process</p>
+
+<ul>
+  <li>
+    <p>‘<strong>jstack’</strong> is an effective command line tool to capture thread dumps</p>
+  </li>
+  <li>
+    <p><strong>Java VisualVM</strong> is a GUI tool that provides detailed information about the
+applications</p>
+
+    <p><img src="media/5c02fa3e4a18f8dd8577680098dee8f1.png" alt="https://tier1app.files.wordpress.com/2014/11/jvisualvm-2.png" /></p>
+  </li>
+</ul>
+
+<h6 id="why-swing-is-not-thread-safe-in-java">Why Swing is not thread-safe in Java?</h6>
+
+<p>User can’t click two buttons at a time right ? Since GUI screens are mostly
+updated in response of user action e.g. when user click a button, and since
+events are handled in the same Event dispatcher thread, it’s easy to update GUI
+on that thread.</p>
+
+<h6 id="what-is-a-threadlocal-variable-in-java">What is a ThreadLocal variable in Java?</h6>
+
+<p>Thread-local variables are variables restricted to a thread, it’s like thread’s
+own copy which is not shared between multiple threads. Java provides
+a <strong>ThreadLocal</strong> class to support thread-local variables, It extends Object
+class.</p>
+
+<ul>
+  <li>
+    <p>Basically it is an another way to achieve thread safety apart from writing
+immutable classes.</p>
+  </li>
+  <li>
+    <p>Since Object is no more shared there is no requirement of Synchronization
+which can improve scalability and performance of application.</p>
+  </li>
+  <li>
+    <p>ThreadLocal provides thread restriction which is extension of local
+variable. ThreadLocal are visible only in single thread. No two thread can
+see each other’s thread local variable.</p>
+  </li>
+  <li>
+    <p>These variable are generally <strong>private static</strong> field in classes and
+maintain its state inside thread.</p>
+  </li>
+  <li>
+    <p><strong>void set(Object value), Object get(), void remove()</strong> methods are
+available</p>
+  </li>
+</ul>
+
+<p>public class ThreadLocalExample {</p>
+
+<p>public static class MyRunnable implements Runnable {</p>
+
+<p>private ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();</Integer></Integer></p>
+
+<p>public void run() {</p>
+
+<p>threadLocal.set((int) (Math.<em>random</em>() * 100D));</p>
+
+<p>System.<em>out</em>.println(threadLocal.get());</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>public static void main(String[] args) throws InterruptedException {</p>
+
+<p>MyRunnable sharedRunnableInstance = new MyRunnable();</p>
+
+<p>Thread thread1 = new Thread(sharedRunnableInstance);</p>
+
+<p>Thread thread2 = new Thread(sharedRunnableInstance);</p>
+
+<p>thread1.start();</p>
+
+<p>thread2.start();</p>
+
+<p>thread1.join(); // wait for thread 1 to terminate</p>
+
+<p>thread2.join(); // wait for thread 2 to terminate</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>-———-</p>
+
+<p>36</p>
+
+<p>16</p>
+
+<p>This example creates a single MyRunnable instance which is passed to two
+different threads. Both threads execute the run() method, and thus sets
+different values on the ThreadLocal instance. If the access to the set() call
+had been synchronized, and it had not been a ThreadLocal object, the second
+thread would have overridden the value set by the first thread</p>
+
+<p><strong>Write code for thread-safe Singleton in Java?</strong></p>
+
+<p>When we say thread-safe, which means Singleton should remain singleton even if
+initialization occurs in the case of multiple threads.</p>
+
+<p>public class DoubleCheckedLockingSingleton {</p>
+
+<p>private volatile DoubleCheckedLockingSingleton INSTANCE;</p>
+
+<p>private DoubleCheckedLockingSingleton() {</p>
+
+<p>}</p>
+
+<p>public DoubleCheckedLockingSingleton getInstance(){</p>
+
+<p>if(INSTANCE == null){</p>
+
+<p>synchronized(DoubleCheckedLockingSingleton.class){</p>
+
+<p>//double checking Singleton instance</p>
+
+<p>if(INSTANCE == null){</p>
+
+<p>INSTANCE = new DoubleCheckedLockingSingleton();</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>return INSTANCE;</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p><strong>When to use Runnable vs Thread in Java? (Think Inheritance)</strong><br />
+it’s better to implement Runnable then extends Thread if you <strong>also want to
+extend another class</strong></p>
+
+<h6 id="difference-between-runnable-and-callable-in-java">Difference between Runnable and Callable in Java?</h6>
+
+<p>Callable was added on JDK 1.5. Main difference between these two is that
+Callable’s <strong>call()</strong> method can return value and throw Exception, which was not
+possible with Runnable’s run() method. Callable return <strong>Future</strong> object, which
+can hold the result of computation.</p>
+
+<p>public class CallableDemo {</p>
+
+<p>public static void main(String[] args) throws Exception {</p>
+
+<p>ExecutorService service = Executors.newSingleThreadExecutor();</p>
+
+<p>SumTask sumTask = new SumTask(20);</p>
+
+<p>Future<Integer> future = service.submit(sumTask);</Integer></p>
+
+<p>Integer result = future.get();</p>
+
+<p>System.out.println(result);</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>class SumTask implements Callable<Integer> {</Integer></p>
+
+<p>private int num = 0;</p>
+
+<p>public SumTask(int num){</p>
+
+<p>this.num = num;</p>
+
+<p>}</p>
+
+<p>@Override</p>
+
+<p>public Integer call() throws Exception {</p>
+
+<p>int result = 0;</p>
+
+<p>for(int i=1;i&lt;=num;i++){</p>
+
+<p>result+=i;</p>
+
+<p>}</p>
+
+<p>return result;</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<h6 id="how-to-stop-a-thread-in-java">How to stop a thread in Java?</h6>
+
+<p>There was some control methods in JDK 1.0 e.g<strong>.  suspend() and resume()</strong> which
+are deprecated. To manually stop, programmers either take advantage of volatile
+boolean variable and check in every iteration if run method has loops or
+<strong>interrupt</strong> threads to abruptly cancel tasks.</p>
+
+<p><strong>Why wait, notify and notifyAll are not inside thread class?</strong><br />
+Java provides lock at object level not at thread level. Every object has lock,
+which is acquired by thread. Now if thread needs to wait for certain lock it
+make sense to call wait() on that object rather than on that thread.
+Had wait() method declared on Thread class, it was not clear that for which lock
+thread was waiting. In short, since wait, notify and notifyAll operate at lock
+level, it make sense to defined it on object class because lock belongs to
+object.</p>
+
+<p><strong>What is the difference between livelock and deadlock in Java?</strong><br />
+A real-world example of livelock occurs when two people meet in a narrow
+corridor, and each tries to be polite by moving aside to let the other pass, but
+they end up swaying from side to side without making any progress because they
+both repeatedly move the same way at the same time. In short, the main
+difference between livelock and deadlock is that in former state of process
+change but no progress is made.</p>
+
+<p><strong>How do you check if a Thread holds a lock or not?</strong><br />
+There is a method called <strong>holdsLock()</strong> on java.lang.Thread, it returns true if
+and only if the current thread holds the monitor lock on the specified object.</p>
+
+<p>Thread t = Thread.<em>currentThread</em>();</p>
+
+<p>System.<em>out</em>.println(Thread.<em>holdsLock</em>(t));</p>
+
+<p><strong>What is Semaphore in Java?</strong><br />
+Semaphore in Java is a new kind of synchronizer. It’s a counting semaphore.
+Conceptually, a semaphore maintains a set of permits. Each <strong>acquire()</strong> blocks
+if necessary until a permit is available, and then takes it. Each <strong>release()</strong>
+adds a permit, potentially releasing a blocking acquirer. However, no actual
+permit objects are used; the Semaphore just keeps a count of the number
+available and acts accordingly. Semaphore is used to protect an expensive
+resource which is available in fixed number e.g. database connection in the
+pool.</p>
+
+<p><strong>What is the difference between the submit() and execute() method thread pool
+in Java?</strong></p>
+
+<ul>
+  <li>
+    <p><strong>execute(Runnable command)</strong> is defined in Executor interface and executes
+given task in future, but more importantly, it does not return anything.</p>
+  </li>
+  <li>
+    <p><strong>submit()</strong> is an overloaded method, it can take
+either <strong>Runnable or Callable</strong> task and can return Future object which can
+hold the pending result of computation. This method is defined
+on ExecutorService interface, which extends Executor interface, and every
+other thread pool class
+e.g. ThreadPoolExecutor or ScheduledThreadPoolExecutor gets these methods.</p>
+  </li>
+</ul>
+
+<p><strong>Which method of Swing API are thread-safe in Java?</strong><br />
+I know about <strong>repaint(),</strong> and revalidate() being thread-safe but there are
+other methods on different swing components e.g. <strong>setText() method
+of JTextComponent, insert() and append()</strong> method of JTextArea class.</p>
+
+<p><strong>What is the difference between the volatile and atomic variable in Java?</strong><br />
+For example count++ operation will not become atomic just by declaring count
+variable as volatile. On the other hand AtomicInteger class provides atomic
+method to perform such compound operation atomically e.g. getAndIncrement() is
+atomic replacement of increment operator. It can be used to atomically increment
+current value by one. Similarly, you have atomic version for other data type and
+reference variable as well.</p>
+
+<p><strong>What happens if a thread throws an Exception inside synchronized block?</strong><br />
+To answer this question, no matter how you exist synchronized block, either
+normally by finishing execution or abruptly by throwing exception, <strong>thread
+releases the lock it acquired while entering that synchronized block.</strong></p>
+
+<h6 id="how-do-you-ensure-that-n-thread-can-access-n-resources-without-deadlock">How do you ensure that N thread can access N resources without deadlock</h6>
+
+<p>Key point here is order, if you acquire resources in a particular order and
+release resources in reverse order you can prevent deadlock.</p>
+
+<h6 id="what-is-busy-spin-and-why-should-you-use-it">What is busy spin, and why should you use it?</h6>
+
+<p>Busy spinning is a waiting strategy in which one thread loop continuously to
+check certain condition and waiting for other thread to change this condition to
+break the loop without releasing CPU so that waiting thread can proceed its work
+further</p>
+
+<h6 id="whats-the-difference-between-callable-and-runnable">What’s the difference between Callable and Runnable?</h6>
+
+<p>Both of these are interfaces used to carry out task to be executed by a thread.
+The main difference between the two interfaces is that</p>
+
+<ul>
+  <li>
+    <p>Callable can <strong>return a value</strong>, while Runnable cannot.</p>
+  </li>
+  <li>
+    <p>Callable can throw a checked exception, while Runnable cannot.</p>
+  </li>
+  <li>
+    <p>Runnable has been around since Java 1.0, while Callable was introduced as
+part of Java 1.5.</p>
+  </li>
+</ul>
+
+<p>The <em>Callable</em> interface is a generic interface containing a
+single <em>call()</em> method – which returns a generic value <em>V</em>:</p>
+
+<p>public interface <em>Callable</em><V> {</V></p>
+
+<p>V call() throws Exception;</p>
+
+<p>}</p>
+
+<p>class CallableExample implements <em>Callable</em></p>
+
+<p>{</p>
+
+<p>public Object call() throws Exception</p>
+
+<p>{</p>
+
+<p><em>Random</em> generator = new <em>Random</em>();</p>
+
+<p>Integer randomNumber = generator.nextInt(5);</p>
+
+<p>Thread.<em>sleep</em>(randomNumber * 1000);</p>
+
+<p>return randomNumber;</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<h6 id="what-is-false-sharing-in-the-context-of-multi-threading">What is false sharing in the context of multi-threading?</h6>
+
+<p>false sharing is one of the well-known performance issues on multi-core systems,
+where each process has its local cache.</p>
+
+<p><img src="media/a9557dcd20f2d034d8f2a28c643e7974.gif" alt="https://2.bp.blogspot.com/-Tze9foqpb74/VepwCzXHGCI/AAAAAAAADtM/i4KQDaefqk4/s1600/False%2BSharing%2Bin%2BMulti-threaded%2Bapplication.gif" /></p>
+
+<p>False sharing is very hard to detect because the thread may be accessing
+completely different global variables that happen to be relatively close
+together in memory. Like many concurrency issues, the primary way to avoid false
+sharing is careful code review and aligning your data structure with the size of
+a cache line</p>
+
+<h6 id="object-level-and-class-level-locks-in-java">Object level and Class level locks in Java</h6>
+
+<p>**Object level lock : **Every object in java has a unique lock. Whenever we are
+using synchronized keyword, then only lock concept will come in the picture. If
+a thread wants to execute synchronized method on the given object. First, it has
+to get lock of that object. Once thread got the lock then it is allowed to
+execute any synchronized method on that object. Once method execution completes
+automatically thread releases the lock. Acquiring and release lock internally is
+taken care by JVM and programmer is not responsible for these activities. Lets
+have a look on the below program to understand the object level lock:</p>
+
+<p>| class Geek implements Runnable {     public void run()     {         Lock();     }     public void Lock()     {         System.out.println(Thread.currentThread().getName());         synchronized(this)         {             System.out.println(“in block “                 + Thread.currentThread().getName());             System.out.println(“in block “ +                 Thread.currentThread().getName() + “ end”);         }     }      public static void main(String[] args)     {         Geek g = new Geek();         Thread t1 = new Thread(g);         Thread t2 = new Thread(g);         Geek g1 = new Geek();         Thread t3 = new Thread(g1);         t1.setName(“t1”);         t2.setName(“t2”);         t3.setName(“t3”);         t1.start();         t2.start();         t3.start();     } } |
+|———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————-|</p>
+
+<p>Run on IDE</p>
+
+<p>Output:</p>
+
+<p>t1</p>
+
+<p>in block t1</p>
+
+<p>in block t1 end</p>
+
+<p>t2</p>
+
+<p>in block t2</p>
+
+<p>in block t2 end</p>
+
+<p>t3</p>
+
+<p>in block t3</p>
+
+<p>in block t3 end</p>
+
+<p>**Class level lock : **Every class in java has a unique lock which is nothing
+but class level lock. If a thread wants to execute a static synchronized method,
+then thread requires class level lock. Once a thread got the class level lock,
+then it is allowed to execute any static synchronized method of that class. Once
+method execution completes automatically thread releases the lock. Lets look on
+the below program for better understanding:</p>
+
+<p>| // Java program to illustrate class level lock class Geek implements Runnable {     public void run()     {         Lock();     }      public void Lock()     {         System.out.println(Thread.currentThread().getName());         synchronized(Geek.class)         {             System.out.println(“in block “                 + Thread.currentThread().getName());             System.out.println(“in block “                 + Thread.currentThread().getName() + “ end”);         }     }      public static void main(String[] args)     {         Geek g1 = new Geek();         Thread t1 = new Thread(g1);         Thread t2 = new Thread(g1);         Geek g2 = new Geek();         Thread t3 = new Thread(g2);         t1.setName(“t1”);         t2.setName(“t2”);         t3.setName(“t3”);         t1.start();         t2.start();         t3.start();     } } |
+|——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————-|</p>
+
+<h6 id="producer-consumer-solution-using-threads-in-java">Producer-Consumer solution using threads in Java</h6>
+
+<ul>
+  <li>
+    <p>The producer’s job is to generate data, put it into the buffer, and start
+again.</p>
+  </li>
+  <li>
+    <p>same time, the consumer is consuming the data (i.e. removing it from the
+buffer), one piece at a time.</p>
+  </li>
+  <li>
+    <p>producer won’t try to add data into the buffer if it’s full &amp; consumer won’t
+try to remove data from an empty buffer</p>
+  </li>
+</ul>
+
+<p>class Producer extends Thread {</p>
+
+<p><em>List</em> buffer;</p>
+
+<p>int maxsize;</p>
+
+<p>public Producer(<em>List</em> buffer, int maxsize) {</p>
+
+<p>this.buffer = buffer;</p>
+
+<p>this.maxsize = maxsize;</p>
+
+<p>}</p>
+
+<p>@Override</p>
+
+<p>public void run() {</p>
+
+<p>int i = 1;</p>
+
+<p>while (true) {</p>
+
+<p>synchronized (buffer) {</p>
+
+<p>try {</p>
+
+<p>if (buffer.size() == maxsize) {</p>
+
+<p>System.<em>out</em>.println(“Maximum Size Reached, wait until consume”);</p>
+
+<p>buffer.wait();</p>
+
+<p>} else {</p>
+
+<p><em>buffer.add(i++)</em>;</p>
+
+<p>System.<em>out</em>.println(i + “ : Produced, notify wating COnsumer Thread”);</p>
+
+<p>buffer.notifyAll();</p>
+
+<p>}</p>
+
+<p>} catch (InterruptedException e) {</p>
+
+<p>// TODO Auto-generated catch block</p>
+
+<p>e.printStackTrace();</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>class Consumer extends Thread {</p>
+
+<p><em>List</em> buffer;</p>
+
+<p>int maxsize;</p>
+
+<p>public Consumer(<em>List</em> buffer, int maxsize) {</p>
+
+<p>this.buffer = buffer;</p>
+
+<p>this.maxsize = maxsize;</p>
+
+<p>}</p>
+
+<p>@Override</p>
+
+<p>public void run() {</p>
+
+<p>while (true) {</p>
+
+<p>try {</p>
+
+<p>synchronized (buffer) {</p>
+
+<p>if (buffer.isEmpty()) {</p>
+
+<p>System.<em>out</em>.println(“Consumer : Buffer Empty, wait untill produce”);</p>
+
+<p>buffer.wait();</p>
+
+<p>} else {</p>
+
+<p>Object ob = buffer.remove(0);</p>
+
+<p>System.<em>out</em>.println(ob + “ : Removed, notify Producer waiting for Removing for
+maxsize”);</p>
+
+<p>buffer.notifyAll();</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>} catch (Exception e) {</p>
+
+<p>// TODO: handle exception</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>public class ProducerConsumer {</p>
+
+<p>public static void main(String[] args) {</p>
+
+<p><em>List</em> buffer = new LinkedList&lt;&gt;();</p>
+
+<p>Producer producer = new Producer(buffer, 10);</p>
+
+<p>Consumer consumer = new Consumer(buffer, 10);</p>
+
+<p>producer.start();</p>
+
+<p>consumer.start();</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>28054 : Produced, notify wating COnsumer Thread</p>
+
+<p>28055 : Produced, notify wating COnsumer Thread</p>
+
+<p>28056 : Produced, notify wating COnsumer Thread</p>
+
+<p>28057 : Produced, notify wating COnsumer Thread</p>
+
+<p>28058 : Produced, notify wating COnsumer Thread</p>
+
+<p>28059 : Produced, notify wating COnsumer Thread</p>
+
+<p>28060 : Produced, notify wating COnsumer Thread</p>
+
+<p>Maximum Size Reached, wait until consume</p>
+
+<p>28050 : Removed, notify Producer waiting for Removing for maxsize</p>
+
+<p>28051 : Removed, notify Producer waiting for Removing for maxsize</p>
+
+<p>28052 : Removed, notify Producer waiting for Removing for maxsize</p>
+
+<p>28053 : Removed, notify Producer waiting for Removing for maxsize</p>
+
+<p>28054 : Removed, notify Producer waiting for Removing for maxsize</p>
+
+<p>28055 : Removed, notify Producer waiting for Removing for maxsize</p>
+
+<p>28056 : Removed, notify Producer waiting for Removing for maxsize</p>
+
+<p>28057 : Removed, notify Producer waiting for Removing for maxsize</p>
+
+<p>28058 : Removed, notify Producer waiting for Removing for maxsize</p>
+
+<p>28059 : Removed, notify Producer waiting for Removing for maxsize</p>
+
+<p>Consumer : Buffer Empty, wait untill produce</p>
+
+<h6 id="thread-yield-">Thread. yield ()</h6>
+
+<p><strong>yield() method:</strong> Theoretically, <strong>to ‘yield’ means to let go, to give up, to
+surrender</strong>. A yielding thread tells the virtual machine that it’s willing to
+let other threads be scheduled in its place.</p>
+
+<p>This indicates that it’s not doing something too critical. Note that <em>it’s only
+a hint</em>, though, and not guaranteed to have any effect at all.</p>
+
+<ul>
+  <li>
+    <p>Yield is a Static method and Native too.</p>
+  </li>
+  <li>
+    <p>Yield tells the currently executing thread to give a chance to the threads
+that have equal priority in the <a href="https://howtodoinjava.com/java-5/java-executor-framework-tutorial-and-best-practices/">Thread
+Pool</a>.</p>
+  </li>
+  <li>
+    <p>There is no guarantee that Yield will make the currently executing thread to
+runnable state immediately.</p>
+  </li>
+  <li>
+    <p><strong>It can only make a thread from Running State to Runnable State, not in
+wait or blocked state</strong>.</p>
+  </li>
+</ul>
+
+<h6 id="what-do-you-understand-about-thread-priority">What do you understand about Thread Priority?</h6>
+
+<p>Every thread has a priority, usually higher priority thread gets precedence in
+execution but it depends on Thread Scheduler implementation that is OS
+dependent. We can specify the priority of thread but it doesn’t guarantee that
+higher priority thread will get executed before lower priority thread.</p>
+
+<h6 id="how-can-we-make-sure-main-is-the-last-thread-to-finish-in-java-program">How can we make sure main() is the last thread to finish in Java Program?</h6>
+
+<p>We can use Thread join() method to make sure all the threads created by the
+program is dead before finishing the main function.</p>
+
+<h6 id="why-wait-notify-and-notifyall-methods-have-to-be-called-from-synchronized-method-or-block">Why wait(), notify() and notifyAll() methods have to be called from synchronized method or block?</h6>
+
+<p>When a Thread calls wait() on any Object, it must have the monitor on the Object
+that it will leave and goes in wait state until any other thread call notify()
+on this Object. Similarly when a thread calls notify() on any Object, it leaves
+the monitor on the Object and other waiting threads can get the monitor on the
+Object. Since all these methods require Thread to have the Object monitor, that
+can be achieved only by synchronization, they need to be called from
+synchronized method or block.</p>
+
+<h6 id="how-can-we-achieve-thread-safety-in-java">How can we achieve thread safety in Java?</h6>
+
+<p>There are several ways to achieve thread safety in java – <strong>synchronization,
+atomic concurrent classes, implementing concurrent Lock interface, using
+volatile keyword</strong>, using immutable classes and Thread safe classes.</p>
+
+<h6 id="what-is-volatile-keyword-in-java">What is volatile keyword in Java</h6>
+
+<p>When we use volatile keyword with a variable, all the threads read it’s value
+directly from the memory and don’t cache it. This makes sure that the value read
+is the same as in the memory.</p>
+
+<h6 id="what-is-threadlocal">What is ThreadLocal?</h6>
+
+<p>Java ThreadLocal is used to create thread-local variables. We know that all
+threads of an Object share it’s variables, so if the variable is not thread
+safe, we can use synchronization but if we want to avoid synchronization, we can
+use ThreadLocal variables.<br />
+Every thread has it’s own ThreadLocal variable and they can use it’s get() and
+set() methods to get the default value or change it’s value local to Thread.
+ThreadLocal instances are typically private static fields in classes that wish
+to associate state with a thread</p>
+
+<h6 id="what-is-blockingqueue-implement-producer-consumer-using-blocking-queue">What is BlockingQueue? implement Producer-Consumer using Blocking Queue?</h6>
+
+<ul>
+  <li>
+    <p>java.util.concurrent.BlockingQueue is a Queue that supports operations that
+wait for the queue to become non-empty when retrieving and removing an
+element, and wait for space to become available in the queue when adding an
+element.</p>
+  </li>
+  <li>
+    <p>BlockingQueue doesn’t accept null values and throw NullPointerException if
+you try to store null value in the queue.</p>
+  </li>
+  <li>
+    <p>BlockingQueue implementations are thread-safe. All queuing methods are
+atomic in nature and use internal locks or other forms of concurrency
+control.</p>
+  </li>
+  <li>
+    <p>BlockingQueue interface is part of <a href="https://www.journaldev.com/1260/collections-in-java-tutorial">java collections
+framework</a> and
+it’s primarily used for implementing producer consumer problem.<br />
+Check this post for <a href="https://www.journaldev.com/1034/java-blockingqueue-example">producer-consumer problem implementation using
+BlockingQueue</a>.</p>
+  </li>
+</ul>
+
+<h6 id="what-is-executors-class">What is Executors Class?</h6>
+
+<p>Executors class provide utility methods for Executor, ExecutorService,
+ScheduledExecutorService, ThreadFactory, and Callable classes.</p>
+
+<p>Executors class can be used to easily create Thread Pool in java, also this is
+the only class supporting execution of Callable implementations.</p>
+
+<p><strong>What happens when an Exception occurs in a thread?</strong> <br />
+<strong>Thread.UncaughtExceptionHandler</strong> is an interface, defined as nested interface
+for handlers invoked when a Thread abruptly terminates due to an uncaught
+exception.</p>
+
+<p>When a thread is about to terminate due to an uncaught exception the Java
+Virtual Machine will query the thread for
+its UncaughtExceptionHandler using Thread.getUncaughtExceptionHandler() and will
+invoke the handler’s uncaughtException() method, passing the thread and the
+exception as arguments.</p>
+
+<p><strong>Why wait, notify and notifyAll are not inside thread class?</strong> <br />
+One reason which is obvious is that Java provides lock at object level not at
+thread level.</p>
+
+<p><strong>How do you check if a Thread holds a lock or not?</strong><br />
+Boolean Thread.<em>holdsLock</em>(Obj)</p>
+</div><div class="d-print-none"><footer class="article__footer"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet --></footer><div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/java/atomic-variables">Atomic Variables</a></div><div class="next"><span>NEXT</span><a href="/java/traditional-data-structures">Traditional Data Structures</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+//alert('start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert(' end .......');
+ 
+ document.onreadystatechange = function(){
+     if(document.readyState === 'complete'){
+         /*code here*/
+		 //alert('onreadystatechange comled ... start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert('onreadystatechange comled ... end .......');
+     }
+}
+
+</script></div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet --></div>
+            </div></div></div><div class="page__footer d-print-none"><footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Satya Kaveti"><meta itemprop="url" content="/"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© SatyaCodes 2020 ,
+        <a title="Satya Kaveti" href="about/">Satya Kaveti's Writing</a>.
+		<span>| <a href="about/">About Me</a> &nbsp |  </span>
+		<span><a href="/terms.html">Terms</a> &nbsp |  </span>
+		<span><a href="/contact.html">Contact</a> &nbsp |  </span>
+		<span><a href="http://www.satyacodesapps.ml/" target="_blank">Our Apps</a> &nbsp |  </span>
+		<span><a href="https://www.facebook.com/isatyakaveti" target="_blank"><i class="fab fa-facebook-f"></i></a> &nbsp |  </span>
+		<span><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube-square"></i></a> &nbsp |  </span>
+		<span><a href="https://in.linkedin.com/in/satyakaveti"target="_blank"><i class="fab fa-linkedin-in"></i></a> &nbsp | 
+		<span>[ 
+		<!-- Start of WebFreeCounter Code -->
+<a href="http://www.statworker.com/" target="_blank"><img src="https://www.webfreecounter.com/hit.php?id=gfpapx&nd=7&style=2" border="0" alt="statworker.com"></a>
+<!-- End of WebFreeCounter Code -->
+</span>
+<span><a href="https://statcounter.com/p12408441/?guest=1" target="_blank"> ]</a></span>
+
+
+      </div>
+    </div>
+  </div>
+</footer></div></div>
+    </div></div></div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal d-print-none js-page-gallery-modal"><div class="gallery"></div></div><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">Search</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text" />
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        Cancel</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script></div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+(function() {(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function swiper(options) {
+      var $window = $(window), $root = this, $swiperWrapper, $swiperSlides, $swiperButtonPrev, $swiperButtonNext,
+        initialSlide, animation, onChange, onChangeEnd,
+        rootWidth, count, preIndex, curIndex, translateX, CRITICAL_ANGLE = Math.PI / 3;
+
+      function setOptions(options) {
+        var _options = options || {};
+        initialSlide = _options.initialSlide || 0;
+        animation = _options.animation === undefined && true;
+        onChange = onChange || _options.onChange;
+        onChangeEnd = onChangeEnd || _options.onChangeEnd;
+      }
+
+      function init() {
+        $swiperWrapper = $root.find('.swiper__wrapper');
+        $swiperSlides = $root.find('.swiper__slide');
+        $swiperButtonPrev = $root.find('.swiper__button--prev');
+        $swiperButtonNext = $root.find('.swiper__button--next');
+        animation && $swiperWrapper.addClass('swiper__wrapper--animation');
+        calc(true);
+      }
+
+      function preCalc() {
+        rootWidth = $root.width();
+        count = $swiperWrapper.children('.swiper__slide').length;
+        if (count < 2) {
+          $swiperButtonPrev.addClass('d-none');
+          $swiperButtonNext.addClass('d-none');
+        }
+        curIndex = initialSlide || 0;
+        translateX = getTranslateXFromCurIndex();
+      }
+
+      var calc = (function() {
+        var preAnimation, $swiperSlide, $preSwiperSlide;
+        return function (needPreCalc, params) {
+          needPreCalc && preCalc();
+          var _animation = (params && params.animation !== undefined) ? params.animation : animation;
+          if (preAnimation === undefined || preAnimation !== _animation) {
+            preAnimation = _animation ? $swiperWrapper.addClass('swiper__wrapper--animation') :
+              $swiperWrapper.removeClass('swiper__wrapper--animation');
+          }
+          if (preIndex !== curIndex) {
+            ($preSwiperSlide = $swiperSlides.eq(preIndex)).removeClass('active');
+            ($swiperSlide = $swiperSlides.eq(curIndex)).addClass('active');
+            onChange && onChange(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+            if (onChangeEnd) {
+              if (_animation) {
+                setTimeout(function() {
+                  onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+                }, 400);
+              } else {
+                onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+              }
+            }
+            preIndex = curIndex;
+          }
+          $swiperWrapper.css('transform', 'translate(' + translateX + 'px, 0)');
+          if (count > 1) {
+            if (curIndex <= 0) {
+              $swiperButtonPrev.addClass('disabled');
+            } else {
+              $swiperButtonPrev.removeClass('disabled');
+            }
+            if (curIndex >= count - 1) {
+              $swiperButtonNext.addClass('disabled');
+            } else {
+              $swiperButtonNext.removeClass('disabled');
+            }
+          }
+        };
+      })();
+
+      function getTranslateXFromCurIndex() {
+        return curIndex <= 0 ? 0 : - rootWidth * curIndex;
+      }
+
+      function moveToIndex(index ,params) {
+        preIndex = curIndex;
+        curIndex = index;
+        translateX = getTranslateXFromCurIndex();
+        calc(false, params);
+      }
+
+      function move(type) {
+        var nextIndex = curIndex, unstableTranslateX;
+        if (type === 'prev') {
+          nextIndex > 0 && nextIndex--;
+        } else if (type === 'next') {
+          nextIndex < count - 1 && nextIndex++;
+        }
+        if (type === 'cur') {
+          moveToIndex(curIndex, { animation: true });
+          return;
+        }
+        unstableTranslateX = translateX % rootWidth !== 0;
+        if (nextIndex !== curIndex || unstableTranslateX) {
+          unstableTranslateX ? moveToIndex(nextIndex, { animation: true }) : moveToIndex(nextIndex);
+        }
+      }
+
+      setOptions(options);
+      init();
+      preIndex = curIndex;
+
+      $swiperButtonPrev.on('click', function(e) {
+        e.stopPropagation();
+        move('prev');
+      });
+      $swiperButtonNext.on('click', function(e) {
+        e.stopPropagation();
+        move('next');
+      });
+      $window.on('resize', function() {
+        calc(true, { animation: false });
+      });
+
+      (function() {
+        var pageX, pageY, velocityX, preTranslateX = translateX, timeStamp, touching;
+        function handleTouchstart(e) {
+          var point = e.touches ? e.touches[0] : e;
+          pageX = point.pageX;
+          pageY = point.pageY;
+          velocityX = 0;
+          preTranslateX = translateX;
+        }
+        function handleTouchmove(e) {
+          if (e.touches && e.touches.length > 1) {
+            return;
+          }
+          var point = e.touches ? e.touches[0] : e;
+          var deltaX = point.pageX - pageX;
+          var deltaY = point.pageY - pageY;
+          velocityX = deltaX / (e.timeStamp - timeStamp);
+          timeStamp = e.timeStamp;
+          if (e.cancelable && Math.abs(Math.atan(deltaY / deltaX)) < CRITICAL_ANGLE) {
+            touching = true;
+            translateX += deltaX;
+            calc(false, { animation: false });
+          }
+          pageX = point.pageX;
+          pageY = point.pageY;
+        }
+        function handleTouchend() {
+          touching = false;
+          var deltaX = translateX - preTranslateX;
+          var distance = deltaX + velocityX * rootWidth;
+          if (Math.abs(distance) > rootWidth / 2) {
+            distance > 0 ? move('prev') : move('next');
+          } else {
+            move('cur');
+          }
+        }
+        $swiperWrapper.on('touchstart', handleTouchstart);
+        $swiperWrapper.on('touchmove', handleTouchmove);
+        $swiperWrapper.on('touchend', handleTouchend);
+        $swiperWrapper.on('touchcancel', handleTouchend);
+
+        (function() {
+          var pressing = false, moved = false;
+          $swiperWrapper.on('mousedown', function(e) {
+            pressing = true; handleTouchstart(e);
+          });
+          $swiperWrapper.on('mousemove', function(e) {
+            pressing && (e.preventDefault(), moved = true, handleTouchmove(e));
+          });
+          $swiperWrapper.on('mouseup', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('mouseleave', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('click', function(e) {
+            moved && (e.stopPropagation(), moved = false);
+          });
+        })();
+
+        $root.on('touchmove', function(e) {
+          if (e.cancelable & touching) {
+            e.preventDefault();
+          }
+        });
+      })();
+
+      return {
+        setOptions: setOptions,
+        previous: function(){
+          move('prev');
+        },
+        next: function(){
+          move('next');
+        },
+        refresh: function() {
+          calc(true, { animation: false });
+        }
+      };
+    }
+    $.fn.swiper = swiper;
+  });
+})();
+var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var template =
+      '<div class="swiper gallery__swiper">' +
+        '<div class="swiper__wrapper">' +
+        '</div>' +
+        '<div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>' +
+        '<div class="swiper__button swiper__button--next fas fa-chevron-right"></div>' +
+      '</div>';
+    function setState($item, zoom, translate) {
+      $item.css('transform', 'scale(' + zoom + ') translate(' + translate.x +  'px,' + translate.y + 'px)');
+    }
+    function Gallery(root, items) {
+      this.$root = $(root);
+      this.$swiper = null;
+      this.$swiperWrapper = null;
+      this.$activeItem = null;
+      this.$items = [];
+      this.contentWidth = 0;
+      this.contentHeight = 0;
+      this.swiper = null;
+      this.items = items;
+      this.disabled = false;
+      this.curIndex = 0;
+      this.touchCenter = null;
+      this.lastTouchCenter = null;
+      this.zoomRect = null;
+      this.lastZoomRect = null;
+      this.lastTranslate = null;
+      this.translate = null;
+      this.lastZoom = 1;
+      this.preZoom = 1;
+      this.zoom = 1;
+    }
+    Gallery.prototype.init = function() {
+      var i, item, items = this.items, size, self = this, touchstartFingerCount = 0;
+      this.$root.append(template);
+      this.$swiper = this.$root.find('.gallery__swiper');
+      this.$swiperWrapper = this.$root.find('.swiper__wrapper');
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      for (i = 0; i < items.length; i++) {
+        item = items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        this.$items.push($(
+          '<div class="swiper__slide">' +
+            '<div class="gallery-item">' +
+              '<div class="gallery-item__content">' +
+                '<img src="' + item.src + '" style="width:' + size.w + 'px;height:' + size.h +  'px"/>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        ));
+      }
+      this.$swiperWrapper && this.$swiperWrapper.append(this.$items);
+      this.swiper = this.$swiper && this.$swiper.swiper({
+        onChangeEnd: function() {
+          self._handleChangeEnd.apply(self, Array.prototype.slice.call(arguments));
+        }
+      });
+      $(window).on('resize', function() {
+        if (self.disabled) { return; }
+        self._resizeImageSize();
+      });
+      // Char Code: 37  ⬅, 39  ➡
+      $(window).on('keyup', function(e) {
+        if (window.isFormElement(e.target || e.srcElement) || self.disabled) { return; }
+        if (e.which === 37) {
+          self.swiper && self.swiper.previous();
+        } else if (e.which === 39) {
+          self.swiper && self.swiper.next();
+        }
+      });
+      function getRect(touch0, touch1) {
+        return {
+          o: {
+            x: (touch0.pageX + touch1.pageX) / 2,
+            y: (touch0.pageY + touch1.pageY) / 2
+          },
+          w: Math.abs(touch0.pageX - touch1.pageX),
+          h: Math.abs(touch0.pageY - touch1.pageY)
+        };
+      }
+      function getTouches(e) {
+        return e.touches || e;
+      }
+      function getTouchesCount(e) {
+        if (e.touches) {
+          return e.touches.length;
+        } else {
+          return 1;
+        }
+      }
+      this.$swiperWrapper.on('touchstart', function(e) {
+        var touch0, touch1, rect;
+        touchstartFingerCount = getTouchesCount(e);
+        if (touchstartFingerCount > 1) {
+          touch0 = e.touches[0];
+          touch1 = e.touches[1];
+          rect = getRect(touch0, touch1);
+          self.lastZoomRect = { w: rect.w, h: rect.h };
+          self.lastTouchCenter = rect.o;
+        } else {
+          var touch = getTouches(e)[0];
+          self.lastTouchCenter = { x: touch.pageX, y: touch.pageY };
+        }
+      });
+      this.$swiperWrapper.on('touchmove', function(e) {
+        if (touchstartFingerCount === getTouchesCount(e)) {
+          if (touchstartFingerCount > 1) {
+            var touch0 = e.touches[0];
+            var touch1 = e.touches[1];
+            var rect = getRect(touch0, touch1);
+            self.zoomRect = { w: rect.w, h: rect.h };
+            self.touchCenter = rect.o;
+            self._zoom(); self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          } else {
+            var touch = getTouches(e)[0];
+            self.touchCenter = { x: touch.pageX, y: touch.pageY };
+            self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          }
+        }
+      });
+      this.$swiperWrapper.on('touchend', function(e) {
+        self.lastZoom = self.zoom;
+        self.lastTranslate = self.translate;
+        touchstartFingerCount = 0;
+      });
+      this.$root.on('touchmove', function(e) {
+        if (self.disabled) { return; }
+        e.preventDefault();
+      });
+    };
+
+    Gallery.prototype._translate = function() {
+      this.translate = this.touchCenter && this.lastTouchCenter && this.lastTranslate ? {
+        x: (this.touchCenter.x - this.lastTouchCenter.x) / this.zoom + this.lastTranslate.x,
+        y: (this.touchCenter.y - this.lastTouchCenter.y) / this.zoom + this.lastTranslate.y
+      } : { x: 0, y: 0 };
+    }
+    Gallery.prototype._zoom = function() {
+      this.zoom = (this.zoomRect.w + this.zoomRect.h) / (this.lastZoomRect.w + this.lastZoomRect.h) * this.lastZoom;
+      this.zoom > 1 ? this.$activeItem.addClass('zoom') : this.$activeItem.removeClass('zoom');
+      this.preZoom = this.zoom;
+    }
+
+    Gallery.prototype._calculateImageSize = function(w, h) {
+      var scale = 1;
+      if (this.contentWidth > 0 && this.contentHeight > 0 && w > 0 && h > 0) {
+        scale = Math.min(
+          Math.min(w, this.contentWidth) / w,
+          Math.min(h, this.contentHeight) / h);
+      }
+      return { w: Math.floor(w * scale), h: Math.floor(h * scale) };
+    };
+
+    Gallery.prototype._resizeImageSize = function() {
+      var i, $item, $items = this.$items, item, size;
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      if ($items.length < 1) { return; }
+      for (i = 0; i < $items.length; i++) {
+        item = this.items[i], $item = $items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        item.width = size.w; item.height = size.h;
+        $item && $item.find('img').css({ width: size.w, height: size.h });
+      }
+    };
+    Gallery.prototype._handleChangeEnd = function(index, $dom, preIndex, $preDom) {
+      this.curIndex = index;
+      this.lastZoomRect = null; this.lastZoomRect = null;
+      this.lastTranslate = this.translate = { x: 0, y:0 };
+      this.lastZoom = this.preZoom = this.zoom = 1;
+      this.$activeItem = $dom.find('.gallery-item__content');
+      setState($preDom.find('.gallery-item__content'), this.zoom, this.translate);
+    };
+
+    Gallery.prototype.refresh = function() {
+      this.swiper && this.swiper.refresh();
+      this._resizeImageSize();
+    };
+    Gallery.prototype.setOptions = function(options) {
+      this.disabled = options.disabled;
+      this.swiper && this.swiper.setOptions(options);
+    };
+    window.Gallery = Gallery;
+  });
+})();(function() {
+  window.imagesLoad = function(images) {
+    images = images || document.getElementsByTagName('img');
+    var imagesCount = images.length, loadedCount = 0, image;
+    var i, j, loaded = false, cbs = [];
+    imagesCount < 1 && (loaded = true);
+    for (i = 0; i < imagesCount; i++) {
+      image = images[i];
+      image.complete ? handleImageLoad() : image.addEventListener('load', handleImageLoad);
+    }
+    function handleImageLoad() {
+      loadedCount++;
+      if (loadedCount === imagesCount) {
+        loaded = true;
+        if (cbs.length > 0) {
+          for (j = 0; j < cbs.length; j++) {
+            cbs[j]();
+          }
+        }
+      }
+    }
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  };
+})();
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageGalleryModal = $('.js-page-gallery-modal');
+    var $images = $('.page__content').find('img:not(.lightbox-ignore)');
+    window.imagesLoad($images).then(function() {
+      /* global Gallery */
+      var pageGalleryModal = $pageGalleryModal.modal({ onChange: handleModalChange });
+      var gallery = null;
+      var modalVisible = false;
+      var i, items = [], image, item;
+      if($images && $images.length > 0) {
+        for (i = 0; i < $images.length; i++) {
+          image = $images.eq(i);
+          if (image.get(0).naturalWidth > 800) {
+            items.push({ src: image.attr('src'), w: image.get(0).naturalWidth, h: image.get(0).naturalHeight, $el: image});
+          }
+        }
+      }
+
+      if(items.length > 0) {
+        gallery = new Gallery('.gallery', items);
+        gallery.setOptions({ disabled: !modalVisible });
+        gallery.init();
+        for (i = 0; i < items.length; i++) {
+          item = items[i];
+          item.$el && (item.$el.addClass('popup-image'), item.$el.on('click', (function() {
+            var index = i;
+            return function() {
+              pageGalleryModal.show();
+              gallery.setOptions({ initialSlide: index });
+              gallery.refresh(true, { animation: false });
+            };
+          })()));
+        }
+      }
+
+      function handleModalChange(visible) {
+        modalVisible = visible;
+        gallery && gallery.setOptions({ disabled: !modalVisible });
+      }
+
+      $pageGalleryModal.on('click', function() {
+        pageGalleryModal.hide();
+      });
+    });
+  });
+})();/*(function () {
+
+})();*/
+</script><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageMask = $('.js-page-mask');
+    var $pageRoot = $('.js-page-root');
+    var $sidebarShow = $('.js-sidebar-show');
+    var $sidebarHide = $('.js-sidebar-hide');
+
+    function freeze(e) {
+      if (e.target === $pageMask[0]) {
+        e.preventDefault();
+      }
+    }
+    function stopBodyScrolling(bool) {
+      if (bool === true) {
+        window.addEventListener('touchmove', freeze, { passive: false });
+      } else {
+        window.removeEventListener('touchmove', freeze, { passive: false });
+      }
+    }
+
+    $sidebarShow.on('click', function() {
+      stopBodyScrolling(true); $pageRoot.addClass('show-sidebar');
+    });
+    $sidebarHide.on('click', function() {
+      stopBodyScrolling(false); $pageRoot.removeClass('show-sidebar');
+    });
+  });
+})();
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>

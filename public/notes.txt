@@ -1,0 +1,313 @@
+﻿
+
+
+
+===================================================================================================
+				1.heading <h1> Java Script
+===================================================================================================
+_layouts\artcles.html
+
+
+document.onreadystatechange = function(){
+     if(document.readyState === 'complete'){
+         /*code here*/
+		 alert('onreadystatechange comled ... start .......');
+document.getElementsByClassName('article__header')[0].style.visibility = 'none';
+document.getElementsByClassName('article__info')[0].style.visibility = 'none';
+alert('onreadystatechange comled ... end .......');
+     }
+}
+
+
+document.onload = function(){
+alert('load comled ... start .......');
+document.getElementsByClassName('article__header')[0].style.visibility = 'none';
+document.getElementsByClassName('article__info')[0].style.visibility = 'none';
+alert('load comled ... end .......');
+}
+
+
+//document.getElementsByClassName('article__header')[0].style.visibility = 'none';
+//document.getElementsByClassName('article__info')[0].style.visibility = 'none';
+//alert('end');
+//article__header
+//article__info clearfix
+//document.getElementsByClassName('article__header')[0].style.visibility = 'hidden';
+ 
+ 
+ 
+ alert('start');
+var a = document.getElementById("article__header");
+var b = document.getElementById("article__info");
+a.remove();
+b.remove();
+  
+alert('end');
+
+
+===================================================================================================
+2.Pareem Links
+===================================================================================================
+https://jekyllrb.com/docs/permalinks/
+
+Jekyll lets you set the permalink structure globally in your _config.yml.
+
+_config.yml
+-------------------
+permalink: /:title:output_ext
+
+ 
+
+
+
+
+===================================================================================================
+3.Home Page - List
+===================================================================================================
+modfiy - index.html
+
+---
+layout: articles
+titles:
+  en      : &EN       Home
+  en-GB   : *EN
+  en-US   : *EN
+  en-CA   : *EN
+  en-AU   : *EN
+  zh-Hans : &ZH_HANS  ??
+  zh      : *ZH_HANS
+  zh-CN   : *ZH_HANS
+  zh-SG   : *ZH_HANS
+  zh-Hant : &ZH_HANT  ??
+  zh-TW   : *ZH_HANT
+  zh-HK   : *ZH_HANT
+  ko      : &KO       ?
+  ko-KR   : *KO
+show_title: false
+articles:
+  data_source: paginator.posts
+  article_type: BlogPosting
+  show_cover: true
+  show_excerpt: false
+  show_readmore: false
+  show_info: true
+---
+<div class="layout--home">
+  {%- include paginator.html -%}
+</div>
+
+ 
+
+===================================================================================================
+4.Syntax Highlate - Final - Working
+===================================================================================================
+
+1. in _config.yaml -- No Change - highlighter should be 'rouge'
+highlighter: rouge
+
+2.Open "_highlight.scss" from C:\jenklly\text\_sass\skins\highlight\tomorrow\_highlight.scss
+paste downloded .css file content at last.
+make sure '}' only for elemtes , no root {} are there
+
+
+3.no changes on "custom.css"
+
+
+
+
+
+----------------------
+Code Font size
+-----------------------
+
+  C:\jenklly\text\_sass\common\_reset.scss (2 hits)
+pre, code {
+code { //129
+
+working ........
+code {
+ // font-size: map-get($base, font-size-xs);
+  font-size: 15px;
+  line-height: map-get($base, line-height-sm);
+}
+
+
+----------------------
+single Code Font size
+-----------------------
+C:\jenklly\text\_sass
+custom.csss 
+/*================== 1.Single line Code Red Color ====================*/
+  .article__content code {
+	/*Single Code Haihlate */
+    color: #e6217b;
+    }
+/*================== 1.Single line Code Red Color ====================*/
+
+
+
+
+
+
+
+
+
+===================================================================================================
+5.GitLab Pages 
+===================================================================================================
+https://about.gitlab.com/blog/2016/04/07/gitlab-pages-setup/
+
+
+
+
+
+
+
+
+
+===================================================================================================
+6.addtothis
+===================================================================================================
+addthis	AddThis
+
+comments:
+  provider: addthis
+  addthis:
+    id: "ra-5dd2bcde40b385b7"
+
+comments:
+  provider: disqus
+  disqus:
+    shortname: "satyacodes"
+
+
+Paste the above code right above the closing</body> 
+
+
+added in includes\fopoter.html
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dd2bcde40b385b7"></script>
+
+
+
+
+============================================================================================
+	7.Logo	- pendind
+===========================================================================================
+TeXt  as logo, you can change it by replacing 
+_includes/svg/logo.svg with your own logo.
+
+ - Go : https://realfavicongenerator.net/
+ - Upload Img
+ -
+
+
+
+
+Download favicon package and unzip it to the path you just set, and replace the HTML code in _includes/head/favicon.html.
+
+
+
+
+============================================================================================
+	8.Footer & Seach Issue
+===========================================================================================
+TeXt  as logo, you can change it by replacing _includes/svg/logo.svg with your own logo.
+
+Download favicon package and unzip it to the path you just set, and replace the HTML code in _includes/head/favicon.html.
+
+
+
+
+====================================
+seo
+====================================
+description
+
+Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials,
+Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.
+
+
+
+==================================
+Stats COunter
+===============================
+<!-- Start of WebFreeCounter Code -->
+<a href="https://www.webfreecounter.com/" target="_blank"><img src="https://www.webfreecounter.com/hit.php?id=grmxaack&nd=7&style=2" border="0" alt="web counter"></a>
+<!-- End of WebFreeCounter Code -->
+
+
+
+<!-- Default Statcounter code for SatyaCodes https://satyacodes.com/ -->
+<script type="text/javascript">
+var sc_project=12149950; 
+var sc_invisible=0; 
+var sc_security="93481706"; 
+var sc_https=1; 
+var scJsHost = "https://";
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+StatCounter" href="https://statcounter.com/" target="_blank"><img
+class="statcounter" src="https://c.statcounter.com/12149950/0/93481706/0/"
+alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
+<!-- End of Statcounter Code -->
+
+===================================================================================================
+	XX. REFERENCES
+===================================================================================================
+
+
+rouge syntax
+---------------------
+Besides that, Rouge is 100% compatible with Pygments’s stylesheets, you can choose one of those Pygment themes and use it on your site.
+
+ 
+
+
+Pygments jekyll configuration
+https://help.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll#syntax-highlighting
+ 
+https://github.com/search?q=pygments%20style
+
+
+Final:
+https://help.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll#syntax-highlighting
+
+https://lyk6756.github.io/2016/11/22/use_pygments.html
+https://jekyll-windows.juthilo.com/3-syntax-highlighting/
+
+
+Final2:
+https://jekyll-windows.juthilo.com/3-syntax-highlighting/
+
+Install a Syntax Highlighter
+
+ - gem install rouge
+ 
+ - Install Python & Set Path
+ 
+ - download https://bootstrap.pypa.io/get-pip.py get-pip.py
+ 
+ - Run : python get-pip.py
+
+- Install Pygment
+	python -m pip install Pygments
+	
+- Set Pygments as your syntax highlighter
+	_config.yml
+	--------------------------
+	highlighter: pygments
+	
+	//highlighter: rouge
+
+
+https://stackoverflow.com/questions/6761990/highlight-with-jekyll-and-pygments-doesnt-work
+
+
+C:\jenklly\text\_sass\skins\highlight\tomorrow\
+_highlight.scss
+
+

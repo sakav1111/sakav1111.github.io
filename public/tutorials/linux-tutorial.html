@@ -1,0 +1,4493 @@
+<!DOCTYPE html><html lang="en">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>SatyaCodes - Linux Tutorial</title>
+
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.">
+<link rel="canonical" href="/tutorials/linux-tutorial"><link rel="alternate" type="application/rss+xml" title="SatyaCodes" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet -->
+ <link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Linux Tutorial | SatyaCodes</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Linux Tutorial" />
+<meta name="author" content="Satya Kaveti" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:site_name" content="SatyaCodes" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Linux Tutorial" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Satya Kaveti"},"@type":"WebPage","description":"Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.","url":"/tutorials/linux-tutorial","headline":"Linux Tutorial","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- start custom head snippets -->
+
+<!-- end custom head snippets --><script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.4',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script></head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root">
+<div class="page__main js-page-main page__viewport has-aside cell cell--auto">
+
+      <div class="page__main-inner">
+<div class="page__header d-print-none">
+<header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="76px" height="76px" viewbox="0 0 76 76" enable-background="new 0 0 76 76" xml:space="preserve">  <image id="image0" width="76" height="76" x="0" y="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAIAAABI9cZ8AAAAIGNIUk0AAHomAACAhAAA+gAAAIDo
+AAB1MAAA6mAAADqYAAAXcJy6UTwAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQflBwgJKRMy4DHU
+AAAAXnRFWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMACmlwdGMKICAgICAgMjgKMzg0MjQ5NGQwNDA0
+MDAwMDAwMDAwMDBmMWMwMjZlMDAwMzUyNDY0NzFjMDIwMDAwMDIwMDA0MDAKYJo9ngAAD4RJREFU
+eNrtm2tsE1fax894Lp7xeGzHzgUSbNI0YJJwSQKEWxWlUWkSKEIqq20RsBUrtewXpBatSlu1WvVT
+F7XbW1RKqxaqCiEl25KkYUkpYlPEQrkkAsIlgZAEcnOcOAQntseeGXveD09z3sFODLm1+/JyhCxn
+PHPm/M7znHOe838OhKqq6FEvut+7AY8hH0M+hnwM+UiWx5CPSqF+rxePGYQQBPEoQEYiEcyjqqqq
+qgAWiUTgCkEQcAV/+W+HxOZSVXVkZGR4eJiiKFmWRVHs6upiWTYQCJw6dSonJyc3N1eW5cTERIZh
+jEYjEOp0Op1ON3VUYiZiV6gTLCNJksvlunXr1ldffXXlyhWLxRIIBHw+3+DgIMMwCKGBgQGj0ZiW
+liaKYkZGhiAI69atKygoyMzMhBtIkpwi6jRDgr8pijI8PNzT09PY2Hjq1KnGxka32+12u8cbh1HX
+OY7Lysp6+eWXZ8+evXz5covFQtM0oE6+WdNSIpGIqqqiKN68eXPv3r1lZWVPPvkkwzCTsAD4Ksdx
+FoulvLx8YGDA6/WGQqFwODy5tk0DJOD5/f76+vo33ngjMzOT53ltcyfpYwSBEFq4cOHRo0fdbvfw
+8LAkSfCu3xQSXhkKhVpbW997772UlBTsUdMyMUIlq1atOnnypNvt9vl8sixPgnOSs6uqqgghWZab
+mpoqKirq6upaW1slScJsaszwg5+iroOpteuK9nFVVQmCOHv2bE1Njd1upyiKoqhJTEKTgYQWuFyu
+r7/++sCBA52dneFweDwGbYsRQiaTyWq1UhQlCILFYrHZbAzDeDwer9fb3d3d398vy3Is8KVLlzwe
+D8Mwer2eoibc5gk/AF56/vz5d999t76+HlsvFu/X8YCQIAjp6enp6enJyclZWVmzZ8+madpoNHIc
+R9O0TqeLRCKyLLtcrjt37nR1dd2+ffvMmTP37t3DnFevXm1vb09MTJRlmWGYiRpzYpCqqsqyXFtb
++/bbb7e0tICzafG0fyYkJGRnZ6empi5ZsiQrKyshIYFlWVgM4BMvgPBUWlpafn6+JEmBQKC6uvrz
+zz/3er3wqyiKfX19kiTBmJwpS8LwcLvd+/bt++KLL/r6+mLXN+jd5ORkg8HgdDqfeeYZp9MpCALL
+sgzDgLMxDANDCwixTcBBwuGwLMuCIGzbto2iqI8//tjn88HC6/V6FUUJh8Mw8Uy/JaHSO3fu7N69
+u6qqClwUE+JWkiSZlpa2detWp9OZkpIiCIJer2dZlmVZLZ5OpyNJktAUpFmugZPjuNTUVJZlfT4f
+QogkSb1ejwlnxJIEQbS3t7/++uvV1dXhcBhpAjf4TlFUenp6cXHx0qVL582bx/M8x3EcxwEeTdPY
+PyEixc9qDfLrdE9RDMNcvXr1o48+8ng8cIOiKD6fDw/y6YdUVdXj8bz11ltVVVVjDr/09PSSkpKV
+K1c6HA6e5w0GA3wCHvZMrd3G60pc54ULFzo6OrSdKAgCuPf0Q6qqGgwGP/jgg6qqqthdkiAICxYs
+ePHFF3NzczmO43neaDQaDAYYhFq8h28QLJt5eXlz585ta2tDCJEkuXr16kWLFuG5aqKQ8QJ0+Km2
+tvaVV15xu924EfC5ePHiDRs25OfnW61WQRCMRiOsCpPGwyUcDkuSVFlZ+emnn4qiuHLlyg0bNjgc
+joSEBKvVajAYaJqeWMfF9/L29vatW7f+8ssveEerqqpery8qKtqyZcucOXN4ngdCMCDeLkwlrItE
+IpIk+Xy+rq4ur9drNBppmuZ53mQyGY1GvV5PkuSEKhzXXcEhq6qqLly4oCUkSbKsrGzbtm1JSUkm
+kwlejP1zeva4BEFRFMdxDocjFAopigKzKwQPk6g/3pj0er11dXWKomjrLSwsfOGFF5KSkhISEiwW
+C8/zYEA8tUyRECCBCj6hf/HyM4kxGQ+yt7e3s7MTaUK2RYsWbd68efbs2Waz2WKxwEI/XQaM5QQ2
+NDrxTroTx4UkCKK3t3doaAhfYVm2rKwM1okoA6LRgGHaOaelqnhjUhAEjuPwlVAodPjwYbfbvWLF
+ihUrVpjNZu2eTbtjQvdvl2dIaJxAf403u4bD4Xv37u3YseP777/X7npIkuR5fsGCBcuWLTMajYsX
+LxZFMTk52WazzZkzh2EYHOVoIafibDMLqSjK6dOnd+3a1dTUhCGjolaWZRVFMRgMBoPB4XDQNG02
+mzMyMkpKSpJGC1Z6sNCIflvzjgsJu6pAIHDx4sU9e/acOnUqGAyCBKy9Z+xKCQIWT7vdXlRUNGvW
+rJycnHnz5hmNRp7nYYbEMfrvDBmJREKhkCiKnZ2dDQ0Np0+fPnnyZHd3t6IoGOaBModOp6MoymKx
+2O12q9W6ffv2oqIiQRAgKvptUB8Q1oXD4VAoFAwGRVH0er23bt26fPny7du3m5ub29vbQSkcky0K
+G19PS0tzOp2lpaXPP/98cnIyRVEQJM0o5wPCukgkAtqEJEnBYDAUCkmSJIri0NBQd3d3U1PT9evX
+dTrd9evXOzo6sIXHfdkorV6vX7t27e7du7OzsyFamlHOByvo4LeRSERRFKAFGUJRFDCyLMs9PT2n
+T59uampyuVwDAwMejyeOSIFh1qxZ8/7778+bN4/juElEpNMJiVGxQgEFmPGnoigjIyNer7erq+vK
+lStXrly5du2a2+0GIW/MoUsQxGuvvbZz505BEHien5zcPp2QsbS4YGBt8fv9bW1tdXV1J06ccLlc
+ODOnhVRVddWqVZ988klaWprZbGZZ9mGMqZVkH7JTJixJ4rUuSqXG5gVgQRBsNltOTs7GjRtramoO
+Hz4Mak1UW/v6+vr6+pKSkhRFgY7A+sB4GKqqhhUFEQRomQ+T3pt8flLbAlAowLAYWJZlnufNZvP8
++fMTEhL27t2rKEqs42CHhxYPDg663e6UlBSTyQTLKQQP8GC4rQ1VVKC2NmSxhEpLwwUFJMOQJPmA
+TcJUciGxRevAoKAODQ253e6qqqqEhITYt+fl5dXV1bW0tPT399+4ceOzzz4rLS1NS0vbtWvXwMCA
+z+eTJAlEurCiSGfPKsXFEZJUEYoQhJyaeu9vf/PcvOn1egOBQJw0yTRnmrUaHLaDXq93uVyBQCAq
+JFRV9YknnmBZtr29/eDBgz/88MPNmzeDwSBCqKOjw+v14hoig4NqRQVZXk60tiKEVIJACJG9vaa/
+/108c2bk1VelggJQXsYUgWYwnQ6oNE03Nzd/++23OGzAHgTN2r9//5kzZ27fvg1iJ0LIaDSuWbMG
+lB69Xk96vcSbb1KHDhGhEOARMPcQBAqFDMePI5dr8B//UPPyQJoZYyRPr7vGeu/du3e3b98+Zi+w
+LGu1WnG8jluWlZV1+PDha9eu9fb2BgKB0IEDEZZVCSJCECpC2n8RhCIEEUHo7vr1HU1N/f39fr8f
+Rr62zOA5HlVVJUnau3dvZWXlmFNCMBi8e/euOrrbVlWVZdm1a9fu3LkTkkIURSFZ1v3730QwiA14
+n7MgRKgqgZCpvp6orfX7/RCcRN02U+4K08+xY8f27dvn9/vHm/cwHk3Ts2bN2rhxY0lJSWJiIoQH
+er2ecLmIxkbos3FfRhBkIJB48OCA0xkoKNDpdCzLziAknlcURamsrHznnXe6u7vHi3jAl0iSzMzM
+LC4uzs/Ph1S8IAgmk4nneZqmdf/6l66tDXaxcd6KCIJvbibefHPor3/1rVtnsVhmBBJjyLLc2tpa
+UVHx5Zdfut3uMQnhfrPZ7HQ6Fy9eXFhY6HA4IH0Ce06Yk3R9fURFBZ5v4r0dIYIgDK2tuj17+m02
+NGfOdEJqTdfT03P27NlLly7V1tbeuHEjNmqFPymKMhgMdrt906ZNy5YtM5vNgAdsoJ7AblPp6KBa
+WtSxRmNUwfOtvqODPnIEbdo0PZDqaGIrFApdvny5pqbm2LFjzc3NcBYlKj+Lv9vt9qeffnrJkiVz
+585NTk7mOA6kE9iIMAxzn4SLD3TFd1ctLUJUe3vUxcmfGUAIBYPBixcvfvfdd1VVVZ2dnVpxJMpF
+wTmLi4ufffZZGHjcaNGm97SBaDgcjjid0lNPMUePTmhvEonpjgmn09FoqquhoeHQoUNHjhzp6elB
+YykD+IrFYsnKyiotLS0oKDCZTNrcHuBFZZ3/t1itob/8hWxooPr7H9KMCssO5uWlTA4S4w0ODv70
+008nTpw4fvx4T0+POqrfjYnHMExubu7GjRsXLlxotVo5joO1AeYVbXYodo2B65GCAmn1aqq6+oEe
+CzfcnT/f89RTE7YktD4YDHZ2dv744481NTUNDQ0jIyPxrYcQSkpKWr9+fVlZWUpKCqQu8dSiTTzH
+ebVOp2MEQdq8Wf+f/5AezwObqrBsT0kJSokyZFxIaKsoiufOnfvmm28aGxtv3LgBQk6s9bRPWa3W
+lStXFhcXL1myBPKWgiDg5OzD4KHRNEE4HEZFRf4//9lYXq4TxXh3q6pr+fJ7q1bx90cC40JC6wOB
+wLlz5yorK48cOdLb24t3sbF42IA6nS4zM3Pbtm1Lly4Fz8T+CQvDhJJfvyazDIbAjh1hv9+8f79O
+FMf2W1X1Ohydf/wjk5RkNBofDAkM169f//DDD+vq6uAI53iKo3YXn52dXVxcvGzZsvT0dIynTc5O
+VGIFCYKmab3NJr766l2WtXz1FeX1otHVBTfLn5TU8qc/STk5VqNREIToesZ0ua6urpdeeunnn39W
+788LjGk9juNSUlLy8/Ofe+65jIwMfHgAZ76mmNsDkUEURdHrRdXVln37uNZWYlQNjJDksMNxc8uW
+kaIiOMdmNpujNuhju2tbW9v58+dRjEYe9afBYMjNzS0sLMzJyZk1axacGcB4OHCZogYHxoTv/j/8
+wb1gAffPfxoaGwm/P2ixDC1aNFBYGMnIsAqC2WyGlGlUDWND2mw2u93e0tIS+5PBYLBYLKmpqVlZ
+WdnZ2dnZ2VarFU4kQeCiXR6mJQWAnRaAxdzcQEbGiNsdGh6W9HqJ51mGgc7F5/Wia4h1xXA4HAwG
+6+vry8vLL126BHvQ5ORkh8Nht9vT09Ptdjs+cEXTNMuyOHCZ+tGP8QqMfJCOQqEQaPkQP9I0rR8t
+2rxwPEjIC4RCoa6uro6OjqGhIVmWbTYbeAKMMYjCgAoHZTinP3OCP9byQSuDKQNySnHePgakqqqg
+r0CeJxgMYlEU6sKc+ChgnMBl2kuUtIFFszhvH3ezp9XFIbEBqzNGwt32+2aRH6bEy09iHRXvqqIK
++i84DzAlSIx6393/F5AmDPlolP8X/7XwMeSjUh5DPirlfwA1QTCTlERFOgAAACV0RVh0ZGF0ZTpj
+cmVhdGUAMjAyMS0wNy0wOFQxNzo0MDozOCswMzowMN3pZPAAAAAldEVYdGRhdGU6bW9kaWZ5ADIw
+MjEtMDctMDhUMTc6NDA6MzgrMDM6MDCstNxMAAAAAElFTkSuQmCC"></image>
+</svg>
+<a title="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." href="/">SatyaCodes</a>
+</div>
+<button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button>
+</div>
+<nav class="navigation">
+        <ul>
+<li class="navigation__item"><a href="/posts.html">AllPosts</a></li>
+<li class="navigation__item navigation__item--active"><a href="/tutorials.html">Tutorials</a></li>
+<li class="navigation__item"><a href="/java.html">Java</a></li>
+<li class="navigation__item"><a href="/devops.html">DevOps</a></li>
+<li class="navigation__item"><a href="/books.html">Books</a></li>
+<li class="navigation__item"><a href="/interview-questions.html">InterviewQ's</a></li>
+<li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li>
+</ul>
+      </nav>
+</div>
+  </header>
+</div>
+<div class="page__content"><div class="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div></aside></div>
+
+              <div class="col-main cell cell--auto">
+<!-- start custom main top snippet -->
+
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Linux Tutorial</h1></header></div>
+<meta itemprop="headline" content="Linux Tutorial">
+<div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm" href="/archive.html?tag=Linux">Linux</a>
+            </li></ul></div>
+<meta itemprop="author" content="Satya Kaveti">
+    <meta itemprop="keywords" content="Linux">
+<div class="js-article-content">
+<div class="layout--article">
+<!-- start custom article top snippet -->
+
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody">
+<p>Ken Thompson and Dennis Ritchie of Bell Laboratories developed the UNIX
+operating system in 1969. It was later rewritten in C.</p>
+
+<p>A Linux system is divided into three main parts:</p>
+
+<ul>
+  <li>
+    <p><strong>Hardware</strong> - This includes all the hardware, memory, CPU, disks, etc.</p>
+  </li>
+  <li>
+    <p><strong>Kernel</strong> - kernel is the core of the operating system. It manages the
+hardware and tells it how to interact with the system.</p>
+  </li>
+  <li>
+    <p><strong>User Space</strong> - This is where users like yourself will be directly
+interacting with the system.</p>
+  </li>
+</ul>
+
+<h2 id="1-linux-distributions">1. Linux Distributions</h2>
+
+<p>Operating systems like Microsoft combine each bit of codes internally and
+release it as a single package. You have to choose from one of the version they
+offer (Win98, XP, Win 7, Win 8, Win 10 etc.)</p>
+
+<p>Linux is different, <strong>Different parts of Linux (kernel, shell utilities, X
+server, system environment, graphical programs, etc.) are developed by different
+organizations</strong>. But it’s not an easy task to assemble the parts correctly. From
+here on distribution (also called as <strong>distros</strong>) comes into the picture.</p>
+
+<p><strong>Distros</strong> will assemble all these parts for us and give us a compiled
+operating system of Linux to install and use.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Distribution</strong></th>
+      <th><strong>Pros</strong></th>
+      <th><strong>Cons</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>RHEL&amp; CentOS</strong></td>
+      <td>Very stable and reliable; very well supported; used almost everywhere; very traditional layout and management approach</td>
+      <td>Very long release cycle; packages will be older and generally more difficult to bring to current if required</td>
+    </tr>
+    <tr>
+      <td><strong>Fedora</strong></td>
+      <td>Quite cutting-edge – sometimes bleeding-edge; lots of supported software with recent releases</td>
+      <td>Can be less than stable due to fast-paced package and release updates; generally thought to be Red Hat’s testing distribution</td>
+    </tr>
+    <tr>
+      <td><strong>Ubuntu</strong></td>
+      <td>Solid release cycle based on LTS (Long Term Support) and intermediate releases; user friendly, with lots of -helper” commands</td>
+      <td>Tends to move quickly and packages can be less stable than others; has unique conventions that don’t translate to other distributions</td>
+    </tr>
+    <tr>
+      <td><strong>Debian</strong></td>
+      <td>Very stable and reliable; wide variety of support packages; all-volunteer maintainers; supports large variety of architectures</td>
+      <td>Very conservative; release cycle can be slow</td>
+    </tr>
+    <tr>
+      <td><strong>openSUSE</strong></td>
+      <td>Stable, solid distribution; plenty of support packages; has sys admin tools such as YaST</td>
+      <td>Has been stunted by Novell’s acquisition and dealings with Microsoft that assume rights over portions of Linux; has unique sys admin tools such as YaST</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="2-linux-features">2. Linux Features</h2>
+
+<p><strong>Multiuser capability</strong>: Multiple users can access the same system resources
+like memory, hard disk, etc. However, <strong>they have to use different terminals to
+operate.</strong></p>
+
+<p><strong>Multitasking</strong>: More than one task can be performed simultaneously by dividing
+the CPU time intelligently.</p>
+
+<p><strong>Portability:</strong> it supports different types of hardware.</p>
+
+<p><strong>Security:</strong> It provides security in three ways namely <strong>authenticating</strong> (by
+assigning password and login ID), <strong>authorization</strong> (by assigning permission to
+read, write and execute) and encryption (converts file into an unreadable
+format).</p>
+
+<p><strong>Application support</strong>: It has its own software repository from where users can
+download and install many applications.</p>
+
+<p><strong>File System:</strong> Provides hierarchical file system in which files and
+directories are arranged.</p>
+
+<p><strong>Open Source:</strong> Linux code is freely available to all and is a community based
+development project.</p>
+
+<h2 id="3-unix-vs-linux">3. Unix Vs Linux</h2>
+
+<p>Some people think UNIX and Linux are same, but that is not true. Many operating
+systems were developed to be like UNIX but none of them got the popularity as
+Linux.</p>
+
+<p>Linux is the clone of UNIX. It has several features similar to UNIX, still have
+some key differences. Before Linux and Windows, UNIX dominated computer world.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Comparison</strong></th>
+      <th><strong>Linux</strong></th>
+      <th><strong>Unix</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Definition</td>
+      <td>It is an open-source operating system, which is <em>freely available to everyone</em>.</td>
+      <td>It is an operating system, which <em>can be only used by its copyrighters</em>.</td>
+    </tr>
+    <tr>
+      <td>Examples</td>
+      <td>Ubuntu, Redhat, Fedora, etc.</td>
+      <td>IBM AIX, HP-UX and Sun Solaris.</td>
+    </tr>
+    <tr>
+      <td>Users</td>
+      <td>Anyone can use Linux like home user, developer or a student.</td>
+      <td>It was developed mainly for servers, workstations and mainframes.</td>
+    </tr>
+    <tr>
+      <td>Usage</td>
+      <td>Used everywhere from servers, PC, smartphones, tablets to supercomputers.</td>
+      <td>used in servers, workstations&amp; PCs.</td>
+    </tr>
+    <tr>
+      <td>Cost</td>
+      <td>Linux is freely distributed, downloaded.</td>
+      <td>Unix copyright vendors decide different costs for their respective Unix OS’s</td>
+    </tr>
+    <tr>
+      <td>Manufacturer</td>
+      <td>The community of developers from different parts of the world develops Linux kernel. Although the father of Linux, Linus Torvalds oversees things.</td>
+      <td>Unix has three distributions IBM AIX, HP-UX and Sun Solaris. Apple also uses Unix to make OSX operating system.</td>
+    </tr>
+    <tr>
+      <td>Operating system</td>
+      <td>Linux is just the kernel.</td>
+      <td>Unix is a complete package of Operating system.</td>
+    </tr>
+    <tr>
+      <td>Security</td>
+      <td>It provides higher security. Linux has about 60-100 viruses listed till date.</td>
+      <td>Unix is also highly secured. It has about 85-120 viruses listed till date</td>
+    </tr>
+    <tr>
+      <td>Error detection and solution</td>
+      <td>As Linux is open-source, whenever a user post any kind of threat, developers from all over the world start working on it. Hence, it provides faster solution.</td>
+      <td>In Unix, users have to wait for some time for the problem to be resolved.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="4-linux-commands">4. Linux Commands</h2>
+
+<p>A command is an instruction given to our computer by us to do whatever we want.
+In Mac OS, and Linux it is called terminal, whereas, in windows it is called
+command prompt. Commands are always case sensitive.</p>
+
+<p>Commands are executed by typing in at the command line followed by pressing
+enter key</p>
+
+<p>There are two types of shell commands</p>
+
+<ul>
+  <li>
+    <p><strong>Built-in shell commands:</strong> They are part of a shell. Each shell has some
+built in commands.</p>
+  </li>
+  <li>
+    <p><strong>External/Linux commands:</strong> Each external command is a separate executable
+program written in C or other programming languages</p>
+  </li>
+</ul>
+
+<h1 id="2linux-file-system">2.Linux File System</h1>
+
+<p><img src="media/0246a815e50cd29bf616959a2e65d371.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<p>All the directories in the Linux system comes under the root directory which is
+represented by a <strong>forward</strong> slash <strong>(/)</strong></p>
+
+<p><img src="media/d2e48b17a21b55a2714f32326e85fb97.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Command</strong></th>
+      <th><strong>Full Form</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>pwd</strong></td>
+      <td>Present Working Directory</td>
+      <td>Displays the current working location or directory of the user complete path starting with /. It is a built-in command.</td>
+    </tr>
+    <tr>
+      <td><strong>cd</strong></td>
+      <td>Change Directory</td>
+      <td>It is used to change to the directory you want to work from the present directory.</td>
+    </tr>
+    <tr>
+      <td><strong>ls</strong></td>
+      <td>List</td>
+      <td>The ls command is used to show the list of a folder. It will list out all the files in the directed folder.</td>
+    </tr>
+    <tr>
+      <td><strong>mkdir</strong></td>
+      <td>Make Directory</td>
+      <td>With mkdir command, you can create your own directory.</td>
+    </tr>
+    <tr>
+      <td><strong>rmdir</strong></td>
+      <td>Remove Directory</td>
+      <td>The rmdir command is used to remove a directory from your system.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="1-pwd-example">1. pwd Example</h6>
+
+<p>Linux pwd (print working directory) command displays your location currently you
+are working on. It will give the whole path starting from the root ending to the
+directory</p>
+<pre><code class="language-dos">[smlcodes@centori ~]$pwd
+/home/smlcodes
+</code></pre>
+
+<h6 id="2-cd-example">2. cd Example</h6>
+
+<p>The “cd” stands for ‘change directory’ and this command is used to change the
+current directory i.e.; the directory in which the user is currently working.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori ~]<span class="nv">$cd</span> java/                                                    
+<span class="o">[</span>smlcodes@centori java]<span class="nv">$pwd</span>                                                      
+/home/smlcodes/java                                                              
+<span class="o">[</span>smlcodes@centori java]<span class="err">$</span>
+</code></pre></div></div>
+
+<p><strong>cd Options</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>option</strong></th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>cd ~</strong></td>
+      <td>Brings you to your home directory.</td>
+    </tr>
+    <tr>
+      <td><strong>cd -</strong></td>
+      <td>Brings you to your previous directory of the current directory.</td>
+    </tr>
+    <tr>
+      <td><strong>cd ..</strong></td>
+      <td>Brings you to the parent directory of current directory.</td>
+    </tr>
+    <tr>
+      <td><strong>cd /</strong></td>
+      <td>It takes you to the entire system’s root directory.</td>
+    </tr>
+    <tr>
+      <td><strong>cd ../ ../dir1/dir2</strong></td>
+      <td>It will take you two directories up then move to dir1 and then finally to dir2.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="3-ls-example">3. ls Example</h6>
+
+<p>The ls is the list command in Linux. It will show the full list or content of
+your directory.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori ~]<span class="nv">$ls</span>
+java  json  jsp  spring
+</code></pre></div></div>
+
+<p><strong>Linux ls command options</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>ls option</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>ls -a</strong></td>
+      <td>list including the hidden files.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -l</strong></td>
+      <td>It will show the list in a long list format.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -lh</strong></td>
+      <td>This command will show you the file sizes in human readable format. Size of the file is very difficult to read when displayed in terms of byte. The (ls -lh)command will give you the data in terms of Mb, Gb, Tb, etc.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -lhS</strong></td>
+      <td>If you want to display your files in descending order (highest at the top) according to their size, then you can use (ls -lhS) command.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -l - -block-size=[SIZE]</strong></td>
+      <td>It is used to display the files in a specific size format. Here, in [SIZE] you can assign size according to your requirement.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -d */</strong></td>
+      <td>It is used to display only sub directories.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -g or ls -lG</strong></td>
+      <td>With this, you can exclude column of group information and owner.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -n</strong></td>
+      <td>It is used to print group ID and owner ID instead of their names.</td>
+    </tr>
+    <tr>
+      <td><strong>ls –color=[VALUE]</strong></td>
+      <td>This command is used to print list as colored or discolored.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -li</strong></td>
+      <td>This command prints the index number if file in the first column.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -p</strong></td>
+      <td>It is used to identify the directory easily by marking the directories with a slash (/) line sign.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -r</strong></td>
+      <td>It is used to print the list in reverse order.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -R</strong></td>
+      <td>It will display the content of the sub-directories also.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -lX</strong></td>
+      <td>It will group the files with same extensions together in the list.</td>
+    </tr>
+    <tr>
+      <td><strong>ls -lt</strong></td>
+      <td>It will sort the list by displaying recently modified filed at top.</td>
+    </tr>
+    <tr>
+      <td><strong>ls ~</strong></td>
+      <td>It gives the contents of home directory.</td>
+    </tr>
+    <tr>
+      <td><strong>ls ../</strong></td>
+      <td>It give the contents of parent directory.</td>
+    </tr>
+    <tr>
+      <td><strong>ls –version</strong></td>
+      <td>It checks the version of ls command.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="4-mkdir-example">4. mkdir Example</h6>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>To make Single directory one by one
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$mkdir</span> java
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$mkdir</span> jsp
+ <span class="o">[</span>smlcodes@centori ~]<span class="nv">$mkdir</span> json
+
+To make multiple directories
+Syntax: <span class="nb">mkdir</span> &lt;dir1&gt; &lt;dir3&gt;…&lt;dir-n&gt;
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$mkdir</span> j1, j2
+</code></pre></div></div>
+
+<p><strong>mkdir Options</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Options</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>mkdir -p, -parents</strong></td>
+      <td>Add directory including its sub directory.</td>
+    </tr>
+    <tr>
+      <td><strong>mkdir -v, -verbose</strong></td>
+      <td>Print a message for each created directory.</td>
+    </tr>
+    <tr>
+      <td><strong>mkdir -m -mode=MODE</strong></td>
+      <td>Set access privilege.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="5rmdir-example">5.rmdir Example</h6>
+
+<p>Delete a single file</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori ~]<span class="nv">$rmdir</span> json/                                                 
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$ls</span>                                                          
+java  jsp  spring
+</code></pre></div></div>
+
+<p>rmdir –p : delete a directory including its sub-directories</p>
+
+<h1 id="3linux-files">3.Linux Files</h1>
+
+<p>In Linux, everything is consider as a file, not only text files, images but also
+system partitions are also treated as files.</p>
+
+<p>We have following types of files in Linux</p>
+
+<ol>
+  <li>
+    <p><strong>Regular files (-):</strong> It contain programs, executable files and text files.</p>
+  </li>
+  <li>
+    <p><strong>Directory files (d):</strong> It is shown in blue color. It contain list of
+files.</p>
+  </li>
+  <li>
+    <p><strong>Special files</strong></p>
+
+    <ul>
+      <li>
+        <p><strong>Block file (b)</strong></p>
+      </li>
+      <li>
+        <p><strong>Character device file (c)</strong></p>
+      </li>
+      <li>
+        <p><strong>Named pipe file (p)</strong></p>
+      </li>
+      <li>
+        <p><strong>Symbolic link file (l)</strong></p>
+      </li>
+      <li>
+        <p><strong>Socket file (s)</strong></p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>To work with files, we have following commands</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Command</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>file</strong></td>
+      <td>Determines file type.</td>
+    </tr>
+    <tr>
+      <td><strong>touch</strong></td>
+      <td>Used to create a file.</td>
+    </tr>
+    <tr>
+      <td><strong>rm</strong></td>
+      <td>To remove a file.</td>
+    </tr>
+    <tr>
+      <td><strong>cp</strong></td>
+      <td>To copy a file.</td>
+    </tr>
+    <tr>
+      <td><strong>mv</strong></td>
+      <td>To rename or to move a file.</td>
+    </tr>
+    <tr>
+      <td><strong>rename</strong></td>
+      <td>To rename file.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="31--file-command">3.1 -file” command</h3>
+
+<p>The <strong>file</strong> command is used to determine a file’s type. The type printed will
+usually contain one of the words <strong>text</strong> (ASCII), <strong>executable</strong> or <strong>data.</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Syntax: file &lt;filename&gt;
+
+Example
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$file</span> a.txt                                                  
+a.txt: ASCII text
+</code></pre></div></div>
+
+<p>File command tell us the file type with the help of a magic file that contains
+all the patterns to recognize a file type. Path of magic file is
+/usr/share/file/magic. For more information, enter the command ‘man 5 magic’.</p>
+
+<h4 id="linux-file-command-options">Linux File Command Options</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Option</strong></th>
+      <th><strong>Function</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>file *</strong></td>
+      <td>Used to list types of all the files.</td>
+    </tr>
+    <tr>
+      <td><strong>file /directory name*</strong></td>
+      <td>Used to list types of all the files from mentioned directory.</td>
+    </tr>
+    <tr>
+      <td><strong>file [range]*</strong></td>
+      <td>Lists files starting from the alphabet present within the given range.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="examples">Examples</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori files]<span class="nv">$pwd</span>
+/home/smlcodes/files
+
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$file</span> <span class="k">*</span>
+a.txt:       ASCII text
+a.xtx:       ASCII text
+b.txt:       ASCII text
+img2.jpng:   ASCII text
+img.png:     ASCII text
+rarfile.rar: empty
+special:     directory
+zipfile.zip: empty
+
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$file</span> /home/smlcodes/files/special/<span class="k">*</span>
+/home/smlcodes/files/special/s1.txt: empty
+/home/smlcodes/files/special/s2.txt: empty
+
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$file</span> <span class="o">[</span>a-m]<span class="k">*</span>
+a.txt:     ASCII text
+a.xtx:     ASCII text
+b.txt:     ASCII text
+img2.jpng: ASCII text
+img.png:   ASCII text
+</code></pre></div></div>
+
+<h3 id="32--touch-command">3.2 -touch” command</h3>
+
+<p>The <strong>touch</strong> command is the easiest way to <strong>create new, empty files</strong>. It is
+also used to <strong>change the timestamps</strong> (i.e., dates and times of existing files
+and directories).</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Syntax 
+<span class="nb">touch</span> <span class="o">[</span>option] file_name<span class="o">(</span>s<span class="o">)</span>
+
+Example
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$touch</span> 1.txt
+</code></pre></div></div>
+
+<p>To create multiple files just type all the file names with a single touch
+command</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori files]<span class="nv">$touch</span> file1, file2, file3                               
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$ls</span>
+1.txt  a.xtx  file1,  file3      img.png      special
+a.txt  b.txt  file2,  img2.jpng  rarfile.rar  zipfile.zip
+</code></pre></div></div>
+
+<h4 id="touch-options">touch Options</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Option</strong></th>
+      <th><strong>Full Form</strong></th>
+      <th><strong>Function</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>touch -a</strong></td>
+      <td>Access</td>
+      <td>To change <strong>file access and modification time</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>touch -m</strong></td>
+      <td>Modify</td>
+      <td>It is used to change <strong>only modify time of a file</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>touch -r</strong></td>
+      <td>Reference</td>
+      <td>To update time of one file with reference to the other file.</td>
+    </tr>
+    <tr>
+      <td><strong>touch -t</strong></td>
+      <td>With Time</td>
+      <td>To create a file by specifying the time.</td>
+    </tr>
+    <tr>
+      <td><strong>touch -c</strong></td>
+      <td>-</td>
+      <td>It does not create an empty file.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="examples-1">Examples</h4>
+
+<p><strong>Touch –a</strong> , to see the time stamp we use stat <filename> command</filename></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori files]<span class="nv">$stat</span> a.txt 
+  File: ‘a.txt’
+  Size: 105             Blocks: 8          IO Block: 4096   regular file
+Device: 811h/2065d      Inode: 3736598     Links: 1
+Access: <span class="o">(</span>0664/-rw-rw-r--<span class="o">)</span>  Uid: <span class="o">(</span>79458/smlcodes<span class="o">)</span>   Gid: <span class="o">(</span>79459/smlcodes<span class="o">)</span>
+Context: guest_u:object_r:user_home_t:s0
+Access: 2017-08-01 08:05:59.706000000 +0200
+Modify: 2017-08-01 07:57:44.409000000 +0200
+Change: 2017-08-01 07:57:44.414000000 +0200
+ Birth: -
+
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$touch</span> <span class="nt">-a</span> a.txt                                          
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$stat</span> a.txt                                              
+  File: ‘a.txt’
+  Size: 105             Blocks: 8          IO Block: 4096   regular file
+Device: 811h/2065d      Inode: 3736598     Links: 1
+Access: <span class="o">(</span>0664/-rw-rw-r--<span class="o">)</span>  Uid: <span class="o">(</span>79458/smlcodes<span class="o">)</span>   Gid: <span class="o">(</span>79459/smlcodes<span class="o">)</span>
+Context: guest_u:object_r:user_home_t:s0
+Access: 2017-08-01 08:23:36.216000000 +0200
+Modify: 2017-08-01 07:57:44.409000000 +0200
+Change: 2017-08-01 08:23:36.216000000 +0200
+ Birth: -
+<span class="o">[</span>smlcodes@centori files]<span class="err">$</span>
+</code></pre></div></div>
+
+<h3 id="33--rm-remove-command">3.3 -rm” (remove) command</h3>
+
+<p>The <strong>rm</strong> command removes (deletes) files or directories. The command line
+doesn’t have a recycle bin or trash unlike other GUI’s to recover the files</p>
+
+<p><strong>Syntax:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> &lt;filename&gt;
+</code></pre></div></div>
+
+<h4 id="rm-options">rm Options</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Option</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>rm *extension</strong></td>
+      <td>Used to delete files having same extension.</td>
+    </tr>
+    <tr>
+      <td><strong>rm -r or R</strong></td>
+      <td>To delete a directory recursively.</td>
+    </tr>
+    <tr>
+      <td><strong>rm -i</strong></td>
+      <td>Remove a file interactively.</td>
+    </tr>
+    <tr>
+      <td><strong>rm -rf</strong></td>
+      <td>Remove a directory forcefully.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example">Example</h4>
+
+<p><img src="media/663fe5c0d8ac2a4a6d27210f0133709d.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<h3 id="34--cp-copy-command">3.4 -cp” (copy) command</h3>
+
+<p>The <strong>cp</strong> command is used to make copies of files and directories</p>
+
+<p><strong>Syntax</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="o">[</span>OPTION] &lt;SOURCE PATH&gt; &lt;DESTINATION PATH&gt;
+</code></pre></div></div>
+
+<h4 id="cp-options">cp Options</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Option</strong></th>
+      <th><strong>Function</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>cp -r</strong></td>
+      <td>To copy a directory along with its sub dirctories.</td>
+    </tr>
+    <tr>
+      <td><strong>cp file1 file 2 directory name</strong></td>
+      <td>To copy multiple file or directories in a directory.</td>
+    </tr>
+    <tr>
+      <td><strong>cp -backup</strong></td>
+      <td>To backup the existing file before over writing it.</td>
+    </tr>
+    <tr>
+      <td><strong>cp -i</strong></td>
+      <td>Asks for confirmtion.</td>
+    </tr>
+    <tr>
+      <td><strong>cp -l</strong></td>
+      <td>To create hard link file.</td>
+    </tr>
+    <tr>
+      <td><strong>cp -p</strong></td>
+      <td>Preserves attribute of a file.</td>
+    </tr>
+    <tr>
+      <td><strong>cp -u -v</strong></td>
+      <td>To make sure source file is newer then destination file.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="examples-2">Examples</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">##### 1. cp &lt;f1&gt;,</span>
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$pwd</span>                                                     
+/home/smlcodes/files                                                             
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$ls</span>                                                      
+a.txt  b.txt  folder1  folder2
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$cp</span> a.txt 1.txt                                          
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$ls</span>                                                      
+1.txt  a.txt  b.txt  folder1  folder2
+
+
+<span class="c">######## cp -r	To copy a directory along with its sub dirctories.</span>
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$cp</span> <span class="nt">-r</span> files newfolder                                       
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$ls</span>                                                          
+a.txt  files  j1,  j2  java  jsp  newfolder  spring
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$cd</span> newfolder/                                               
+<span class="o">[</span>smlcodes@centori newfolder]<span class="nv">$ls</span>                                                  
+1.txt  a.txt  b.txt  folder1  folder2
+</code></pre></div></div>
+
+<h3 id="35--mv-move-command">3.5 -mv” (move) command</h3>
+
+<p>The mv command is used to move or rename files. <strong>mv</strong> renames
+file <em>SOURCE</em> to <em>DEST</em>, or moves the <em>SOURCE</em> file (or files) to <em>DIRECTORY</em>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">**</span>Syntax:<span class="k">**</span>
+<span class="nb">mv</span> <span class="o">[</span>OPTION]... SOURCE... DIRECTORY
+</code></pre></div></div>
+
+<h4 id="mv-option">mv Option</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Option</strong></th>
+      <th><strong>Function</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>mv -i</strong></td>
+      <td>Asks for permission to over write.</td>
+    </tr>
+    <tr>
+      <td><strong>mv *</strong></td>
+      <td>Move multiple files to a specific directory.</td>
+    </tr>
+    <tr>
+      <td><strong>mv –suffix</strong></td>
+      <td>Used to take backup before over writing.</td>
+    </tr>
+    <tr>
+      <td><strong>mv -u</strong></td>
+      <td>Only move those files that doesn’t exist.(replace with skip)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="examples-3">Examples</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori files]<span class="nv">$ls</span>
+1.txt  a.txt  b.txt  folder1  folder2
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$mv</span> 1.txt 2.txt
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$ls</span>
+2.txt  a.txt  b.txt  folder1  folder2
+
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$mv</span> <span class="nt">-i</span> 2.txt 3.txt
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$ls</span>
+2.txt  a.txt  b.txt  folder1  folder2
+
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$mv</span> <span class="k">*</span> /folder2
+<span class="o">[</span>smlcodes@centori files]<span class="nv">$ls</span>
+2.txt  a.txt  b.txt  folder1  folder2
+</code></pre></div></div>
+
+<h3 id="36--rename-command">3.6 -rename” command</h3>
+
+<p>When you want to rename a large group of files at once then it will be difficult
+to rename it with ‘mv’ command. In these cases, it is adviced to use ‘rename’
+command. It can convert upper case files to lower case files and vice versa and
+cn overwrite files using perl expressions</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Syntax:
+rename <span class="s1">'s/old-name/new-name/'</span>
+</code></pre></div></div>
+
+<h4 id="rename-options">rename options</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Option</strong></th>
+      <th><strong>Function</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>rename -n</strong></td>
+      <td>Check changes before running the command.</td>
+    </tr>
+    <tr>
+      <td><strong>rename -v</strong></td>
+      <td>Print the output.</td>
+    </tr>
+    <tr>
+      <td><strong>rename (a-z)(A-Z)/ (A-Z)(a-z)</strong></td>
+      <td>Convert into upper case/lower case.</td>
+    </tr>
+    <tr>
+      <td><strong>rename -f</strong></td>
+      <td>Forcefully over write existing files.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="37--man-manual-command">3.7 -man” (manual) command</h3>
+
+<p>We can see the <strong>manuals</strong> for a command with the <strong>man</strong> command. On Linux
+and other Unix-like operating systems, man is the interface used to view the
+system’s reference manuals</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Syntax:
+man <span class="o">[</span>option<span class="o">(</span>s<span class="o">)]</span> keyword<span class="o">(</span>s<span class="o">)</span>
+</code></pre></div></div>
+
+<h4 id="man-options">man Options</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Commands</strong></th>
+      <th><strong>Function</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>man -aw</strong></td>
+      <td>List all available sections of a command.</td>
+    </tr>
+    <tr>
+      <td><strong>man -a</strong></td>
+      <td>To view all man pages of a command.</td>
+    </tr>
+    <tr>
+      <td><strong>sman -k (apropos)</strong></td>
+      <td>Shows a list of results in man page containing a keyword match.</td>
+    </tr>
+    <tr>
+      <td><strong>-f, whatis</strong></td>
+      <td>It displays description from manual page if available.</td>
+    </tr>
+    <tr>
+      <td><strong>whereis</strong></td>
+      <td>Used to determine location of a man page</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-1">Example</h4>
+
+<blockquote>
+  <p>man ls</p>
+</blockquote>
+
+<p><img src="media/2ad70486ea378fd2b0fcbc5307fc8807.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<h1 id="4linux-file-content">4.Linux File Content</h1>
+
+<p>There are many commands which help to look at the contents of a file. Below are
+cery frequently used commands on</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Commands</strong></th>
+      <th><strong>Function</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>head</strong></td>
+      <td>It displays the beginning of a file.</td>
+    </tr>
+    <tr>
+      <td><strong>tail</strong></td>
+      <td>It displays the last last part of a file.</td>
+    </tr>
+    <tr>
+      <td><strong>cat</strong></td>
+      <td>This command is versatile and multi worker.</td>
+    </tr>
+    <tr>
+      <td><strong>tac</strong></td>
+      <td>Opposite of cat.</td>
+    </tr>
+    <tr>
+      <td><strong>more</strong></td>
+      <td>Command line diaplays contents in pager form that is either in more format.</td>
+    </tr>
+    <tr>
+      <td><strong>less</strong></td>
+      <td>Command line diaplays contents in pager form that is either in less format.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="1--head-command">1. -head” command</h3>
+
+<p>The ‘head’ command displays the starting content of a file. <strong>By default, it
+displays starting 10 lines of any file.</strong></p>
+
+<p><strong>Syntax:</strong></p>
+
+<p>head <file name=""></file></p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Option</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**head <f1><f2>..<fn>**</fn></f2></f1>
+</td>
+      <td>Displays First 10 lines of multiple files</td>
+    </tr>
+    <tr>
+      <td><strong>head -n</strong></td>
+      <td>Displays specified number of lines..</td>
+    </tr>
+    <tr>
+      <td><strong>head -c</strong></td>
+      <td>Counts the number of bytes of a file.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="examples-4">Examples</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori ~]<span class="nv">$head</span> file.txt                                              
+lin1 : sajjkldlkasjldasjlkdjlasdjasdjlas                                        
+line2:sajkdasjkhdhsakhdaskhdaskj                                                
+lin3 :sajdilsajdjsajldjasdjasdjlkas                                              
+l4:askdhashkdhasdhkasdjkasdhk                                                    
+l5:askdasdjkashdhashdkaskhdasjk                                                  
+l6:sadjkhsajkdhasjkdhashkdhkasjdh                                                
+l7:92378472384789234782379842379472                                              
+l8:asljkdaskduqwioeru23o4u2390erj2                                               
+l9:dsakdasioduo7820983902908302                                                  
+line10:pioaseioqwpieqipweipqwo 
+
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$head</span> <span class="nt">-2</span> file.txt                                            
+lin1 : sajjkldlkasjldasjlkdjlasdjasdjlas                                         
+line2:sajkdasjkhdhsakhdaskhdaskj
+</code></pre></div></div>
+
+<h3 id="2--tail-command">2. -tail” command</h3>
+
+<p>The ‘tail’ command displays the last lines of a file. By default, it will also
+display the last ten lines of a file</p>
+
+<p><strong>Syntax:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tail</span> &lt;file name&gt;
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Option</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**tail <f1><f2>..<fn>**</fn></f2></f1>
+</td>
+      <td>Displays last 10 lines of multiple files</td>
+    </tr>
+    <tr>
+      <td><strong>tail -n</strong></td>
+      <td>Displays specified number of lines from last</td>
+    </tr>
+    <tr>
+      <td><strong>tail -c</strong></td>
+      <td>Counts the number of bytes of a file.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="example-2">Example</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori ~]<span class="nv">$tail</span> file.txt                                               
+line10:pioaseioqwpieqipweipqwo                                                   
+lin11 : sajjkldlkasjldasjlkdjlasdjasdjlas                                        
+line12:sajkdasjkhdhsakhdaskhdaskj                                                
+ lin13 :sajdilsajdjsajldjasdjasdjlkas                                            
+l14:askdhashkdhasdhkasdjkasdhk                                                   
+l15:askdasdjkashdhashdkaskhdasjk                                                
+l16:sadjkhsajkdhasjkdhashkdhkasjdh                                              
+l17:92378472384789234782379842379472                                             
+l18:asljkdaskduqwioeru23o4u2390erj2                                              
+l19:dsakdasioduo7820983902908302                                                 
+li20:sadjkasjkldlasjdlasjljl
+</code></pre></div></div>
+
+<h3 id="3--cat-catenate-command">3. -cat” (catenate) command</h3>
+
+<p>cat stands for “<strong>catenate</strong>.” It reads data from files, and outputs their
+contents. It is the simplest way to display the contents of a file at the
+command line.</p>
+
+<p><strong>cat</strong> is one of the most commonly-used commands in Linux. It can be used to:</p>
+
+<ul>
+  <li>
+    <p><strong>Display text files</strong></p>
+  </li>
+  <li>
+    <p><strong>Copy text files into a new document</strong></p>
+  </li>
+  <li>
+    <p><strong>Append the contents of a text file to the end of another text file,
+combining them</strong></p>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//Display text files
+<span class="nb">cat</span> &lt;fileName&gt;
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$cat</span> java.txt 
+In java we have follwing concepts
+- Java Colelctions
+<span class="nt">-Java</span> Swings
+<span class="nt">-Servlts</span>
+<span class="nt">-JSP</span>
+
+
+//Copy text files into a new document
+<span class="nb">cat </span>sends its output to stdout <span class="o">(</span>standard output<span class="o">)</span>, which is usually the terminal screen. However, you can redirect this output to a file using the shell redirection symbol <span class="s2">"&gt;"</span><span class="nb">.</span>
+<span class="nb">cat </span>mytext.txt <span class="o">&gt;</span> newfile.txt
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$cat</span> java.txt&gt;a.txt                                          
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$cat</span> a.txt
+In java we have follwing concepts
+- Java Colelctions
+<span class="nt">-Java</span> Swings
+<span class="nt">-Servlts</span>
+<span class="nt">-JSP</span>
+
+Similarly, you can catenate several files into your destination file. For instance:
+<span class="nb">cat </span>mytext.txt mytext2.txt <span class="o">&gt;</span> newfile.txt
+
+
+Append the contents of a text file to the end of another text file
+Instead of overwriting another file, you can also append a <span class="nb">source </span>text file to another using the redirection operator <span class="s2">"&gt;&gt;"</span><span class="nb">.</span>
+<span class="nb">cat </span>mytext.txt <span class="o">&gt;&gt;</span> another-text-file.txt
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$cat</span> a.txt&gt;&gt;java.txt
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$cat</span> java.txt 
+In java we have follwing concepts
+- Java Colelctions
+<span class="nt">-Java</span> Swings
+<span class="nt">-Servlts</span>
+<span class="nt">-JSP</span>
+In java we have follwing concepts
+- Java Colelctions
+<span class="nt">-Java</span> Swings
+<span class="nt">-Servlts</span>
+<span class="nt">-JSP</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Option</strong></th>
+      <th><strong>Function</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>cat &gt; [fileName]</strong></td>
+      <td>To create a file.</td>
+    </tr>
+    <tr>
+      <td><strong>cat [oldfile] &gt; [newfile]</strong></td>
+      <td>To copy content from older to new file.</td>
+    </tr>
+    <tr>
+      <td><strong>cat [file1 file2 and so on] &gt; [new file name]</strong></td>
+      <td>To concatenate contents of multiple files into one.</td>
+    </tr>
+    <tr>
+      <td><strong>cat -n/cat -b [fileName]</strong></td>
+      <td>To display line numbers.</td>
+    </tr>
+    <tr>
+      <td><strong>cat -e [fileName]</strong></td>
+      <td>To display $ character at the end of each line.</td>
+    </tr>
+    <tr>
+      <td><strong>cat [fileName] «EOF</strong></td>
+      <td>Used as page end marker.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="4--tac-command">4. -tac” command</h3>
+
+<p>The ‘tac’ command is the reverse of the ‘cat’ command. It is also known as ‘cat’
+backwards. It will display the file content in reverse order.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Syntax:
+<span class="nb">tac</span> &lt;filename&gt;
+
+
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$tac</span> a.txt
+<span class="nt">-JSP</span>
+<span class="nt">-Servlts</span>
+<span class="nt">-Java</span> Swings                                                                     
+- Java Colelctions                                                               
+In java we have follwing concepts
+</code></pre></div></div>
+
+<h3 id="5--more-command">5. -more” command</h3>
+
+<p>‘cat’ command displays the file content. Same way ‘more’ command also displays
+the content of a file. Only difference is that, in case of larger files, ‘cat’
+command output will scroll off your screen while ‘more’ command displays output
+one screenful at a time.</p>
+
+<p>Following keys are used in ‘more’ command to scroll the page:</p>
+
+<ul>
+  <li>
+    <p><strong>Enter</strong> key : To scroll down page line by line.</p>
+  </li>
+  <li>
+    <p><strong>Space</strong> bar : To go to next page.</p>
+  </li>
+  <li>
+    <p>‘<strong>B’</strong> key : To go to the backward page.</p>
+  </li>
+  <li>
+    <p><strong>‘/</strong>’ key : Lets you search the string.
+```bash
+•	‘/’ key	: Lets you search the string.
+Syntax:
+more <filename></filename></p>
+  </li>
+</ul>
+
+<p>[smlcodes@centori ~]$more log.txt 
+CAT(1)                           User Commands                          CAT(1)
+NAME
+       cat - concatenate files and print on the standard output</p>
+
+<p>SYNOPSIS
+       cat [OPTION]… [FILE]…</p>
+
+<p>DESCRIPTION
+       Concatenate FILE(s), or standard input, to standard output.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   -A, --show-all
+          equivalent to -vET
+   -b, --number-nonblank
+          number nonempty output lines, overrides -n
+
+   -e     equivalent to -vE
+
+   -E, --show-ends
+          display $ at end of each line
+
+   -n, --number
+          number all output lines
+
+   -s, --squeeze-blank                                                       
+          suppress repeated empty output lines                               
+
+   -t     equivalent to -vT --More--(32%) ```
+</code></pre></div></div>
+
+<h3 id="6--less-command">6. -less” command</h3>
+
+<p>The ‘less’ command is same as ‘more’ command but include some more features.It
+automatically adjust with the width and height of the teminal window, while
+‘more’ command cuts the content as the width of the terminal window get shorter.</p>
+
+<p>Syntax:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>less &lt;filename&gt;
+</code></pre></div></div>
+
+<h3 id="7histrory">7.”histrory”</h3>
+
+<p>It will gives the history of previously executed commands</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>satya@centori <span class="se">\~</span><span class="o">]</span><span class="nv">$history</span>
+
+1 <span class="nb">dir
+
+</span>2 <span class="nb">pwd
+
+</span>3 <span class="nb">pwd
+
+</span>4 <span class="nb">ls
+
+</span>5 <span class="nb">mkdir </span>java
+
+6 <span class="nb">mkdir </span>jsp
+
+7 <span class="nb">mkdir </span>spring
+
+8 <span class="nb">mkdir </span>json
+
+
+</code></pre></div></div>
+
+<p><strong>clear</strong> will clears the screen</p>
+
+<h1 id="5-linux-pipes--filters">5. Linux Pipes &amp; Filters</h1>
+
+<p>Linux Filter commands accept input data from <strong>stdin</strong> (standard input) and
+produce output on <strong>stdout</strong> (standard output). It transforms plain-text data
+into a meaningful way and can be used with pipes to perform higher operations.</p>
+
+<p>These filters are very small programs that are designed for a specific function
+which can be used as building blocks.</p>
+
+<h6 id="linux-filter-commands">Linux Filter Commands</h6>
+
+<ol>
+  <li>
+    <p><strong>cat</strong></p>
+  </li>
+  <li>
+    <p><strong>cut</strong></p>
+  </li>
+  <li>
+    <p><strong>grep</strong></p>
+  </li>
+  <li>
+    <p><strong>comm</strong></p>
+  </li>
+  <li>
+    <p><strong>tee</strong></p>
+  </li>
+  <li>
+    <p><strong>tr</strong></p>
+  </li>
+  <li>
+    <p><strong>uniq</strong></p>
+  </li>
+  <li>
+    <p><strong>wc</strong></p>
+  </li>
+  <li>
+    <p><strong>od</strong></p>
+  </li>
+  <li>
+    <p><strong>sort</strong></p>
+  </li>
+  <li>
+    <p><strong>gzip</strong></p>
+  </li>
+</ol>
+
+<h3 id="1-cat-inside-pipes">1.-cat” inside Pipes</h3>
+
+<p>When we use cat command inside pipes, it moves the stdin to stout.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Syntax:
+<span class="nb">cat</span> &lt;fileName&gt; | <span class="nb">cat </span>or <span class="nb">tac</span> |  <span class="nb">cat </span>or <span class="nb">tac</span> |. <span class="nb">.</span> <span class="nb">.</span>
+
+Example
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$cat</span> a.txt                                                   
+In java we have follwing concepts                                                
+- Java Colelctions                                                               
+<span class="nt">-Java</span> Swings                                                                     
+<span class="nt">-Servlts</span>                                                                         
+<span class="nt">-JSP</span>               
+
+<span class="c">##############Reverseing cat ##################</span>
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$cat</span> a.txt|tac                                               
+<span class="nt">-JSP</span>                                                                             
+<span class="nt">-Servlts</span>                                                                         
+<span class="nt">-Java</span> Swings                                                                     
+- Java Colelctions                                     
+ In java we have follwing concepts                                                
+
+<span class="c">##############Printing ##################</span>
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$cat</span> a.txt|tac|cat                           
+<span class="nt">-JSP</span>                                                                             
+<span class="nt">-Servlts</span>                                                                         
+<span class="nt">-Java</span> Swings                                                                     
+- Java Colelctions                                                               
+In java we have follwing concepts                         
+
+<span class="c">##############Reverseing cat ##################                       </span>
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$cat</span> a.txt|tac|cat|tac                                       
+In java we have follwing concepts                                                
+- Java Colelctions                                                               
+<span class="nt">-Java</span> Swings                                                                     
+<span class="nt">-Servlts</span>                                                                         
+<span class="nt">-JSP</span>                                                                             
+<span class="o">[</span>smlcodes@centori ~]<span class="err">$</span>
+</code></pre></div></div>
+
+<h3 id="2-cut-inside-pipes">2.-cut” inside Pipes</h3>
+
+<p>‘cut’ command is used for selecting a specific column of a file.The coulmns can
+be separated by a demiter like ‘ ’, ‘-’ , ‘,’(space, dash, comma) etc.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Syntax: <span class="o">(</span>here column number staers from 1,2,3…<span class="o">)</span>
+<span class="nb">cut</span> <span class="nt">-d</span><span class="o">(</span>delimiter<span class="o">)</span> <span class="nt">-f</span><span class="o">(</span>columnNumber<span class="o">)</span> &lt;fileName&gt;
+
+<span class="nb">cut</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f2</span> cri.txt
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$cat</span> cri.txt 
+sachin-350
+Gunguly-301
+Yuvraj-267
+Dravid-321
+Dhoni-284
+</code></pre></div></div>
+
+<h3 id="3grep-command">3.”grep” command</h3>
+
+<p><strong>grep</strong>, which stands for <strong>“global regular expression print</strong>,” processes text
+line by line and prints any lines which match a specified pattern.</p>
+
+<p><strong>grep syntax</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="o">[</span>OPTIONS] PATTERN <span class="o">[</span>FILE...]
+</code></pre></div></div>
+
+<h4 id="example-check-3-in-critxt-file">Example: Check 3 in cri.txt file</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep </span>3 cri.txt
+</code></pre></div></div>
+<p><img src="media/90c549cf2f5df3ffd2a616bb2e498138.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<p>You can give above example in a single command by using pipe as below</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$cat</span> cri.txt |grep 3 cri.txt
+</code></pre></div></div>
+
+<h4 id="grep-options">grep Options</h4>
+
+<p><strong>grep -v</strong>: The ‘grep -v’ command displays lines not matching to the specified
+word.</p>
+
+<p>[satya@centori ~]$cat cri.txt |grep -v 3 cri.txt</p>
+
+<p>Yuvraj-267</p>
+
+<p>Dhoni-284</p>
+
+<p><strong>grep -i</strong>: command filters output in a case-insensitive way.</p>
+
+<p><img src="media/d27169f09bfd5e31b2bbf9804eee8498.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<h3 id="4--comm-command">4. -comm” command</h3>
+<p>The ‘comm’ command compares two files or streams. By default, ‘comm’ will always
+display three columns. Both the files has to be in sorted order for ‘comm’
+command to be executed.</p>
+
+<ol>
+  <li>
+    <p>First column indicates non-matching items of first file</p>
+  </li>
+  <li>
+    <p>second column indicates non-matching items of second file</p>
+  </li>
+  <li>
+    <p>third column indicates matching items of both the files.</p>
+
+    <p><img src="media/ba253579fdd7a4213d260d5f16cca502.png" alt=""></p>
+  </li>
+</ol>
+
+<h3 id="5tee-command">5.”tee” Command</h3>
+<p>The ‘tee’ command is similar to ‘cat’ command with only one difference. It puts
+stdin on stdout and also put them into a file.</p>
+
+<p>Syntax:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>or <span class="nb">tac</span> &lt;fileName&gt; | <span class="nb">tee</span> &lt;newFile&gt; |  <span class="nb">cat </span>or <span class="nb">tac</span> |.....
+</code></pre></div></div>
+<p><img src="media/253d49f81b09e0259f75adc760565a64.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<p>Here tee.txt is newly created file.</p>
+
+<h3 id="6--tr-command">6. -tr” command</h3>
+<p>The command ‘tr’ stands for <strong>‘translate’</strong>. It is used to translate, like from
+lowercase to uppercase and vice versa or new lines into spaces</p>
+
+<p><strong>Syntax</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">command</span> | <span class="nb">tr</span> &lt;<span class="s1">'old'</span><span class="o">&gt;</span> &lt;<span class="s1">'new'</span><span class="o">&gt;</span>
+</code></pre></div></div>
+<p><img src="media/a5e095eceb8d779992423f1534e212bb.png" alt=""></p>
+
+<h3 id="7uniq-command">7.”uniq” command</h3>
+<p>With the help of uniq command you can form a sorted list in which every word
+will occur only once</p>
+
+<p><strong>Syntax:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">command</span> &lt;fileName&gt; | <span class="nb">uniq</span>
+</code></pre></div></div>
+<p><img src="media/f2787962fe2407acc2e03aa834d2bd27.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<p>uniq –c : command will counts the number of occurences of a word.
+<img src="media/816b2d1b2b585cb7c912b297cb10f088.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<h3 id="8--wc-word-count-command">8. -wc” (Word Count) Command</h3>
+
+<p><strong>wc</strong>, or “word count,” prints a count of <strong>newlines</strong>, <strong>words</strong>,
+and <strong>bytes</strong> for each input file.</p>
+
+<ul>
+  <li>
+    <p>Wc –l : for line counts</p>
+  </li>
+  <li>
+    <p>Wc –w : for word counts</p>
+  </li>
+  <li>
+    <p>Wc –c : for character counts</p>
+  </li>
+</ul>
+
+<p><img src="media/4372e662bf5606b56ad0b592be044f09.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<h3 id="9--od-octal-dump-command">9. -od” (Octal dump) command</h3>
+
+<p>The ‘od’ term stands for octal dump. It displays content of a file in different
+human-readable formats like hexadecimal, octal and ASCII characters.</p>
+
+<p><strong>Syntax:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">od</span> <span class="nt">-b</span> &lt;fileName&gt; <span class="o">(</span>display files <span class="k">in </span>octal format<span class="o">)</span>
+<span class="nb">od</span> <span class="nt">-t</span> x1 &lt;fileName&gt; <span class="o">(</span>display files <span class="k">in </span>hexadecimal bytes format<span class="o">)</span>
+<span class="nb">od</span> <span class="nt">-c</span> &lt;fileName&gt; <span class="o">(</span>display files <span class="k">in </span>ASCII <span class="o">(</span>backslashed<span class="o">)</span> character format<span class="o">)</span>
+</code></pre></div></div>
+
+<p><img src="media/dd93c6febe544496bd41466abd0bf826.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<h3 id="10--sort-command">10. -sort” command</h3>
+
+<p>The ‘sort’ command sorts the file content in an alphabetical order.</p>
+
+<p>**sort -k<columnnumber> <file>:** column number is used to sort a specific
+column</file></columnnumber></p>
+
+<p>**sort –n -k<columnnumber>:** Numarical Sorting with column</columnnumber></p>
+
+<p><img src="media/4b3ea87378d3d71e6727d15d411b58ce.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<h3 id="11--gzip-command">11. -gzip” command</h3>
+
+<p>Gzip (GNU zip) is a compressing tool, which is used to truncate the file size.
+By default original file will be replaced by the compressed file ending with
+extension (.gz).</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">gzip</span> &lt;file1&gt; &lt;file2&gt; &lt;file3&gt;. <span class="nb">.</span> <span class="nb">.</span> 
+<span class="nb">gunzip</span> &lt;file1&gt; &lt;file2&gt; &lt;file3&gt;. <span class="nb">.</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<h1 id="6linux-io-redirection">6.Linux I/O Redirection</h1>
+
+<p>Sometimes we need output of a command result as input for another command.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ex:
+<span class="nb">cat </span>cri.txt |grep <span class="nt">-v</span> 3 cri.txt
+</code></pre></div></div>
+
+<p>This type of operations are known as I/O redirection.We can perform I/O redirect
+to a <strong>File</strong> or a <strong>Program (to another command)</strong></p>
+
+<h3 id="io-redirect-to-a-file">I/O redirect to a File</h3>
+
+<p>We can use <strong>Single bracket ‘&gt;</strong>‘(overwrite) or <strong>double bracket ‘»‘</strong>
+(append) can be used to redirect standard output</p>
+
+<p><strong>Ovewrite (&lt;):</strong><br>
+Commands with a single bracket <strong>’&gt;’ overwrite</strong> existing file content.</p>
+
+<ul>
+  <li>
+    <p><strong>&gt;</strong> : standard output</p>
+  </li>
+  <li>
+    <p><strong>&lt;</strong> : standard input</p>
+  </li>
+  <li>
+    <p><strong>2&gt;</strong> : standard error</p>
+  </li>
+</ul>
+
+<p>Note: Writing <strong>‘1&gt;’</strong> or <strong>’&gt;’ **and **‘0&lt;’</strong> or <strong>’&lt;’</strong> is same thing. But
+for stderr you have to write <strong>‘2&gt;’</strong>.</p>
+
+<p><img src="media/f06940ae165dd3b88036c10b1bec9e91.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<p><strong>Append(«)</strong><br>
+Commands with a double bracket **’»’ do not overwrite **the existing file
+content.</p>
+
+<ul>
+  <li>
+    <p><strong>»</strong> - standard output</p>
+  </li>
+  <li>
+    <p><strong>«</strong> - standard input</p>
+  </li>
+  <li>
+    <p><strong>2»</strong>- standard error</p>
+  </li>
+</ul>
+
+<p><img src="media/fdcc12ed6d82b5d3d84e16c5ac4a99c9.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<h6 id="io-redirect-to-a-program">I/O Redirect to a Program</h6>
+<p><strong>Pipe ’|’</strong> redirects a stream from one <strong>program</strong> to another. When pipe is
+used to send standard output of one program to another program, first program’s
+data will not be displayed on the terminal, only the second program’s data will
+be displayed</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> <span class="k">*</span>.txt | <span class="nb">cat</span> <span class="o">&gt;</span> txtFile
+</code></pre></div></div>
+
+<h3 id="io-redirection-types">I/O Redirection Types</h3>
+
+<p>The bash shell has three standard streams in I/O redirection:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Standard input (stdin) :</code>  The stdin stream is numbered as stdin (0). The
+    bash shell takes input from stdin. By default, keyboard is used as input.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Standard output (stdout) :</code> The stdout stream is numbered as stdout (1).
+The bash shell sends output to stdout. Output goes to display.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Standard error (stderr) :</code> The stderr stream is numbered as stderr (2).
+The bash shell sends error message to stderr. Error message goes to display</p>
+  </li>
+</ul>
+
+<h4 id="1-input-redirection">1. Input Redirection</h4>
+
+<p>In input redirection, a file is made input to the command with the help of ‘&lt;’
+sign.</p>
+
+<p>**Syntax: To give <file> as input to comamnd**</file></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> &lt; &lt;filename&gt;
+</code></pre></div></div>
+<p>Here we are giving 123.txt file as input to cat comamnd</p>
+
+<p><img src="media/3740971e8f9d289b2efe3304aaa5c61b.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<h4 id="2-output-redirection">2. Output Redirection</h4>
+<p>Output redirection is used to put output of one command into a file or into
+another command.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>Hello Smlcodes. <span class="o">&gt;</span> sml.txt
+</code></pre></div></div>
+
+<h4 id="3-error-redirection">3. Error Redirection</h4>
+<p>Command ‘2&gt;’ redirects the error of an output.It helps us you to keep our
+display less messy by redirecting error messages.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zcho hyii 2&gt; /dev/null
+</code></pre></div></div>
+
+<h1 id="7linux-unix-tools">7.Linux UNIX Tools</h1>
+
+<p>Basic UNIX tools are used to do basic work like find a file, locate a file, set
+the date and time, display calender, etc. There are a number of basic UNIX
+tools. Some of them are listed below</p>
+
+<h6 id="1find-command">1.”find” command</h6>
+
+<p>The find command help us to find a particular file wihtin a directory and also
+used to find a list of files having same pattern name.</p>
+
+<p>we may use following symbols in find command</p>
+
+<ul>
+  <li>
+    <p><strong>(.)</strong> : For current directory name</p>
+  </li>
+  <li>
+    <p><strong>(/)</strong> : For root</p>
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span>  	: Finding by Name
+find <span class="nb">.</span> –type	: Find by <span class="nb">type
+</span>find <span class="nb">.</span> –newer	: Finding Newer Files
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Example:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori ~]<span class="nv">$ls</span>                                                          
+123.txt  abc.txt  c.zip  javanotes  javaprogs  tik.jpg  <span class="nb">users  </span>xxx.zip
+
+<span class="c">####1: all the files ending with '.txt' by name</span>
+ <span class="o">[</span>smlcodes@centori ~]<span class="nv">$find</span> <span class="nb">.</span> <span class="nt">-name</span> <span class="s2">"*.txt"</span>                                        
+./.magic_string.txt                                                              
+./123.txt                                                                        
+./abc.txt    
+
+<span class="c">###2 : displays all the directories start with 'java’.                                                                 </span>
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$find</span> <span class="nb">.</span> <span class="nt">-type</span> d <span class="nt">-name</span> <span class="s2">"java*"</span>                                
+./javaprogs                                                                      
+./javanotes                                                                      
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$ </span>                                                           
+
+<span class="c">########### Here Options f: regular file</span>
+d: directory,	l:symbolic links, c: character devices, b: block devices
+</code></pre></div></div>
+
+<h6 id="2locate-command">2.”locate” command</h6>
+
+<p>The <strong>locate</strong> command finds files by name. <strong>locate</strong> reads one or
+more databases prepared by <strong>updatedb</strong> and writes file names matching at least
+one of the PATTERNs to standard output.</p>
+
+<p>locate command is a background process and searches the file in database
+whereas, find command searches in filesystem</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>locate syntax
+locate <span class="o">[</span>OPTION]... PATTERN...
+
+Example:
+locate sys.conf
+</code></pre></div></div>
+
+<h6 id="3date-command">3.”date” command</h6>
+
+<p>The <strong>date</strong> command is used to print out, or change the value of, the system’s
+time and date information.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">date </span>syntax:
+<span class="nb">date</span> <span class="o">[</span>OPTION]... <span class="o">[</span>+FORMAT]
+
+Example:
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$date</span>                                                    
+Wed Aug  2 12:40:01 CEST 2017                                                    
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$date</span> +<span class="s1">'%A %d-%m-%y'</span>                                     
+Wednesday 02-08-17
+</code></pre></div></div>
+
+<h6 id="4--cal-command">4. -cal” command</h6>
+
+<p>cal displays current month’s calender with current day highlighted. We can also
+display past or future year’s month with cal command.</p>
+
+<p>Syntax:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cal <span class="o">[</span>options] <span class="o">[[[</span>day] month] year]
+</code></pre></div></div>
+<p><img src="media/b63bd1b8c03984084fae841df1831db6.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<h6 id="5-sleep-command">5.-sleep” command</h6>
+<p>sleep command let the terminal wait by the specified amount of time. By default
+it takes time in seconds</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sleep </span>syntax
+<span class="nb">sleep </span>NUMBER[SUFFIX]
+</code></pre></div></div>
+
+<p>SUFFIX may be “<strong>s</strong>” for seconds (the default), “<strong>m</strong>” for minutes, “<strong>h</strong>”
+for hours, or “<strong>d</strong>” for days.</p>
+
+<p><img src="media/4e759827962b6a73a0723b2e15bc52e4.png" alt=""></p>
+
+<p>In above screen, terminal will sleep for 15 seconds</p>
+
+<h6 id="6time-command">6.”time” command</h6>
+
+<p>Report how long it took for a command to execute.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">time</span> <span class="o">[</span><span class="nt">-p</span><span class="o">]</span> <span class="nb">command</span> <span class="o">[</span>arguments...]
+</code></pre></div></div>
+
+<p>Example: Check how much time it will take to excecute time command</p>
+
+<p><img src="media/cf72fa1569c2ef555b898ca94fe90e45.png" alt=""></p>
+
+<h6 id="7df-command">7.”df” command</h6>
+
+<p>The ‘df’ command tells about the disk space used in the file system. It defines
+the number of blocks used, number of blocks available and the directory where
+file system is mounte</p>
+
+<p><img src="media/5593eb9d9bcb5b8e8802a31cb5a1584f.png" alt=""></p>
+
+<h1 id="8linux-regex">8.Linux RegEx</h1>
+
+<p>Regular expression(regex) is a pattern for a matching string that follows some
+pattern.Regex can be used in a variety of programs like grep, sed, vi, bash,
+rename and many more</p>
+
+<h3 id="metacharacters">Metacharacters</h3>
+
+<p>A regular expression may have one or several repeating metacharacters.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Metacharacter</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>.</strong></td>
+      <td>Replaces any character.</td>
+    </tr>
+    <tr>
+      <td><strong>^</strong></td>
+      <td>Matches start of string and represents characters not in the string.</td>
+    </tr>
+    <tr>
+      <td><strong>$</strong></td>
+      <td>Matches end of string.</td>
+    </tr>
+    <tr>
+      <td>*****</td>
+      <td>Matches zero or more times the preceding character.</td>
+    </tr>
+    <tr>
+      <td><em>**</em></td>
+      <td>Represents the group of characters.</td>
+    </tr>
+    <tr>
+      <td><strong>()</strong></td>
+      <td>Groups regular expressions.</td>
+    </tr>
+    <tr>
+      <td><strong>?</strong></td>
+      <td>Matches exactly one character.</td>
+    </tr>
+    <tr>
+      <td><strong>+</strong></td>
+      <td>Matches one or more times the preceding character.</td>
+    </tr>
+    <tr>
+      <td><strong>{N}</strong></td>
+      <td>Preceding character is matched exactly N times.</td>
+    </tr>
+    <tr>
+      <td><strong>{N,}</strong></td>
+      <td>Preceding character is matched exactly N times or more.</td>
+    </tr>
+    <tr>
+      <td><strong>{N,M}</strong></td>
+      <td>Preceding character is matched exactly N times, but not more than N times.</td>
+    </tr>
+    <tr>
+      <td><strong>-</strong></td>
+      <td>Represents the range.</td>
+    </tr>
+    <tr>
+      <td><strong>b</strong></td>
+      <td>Matches empty string at the edge of a word.</td>
+    </tr>
+    <tr>
+      <td><strong>B</strong></td>
+      <td>Matches empty string if it is not at the edge of a word.</td>
+    </tr>
+    <tr>
+      <td><strong>&lt;</strong></td>
+      <td>Matches empty string at the beginning of a word.</td>
+    </tr>
+    <tr>
+      <td><strong>&gt;</strong></td>
+      <td>Matches empty string at the end of a word.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="regex-versions">Regex Versions</h6>
+
+<p>There are three versions of regular expressions syntax:</p>
+
+<ol>
+  <li>
+    <p><strong>BRE : Basic Regular Expressions</strong></p>
+  </li>
+  <li>
+    <p><strong>ERE : Extended Regular Expressions</strong></p>
+  </li>
+  <li>
+    <p><strong>PRCE: Perl Regular Expressions</strong></p>
+  </li>
+</ol>
+
+<p>Depending on tool or programs, one or more of these versions can be used.</p>
+
+<h3 id="examples-5">Examples</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori ~]<span class="nv">$cat</span> ex.txt                                                  
+my name is satya kaveti                                                          
+come,coming,came                                                                 
+going,go, gone                                                                   
+sleeping,sleep,slept 
+
+1. Beginning of a line with ‘^a’
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$grep</span> ^c ex.txt                                              
+come,coming,came
+
+2. End of a line with ‘e<span class="nv">$’</span>
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$grep</span> e<span class="nv">$ </span>ex.txt                                              
+come,coming,came
+going,go, gone
+
+3. Matching any single character with ‘.a’
+<span class="o">[</span>smlcodes@centori ~]<span class="nv">$grep</span> .a ex.txt                                              
+my name is satya kaveti
+come,coming,came
+</code></pre></div></div>
+
+<p><strong>4. Bracket notation with []</strong></p>
+
+<ul>
+  <li>
+    <p>This can be a little tricky, brackets allow us to specify characters found
+within the bracket.<br>
+d[iou]g<br>
+would match: dig, dog, dug</p>
+  </li>
+  <li>
+    <p>The previous anchor tag \^ when used in a bracket means anything except the
+characters within the bracket.<br>
+d[\^i]g<br>
+would match: dog and dug but not dig</p>
+  </li>
+  <li>
+    <p>Brackets can also use ranges to increase the amount of characters you want
+to use.</p>
+
+    <p>d[a-c]g<br>
+will match patterns like dag, dbg, and dcg</p>
+  </li>
+  <li>
+    <p>Be careful though as brackets are case sensitive:<br>
+d[A-C]g<br>
+will match dAg, dBg and dCg but not dag, dbg and dcg</p>
+  </li>
+</ul>
+
+<h1 id="9linux-users">9.Linux Users</h1>
+
+<h3 id="1user-information-commands-run-for-output">1.User information commands (Run for output)</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. <span class="nb">whoami</span> : It tells you about the system<span class="s1">'s username.
+[smlcodes@centori ~]$whoami                                                      
+smlcodes  
+
+2.who : command gives the users currtely logged users information
+[smlcodes@centori ~]$who                                                      
+smlcodes  
+
+3. who am i : This command displays the information about the current user only.
+[smlcodes@centori ~]$who am i                                                   
+smlcodes  
+
+4. ‘w’ : This command tells about the users who are logged in and what are they doing.
+[smlcodes@centori ~]$w                                                           
+ 15:06:07 up 90 days, 20:22,  0 users,  load average: 0.01, 0.05, 0.05           
+USER     TTY      FROM 
+
+5. id :  command tells about your user id, primary group id, and a list of groups that belongs to you.
+[smlcodes@centori ~]$id                                                          
+uid=79458(smlcodes) gid=79459(smlcodes) groups=79459(smlcodes) context=guest_u:gu	est_r:guest_t:s0
+</span></code></pre></div></div>
+
+<h3 id="2--su-switch-user-command">2. -su” (Switch User) Command</h3>
+
+<p>Su used to Change the current user ID to that of the superuser, or another user.</p>
+
+<p><strong>su syntax</strong></p>
+
+<p>su [options] [username]</p>
+
+<p><strong>Example:</strong></p>
+
+<p>su – hope</p>
+
+<p>Switch the current user ID to that of user <strong>hope</strong>, and set the environment
+to <strong>hope</strong>’s login environment.</p>
+
+<p>The su command, which is short for substitute user or switch user, is used to
+become another user during a login session.</p>
+
+<ul>
+  <li>
+    <p>The root user can become any existing user without knowing that user’s
+password. Otherwise, password is needed</p>
+  </li>
+  <li>
+    <p>If any user name is not mentioned then by default, it will assume root as
+the target user</p>
+  </li>
+</ul>
+
+<h3 id="3-user-management-commands">3. User management commands</h3>
+
+<p>User management includes everything from creating a user to deleting a user on
+your system. The root user is the superuser and have all the powers for creating
+a user, deleting a user and can even login with the other user’s account. The
+root user always has userid 0.</p>
+
+<p>The local user database in Linux is <strong>/etc/passwd</strong> directory.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori ~]<span class="nv">$tail</span> <span class="nt">-5</span> /etc/passwd                                          
+monoidlamba:x:80111:80112::/home/monoidlamba:                                     
+bsanchezmu:x:80112:80113::/home/bsanchezmu:                                       
+Amitbhawsar:x:80113:80114::/home/Amitbhawsar:                                     
+jayanthi123:x:80114:80115::/home/jayanthi123:                                     
+moni31:x:80115:80116::/home/moni31:
+</code></pre></div></div>
+
+<h4 id="1useradd-adding-user">1.useradd (adding user)</h4>
+
+<p>With useradd commands you can add a user.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Syntax:
+useradd <span class="nt">-m</span> <span class="nt">-d</span> /home/&lt;userName&gt; <span class="nt">-c</span> <span class="s2">"&lt;userName&gt;"</span> &lt;userName&gt;  
+
+Example:
+useradd <span class="nt">-m</span> <span class="nt">-d</span> /home/xyz <span class="nt">-c</span> <span class="s2">"xyz"</span> xyz
+</code></pre></div></div>
+
+<h4 id="2-usermod-modifying-user">2. usermod (modifying user)</h4>
+
+<p>The command usermod is used to modify the properties of an existing user.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Syntax:
+usermod <span class="nt">-c</span> &lt;<span class="s1">'newName'</span><span class="o">&gt;</span> &lt;oldName&gt;  
+
+
+Example:
+usermod <span class="nt">-c</span> <span class="s1">'jhonny'</span> john
+</code></pre></div></div>
+
+<h4 id="3-userdel-deleting-user">3. userdel (Deleting user)</h4>
+
+<p>The userdel -r command deletes a user account and all associated files.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Syntax:
+userdel <span class="nt">-r</span> &lt;userName&gt;  
+
+
+Example:
+userdel <span class="nt">-r</span> john
+</code></pre></div></div>
+
+<h4 id="4-passwd">4. passwd</h4>
+
+<p>The <strong>passwd</strong> command is used to change the password of a user account. A
+normal user can run <strong>passwd</strong> to change their own password, and a system
+administrator (the superuser) can use <strong>passwd</strong> to change another user’s
+password, or define how that account’s password can be used or changed.</p>
+
+<p><strong>passwd syntax</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span>   passwd <span class="o">[</span> OPTION <span class="o">]</span> <span class="o">[</span><span class="k">*</span>USER<span class="k">*</span><span class="o">]</span>
+</code></pre></div></div>
+
+<p><strong>Example: Change Your Password</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span>   passwd
+</code></pre></div></div>
+
+<p>Running <strong>passwd</strong> with no options will change the password of the account
+running the command. You will first be prompted to enter the account’s current
+password:</p>
+
+<h3 id="4-group-management-commands">4. Group management commands</h3>
+
+<p>Users can be listed in different groups. Group allow us to set permission on the
+group level instead of setting the permission on individual level.</p>
+
+<p><strong>Group File</strong>:The /etc/group file defines the group membership. A user can be a
+member of more than one group.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori ~]<span class="nv">$tail</span> <span class="nt">-5</span> /etc/group                                           
+monoidlamba:x:80112:
+bsanchezmu:x:80113:
+Amitbhawsar:x:80114:
+jayanthi123:x:80115:
+moni31:x:80116:
+</code></pre></div></div>
+
+<h4 id="1-groupadd">1. groupadd</h4>
+
+<p>The groupadd command creates a new group account using the values specified on
+the command line plus the default values from the system.</p>
+
+<p><strong>groupadd syntax</strong></p>
+
+<blockquote>
+  <p>groupadd [options] <group_name></group_name></p>
+</blockquote>
+
+<p><strong>Example:</strong> would create a new group called <strong>“homegroup”</strong>.</p>
+
+<blockquote>
+  <p>groupadd homegroup</p>
+</blockquote>
+
+<h4 id="2-groupmod">2. groupmod</h4>
+
+<p>The <strong>groupmod</strong> command modifies the definition of the specified GROUP</p>
+
+<p><strong>groupmod syntax</strong></p>
+
+<blockquote>
+  <p>groupmod [<em>options</em>] <em>GROUP</em></p>
+</blockquote>
+
+<p>example : change the group “<strong>homegroup</strong>” to “<strong>familygroup</strong>”</p>
+
+<blockquote>
+  <p>groupmod -n familygroup homegroup</p>
+</blockquote>
+
+<h4 id="3gruopdel">3.gruopdel</h4>
+
+<p>The command groupdel will delete a group permanently from the system.</p>
+
+<p><strong>Syntax:</strong></p>
+
+<blockquote>
+  <p>groupdel **<group>**</group></p>
+</blockquote>
+
+<p><strong>Example:</strong></p>
+
+<blockquote>
+  <p>groupdel <strong>familygroup</strong></p>
+</blockquote>
+
+<h1 id="10linux-permissions">10.Linux Permissions</h1>
+
+<p>Every Linux system have three types of owners</p>
+
+<ol>
+  <li>
+    <p><strong>User:</strong> A user is the one who created the file. By default, whosoever,
+creates the file becomes the owner of the file. A user can create, delete,
+or modify the file.</p>
+  </li>
+  <li>
+    <p><strong>Group:</strong> A group can contain multiple users. All the users belonging to a
+group have same access permission for a file.</p>
+  </li>
+  <li>
+    <p><strong>Other:</strong> Any one who has access to the file other
+than <strong>user</strong> and <strong>group</strong> comes in the category of** other**. Other has
+neither created the file nor is a group member.</p>
+  </li>
+</ol>
+
+<p>Users and groups can be locally managed in <strong>/etc/psswd</strong> or <strong>/etc/group.</strong></p>
+
+<p>To check perimissions of files , use ls –lh command</p>
+
+<p><img src="media/89b24f1dc61fae0cd0944e2e78fb3064.png" alt=""></p>
+
+<p>In above output we have r,w,x. following table explains what they are</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>permission</strong></th>
+      <th><strong>Value</strong></th>
+      <th>**on a file **</th>
+      <th>**on a directory **</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>r (read)</strong></td>
+      <td><strong>4</strong></td>
+      <td>read file content (cat)</td>
+      <td>read directory content (ls)</td>
+    </tr>
+    <tr>
+      <td><strong>w (write)</strong></td>
+      <td><strong>2</strong></td>
+      <td>change file content (vi)</td>
+      <td>create file in directory (touch)</td>
+    </tr>
+    <tr>
+      <td><strong>x (execute)</strong></td>
+      <td><strong>1</strong></td>
+      <td>execute the file</td>
+      <td>enter the directory (cd)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>File permissions order is like (-rwx-rwx-rwx), for example</strong> drwxrwxr-x.</p>
+
+<ul>
+  <li>
+    <p><strong>1st Position(d) : denotes file type</strong></p>
+  </li>
+  <li>
+    <p><strong>1st rwx : user permissions</strong></p>
+  </li>
+  <li>
+    <p><strong>2nd rwx : group permissions</strong></p>
+  </li>
+  <li>
+    <p><strong>3rd rwx : other permissions</strong></p>
+  </li>
+</ul>
+
+<h6 id="1chmod-chanfe-mode-command">1.chmod (Chanfe mode) command</h6>
+
+<p><strong>chmod</strong> is used to set/ change the permissions of files or directories.</p>
+
+<p>Syntax:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> <span class="o">[</span>options] &lt;permissions&gt;  &lt;filename&gt;
+</code></pre></div></div>
+
+<h4 id="exampels">Exampels:</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Exampels:
+1. Set permissions of file.htm to "owner can read and write; group can read only; others can read only".
+chmod 644 file.htm
+
+2.To add permissions to a group.
+Syntax	: chmod &lt;groupName&gt;+&lt;permissionName&gt; &lt;fileName&gt;  
+Example:chmod u+x file  
+
+3. To remove permissions from a group
+Syntax: chmod &lt;groupName&gt;-&lt;permissionName&gt; &lt;fileName&gt;  
+Example:	chmod g-x file   
+
+4. To add permission to all the groups together
+Syntax: chmod a+&lt;permissionName&gt; &lt;fileName&gt;  
+Example:	chmod a+w file  
+
+5.To add permission to all the groups without typing a
+Syntax :	chmod +&lt;permissionName&gt; &lt;fileName&gt;  
+Example	:	chmod +w file
+</code></pre></div></div>
+
+<h6 id="2-unmask">2. Unmask</h6>
+
+<p>Every file that is created comes with a default set of permissions. If you ever
+wanted to change that default set of permissions, you can do so with the umask
+command</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ umask 021
+</code></pre></div></div>
+
+<p>In the above example, we are setting the default permissions of new files to021</p>
+
+<h6 id="3-sticky-bit">3. Sticky Bit</h6>
+<p>Files can be protected in a directory from being removed by other users who do not own it by preventing it with sticky bit. It is displayed at the same location as the x permission for others</p>
+
+<p>It is represented by a t (x is also there) or a T (no x is there). Generally, sticky bit is found on /tmp directory.</p>
+
+<p><strong>Example:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chmod +t hello.java
+</code></pre></div></div>
+
+<h1 id="11linux-commands">11.Linux commands</h1>
+
+<p>We have two types of commands in shell.</p>
+
+<ul>
+  <li>
+    <p><strong>Built-in</strong> commands are internal commands that are built-in the shell.
+Built-in commands are called from the shell and executed directly within the
+shell itself. example of built-in commands are ‘pwd’, ‘help’, ‘type’, ‘set’,
+‘unset’, etc.</p>
+  </li>
+  <li>
+    <p><strong>External</strong> commands are other than built-in commands. These commands are
+programs which have their own binary and located in the filesystem Mostly
+these commands reside in /bin, /sbin, /usr/sbin</p>
+  </li>
+</ul>
+
+<h6 id="1type-command">1.”type” command</h6>
+
+<p>We can check the commands which are belongs to which type by -type” command</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[smlcodes@centori ~]$type date                                                    
+date is /bin/date                                                                 
+[smlcodes@centori ~]$type pwd                                                     
+pwd is a shell builtin                                                            
+[smlcodes@centori ~]$
+</code></pre></div></div>
+
+<h6 id="2--alias-command">2. -alias” command</h6>
+
+<p>Sometimes typing commands can get really repetitive, or if you need to type a
+long command many times, it’s best to have an alias you can use for that. To
+create an alias for a command you simply specify an alias name and set it to the
+command.</p>
+
+<blockquote>
+  <p>$ alias foobar=’ls -la’</p>
+</blockquote>
+
+<p>Now instead of typing ls -la, you can type foobar.Keep in mind that this command
+won’t save your alias after reboot, so you’ll need to add a permanent alias in:</p>
+
+<blockquote>
+  <p>~/.bashrc</p>
+</blockquote>
+
+<p>You can remove aliases with the unalias command:</p>
+
+<blockquote>
+  <p>$ unalias foobar</p>
+</blockquote>
+
+<h6 id="3-env-command">3 .”env” command</h6>
+
+<p>-env” outputs a whole lot of information about the environment variables you
+currently have set.</p>
+
+<blockquote>
+  <p>$env</p>
+</blockquote>
+
+<h1 id="12linux-networking">12.Linux networking</h1>
+
+<h3 id="1-tcpip-internet-protocol">1. TCP/IP Internet protocol</h3>
+
+<p>TCP/IP is a set of protocols, and is the primary tech of the internet. When you
+browse the web, send email, chat online, online gaming, TCP/IP is working busily
+underneath</p>
+
+<h4 id="example-3">Example:</h4>
+
+<p>Suppose you are sending email, or downloading a file, or chat with a friend
+online, or visiting a web page. What happens underneath?</p>
+
+<p>You application (email, chat, etc) breaks the data into thousands of tiny
+independent pieces. Each piece is called a Datagram (aka packet). Each datagram
+has embedded with it the destination IP address. Your computer send this
+datagram to your Router (aka -link”), and your router send it to a appropriate
+node (another router or computer) on the network that’s closer to the
+destination.</p>
+
+<p>That router again send it to a another node (router) on the network that’s
+closer to the destination. This process continues until the designated machine
+with the IP address receives it. This is done for each and every datagram.</p>
+
+<p>On the receiving machine, it re-assembles all these datagrams into the original
+whole piece in the right order, and send it to the right application on that
+machine (the email server, or web server, or chat server. (which in turn, repeat
+the same thing to send it to your friend’s machine.))</p>
+
+<p>Computer/software follow a set of standardized rules of procedure when talking
+to each other. This standardized rules of procedure used for internet is called
+the <strong>TCP/IP Internet protocol suite</strong>.</p>
+
+<h2 id="2network-components">2.Network Components</h2>
+
+<p><img src="media/42d04fe4898966e63f5a40ef86960f0b.jpg" alt=""></p>
+
+<h6 id="1-network-interface-controller">1. Network Interface Controller</h6>
+
+<p>First, you have Network interface controller (NIC) (i.e. <strong>network interface
+card</strong>, <strong>network adapter</strong>, <strong>LAN adapter</strong>, <strong>network card</strong>). It’s a piece of
+hardware that lets your computer talk to the internet.</p>
+
+<h6 id="2-router">2. Router</h6>
+
+<p>Then, the second most important hardware is Router. Router transfer packets
+between computers.</p>
+
+<p><img src="media/7fd6cead303310101a923e7a9063a588.png" alt="E:\Users\satyacodes\Pictures\12.png"></p>
+
+<h6 id="3mac-address--hardware-address--physical-address">3.MAC Address = Hardware Address = Physical Address</h6>
+
+<p>Each Network Adapter has a ID, called <a href="http://en.wikipedia.org/wiki/MAC_address">MAC
+address</a> (aka <strong>hardware
+address</strong>, <strong>physical address</strong>). This ID is burned into the hardware. (-MAC” is
+abbreviation for -Media Access Control” (the name is historical).)</p>
+
+<p>MAC address is a 48 bits number. Usually written as 6 groups of 2 hex digits.
+For example, 01-23-45-67-89-abor 01:23:45:67:89:ab. Each 2 hex is a octet.</p>
+
+<p><strong>We can find the MAC address of the Network Adapters by using</strong></p>
+
+<ul>
+  <li>
+    <p><strong>ip link</strong></p>
+  </li>
+  <li>
+    <p><strong>ifconfig -a.</strong></p>
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori ~]<span class="nv">$ifconfig</span> <span class="nt">-a</span>                                                  
+Warning: cannot open /proc/net/dev <span class="o">(</span>Permission denied<span class="o">)</span><span class="nb">.</span> Limited output.
+Warning: cannot open /proc/net/dev <span class="o">(</span>Permission denied<span class="o">)</span><span class="nb">.</span> Limited output.
+eth0: <span class="nv">flags</span><span class="o">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+    inet 217.182.92.164  netmask 255.255.255.255  broadcast 217.182.92.164
+    ether fa:16:3e:20:dc:3c  txqueuelen 1000  <span class="o">(</span>Ethernet<span class="o">)</span>                                                                                  
+Warning: cannot open /proc/net/dev <span class="o">(</span>Permission denied<span class="o">)</span><span class="nb">.</span> Limited output.
+lo: <span class="nv">flags</span><span class="o">=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+    inet 127.0.0.1  netmask 255.0.0.0
+    loop  txqueuelen 0  <span class="o">(</span>Local Loopback<span class="o">)</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h6 id="4-ip-address">4. IP Address</h6>
+
+<p><strong>IP address is used to identify all internet devices</strong>. (Each internet device
+may have one ore more IP address.) It’s part of the IP protocol. There are 2
+versions of IP
+address: <a href="http://en.wikipedia.org/wiki/IPv4">IPv4</a> and <a href="http://en.wikipedia.org/wiki/IPv6">IPv6</a>.</p>
+
+<ul>
+  <li>
+    <p><strong>IPv4 address</strong> = 32 bits (4 octets). Usually written in 4 groups, each as
+a decimal. For example, 172.16.254.1 (for IPv4), each decimal group is 1
+octet.</p>
+  </li>
+  <li>
+    <p><strong>IPv6 address</strong> = 128 bits (16 octets). Usually written in 8 groups, 4
+digits of hex per group, separated by colon, with leading 0 omitted, for
+example, 2001:db8:0<img class="emoji" title=":1234:" alt=":1234:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f522.png" height="20" width="20">0:567:8:1. Each group of hex represents 2 octets.</p>
+  </li>
+</ul>
+
+<p>IPv4 is the older standard. Because it’s only 32 bits, good for 2\^32 unique
+address (about 4.2 billion). This is not enough since late 1990s. So, IPv6 was
+invented.</p>
+
+<p>to find the IP address any router use : ip route.</p>
+
+<h6 id="5-host-hostname">5. Host, Hostname</h6>
+
+<p>A -host” typically refers to a particular computer (or internet device).
+A <a href="http://en.wikipedia.org/wiki/Hostname">Hostname</a> is basically just a name for
+a machine. It is used mostly as a human-friendly form to identify a machine.</p>
+
+<p>A host/machine may have more than one IP address (because it can have multiple
+Network Adapter, or, a computer can be setup to function as a router, etc.).</p>
+
+<p>to find your hostname use : hostname</p>
+
+<h6 id="6port-number">6.Port Number</h6>
+
+<p><strong>port</strong> → a integer number. <strong>It serves as a address for software application
+to talk to TCP</strong>. <strong>IP address is used to identify a computer</strong>. Once the packet
+arrived on the computer, the port number serves as a address to identify the
+software that send/receive messages</p>
+
+<h6 id="7-network-socket">7. Network socket</h6>
+
+<p>Network Socket is basically a API for programs to talk to the network. A socket
+address is a combination of IP address and a port number.</p>
+
+<p>So, when a browser, or email app, want to talk to the internet, they speak to
+the socket. The socket is usually provided by the Operating System as a API. The
+programer don’t have to worry about TCP/IP details, he just create a socket (by
+calling a function or new object), specify IP address, port number, and type of
+connection, and call functions/methods to send/receive data on it.</p>
+
+<h6 id="8-routing">8. Routing</h6>
+
+<p><a href="http://en.wikipedia.org/wiki/Routing">Routing</a> is one of the most important
+element in internet, because it is routing that moves data.</p>
+
+<p>By definition, a router has 2 or more network adapters, because a router is used
+to forward data between different networks. For home routers, usually one end is
+connected to a cable modem or DSL modem to the internet, and the other hand are
+Ethernet ports for the home network.</p>
+
+<ul>
+  <li>
+    <p>receive data from one of its attached networks.</p>
+  </li>
+  <li>
+    <p>check the destination address in the IP header. If it’s on the network from
+whence the data came, the datagram is ignored. (because already reached its
+destination. (Ethernet sends it to all in the same network))</p>
+  </li>
+  <li>
+    <p>If destination IP address for a different network, the router checks the
+routing table to determine where to forward the datagram.</p>
+  </li>
+  <li>
+    <p>it dis-assemble and re-assemble the datagram and send it to the right
+adapter.</p>
+  </li>
+</ul>
+
+<h6 id="9-routing-table">9. Routing Table</h6>
+
+<p>Routing table, or Routing Information Base (RIB), is a data table stored in a
+router or a computer that lists the routes to particular network destinations,
+and in some cases, metrics (distances) associated with those routes. The routing
+table contains information about the topology of the network immediately around
+it.</p>
+
+<p>To see the routing table your my computer use : ip route or route</p>
+
+<p>[satya@centori ~]$ip route</p>
+
+<p>default via 217.182.88.1 dev eth0 proto static metric 100</p>
+
+<p>217.182.88.1 dev eth0 proto static scope link metric 100</p>
+
+<p>217.182.92.164 dev eth0 proto kernel scope link src 217.182.92.164 metric 100</p>
+
+<p><img src="media/aa9da8c66a65d507f5bffa55a9011c97.png" alt="http://www.conceptdraw.com/samples/resource/images/solutions/network-diagram/Network-Diagram.png"></p>
+
+<h2 id="3linux-neworking-commands">3.Linux Neworking Commands</h2>
+
+<h6 id="1ifconfig">1.ifconfig</h6>
+
+<p><strong>ifconfig</strong> stands for “interface configuration”. It is used to view and change
+the configuration of the network interfaces on your system.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori ~]<span class="nv">$ifconfig</span>                                                     
+Warning: cannot open /proc/net/dev <span class="o">(</span>Permission denied<span class="o">)</span><span class="nb">.</span> Limited output.           
+Warning: cannot open /proc/net/dev <span class="o">(</span>Permission denied<span class="o">)</span><span class="nb">.</span> Limited output.           
+eth0: <span class="nv">flags</span><span class="o">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500                        
+        inet 217.182.92.164  netmask 255.255.255.255  broadcast 217.182.92.164    
+        ether fa:16:3e:20:dc:3c  txqueuelen 1000  <span class="o">(</span>Ethernet<span class="o">)</span>                    
+                                                                                  
+Warning: cannot open /proc/net/dev <span class="o">(</span>Permission denied<span class="o">)</span><span class="nb">.</span> Limited output.           
+lo: <span class="nv">flags</span><span class="o">=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536                                      
+        inet 127.0.0.1  netmask 255.0.0.0                                         
+        loop  txqueuelen 0  <span class="o">(</span>Local Loopback<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Here, <strong>eth0, lo and wlan0</strong> are the names of the active network interfaces on
+the system.</p>
+
+<ul>
+  <li>
+    <p><strong>eth0</strong> is the first ethernet interface. (Additional ethernet interfaces
+would be named eth1, eth2, etc.) This type of interface is usually a NIC
+connected to the network by a category 5 cable.</p>
+  </li>
+  <li>
+    <p><strong>lo</strong> is the loopback interface. This is a special network interface that
+the system uses to communicate with itself.</p>
+  </li>
+  <li>
+    <p><strong>wlan0</strong> is the name of the first wireless network interface on the system.
+Additional wireless interfaces would be named wlan1, wlan2, etc</p>
+  </li>
+</ul>
+
+<h6 id="2-ping-command">2. PING Command</h6>
+
+<p><strong>PING (Packet INternet Groper) command is the best way to test connectivity
+between two nodes</strong>. Whether it is Local Area Network (LAN) or Wide Area
+Network (WAN). Ping use ICMP (Internet Control Message Protocol) to communicate
+to other devices. You can ping host name of ip address using below command.</p>
+
+<p><strong>syyntax:</strong></p>
+
+<blockquote>
+  <p>ping <destination></destination></p>
+</blockquote>
+
+<p><strong>Example:</strong></p>
+
+<blockquote>
+  <p>ping satya.com</p>
+</blockquote>
+
+<h6 id="3-traceroute-command">3. TRACEROUTE Command</h6>
+
+<p>traceroute is a network troubleshooting utility which <strong>shows number of hops
+taken to reach destination also determine packets traveling path</strong>. Below we are
+tracing route to global DNS server IP Address and able to reach destination also
+shows path of that packet is traveling.</p>
+
+<p><strong>Syntax:</strong></p>
+
+<blockquote>
+  <p>traceroute **<destination>**</destination></p>
+</blockquote>
+
+<p><strong>Exmaple:</strong></p>
+
+<blockquote>
+  <p>traceroute satya.com</p>
+</blockquote>
+
+<h6 id="4-netstat-command">4. NETSTAT Command</h6>
+
+<p><strong>Netstat (Network Statistic)</strong> command display connection info, routing table
+information etc. To displays routing table information use option as -r.</p>
+
+<p><strong>Syntax:</strong></p>
+
+<blockquote>
+  <p>netstat</p>
+</blockquote>
+
+<h6 id="5-dig-command">5. DIG Command</h6>
+
+<p><strong>Dig (domain information groper)</strong> query DNS related information like A
+Record, CNAME, MX Record etc. This command mainly use to
+troubleshoot DNS related query.</p>
+
+<p><strong>Syntax:</strong></p>
+
+<blockquote>
+  <p>dig <domainname></domainname></p>
+</blockquote>
+
+<h6 id="6-nslookup-command">6. NSLOOKUP Command</h6>
+
+<p>nslookup command also use to find out DNS related query. The following examples
+shows A Record (IP Address) of satya.com.</p>
+
+<p><strong>Syntax:</strong></p>
+
+<blockquote>
+  <p>nslookup <domainname></domainname></p>
+</blockquote>
+
+<p><strong>Example:</strong></p>
+
+<blockquote>
+  <p>nslookup satya.com</p>
+</blockquote>
+
+<h6 id="7-route-command">7. ROUTE Command</h6>
+
+<p>route command also shows and manipulate ip routing table. In computer
+networking, a router is a device responsible for forwarding network traffic.
+When datagrams arrive at a router, the router must determine the best way to
+route them to their destination.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Route
+
+Route Adding
+<span class="c"># route add -net 10.10.10.0/24 gw 192.168.0.1</span>
+
+Route Deleting
+<span class="c"># route del -net 10.10.10.0/24 gw 192.168.0.1</span>
+
+Adding default Gateway
+<span class="c"># route add default gw 192.168.0.1</span>
+</code></pre></div></div>
+
+<h6 id="8-host-command">8. HOST Command</h6>
+
+<p>host command to find name to IP or IP to name in IPv4 or IPv6 and also
+query DNS records.</p>
+
+<p><strong>Syntax:</strong></p>
+
+<blockquote>
+  <p>host  **<resourcename>**</resourcename></p>
+</blockquote>
+
+<p>Example</p>
+
+<p>Host satya.com</p>
+
+<h6 id="9-arp-command">9. ARP Command</h6>
+
+<p>ARP stands for <strong>Address Resolution Protocol</strong>, will manipulates or displays the
+kernel’s IPv4 network neighbour cache. It can add entries to the table, delete
+one, or display the current content.</p>
+
+<p><strong>Syntax:</strong></p>
+
+<blockquote>
+  <p>arp</p>
+</blockquote>
+
+<h6 id="10-iwconfig-command">10. IWCONFIG Command</h6>
+
+<p>iwconfig command in Linux is use to configure a wireless network interface. You
+can see and set the basic Wi-Fi details like SSID channel and encryption</p>
+
+<p>IWCONFIG</p>
+
+<h6 id="11-hostname-command">11. HOSTNAME Command</h6>
+
+<p>hostname is to identify in a network. Execute hostname command to see the
+hostname of your box. You can set hostname permanently
+in /etc/sysconfig/network. Need to reboot box once set a proper hostname.</p>
+
+<p><strong>Syntax:</strong></p>
+
+<blockquote>
+  <p>hostname</p>
+</blockquote>
+
+<h6 id="12-whois">12. whois</h6>
+
+<p>The whois command displays information about a website’s record. You may get all
+the information about a website regarding its registration and owner’s
+information.</p>
+
+<p><strong>Syntax:</strong></p>
+
+<blockquote>
+  <p>whois **<websitename>**</websitename></p>
+</blockquote>
+
+<p><strong>Example:</strong></p>
+
+<blockquote>
+  <p>whois satya.com</p>
+</blockquote>
+
+<h1 id="13linux-sysadmin">13.Linux SysAdmin</h1>
+
+<p>A system administrator manages configuration, upkeep and reliable operations of
+computer operations. Sysadmin handles servers, has to manage system performance
+and security without exceeding the budget to meet users need.</p>
+
+<p>Some important commands for system administrators</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Command</strong></th>
+      <th><strong>Function</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>man</td>
+      <td>Display information about all commands</td>
+    </tr>
+    <tr>
+      <td>uptime</td>
+      <td>Show how long system is running</td>
+    </tr>
+    <tr>
+      <td>users</td>
+      <td>Show username who are currently logged in</td>
+    </tr>
+    <tr>
+      <td>service</td>
+      <td>Call and execute script</td>
+    </tr>
+    <tr>
+      <td>pkill</td>
+      <td>Kill a process</td>
+    </tr>
+    <tr>
+      <td>pmap</td>
+      <td>Memory map of a process</td>
+    </tr>
+    <tr>
+      <td>wget</td>
+      <td>Download file from network</td>
+    </tr>
+    <tr>
+      <td>ftp or sftp</td>
+      <td>Connect remote ftp host</td>
+    </tr>
+    <tr>
+      <td>free</td>
+      <td>Show memory status</td>
+    </tr>
+    <tr>
+      <td>top</td>
+      <td>Display processor activity of system</td>
+    </tr>
+    <tr>
+      <td>last</td>
+      <td>Display user’s activity in the system</td>
+    </tr>
+    <tr>
+      <td>ps</td>
+      <td>Display about processes running on the system</td>
+    </tr>
+    <tr>
+      <td>Shutdown commands</td>
+      <td>Shutdown and reboot system</td>
+    </tr>
+    <tr>
+      <td>info</td>
+      <td>Display information about given command</td>
+    </tr>
+    <tr>
+      <td>env</td>
+      <td>Display environment variable for currently logged-in user</td>
+    </tr>
+    <tr>
+      <td>netstat</td>
+      <td>Display network status</td>
+    </tr>
+    <tr>
+      <td>arp</td>
+      <td>Check ethernet connectivity and IP address</td>
+    </tr>
+    <tr>
+      <td>df</td>
+      <td>Display filesystem information</td>
+    </tr>
+    <tr>
+      <td>du</td>
+      <td>Display usage</td>
+    </tr>
+    <tr>
+      <td>init</td>
+      <td>Allow to change server bootup</td>
+    </tr>
+    <tr>
+      <td>nano</td>
+      <td>A command line editor</td>
+    </tr>
+    <tr>
+      <td>nslookup</td>
+      <td>Check domain name and IP information</td>
+    </tr>
+    <tr>
+      <td>shred</td>
+      <td>Delete a file by over writing its content</td>
+    </tr>
+    <tr>
+      <td>cat</td>
+      <td>Display, copy or combine text files</td>
+    </tr>
+    <tr>
+      <td>pwd&gt;</td>
+      <td>Print path of current working directory</td>
+    </tr>
+    <tr>
+      <td>locate</td>
+      <td>Finding files by name on system</td>
+    </tr>
+    <tr>
+      <td>chown</td>
+      <td>Change ownership of a file</td>
+    </tr>
+    <tr>
+      <td>&gt;alias</td>
+      <td>To short a command</td>
+    </tr>
+    <tr>
+      <td>echo</td>
+      <td>Display text</td>
+    </tr>
+    <tr>
+      <td>cmp</td>
+      <td>Compare two files byte by byte</td>
+    </tr>
+    <tr>
+      <td>mount</td>
+      <td>Mount a filesystem</td>
+    </tr>
+    <tr>
+      <td>ifconfig</td>
+      <td>Display configuration</td>
+    </tr>
+    <tr>
+      <td>traceroute&gt;</td>
+      <td>Trace existing network</td>
+    </tr>
+    <tr>
+      <td>sudo</td>
+      <td>Run a command as a root user</td>
+    </tr>
+    <tr>
+      <td>route</td>
+      <td>List routing table for your server</td>
+    </tr>
+    <tr>
+      <td>ping</td>
+      <td>Check connection by sending packet test packet</td>
+    </tr>
+    <tr>
+      <td>find</td>
+      <td>Find location of files/directories</td>
+    </tr>
+    <tr>
+      <td>users</td>
+      <td>Show current logged in user</td>
+    </tr>
+    <tr>
+      <td>who</td>
+      <td>Same as w but doesn’t show current process</td>
+    </tr>
+    <tr>
+      <td>ls</td>
+      <td>List all the files</td>
+    </tr>
+    <tr>
+      <td>tar</td>
+      <td>Compress directories</td>
+    </tr>
+    <tr>
+      <td>grep</td>
+      <td>Search for a string in a file</td>
+    </tr>
+    <tr>
+      <td>su</td>
+      <td>Switch from one to another user</td>
+    </tr>
+    <tr>
+      <td>awk</td>
+      <td>Search lines for a given pattern</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="linux-process-management">Linux Process Management</h2>
+
+<p>Processes are the programs that are running on your machine. They are managed by
+the kernel and each process has an ID associated with it called the <strong>process ID
+(PID).</strong></p>
+
+<h6 id="1ps-command">1.”ps” command</h6>
+
+<p>(<strong>ps</strong>) Displays information about active processes</p>
+
+<p>ps syntax</p>
+
+<blockquote>
+  <p>ps [options]</p>
+</blockquote>
+
+<p>Example:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>smlcodes@centori ~]<span class="nv">$ps</span>                                                           
+  PID TTY          TIME CMD                                                       
+10681 pts/27   00:00:00 sh                                                        
+10776 pts/27   00:00:00 ps
+</code></pre></div></div>
+
+<h6 id="2kill-command">2.”kill” command</h6>
+
+<p>kill is used to send a signal to a process. The default signal for <strong>kill</strong> is
+TERM (which will terminate or “kill” the process).</p>
+
+<p><strong>Syntax:</strong></p>
+
+<blockquote>
+  <p>kill -SIGNAL &lt;ProcessId(PID)&gt;</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Signal Name</strong></th>
+      <th><strong>Signal Number</strong></th>
+      <th><strong>Signal Use</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SIGNULL</td>
+      <td>0</td>
+      <td>NULL, check access to PID</td>
+    </tr>
+    <tr>
+      <td>SIGHUP</td>
+      <td>1</td>
+      <td>Hangup</td>
+    </tr>
+    <tr>
+      <td>SIGINT</td>
+      <td>2</td>
+      <td>Interrupt</td>
+    </tr>
+    <tr>
+      <td>SIGQUIT</td>
+      <td>3</td>
+      <td>Quit</td>
+    </tr>
+    <tr>
+      <td>SIGKILL</td>
+      <td>9</td>
+      <td>Kill</td>
+    </tr>
+    <tr>
+      <td>SIGTERM</td>
+      <td>15</td>
+      <td>Terminate</td>
+    </tr>
+    <tr>
+      <td>SIGSTOP</td>
+      <td>24</td>
+      <td>Stop</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Kill -9 22891</p>
+
+<h6 id="3service">3.service</h6>
+
+<p>The service command starts, stop and restart a daemon or services by calling the
+script. Usually all scripts are stored in <strong>/etc/init.d</strong> directory.It runs a
+script in as predictable environment as possible.</p>
+
+<p><strong>Syntax:</strong></p>
+
+<blockquote>
+  <p>service script_name command</p>
+</blockquote>
+
+<p>Here, command can be anyone from start, stop, restart and status.</p>
+
+<ul>
+  <li>
+    <p>**stop command : service script_name stop  **</p>
+  </li>
+  <li>
+    <p>**start command : service script_name start  **</p>
+  </li>
+  <li>
+    <p>**restart command : service script_name restart  **</p>
+  </li>
+  <li>
+    <p>**status command : service script_name status  **</p>
+  </li>
+</ul>
+
+<h2 id="vi-editor-usefull-commands">VI Editor Usefull commands</h2>
+
+<p><img src="media/21becf0a48df1ff28aea3b49f1747980.png" alt="http://www.tuncaysahin.nl/wp-content/uploads/2015/12/vi.png"></p>
+
+<h4 id="references">References</h4>
+
+<p><a href="https://www.javatpoint.com/linux-tutorial">https://www.javatpoint.com/linux-tutorial</a></p>
+
+<p><a href="https://linuxjourney.com/">https://linuxjourney.com/</a></p>
+
+<p><a href="http://www.webminal.org/terminal/">http://www.webminal.org/terminal/</a></p>
+
+<p><a href="https://www.tecmint.com/linux-network-configuration-and-troubleshooting-commands/">https://www.tecmint.com/linux-network-configuration-and-troubleshooting-commands/</a></p>
+
+<p>networking : <a href="http://xahlee.info/linux/tcp_ip_tutorial.html">http://xahlee.info/linux/tcp_ip_tutorial.html</a></p>
+
+<p><a href="http://www.conceptdraw.com/samples/network-diagram">http://www.conceptdraw.com/samples/network-diagram</a></p>
+
+<p><a href="https://www.tecmint.com/linux-network-configuration-and-troubleshooting-commands/">https://www.tecmint.com/linux-network-configuration-and-troubleshooting-commands/</a></p>
+</div>
+<div class="d-print-none"><footer class="article__footer"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet --></footer></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+//alert('start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert(' end .......');
+ 
+ document.onreadystatechange = function(){
+     if(document.readyState === 'complete'){
+         /*code here*/
+		 //alert('onreadystatechange comled ... start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert('onreadystatechange comled ... end .......');
+     }
+}
+
+</script>
+</div>
+<section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet -->
+</div>
+            </div></div></div>
+<div class="page__footer d-print-none"><footer class="footer py-4 js-page-footer">
+  <div class="main">
+<div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Satya Kaveti">
+<meta itemprop="url" content="/">
+<meta itemprop="description" content="I am an amazing person.">
+<div class="footer__author-links">
+<div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"></ul>
+</div>
+</div>
+    </div>
+<div class="site-info mt-2">
+      <div>© SatyaCodes 2020 ,
+        <a title="Satya Kaveti" href="about/">Satya Kaveti's Writing</a>.
+		<span>| <a href="about/">About Me</a> &amp;nbsp |  </span>
+		<span><a href="/terms.html">Terms</a> &amp;nbsp |  </span>
+		<span><a href="/contact.html">Contact</a> &amp;nbsp |  </span>
+		<span><a href="http://www.satyacodesapps.ml/" target="_blank">Our Apps</a> &amp;nbsp |  </span>
+		<span><a href="https://www.facebook.com/isatyakaveti" target="_blank"><i class="fab fa-facebook-f"></i></a> &amp;nbsp |  </span>
+		<span><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube-square"></i></a> &amp;nbsp |  </span>
+		<span><a href="https://in.linkedin.com/in/satyakaveti" target="_blank"><i class="fab fa-linkedin-in"></i></a> &amp;nbsp | 
+		<span>[ 
+		<!-- Start of WebFreeCounter Code -->
+<a href="http://www.statworker.com/" target="_blank"><img src="https://www.webfreecounter.com/hit.php?id=gfpapx&amp;nd=7&amp;style=2" border="0" alt="statworker.com"></a>
+<!-- End of WebFreeCounter Code -->
+</span>
+<span><a href="https://statcounter.com/p12408441/?guest=1" target="_blank"> ]</a></span>
+
+
+      </span>
+</div>
+    </div>
+  </div>
+</footer></div>
+</div>
+    </div>
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal d-print-none js-page-gallery-modal"><div class="gallery"></div></div>
+<div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal">
+<script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">Search</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text">
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        Cancel</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script>
+</div>
+</div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+(function() {(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function swiper(options) {
+      var $window = $(window), $root = this, $swiperWrapper, $swiperSlides, $swiperButtonPrev, $swiperButtonNext,
+        initialSlide, animation, onChange, onChangeEnd,
+        rootWidth, count, preIndex, curIndex, translateX, CRITICAL_ANGLE = Math.PI / 3;
+
+      function setOptions(options) {
+        var _options = options || {};
+        initialSlide = _options.initialSlide || 0;
+        animation = _options.animation === undefined && true;
+        onChange = onChange || _options.onChange;
+        onChangeEnd = onChangeEnd || _options.onChangeEnd;
+      }
+
+      function init() {
+        $swiperWrapper = $root.find('.swiper__wrapper');
+        $swiperSlides = $root.find('.swiper__slide');
+        $swiperButtonPrev = $root.find('.swiper__button--prev');
+        $swiperButtonNext = $root.find('.swiper__button--next');
+        animation && $swiperWrapper.addClass('swiper__wrapper--animation');
+        calc(true);
+      }
+
+      function preCalc() {
+        rootWidth = $root.width();
+        count = $swiperWrapper.children('.swiper__slide').length;
+        if (count < 2) {
+          $swiperButtonPrev.addClass('d-none');
+          $swiperButtonNext.addClass('d-none');
+        }
+        curIndex = initialSlide || 0;
+        translateX = getTranslateXFromCurIndex();
+      }
+
+      var calc = (function() {
+        var preAnimation, $swiperSlide, $preSwiperSlide;
+        return function (needPreCalc, params) {
+          needPreCalc && preCalc();
+          var _animation = (params && params.animation !== undefined) ? params.animation : animation;
+          if (preAnimation === undefined || preAnimation !== _animation) {
+            preAnimation = _animation ? $swiperWrapper.addClass('swiper__wrapper--animation') :
+              $swiperWrapper.removeClass('swiper__wrapper--animation');
+          }
+          if (preIndex !== curIndex) {
+            ($preSwiperSlide = $swiperSlides.eq(preIndex)).removeClass('active');
+            ($swiperSlide = $swiperSlides.eq(curIndex)).addClass('active');
+            onChange && onChange(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+            if (onChangeEnd) {
+              if (_animation) {
+                setTimeout(function() {
+                  onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+                }, 400);
+              } else {
+                onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+              }
+            }
+            preIndex = curIndex;
+          }
+          $swiperWrapper.css('transform', 'translate(' + translateX + 'px, 0)');
+          if (count > 1) {
+            if (curIndex <= 0) {
+              $swiperButtonPrev.addClass('disabled');
+            } else {
+              $swiperButtonPrev.removeClass('disabled');
+            }
+            if (curIndex >= count - 1) {
+              $swiperButtonNext.addClass('disabled');
+            } else {
+              $swiperButtonNext.removeClass('disabled');
+            }
+          }
+        };
+      })();
+
+      function getTranslateXFromCurIndex() {
+        return curIndex <= 0 ? 0 : - rootWidth * curIndex;
+      }
+
+      function moveToIndex(index ,params) {
+        preIndex = curIndex;
+        curIndex = index;
+        translateX = getTranslateXFromCurIndex();
+        calc(false, params);
+      }
+
+      function move(type) {
+        var nextIndex = curIndex, unstableTranslateX;
+        if (type === 'prev') {
+          nextIndex > 0 && nextIndex--;
+        } else if (type === 'next') {
+          nextIndex < count - 1 && nextIndex++;
+        }
+        if (type === 'cur') {
+          moveToIndex(curIndex, { animation: true });
+          return;
+        }
+        unstableTranslateX = translateX % rootWidth !== 0;
+        if (nextIndex !== curIndex || unstableTranslateX) {
+          unstableTranslateX ? moveToIndex(nextIndex, { animation: true }) : moveToIndex(nextIndex);
+        }
+      }
+
+      setOptions(options);
+      init();
+      preIndex = curIndex;
+
+      $swiperButtonPrev.on('click', function(e) {
+        e.stopPropagation();
+        move('prev');
+      });
+      $swiperButtonNext.on('click', function(e) {
+        e.stopPropagation();
+        move('next');
+      });
+      $window.on('resize', function() {
+        calc(true, { animation: false });
+      });
+
+      (function() {
+        var pageX, pageY, velocityX, preTranslateX = translateX, timeStamp, touching;
+        function handleTouchstart(e) {
+          var point = e.touches ? e.touches[0] : e;
+          pageX = point.pageX;
+          pageY = point.pageY;
+          velocityX = 0;
+          preTranslateX = translateX;
+        }
+        function handleTouchmove(e) {
+          if (e.touches && e.touches.length > 1) {
+            return;
+          }
+          var point = e.touches ? e.touches[0] : e;
+          var deltaX = point.pageX - pageX;
+          var deltaY = point.pageY - pageY;
+          velocityX = deltaX / (e.timeStamp - timeStamp);
+          timeStamp = e.timeStamp;
+          if (e.cancelable && Math.abs(Math.atan(deltaY / deltaX)) < CRITICAL_ANGLE) {
+            touching = true;
+            translateX += deltaX;
+            calc(false, { animation: false });
+          }
+          pageX = point.pageX;
+          pageY = point.pageY;
+        }
+        function handleTouchend() {
+          touching = false;
+          var deltaX = translateX - preTranslateX;
+          var distance = deltaX + velocityX * rootWidth;
+          if (Math.abs(distance) > rootWidth / 2) {
+            distance > 0 ? move('prev') : move('next');
+          } else {
+            move('cur');
+          }
+        }
+        $swiperWrapper.on('touchstart', handleTouchstart);
+        $swiperWrapper.on('touchmove', handleTouchmove);
+        $swiperWrapper.on('touchend', handleTouchend);
+        $swiperWrapper.on('touchcancel', handleTouchend);
+
+        (function() {
+          var pressing = false, moved = false;
+          $swiperWrapper.on('mousedown', function(e) {
+            pressing = true; handleTouchstart(e);
+          });
+          $swiperWrapper.on('mousemove', function(e) {
+            pressing && (e.preventDefault(), moved = true, handleTouchmove(e));
+          });
+          $swiperWrapper.on('mouseup', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('mouseleave', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('click', function(e) {
+            moved && (e.stopPropagation(), moved = false);
+          });
+        })();
+
+        $root.on('touchmove', function(e) {
+          if (e.cancelable & touching) {
+            e.preventDefault();
+          }
+        });
+      })();
+
+      return {
+        setOptions: setOptions,
+        previous: function(){
+          move('prev');
+        },
+        next: function(){
+          move('next');
+        },
+        refresh: function() {
+          calc(true, { animation: false });
+        }
+      };
+    }
+    $.fn.swiper = swiper;
+  });
+})();
+var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var template =
+      '<div class="swiper gallery__swiper">' +
+        '<div class="swiper__wrapper">' +
+        '</div>' +
+        '<div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>' +
+        '<div class="swiper__button swiper__button--next fas fa-chevron-right"></div>' +
+      '</div>';
+    function setState($item, zoom, translate) {
+      $item.css('transform', 'scale(' + zoom + ') translate(' + translate.x +  'px,' + translate.y + 'px)');
+    }
+    function Gallery(root, items) {
+      this.$root = $(root);
+      this.$swiper = null;
+      this.$swiperWrapper = null;
+      this.$activeItem = null;
+      this.$items = [];
+      this.contentWidth = 0;
+      this.contentHeight = 0;
+      this.swiper = null;
+      this.items = items;
+      this.disabled = false;
+      this.curIndex = 0;
+      this.touchCenter = null;
+      this.lastTouchCenter = null;
+      this.zoomRect = null;
+      this.lastZoomRect = null;
+      this.lastTranslate = null;
+      this.translate = null;
+      this.lastZoom = 1;
+      this.preZoom = 1;
+      this.zoom = 1;
+    }
+    Gallery.prototype.init = function() {
+      var i, item, items = this.items, size, self = this, touchstartFingerCount = 0;
+      this.$root.append(template);
+      this.$swiper = this.$root.find('.gallery__swiper');
+      this.$swiperWrapper = this.$root.find('.swiper__wrapper');
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      for (i = 0; i < items.length; i++) {
+        item = items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        this.$items.push($(
+          '<div class="swiper__slide">' +
+            '<div class="gallery-item">' +
+              '<div class="gallery-item__content">' +
+                '<img src="' + item.src + '" style="width:' + size.w + 'px;height:' + size.h +  'px"/>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        ));
+      }
+      this.$swiperWrapper && this.$swiperWrapper.append(this.$items);
+      this.swiper = this.$swiper && this.$swiper.swiper({
+        onChangeEnd: function() {
+          self._handleChangeEnd.apply(self, Array.prototype.slice.call(arguments));
+        }
+      });
+      $(window).on('resize', function() {
+        if (self.disabled) { return; }
+        self._resizeImageSize();
+      });
+      // Char Code: 37  ⬅, 39  ➡
+      $(window).on('keyup', function(e) {
+        if (window.isFormElement(e.target || e.srcElement) || self.disabled) { return; }
+        if (e.which === 37) {
+          self.swiper && self.swiper.previous();
+        } else if (e.which === 39) {
+          self.swiper && self.swiper.next();
+        }
+      });
+      function getRect(touch0, touch1) {
+        return {
+          o: {
+            x: (touch0.pageX + touch1.pageX) / 2,
+            y: (touch0.pageY + touch1.pageY) / 2
+          },
+          w: Math.abs(touch0.pageX - touch1.pageX),
+          h: Math.abs(touch0.pageY - touch1.pageY)
+        };
+      }
+      function getTouches(e) {
+        return e.touches || e;
+      }
+      function getTouchesCount(e) {
+        if (e.touches) {
+          return e.touches.length;
+        } else {
+          return 1;
+        }
+      }
+      this.$swiperWrapper.on('touchstart', function(e) {
+        var touch0, touch1, rect;
+        touchstartFingerCount = getTouchesCount(e);
+        if (touchstartFingerCount > 1) {
+          touch0 = e.touches[0];
+          touch1 = e.touches[1];
+          rect = getRect(touch0, touch1);
+          self.lastZoomRect = { w: rect.w, h: rect.h };
+          self.lastTouchCenter = rect.o;
+        } else {
+          var touch = getTouches(e)[0];
+          self.lastTouchCenter = { x: touch.pageX, y: touch.pageY };
+        }
+      });
+      this.$swiperWrapper.on('touchmove', function(e) {
+        if (touchstartFingerCount === getTouchesCount(e)) {
+          if (touchstartFingerCount > 1) {
+            var touch0 = e.touches[0];
+            var touch1 = e.touches[1];
+            var rect = getRect(touch0, touch1);
+            self.zoomRect = { w: rect.w, h: rect.h };
+            self.touchCenter = rect.o;
+            self._zoom(); self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          } else {
+            var touch = getTouches(e)[0];
+            self.touchCenter = { x: touch.pageX, y: touch.pageY };
+            self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          }
+        }
+      });
+      this.$swiperWrapper.on('touchend', function(e) {
+        self.lastZoom = self.zoom;
+        self.lastTranslate = self.translate;
+        touchstartFingerCount = 0;
+      });
+      this.$root.on('touchmove', function(e) {
+        if (self.disabled) { return; }
+        e.preventDefault();
+      });
+    };
+
+    Gallery.prototype._translate = function() {
+      this.translate = this.touchCenter && this.lastTouchCenter && this.lastTranslate ? {
+        x: (this.touchCenter.x - this.lastTouchCenter.x) / this.zoom + this.lastTranslate.x,
+        y: (this.touchCenter.y - this.lastTouchCenter.y) / this.zoom + this.lastTranslate.y
+      } : { x: 0, y: 0 };
+    }
+    Gallery.prototype._zoom = function() {
+      this.zoom = (this.zoomRect.w + this.zoomRect.h) / (this.lastZoomRect.w + this.lastZoomRect.h) * this.lastZoom;
+      this.zoom > 1 ? this.$activeItem.addClass('zoom') : this.$activeItem.removeClass('zoom');
+      this.preZoom = this.zoom;
+    }
+
+    Gallery.prototype._calculateImageSize = function(w, h) {
+      var scale = 1;
+      if (this.contentWidth > 0 && this.contentHeight > 0 && w > 0 && h > 0) {
+        scale = Math.min(
+          Math.min(w, this.contentWidth) / w,
+          Math.min(h, this.contentHeight) / h);
+      }
+      return { w: Math.floor(w * scale), h: Math.floor(h * scale) };
+    };
+
+    Gallery.prototype._resizeImageSize = function() {
+      var i, $item, $items = this.$items, item, size;
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      if ($items.length < 1) { return; }
+      for (i = 0; i < $items.length; i++) {
+        item = this.items[i], $item = $items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        item.width = size.w; item.height = size.h;
+        $item && $item.find('img').css({ width: size.w, height: size.h });
+      }
+    };
+    Gallery.prototype._handleChangeEnd = function(index, $dom, preIndex, $preDom) {
+      this.curIndex = index;
+      this.lastZoomRect = null; this.lastZoomRect = null;
+      this.lastTranslate = this.translate = { x: 0, y:0 };
+      this.lastZoom = this.preZoom = this.zoom = 1;
+      this.$activeItem = $dom.find('.gallery-item__content');
+      setState($preDom.find('.gallery-item__content'), this.zoom, this.translate);
+    };
+
+    Gallery.prototype.refresh = function() {
+      this.swiper && this.swiper.refresh();
+      this._resizeImageSize();
+    };
+    Gallery.prototype.setOptions = function(options) {
+      this.disabled = options.disabled;
+      this.swiper && this.swiper.setOptions(options);
+    };
+    window.Gallery = Gallery;
+  });
+})();(function() {
+  window.imagesLoad = function(images) {
+    images = images || document.getElementsByTagName('img');
+    var imagesCount = images.length, loadedCount = 0, image;
+    var i, j, loaded = false, cbs = [];
+    imagesCount < 1 && (loaded = true);
+    for (i = 0; i < imagesCount; i++) {
+      image = images[i];
+      image.complete ? handleImageLoad() : image.addEventListener('load', handleImageLoad);
+    }
+    function handleImageLoad() {
+      loadedCount++;
+      if (loadedCount === imagesCount) {
+        loaded = true;
+        if (cbs.length > 0) {
+          for (j = 0; j < cbs.length; j++) {
+            cbs[j]();
+          }
+        }
+      }
+    }
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  };
+})();
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageGalleryModal = $('.js-page-gallery-modal');
+    var $images = $('.page__content').find('img:not(.lightbox-ignore)');
+    window.imagesLoad($images).then(function() {
+      /* global Gallery */
+      var pageGalleryModal = $pageGalleryModal.modal({ onChange: handleModalChange });
+      var gallery = null;
+      var modalVisible = false;
+      var i, items = [], image, item;
+      if($images && $images.length > 0) {
+        for (i = 0; i < $images.length; i++) {
+          image = $images.eq(i);
+          if (image.get(0).naturalWidth > 800) {
+            items.push({ src: image.attr('src'), w: image.get(0).naturalWidth, h: image.get(0).naturalHeight, $el: image});
+          }
+        }
+      }
+
+      if(items.length > 0) {
+        gallery = new Gallery('.gallery', items);
+        gallery.setOptions({ disabled: !modalVisible });
+        gallery.init();
+        for (i = 0; i < items.length; i++) {
+          item = items[i];
+          item.$el && (item.$el.addClass('popup-image'), item.$el.on('click', (function() {
+            var index = i;
+            return function() {
+              pageGalleryModal.show();
+              gallery.setOptions({ initialSlide: index });
+              gallery.refresh(true, { animation: false });
+            };
+          })()));
+        }
+      }
+
+      function handleModalChange(visible) {
+        modalVisible = visible;
+        gallery && gallery.setOptions({ disabled: !modalVisible });
+      }
+
+      $pageGalleryModal.on('click', function() {
+        pageGalleryModal.hide();
+      });
+    });
+  });
+})();/*(function () {
+
+})();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>

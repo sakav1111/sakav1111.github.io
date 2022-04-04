@@ -1,0 +1,2651 @@
+<!DOCTYPE html><html lang="en">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>SatyaCodes - Kubernetes Tutorial</title>
+
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.">
+<link rel="canonical" href="/tutorials/kubernetes-tutorial"><link rel="alternate" type="application/rss+xml" title="SatyaCodes" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet -->
+ <link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Kubernetes Tutorial | SatyaCodes</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Kubernetes Tutorial" />
+<meta name="author" content="Satya Kaveti" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:description" content="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." />
+<meta property="og:site_name" content="SatyaCodes" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Kubernetes Tutorial" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Satya Kaveti"},"@type":"WebPage","description":"Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.","url":"/tutorials/kubernetes-tutorial","headline":"Kubernetes Tutorial","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- start custom head snippets -->
+
+<!-- end custom head snippets --><script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.4',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script></head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="76px" height="76px" viewBox="0 0 76 76" enable-background="new 0 0 76 76" xml:space="preserve">  <image id="image0" width="76" height="76" x="0" y="0"
+    xlink:href="data:image/png;base64,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" />
+</svg>
+<a title="Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials, Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios." href="/">SatyaCodes</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/posts.html">AllPosts</a></li><li class="navigation__item navigation__item--active"><a href="/tutorials.html">Tutorials</a></li><li class="navigation__item"><a href="/java.html">Java</a></li><li class="navigation__item"><a href="/devops.html">DevOps</a></li><li class="navigation__item"><a href="/books.html">Books</a></li><li class="navigation__item"><a href="/interview-questions.html">InterviewQ's</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div></aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Kubernetes Tutorial</h1></header></div><meta itemprop="headline" content="Kubernetes Tutorial"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=Kubernetes">Kubernetes</a>
+            </li></ul></div><meta itemprop="author" content="Satya Kaveti"/>
+    <meta itemprop="keywords" content="Kubernetes"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h1 id="introduction">Introduction</h1>
+
+<p>Kubernetes is an open-source container management (orchestration) tool. It’s
+container management responsibilities include container deployment, scaling &amp;
+descaling of containers &amp; container load balancing.</p>
+
+<ul>
+  <li>
+    <p>Kubernetes is an open-source system for automating deployment, scaling, and
+management of containerized applications.</p>
+  </li>
+  <li>
+    <p>Kubernetes is originally developed by Google; it is open sourced since its
+launch and managed by a large community of contributors</p>
+  </li>
+  <li>
+    <p>Kubernetes (commonly referred to as K8s) is an orchestration engine for
+container technologies such as Docker and rkt that is taking over the DevOps
+scene in the last couple of years. It is already available on Azure and
+Google Cloud as a managed service.</p>
+  </li>
+  <li>
+    <p>Kubernetes can speed up the development process by making easy, automated
+deployments, updates (rolling-update) and by managing our apps and services
+with almost zero downtime.</p>
+  </li>
+  <li>
+    <p>It also provides self-healing. Kubernetes can detect and restart services
+when a process crashes inside the container.</p>
+  </li>
+</ul>
+
+<h6 id="before-kubernetes">Before Kubernetes</h6>
+
+<p>before containers came into existence, the developers and the testers always had
+a tiff between them. This usually, happened because what worked on the dev side,
+would not work on the testing side. Both of them existed in different
+environments. Now, to avoid such scenarios containers were introduced so that
+both the Developers and Testers were on the same page.</p>
+
+<p>Handling a large number of containers all together was also a problem. Sometimes
+while running containers, on the product side, few issues were raised, which
+were not present at the development stage. This kind of scenarios introduced the
+Container Orchestration System.</p>
+
+<p><strong>Challenges Without Container Orchestration</strong></p>
+
+<p><img src="media/5c2bd9312cc2989c3dc16f629bda02dd.png" alt="Challenges Without Container Orchestration - Kubernetes Tutorial - Edureka" /></p>
+
+<h6 id="why-kubernetes">Why Kubernetes</h6>
+
+<p>If your application is in Container form, then we won’t use only 1 or 2
+containers in Prod. But rather, <strong>10’s or 100’s</strong> of containers for load
+balancing the traffic and ensuring high availability.</p>
+
+<p>Keep in mind that, as the traffic increases, they even have to scale up the
+number of containers to service the ‘n’ no of requests that come in every
+second. And, they have to also scale down the containers when the demand is
+less.</p>
+
+<p>That is why, the need for container management tools is imminent. Both <strong>Docker
+Swarm</strong> and <strong>Kubernetes</strong> are popular tools for Container management and
+orchestration.</p>
+
+<h2 id="features">Features</h2>
+
+<p><img src="media/24348d39fee3fd61fb3e2aa45729511a.png" alt="" /></p>
+
+<p><strong>1. Automatic Binpacking</strong></p>
+
+<p>Kubernetes automatically packages your application and schedules the containers
+based on their requirements and available resources while not sacrificing
+availability. To ensure complete utilization and save unused resources,
+Kubernetes balances between critical and best-effort workloads.</p>
+
+<p><strong>2. Service Discovery &amp; Load balancing</strong></p>
+
+<p>With Kubernetes, there is no need to worry about networking and communication
+because Kubernetes will automatically assign IP addresses to containers and a
+single DNS name for a set of containers, that can load-balance traffic inside
+the cluster.</p>
+
+<p><strong>3. Storage Orchestration</strong></p>
+
+<p>With Kubernetes, you can mount the storage system of your choice. You can either
+opt for local storage, or choose a public cloud provider such as GCP or AWS, or
+perhaps use a shared network storage system such as NFS, iSCSI, etc.</p>
+
+<p><strong>4. Self-Healing</strong></p>
+
+<p>Personally, this is my favorite feature. Kubernetes can automatically restart
+containers that fail during execution and kills those containers that don’t
+respond to user-defined health checks. But if nodes itself die, then it replaces
+and reschedules those failed containers on other available nodes.</p>
+
+<p><strong>5. Secret &amp; Configuration Management</strong></p>
+
+<p>Kubernetes can help you deploy and update secrets and application configuration
+without rebuilding your image and without exposing secrets in your stack
+configuration.</p>
+
+<p>**6. Batch Execution **</p>
+
+<p>In addition to managing services, Kubernetes can also manage your batch and CI
+workloads, thus replacing containers that fail, if desired.</p>
+
+<p><strong>7. Horizontal Scaling</strong></p>
+
+<p>Kubernetes needs only 1 command to scale up the containers, or to scale them
+down when using the CLI. Else, scaling can also be done via the Dashboard
+(kubernetes UI).</p>
+
+<p><strong>8. Automatic Rollbacks &amp; Rollouts</strong></p>
+
+<p>Kubernetes progressively rolls out changes and updates to your application or
+its configuration, by ensuring that not all instances are worked at the same
+instance. Even if something goes wrong, Kubernetes will rollback the change for
+you.</p>
+
+<h2 id="architecture">Architecture</h2>
+
+<p><img src="media/00d38e778faa554bc3b4821b0fa2cc9e.png" alt="" /></p>
+
+<p>Kubernetes Architecture has the 3 main components:</p>
+
+<ul>
+  <li>
+    <p>Master nodes</p>
+  </li>
+  <li>
+    <p>Worker/Slave nodes</p>
+  </li>
+  <li>
+    <p>Distributed key-value store(etcd.)</p>
+  </li>
+</ul>
+
+<p><img src="media/3f87276674fe5e85c8f9d0134d2608bb.png" alt="" /></p>
+
+<h6 id="kubernetes-cluster">Kubernetes Cluster</h6>
+
+<p><img src="media/ae96ee2ad4b394090c8113c8f23c228a.png" alt="" /></p>
+
+<p>Kubernetes Cluster is primarily made up of following components</p>
+
+<ul>
+  <li>
+    <p>Master:</p>
+
+    <ul>
+      <li>
+        <p>Kube API Server</p>
+      </li>
+      <li>
+        <p>Control Plane (kube-scheduler + kube-controller-manager +
+Cloud-controller Manager)</p>
+      </li>
+      <li>
+        <p>Etcd</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Node:</p>
+
+    <ul>
+      <li>
+        <p>Kubelet</p>
+      </li>
+      <li>
+        <p>Kube-proxy</p>
+      </li>
+      <li>
+        <p>Container Runtime</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Addons:</p>
+
+    <ul>
+      <li>
+        <p>DNS</p>
+      </li>
+      <li>
+        <p>WebUI</p>
+      </li>
+      <li>
+        <p>Container Resource Monitoring</p>
+      </li>
+      <li>
+        <p>Cluster Level Logging</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h6 id="master-node">Master Node</h6>
+
+<p>It is the entry point for all administrative tasks which is responsible for
+managing the Kubernetes cluster. There can be more than one master node. If more
+than one master node, one master node acts as a main master node other node will
+just follows.</p>
+
+<ul>
+  <li>
+    <p>The main machine that controls the nodes</p>
+  </li>
+  <li>
+    <p>Main entry point for all administrative tasks</p>
+  </li>
+  <li>
+    <p>It handles the orchestration of the worker nodes</p>
+  </li>
+</ul>
+
+<p><img src="media/e37e97b33fb4cc08b6bce189fe22a1e7.png" alt="" /></p>
+
+<p><strong>API server:</strong></p>
+
+<ul>
+  <li>
+    <p>Performs all the administrative tasks through the API server within the
+master node.</p>
+  </li>
+  <li>
+    <p>In this REST commands are sent to the API server which validates and
+processes the requests.</p>
+  </li>
+  <li>
+    <p>After requesting, the resulting state of the cluster is stored in the
+distributed key-value store.</p>
+  </li>
+</ul>
+
+<p><strong>Scheduler:</strong></p>
+
+<ul>
+  <li>
+    <p>The scheduler schedules the tasks to slave nodes. It stores the resource
+usage information for each slave node.</p>
+  </li>
+  <li>
+    <p>It schedules the work in the form of Pods and Services.</p>
+  </li>
+</ul>
+
+<p><strong>Controller manager</strong></p>
+
+<ul>
+  <li>
+    <p>Basically, a controller watches the desired state of the objects it
+manages and watches their current state through the API server.</p>
+  </li>
+  <li>
+    <p>If the current state of the objects it manages does not meet the desired
+state, then the control loop takes corrective steps to make sure that the
+current state is the same as the desired state</p>
+  </li>
+</ul>
+
+<p><strong>ETCD</strong></p>
+
+<ul>
+  <li>
+    <p>etcd is a distributed key-value store which stores the cluster state.</p>
+  </li>
+  <li>
+    <p>It can be part of the Kubernetes Master, or, it can be configured
+externally.</p>
+  </li>
+  <li>
+    <p>it is also used to store configuration details such as subnets, ConfigMaps,
+Secrets, etc.</p>
+  </li>
+</ul>
+
+<h6 id="worker-node">Worker Node</h6>
+
+<p>It is a physical server or you can say a VM which runs the applications using
+Pods (<strong>a pod scheduling unit</strong>) which is controlled by the master node. On a
+physical server (worker/slave node), pods are scheduled. For
+accessing the applications from the external world, we connect to nodes.</p>
+
+<ul>
+  <li>
+    <p>It is a worker machine in Kubernetes (used to be known as minion)</p>
+  </li>
+  <li>
+    <p>This machine performs the requested tasks. Each Node is controlled by the
+Master Node</p>
+  </li>
+  <li>
+    <p>Runs containers inside pods</p>
+  </li>
+  <li>
+    <p>This is where the Docker engine runs and takes care of downloading images
+and starting containers</p>
+  </li>
+</ul>
+
+<p><img src="media/d19634ad589c1ea810f0c9e6060f25d9.png" alt="" /></p>
+
+<p>**Container runtime: **</p>
+
+<ul>
+  <li>
+    <p>To run and manage a container’s lifecycle, we need a **container
+runtime **on the worker node.</p>
+  </li>
+  <li>
+    <p>Sometimes, Docker is also referred to as a container runtime, but to be
+precise, Docker is a platform which uses **containers **as a container
+runtime.</p>
+  </li>
+</ul>
+
+<p>**Kubelet: **</p>
+
+<ul>
+  <li>It is an agent which communicates with the Master node and executes on nodes
+or the worker nodes. It gets the Pod specifications through the API server
+and executes the containers associated with the Pod and ensures that the
+containers described in those Pod are running and healthy.</li>
+</ul>
+
+<p>**Kube-proxy: **</p>
+
+<ul>
+  <li>
+    <p>Kube-proxy runs on each node to deal with individual host sub-netting and
+ensure that the services are available to external parties.</p>
+  </li>
+  <li>
+    <p>It serves as a network proxy and a load balancer for a service on a single
+worker node and manages the network routing for TCP and UDP packets.</p>
+  </li>
+  <li>
+    <p>It is the network proxy which runs on each worker node and listens to the
+API server for each Service endpoint creation/deletion.</p>
+  </li>
+  <li>
+    <p>For each Service endpoint, kube-proxy sets up the routes so that it can
+reach to it.</p>
+  </li>
+</ul>
+
+<p><strong>Pods</strong></p>
+
+<ul>
+  <li>
+    <p>A pod is one or more containers that logically go together. Pods run on
+nodes. Pods run together as a logical unit. So they have the same shared
+content.</p>
+  </li>
+  <li>
+    <p>They all share the same IP address but can reach other Pods via localhost,
+as well as shared storage. Pods don’t need to all run on the same machine as
+containers can span more than one machine. One node can run multiple pods.</p>
+  </li>
+</ul>
+
+<h2 id="kubernetes-vs-docker-swarm">Kubernetes vs Docker Swarm</h2>
+
+<p><strong>Kubernetes</strong> and <strong>Docker Swarm</strong> are leading container orchestration tools in
+today’s market.</p>
+
+<p><img src="media/d5df71c411529b7aa4cbd8231f004d4f.png" alt="Docker Swarm vs Kubernetes - Kubernetes Tutorial - Edureka" /></p>
+
+<h2 id="use-case">Use Case</h2>
+
+<p><strong>Use Case: How Luminis Technologies used Kubernetes in production</strong></p>
+
+<p><strong>Problem:</strong> Luminis, a software technology company used AWS for deploying their
+applications. For deploying the applications, it required custom scripts and
+tools to automate which was not easy for teams other than operations.
+Their small teams didn’t have the resources to learn all of the details about
+the scripts and tools.</p>
+
+<p><strong>Main Issue:</strong> There was no <strong>unit-of-deployment</strong> which created a gap between
+the development and the operations teams.</p>
+
+<p>**Solution: **</p>
+
+<p><strong>How did they Deploy in Kubernetes:</strong></p>
+
+<p><img src="media/5d47b626a5e343527e9e6be897887b68.png" alt="Use case - Kubernetes Architecture - Edureka" /></p>
+
+<p>They used a <a href="https://martinfowler.com/bliki/BlueGreenDeployment.html">blue-green
+deployment</a> mechanism
+to reduce the complexity of handling multiple concurrent versions. (As there’s
+always only one version of the application running in the background)</p>
+
+<p>In this, a component called -<strong>Deployer</strong>” that orchestrated the deployment was
+created by their team by open sourcing their implementation under the Apache
+License as part of the Amdatu umbrella project. This mechanism performed the
+health checking on the pods before re-configuring the load balancer because they
+wanted each component that was deployed to provide a health check.</p>
+
+<p><strong>How did they Automate Deployments?</strong></p>
+
+<p><img src="media/5a084179b4e6a34be6f6b24c9038a324.png" alt="" /></p>
+
+<p>With the <strong>Deployer **in place, they were able to engage up deployments to a
+build pipeline. After a successful build,  their build server pushed a new
+Docker image to a registry on Docker Hub. Then the build server invoked
+the **Deployer</strong> to automatically deploy the new version to a test environment.
+That same image was promoted to production by triggering the <strong>Deployer</strong> on the
+production environment.</p>
+
+<h2 id="use-case--2">Use case -2</h2>
+
+<p><strong>Kubernetes Case-Study</strong></p>
+
+<ul>
+  <li>
+    <p><strong>Yahoo! JAPAN</strong> is a web services provider headquartered in Sunnyvale,
+California. As the company aimed to virtualize the hardware, company started
+using <strong>OpenStack</strong> in 2012. Their internal environment changed very
+quickly. However, due to the progress of cloud and container technology, the
+company wanted the capability to launch services on various platforms.</p>
+  </li>
+  <li>
+    <p><strong>Problem:</strong> How to create images for all required platforms from one
+application code, and deploy those images onto each platform?</p>
+  </li>
+  <li>
+    <p>For your better understanding, refer to the below image. When the code is
+changed at the code registry, then bare metal images, Docker containers, and
+VM images are created by continuous integration tools, pushed into the image
+registry, and then deployed to each infrastructure platform.</p>
+  </li>
+</ul>
+
+<p><img src="media/0301fa11a01df94d378463c7096f7e08.png" alt="Problem Statement of Case Study - Kubernetes Tutorial - Edureka" /></p>
+
+<ul>
+  <li>Now, let us focus on container workflow to understand how they used
+Kubernetes as a deployment platform. Refer to the below image to sneak peek
+into platform architecture.</li>
+</ul>
+
+<p><img src="media/0985371d3c3d756dd4935eef56119b46.png" alt="" /></p>
+
+<blockquote>
+  <p>Solution of Case Study - Kubernetes Tutorial - Edureka</p>
+</blockquote>
+
+<ul>
+  <li>OpenStack instances are used, with Docker, Kubernetes, Calico, etcd on top
+of it to perform various operations like Container Networking, Container
+Registry, and so on.</li>
+</ul>
+
+<p><strong>DevOps Training</strong></p>
+
+<ul>
+  <li>
+    <p>When you have a number of clusters, then it becomes hard to manage them
+right?</p>
+  </li>
+  <li>
+    <p>So, they just wanted to create a simple, base OpenStack cluster to provide
+the basic functionality needed for Kubernetes and make the OpenStack
+environment easier to manage.</p>
+  </li>
+  <li>
+    <p>By the combination of Image creation workflow and Kubernetes, they built the
+below toolchain which makes it easy from code push to deployment.</p>
+  </li>
+</ul>
+
+<p><img src="media/1cc38e97c592bf52bcf1626483c6562d.png" alt="" /></p>
+
+<blockquote>
+  <p>Solution of Case Study - Kubernetes Tutorial - Edureka</p>
+</blockquote>
+
+<blockquote>
+
+  <p>This kind of toolchain made sure that all factors for production deployment
+  such as multi-tenancy, authentication, storage, networking, service
+  discovery were considered.</p>
+</blockquote>
+
+<ul>
+  <li>That’s how folks, <strong>Yahoo! JAPAN</strong> built an automation toolchain for
+-one-click” code deployment to Kubernetes running on OpenStack, with help
+from <strong>Google</strong> and <strong>Solinea</strong>.</li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<p><img src="media/4cdbd9430bff777394fd296a4344e4ef.png" alt="" /></p>
+
+<h2 id="kuberneters-architecture">Kuberneters Architecture</h2>
+<p><img src="media/sjadhj.png" alt="ARch" /></p>
+
+<p><strong>Kubernetes Master</strong>
+<img src="media/mastra.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p><strong>kube-apiserver</strong>: REST API endpoint to serve as the frontend for the Kubernetes control plane</p>
+  </li>
+  <li>
+    <p><strong>etcd</strong>: Key value store for the cluster data (regarded as the single source of truth)</p>
+  </li>
+  <li>
+    <p><strong>kube-scheduler</strong>: Watches new workloads/pods and assigns them to a node based on several scheduling factors (resource constraints, anti-affinity rules, data locality, etc.)</p>
+  </li>
+  <li>
+    <p><strong>kube-controller-manager:</strong> Central controller that watches the node, replication set, endpoints (services), and service accounts.</p>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<p><strong>Node Components</strong>
+<img src="media/nodew.png" alt="" />
+Unlike Master components that usually run on a single node (unless High Availability Setup is explicitly stated), Node components run on every node.</p>
+
+<ol>
+  <li>
+    <p><strong>kubelet</strong>: Agent running on the node to inspect the container health and report to the master as well as listening to new commands from the kube-apiserver</p>
+  </li>
+  <li>
+    <p><strong>kube-proxy</strong>: Maintains the network rules</p>
+  </li>
+  <li>
+    <p><strong>container runtime</strong>: Software for running the containers (e.g. Docker, rkt, runc)</p>
+  </li>
+</ol>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Node</code> single machine in your cluster</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Pods</code> Kubernetes doesn’t run containers directly; instead it wraps one or more containers into a higher-level structure called a pod.</p>
+  </li>
+  <li>
+    <p>Master + Nodes = Kubernetes Cluster</p>
+  </li>
+</ul>
+
+<p>In Simple,</p>
+<ul>
+  <li>We have a Cluster</li>
+  <li>Inside Cluster, we have POD</li>
+  <li>Inside POD, We have a Container</li>
+  <li>Running Cantainer called as a Service, which is accessed by hostname:port.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="minikube-installation-windows-10">MiniKube Installation Windows 10</h2>
+<p>minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.</p>
+
+<p>All you need is Docker (or similarly compatible) container or a Virtual Machine environment, and Kubernetes is a single command away: <code class="language-plaintext highlighter-rouge">minikube start</code></p>
+
+<ol>
+  <li>
+    <p>Download .exe from <a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank">Here</a></p>
+  </li>
+  <li>Open PowerShell as Administrator &amp; Set Path by running below code
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="nv">$oldpath</span><span class="o">=</span><span class="p">[</span><span class="n">Environment</span><span class="p">]::</span><span class="n">GetEnvironmentVariable</span><span class="p">(</span><span class="s2">"Path"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">EnvironmentVariableTarget</span><span class="p">]::</span><span class="n">Machine</span><span class="p">)</span><span class="w">
+ </span><span class="kr">if</span><span class="p">(</span><span class="nv">$oldpath</span><span class="w"> </span><span class="o">-notlike</span><span class="w"> </span><span class="s2">"*;C:\minikube*"</span><span class="p">){</span><span class="err">`</span><span class="w">
+   </span><span class="p">[</span><span class="n">Environment</span><span class="p">]::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">"Path"</span><span class="p">,</span><span class="w"> </span><span class="nv">$oldpath</span><span class="o">+</span><span class="s2">";C:\minikube"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">EnvironmentVariableTarget</span><span class="p">]::</span><span class="n">Machine</span><span class="p">)</span><span class="err">`</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Start your cluster
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">minikube</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="nt">--driver</span><span class="o">=</span><span class="n">hyperv</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p>If Any error Create Swith manually in Hyper-V Manager, <a href="https://stackoverflow.com/questions/62221215/minikube-hanging-on-creating-hyperv-vm" target="_blank">Follow Here</a>
+ <img src="media/miniswit.png" alt="" /></p>
+
+    <p>Run Below command</p>
+    <pre><code class="language-dos"> minikube start --vm-driver hyperv --hyperv-virtual-switch "MiniSwitch"
+</code></pre>
+  </li>
+  <li>Install minikube Dashboard
+    <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code> minikube dashboard
+</code></pre></div>    </div>
+    <p><img src="media/dskj.png" alt="" /></p>
+
+    <p>Open above URL in Browser
+ <img src="media/browsatr.png" alt="" /></p>
+  </li>
+</ol>
+
+<h2 id="create-podyaml">Create Pod.yaml</h2>
+
+<p>A POD can have one or more containers</p>
+
+<p>1.Create <code class="language-plaintext highlighter-rouge">pod.yaml</code> in Project Root</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">pod1</span>
+  <span class="na">labels</span><span class="pi">:</span>
+    <span class="na">app</span><span class="pi">:</span> <span class="s">java</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span> 
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">pod1</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="s">smlcodes/empapp:latest</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>2.Check if any other PODS are running</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
+No POD Resources are Running
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>3.Now Create POD, using below cmd where <code class="language-plaintext highlighter-rouge">pod.yaml</code> resides</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">kubectl create -f pod.yaml</span>
+</code></pre></div></div>
+<p><img src="media/pods.png" alt="" /></p>
+
+<p>Now if we see Kubernetes Dashboard, You will find POD with one Node there
+<img src="media/pod3287.png" alt="" />
+<img src="media/node21.png" alt="" /></p>
+
+<p><br /></p>
+
+<p>4.We have POD created, inside we have empapp container Running. To expose the application to outside world we need to do <code class="language-plaintext highlighter-rouge">kubectl expose -h</code></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Syntax:
+kubectl expose pod &lt;POD_NAME&gt; <span class="nt">--name</span> &lt;EXPOSE_SERVICE_NAME&gt; <span class="nt">--port</span> &lt;PORT_NO&gt; <span class="nt">--type</span> <span class="o">[</span>ClusterIP/NodePort/LoadBalancer]
+</code></pre></div></div>
+
+<pre><code class="language-dos">kubectl expose pod pod1 --name pod1srv --port 5001 --type  NodePort
+</code></pre>
+
+<p><img src="media/expose.png" alt="" /></p>
+
+<p><br /></p>
+
+<p>5.To access Application, we must know the IP/host where <code class="language-plaintext highlighter-rouge">pod1srv</code> service is Running. for that we use below one.</p>
+
+<pre><code class="language-dos">minikube service pod1srv
+</code></pre>
+
+<p><img src="media/ip.png" alt="" /></p>
+
+<h2 id="replicationcontroller">ReplicationController</h2>
+<p>Replication Controller is one of the key features of Kubernetes, which is responsible for managing the pod lifecycle. It is responsible for making sure that the specified number of pod replicas are running at any point of time. It is used in time when one wants to make sure that the specified number of pod or at least one pod is running. It has the capability to bring up or down the specified no of pod.</p>
+
+<p>It is a best practice to use the replication controller to manage the pod life cycle rather than creating a pod again and again.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">apiVersion</span><span class="o">:</span> <span class="n">v1</span>
+<span class="n">kind</span><span class="o">:</span> <span class="n">ReplicationController</span> <span class="o">--------------------------&gt;</span> <span class="m">1</span>
+<span class="n">metadata</span><span class="o">:</span>
+   <span class="n">name</span><span class="o">:</span> <span class="n">Tomcat</span><span class="o">-</span><span class="n">ReplicationController</span> <span class="o">--------------------------&gt;</span> <span class="m">2</span>
+<span class="n">spec</span><span class="o">:</span>
+   <span class="n">replicas</span><span class="o">:</span> <span class="m">3</span> <span class="o">------------------------&gt;</span> <span class="m">3</span>
+   <span class="n">template</span><span class="o">:</span>
+      <span class="n">metadata</span><span class="o">:</span>
+         <span class="n">name</span><span class="o">:</span> <span class="n">Tomcat</span><span class="o">-</span><span class="n">ReplicationController</span>
+      <span class="n">labels</span><span class="o">:</span>
+         <span class="n">app</span><span class="o">:</span> <span class="n">App</span>
+         <span class="n">component</span><span class="o">:</span> <span class="n">neo4j</span>
+      <span class="n">spec</span><span class="o">:</span>
+         <span class="n">containers</span><span class="o">:</span>
+         <span class="o">-</span> <span class="n">name</span><span class="o">:</span> <span class="n">Tomcat</span><span class="o">-</span> <span class="o">-----------------------&gt;</span> <span class="m">4</span>
+         <span class="n">image</span><span class="o">:</span> <span class="n">tomcat</span><span class="o">:</span> <span class="m">8.0</span>
+         <span class="n">ports</span><span class="o">:</span>
+            <span class="o">-</span> <span class="n">containerPort</span><span class="o">:</span> <span class="m">7474</span> <span class="o">------------------------&gt;</span> <span class="m">5</span>
+</code></pre></div></div>
+
+<h4 id="setup-details">Setup Details</h4>
+
+<ul>
+  <li>
+    <p><strong>Kind</strong>: ReplicationController → In the above code, we have defined the kind as replication controller which tells the kubectl that the yaml file is going to be used for creating the replication controller.</p>
+  </li>
+  <li>
+    <p><strong>name</strong>: Tomcat-ReplicationController → This helps in identifying the name with which the replication controller will be created. If we run the kubctl, get rc &lt; Tomcat-ReplicationController &gt; it will show the replication controller details.</p>
+  </li>
+  <li>
+    <p><strong>replicas</strong>: 3 → This helps the replication controller to understand that it needs to maintain three replicas of a pod at any point of time in the pod lifecycle.</p>
+  </li>
+  <li>
+    <p><strong>name</strong>: Tomcat → In the spec section, we have defined the name as tomcat which will tell the replication controller that the container present inside the pods is tomcat.</p>
+  </li>
+  <li>
+    <p><strong>containerPort</strong>: 7474 → It helps in making sure that all the nodes in the cluster where the pod is running the container inside the pod will be exposed on the same port 7474.</p>
+  </li>
+</ul>
+
+<p><img src="media/sadsadsad.png" alt="" /></p>
+
+<h2 id="replicationset">ReplicationSet</h2>
+
+<p>Replica Set ensures how many replica of pod should be running. It can be considered as a replacement of replication controller. The key difference between the replica set and the replication controller is, the replication controller only supports equality-based selector whereas the replica set supports set-based selector.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">apiVersion</span><span class="o">:</span> <span class="n">extensions</span><span class="o">/</span><span class="n">v1beta1</span> <span class="o">---------------------&gt;</span><span class="m">1</span>
+<span class="n">kind</span><span class="o">:</span> <span class="n">ReplicaSet</span> <span class="o">--------------------------&gt;</span> <span class="m">2</span>
+<span class="n">metadata</span><span class="o">:</span>
+   <span class="n">name</span><span class="o">:</span> <span class="n">Tomcat</span><span class="o">-</span><span class="n">ReplicaSet</span>
+<span class="n">spec</span><span class="o">:</span>
+   <span class="n">replicas</span><span class="o">:</span> <span class="m">3</span>
+   <span class="n">selector</span><span class="o">:</span>
+      <span class="n">matchLables</span><span class="o">:</span>
+         <span class="n">tier</span><span class="o">:</span> <span class="n">Backend</span> <span class="o">------------------&gt;</span> <span class="m">3</span>
+      <span class="n">matchExpression</span><span class="o">:</span>
+<span class="p">{</span> <span class="n">key</span><span class="o">:</span> <span class="n">tier</span><span class="p">,</span> <span class="n">operation</span><span class="o">:</span> <span class="n">In</span><span class="p">,</span> <span class="n">values</span><span class="o">:</span> <span class="p">[</span><span class="n">Backend</span><span class="p">]}</span> <span class="o">--------------&gt;</span> <span class="m">4</span>
+<span class="n">template</span><span class="o">:</span>
+   <span class="n">metadata</span><span class="o">:</span>
+      <span class="n">lables</span><span class="o">:</span>
+         <span class="n">app</span><span class="o">:</span> <span class="n">Tomcat</span><span class="o">-</span><span class="n">ReplicaSet</span>
+         <span class="n">tier</span><span class="o">:</span> <span class="n">Backend</span>
+      <span class="n">labels</span><span class="o">:</span>
+         <span class="n">app</span><span class="o">:</span> <span class="n">App</span>
+         <span class="n">component</span><span class="o">:</span> <span class="n">neo4j</span>
+   <span class="n">spec</span><span class="o">:</span>
+      <span class="n">containers</span><span class="o">:</span>
+      <span class="o">-</span> <span class="n">name</span><span class="o">:</span> <span class="n">Tomcat</span>
+      <span class="n">image</span><span class="o">:</span> <span class="n">tomcat</span><span class="o">:</span> <span class="m">8.0</span>
+      <span class="n">ports</span><span class="o">:</span>
+      <span class="o">-</span> <span class="n">containerPort</span><span class="o">:</span> <span class="m">7474</span>
+</code></pre></div></div>
+
+<h4 id="setup-details-1">Setup Details</h4>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">apiVersion</code>: extensions/v1beta1 → In the above code, the API version is the advanced beta version of Kubernetes which supports the concept of replica set.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">kind</code>: ReplicaSet → We have defined the kind as the replica set which helps kubectl to understand that the file is used to create a replica set.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">tier</code>: Backend → We have defined the label tier as backend which creates a matching selector.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">{key: tier, operation: In, values: [Backend]}</code>  → This will help matchExpression to understand the matching condition we have defined and in the operation which is used by matchlabel to find details.</p>
+  </li>
+</ul>
+
+<p>Run the above file using <code class="language-plaintext highlighter-rouge">kubectl</code> and create the backend replica set with the provided definition in the <code class="language-plaintext highlighter-rouge">yaml</code> file.</p>
+
+<p><img src="media/adsdsa.png" alt="" /></p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h1 id="kubernetes---commands">Kubernetes - Commands</h1>
+
+<h3 id="listing-resources">Listing Resources</h3>
+
+<p>To list one or more pods, replication controllers, services, or daemon sets, use the <code class="language-plaintext highlighter-rouge">kubectl get</code> command.</p>
+
+<p>Generate a plain-text list of all namespaces:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get namespaces
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Generate a plain-text list of all pods:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Generate a detailed plain-text list of all pods, containing information such as node name:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods -o wide
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Generate a list of all pods running on a particular node server:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods --field-selector=spec.nodeName=[server-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>List a specific replication controller in plain-text:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get replicationcontroller [replication-controller-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Generate a plain-text list of all replication controllers and services:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get replicationcontroller,services
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Generate a plain-text list of all <a href="https://phoenixnap.com/kb/kubernetes-daemonset">daemon sets</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get daemonset
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="creating-a-resource">Creating a Resource</h3>
+
+<p>Create a resource such as a service, a deployment, a job, or a namespace using the <code class="language-plaintext highlighter-rouge">kubectl create</code> command.</p>
+
+<p>For example, to create a new namespace, type:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create namespace [namespace-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Create a resource from a JSON or <a href="https://phoenixnap.com/blog/what-is-yaml-with-examples">YAML file</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create --f [filename]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="applying-and-updating-a-resource">Applying and Updating a Resource</h3>
+
+<p>To apply or update a resource use the <code class="language-plaintext highlighter-rouge">kubectl apply</code> command. The source in this operation can be either a file or the standard input (stdin).</p>
+
+<p>Create a new service with the definition contained in [service-name].yaml:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply -f [service-name].yaml
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Create a new replication controller with the definition contained in [controller-name].yaml:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply -f [controller-name].yaml
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Create the objects defined in any .yaml, .yml, or .json file in a directory:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply -f [directory-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>To update a resource by editing it in a text editor, use <code class="language-plaintext highlighter-rouge">kubectl edit</code>. This command is a combination of the <code class="language-plaintext highlighter-rouge">kubectl get</code> and <code class="language-plaintext highlighter-rouge">kubectl apply</code> commands.</p>
+
+<p>For example, to edit a service, type:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl edit svc/[service-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>This command opens the file in your default editor. To choose another editor, specify it in front of the command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KUBE_EDITOR="[editor-name]" kubectl edit svc/[service-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="displaying-the-state-of-resources">Displaying the State of Resources</h3>
+
+<p>To display the state of any number of resources in detail, use the <code class="language-plaintext highlighter-rouge">kubectl describe</code> command. By default, the output also lists uninitialized resources.</p>
+
+<p>View details about a particular node:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl describe nodes [node-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>View details about a particular pod:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl describe pods [pod-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Display details about a pod whose name and type are listed in pod.json:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Kubectl describe --f pod.json
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>See details about all pods managed by a specific replication controller:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl describe pods [replication-controller-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Show details about all pods:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl describe pods
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="deleting-resources">Deleting Resources</h3>
+
+<p>To remove resources from a file or stdin, use the <code class="language-plaintext highlighter-rouge">kubectl delete</code> command.</p>
+
+<p><br /></p>
+
+<p>Remove a pod using the name and type listed in pod.yaml:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl delete -f pod.yaml
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Remove all pods and services with a specific label:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl delete pods,services -l [label-key]=[label-value]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Remove all pods (the command includes uninitialized pods as well):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl delete pods --all
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="executing-a-command">Executing a Command</h3>
+
+<p>Use <code class="language-plaintext highlighter-rouge">kubectl exec</code> to issue commands to a container or to open a shell in a container.</p>
+
+<p><br /></p>
+
+<p>Receive output from a command run on the first container in a pod:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl exec [pod-name] -- [command]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Get output from a command run on a specific container in a pod:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl exec [pod-name] -c [container-name] -- [command]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Run <code class="language-plaintext highlighter-rouge">/bin/bash</code> from a specific pod. The received output comes from the first container:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl exec -ti [pod-name] -- /bin/bash
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="modifying-kubeconfig-files">Modifying kubeconfig Files</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">kubectl config</code> command lets you view and modify kubeconfig files. This command is usually followed by another sub-command.</p>
+
+<p><br /></p>
+
+<p>Display the current context:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl config current-context
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Set a cluster entry in kubeconfig:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl config set-cluster [cluster-name] --server=[server-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Unset an entry in kubeconfig:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl config unset [property-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="printing-container-logs">Printing Container Logs</h3>
+
+<p>To print logs from containers in a pod, use the <code class="language-plaintext highlighter-rouge">kubectl logs</code> command.</p>
+
+<p><br /></p>
+
+<p>The syntax for printing logs is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl logs [pod-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>To stream logs from a pod, use:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl logs -f [pod-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h2 id="short-names-for-resource-types">Short Names for Resource Types</h2>
+
+<p>Some of the kubectl commands listed above may seem unwieldy due to their length. For this reason the names of common kubectl resource types also have shorter versions.</p>
+
+<p><br /></p>
+
+<p>For example, consider the command mentioned above:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create namespace [namespace-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>You can also write this command as:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create ns [namespace-name]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Here is the full list of kubectl short names:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Short Name</td>
+      <td>Long Name</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">csr</code></td>
+      <td><code class="language-plaintext highlighter-rouge">certificatesigningrequests</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cs</code></td>
+      <td><code class="language-plaintext highlighter-rouge">componentstatuses</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cm</code></td>
+      <td><code class="language-plaintext highlighter-rouge">configmaps</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ds</code></td>
+      <td><code class="language-plaintext highlighter-rouge">daemonsets</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">deploy</code></td>
+      <td><code class="language-plaintext highlighter-rouge">deployments</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ep</code></td>
+      <td><code class="language-plaintext highlighter-rouge">endpoints</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ev</code></td>
+      <td><code class="language-plaintext highlighter-rouge">events</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hpa</code></td>
+      <td><code class="language-plaintext highlighter-rouge">horizontalpodautoscalers</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ing</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ingresses</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">limits</code></td>
+      <td><code class="language-plaintext highlighter-rouge">limitranges</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ns</code></td>
+      <td><code class="language-plaintext highlighter-rouge">namespaces</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">no</code></td>
+      <td><code class="language-plaintext highlighter-rouge">nodes</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pvc</code></td>
+      <td><code class="language-plaintext highlighter-rouge">persistentvolumeclaims</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pv</code></td>
+      <td><code class="language-plaintext highlighter-rouge">persistentvolumes</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">po</code></td>
+      <td><code class="language-plaintext highlighter-rouge">pods</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pdb</code></td>
+      <td><code class="language-plaintext highlighter-rouge">poddisruptionbudgets</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">psp</code></td>
+      <td><code class="language-plaintext highlighter-rouge">podsecuritypolicies</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">rs</code></td>
+      <td><code class="language-plaintext highlighter-rouge">replicasets</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">rc</code></td>
+      <td><code class="language-plaintext highlighter-rouge">replicationcontrollers</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">quota</code></td>
+      <td><code class="language-plaintext highlighter-rouge">resourcequotas</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sa</code></td>
+      <td><code class="language-plaintext highlighter-rouge">serviceaccounts</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">svc</code></td>
+      <td><code class="language-plaintext highlighter-rouge">services</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="https://phoenixnap.com/kb/wp-content/uploads/2021/06/kubectl-commands-cheat-sheet-by-PhoenixNAP.pdf" target="_blank">Download Cheetsheet </a></p>
+
+<h1 id="ref">Ref.</h1>
+
+<p><a href="http://dockerlabs.collabnix.com/">http://dockerlabs.collabnix.com/</a></p>
+
+<p><a href="https://collabnix.github.io/kubelabs/">https://collabnix.github.io/kubelabs/</a></p>
+</div><div class="d-print-none"><footer class="article__footer"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet --></footer></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+//alert('start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert(' end .......');
+ 
+ document.onreadystatechange = function(){
+     if(document.readyState === 'complete'){
+         /*code here*/
+		 //alert('onreadystatechange comled ... start .......');
+document.getElementsByClassName('article__header')[0].style.display = 'none';
+document.getElementsByClassName('article__info')[0].style.display = 'none';
+//alert('onreadystatechange comled ... end .......');
+     }
+}
+
+</script></div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet --></div>
+            </div></div></div><div class="page__footer d-print-none"><footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Satya Kaveti"><meta itemprop="url" content="/"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© SatyaCodes 2020 ,
+        <a title="Satya Kaveti" href="about/">Satya Kaveti's Writing</a>.
+		<span>| <a href="about/">About Me</a> &nbsp |  </span>
+		<span><a href="/terms.html">Terms</a> &nbsp |  </span>
+		<span><a href="/contact.html">Contact</a> &nbsp |  </span>
+		<span><a href="http://www.satyacodesapps.ml/" target="_blank">Our Apps</a> &nbsp |  </span>
+		<span><a href="https://www.facebook.com/isatyakaveti" target="_blank"><i class="fab fa-facebook-f"></i></a> &nbsp |  </span>
+		<span><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube-square"></i></a> &nbsp |  </span>
+		<span><a href="https://in.linkedin.com/in/satyakaveti"target="_blank"><i class="fab fa-linkedin-in"></i></a> &nbsp | 
+		<span>[ 
+		<!-- Start of WebFreeCounter Code -->
+<a href="http://www.statworker.com/" target="_blank"><img src="https://www.webfreecounter.com/hit.php?id=gfpapx&nd=7&style=2" border="0" alt="statworker.com"></a>
+<!-- End of WebFreeCounter Code -->
+</span>
+<span><a href="https://statcounter.com/p12408441/?guest=1" target="_blank"> ]</a></span>
+
+
+      </div>
+    </div>
+  </div>
+</footer></div></div>
+    </div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal d-print-none js-page-gallery-modal"><div class="gallery"></div></div><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">Search</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text" />
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        Cancel</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script></div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+(function() {(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function swiper(options) {
+      var $window = $(window), $root = this, $swiperWrapper, $swiperSlides, $swiperButtonPrev, $swiperButtonNext,
+        initialSlide, animation, onChange, onChangeEnd,
+        rootWidth, count, preIndex, curIndex, translateX, CRITICAL_ANGLE = Math.PI / 3;
+
+      function setOptions(options) {
+        var _options = options || {};
+        initialSlide = _options.initialSlide || 0;
+        animation = _options.animation === undefined && true;
+        onChange = onChange || _options.onChange;
+        onChangeEnd = onChangeEnd || _options.onChangeEnd;
+      }
+
+      function init() {
+        $swiperWrapper = $root.find('.swiper__wrapper');
+        $swiperSlides = $root.find('.swiper__slide');
+        $swiperButtonPrev = $root.find('.swiper__button--prev');
+        $swiperButtonNext = $root.find('.swiper__button--next');
+        animation && $swiperWrapper.addClass('swiper__wrapper--animation');
+        calc(true);
+      }
+
+      function preCalc() {
+        rootWidth = $root.width();
+        count = $swiperWrapper.children('.swiper__slide').length;
+        if (count < 2) {
+          $swiperButtonPrev.addClass('d-none');
+          $swiperButtonNext.addClass('d-none');
+        }
+        curIndex = initialSlide || 0;
+        translateX = getTranslateXFromCurIndex();
+      }
+
+      var calc = (function() {
+        var preAnimation, $swiperSlide, $preSwiperSlide;
+        return function (needPreCalc, params) {
+          needPreCalc && preCalc();
+          var _animation = (params && params.animation !== undefined) ? params.animation : animation;
+          if (preAnimation === undefined || preAnimation !== _animation) {
+            preAnimation = _animation ? $swiperWrapper.addClass('swiper__wrapper--animation') :
+              $swiperWrapper.removeClass('swiper__wrapper--animation');
+          }
+          if (preIndex !== curIndex) {
+            ($preSwiperSlide = $swiperSlides.eq(preIndex)).removeClass('active');
+            ($swiperSlide = $swiperSlides.eq(curIndex)).addClass('active');
+            onChange && onChange(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+            if (onChangeEnd) {
+              if (_animation) {
+                setTimeout(function() {
+                  onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+                }, 400);
+              } else {
+                onChangeEnd(curIndex, $swiperSlides.eq(curIndex), $swiperSlide, $preSwiperSlide);
+              }
+            }
+            preIndex = curIndex;
+          }
+          $swiperWrapper.css('transform', 'translate(' + translateX + 'px, 0)');
+          if (count > 1) {
+            if (curIndex <= 0) {
+              $swiperButtonPrev.addClass('disabled');
+            } else {
+              $swiperButtonPrev.removeClass('disabled');
+            }
+            if (curIndex >= count - 1) {
+              $swiperButtonNext.addClass('disabled');
+            } else {
+              $swiperButtonNext.removeClass('disabled');
+            }
+          }
+        };
+      })();
+
+      function getTranslateXFromCurIndex() {
+        return curIndex <= 0 ? 0 : - rootWidth * curIndex;
+      }
+
+      function moveToIndex(index ,params) {
+        preIndex = curIndex;
+        curIndex = index;
+        translateX = getTranslateXFromCurIndex();
+        calc(false, params);
+      }
+
+      function move(type) {
+        var nextIndex = curIndex, unstableTranslateX;
+        if (type === 'prev') {
+          nextIndex > 0 && nextIndex--;
+        } else if (type === 'next') {
+          nextIndex < count - 1 && nextIndex++;
+        }
+        if (type === 'cur') {
+          moveToIndex(curIndex, { animation: true });
+          return;
+        }
+        unstableTranslateX = translateX % rootWidth !== 0;
+        if (nextIndex !== curIndex || unstableTranslateX) {
+          unstableTranslateX ? moveToIndex(nextIndex, { animation: true }) : moveToIndex(nextIndex);
+        }
+      }
+
+      setOptions(options);
+      init();
+      preIndex = curIndex;
+
+      $swiperButtonPrev.on('click', function(e) {
+        e.stopPropagation();
+        move('prev');
+      });
+      $swiperButtonNext.on('click', function(e) {
+        e.stopPropagation();
+        move('next');
+      });
+      $window.on('resize', function() {
+        calc(true, { animation: false });
+      });
+
+      (function() {
+        var pageX, pageY, velocityX, preTranslateX = translateX, timeStamp, touching;
+        function handleTouchstart(e) {
+          var point = e.touches ? e.touches[0] : e;
+          pageX = point.pageX;
+          pageY = point.pageY;
+          velocityX = 0;
+          preTranslateX = translateX;
+        }
+        function handleTouchmove(e) {
+          if (e.touches && e.touches.length > 1) {
+            return;
+          }
+          var point = e.touches ? e.touches[0] : e;
+          var deltaX = point.pageX - pageX;
+          var deltaY = point.pageY - pageY;
+          velocityX = deltaX / (e.timeStamp - timeStamp);
+          timeStamp = e.timeStamp;
+          if (e.cancelable && Math.abs(Math.atan(deltaY / deltaX)) < CRITICAL_ANGLE) {
+            touching = true;
+            translateX += deltaX;
+            calc(false, { animation: false });
+          }
+          pageX = point.pageX;
+          pageY = point.pageY;
+        }
+        function handleTouchend() {
+          touching = false;
+          var deltaX = translateX - preTranslateX;
+          var distance = deltaX + velocityX * rootWidth;
+          if (Math.abs(distance) > rootWidth / 2) {
+            distance > 0 ? move('prev') : move('next');
+          } else {
+            move('cur');
+          }
+        }
+        $swiperWrapper.on('touchstart', handleTouchstart);
+        $swiperWrapper.on('touchmove', handleTouchmove);
+        $swiperWrapper.on('touchend', handleTouchend);
+        $swiperWrapper.on('touchcancel', handleTouchend);
+
+        (function() {
+          var pressing = false, moved = false;
+          $swiperWrapper.on('mousedown', function(e) {
+            pressing = true; handleTouchstart(e);
+          });
+          $swiperWrapper.on('mousemove', function(e) {
+            pressing && (e.preventDefault(), moved = true, handleTouchmove(e));
+          });
+          $swiperWrapper.on('mouseup', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('mouseleave', function(e) {
+            pressing && (pressing = false, handleTouchend(e));
+          });
+          $swiperWrapper.on('click', function(e) {
+            moved && (e.stopPropagation(), moved = false);
+          });
+        })();
+
+        $root.on('touchmove', function(e) {
+          if (e.cancelable & touching) {
+            e.preventDefault();
+          }
+        });
+      })();
+
+      return {
+        setOptions: setOptions,
+        previous: function(){
+          move('prev');
+        },
+        next: function(){
+          move('next');
+        },
+        refresh: function() {
+          calc(true, { animation: false });
+        }
+      };
+    }
+    $.fn.swiper = swiper;
+  });
+})();
+var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var template =
+      '<div class="swiper gallery__swiper">' +
+        '<div class="swiper__wrapper">' +
+        '</div>' +
+        '<div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>' +
+        '<div class="swiper__button swiper__button--next fas fa-chevron-right"></div>' +
+      '</div>';
+    function setState($item, zoom, translate) {
+      $item.css('transform', 'scale(' + zoom + ') translate(' + translate.x +  'px,' + translate.y + 'px)');
+    }
+    function Gallery(root, items) {
+      this.$root = $(root);
+      this.$swiper = null;
+      this.$swiperWrapper = null;
+      this.$activeItem = null;
+      this.$items = [];
+      this.contentWidth = 0;
+      this.contentHeight = 0;
+      this.swiper = null;
+      this.items = items;
+      this.disabled = false;
+      this.curIndex = 0;
+      this.touchCenter = null;
+      this.lastTouchCenter = null;
+      this.zoomRect = null;
+      this.lastZoomRect = null;
+      this.lastTranslate = null;
+      this.translate = null;
+      this.lastZoom = 1;
+      this.preZoom = 1;
+      this.zoom = 1;
+    }
+    Gallery.prototype.init = function() {
+      var i, item, items = this.items, size, self = this, touchstartFingerCount = 0;
+      this.$root.append(template);
+      this.$swiper = this.$root.find('.gallery__swiper');
+      this.$swiperWrapper = this.$root.find('.swiper__wrapper');
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      for (i = 0; i < items.length; i++) {
+        item = items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        this.$items.push($(
+          '<div class="swiper__slide">' +
+            '<div class="gallery-item">' +
+              '<div class="gallery-item__content">' +
+                '<img src="' + item.src + '" style="width:' + size.w + 'px;height:' + size.h +  'px"/>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        ));
+      }
+      this.$swiperWrapper && this.$swiperWrapper.append(this.$items);
+      this.swiper = this.$swiper && this.$swiper.swiper({
+        onChangeEnd: function() {
+          self._handleChangeEnd.apply(self, Array.prototype.slice.call(arguments));
+        }
+      });
+      $(window).on('resize', function() {
+        if (self.disabled) { return; }
+        self._resizeImageSize();
+      });
+      // Char Code: 37  ⬅, 39  ➡
+      $(window).on('keyup', function(e) {
+        if (window.isFormElement(e.target || e.srcElement) || self.disabled) { return; }
+        if (e.which === 37) {
+          self.swiper && self.swiper.previous();
+        } else if (e.which === 39) {
+          self.swiper && self.swiper.next();
+        }
+      });
+      function getRect(touch0, touch1) {
+        return {
+          o: {
+            x: (touch0.pageX + touch1.pageX) / 2,
+            y: (touch0.pageY + touch1.pageY) / 2
+          },
+          w: Math.abs(touch0.pageX - touch1.pageX),
+          h: Math.abs(touch0.pageY - touch1.pageY)
+        };
+      }
+      function getTouches(e) {
+        return e.touches || e;
+      }
+      function getTouchesCount(e) {
+        if (e.touches) {
+          return e.touches.length;
+        } else {
+          return 1;
+        }
+      }
+      this.$swiperWrapper.on('touchstart', function(e) {
+        var touch0, touch1, rect;
+        touchstartFingerCount = getTouchesCount(e);
+        if (touchstartFingerCount > 1) {
+          touch0 = e.touches[0];
+          touch1 = e.touches[1];
+          rect = getRect(touch0, touch1);
+          self.lastZoomRect = { w: rect.w, h: rect.h };
+          self.lastTouchCenter = rect.o;
+        } else {
+          var touch = getTouches(e)[0];
+          self.lastTouchCenter = { x: touch.pageX, y: touch.pageY };
+        }
+      });
+      this.$swiperWrapper.on('touchmove', function(e) {
+        if (touchstartFingerCount === getTouchesCount(e)) {
+          if (touchstartFingerCount > 1) {
+            var touch0 = e.touches[0];
+            var touch1 = e.touches[1];
+            var rect = getRect(touch0, touch1);
+            self.zoomRect = { w: rect.w, h: rect.h };
+            self.touchCenter = rect.o;
+            self._zoom(); self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          } else {
+            var touch = getTouches(e)[0];
+            self.touchCenter = { x: touch.pageX, y: touch.pageY };
+            self._translate();
+            setState(self.$activeItem, self.zoom, self.translate);
+          }
+        }
+      });
+      this.$swiperWrapper.on('touchend', function(e) {
+        self.lastZoom = self.zoom;
+        self.lastTranslate = self.translate;
+        touchstartFingerCount = 0;
+      });
+      this.$root.on('touchmove', function(e) {
+        if (self.disabled) { return; }
+        e.preventDefault();
+      });
+    };
+
+    Gallery.prototype._translate = function() {
+      this.translate = this.touchCenter && this.lastTouchCenter && this.lastTranslate ? {
+        x: (this.touchCenter.x - this.lastTouchCenter.x) / this.zoom + this.lastTranslate.x,
+        y: (this.touchCenter.y - this.lastTouchCenter.y) / this.zoom + this.lastTranslate.y
+      } : { x: 0, y: 0 };
+    }
+    Gallery.prototype._zoom = function() {
+      this.zoom = (this.zoomRect.w + this.zoomRect.h) / (this.lastZoomRect.w + this.lastZoomRect.h) * this.lastZoom;
+      this.zoom > 1 ? this.$activeItem.addClass('zoom') : this.$activeItem.removeClass('zoom');
+      this.preZoom = this.zoom;
+    }
+
+    Gallery.prototype._calculateImageSize = function(w, h) {
+      var scale = 1;
+      if (this.contentWidth > 0 && this.contentHeight > 0 && w > 0 && h > 0) {
+        scale = Math.min(
+          Math.min(w, this.contentWidth) / w,
+          Math.min(h, this.contentHeight) / h);
+      }
+      return { w: Math.floor(w * scale), h: Math.floor(h * scale) };
+    };
+
+    Gallery.prototype._resizeImageSize = function() {
+      var i, $item, $items = this.$items, item, size;
+      this.contentWidth = this.$swiperWrapper && this.$swiperWrapper.width();
+      this.contentHeight = this.$swiperWrapper && this.$swiperWrapper.height();
+      if ($items.length < 1) { return; }
+      for (i = 0; i < $items.length; i++) {
+        item = this.items[i], $item = $items[i];
+        size = this._calculateImageSize(item.w, item.h);
+        item.width = size.w; item.height = size.h;
+        $item && $item.find('img').css({ width: size.w, height: size.h });
+      }
+    };
+    Gallery.prototype._handleChangeEnd = function(index, $dom, preIndex, $preDom) {
+      this.curIndex = index;
+      this.lastZoomRect = null; this.lastZoomRect = null;
+      this.lastTranslate = this.translate = { x: 0, y:0 };
+      this.lastZoom = this.preZoom = this.zoom = 1;
+      this.$activeItem = $dom.find('.gallery-item__content');
+      setState($preDom.find('.gallery-item__content'), this.zoom, this.translate);
+    };
+
+    Gallery.prototype.refresh = function() {
+      this.swiper && this.swiper.refresh();
+      this._resizeImageSize();
+    };
+    Gallery.prototype.setOptions = function(options) {
+      this.disabled = options.disabled;
+      this.swiper && this.swiper.setOptions(options);
+    };
+    window.Gallery = Gallery;
+  });
+})();(function() {
+  window.imagesLoad = function(images) {
+    images = images || document.getElementsByTagName('img');
+    var imagesCount = images.length, loadedCount = 0, image;
+    var i, j, loaded = false, cbs = [];
+    imagesCount < 1 && (loaded = true);
+    for (i = 0; i < imagesCount; i++) {
+      image = images[i];
+      image.complete ? handleImageLoad() : image.addEventListener('load', handleImageLoad);
+    }
+    function handleImageLoad() {
+      loadedCount++;
+      if (loadedCount === imagesCount) {
+        loaded = true;
+        if (cbs.length > 0) {
+          for (j = 0; j < cbs.length; j++) {
+            cbs[j]();
+          }
+        }
+      }
+    }
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  };
+})();
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $pageGalleryModal = $('.js-page-gallery-modal');
+    var $images = $('.page__content').find('img:not(.lightbox-ignore)');
+    window.imagesLoad($images).then(function() {
+      /* global Gallery */
+      var pageGalleryModal = $pageGalleryModal.modal({ onChange: handleModalChange });
+      var gallery = null;
+      var modalVisible = false;
+      var i, items = [], image, item;
+      if($images && $images.length > 0) {
+        for (i = 0; i < $images.length; i++) {
+          image = $images.eq(i);
+          if (image.get(0).naturalWidth > 800) {
+            items.push({ src: image.attr('src'), w: image.get(0).naturalWidth, h: image.get(0).naturalHeight, $el: image});
+          }
+        }
+      }
+
+      if(items.length > 0) {
+        gallery = new Gallery('.gallery', items);
+        gallery.setOptions({ disabled: !modalVisible });
+        gallery.init();
+        for (i = 0; i < items.length; i++) {
+          item = items[i];
+          item.$el && (item.$el.addClass('popup-image'), item.$el.on('click', (function() {
+            var index = i;
+            return function() {
+              pageGalleryModal.show();
+              gallery.setOptions({ initialSlide: index });
+              gallery.refresh(true, { animation: false });
+            };
+          })()));
+        }
+      }
+
+      function handleModalChange(visible) {
+        modalVisible = visible;
+        gallery && gallery.setOptions({ disabled: !modalVisible });
+      }
+
+      $pageGalleryModal.on('click', function() {
+        pageGalleryModal.hide();
+      });
+    });
+  });
+})();/*(function () {
+
+})();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>
