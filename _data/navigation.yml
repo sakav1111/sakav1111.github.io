@@ -459,37 +459,27 @@ SpringBootTutorial:
         
   - title:      SpringBoot Advanced
     children:        
-      - title:  SpringBoot Session Management
-        url:    /springboot/springboot-advanced
-        
-  - title:      Session Management
-    children:        
-      - title:  SpringBoot Session Management
+      - title:  Logging, Lombok, @Async
+        url:    /springboot/springboot-advanced        
+       
+      - title:  Session Management
         url:    /springboot/springboot-session-management
-        
-  - title:      Redis Cache
-    children:        
+     
       - title:  Redis Cache
         url:    /springboot/springboot-redis
-        
-  - title:      Swagger
-    children:        
-      - title:  SpringBoot Swagger
-        url:    /springboot/springboot-swagger        
-        
-  - title:      Performance Monitoring
-    children:        
+      
+      - title:  Swagger
+        url:    /springboot/springboot-swagger
+      
       - title:  Performance Monitoring
         url:    /springboot/springboot-performance-monitoring    
-        
-  - title:      Unit Testing
-    children:
-      - title:  SpringBoot Unit Testing
+
+      - title:  Unit Testing
         url:    /springboot/springboot-unit-testing
         
   - title:      Microservices
     children:
-      - title:  SpringBoot Microservices
+      - title:  Microservices
         url:    /springboot/springboot-microservices
         
         
