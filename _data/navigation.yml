@@ -454,13 +454,40 @@ SpringBootTutorial:
         url:    /springboot/springboot-jparepository
       - title:  SpringBoot MongoDB and REST Example
         url:    /springboot/springboot-mongodb-and-rest-example
-      - title:  SpringBoot Advanced
-        url:    /springboot/springboot-advanced
       - title:  SpringBoot Security
-        url:    /springboot/springboot-security
-
+        url:    /springboot/springboot-security           
         
-  - title:      SpringBoot Microservices
+  - title:      SpringBoot Advanced
+    children:        
+      - title:  SpringBoot Session Management
+        url:    /springboot/springboot-advanced
+        
+  - title:      Session Management
+    children:        
+      - title:  SpringBoot Session Management
+        url:    /springboot/springboot-session-management
+        
+  - title:      Redis Cache
+    children:        
+      - title:  Redis Cache
+        url:    /springboot/springboot-redis
+        
+  - title:      Swagger
+    children:        
+      - title:  SpringBoot Swagger
+        url:    /springboot/springboot-swagger        
+        
+  - title:      Performance Monitoring
+    children:        
+      - title:  Performance Monitoring
+        url:    /springboot/springboot-performance-monitoring    
+        
+  - title:      Unit Testing
+    children:
+      - title:  SpringBoot Unit Testing
+        url:    /springboot/springboot-unit-testing
+        
+  - title:      Microservices
     children:
       - title:  SpringBoot Microservices
         url:    /springboot/springboot-microservices
