@@ -480,7 +480,37 @@ SpringBootTutorial:
   - title:      Microservices
     children:
       - title:  Microservices
-        url:    /springboot/springboot-microservices
+        url:    /springboot/microservices
+        
+      - title:  Architecture
+        url:    /springboot/microservices-architecture
+        
+      - title:  Spring Cloud Config Server
+        url:    /springboot/microservices-config
+        
+      - title:  Eureka Service Registry and Discovery
+        url:    /springboot/microservices-eureka
+        
+      - title:  Ribbon Load balancer
+        url:    /springboot/microservices-ribbon
+        
+      - title:  Hystrix Circuit Breaker
+        url:    /springboot/microservices-hystrix
+        
+      - title:  Spring Cloud Feign
+        url:    /springboot/microservices-feign
+        
+      - title:  Zuul API Gateway
+        url:    /springboot/microservices-zuul
+        
+      - title:  Sleuth and Zipkin
+        url:    /springboot/microservices-sleuth
+        
+      - title:  Kafka - Message Broker
+        url:    /springboot/microservices-kafka
+        
+      - title:  Microservices Summary
+        url:    /springboot/microservices-summary
         
         
 
