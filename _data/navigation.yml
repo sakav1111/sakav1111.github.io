@@ -307,17 +307,6 @@ JavaTutorial:
 
 
 
-#-----------------------------2. SpringBootTutorial  - Sidemenu --------------------------
-SpringBootTutorial:
-  - title:      Start
-    children:
-      - title:  1.SpringBoot 
-        url:    /springboot/quick-start
-      - title:  2.SpringBoot 
-        url:    /springboot/structure
-      - title:  3.SpringBoot Complete
-        url:    /springboot/springboot
-
 #-----------------------------3.SQLTutorial - Sidemenu --------------------------------------
 SQLTutorial:
   - title:      SQL Tutorial
