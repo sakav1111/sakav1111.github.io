@@ -1,0 +1,378 @@
+---
+title: SatyaCodes
+timezone: Asia/Kolkata
+encoding: UTF-8
+defaults:
+- scope:
+    path: ''
+    type: posts
+  values:
+    layout: article
+    sharing: true
+    license: false
+    aside:
+      toc: true
+    show_edit_on_github: false
+    show_subscribe: false
+    pageview: true
+- scope:
+    path: java
+  values:
+    layout: article
+    nav_key: java
+    sidebar:
+      nav: JavaTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: springboot
+  values:
+    layout: article
+    nav_key: java
+    sidebar:
+      nav: SpringBootTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: sql
+  values:
+    layout: article
+    nav_key: sql
+    sidebar:
+      nav: SQLTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: mongodb
+  values:
+    layout: article
+    nav_key: mongodb
+    sidebar:
+      nav: MongoDBTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: jdbc
+  values:
+    layout: article
+    nav_key: jdbc
+    sidebar:
+      nav: JDBCTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: servlets
+  values:
+    layout: article
+    nav_key: servlets
+    sidebar:
+      nav: ServletsTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: jsp
+  values:
+    layout: article
+    nav_key: jsp
+    sidebar:
+      nav: JSPTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: springboot
+  values:
+    layout: article
+    nav_key: springboot
+    sidebar:
+      nav: SpringBootTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: hibernate
+  values:
+    layout: article
+    nav_key: hibernate
+    sidebar:
+      nav: HibernateTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: spring
+  values:
+    layout: article
+    nav_key: spring
+    sidebar:
+      nav: SpringTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: webservices
+  values:
+    layout: article
+    nav_key: webservices
+    sidebar:
+      nav: WebServicesTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: aws
+  values:
+    layout: article
+    nav_key: aws
+    sidebar:
+      nav: AWSTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: ansible
+  values:
+    layout: article
+    nav_key: ansible
+    sidebar:
+      nav: AnsibleTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: chef
+  values:
+    layout: article
+    nav_key: chef
+    sidebar:
+      nav: ChefTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: docker
+  values:
+    layout: article
+    nav_key: docker
+    sidebar:
+      nav: DockerTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: jenkins
+  values:
+    layout: article
+    nav_key: jenkins
+    sidebar:
+      nav: JenkinsTutorial
+    license: false
+    aside:
+      toc: false
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: tutorials
+  values:
+    layout: article
+    nav_key: tutorials
+    license: false
+    aside:
+      toc: true
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: books
+  values:
+    layout: article
+    nav_key: books
+    license: false
+    aside:
+      toc: true
+    show_edit_on_github: false
+    show_date: false
+    lightbox: true
+- scope:
+    path: ''
+    type: sample_page
+  values:
+    nav_key: samples
+- scope:
+    path: ''
+    type: sample_articles
+  values:
+    nav_key: samples
+    show_date: false
+- scope:
+    path: ''
+    type: sample_languages
+  values:
+    layout: article
+    nav_key: samples
+    show_date: false
+- scope:
+    path: _sample_languages
+    type: sample_languages
+  values:
+    layout: article
+    nav_key: samples
+    show_date: false
+theme: jekyll-text-theme
+text_skin: default
+highlight_theme: default
+url: 
+baseurl: 
+description: 'Tutorials, Java Tutorials,DevOps Tutorials,Spring Tutorial,SpringBoot Tutorials,
+Docker,Chef,Jenkins,Git,BitBucket,Bamboo,AWS,Kubernetes,Puppet,Ansible,Nagios.'
+lang: en
+author: 
+  type: person
+  name: Satya Kaveti
+  url: 
+  avatar: 
+  bio: I am an amazing person.
+  email: 
+  facebook: 
+  twitter: 
+  weibo: 
+  googleplus: 
+  telegram: 
+  medium: 
+  zhihu: 
+  douban: 
+  linkedin: 
+  github: 
+  npm: 
+repository: user_name/repo_name
+repository_tree: master
+paths:
+  root: 
+  home: 
+  archive: 
+  rss: 
+excerpt_separator: "<!--more-->"
+license: CC-BY-NC-4.0
+toc:
+  selectors: 
+mathjax: 
+mathjax_autoNumber: 
+mermaid: 
+chart: 
+paginate: 10
+paginate_path: "/page:num"
+sources: 
+sharing:
+  provider: addthis
+  addthis:
+    id: "ra-5dd2bcde40b385b7"
+comments:
+  provider: disqus
+  disqus:
+    shortname: "satyacodes"
+  gitalk:
+    clientID: 
+    clientSecret: 
+    repository: 
+    owner: 
+    admin: 
+  valine:
+    app_id: 
+    app_key: 
+    placeholder: 
+    visitor: 
+    meta: 
+pageview:
+  provider: false
+  leancloud:
+    app_id: 
+    app_key: 
+    app_class: 
+search:
+  provider: default
+  google:
+    custom_search_engine_id: 
+analytics:
+  provider: false
+  google:
+    tracking_id: 
+    anonymize_ip: false
+markdown: kramdown
+highlighter: rouge
+permalink: /:title:output_ext
+exclude:
+- CHANGELOG.md
+- HOW_TO_RELEASE.md
+- Gemfile
+- Gemfile.lock
+- LICENSE
+- README-*.md
+- README.md
+- gulpfile.js
+- jekyll-text-theme.gemspec
+- package-lock.json
+- package.json
+- "/docs"
+- "/node_modules"
+- "/screenshots"
+- "/test"
+- "/vendor"
+plugins:
+- jekyll-feed
+- jekyll-paginate
+- jekyll-sitemap
+- jemoji
+- jekyll-seo-tag
+- jekyll-sitemap
