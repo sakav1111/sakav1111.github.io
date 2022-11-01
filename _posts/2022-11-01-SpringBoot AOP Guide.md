@@ -1,0 +1,483 @@
+---
+title: SpringBoot AOP Guide
+date: 2022-11-01 00:00:00 Z
+categories:
+- SpringBoot
+tags:
+- SpringBoot
+layout: article
+cover: /assets/logo/springboot.png
+sharing: true
+license: false
+aside:
+  toc: true
+pageview: true
+---
+
+<img width="841" alt="image" src="https://user-images.githubusercontent.com/20472904/199181586-1ffc4188-9f43-4e37-a8a5-11042161a8e6.png">
+
+**Join point**: A join point is a point in the application where we apply an AOP aspect. Or it is a specific execution instance of an advice. In AOP, join point can be a method execution, exception handling, changing object variable value, etc
+<img width="700" alt="image" src="https://user-images.githubusercontent.com/20472904/199182243-64141722-7e91-49b3-96ed-6a98bc31536f.png">
+
+
+
+**Before Advice:** An advice that executes before a join point, is called before advice. We use @Before annotation to mark an advice as Before advice.
+
+**After Advice**: An advice that executes after a join point, is called after advice. We use @After annotation to mark an advice as After advice.
+
+**Around Advice**: An advice that executes before and after of a join point, is called around advice.
+
+**After Throwing Advice**: An advice that executes when a join point throws an exception.
+
+**After Returning Advice**: An advice that executes when a method executes successfully.
+
+
+In the Maven we need the spring boot test dependency.Maven will be as follows-
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.javainuse</groupId>
+	<artifactId>SpringBootAOPHelloWorld</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>SpringBootHelloWorld</name>
+	<description>Demo project for Spring Boot</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.1.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+```
+
+
+Create the **Employee** model class as follows-
+
+```java
+public class Employee {
+	private String empId;
+	private String name;
+
+	public Employee() {
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(String empId) {
+		this.empId = empId;
+	}
+
+}
+```
+
+
+@RequestMapping maps **/employee** request to return an employee object. method.
+
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.javainuse.model.Employee;
+import com.javainuse.service.EmployeeService;
+
+@RestController
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeService employeeService;
+
+	@RequestMapping(value = "/add/employee", method = RequestMethod.GET)
+	public Employee addEmployee(@RequestParam("name") String name, @RequestParam("empId") String empId) {
+
+		return employeeService.createEmployee(name, empId);
+
+	}
+
+	@RequestMapping(value = "/remove/employee", method = RequestMethod.GET)
+	public String removeEmployee( @RequestParam("empId") String empId) {
+
+		employeeService.deleteEmployee(empId);
+
+		return "Employee removed";
+	}
+
+}
+```
+
+
+Create the **service** as follows-
+
+```java
+@Service
+public class EmployeeService {
+
+	public Employee createEmployee(String name, String empId) {
+
+		Employee emp = new Employee();
+		emp.setName(name);
+		emp.setEmpId(empId);
+		return emp;
+	}
+
+	public void deleteEmployee(String empId) {
+
+	}
+}
+```
+
+
+Create the **Aspect** class that define the joinpoints and the pointcuts.
+```java
+@Aspect
+@Component
+public class EmployeeServiceAspect {
+
+	@Before(value = "execution(* com.javainuse.service.EmployeeService.*(..)) and args(name,empId)")
+	public void beforeAdvice(JoinPoint joinPoint, String name, String empId) {
+		System.out.println("Before method:" + joinPoint.getSignature());
+
+		System.out.println("Creating Employee with name - " + name + " and id - " + empId);
+	}
+
+	@After(value = "execution(* com.javainuse.service.EmployeeService.*(..)) and args(name,empId)")
+	public void afterAdvice(JoinPoint joinPoint, String name, String empId) {
+		System.out.println("After method:" + joinPoint.getSignature());
+
+		System.out.println("Successfully created Employee with name - " + name + " and id - " + empId);
+	}
+}
+```
+
+
+Create the **SpringBootHelloWorldApplication**.java as below-
+
+```java
+@SpringBootApplication
+@EnableAspectJAutoProxy(proxyTargetClass=true)
+public class SpringBootHelloWorldApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringBootHelloWorldApplication.class, args);
+	}
+}
+```
+
+Compile and the run the SpringBootHelloWorldApplication.java as a Java application.\
+Go to localhost:8080/add/employee\
+![boot-27_4](https://www.javainuse.com/boot-27_4.jpg "boot-27_4")\
+
+
+We will see in the console that the advice has been applied.\
+![boot-27_5](https://www.javainuse.com/boot-27_5.jpg "boot-27_5")
+
+
+
+# Advanced Spring AOP in SpringBoot
+
+### Enable Aspects
+
+In an application based on Spring Framework, we need to enable the aspects and advices using this annotation.
+
+```java
+@Configuration
+@EnableAspectJAutoProxy
+public class ApplicationConfig {
+}
+```
+
+
+
+If the application is a Spring Boot project, we can skip this step. Spring Boot's auto configuration feature automatically enables the proxy, when it sees related dependency on the class path.
+
+### Create Target Class
+
+The target is the class, that we want to advice. It can be any normal class. For this example, next is our target class that has one method. The target method takes an argument of type String and returns a list of string values.
+
+Target Class
+
+```java
+@Service
+public class FileSystemStorageService {
+    public List<String> readFile(String name) {
+        log.info("Reading file: {}", name);
+        // Skipped
+        return List.of("Text from file");
+    }
+}
+```
+
+
+
+### Create Aspect
+
+An Aspect is a normal Java class, and to make it an aspect we need to annotate it with *@Aspect* annotation. Also, we want Spring component scan to discover this class. Thus, we will mark with a Spring Stereotype annotation of *@Component*.
+
+An empty Aspect
+
+```java
+@Aspect
+@Component
+public class LoggingAspect {
+}
+```
+
+
+
+Now, we have got the dependency set, we have enabled aspect oriented programming in Spring, and we have created a target class as well as an aspect class. Next, we will write a Before Advice.
+
+
+
+Spring AOP Before Advice Example
+--------------------------------
+
+In this section, we will write our first Before advice example in Spring AOP. We need to use *@Before* annotation to make advice out of a method.
+
+### Before Advice on a Specific Method
+
+Now, we will create an example of Before advice on a particular method. To do that, we need to provide a Pointcut expression that exactly matches with a method.
+
+In the next example, the pointcut expression points to a particular method from a particular class.
+
+Aspect with Before Advice
+
+```java
+@Slf4j
+@Aspect
+@Component
+public class LoggingAspect {
+    @Before("execution(* com.amitph.spring.aop.service.FileSystemStorageService.readFile(..))")
+    public void logBeforeMethodCall() {
+        log.info("Inside Before Advice");
+    }
+}
+```
+
+
+
+Note that, we have used an expression in the @Before annotation, which expresses the fully qualified class name and method name. With this expression, any polymorphic method named as *readFile*, that belongs to the given class will be treated as a target.
+
+Now, we will auto wire the target class and execute the method on it.
+
+Executing method on the target class
+
+```java
+@Autowired
+FileSystemStorageService service;
+
+@PostConstruct
+public void processFile() {
+    service.readFile("test.txt");
+}
+```
+
+
+
+Although, we auto wired the service instance, from the advice and the expression Spring knows the service is the target class. Thus, Spring AOP injects a proxy instead of an actual instance of the target class. When we start the Spring or Spring Boot application, we see Spring executes the advice before the actual method.
+
+```
+INFO  | [main] c.a.s.a.s.LoggingAspect:14 - Inside Before Advice
+INFO  | [main] c.a.s.a.s.FileSystemStorageService:13 - Reading file: test.txt
+```
+
+
+
+### Before Advice on all Methods of a Class
+
+In order to apply a Before Advice on all methods of a class, we can use wildcard expression as shown next.
+
+```
+@Before("execution(* com.amitph.spring.aop.service.FileSystemStorageService.*(..))")
+public void logBeforeMethodCall() {
+    log.info("Inside Before Advice");
+}
+```
+
+
+
+### Before Advice on all Methods in a Package
+
+Similarly, we can use wildcard expression on the class name so that Before Advice is applied on all methods of all classes in a package.
+
+```
+@Before("execution(* com.amitph.spring.aop.service.*.*(..))")
+public void logBeforeMethodCall() {
+    log.info("Inside Before Advice");
+}
+```
+
+
+
+Access Method Parameters in Before Advice
+-----------------------------------------
+
+We can also read, the signature, name, class name, and all the arguments of target method in the Before advice. However, Before Advice cannot change any value of the method arguments.
+
+
+### Get Method Arguments using JoinPoint
+
+The JoinPoint in AOP is the target, on which the advice is applied. AspectJ provides a JoinPoint class to store some information about the target. We can simply change the signature of the Before Advice method to accept an argument of JoinPoint type.
+
+Next is an example of Before Advice with JoinPoint as argument.
+
+```java
+@Before("execution(* com.amitph.spring.aop.service.FileSystemStorageService.readFile(..))")
+public void logBeforeMethodCall(JoinPoint joinPoint) {
+    String className = joinPoint.getTarget().getClass().getSimpleName();
+    String methodName = joinPoint.getSignature().getName();
+
+    String argumentName = joinPoint.getArgs()[0].toString();
+
+    log.info("Executing {} with argument: {}",
+            className + methodName, argumentName);
+}
+```
+
+
+
+Output:
+
+```
+INFO  | [main] c.a.s.a.s.LoggingAspect:20 - Executing FileSystemStorageServicereadFile with argument: test.txt
+INFO  | [main] c.a.s.a.s.FileSystemStorageService:13 - Reading file: test.txt
+```
+
+
+
+
+### Get Method Arguments in Before Advice
+
+Although, the JoinPoint instance provides a lot of information about the target method, alternatively we can also map direct method arguments into the advice. To do that, we need to add *args* expression in the Pointcut.
+
+Get Method Arguments
+
+```java
+@Before("execution(* com.amitph.spring.aop.service.FileSystemStorageService.readFile(..)) && args(name)")
+public void logBeforeMethodCall(String name) {
+    log.info("Executing target with argument: {}", name);
+}
+```
+
+
+
+Also, we can specify the *args* expression for polymorphic arguments.
+
+```java
+@Before("execution(* com.amitph.spring.aop.service.FileSystemStorageService.readFile(..)) && args(name,..)")
+```
+
+This expression will match all the *readFile* methods from the target class, whose first argument is a String.
+
+
+
+### Get Arguments along with JoinPoint
+
+To get JoinPoint instance along with method argument, we can put it in the first argument of advice method.
+
+```java
+@Before("execution(* com.amitph.spring.aop.service.FileSystemStorageService.readFile(..)) && args(name)")
+public void logBeforeMethodCall(JoinPoint joinPoint, String name) {
+    log.info("Executing target with argument: {}", name);
+}
+```
+
+If the JoinPoint is first argument to the advice, we do not need to provide an expression for it.
+
+
+
+
+### Define pointcut for multiple methods
+
+the method signature is
+```java
+public Sample createSample(Sample sample) throws SampleException {
+public Sample updateSample(Sample sample) throws SampleException {
+```
+
+we can Define pointcut for multiple methods
+```java
+@Before(value="( execution(* com.rakuten.gep.sample.businesslogic.impl.SampleBusinessLogicImpl.updateSample(..))"
+    + "|| execution(* com.rakuten.gep.sample.businesslogic.impl.SampleBusinessLogicImpl.createSample(..)))"
+    + " && args(sample)")
+```
+
+Notice that the throws *Exception is outside the method declaration in the pointcut expression. And that is why the pointcut expression doesnt match your method declaration. Move the throws *Exception within execution( and it will work. I just tried it.
+
+```java
+@Before("execution(public * com.rakuten.gep.sample.businesslogic.impl.SampleBusinessLogicImpl.createSample(com.rakuten.gep.sample.entity.common.Sample,..) throws *Exception) && args(sample,..)"
+            +"|| execution(public * com.rakuten.gep.sample.businesslogic.impl.SampleBusinessLogicImpl.updateSample(com.rakuten.gep.sample.entity.common.Sample,..) throws *Exception) && args(sample,..)")
+```
+
+
+Example with Multiple methods
+
+```java
+@Aspect
+@Component
+@Slf4j
+public class UserServiceAspect {
+
+    @Autowired
+    UserService userService;
+
+
+    @Before(value = "execution(* com.satyacodes.service.impl.UserServiceImplImpl.createUser(..))"
+                +"|| execution(* com.satyacodes.service.impl.UserServiceImplImpl.updateUser(..))"
+                +"|| execution(* com.satyacodes.service.impl.UserServiceImplImpl.uploadUsersList(..))")
+    public void beforeAdviceforUserDataCache(JoinPoint joinPoint) {
+        log.info("beforeAdviceforUserDataCache : " + joinPoint.getSignature());
+        userService.removeCaches();
+    }
+}
+
+```
+
+Summary
+-------
+
+This article provided detailed introduction to Spring AOP Before Advice. With the helps of plenty of examples, we understood that before advice can specify pointcut expressions to map to target classes, and methods. Also, we have seen how to read method arguments from the Joinpoint as well as mapping arguments directly.
