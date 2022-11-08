@@ -1,0 +1,284 @@
+---
+title: SpringBoot - Using Querydsl With Spring Data JPA
+date: 2022-11-08 00:00:00 Z
+categories:
+- SpringBoot
+tags:
+- SpringBoot
+layout: article
+cover: /assets/logo/springboot.png
+sharing: true
+license: false
+aside:
+  toc: true
+pageview: true
+---
+
+Querydsl is a framework that enables the construction of statically typed SQL-like queries through its fluent API. Spring Data modules offer integration with Querydsl through `QuerydslPredicateExecutor`.
+
+The **Querydsl** is a third-party library that lets us define type-safe queries. It also makes the query generation relatively easy through its fluent DSL APIs. In general, the native SQL or the Java Persistence Query Language (JPQL) does not provide any means to validate the correctness of the queries at compile time. Any query syntax or other issues are detected at run time and cause the application to fail.
+
+### Maven integration
+
+Add the following dependencies to your Maven project:
+
+```xml
+<dependency>
+  <groupId>com.querydsl</groupId>
+  <artifactId>querydsl-apt</artifactId>
+  <version>${querydsl.version}</version>
+  <scope>provided</scope>
+</dependency>
+
+<dependency>
+  <groupId>com.querydsl</groupId>
+  <artifactId>querydsl-jpa</artifactId>
+  <version>${querydsl.version}</version>
+</dependency>
+```
+1.`querydsl-apt `dependency is the annotation processing tool (APT) that processes the annotations in source files.
+This tool generates the so-called Q-types. 
+
+The Q-type classes are directly relate to the entity classes of the application, but these classes are prefixed with letter **Q**. For instance, if we have a `Users` class marked with the `@Entity` annotation in the application, then the generated Q-type will reside in a `QUsers.java` source file. 
+
+2.`querydsl-jpa`library is the Querydsl which is designed to be used together with the JPA application. Similarly, Querydsl has support for other data stores such as MongoDB with`querydsl-mongodb`module. Refer to`<http://www.querydsl.com/>`for more details.
+
+
+
+And now, configure the Maven APT plugin:
+
+```xml
+<project>
+  <build>
+  <plugins>
+    ...
+    <plugin>
+      <groupId>com.mysema.maven</groupId>
+      <artifactId>apt-maven-plugin</artifactId>
+      <version>1.1.3</version>
+      <executions>
+        <execution>
+          <goals>
+            <goal>process</goal>
+          </goals>
+          <configuration>
+            <outputDirectory>target/generated-sources/java</outputDirectory>
+            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+    ...
+  </plugins>
+  </build>
+</project>
+```
+
+This plugin make sure that the Q-types are generated automatically during the process goal of Maven build. The outputDirectory is the folder where the the Q-types are generated
+
+The `JPAAnnotationProcessor` finds domain types annotated with the `javax.persistence.Entity` annotation and generates query types for them.
+
+If you use Hibernate annotations in your domain types you should use the APT processor `com.querydsl.apt.hibernate.HibernateAnnotationProcessor` instead.
+
+Run `mvn clean install` and you will get your Query types generated into `target/generated-sources/java`.
+
+<img width="1471" alt="image" src="https://user-images.githubusercontent.com/20472904/200237963-689bdb61-4cf0-4496-9cc8-d9a2e726b02c.png">
+
+
+
+we have Users.java as Entity class
+
+```java
+@Data
+@Setter
+@Entity
+@Table(name="users")
+public class Users {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
+    private String name;
+
+    @Column
+    private Double salary;
+}
+```
+
+Let us now create the `UsersRepository` interface which extends `JpaRepository` and the `QuerydslPredicateExecutor`
+```java
+public interface UsersRepository extends JpaRepository<Users, Long> , QuerydslPredicateExecutor<Users> {
+     
+}
+```
+
+The`QuerydslPredicateExecutor` interface provides several overloaded methods that lets us allow executing Querydsl predicates. Following are the methods of QuerydslPredicateExecutor:
+```java
+public interface QuerydslPredicateExecutor<T> {
+
+	Optional<T> findOne(Predicate predicate);
+
+	Iterable<T> findAll(Predicate predicate);
+
+	Iterable<T> findAll(Predicate predicate, Sort sort);
+
+	Iterable<T> findAll(Predicate predicate, OrderSpecifier<?>... orders);
+
+	Iterable<T> findAll(OrderSpecifier<?>... orders);
+
+	Page<T> findAll(Predicate predicate, Pageable pageable);
+
+	long count(Predicate predicate);
+
+	boolean exists(Predicate predicate);
+}
+```
+The methods in the **QuerydslPredicateExecutor** takes a Predicate and also provides an option to use pagination, sorting, ordering and so on.
+
+we have Controller, and save call will save 10 Users
+
+```java
+@RestController
+@RequestMapping("/api")
+public class UsersController {
+
+	@Autowired
+    private UsersService service ;
+    
+
+	// display list of users
+	@GetMapping("/all")
+	public List<Users> listUserss(Model model) {
+		System.out.println(" ===> listUserss");
+		return service.getAllUserss();
+	}
+
+
+	@GetMapping("/addall")
+	public String addDummyUsers() {
+		System.out.println(" ===> listUserss");
+
+		for(int i=0; i<10; i++){
+			Users user = new Users();
+			user.setName(nameGen());
+			user.setSalary(salaryGen());
+			System.out.println("added : "+user);
+			service.saveUser(user);
+		}
+		return "Users added";
+
+	}
+    
+    	@GetMapping("/querysln")
+	public String querysln() {
+		System.out.println(" ===> querysln");
+		return service.querySln();
+	}
+
+	private String nameGen()
+	{
+		String AlphaNumericStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZSATYA";
+		StringBuilder s = new StringBuilder(6);
+		int i;
+		for ( i=0; i<8; i++) {
+			int ch = (int)(AlphaNumericStr.length() * Math.random());
+			s.append(AlphaNumericStr.charAt(ch));
+		}
+		return s.toString();
+	}
+
+	private Double salaryGen()
+	{
+		Random r = new Random();
+		int low = 5000;
+		int high = 90000;
+		int result = r.nextInt(high-low) + low;
+		return Double.parseDouble(result+"");
+	}
+}
+```
+<img width="640" alt="image" src="https://user-images.githubusercontent.com/20472904/200241958-6a328f55-e4a7-4152-a277-26b972d4bf1c.png">
+
+We use EntityManager and UsersRepository to create Querydsl queries. ServiceImpl method
+```java
+	@Override
+	public String querySln() {
+		QUsers users = QUsers.users;
+
+		String result="";
+
+
+		System.out.println(" -- users having salary greater than 10000 order by salary --");
+		result = result+"-- users having salary greater than 10000 order by salary --";
+		//BooleanExpression implements Predicate
+		//goe='greater than or equals'
+		BooleanExpression booleanExpression = QUsers.users.salary.goe(10000);
+		OrderSpecifier<Double> orderSpecifier = QUsers.users.salary.asc();
+		Iterable<Users> users1 = repository.findAll(booleanExpression, orderSpecifier);
+		for (Users user : users1) {
+			result= result+"\n "+user;
+		}
+
+
+
+		System.out.println(" -- users salary between 3000 and 5000 --");
+		result = result+"\n \n \n -- users salary between 3000 and 5000 --";
+		BooleanExpression booleanExpression2 = QUsers.users.salary.between(30000, 50000);
+		Iterable<Users> users3 = repository.findAll(booleanExpression2);
+		for (Users user : users3) {
+			result= result+"\n "+user;
+		}
+
+		System.out.println(" -- find users YNDFBTUG --");
+		result = result+"\n \n \n-- find users YNDFBTUG --";
+		BooleanExpression booleanExpression3 = QUsers.users.name.eq("YNDFBTUG");
+		Optional<Users> opt = repository.findOne(booleanExpression3);
+		result= result+"\n "+opt.get();
+		
+
+		return result;
+	}
+```
+
+Sample Employee Pagable with SearchCriteria
+```java
+	public Page<EmployeeDto> findEmployee(Pageable pageRequest, SearchCriteriaDTO searchCriteria) {
+		QEmployee qEmployee = QEmployee.Employee;
+	
+		BooleanBuilder builder = new BooleanBuilder();
+		builder.and(qEmployee.status.eq("PERMENENT");
+		
+		if(!StringUtils.isEmpty(searchCriteria.getEmployeeId())) {
+			builder.and(qEmployee.employeeId.eq(searchCriteria.getEmployeeId()));
+		}
+		
+		if(!StringUtils.isEmpty(searchCriteria.getRole())) {
+			builder.and(qEmployee.role.eq(searchCriteria.getRole()));
+		}
+		
+		if(!StringUtils.isEmpty(searchCriteria.getName())) {
+			builder.and(qEmployee.name.containsIgnoreCase(searchCriteria.getName()));
+		}
+		
+		JPAQuery<Employee> query = new JPAQuery<>(entityManager);
+		query.from(qEmployee);
+		query = query.where(builder);
+		Long totalCount = query.fetchCount();
+		
+		query.offset(pageRequest.getOffset());
+		query.limit(pageRequest.getPageSize());
+		query.orderBy(qEmployee.reportId.desc());
+		
+		List<Employee> employeeLst = query.fetch();
+		Type listType = new TypeToken<List<EmployeeDto>>() {}.getType();		
+		
+		ModelMapper modelMapper = mapperUtil.getEmployeeMapper();
+		
+		List<EmployeeDto> returnValue = modelMapper.map(EmployeeLst, listType);
+		Page<EmployeeDto> result = new PageImpl(returnValue, pageRequest, totalCount);
+		return result;
+	}
+
+```
