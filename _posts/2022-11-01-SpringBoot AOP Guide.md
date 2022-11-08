@@ -14,6 +14,8 @@ aside:
 pageview: true
 ---
 
+# SpringBoot AOP Guide
+
 <img width="841" alt="image" src="https://user-images.githubusercontent.com/20472904/199181586-1ffc4188-9f43-4e37-a8a5-11042161a8e6.png">
 
 **Join point**: A join point is a point in the application where we apply an AOP aspect. Or it is a specific execution instance of an advice. In AOP, join point can be a method execution, exception handling, changing object variable value, etc
