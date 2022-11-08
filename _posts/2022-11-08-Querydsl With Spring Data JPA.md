@@ -14,6 +14,8 @@ aside:
 pageview: true
 ---
 
+# Querydsl With Spring Data JPA
+
 Querydsl is a framework that enables the construction of statically typed SQL-like queries through its fluent API. Spring Data modules offer integration with Querydsl through `QuerydslPredicateExecutor`.
 
 The **Querydsl** is a third-party library that lets us define type-safe queries. It also makes the query generation relatively easy through its fluent DSL APIs. In general, the native SQL or the Java Persistence Query Language (JPQL) does not provide any means to validate the correctness of the queries at compile time. Any query syntax or other issues are detected at run time and cause the application to fail.
