@@ -19,9 +19,7 @@ tags:
 # SpringBoot
 
 
-### SpringBoot : Error while saving User failed to lazily initialize a collection of role:address, could not initialize proxy - no Session
-
-Error
+<details><summary>SpringBoot : Error while saving User failed to lazily initialize a collection of role:address, could not initialize proxy - no Session</summary>
 
 I'm using an `@Async` annotation on a service layer method.
 
@@ -45,7 +43,7 @@ private Set<Item> items = new HashSet<Item>();
 
 How can I bind hibernate session in order to LAZELY load my object inside `@Async` context?
 
-Solution
+**Solution**
 
 had the same problem, spent few days trying to find a solution, finally got a solution. I would like to share the details I found for those who might have the same issue.
 
@@ -58,4 +56,10 @@ In normal circumstances (without `@Async`) a transaction gets propagated through
 When a `@Transactional` Spring `@Component` calls a method annotated with `@Async` this does not happen. The call to the asynchronous method is being scheduled and executed at a later time by a task executor and is thus handled as a 'fresh' call, i.e. without a transactional context. If the `@Async` method (or the component in which it is declared) is not `@Transactional` by itself Spring will not manage any needed transactions.
 
 https://stackoverflow.com/questions/25083295/spring-async-null-hibernate-session-on-lazy-collection
+
+</details>
+
+
+
+
 
