@@ -19,7 +19,8 @@ tags:
 # SpringBoot
 
 
-<details><summary>SpringBoot : Error while saving User failed to lazily initialize a collection of role:address, could not initialize proxy - no Session</summary>
+<details><summary>1.SpringBoot : Error while saving User failed to lazily initialize a collection of role:address, could not initialize proxy - no Session</summary>
+On Dec 2022, while implemeting Async save oprations after reading excel
 
 I'm using an `@Async` annotation on a service layer method.
 
