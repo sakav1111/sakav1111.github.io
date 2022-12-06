@@ -56,6 +56,9 @@ In normal circumstances (without `@Async`) a transaction gets propagated through
 
 When a `@Transactional` Spring `@Component` calls a method annotated with `@Async` this does not happen. The call to the asynchronous method is being scheduled and executed at a later time by a task executor and is thus handled as a 'fresh' call, i.e. without a transactional context. If the `@Async` method (or the component in which it is declared) is not `@Transactional` by itself Spring will not manage any needed transactions.
 
+**Transactionl methods should be public.**
+Since you have @Transactional on private method and also one called from the same class, there is no transaction and therefore detached state for save (see this). Not sure if you can apply @Transactional on run() or this class. Anyway, maybe you should create new "Service" class with public @Transactional method, and than call this service from your class.
+
 https://stackoverflow.com/questions/25083295/spring-async-null-hibernate-session-on-lazy-collection
 
 </details>
