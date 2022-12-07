@@ -636,6 +636,31 @@ Using @Transaction or other solutions.
 
 [![](https://netsurfingzone.com/wp-content/uploads/2020/04/lazyexcep3-1.png)](https://netsurfingzone.com/hibernate/failed-to-lazily-initialize-a-collection-of-role-could-not-initialize-proxy-no-session/attachment/lazyexcep3-2/)
 
+
+
+# Conclusion
+
+Just in case you started with spring boot and have a DataBase structure with many `@onetomany` relationships.
+
+1\. You might face `*MultipleBagFetchException:cannot simultaneously fetch multiple bags*` 🛑 if you set more than one of these relationships as `*(fetch = FetchType.EAGER)*`.\
+2\. So only option you are left with is to set these `@onetomany` relationships as `(fetch = FetchType.LAZY)` .\
+3\. But as soon as you do that and if you try to get the child entity from the parent entity you might face `*LazyInitializationException: could not initialize proxy-no Session*`🛑 error.\
+4\. Then after searching on internet you might find ok. The way to fetch these lazy loaded entities is to use `@transactional` annotation around the function of the controller or service in which lazy loading is performed. And Voila! everything works as usual.\
+6\. Then Comes a day that you need to run a async thread which could be for many reasons for e.g You are having a MultiTenant Application in which you are trying to access different tenants in different threads. And load the data from one tenant to another.\
+7\. Now in this case adding `@transactional` annotation to the calling method which is running in request thread or adding `@transactional` annotation to the called method in the async thread, would not work as expected. Which means it could still give `*LazyInitializationException: could not initialize proxy-no Session*`🛑 for the lazy loading which is getting performed in the async thread.\
+- Two possible mistakes you might be doing is:-
+
+-   The method visibility is not public.
+-   The invocation is coming from inside of the bean (Meaning the caller and the called functions are in same file).
+
+8\. In that case you can define your called method (which is called inside an async thread) in a separate service and get it`@autowired` inside the calling service in which the calling function(Running in a request thread) would be calling it.\
+So that the called method(Running in async thread) is included as part of bean which is managed by spring itself by `@autowired` annotation.
+
+9\. And most probably in that case you would need to use `@transactional(propagation=REQUIRES_NEW)` .So that the async method run in the separate transaction of itself.\
+10\. Voila! Now You are able to load your lazy loaded entities in any thread you want. Enjoy!!. ✅
+
+
+
 The database query generation for all Scenario.
 -----------------------------------------------
 
