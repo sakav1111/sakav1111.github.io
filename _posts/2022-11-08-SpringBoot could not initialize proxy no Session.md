@@ -17,6 +17,12 @@ pageview: true
 
 We will see about Failed to lazily initialize a collection of role could not initialize proxy -- no Session hibernate exception.
 
+The aim of lazy loading is to save resources by not loading related objects into memory when we load the main object. Instead, we postpone the initialization of lazy entities until the moment they're needed. Hibernate uses proxies and collection wrappers to implement lazy loading.
+
+When retrieving lazily-loaded data, there are two steps in the process. First, there's populating the main object, and second, retrieving the data within its proxies. Loading data always requires an open *Session* in Hibernate.
+
+The problem arises when the second step happens after the transaction has closed, which leads to a *LazyInitializationException*.
+
 Understanding the reason for this exception.
 --------------------------------------------
 
@@ -169,6 +175,10 @@ Fixing by defining enable_lazy_load_no_trans=true in application.properties file
 In application.properties file we can define enable_lazy_load_no_trans = true.
 
 We need to define spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true in applcation.properties file. By defining this attribute we are telling to hibernate initialize lazy state even for outside transactions. It will create a new temporary session and we will able to do book.getStoryList() without any LazyInitializationException.
+
+The recommended approach is to design our application to ensure that data retrieval happens in a single transaction. But, this can sometimes be difficult when using a lazy entity in another part of the code that is unable to determine what has or hasn't been loaded.
+
+Hibernate has a workaround, an *enable_lazy_load_no_trans* property. Turning this on means that each fetch of a lazy entity will open a temporary session and run inside a separate transaction.
 
 just recall the code snippet from where we were getting this exception.
 ```java
@@ -643,3 +653,5 @@ Hibernate: select book0_.book_id as book_id1_0_0_, book0_.book_name as book_name
 That's all about Failed to lazily initialize a collection of role could not initialize proxy -- no Session
 
 Visit [docs](https://docs.jboss.org/hibernate/orm/3.3/reference/en/html/performance.html#performance-fetching-lazy) related to LazyInitializationException.
+
+[Ref. Link](https://www.baeldung.com/hibernate-lazy-loading-workaround)
