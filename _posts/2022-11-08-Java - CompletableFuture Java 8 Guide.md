@@ -731,6 +731,49 @@ System.out.println("Maturity : " + maturityFuture.get());
 If an exception occurs, then the `res` argument will be null, otherwise, the `ex` argument will be null.
 
 
+## Customize No. of Threads Used by CompletetableFeature
+When you provide a task to `CompletableFuture.supplyAsync()`, it goes to the default instance of `ForkJoinPool` that has as many threads as your computer has CPUs. 
+
+- **static CompletableFuture supplyAsync(Supplier supplier)** Returns a new CompletableFuture that is asynchronously completed by a task running in the **ForkJoinPool.commonPool()** with the value obtained by calling the given Supplier.
+
+- **static CompletableFuture supplyAsync(Supplier supplier, Executor executor)** Returns a new CompletableFuture that is asynchronously completed by a task running in the given executor with the value obtained by calling the given Supplier.
+
+If I use **"static CompletableFuture supplyAsync(Supplier supplier)"** method , it by default use **ForkJoinPool.commonPool()**. This returns a ForkJoinPool which has the number of worker threads equal to the number of available cores in the running machine.
+
+We can SET maximum no of threds by passing excecutor to this method. `supplyAsync(Supplier supplier, Executor executor)`
+[`ForkJoinPool`](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ForkJoinPool.html) implements `Executor`.
+
+Therefore, you can write your code like this:
+
+```java
+int threadCount = 3;
+ForkJoinPool myPool = new ForkJoinPool(threadCount);
+CompletableFuture cf = CompletableFuture.supplyAsync(mySup, myPool);
+```
+
+or
+
+```java
+  final int NUM_OF_THREADS = 10;
+  ExecutorService executor = Executors.newFixedThreadPool(
+                       Math.min(tasks.size(), NUM_OF_THREADS));
+  
+  List<CompletableFuture<Integer>> futures = tasks.stream()
+                  .map(tmpTask -> {
+                    return CompletableFuture.supplyAsync(() -> {
+                      return tmpTask.calculate();
+                    }, executor);
+                  })
+                  .collect(Collectors.toList());
+```
+
+
+
+
+
+
+
+
 # Ref. 
 
 **CompletetableFeature**
