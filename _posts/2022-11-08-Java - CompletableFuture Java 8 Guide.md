@@ -771,8 +771,36 @@ or
 
 
 
+### RealTime Example
 
+```java
+			ExecutorService executor = Executors.newFixedThreadPool(THREADPOOL_SIZE);
+			CompletableFuture<TaskStatus> taskStatusBo = CompletableFuture.supplyAsync(() -> {
+						try {
+							//This is asyinc job
+							taskService.doSomeTask(taskStatusBo, SomeObject);
 
+						} catch (Exception e) {
+							log.error(e.getMessage(), e);
+							taskStatusBo.setStatus(STATUS_FAILED);
+							taskStatusRepository.save(taskStatusBo);
+						}
+						return taskStatusBo;
+					}, executor)
+                    .completeOnTimeout(taskStatusBo, TimeOut, TimeUnit.SECONDS) // This is for Setting tiomeout (30 sec)
+					.whenComplete((result, exception) -> {
+						//This Block will call after TimeOut (30 Sec)
+						if (exception != null) {
+							log.error(exception.getMessage(), exception);
+							if (exception instanceof TimeoutException == Boolean.FALSE) {
+								if (null != taskStatusBo) {
+									taskStatusBo.setStatus(STATUS_FAILED);
+									taskStatusRepository.save(activity);
+								}
+							}
+						}
+					});
+```
 
 # Ref. 
 
