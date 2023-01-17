@@ -14,6 +14,9 @@ aside:
 pageview: true
 ---
 
+# SpringBoot - Auditing with Hibernate Envers & Spring Data JPA
+
+
 In the context of ORM, database auditing means tracking and logging events related to persistent entities, or simply entity versioning. Inspired by SQL triggers, the events are insert, update, and delete operations on entities. The benefits of database auditing are analogous to those provided by source version control.
 
 Here are the sample related entities, *Bar* and *Foo,* that we'll use in this example:
