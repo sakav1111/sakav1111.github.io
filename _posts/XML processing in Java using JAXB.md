@@ -1,4 +1,3 @@
-
 The XML Tree Structure
 ----------------------
 
@@ -31,6 +30,5 @@ The image above represents books in this XML:
     <year>2003</year>
     <price>39.95</price>
   </book>
-</bookstore>```
-
+</bookstore>
 ```
