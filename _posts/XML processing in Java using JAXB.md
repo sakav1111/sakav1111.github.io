@@ -96,4 +96,5 @@ The xmlns attribute in the second <table> element gives the f: prefix a qualifie
 
 When a namespace is defined for an element, all child elements with the same prefix are associated with the same namespace.
 
-Namespaces can also be declared in the XML root element:
+Read More [](/books/XML_Basic.pdf)
+
