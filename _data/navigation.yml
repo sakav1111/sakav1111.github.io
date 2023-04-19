@@ -454,8 +454,10 @@ SpringBootTutorial:
         url:    /springboot/springboot-jparepository
       - title:  SpringBoot MongoDB and REST Example
         url:    /springboot/springboot-mongodb-and-rest-example
-      - title:  SpringBoot Security
-        url:    /springboot/springboot-security           
+      - title:  SpringBoot Security(old)
+        url:    /springboot/springboot-security
+      - title:  SpringBoot Security(latest)
+        url:    /springboot/springboot-security-latest            
         
   - title:      SpringBoot Advanced
     children:        
