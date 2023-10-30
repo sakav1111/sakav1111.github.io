@@ -313,3 +313,101 @@ public void databaseCleanup()
 ```
 
 In the above example, the *databaseCleanup()* method will be called once every minute, with an initial delay (after the application has started) of 1 minute. Instead of a fixed rate, you could instead use a cron expression.
+
+
+
+# Dynamic Scheduler Configuration
+
+```java
+@Scheduled(cron = "0 * * * * ?")
+public void scheduleTaskWithCronExpression() {
+    logger.info("Cron Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
+}
+```
+In the above code, we statically defined Cron Expression. If you want to pass this Cron dynamically we can do by using TaskSchedular
+
+
+```java
+@ApiOperation("Email All Employees Data on Scheduled Time")
+@PostMapping("/schedule")
+public void scheduleTask(@RequestBody RequestDto requestDto) {
+    employeeService.scheduleTask(requestDto.getCron());
+}
+
+@Service
+@Slf4j
+@AllArgsConstructor
+public class EmployeeServiceImpl implements EmployeeService {
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private EmployeeMapper employeeMapper;
+
+    @Autowired
+    private TaskScheduler taskScheduler;
+
+    private Map<String, ScheduledFuture<?>> scheduledTasks;
+
+
+    @Override
+    public void scheduleTask(String cron) {
+//Parameter 2 of constructor in com.employee.service.impl.EmployeeServiceImpl required a bean of type 'org.springframework.scheduling.TaskScheduler' that could not be found.
+        //Solution : @EnableScheduling at Application.java
+        String taskId = "1";
+
+        if (!CollectionUtils.isEmpty(scheduledTasks)) {
+            taskId = (scheduledTasks.size()) + "";
+        }
+
+        EmailDto emailDto = getEmailData();
+        Runnable task = () -> {
+            try {
+                emailUtil.sendMail(emailDto);
+            } catch (JobExecutionException e) {
+                throw new RuntimeException(e);
+            }
+        };
+        ScheduledFuture<?> future = taskScheduler.schedule(task, new CronTrigger(cron));
+        scheduledTasks.put(taskId, future);
+        log.info("Task ID ", taskId);
+    }
+
+
+    private EmailDto getEmailData() {
+        EmailDto emailDto = EmailDto.builder()
+                .from("satyakaveti@gmail.com")
+                .subject("All Emp Data" + new Date())
+                .to(new String[]{"satyakaveti@gmail.com"})
+                .cc(new String[]{"satyakaveti@gmail.com"})
+                .attachmentLinks(null).build();
+        StringBuilder body = new StringBuilder();
+        body.append("All Employees data as of ").append(new Date().toString());
+        body.append(" ===================================== ");
+        List<Employee> emps = employeeRepository.findAll();
+        for (Employee emp : emps) {
+            EmployeeDto dto = employeeMapper.toDto(emp);
+            body.append(dto.toString()).append(" <br>");
+        }
+        emailDto.setBody(body.toString());
+        return emailDto;
+    }
+
+}
+```
+Here we need to pass Cron Expression to CronTrigger(cron)
+
+
+```java
+ScheduledFuture<?> future = taskScheduler.schedule(task, new CronTrigger(cron));
+        scheduledTasks.put(taskId, future);
+```
+
+```
+//Payload
+{
+  "cron": "*/5 * * * * ?"
+}
+```
+
