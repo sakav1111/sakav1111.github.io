@@ -284,3 +284,132 @@ Sample Employee Pagable with SearchCriteria
 	}
 
 ```
+
+Example Pageable search results with Employee Entity- Complete flow from Controller to Backend Repository.
+
+```java
+
+//==========================================
+//1. Controller 
+//==========================================
+public class EmployeeController {
+
+    @Autowired
+    private final EmployeeService employeeService;
+
+    @ApiOperation("Returns a page of all Employee list")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"), @ApiResponse(code = 400, message = "Bad Request"), @ApiResponse(code = 500, message = "Internal Server Error"), @ApiResponse(code = 403, message = "Unauthorized")})
+    @PostMapping("/search")
+    public Page<EmployeeSearchResultsDto> searchAllEmployee(Pageable pageRequest, @RequestBody EmployeeSearchDto searchCriteria) {
+        return employeeService.searchAllEmployee(pageRequest, searchCriteria);
+    }
+}
+
+//==========================================
+//2.Service Class
+//==========================================
+    public Page<EmployeeSearchResultsDto> searchAllEmployee(Pageable pageRequest, EmployeeSearchDto searchCriteria) {
+        return employeeRepository.employeeSearchCriteria(pageRequest, searchCriteria);
+    }
+
+
+
+//==========================================
+//3.Repository Class which extends EmployeeRepositoryCustom,
+//        -   QuerydslPredicateExecutor<Employee>,
+//         -  QuerydslBinderCustomizer<QEmployee>
+//==========================================
+public interface EmployeeRepository extends RevisionRepository<Employee, Long, Long>, JpaRepository<Employee, Long>, EmployeeRepositoryCustom,
+        QuerydslPredicateExecutor<Employee>,
+        QuerydslBinderCustomizer<QEmployee> {
+
+    @Override
+    default void customize(QuerydslBindings bindings, QEmployee root) {
+        bindings.bind(String.class).first((StringPath path, String value) -> path.containsIgnoreCase(value));
+    }
+}
+
+
+//==========================================
+//4.EmployeeRepositoryCustom
+//==========================================
+public interface EmployeeRepositoryCustom {
+
+    Page<EmployeeSearchResultsDto> employeeSearchCriteria(Pageable pageRequest, EmployeeSearchDto searchCriteria);
+}
+
+
+//==========================================
+//5.Pagable Implementation EmployeeRepositoryCustomImpl
+//==========================================
+@Repository
+@Slf4j
+public class EmployeeRepositoryCustomImpl implements com.employee.dao.repository.EmployeeRepositoryCustom {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Autowired
+    private EmployeeSearchResultMapper employeeSearchResultMapper;
+
+    @Override
+    public Page<EmployeeSearchResultsDto> employeeSearchCriteria(Pageable pageRequest, EmployeeSearchDto searchCriteria) {
+
+        QEmployee qEmployee = QEmployee.employee;
+        BooleanBuilder builder = new BooleanBuilder();
+        applySearchCriteria(searchCriteria, qEmployee, builder);
+
+        JPAQuery<Employee> query = new JPAQuery<>(entityManager);
+        query = query.from(qEmployee);
+        query = query.where(builder);
+        Long totalCount = query.fetchCount();
+        query.offset(pageRequest.getOffset());
+        query.limit(pageRequest.getPageSize());
+        PathBuilder<Employee> entityPath = new PathBuilder<>(Employee.class, "employee");
+
+        for (Sort.Order order : pageRequest.getSort()) {
+            PathBuilder<Object> path = entityPath.get(order.getProperty());
+            query.orderBy(new OrderSpecifier(Order.valueOf(order.getDirection().name()), path));
+        }
+        List<Employee> result = query.fetch();
+        List<EmployeeSearchResultsDto> employeeDtoResult = employeeSearchResultMapper.toEmployeeSearchResultsDtoList(result);
+        return new PageImpl<>(employeeDtoResult, pageRequest, totalCount);
+
+    }
+
+    private void applySearchCriteria(EmployeeSearchDto searchCriteria, QEmployee qEmployee, BooleanBuilder builder) {
+        try {
+
+            if (Objects.nonNull(searchCriteria.getName()) && StringUtils.isNotBlank(searchCriteria.getName())) {
+                builder.and(qEmployee.name.containsIgnoreCase(searchCriteria.getName()));
+            }
+            if (Objects.nonNull(searchCriteria.getSalary())) {
+                builder.and(qEmployee.salary.eq(searchCriteria.getSalary()));
+            }
+            if (Objects.nonNull(searchCriteria.getCity()) && StringUtils.isNotBlank(searchCriteria.getCity())) {
+                builder.and(qEmployee.city.containsIgnoreCase(searchCriteria.getCity()));
+            }
+        } catch (Exception ex) {
+            log.error("Exception Occurred while getting search results", ex);
+
+        }
+    }
+
+}
+
+//==========================================
+//6.Search Results Mapper
+//==========================================
+@Mapper(componentModel = "spring")
+public interface EmployeeSearchResultMapper {
+
+    List<EmployeeSearchResultsDto> toEmployeeSearchResultsDtoList(List<Employee> employeeEntityList);
+
+    EmployeeSearchResultsDto toEmployeeSearchResultsDto(Employee employee);
+
+}
+
+
+```
+
+
