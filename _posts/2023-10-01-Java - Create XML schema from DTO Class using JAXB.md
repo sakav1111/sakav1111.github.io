@@ -1,3 +1,21 @@
+---
+title: Java - Create XML schema from DTO Class using JAXB
+date: 2023-11-01 00:00:00 Z
+categories:
+- Java
+tags:
+- Java
+layout: article
+cover: /assets/logo/java.png
+sharing: true
+license: false
+aside:
+  toc: true
+pageview: true
+---
+
+
+
 JAXB provides a fast and convenient way to marshal (write) Java objects into XML and unmarshal (read) XML into objects. It supports a binding framework that maps XML elements and attributes to Java fields and properties using Java annotations.
 
 Maven Dependencies
