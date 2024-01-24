@@ -14,6 +14,166 @@ aside:
 pageview: true
 ---
 
+
+
+# Spring Boot – Asynchronous Implementation
+
+This article is about how asynchronous behavior can be achieved in spring boot.
+But first of all, let’s see the difference between synchronous and asynchronous.
+
+-   **Synchronous Programming:** In synchronous programming, tasks are performed
+    one at a time and only when one is completed the next is unblocked.
+
+-   **Asynchronous Programming:** In asynchronous programming, multiple tasks
+    can be executed simultaneously. You can move to another task before the
+    previous one finishes.
+
+![](media/18a7125d4c95d31239d875f707704124.png)
+
+In spring boot, we can achieve asynchronous behavior using `@EnableAsync` &
+`@Async` annotations.
+
+-   `@EnableAsync` - to enable async support by annotating the main application
+    class.
+
+-   `@Async` - annotate the method
+
+When you annotate a method with `@Async` annotation, it creates a **proxy** for
+that object based on `“proxyTargetClass”` property.
+
+When spring executes this method, by default it will be searching for associated
+thread pool definition. Either a unique spring framework **TaskExecutor** bean
+in the context or Executor bean named “taskExecutor”. If neither of these two is
+resolvable, default it will use spring framework **SimpleAsyncTaskExecutor** to
+process async method execution.
+
+Example – Without Async
+
+```java
+@RestController
+public class DecomController {
+	@Autowired
+	DecomService service;
+
+	@GetMapping("/decomTrial")
+	public String decomClinicalTrial() {
+		System.out.println(" *** decomClinicalTrial :: Started*** ");
+		service.ArchiveUsers();
+		service.ArchiveReports();
+		System.out.println(" *** decomClinicalTrial :: Completed.*** ");
+		return "decomClinicalTrial Complted.";
+	}
+}
+@Service
+public class DecomService {
+
+	public void ArchiveUsers() {
+     S.o.p(Thread.currentThread().getName() + " :ArchiveUsers :Start "+new Date());
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+     S.o.p (Thread.currentThread().getName() + " :ArchiveUsers :End " + new Date());
+	}
+
+	public void ArchiveReports() {
+	S.o.p(Thread.currentThread().getName() + ":ArchiveReports : Start" + new Date());
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	S.o.p(Thread.currentThread().getName() + " :ArchiveReports : End" + new Date());
+	}
+}
+@SpringBootApplication
+public class TrialServicesApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(TrialServicesApplication.class, args);
+		System.out.println("*************************************");
+		System.out.println("Trial Services Startred ... ");
+		System.out.println("*************************************");
+	}
+}
+*** decomClinicalTrial: Started*** 
+http-nio-8080-exec-1:ArchiveUsers :Start 24 Sep 2021 07:52:32 GMT
+http-nio-8080-exec-1:ArchiveUsers :End 24 Sep 2021 07:52:37 GMT
+http-nio-8080-exec-1:ArchiveReports :Start24 Sep 2021 07:52:37 GMT
+http-nio-8080-exec-1:ArchiveReports :End24 Sep 2021 07:52:42 GMT
+ *** decomClinicalTrial: Completed.***
+```
+
+Here all methods execute by single Thread `http-nio-8080-exec-1`
+
+With @Aync
+
+Place `@EnableAsync` on the Top of SpringBoot Main class -
+**TrialServicesApplication**
+
+```java
+@EnableAsync 
+@SpringBootApplication
+public class TrialServicesApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(TrialServicesApplication.class, args);
+		System.out.println("*************************************");
+		System.out.println("Trial Services Startred ... ");
+		System.out.println("*************************************");
+	}
+}
+```
+
+Place `@Async `on the top of each method, which we want to execute in parallel.
+
+```java
+@Service
+public class DecomService {
+	@Async
+	public void ArchiveUsers() {
+S.o.p(Thread.currentThread().getName() + " :ArchiveUsers :Start " + new Date());
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		S.o.p(Thread.currentThread().getName() + " :ArchiveUsers :End " + new Date());
+	}
+
+	@Async
+	public void ArchiveReports() {
+	 S.o.p(Thread.currentThread().getName() + ":ArchiveReports : Start" + new Date());
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	S.o.p(Thread.currentThread().getName() + " :ArchiveReports : End" + new Date());
+	}
+}
+*** decomClinicalTrial :: Started*** 
+*** decomClinicalTrial :: Completed.*** 
+task-1 :ArchiveUsers : Start 24 Sep 2021 08:01:20 GMT
+task-2 :ArchiveReports : Start24 Sep 2021 08:01:20 GMT
+task-2 :ArchiveReports : End24 Sep 2021 08:01:25 GMT
+task-1 :ArchiveUsers :End 24 Sep 2021 08:01:25 GMT
+```
+
+In above ArchiveUsers, ArchiveReports are executed paralley by two different
+threads **task-1, task-2**
+
+**Async methods with Return Types**
+
+Previously, The async method only used a void return type. And in my opinion,
+that is the best way to write self sufficient asynchronous functions. However,
+If you want to handle the results from an @Async function, you are in luck.
+Because Spring framework provides out of the box support for these situations
+using **Future** type. This is possible by wrapping the result inside of an
+**AsyncResult** class.
+
+
+
+
 # Asynchronous with Future
 
 
