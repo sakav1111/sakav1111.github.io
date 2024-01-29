@@ -15,6 +15,8 @@ pageview: true
 ---
 
 
+# Spring Boot Batch Guide
+
 Batch processing is a processing mode which involves execution of series of automated complex jobs without user interaction. A batch process handles bulk data and runs for a long time.
 
 Spring Batch applications support −
@@ -24,9 +26,11 @@ Spring Batch applications support −
 -  Services such as logging, resource management, skip, and restarting the processing.
 
 
+<br/>
 
 ## Components of Spring Batch
  
+![image](https://github.com/smlcodes/OnePageTutorials/assets/20472904/23926fba-469e-4196-a318-e9768eb666f8)
 
 **1.Job**
 In a Spring Batch application, a job is the batch process that is to be executed. It runs from start to finish without interruption. This job is further divided into steps (or a job contains steps).
@@ -49,7 +53,7 @@ For example, if we are writing a job with a simple step in it where we read data
 -  A writer which writes to Database.
 -  A custom processor which processes the data as per our wish.
 
-
+<br/>
 
 ## Example 
 
@@ -66,7 +70,7 @@ For example, if we are writing a job with a simple step in it where we read data
 </dependency>
 ```
 
-
+<br/>
 
 2.Configure Spring Batch properties in application.yaml
 ```java
@@ -78,7 +82,7 @@ spring:
       enabled: false #To prevent automatic execution of Job at Startup
 ```
 
-
+<br/>
 
 3.Spring Batch Configuration file.
 This is main step in the batch processing. We will define SpringBatchConfig class with job details.
@@ -265,7 +269,10 @@ public class UserServiceImpl implements UserService {
 }
 ```
 
+<br/>
 
 Run the Application & Check the API
- 
+
+ <img width="468" alt="image" src="https://github.com/smlcodes/OnePageTutorials/assets/20472904/9091abb2-b89c-4eb0-86ac-342fc7cca3ea">
+
 
