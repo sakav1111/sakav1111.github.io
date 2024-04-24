@@ -1,5 +1,5 @@
 ---
-title: SpringBoot Task Scheduling Guide
+title: Spring Boot Reporting – Corbone Reports
 date: 2024-04-24 00:00:00 Z
 categories:
 - SpringBoot
