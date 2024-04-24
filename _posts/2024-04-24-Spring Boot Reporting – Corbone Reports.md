@@ -75,9 +75,10 @@ quickstart](https://carbone.io/documentation.html#quickstart-carbone-cloud-api)
 
 ## Create Template
 1. I have created Template in Below formate
- 
+ ![](media/CR_SPimage1.png)
 
 2.  open https://studio.carbone.io/#/studio upload this template You will get TemplateID for It.
+![](media/CR_SPimage2.png)
  
 
 
@@ -136,9 +137,13 @@ quickstart](https://carbone.io/documentation.html#quickstart-carbone-cloud-api)
 ]
  ```
 
+![](media/CR_SPimage3.png)
+
+
+
 Schema to summarize how Carbone works:
  
-
+![](media/CR_SPimage4.png)
 
 
 
