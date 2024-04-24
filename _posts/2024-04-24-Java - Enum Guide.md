@@ -40,11 +40,11 @@ You can access enum constants with the . syntax:
 ## Enum with Values & Methods
 
 1. Identify the required aruments
-2.Create Enums by passing aruments values
-3.Write methods for getting values getDepartmentByCode & getDepartmentValues
-4.You can also group enums by **EnumSet**, we also have **EnumMap**
-5.You can define methods with default implemetations, which is common for all enums.
-6.You can override default method implenetation for specific eums.
+2. Create Enums by passing aruments values
+3. Write methods for getting values getDepartmentByCode & getDepartmentValues
+4. You can also group enums by **EnumSet**, we also have **EnumMap**
+5. You can define methods with default implemetations, which is common for all enums.
+6. You can override default method implenetation for specific eums.
 
 
 ```
@@ -64,6 +64,7 @@ public enum DepartmentEnum {
             System.out.println("MBBS : Override Print : "+this.getLabel());
         }
     },
+
     MD("MD", "Masters in Medicine", "MEDICINE"){
         @Override
         public void print() {
@@ -109,13 +110,10 @@ public static void enumChecking(){
     log.info("Printing Enums");
     log.info("CSE : "+DepartmentEnum.CSE.getCode()+", Value: "+DepartmentEnum.CSE.getLabel());
     log.info("ECE : "+DepartmentEnum.ECE.getCode()+", Value: "+DepartmentEnum.ECE.getLabel());
-
-
     log.info("Value by code MBBS: "+DepartmentEnum.getDepartmentByCode("MBBS"));
 
     DepartmentEnum.CSE.print();
     DepartmentEnum.MBBS.print();
-
 }
 ```
 
