@@ -127,5 +127,507 @@ Steps to Create any Jasper Report
 
 6\. **Export Report** --- by using JasperExportManager
 
-SpringBoot --- JasperReports Example
+
+
+SpringBoot - JasperReports Example
 ==================================
+
+
+
+
+Add maven Dependency.
+```
+<dependency>
+   <groupId>net.sf.jasperreports</groupId>
+   <artifactId>jasperreports</artifactId>
+   <version>6.21.2</version>
+</dependency>
+```
+
+Controller
+```
+@GetMapping("/jasper/emp24")
+public ResponseEntity<Resource> employeeJasperReport24(@RequestParam("fileType") String fileType) throws Exception {
+
+    ReportTypeEnum report = ReportTypeEnum.getReportTypeByCode(fileType);
+    log.info("Eum :"+report);
+   // byte[] bytes = reportsService.employeeJasperReport24(fileType);
+    byte[] bytes = reportsService.employeeJasperReportInBytes(fileType);
+    if (null != bytes) {
+        ByteArrayResource resource = new ByteArrayResource(bytes);
+        String fileName = "Employee24_JasperReport" + "_" + LocalDateTime.now() + report.getExtension();
+        return ResponseEntity.ok()
+                .header(com.google.common.net.HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
+                .contentLength(resource.contentLength())
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(resource);
+    } else {
+        throw new BusinessException("File Download Failed");
+    }
+}
+```
+
+
+Service
+```
+public byte[] employeeJasperReportInBytes(String fileType) throws Exception {
+    String template = "reports/emp24.jrxml";
+    List<Employee> employees = employeeRepository.findAll();
+    List<EmployeeDto> dataSource = employeeMapper.mapEntityListToDtoListForEmployee(employees);
+
+
+    //1. Create Required Parameters
+    Map<String, Object> parameters = new HashMap<>();
+    FileInputStream leafBannerStream = new FileInputStream(ResourceUtils.getFile("classpath:reports/logo.jpg").getAbsolutePath());
+    parameters.put("comanyName", "BLACK STAR TECHNOLOGIES");
+    parameters.put("address", "Address: Raheja Mind Space Entrance Gate, HITEC City, Hyderabad -500081");
+    parameters.put("header", "Employees Salary Report");
+    parameters.put("logo", leafBannerStream);
+    parameters.put("createdBy","Satya Kaveti");
+
+    //2.Create DataSource
+    JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(dataSource);
+
+    //3.Compile .jrmxl template, stored in JasperReport object
+    String path = ResourceUtils.getFile("classpath:" + template).getAbsolutePath();
+    JasperReport jasperReport = JasperCompileManager.compileReport(path);
+
+    //4.Fill Report - by passing complied .jrxml object, paramters, datasource
+    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, beanCollectionDataSource);
+
+    //5.Export Report - by using JasperExportManager
+    ReportTypeEnum reportType = ReportTypeEnum.getReportTypeByCode(fileType);
+    return jasperReportsUtil.exportJasperReportBytes(jasperPrint, reportType); 
+}
+
+
+public byte[] exportJasperReportBytes(JasperPrint jasperPrint, ReportTypeEnum reportType) throws JRException {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    switch (reportType) {
+        case CSV:
+            // Export to CSV
+            JRCsvExporter csvExporter = new JRCsvExporter();
+            csvExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+            csvExporter.setExporterOutput(new SimpleWriterExporterOutput(outputStream));
+            csvExporter.exportReport();
+            break;
+        case XLSX:
+            // Export to XLSX
+            JRXlsxExporter xlsxExporter = new JRXlsxExporter();
+            xlsxExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+            xlsxExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(outputStream));
+            xlsxExporter.exportReport();
+            break;
+        case HTML:
+            // Export to HTML
+            HtmlExporter htmlExporter = new HtmlExporter();
+            htmlExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+            htmlExporter.setExporterOutput(new SimpleHtmlExporterOutput(outputStream));
+            htmlExporter.exportReport();
+            break;
+        case XML:
+            // Export to XML
+            JRXmlExporter xmlExporter = new JRXmlExporter();
+            xmlExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+            xmlExporter.setExporterOutput(new SimpleXmlExporterOutput(outputStream));
+            xmlExporter.exportReport();
+            break;
+        case DOC:
+            // Export to DOCX (RTF format)
+            JRRtfExporter docxExporter = new JRRtfExporter();
+            docxExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+            docxExporter.setExporterOutput(new SimpleWriterExporterOutput(outputStream));
+            docxExporter.exportReport();
+            break;
+        default:
+            // Export to PDF by default
+            JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+            break;
+    }
+    return outputStream.toByteArray();
+}
+```
+
+
+
+emp24.jrxml
+ 
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.3.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee-rpt" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c51ad21b-aa1c-447f-bd4e-8377618fcdfb">
+   <property name="ireport.zoom" value="1.0"/>
+   <property name="ireport.x" value="0"/>
+   <property name="ireport.y" value="0"/>
+   <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+   <parameter name="createdBy" class="java.lang.String"/>
+   <parameter name="comanyName" class="java.lang.String"/>
+   <parameter name="address" class="java.lang.String"/>
+   <parameter name="header" class="java.lang.String"/>
+   <parameter name="logo" class="java.io.InputStream"/>
+   <field name="id" class="java.lang.Long"/>
+   <field name="name" class="java.lang.String"/>
+   <field name="city" class="java.lang.String"/>
+   <field name="salary" class="java.lang.Double"/>
+   <variable name="empCount" class="java.lang.Integer" calculation="Count">
+      <variableExpression><![CDATA[$F{id}]]></variableExpression>
+   </variable>
+
+   <variable name="totalSalary" class="java.lang.Double" calculation="Sum">
+      <variableExpression><![CDATA[$F{salary}]]></variableExpression>
+   </variable>
+
+
+   <background>
+      <band height="20" splitType="Stretch"/>
+   </background>
+   <title>
+      <band height="72" splitType="Stretch">
+         <image isLazy="true">
+            <reportElement x="10" y="0" width="80" height="72" uuid="645092e9-4ba3-4c7c-ba5b-3ef9c0864a16"/>
+            <imageExpression><![CDATA[$P{logo}]]></imageExpression>
+         </image>
+         <textField>
+            <reportElement positionType="Float" stretchType="ElementGroupBottom" x="90" y="10" width="309" height="50" isPrintInFirstWholeBand="true" forecolor="#F21916" uuid="59758406-93be-430b-a012-d1a6a8db261e"/>
+            <box>
+               <pen lineWidth="1.0"/>
+               <topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+               <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+               <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+               <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+            </box>
+            <textElement textAlignment="Center" verticalAlignment="Middle">
+               <font fontName="Chakra Petch" size="19" isBold="true"/>
+            </textElement>
+            <textFieldExpression><![CDATA[$P{comanyName}]]></textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement x="400" y="10" width="149" height="50" uuid="73205ac0-aad9-4ce4-9db6-e9bc1addb193"/>
+            <textElement textAlignment="Right" verticalAlignment="Bottom"/>
+            <textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+         </textField>
+      </band>
+   </title>
+   <pageHeader>
+      <band height="50">
+         <textField>
+            <reportElement x="80" y="10" width="400" height="30" forecolor="#082E66" uuid="363bb5fd-fa74-44ae-99ed-73c3c4896758"/>
+            <textElement textAlignment="Center" verticalAlignment="Middle">
+               <font fontName="Pilat Wide" size="16" isBold="true"/>
+            </textElement>
+            <textFieldExpression><![CDATA[$P{header}]]></textFieldExpression>
+         </textField>
+         <line>
+            <reportElement x="-6" y="3" width="566" height="1" uuid="b80a99fc-28e6-4b44-a6a1-db44189bb0d2"/>
+         </line>
+      </band>
+   </pageHeader>
+   <columnHeader>
+      <band height="24" splitType="Stretch">
+         <staticText>
+            <reportElement x="0" y="4" width="111" height="20" uuid="a5237c32-d009-489d-b664-69fdad2bb1cd"/>
+            <box>
+               <pen lineWidth="0.25"/>
+               <topPen lineWidth="0.25"/>
+               <leftPen lineWidth="0.25"/>
+               <bottomPen lineWidth="0.25"/>
+               <rightPen lineWidth="0.25"/>
+            </box>
+            <textElement textAlignment="Center">
+               <font size="12" isBold="true" isItalic="false"/>
+            </textElement>
+            <text><![CDATA[ID]]></text>
+         </staticText>
+         <staticText>
+            <reportElement x="111" y="4" width="209" height="20" uuid="9f53e136-c945-41c7-9e37-2ff363df5e7d"/>
+            <box>
+               <pen lineWidth="0.25"/>
+               <topPen lineWidth="0.25"/>
+               <leftPen lineWidth="0.25"/>
+               <bottomPen lineWidth="0.25"/>
+               <rightPen lineWidth="0.25"/>
+            </box>
+            <textElement textAlignment="Center">
+               <font size="12" isBold="true" isItalic="false"/>
+            </textElement>
+            <text><![CDATA[Name]]></text>
+         </staticText>
+         <staticText>
+            <reportElement x="431" y="4" width="112" height="20" uuid="4f8a1baf-6650-4dc7-bf50-72fd30c9ea73"/>
+            <box>
+               <pen lineWidth="0.25"/>
+               <topPen lineWidth="0.25"/>
+               <leftPen lineWidth="0.25"/>
+               <bottomPen lineWidth="0.25"/>
+               <rightPen lineWidth="0.25"/>
+            </box>
+            <textElement textAlignment="Center">
+               <font size="12" isBold="true" isItalic="false"/>
+            </textElement>
+            <text><![CDATA[City]]></text>
+         </staticText>
+         <staticText>
+            <reportElement x="320" y="4" width="111" height="20" uuid="618033d2-a415-4315-8f4b-d5e67727ee58"/>
+            <box>
+               <pen lineWidth="0.25"/>
+               <topPen lineWidth="0.25"/>
+               <leftPen lineWidth="0.25"/>
+               <bottomPen lineWidth="0.25"/>
+               <rightPen lineWidth="0.25"/>
+            </box>
+            <textElement textAlignment="Center">
+               <font size="12" isBold="true" isItalic="false"/>
+            </textElement>
+            <text><![CDATA[Salary]]></text>
+         </staticText>
+      </band>
+   </columnHeader>
+   <detail>
+      <band height="20" splitType="Stretch">
+         <textField>
+            <reportElement x="0" y="0" width="111" height="20" uuid="fd09b48e-3bab-436c-8f5b-08f868b0ada0"/>
+            <box>
+               <pen lineWidth="0.25"/>
+               <topPen lineWidth="0.25"/>
+               <leftPen lineWidth="0.25"/>
+               <bottomPen lineWidth="0.25"/>
+               <rightPen lineWidth="0.25"/>
+            </box>
+            <textElement textAlignment="Center"/>
+            <textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement x="111" y="0" width="209" height="20" uuid="40e29be5-cdd9-409a-a658-8170b7f48335"/>
+            <box>
+               <pen lineWidth="0.25"/>
+               <topPen lineWidth="0.25"/>
+               <leftPen lineWidth="0.25"/>
+               <bottomPen lineWidth="0.25"/>
+               <rightPen lineWidth="0.25"/>
+            </box>
+            <textElement textAlignment="Center"/>
+            <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement x="431" y="0" width="112" height="20" uuid="4d6f4263-82f4-4941-b213-a9b3a38e8a61"/>
+            <box>
+               <pen lineWidth="0.25"/>
+               <topPen lineWidth="0.25"/>
+               <leftPen lineWidth="0.25"/>
+               <bottomPen lineWidth="0.25"/>
+               <rightPen lineWidth="0.25"/>
+            </box>
+            <textElement textAlignment="Center"/>
+            <textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement x="320" y="0" width="111" height="20" uuid="f05cbafb-5573-4949-af01-4a77d5663b55"/>
+            <box>
+               <pen lineWidth="0.25"/>
+               <topPen lineWidth="0.25"/>
+               <leftPen lineWidth="0.25"/>
+               <bottomPen lineWidth="0.25"/>
+               <rightPen lineWidth="0.25"/>
+            </box>
+            <textElement textAlignment="Center"/>
+            <textFieldExpression><![CDATA[$F{salary}]]></textFieldExpression>
+         </textField>
+      </band>
+   </detail>
+   <columnFooter>
+      <band height="50">
+         <staticText>
+            <reportElement x="0" y="0" width="100" height="30" uuid="4bfdb992-308b-4c41-b8b4-5071123eaaec"/>
+            <text><![CDATA[Column Footer]]></text>
+         </staticText>
+      </band>
+   </columnFooter>
+   <pageFooter>
+      <band height="46">
+         <textField pattern="dd-MMMM-yyy, hh:mm a">
+            <reportElement x="390" y="10" width="159" height="20" uuid="f1bb769a-fb80-4e73-b8af-e51c51ce6796"/>
+            <textElement textAlignment="Right" verticalAlignment="Middle"/>
+            <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+         </textField>
+         <staticText>
+            <reportElement x="230" y="10" width="58" height="20" uuid="f83a30eb-da24-4666-a1c3-767e232a3d95"/>
+            <textElement textAlignment="Center" verticalAlignment="Middle"/>
+            <text><![CDATA[Created By:]]></text>
+         </staticText>
+         <textField>
+            <reportElement x="288" y="10" width="99" height="20" uuid="00dc7055-16ed-4472-80dd-342ff337dfcf"/>
+            <textElement textAlignment="Left" verticalAlignment="Middle"/>
+            <textFieldExpression><![CDATA[$P{createdBy}]]></textFieldExpression>
+         </textField>
+      </band>
+   </pageFooter>
+   <summary>
+      <band height="65">
+         <staticText>
+            <reportElement x="0" y="0" width="100" height="30" uuid="35042e90-2d79-429b-b6ef-51b795a7f536"/>
+            <textElement>
+               <font fontName="Pilat Wide" size="14" isBold="false"/>
+            </textElement>
+            <text><![CDATA[Summary]]></text>
+         </staticText>
+         <staticText>
+            <reportElement x="140" y="15" width="111" height="20" uuid="44336313-b277-43c1-9d84-d082abed3d52"/>
+            <box>
+               <pen lineWidth="0.25"/>
+               <topPen lineWidth="0.25"/>
+               <leftPen lineWidth="0.25"/>
+               <bottomPen lineWidth="0.25"/>
+               <rightPen lineWidth="0.25"/>
+            </box>
+            <textElement textAlignment="Center">
+               <font size="11" isBold="true" isItalic="false"/>
+            </textElement>
+            <text><![CDATA[Total Employees:]]></text>
+         </staticText>
+         <staticText>
+            <reportElement x="340" y="15" width="108" height="20" uuid="704b80d5-8df1-4ade-b56d-5821e50fc156"/>
+            <box>
+               <pen lineWidth="0.25"/>
+               <topPen lineWidth="0.25"/>
+               <leftPen lineWidth="0.25"/>
+               <bottomPen lineWidth="0.25"/>
+               <rightPen lineWidth="0.25"/>
+            </box>
+            <textElement textAlignment="Center">
+               <font size="11" isBold="true" isItalic="false"/>
+            </textElement>
+            <text><![CDATA[Salary Spent]]></text>
+         </staticText>
+         <textField>
+            <reportElement x="139" y="35" width="111" height="30" forecolor="#082E66" uuid="ea8f1876-9542-4e04-a670-d4a6932e1723"/>
+            <textElement textAlignment="Center" verticalAlignment="Top">
+               <font fontName="Pilat Wide" size="13" isBold="true"/>
+            </textElement>
+            <textFieldExpression><![CDATA[$V{empCount}]]></textFieldExpression>
+         </textField>
+
+
+         <textField>
+            <reportElement x="313" y="35" width="167" height="30" forecolor="#082E66" uuid="cdc76e05-0ade-4a1c-acd5-de8ab97aafb1"/>
+            <textElement textAlignment="Center" verticalAlignment="Top">
+               <font fontName="Pilat Wide" size="13" isBold="true"/>
+            </textElement>
+            <textFieldExpression><![CDATA[$V{totalSalary}]]></textFieldExpression>
+         </textField>
+      </band>
+   </summary>
+</jasperReport>
+```
+
+Run It, you will get generated report.
+http://localhost:8990/empapp/api/v1/reports/jasper/emp24?fileType=doc
+ 
+
+
+
+## JasperReports – Sub Report Example
+For Subreport open existing template **emp.jrxml** template, we need to add another template **user.jrxml** as subreport.
+
+To add subreport to main report, open mian report, click on subreport from pattle, drag to summery area & provide below details
+•	Sleect just create subreport element, Next.
+•	Don’t use any database connection, next, finish.
+•	Right click > Align > Fit to width. / Table formate
+ 
+
+Here for the User.jrxml subreport, we will pass subreport data as parameters from main report. For that 
+•	Create new parameter `subReport` and datatype as `JasperReport` in the main Report
+•	Create new parameter `subDatasource` and datatype as `JRBeanCollectionDataSource` 
+•	Create new parameter `subParameters` and datatype as `Map` 
+
+
+Now open Subreport Properties
+•	Remove `$P{REPORT_CONNECTION}`
+•	Expression: `$P{subReport}`
+•	Parameter Map Expression: `$P{ subParameters }`
+•	Data Source Expression: `$P{subReportDataSource}`
+
+ 
+
+So now what ever data we passed as parameters will fill in the Subreport.
+
+### Example Code
+
+```
+@GetMapping("/jasper/subreport")
+public ResponseEntity<Resource> jasperSubreport(@RequestParam("fileType") String fileType) throws Exception {
+
+    ReportTypeEnum report = ReportTypeEnum.getReportTypeByCode(fileType);
+    log.info("Eum :"+report);
+    byte[] bytes = reportsService.jasperSubreport(fileType);
+    if (null != bytes) {
+        ByteArrayResource resource = new ByteArrayResource(bytes);
+        String fileName = "jasperSubreport" + "_" + LocalDateTime.now() + report.getExtension();
+        return ResponseEntity.ok()
+                .header(com.google.common.net.HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
+                .contentLength(resource.contentLength())
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(resource);
+    } else {
+        throw new BusinessException("File Download Failed");
+    }
+}
+
+
+@Override
+public byte[] jasperSubreport(String fileType) throws Exception {
+    
+    //1. Create Required Parameters
+    Map<String, Object> parameters = new HashMap<>();
+    FileInputStream leafBannerStream = new FileInputStream(ResourceUtils.getFile("classpath:reports/logo.jpg").getAbsolutePath());
+    parameters.put("comanyName", "BLACK STAR TECHNOLOGIES");
+    parameters.put("address", "Address: Raheja Mind Space Entrance Gate, HITEC City, Hyderabad -500081");
+    parameters.put("header", "Employees Salary Report");
+    parameters.put("logo", leafBannerStream);
+    parameters.put("createdBy","Satya Kaveti");
+
+
+    //2. Create SubReport Data & assign it to Parameters
+    List<UserDto>  userDtos = getAllUsers();
+    JasperReport subReport = JasperCompileManager.compileReport(ResourceUtils.getFile("classpath:reports/users.jrxml").getAbsolutePath());
+    JRBeanCollectionDataSource subDatasource = new JRBeanCollectionDataSource(userDtos);
+    Map<String, Object> subParameters = new HashMap<>();
+    subParameters.put("header", "User Accounts - Sub Report");
+    //add to main report parameters
+    parameters.put("subReport",subReport);
+    parameters.put("subDatasource",subDatasource);
+    parameters.put("subParameters",subParameters);
+    
+
+    //3.Create Main Report Data
+    List<EmployeeDto> employeeDtos = getAllEmployees();
+    JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(employeeDtos);
+
+    String template = "reports/empSubReport.jrxml";
+    String mainPath = ResourceUtils.getFile("classpath:" + template).getAbsolutePath();
+    JasperReport mainReport = JasperCompileManager.compileReport(mainPath);
+
+    //4.Fill Report - by passing complied .jrxml object, paramters, datasource
+    JasperPrint jasperPrint = JasperFillManager.fillReport(mainReport, parameters, dataSource);
+
+    //5.Export Report - by using JasperExportManager
+    ReportTypeEnum reportType = ReportTypeEnum.getReportTypeByCode(fileType);
+    return jasperReportsUtil.exportJasperReportBytes(jasperPrint, reportType);
+}
+```
+
+Test it
+http://localhost:8990/empapp/api/v1/reports/jasper/subreport?fileType=pdf
+ 
+
+
+
+
+
+
+
+
+# Ref.
+https://github.com/javaHelper/Build-Reports-with-JasperReports-Java-and-Spring-Boot
+
+
+
