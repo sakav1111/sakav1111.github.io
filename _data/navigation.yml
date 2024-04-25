@@ -57,6 +57,8 @@ JavaTutorial:
         url:    /java/interfaces
       - title:  Interface Enhancements
         url:    /java/interface-enhancements
+      - title:  Enums
+        url:    /java/enums
    
         
   - title:      OOPS
