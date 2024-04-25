@@ -40,6 +40,43 @@ Ref: https://pandoc.org/demos.html
 
 
 
+## Tutorails Making
+Tutorials
+
+ 1.Open word, Change Headings to H1.
+-	Remove, if two headings are there next to next
+-	Remove, If any special. chars in Heading. remove them
+  
+  
+  2. Kutools Plus > Split > select heading1
+•	(if anything Break, Open word from that particular heading & Split again, 
+-	it occurs when if two headings are there next to next
+-	If any special. chars in Heading. remove them
+    
+  3.After Split complete save them as .md using Word, BreakData
+  
+  4.Once save done, copy .md files to a separate folder & Run below command for "file names"
+ Display Folder content in Tree Format
+    `dir /s /b /o:gn>list.txt`
+	
+ 5.open `list.txt` replace `.md` with nothing
+ 
+ 6.arrage filenames by numbers order.
+ 
+ 7.Change in `FileNames.java` - 	 folder, category, tag, meta before running java file
+ 
+ 8.Make sure `FileNames.java & list.txt` in same folder - Run Java File
+ 
+ 9.open Generated `navigation.txt & post.txt` - Make sure URL's are same in Both files.
+ 
+ 10.follow commndline output to Create Menu for Tutorials
+```
+	_config.yaml location ----> {root_folder}/_config.yml
+	 navigation.yaml ---------> {root_folder}/_data/navigation.yaml
+```
+
+
+
 
 
 
