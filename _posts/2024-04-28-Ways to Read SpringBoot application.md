@@ -18,7 +18,7 @@ In a Spring Boot application, you can read values from the `application.properti
 
 1.  Using `@Value` Annotation: You can inject property values directly into your beans using the `@Value` annotation.
 
-    ```
+```
     import org.springframework.beans.factory.annotation.Value;
     import org.springframework.stereotype.Component;
 
@@ -30,14 +30,15 @@ In a Spring Boot application, you can read values from the `application.properti
 
         // Getter and setter
     }
-  ```
+```
+
 
 
 2.  Using `Environment`: You can use the `Environment` interface to access properties.
 
   
   ```
-  import org.springframework.beans.factory.annotation.Autowired;
+   import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.core.env.Environment;
     import org.springframework.stereotype.Component;
 
