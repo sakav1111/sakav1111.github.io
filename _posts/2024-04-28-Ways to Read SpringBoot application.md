@@ -72,7 +72,9 @@ In a Spring Boot application, you can read values from the `application.properti
     }
 ```
 
-    And then, you can inject this bean wherever needed:
+
+
+And then, you can inject this bean wherever needed:
 
 
 ```
