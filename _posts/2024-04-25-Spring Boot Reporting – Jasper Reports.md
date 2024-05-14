@@ -1,5 +1,5 @@
 ---
-title: Spring Boot Reporting – Corbone Reports
+title: Spring Boot Reporting – Jasper Reports
 date: 2024-04-25 00:00:00 Z
 categories:
 - SpringBoot
@@ -13,6 +13,9 @@ aside:
   toc: true
 pageview: true
 ---
+
+
+# Jasper Reports
 
 JasperReports is an open-source reporting tool for Java that is used for reporting of applications. This reporting tool helps in writing rich content onto the screen, to the printer, or into a variety of files like HTML, PDF, XLS, RTF, CSV, XML, ODT and TXT.
 
