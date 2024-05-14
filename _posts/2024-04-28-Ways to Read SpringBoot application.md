@@ -16,7 +16,7 @@ pageview: true
 
 In a Spring Boot application, you can read values from the `application.properties` file in several ways, depending on your specific requirements and preferences. Here are some common methods:
 
-1.  Using `@Value` Annotation: You can inject property values directly into your beans using the `@Value` annotation.
+1.Using `@Value` Annotation: You can inject property values directly into your beans using the `@Value` annotation.
 
 ```
     import org.springframework.beans.factory.annotation.Value;
@@ -25,8 +25,12 @@ In a Spring Boot application, you can read values from the `application.properti
     @Component
     public class MyComponent {
 
-        @Value("${my.property}")
-        private String myProperty;
+        @Value("${app.property: defualtValue}")
+        private String property;
+
+        @Value("${app.isEnable: true}")
+        private Boolean isEnable;
+
 
         // Getter and setter
     }
@@ -34,7 +38,7 @@ In a Spring Boot application, you can read values from the `application.properti
 
 
 
-2.  Using `Environment`: You can use the `Environment` interface to access properties.
+2.Using `Environment`: You can use the `Environment` interface to access properties.
 
   
   ```
@@ -56,7 +60,7 @@ In a Spring Boot application, you can read values from the `application.properti
 ```
 
 
-3.  Using `@ConfigurationProperties` Annotation: You can bind the entire `application.properties` file or specific sections of it to a Java bean using the `@ConfigurationProperties` annotation.
+3.Using `@ConfigurationProperties` Annotation: You can bind the entire `application.properties` file or specific sections of it to a Java bean using the `@ConfigurationProperties` annotation.
    
 ```
     import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -84,7 +88,7 @@ And then, you can inject this bean wherever needed:
 
 
 
-4.  Using `@PropertySource` and `@Value`: You can use `@PropertySource` to specify the properties file and then use `@Value` as shown in the first method.
+4.Using `@PropertySource` and `@Value`: You can use `@PropertySource` to specify the properties file and then use `@Value` as shown in the first method.
 
 ```
     import org.springframework.context.annotation.PropertySource;
@@ -101,5 +105,7 @@ And then, you can inject this bean wherever needed:
         // Getter and setter
     }
   ```
+
+  
 
 These are some common ways, each with its advantages depending on the complexity of your application and personal preference.
